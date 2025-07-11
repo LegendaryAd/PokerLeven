@@ -12,9 +12,15 @@ function loc_colour(_c, _default)
   if not G.ARGS.LOC_COLOURS then
     custom_colours()
   end
-  G.ARGS.LOC_COLOURS["mountain"] = HEX("e97333")
-  G.ARGS.LOC_COLOURS["gk"] = HEX("ff9040")
-  G.ARGS.LOC_COLOURS["fire"] = HEX("f81020")
-  G.ARGS.LOC_COLOURS["fw"] = HEX("eb3232")
+G.ARGS.LOC_COLOURS["mountain"] = HEX("f57c00")  
+G.ARGS.LOC_COLOURS["gk"] = HEX("ffa726")        
+G.ARGS.LOC_COLOURS["fire"] = HEX("d32f2f")      
+G.ARGS.LOC_COLOURS["fw"] = HEX("ef5350")       
+G.ARGS.LOC_COLOURS["forest"] = HEX("2e7d32")  
+G.ARGS.LOC_COLOURS["df"] = HEX("66bb6a")        
+G.ARGS.LOC_COLOURS["air"] = HEX("81d4fa")      
+G.ARGS.LOC_COLOURS["mf"] = HEX("4fc3f7")        
+
+
   return custom_colours(_c, _default)
 end

@@ -1,7 +1,7 @@
 {
 	"id": "Pokerleven",
 	"name": "Pokerleven",
-	"author": ["Deco", "Please See Credits Page"],
+	"author": ["Deco, Synkro", "Please See Credits Page"],
 	"description": "A content Balatro mod where every joker is from Inazuma Eleven.",
 	"prefix": "ina",
 	"main_file": "Pokerleven.lua",
