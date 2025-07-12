@@ -1,5 +1,10 @@
 mod_dir = ''..SMODS.current_mod.path
 
+SMODS.current_mod.optional_features = {
+	retrigger_joker = true,
+	post_trigger = true
+}
+
 --Load Sprites file
 local sprite, load_error = SMODS.load_file("sprites.lua")
 if load_error then
@@ -24,6 +29,61 @@ else
   UI()
 end
 
+--Load consumable types
+local pconsumable_types = NFS.getDirectoryItems(mod_dir.."consumable types")
+
+for _, file in ipairs(pconsumable_types) do
+  sendDebugMessage ("The file is: "..file)
+  local con_type, load_error = SMODS.load_file("consumable types/"..file)
+  if load_error then
+    sendDebugMessage ("The error is: "..load_error)
+  else
+    local curr_type = con_type()
+    if curr_type.init then curr_type:init() end
+    
+    for i, item in ipairs(curr_type.list) do
+      SMODS.ConsumableType(item)
+    end
+  end
+end
+
+--Load consumables
+local consumables = NFS.getDirectoryItems(mod_dir.."consumables")
+
+for _, file in ipairs(consumables) do
+  sendDebugMessage ("The file is: "..file)
+  local consumable, load_error = SMODS.load_file("consumables/"..file)
+  if load_error then
+    sendDebugMessage ("The error is: "..load_error)
+  else
+    local curr_consumable = consumable()
+    if curr_consumable.init then curr_consumable:init() end
+    for i, item in ipairs(curr_consumable.list) do
+        SMODS.Consumable(item)
+    end
+  end
+end 
+
+--Load stickers
+local pseals = NFS.getDirectoryItems(mod_dir.."stickers")
+
+for _, file in ipairs(pseals) do
+  sendDebugMessage ("The file is: "..file)
+  local sticker, load_error = SMODS.load_file("stickers/"..file)
+  if load_error then
+    sendDebugMessage ("The error is: "..load_error)
+  else
+    local curr_sticker = sticker()
+    if curr_sticker.init then curr_sticker:init() end
+    
+    for i, item in ipairs(curr_sticker.list) do
+      item.hide_badge = true
+      SMODS.Sticker(item)
+    end
+  end
+end
+
+
 --Load jokers files
 local pfiles = NFS.getDirectoryItems(mod_dir.."players")
 for _, file in ipairs(pfiles) do
@@ -40,6 +100,10 @@ for _, file in ipairs(pfiles) do
             if not item.key then
                 item.key = item.name
             end
+
+            item.in_pool = function(self)
+                return player_in_pool(self)
+            end
             
             if item.ptype then
               if item.config and item.config.extra then
@@ -53,9 +117,19 @@ for _, file in ipairs(pfiles) do
               if item.config and item.config.extra then
                 item.config.extra.pposition = item.pposition
               elseif item.config then
-                item.config.pposition = {ptype = item.pposition}
+                item.config.extra = {pposition = item.pposition}
               end
             end
+
+            if item.pteam then
+              if item.config and item.config.extra then
+                item.config.extra.pteam = item.pteam
+              elseif item.config then
+                item.config.extra = {pteam = item.pteam}
+              end
+            end
+
+            item.set_badges = ina_set_badges
 
             SMODS.Joker(item)
         end

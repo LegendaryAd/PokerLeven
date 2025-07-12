@@ -1,15 +1,130 @@
 family ={
-    {"Kevin", "Mark", "Nathan"},
-    {"Jack"}
 }
 
+-- Credits to Pokermon
+find_player_type = function(target_type)
+  local found = {}
+  if G.jokers and G.jokers.cards then
+    for k, v in pairs(G.jokers.cards) do
+      if v.ability and ((v.ability.extra and type(v.ability.extra) == "table"
+        and target_type == v.ability.extra.ptype) or v.ability[string.lower(target_type).."_sticker"]) then
+        table.insert(found, v)
+      end
+    end
+  end
+  return found
+end
+
+find_player_position = function(target_type)
+  local found = {}
+  if G.jokers and G.jokers.cards then
+    for k, v in pairs(G.jokers.cards) do
+      if v.ability and ((v.ability.extra and type(v.ability.extra) == "table"
+        and target_type == v.ability.extra.pposition) or v.ability[string.lower(target_type).."_sticker"]) then
+        table.insert(found, v)
+      end
+    end
+  end
+  return found
+end
+
+find_player_team = function(target_type)
+  local found = {}
+  if G.jokers and G.jokers.cards then
+    for k, v in pairs(G.jokers.cards) do
+      if v.ability and ((v.ability.extra and type(v.ability.extra) == "table"
+        and target_type == v.ability.extra.pteam) or v.ability[string.lower(target_type).."_sticker"]) then
+        table.insert(found, v)
+      end
+    end
+  end
+  return found
+end
+
+is_team = function(card, target_team)
+  if card.ability and (card.ability.extra and type(card.ability.extra) == "table" and target_team == card.ability.extra.pteam) then
+    return true
+  else
+    return false
+  end
+end
+
+is_position = function(card, target_position)
+  if card.ability and (card.ability.extra and type(card.ability.extra) == "table" and target_position == card.ability.extra.pposition) then
+    return true
+  else
+    return false
+  end
+end
+
+get_adjacent_jokers = function(card)
+  local jokers = {}
+  if #G.jokers.cards > 1 then
+    local pos = 0
+    for i = 1, #G.jokers.cards do
+      if G.jokers.cards[i] == card then
+        pos = i
+        break
+      end
+    end
+    if pos > 1 and G.jokers.cards[pos-1] then 
+      table.insert(jokers, G.jokers.cards[pos-1])
+    end
+    if pos < #G.jokers.cards and G.jokers.cards[pos+1] then 
+      table.insert(jokers, G.jokers.cards[pos+1])
+    end
+  end
+  return jokers
+end
+
+drain = function(card, target, amount, one_way)
+  local amt = amount
+  local amt_drained = 0
+  if target.sell_cost == 1 then return end
+  target.ability.extra_value = target.ability.extra_value or 0
+  if target.sell_cost <= amt then
+    amt_drained = amt_drained + target.sell_cost - 1
+    target.ability.extra_value = target.ability.extra_value - amt_drained
+  else
+     target.ability.extra_value = target.ability.extra_value - amt
+     amt_drained = amt
+  end
+  
+  if amt_drained > 0 then
+    target:set_cost()
+    card_eval_status_text(target, 'extra', nil, nil, nil, {message = localize('ina_val_down'), colour = G.C.RED})
+    if not one_way then
+      card.ability.extra_value = card.ability.extra_value or 0
+      card.ability.extra_value = card.ability.extra_value + amt_drained
+      card:set_cost()
+      card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_val_up')})
+    end    
+  end
+end
+
+ina_set_badges = function(self, card, badges)
+  local pteam = get_team(card)
+  local text_colour = G.C.WHITE
+  if pteam then
+    local lower_pteam = string.lower(pteam)
+    badges[#badges+1] = create_badge(pteam, G.ARGS.LOC_COLOURS[lower_pteam], text_colour, 1.2 )
+  end
+end
+
+get_team = function(card)
+  if card.ability then
+    if type(card.ability.extra) == "table" and card.ability.extra.pteam then
+      return card.ability.extra.pteam
+    end
+  end
+  return nil
+end
 
 type_tooltip = function(self, info_queue, center)
     local percent
     if center.ability.extra and type(center.ability.extra) == "table" and center.ability.extra.ptype then
-      info_queue[#info_queue+1] = {set = 'Other', key = center.ability.extra.ptype}
+        info_queue[#info_queue+1] = {set = 'Other', key = center.ability.extra.ptype}
     end
-
     if center.ability.extra and type(center.ability.extra) == "table" and center.ability.extra.pposition then
         info_queue[#info_queue+1] = {set = 'Other', key = center.ability.extra.pposition}
     end
@@ -246,3 +361,63 @@ get_family_keys = function(cardname, custom_prefix, card)
     end
     return keys
   end
+
+player_in_pool = function (self)
+  local name
+  if not self.name and self.ability.name then
+    name = self.ability.name
+  else
+    name = self.name or "Mark"
+  end
+  if next(find_joker(name)) then
+    return false
+  else
+    return true
+  end
+end
+
+apply_type_sticker = function(card, sticker_type, property)
+  local inatype_list = {"Forest", "Fire", "Wind", "Mountain"}
+  local inaposition_list = {"FW", "DF", "MF", "GK"}
+  local apply_type = nil
+
+  if sticker_type then
+    apply_type = sticker_type
+    card.ability[string.lower(apply_type).."_sticker"] = true
+  else
+    if property == "type" then
+      apply_type = pseudorandom_element(inatype_list, pseudoseed("type"))
+    elseif property == "position" then
+      apply_type = pseudorandom_element(inaposition_list, pseudoseed("position"))
+    end
+    card.ability[string.lower(apply_type).."_sticker"] = true
+  end
+
+  if property == "type" then
+    for l, v in pairs(inatype_list) do
+      if string.lower(v) ~= string.lower(apply_type) then
+        card.ability[string.lower(v).."_sticker"] = false
+      end
+    end
+  end
+
+  if property == "position" then
+    for l, v in pairs(inaposition_list) do
+      if string.lower(v) ~= string.lower(apply_type) then
+        card.ability[string.lower(v).."_sticker"] = false
+      end
+    end
+  end
+
+  if property == "type" then 
+    if card.ability and card.ability.extra and type(card.ability.extra) == "table" and card.ability.extra.ptype then
+      card.ability.extra.ptype = apply_type 
+    end
+  end
+
+  if property == "position" then 
+    if card.ability and card.ability.extra and type(card.ability.extra) == "table" and card.ability.extra.pposition then
+      card.ability.extra.pposition = apply_type 
+    end
+  end
+end

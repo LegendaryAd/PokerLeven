@@ -1,0 +1,108 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Players only functionality
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if v.yes_pool_flag and not G.GAME.pool_flags[v.yes_pool_flag] then add = nil end"
+position = "after"
+payload = '''
+if v.set == 'Joker' and not v.pteam then add = nil end
+'''
+match_indent = true
+
+# Replace start menu logo with inazuma
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+G.SPLASH_LOGO = Sprite(0, 0, 
+    13*SC_scale, 
+    13*SC_scale*(G.ASSET_ATLAS["balatro"].py/G.ASSET_ATLAS["balatro"].px),
+    G.ASSET_ATLAS["balatro"], {x=0,y=0})
+'''
+position = "at"
+payload = '''
+    local ina_logo = "ina_logo"
+    G.SPLASH_LOGO = Sprite(0, 0, 
+        13/333*389*SC_scale, 
+        13/333*389*SC_scale*(G.ASSET_ATLAS[ina_logo].py/G.ASSET_ATLAS[ina_logo].px),
+        G.ASSET_ATLAS[ina_logo], {x=0.0,y=0})
+'''
+match_indent = true
+overwrite = true
+
+# Add total moons played
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if not copier then set_consumeable_usage(self) end
+'''
+position = "after"
+payload = '''
+if self.ability.name == 'The Moon' then
+  G.E_MANAGER:add_event(Event({
+    trigger = 'after',
+    delay = 0.1,
+    func = function()
+      G.GAME.used_moon_cards = (G.GAME.used_moon_cards or 0) + 1
+      return true
+    end
+  }))
+end
+'''
+match_indent = true
+
+
+
+# Splash Screen
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS['j_joker'])"
+position = "after"
+payload = '''
+local players = {}
+  for k, v in pairs(G.P_CENTERS) do
+    if v.set == 'Joker' and v.pteam then
+      table.insert(players, v)
+    end
+  end
+  if #players > 0 then
+    local chosen = math.random(#players)
+    local chosencard = players[chosen]
+    SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, chosencard)
+end
+'''
+match_indent = true
+
+# Replace start menu card with mark
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+local replace_card = Card(self.title_top.T.x, self.title_top.T.y, 1.2*G.CARD_W*SC_scale, 1.2*G.CARD_H*SC_scale, G.P_CARDS.S_A, G.P_CENTERS.c_base)
+'''
+position = "at"
+payload = '''
+if not G.P_CENTERS.j_ina_Mark then
+  print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+else
+    print("j_ina_Mark encontrado:", G.P_CENTERS.j_ina_Mark)
+end
+local replace_card = Card(self.title_top.T.x, self.title_top.T.y, 1.2*G.CARD_W*SC_scale, 1.2*G.CARD_H*SC_scale, G.P_CARDS.empty, G.P_CENTERS.j_ina_Mark)
+G.P_CENTERS.j_ina_Mark:set_sprites(replace_card)
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "replace_card.states.visible = false"
+position = "after"
+payload = "replace_card.seal = nil"
+match_indent = true
