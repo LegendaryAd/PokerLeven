@@ -220,9 +220,11 @@ return {
             j_ina_Monkey = {
                 name = "Monkey",
                 text = {
-                    "{C:wind}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:wind}Monkey flip{}",
+                    "Gain {X:mult,C:white}XMult{} equal to {C:tarot}Wild Cards{}",
+                    "in deck multiplied",
+                    "by {X:wild,C:white}Wild{} Players in team / 10",
+                    "Currently {X:mult,C:white}X#1#{}"
                 }
             },
             j_ina_Gorilla = {
