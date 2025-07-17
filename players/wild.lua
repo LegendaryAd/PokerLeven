@@ -56,7 +56,7 @@ local Boar = {
 local Chamaleon = {
     name = "Chamaleon",
     pos = {x = 1, y = 2},
-    config = {extra = {}},
+    config = {extra = {triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         return {}
@@ -70,7 +70,42 @@ local Chamaleon = {
     pteam = "Wild",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.cardarea == G.jokers and context.joker_main then
+            local suit_counts = {
+                Clubs = 0,
+                Hearts = 0,
+                Spades = 0,
+                Diamonds = 0
+            }
+
+            for _, c in ipairs(context.full_hand) do
+                if c:is_suit("Clubs") and not SMODS.has_enhancement(c, 'm_wild') then suit_counts.Clubs = suit_counts.Clubs + 1 end
+                if c:is_suit("Hearts") and not SMODS.has_enhancement(c, 'm_wild') then suit_counts.Hearts = suit_counts.Hearts + 1 end
+                if c:is_suit("Spades") and not SMODS.has_enhancement(c, 'm_wild') then suit_counts.Spades = suit_counts.Spades + 1 end
+                if c:is_suit("Diamonds") and not SMODS.has_enhancement(c, 'm_wild') then suit_counts.Diamonds = suit_counts.Diamonds + 1 end
+            end
+
+            local outlier_suit = nil
+            for suit, count in pairs(suit_counts) do
+                if count == 1 then
+                    outlier_suit = suit
+                    break
+                end
+            end
+
+            if outlier_suit then
+                for _, c in ipairs(context.full_hand) do
+                    if c:is_suit(outlier_suit) and not SMODS.has_enhancement(c, 'm_wild') then
+                        convert_cards_to(c, {mod_conv = "m_wild", true, true})
+                        return {
+                            message = localize("ina_convert"),
+                            colour = G.C.DARK_EDITION,
+                            card = card,
+                        }
+                    end
+                end
+            end
+        end
     end
 }
 

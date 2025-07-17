@@ -204,9 +204,11 @@ return {
             j_ina_Chamaleon = {
                 name = "Chamaleon",
                 text = {
-                    "{C:wind}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:wind}Afterimage{}",
+                    "You can play {C:attention}Flushes with {C:attention}4 cards{}",
+                    " If you play a 5th card",
+                    "and it's not the same suit as the other 4,",
+                    "transform it into a {C:tarot}Wild Card{}"
                 }
             },
             j_ina_Eagle = {
@@ -764,7 +766,8 @@ return {
             ina_val_down = "Drained!",
             ina_training = "Swap!",
             ina_next_match = "Match",
-            k_team_pack = "Team Pack"
+            k_team_pack = "Team Pack",
+            ina_convert = "Converted!"
         },
         high_scores = {},
         labels = {},
