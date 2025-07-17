@@ -7,8 +7,9 @@ local Kevin = {
       type_tooltip(self, info_queue, center)
       return {vars = {center.ability.extra.mult, center.ability.extra.mult_mod, center.ability.evo_rqmt}}
     end,
-    rarity = 2, 
-    cost = 5, 
+    rarity = 2,
+    pools = { ["Raimon"] = true },
+    cost = 8, 
     atlas = "Jokers01",
     ptype = "Forest",
     pposition = "FW",
@@ -46,7 +47,8 @@ local Mark = {
       type_tooltip(self, info_queue, center)
       return {vars = {center.ability.extra.mult, center.ability.extra.mult_mod, center.ability.evo_rqmt}}
     end,
-    rarity = 4, 
+    rarity = 4,
+    pools = { ["Raimon"] = true }, 
     cost = 11, 
     atlas = "Jokers01",
     ptype = "Mountain",
@@ -81,8 +83,9 @@ local Nathan = {
       local count = #find_player_team("Raimon");
       return {vars = {count, center.ability.extra.xmult}}
     end,
-    rarity = 2, 
-    cost = 5, 
+    rarity = 2,
+    pools = { ["Raimon"] = true }, 
+    cost = 7, 
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "DF",
@@ -115,8 +118,9 @@ local Jack = {
       type_tooltip(self, info_queue, center)
       return {vars = {center.ability.extra.chips_mod}}
     end,
-    rarity = 2, 
-    cost = 5, 
+    rarity = 2,
+    pools = { ["Raimon"] = true }, 
+    cost = 6, 
     atlas = "Jokers01",
     ptype = "Mountain",
     pposition = "DF",
@@ -149,7 +153,8 @@ local Axel = {
       type_tooltip(self, info_queue, center)
       return {vars = {center.ability.extra.xmult}}
     end,
-    rarity = 3, 
+    rarity = 3,
+    pools = { ["Raimon"] = true }, 
     cost = 8, 
     atlas = "Jokers01",
     ptype = "Fire",
@@ -185,21 +190,15 @@ local Shadow = {
       type_tooltip(self, info_queue, center)
       return {vars = {center.ability.extra.current_mult, center.ability.extra.mult_mod}}
     end,
-    rarity = 1, 
-    cost = 3, 
+    rarity = 1,
+    pools = { ["Raimon"] = true }, 
+    cost = 4, 
     atlas = "Jokers01",
     ptype = "Forest",
     pposition = "FW",
     pteam = "Raimon",
     blueprint_compat = true,
     calculate = function(self, card, context)
-      if context.scoring_hand then
-          for _, c in ipairs(G.jokers.cards) do
-            if c.ability and c.ability.extra then
-              c.ability.extra.activated_this_hand = false
-            end
-          end
-      end
 
       if context.cardarea == G.jokers and context.scoring_hand and context.joker_main then
         return {
@@ -216,6 +215,11 @@ local Shadow = {
             other_triggered = true
             break
           end
+        end
+        for _, c in ipairs(G.jokers.cards) do
+          if c.ability and c.ability.extra then
+            c.ability.extra.triggered = false
+           end
         end
         if not other_triggered then
           card.ability.extra.current_mult = (card.ability.extra.current_mult or 0) + card.ability.extra.mult_mod
@@ -237,7 +241,8 @@ local Willy = {
       type_tooltip(self, info_queue, center)
       return {vars = {center.ability.extra.mult}}
     end,
-    rarity = 2, 
+    rarity = 2,
+    pools = { ["Raimon"] = true }, 
     cost = 3, 
     atlas = "Jokers01",
     ptype = "Forest",
@@ -267,7 +272,8 @@ local Max = {
       type_tooltip(self, info_queue, center)
       return {vars = {center.ability.extra.chip_mod, count*center.ability.extra.chip_mod}}
     end,
-    rarity = 1, 
+    rarity = 1,
+    pools = { ["Raimon"] = true }, 
     cost = 4, 
     atlas = "Jokers01",
     ptype = "Wind",
@@ -298,8 +304,9 @@ local Peabody = {
       type_tooltip(self, info_queue, center)
       return {vars = {center.ability.extra.current_mult, center.ability.extra.mult_mod}}
     end,
-    rarity = 1, 
-    cost = 4, 
+    rarity = 1,
+    pools = { ["Raimon"] = true }, 
+    cost = 5, 
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "GK",

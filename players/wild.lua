@@ -1,0 +1,176 @@
+-- Chicken
+local Chicken = {
+    name = "Chicken",
+    pos = {x = 0, y = 2},
+    config = {extra = {money = 4, odds = 2, triggered = false}},
+    loc_vars = function(self, info_queue, center)
+        type_tooltip(self, info_queue, center)
+        return {vars = {''..(G.GAME and G.GAME.probabilities.normal or 1), center.ability.extra.odds, center.ability.extra.money}}
+    end,
+    rarity = 3, -- Rare
+    pools = { ["Wild"] = true }, 
+    cost = 7,
+    atlas = "Jokers01",
+    ptype = "Fire",
+    pposition = "MF", -- Midfielder
+    pteam = "Wild",
+    blueprint_compat = true,
+calculate = function(self, card, context)
+    if context.individual and not context.end_of_round and context.cardarea == G.play and context.scoring_hand then
+      if SMODS.has_enhancement(context.other_card, 'm_wild') then
+        if pseudorandom('chicken') < G.GAME.probabilities.normal/card.ability.extra.odds then
+            card.ability.extra.triggered = true
+            return {
+                dollars = card.ability.extra.money,
+                card = card
+            }
+        end
+      end
+    end
+  end,
+}
+
+-- Boar
+local Boar = {
+    name = "Boar",
+    pos = {x = 12, y = 1},
+    config = {extra = {}},
+    loc_vars = function(self, info_queue, center)
+        type_tooltip(self, info_queue, center)
+        return {}
+    end,
+    rarity = 1, -- Common
+    pools = { ["Wild"] = true }, 
+    cost = 3,
+    atlas = "Jokers01",
+    ptype = "Fire",
+    pposition = "GK", -- Goalkeeper
+    pteam = "Wild",
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        -- TODO: Placeholder
+    end
+}
+
+-- Chamaleon
+local Chamaleon = {
+    name = "Chamaleon",
+    pos = {x = 1, y = 2},
+    config = {extra = {}},
+    loc_vars = function(self, info_queue, center)
+        type_tooltip(self, info_queue, center)
+        return {}
+    end,
+    rarity = 2, -- Uncommon
+    pools = { ["Wild"] = true }, 
+    cost = 4,
+    atlas = "Jokers01",
+    ptype = "Wind",
+    pposition = "MF", -- Midfielder
+    pteam = "Wild",
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        -- TODO: Placeholder
+    end
+}
+
+-- Eagle
+local Eagle = {
+    name = "Eagle",
+    pos = {x = 2, y = 2},
+    config = {extra = {}},
+    loc_vars = function(self, info_queue, center)
+        type_tooltip(self, info_queue, center)
+        return {}
+    end,
+    rarity = 1, -- Common
+    pools = { ["Wild"] = true }, 
+    cost = 3,
+    atlas = "Jokers01",
+    ptype = "Wind",
+    pposition = "MF", -- Midfielder
+    pteam = "Wild",
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        -- TODO: Placeholder
+    end
+}
+
+-- Monkey
+local Monkey = {
+    name = "Monkey",
+    pos = {x = 3, y = 2},
+    config = {extra = {}},
+    loc_vars = function(self, info_queue, center)
+        type_tooltip(self, info_queue, center)
+        return {}
+    end,
+    rarity = 2, -- Uncommon
+    pools = { ["Wild"] = true }, 
+    cost = 4,
+    atlas = "Jokers01",
+    ptype = "Wind",
+    pposition = "MF", -- Midfielder
+    pteam = "Wild",
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        -- TODO: Placeholder
+    end
+}
+
+-- Gorilla
+local Gorilla = {
+    name = "Gorilla",
+    pos = {x = 5, y = 2},
+    config = {extra = {}},
+    loc_vars = function(self, info_queue, center)
+        type_tooltip(self, info_queue, center)
+        return {}
+    end,
+    rarity = 1, -- Common
+    pools = { ["Wild"] = true }, 
+    cost = 3,
+    atlas = "Jokers01",
+    ptype = "Mountain",
+    pposition = "FW", -- Forward
+    pteam = "Wild",
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        -- TODO: Placeholder
+    end
+}
+
+-- Cheetah
+local Cheetah = {
+    name = "Cheetah",
+    pos = {x = 4, y = 2},
+    config = {extra = {current_element = "Wind", possible_elements = {"Wind", "Fire", "Forest", "FW"}}},
+    loc_vars = function(self, info_queue, center)
+        type_tooltip(self, info_queue, center)
+        G.ARGS.LOC_COLOURS["select_element"] = G.ARGS.LOC_COLOURS[string.lower(center.ability.extra.current_element)] or HEX("FFFFFF")
+        return {vars = {center.ability.extra.current_element}}
+    end,
+    rarity = 2, -- Uncommon
+    pools = { ["Wild"] = true }, 
+    cost = 4,
+    atlas = "Jokers01",
+    ptype = "Wind",
+    pposition = "FW", -- Forward
+    pteam = "Wild",
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+                card.ability.extra.current_element = pseudorandom_element(card.ability.extra.possible_elements, pseudoseed("elements"))
+                return {
+                    message = localize("ina_training"),
+                    colour = G.C.RED,
+                    card = card,
+                }
+        end
+    end
+}
+
+return {
+    name = "Wild",
+    list = {Chicken, Boar, Chamaleon, Eagle, Monkey, Gorilla, Cheetah},
+}

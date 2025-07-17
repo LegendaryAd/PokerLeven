@@ -1,4 +1,3 @@
-
 ina_joker_page = 1
 
 --Credits to pokermon for this

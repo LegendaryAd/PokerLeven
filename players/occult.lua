@@ -2,13 +2,14 @@
 local Talisman = {
     name = "Talisman", 
     pos = {x = 9, y = 0},
-    config = {extra = {retriggers = 1, triggered = false}},
+    config = {extra = {retriggers = 2, triggered = false}},
     loc_vars = function(self, info_queue, center)
       type_tooltip(self, info_queue, center)
       return {vars = {}}
     end,
-    rarity = 3, 
-    cost = 7, 
+    rarity = 3,
+    pools = { ["Occult"] = true }, 
+    cost = 8, 
     atlas = "Jokers01",
     stage = "Zero", 
     ptype = "Forest",
@@ -47,8 +48,9 @@ local Wolfy = {
       type_tooltip(self, info_queue, center)
       return {vars = {1+center.ability.extra.xmult_mod*(G.GAME.used_moon_cards or 0), center.ability.extra.xmult_mod}}
     end,
-    rarity = 2, 
-    cost = 6, 
+    rarity = 2,
+    pools = { ["Occult"] = true }, 
+    cost = 7, 
     atlas = "Jokers01",
     stage = "One", 
     ptype = "Fire",
@@ -79,7 +81,8 @@ local Blood = {
       type_tooltip(self, info_queue, center)
       return {vars = {center.ability.extra.drain, center.ability.extra.chips_mod, center.sell_cost*center.ability.extra.chips_mod}}
     end,
-    rarity = 2, 
+    rarity = 2,
+    pools = { ["Occult"] = true }, 
     cost = 6, 
     atlas = "Jokers01",
     stage = "Two", 
@@ -118,8 +121,9 @@ local Grave = {
       type_tooltip(self, info_queue, center)
       return {vars = {''..(G.GAME and G.GAME.probabilities.normal or 1), center.ability.extra.odds}}
     end,
-    rarity = 1, 
-    cost = 6, 
+    rarity = 1,
+    pools = { ["Occult"] = true }, 
+    cost = 5, 
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "MF",
@@ -168,7 +172,8 @@ local Mask = {
       type_tooltip(self, info_queue, center)
       return {vars = {center.ability.extra.sell_value}}
     end,
-    rarity = 2, 
+    rarity = 2,
+    pools = { ["Occult"] = true }, 
     cost = 6, 
     atlas = "Jokers01",
     ptype = "Wind",
@@ -216,7 +221,8 @@ local Styx = {
       end
         return {vars = {current_chips, center.ability.extra.chips_mod}}
     end,
-    rarity = 1, 
+    rarity = 1,
+    pools = { ["Occult"] = true }, 
     cost = 4, 
     atlas = "Jokers01",
     ptype = "Forest",
@@ -248,8 +254,9 @@ local Franky = {
       type_tooltip(self, info_queue, center)
       return {vars = {center.ability.extra.mult_mod}}
     end,
-    rarity = 1, 
-    cost = 3, 
+    rarity = 1,
+    pools = { ["Occult"] = true }, 
+    cost = 5, 
     atlas = "Jokers01",
     ptype = "Mountain",
     pposition = "DF",
@@ -258,7 +265,7 @@ local Franky = {
     calculate = function(self, card, context)
       if context.cardarea == G.jokers and context.scoring_hand then
         if context.joker_main and next(context.poker_hands['High Card']) and not next(context.poker_hands['Pair'])  then
-          triggered = true
+          card.ability.extra.triggered = true
           return {
             message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.mult_mod}}, 
             colour = G.C.MULT,
@@ -279,8 +286,9 @@ local Mummy = {
       return {vars = {center.ability.extra.mult_mod, 
         center.ability.extra.chip_mod, localize(center.ability.extra.suit, 'suits_singular')}}
     end,
-    rarity = 1, 
-    cost = 3, 
+    rarity = 1,
+    pools = { ["Occult"] = true }, 
+    cost = 5, 
     atlas = "Jokers01",
     ptype = "Forest",
     pposition = "MF",
@@ -289,7 +297,7 @@ local Mummy = {
     calculate = function(self, card, context)
       if context.individual and context.cardarea == G.play and context.other_card:is_suit(card.ability.extra.suit) then
         if not context.end_of_round and not context.before and not context.after and not context.other_card.debuff then
-          triggered = true
+          card.ability.extra.triggered = true
           return {
             message = "AAAAAAA", 
             colour = G.C.MULT,

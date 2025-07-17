@@ -5,6 +5,7 @@ local wind_sticker = {
   rate = 0.0,
   atlas = "stickers",
   pos = { x = 7, y = 0 },
+  hide_badge = true
 }
 
 local fire_sticker = {
@@ -14,15 +15,19 @@ local fire_sticker = {
   rate = 0.0,
   atlas = "stickers",
   pos = { x = 5, y = 0 },
+  hide_badge = true
 }
 
 local mountain_sticker = {
   key = "mountain_sticker",
+	object_type = "Sticker",
+	no_sticker_sheet = true,
   badge_colour = HEX("289830"),
   prefix_config = {key = false},
   rate = 0.0,
   atlas = "stickers",
   pos = { x = 4, y = 0 },
+  hide_badge = true
 }
 
 local forest_sticker = {
@@ -32,6 +37,7 @@ local forest_sticker = {
   rate = 0.0,
   atlas = "stickers",
   pos = { x = 6, y = 0 },
+  hide_badge = true
 }
 
 local fw_sticker = {
@@ -41,6 +47,7 @@ local fw_sticker = {
   rate = 0.0,
   atlas = "stickers",
   pos = { x = 2, y = 0 },
+  hide_badge = true
 }
 
 local mf_sticker = {
@@ -50,6 +57,7 @@ local mf_sticker = {
   rate = 0.0,
   atlas = "stickers",
   pos = { x = 1, y = 0 },
+  hide_badge = true
 }
 
 local df_sticker = {
@@ -59,6 +67,7 @@ local df_sticker = {
   rate = 0.0,
   atlas = "stickers",
   pos = { x = 3, y = 0 },
+  hide_badge = true
 }
 
 local gk_sticker = {
@@ -68,6 +77,7 @@ local gk_sticker = {
   rate = 0.0,
   atlas = "stickers",
   pos = { x = 0, y = 0 },
+  hide_badge = true
 }
 
 return

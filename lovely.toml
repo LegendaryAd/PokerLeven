@@ -35,6 +35,41 @@ payload = '''
 match_indent = true
 overwrite = true
 
+# Replace start menu logo with inazuma
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+G.SPLASH_LOGO = Sprite(0, 0, 
+    13*SC_scale, 
+    13*SC_scale*(G.ASSET_ATLAS["balatro"].py/G.ASSET_ATLAS["balatro"].px),
+    G.ASSET_ATLAS["balatro"], {x=0,y=0})
+'''
+position = "at"
+payload = '''
+    local ina_logo = "ina_logo"
+    G.SPLASH_LOGO = Sprite(0, 0, 
+        13/333*389*SC_scale, 
+        13/333*389*SC_scale*(G.ASSET_ATLAS[ina_logo].py/G.ASSET_ATLAS[ina_logo].px),
+        G.ASSET_ATLAS[ina_logo], {x=0.0,y=0})
+'''
+match_indent = true
+overwrite = true
+
+# Round replaced by matches
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+{n=G.UIT.T, config={text = localize('b_next_round_2'), scale = 0.4, colour = G.C.WHITE, shadow = true}}
+'''
+position = "at"
+payload = '''
+{n=G.UIT.T, config={text = localize('ina_next_match'), scale = 0.4, colour = G.C.WHITE, shadow = true}}
+'''
+match_indent = true
+overwrite = true
+
 # Add total moons played
 [[patches]]
 [patches.pattern]
@@ -56,8 +91,6 @@ if self.ability.name == 'The Moon' then
 end
 '''
 match_indent = true
-
-
 
 # Splash Screen
 [[patches]]

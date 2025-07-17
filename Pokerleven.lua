@@ -47,6 +47,25 @@ for _, file in ipairs(pconsumable_types) do
   end
 end
 
+--Load joker types
+local p_joker_types = NFS.getDirectoryItems(mod_dir.."misc")
+
+for _, file in ipairs(p_joker_types) do
+  sendDebugMessage ("The file is: "..file)
+  local joker_type, load_error = SMODS.load_file("misc/"..file)
+  if load_error then
+    sendDebugMessage ("The error is: "..load_error)
+  else
+    local curr_type = joker_type()
+    if curr_type.init then curr_type:init() end
+    
+    for i, item in ipairs(curr_type.list) do
+      SMODS.ObjectType(item)
+    end
+  end
+end
+
+
 --Load consumables
 local consumables = NFS.getDirectoryItems(mod_dir.."consumables")
 
@@ -77,11 +96,29 @@ for _, file in ipairs(pseals) do
     if curr_sticker.init then curr_sticker:init() end
     
     for i, item in ipairs(curr_sticker.list) do
-      item.hide_badge = true
       SMODS.Sticker(item)
     end
   end
 end
+
+--Load boosters
+local pboosters = NFS.getDirectoryItems(mod_dir.."boosters")
+
+for _, file in ipairs(pboosters) do
+  sendDebugMessage ("The file is: "..file)
+  local booster, load_error = SMODS.load_file("boosters/"..file)
+  if load_error then
+    sendDebugMessage ("The error is: "..load_error)
+  else
+    local curr_booster = booster()
+    if curr_booster.init then curr_booster:init() end
+    
+    for i, item in ipairs(curr_booster.list) do
+      SMODS.Booster(item)
+    end
+  end
+end
+
 
 
 --Load jokers files

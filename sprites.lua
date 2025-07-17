@@ -35,6 +35,13 @@ SMODS.Atlas({
     py = 95
 }):register()
 
+SMODS.Atlas({
+    key = "Boosters01",
+    path = "Boosters01.png",
+    px = 71,
+    py = 95
+}):register()
+
 local custom_colours = loc_colour
 function loc_colour(_c, _default)
   if not G.ARGS.LOC_COLOURS then
@@ -50,7 +57,8 @@ G.ARGS.LOC_COLOURS["wind"] = HEX("81d4fa")
 G.ARGS.LOC_COLOURS["mf"] = HEX("4fc3f7")        
 G.ARGS.LOC_COLOURS["raimon"] = HEX("ffa726")   
 G.ARGS.LOC_COLOURS["occult"] = HEX("4B0082")
-G.ARGS.LOC_COLOURS["royal academy"] = HEX("2C5E4F")     
+G.ARGS.LOC_COLOURS["royal academy"] = HEX("2C5E4F")  
+G.ARGS.LOC_COLOURS["wild"] = HEX("797B49")     
 G.ARGS.LOC_COLOURS["pink"] = HEX("FF7ABF")
 
   return custom_colours(_c, _default)
