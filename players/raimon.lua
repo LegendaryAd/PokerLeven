@@ -5,7 +5,7 @@ local Kevin = {
     config = {extra = {retriggers = 1, triggered = false}},
     loc_vars = function(self, info_queue, center)
       type_tooltip(self, info_queue, center)
-      return {vars = {center.ability.extra.mult, center.ability.extra.mult_mod, center.ability.evo_rqmt}}
+      return {vars = {}}
     end,
     rarity = 2,
     pools = { ["Raimon"] = true },
@@ -286,14 +286,14 @@ local Max = {
           local count = #find_player_type("Wind");
           card.ability.extra.triggered = true;
           return {
-            message = localize{type = 'variable', key = 'a_chips', vars = {card.ability.extra.chip_mod}}, 
+            message = localize{type = 'variable', key = 'a_chips', vars = {card.ability.extra.chip_mod*count}}, 
             colour = G.C.CHIPS,
             chip_mod = card.ability.extra.chip_mod*count;
           }
         end
       end
     end,
-  }
+  } 
 
 -- Peabody
 local Peabody = {
