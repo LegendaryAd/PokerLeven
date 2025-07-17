@@ -144,7 +144,7 @@ local Gorilla = {
 local Cheetah = {
     name = "Cheetah",
     pos = {x = 4, y = 2},
-    config = {extra = {current_element = "Wind", possible_elements = {"Wind", "Fire", "Forest", "Mountain"}}},
+    config = {extra = {current_element = "Wind", possible_elements = {"Wind", "Fire", "Forest", "Mountain"}, triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         G.ARGS.LOC_COLOURS["select_element"] = G.ARGS.LOC_COLOURS[string.lower(center.ability.extra.current_element)] or HEX("FFFFFF")
@@ -177,6 +177,7 @@ local Cheetah = {
             if wildCount == 5 and not context.end_of_round and not context.before and not context.after 
             and not context.other_card.debuff then
                 local retriggerCount = #find_player_type(card.ability.extra.current_element)
+                card.ability.extra.triggered = true
                 return {
                     message = localize('k_again_ex'),
                     repetitions = retriggerCount,
