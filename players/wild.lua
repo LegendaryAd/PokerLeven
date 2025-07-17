@@ -144,7 +144,7 @@ local Gorilla = {
 local Cheetah = {
     name = "Cheetah",
     pos = {x = 4, y = 2},
-    config = {extra = {current_element = "Wind", possible_elements = {"Wind", "Fire", "Forest", "FW"}}},
+    config = {extra = {current_element = "Wind", possible_elements = {"Wind", "Fire", "Forest", "Mountain"}}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         G.ARGS.LOC_COLOURS["select_element"] = G.ARGS.LOC_COLOURS[string.lower(center.ability.extra.current_element)] or HEX("FFFFFF")
@@ -159,13 +159,30 @@ local Cheetah = {
     pteam = "Wild",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+        if context.end_of_round and context.game_over == false and context.main_eval then
                 card.ability.extra.current_element = pseudorandom_element(card.ability.extra.possible_elements, pseudoseed("elements"))
                 return {
                     message = localize("ina_training"),
                     colour = G.C.RED,
                     card = card,
                 }
+        end
+        if context.repetition and context.cardarea == G.play then
+            local wildCount = 0
+            for i, c in ipairs(context.scoring_hand) do
+                if SMODS.has_enhancement(c, 'm_wild') then
+                    wildCount = wildCount + 1
+                end
+            end
+            if wildCount == 5 and not context.end_of_round and not context.before and not context.after 
+            and not context.other_card.debuff then
+                local retriggerCount = #find_player_type(card.ability.extra.current_element)
+                return {
+                    message = localize('k_again_ex'),
+                    repetitions = retriggerCount,
+                    card = card
+                }
+            end
         end
     end
 }
