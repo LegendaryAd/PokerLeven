@@ -42,6 +42,13 @@ SMODS.Atlas({
     py = 95
 }):register()
 
+SMODS.Atlas({
+    key = "Tags01",
+    path = "tags01.png",
+    px = 34,
+    py = 34
+}):register()
+
 local custom_colours = loc_colour
 function loc_colour(_c, _default)
   if not G.ARGS.LOC_COLOURS then

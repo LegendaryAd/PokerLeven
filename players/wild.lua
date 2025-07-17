@@ -106,7 +106,12 @@ local Chamaleon = {
                 end
             end
         end
-    end
+    end,
+    ina_credits = {
+		idea = {
+			"Shadorossa",
+		}
+	},
 }
 
 -- Eagle

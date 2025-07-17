@@ -750,7 +750,15 @@ return {
         Planet = {},
         Spectral = {},
         Stake = {},
-        Tag = {},
+        Tag = {
+            tag_ina_wild_tag = {
+                name = "Wild Tag",
+                text = {
+                    "Shop has a free uncommon {C:attention}Player{}",
+                    "from one of your teams",
+                }, 
+            },
+        },
         Tarot = {},
         Voucher = {}
     },

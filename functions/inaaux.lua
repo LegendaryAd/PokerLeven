@@ -1,7 +1,7 @@
 family ={
 }
 
--- Credits to Pokermon
+-- Credits to inarmon
 find_player_type = function(target_type)
   local found = {}
   if G.jokers and G.jokers.cards then
@@ -377,7 +377,7 @@ player_in_pool = function (self)
 end
 
 apply_type_sticker = function(card, sticker_type, property)
-  local inatype_list = {"Forest", "Fire", "Wind", "Mountain"}
+  local inateam_list = {"Forest", "Fire", "Wind", "Mountain"}
   local inaposition_list = {"FW", "DF", "MF", "GK"}
   local apply_type = nil
 
@@ -386,7 +386,7 @@ apply_type_sticker = function(card, sticker_type, property)
     card.ability[string.lower(apply_type).."_sticker"] = true
   else
     if property == "type" then
-      apply_type = pseudorandom_element(inatype_list, pseudoseed("type"))
+      apply_type = pseudorandom_element(inateam_list, pseudoseed("type"))
     elseif property == "position" then
       apply_type = pseudorandom_element(inaposition_list, pseudoseed("position"))
     end
@@ -394,7 +394,7 @@ apply_type_sticker = function(card, sticker_type, property)
   end
 
   if property == "type" then
-    for l, v in pairs(inatype_list) do
+    for l, v in pairs(inateam_list) do
       if string.lower(v) ~= string.lower(apply_type) then
         card.ability[string.lower(v).."_sticker"] = false
       end
@@ -602,4 +602,50 @@ vary_rank = function(card, decrease, seed, immediate)
       end
     }))
   end
+end
+
+-- Creates random card
+create_random_ina_joker = function(pseed, inararity, area, inateam)
+  local create_args = {set = "Joker", area = inaarea, key = ''}
+  create_args.key = get_random_joker_key(pseed, inararity, area, inateam)
+
+  return SMODS.create_card(create_args)
+end
+
+get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys)
+  local ina_keys = {}
+  local inaarea = area or G.jokers
+  local ina_key
+  exclude_keys = exclude_keys or {}
+  
+  if inararity then
+    if string.lower(inararity) == "common" then inararity = 1 end
+    if string.lower(inararity) == "uncommon" then inararity = 2 end
+    if string.lower(inararity) == "rare" then inararity = 3 end
+  end
+  
+  for k, v in pairs(G.P_CENTERS) do
+    if v.pteam and not (inararity and v.rarity ~= inararity)
+       and not (inateam and inateam ~= v.pteam) and player_in_pool(v) and not v.aux_ina and not exclude_keys[v.key] then
+      local no_dup = true
+      if G.jokers and G.jokers.cards and not next(find_joker("Showman")) then
+        for l, m in pairs(G.jokers.cards) do
+          if v.key == m.config.center_key then
+            no_dup = false
+          end
+        end
+      end
+      if no_dup then
+        table.insert(ina_keys, v.key)
+      end
+    end
+  end
+  
+  if #ina_keys > 0 then
+    ina_key = pseudorandom_element(ina_keys, pseudoseed(pseed))
+  else
+    ina_key = "j_ina_Mark"
+  end
+
+  return ina_key
 end

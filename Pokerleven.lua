@@ -101,6 +101,25 @@ for _, file in ipairs(pseals) do
   end
 end
 
+--Load tags
+local tags = NFS.getDirectoryItems(mod_dir.."tags")
+
+for _, file in ipairs(tags) do
+  sendDebugMessage ("The file is: "..file)
+  local tag, load_error = SMODS.load_file("tags/"..file)
+  if load_error then
+    sendDebugMessage ("The error is: "..load_error)
+  else
+    local curr_tag = tag()
+    if curr_tag.init then curr_tag:init() end
+    
+    for i, item in ipairs(curr_tag.list) do
+      SMODS.Tag(item)
+    end
+  end
+end
+
+
 --Load boosters
 local pboosters = NFS.getDirectoryItems(mod_dir.."boosters")
 
