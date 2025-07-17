@@ -100,10 +100,11 @@ local Eagle = {
 local Monkey = {
     name = "Monkey",
     pos = {x = 3, y = 2},
-    config = {extra = {}},
+    config = {extra = {wild_count = 0, triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        local wild_players = #find_player_team('Wild')
+        return {vars = {1 + ((wild_players * center.ability.extra.wild_count) / 10)}}
     end,
     rarity = 2, -- Uncommon
     pools = { ["Wild"] = true }, 
@@ -114,7 +115,26 @@ local Monkey = {
     pteam = "Wild",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if G.STAGE == G.STAGES.RUN then
+            card.ability.extra.wild_count = 0
+            for k, v in pairs(G.playing_cards) do
+                if SMODS.has_enhancement(v, 'm_wild') then 
+                    card.ability.extra.wild_count = card.ability.extra.wild_count + 1 
+                end
+            end
+        end
+
+        if context.cardarea == G.jokers and context.scoring_hand then
+            if context.joker_main then
+                local wild_players = #find_player_team('Wild')
+                card.ability.extra.triggered = true
+                return {
+                    message = localize{type = 'variable', key = 'a_xmult', vars = {1 + ((wild_players * card.ability.extra.wild_count) / 10)}}, 
+                    colour = G.C.MULT,
+                    Xmult_mod =  1 + ((wild_players * card.ability.extra.wild_count) / 10)
+                }
+            end
+        end
     end
 }
 
