@@ -338,9 +338,9 @@ return {
             j_ina_Kind = {
                 name = "Kind",
                 text = {
-                    "{C:forest}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:forest}Attack Scan{}",
+                    "If scoring hand is a {C:attention}palindrome{},",
+                    "retrigger the first and last card."
                 }
             },
 

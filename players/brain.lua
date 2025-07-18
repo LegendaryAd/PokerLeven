@@ -86,7 +86,7 @@ local Seller = {
 local Kind = {
     name = "Kind",
     pos = {x = 7, y = 2},
-    config = {extra = {}},
+    config = {extra = {triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         return {}
@@ -99,7 +99,37 @@ local Kind = {
     pteam = "Brain",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.repetition and context.cardarea == G.play then
+            local ids = {}
+            for i = 1, 5 do
+                local card_i = context.scoring_hand[i]
+                if card_i then
+                    table.insert(ids, card_i:get_id())
+                end
+            end
+
+            local function is_sequence_palindrome(tbl)
+                local len = #tbl
+                for i = 1, math.floor(len / 2) do
+                    if tostring(tbl[i]) ~= tostring(tbl[len - i + 1]) then
+                        return false
+                    end
+                end
+                return len > 1
+            end
+
+            if is_sequence_palindrome(ids) then
+                card.ability.extra.triggered = true
+                local retriggerCount = 1
+                if context.other_card == context.scoring_hand[1] or context.other_card == context.scoring_hand[#context.scoring_hand] then
+                    return {
+                        message = localize('k_again_ex'),
+                        repetitions = retriggerCount,
+                        card = context.other_card
+                    }
+                end
+            end
+        end
     end
 }
 
