@@ -360,9 +360,9 @@ return {
             j_ina_Under = {
                 name = "Under",
                 text = {
-                    "{C:forest}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:forest}Below",
+                    "Scores {C:chips}#1# / log2(#2# + 1){} chips",
+                    "for each {X:gk,C:white}GK{}{}"
                 }
             },
             -- Otaku
