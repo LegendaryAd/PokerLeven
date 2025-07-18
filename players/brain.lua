@@ -64,7 +64,7 @@ local Marvel = {
 local Tell = {
     name = "Tell",
     pos = {x = 10, y = 2},
-    config = {extra = {}},
+    config = {extra = {Xchips_mod = 3.1416}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         return {}
@@ -77,7 +77,23 @@ local Tell = {
     pteam = "Brain",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.joker_main and G.hand and G.hand.cards then
+            local values = {}
+            for _, c in ipairs(G.hand.cards) do
+                table.insert(values, c:get_id())
+            end
+
+            for i = 1, #values - 2 do
+                if values[i] == 3 and values[i+1] == 14 and values[i+2] == 4 then
+                    return {
+                        message = "Pi!",
+                        colour = G.C.RED,
+                        card = card,
+                        Xchips_mod = card.ability.extra.Xchips_mod
+                    }
+                end
+            end
+        end
     end
 }
 
@@ -193,7 +209,31 @@ local Turner = {
     pteam = "Brain",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.cardarea == G.jokers and context.joker_main and G.GAME.current_round.hands_played == 0
+            and next(context.poker_hands['Four of a Kind']) then
+            card.ability.extra.triggered = true
+            for i = 1, #find_player_team("Brain") do
+                G.E_MANAGER:add_event(Event({
+                delay = 2,
+                func = function()
+                    local copied_card = copy_card(context.scoring_hand[1], nil, nil, G.playing_card or 1)
+                    copied_card:add_to_deck()
+                    G.deck.config.card_limit = G.deck.config.card_limit + 1
+                    G.hand:emplace(copied_card)
+                    table.insert(G.playing_cards, copied_card)
+                    playing_card_joker_effects({true})
+
+                    return true
+                end
+                }))
+            end
+            return {
+                message = localize('k_copied_ex'),
+                colour = G.C.CHIPS,
+                card = card,
+                playing_cards_created = {true}
+            }
+        end
     end
 }
 

@@ -321,9 +321,9 @@ return {
             j_ina_Tell = {
                 name = "Tell",
                 text = {
-                    "{C:forest}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:forest}Fortune Teller{}",
+                    "{X:chips,C:white}XPI{} If you have",
+                    "{C:attention}3 1 4{} in back hand when scoring"
                 }
             },
 
@@ -352,9 +352,11 @@ return {
             j_ina_Turner = {
                 name = "Turner",
                 text = {
-                    "{C:fire}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:fire}Fire Tornado{}",
+                    "Create a copy of the the {C:attention}first card{}",
+                    "scored in the {C:attention}first hand{} played",
+                    "for each {X:brain,C:white}Brain{} player in your team",
+                    "if played hand contains a {C:attention}poker{}",
                 }
             },
 
