@@ -2,7 +2,7 @@ local goalkeeper = {
     object_type = "Blind",
     name = "ina-goalkeeper",
     key = "goalkeeper",
-    pos = { x = 0, y = 2 },
+    pos = { x = 0, y = 5 },
     boss = {
         min = 3,
         max = 10,
@@ -48,7 +48,7 @@ local defense = {
     object_type = "Blind",
     name = "ina-defense",
     key = "defense",
-    pos = { x = 0, y = 2 },
+    pos = { x = 0, y = 4 },
     boss = {
         min = 3,
         max = 10,
@@ -71,7 +71,7 @@ local midfielder = {
     object_type = "Blind",
     name = "ina-midfielder",
     key = "midfielder",
-    pos = { x = 0, y = 2 },
+    pos = { x = 0, y = 3 },
     boss = {
         min = 3,
         max = 10,
@@ -94,7 +94,7 @@ local fire = {
     object_type = "Blind",
     name = "ina-fire",
     key = "fire",
-    pos = { x = 0, y = 2 },
+    pos = { x = 0, y = 6 },
     boss = {
         min = 3,
         max = 10,
@@ -117,7 +117,7 @@ local mountain = {
     object_type = "Blind",
     name = "ina-mountain",
     key = "mountain",
-    pos = { x = 0, y = 2 },
+    pos = { x = 0, y = 9 },
     boss = {
         min = 3,
         max = 10,
@@ -140,7 +140,7 @@ local wind = {
     object_type = "Blind",
     name = "ina-wind",
     key = "wind",
-    pos = { x = 0, y = 2 },
+    pos = { x = 0, y = 7 },
     boss = {
         min = 3,
         max = 10,
@@ -163,7 +163,7 @@ local forest = {
     object_type = "Blind",
     name = "ina-forest",
     key = "forest",
-    pos = { x = 0, y = 2 },
+    pos = { x = 0, y = 8 },
     boss = {
         min = 3,
         max = 10,
