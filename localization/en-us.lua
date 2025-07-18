@@ -214,9 +214,10 @@ return {
             j_ina_Eagle = {
                 name = "Eagle",
                 text = {
-                    "{C:wind}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:wind}Condor Dive{}",
+                    "Gains {C:mult}+1 mult{} for each",
+                    "{C:tarot}Wild Card{} scoring in a hand",
+                    "that contains a {C:attention}Straight{}"
                 }
             },
             j_ina_Monkey = {
@@ -232,9 +233,9 @@ return {
             j_ina_Gorilla = {
                 name = "Gorilla",
                 text = {
-                    "{C:mountain}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:mountain}Tarzan Kick{}",
+                    "Creates a {C:attention}Wild Tag{}",
+                    "after defeating the Boss Blind"
                 }
             },
             j_ina_Cheetah = {
@@ -754,7 +755,7 @@ return {
             tag_ina_wild_tag = {
                 name = "Wild Tag",
                 text = {
-                    "Shop has a free uncommon {C:attention}Player{}",
+                    "Shop has a {C:attention}free{} {C:uncommon}Uncommon{} player",
                     "from one of your teams",
                 }, 
             },

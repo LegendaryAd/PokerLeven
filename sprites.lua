@@ -49,6 +49,19 @@ SMODS.Atlas({
     py = 34
 }):register()
 
+SMODS.Sound({
+	key = "music_titlescreen",
+	path = "titlescreen.mp3",
+	volume = 0.7,
+	sync = {
+		ina_music_mainline = true
+	},
+	pitch = 1,
+	select_music_track = function()
+		return G.STAGE == G.STAGES.MAIN_MENU
+	end,
+})
+
 local custom_colours = loc_colour
 function loc_colour(_c, _default)
   if not G.ARGS.LOC_COLOURS then

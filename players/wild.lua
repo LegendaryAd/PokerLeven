@@ -196,7 +196,16 @@ local Gorilla = {
     pteam = "Wild",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.end_of_round and context.main_eval and G.GAME.blind.boss and not context.blueprint then
+        G.E_MANAGER:add_event(Event({
+            func = (function()
+                add_tag(Tag('tag_ina_wild_tag'))
+                play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+                play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+                return true
+            end)
+        }))
+        end
     end
 }
 
