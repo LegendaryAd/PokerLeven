@@ -15,19 +15,19 @@ local Chicken = {
     pposition = "MF", -- Midfielder
     pteam = "Wild",
     blueprint_compat = true,
-calculate = function(self, card, context)
-    if context.individual and not context.end_of_round and context.cardarea == G.play and context.scoring_hand then
-      if SMODS.has_enhancement(context.other_card, 'm_wild') then
-        if pseudorandom('chicken') < G.GAME.probabilities.normal/card.ability.extra.odds then
-            card.ability.extra.triggered = true
-            return {
-                dollars = card.ability.extra.money,
-                card = card
-            }
+    calculate = function(self, card, context)
+        if context.individual and not context.end_of_round and context.cardarea == G.play and context.scoring_hand then
+        if SMODS.has_enhancement(context.other_card, 'm_wild') then
+            if pseudorandom('chicken') < G.GAME.probabilities.normal/card.ability.extra.odds then
+                card.ability.extra.triggered = true
+                return {
+                    dollars = card.ability.extra.money,
+                    card = card
+                }
+            end
         end
-      end
-    end
-  end,
+        end
+    end,
 }
 
 -- Boar
@@ -41,14 +41,29 @@ local Boar = {
     end,
     rarity = 1, -- Common
     pools = { ["Wild"] = true }, 
-    cost = 3,
+    cost = 4,
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "GK", -- Goalkeeper
     pteam = "Wild",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.destroying_card and not context.blueprint then
+            if context.scoring_name == "Pair"
+            and context.scoring_hand[1]:get_id() == 2
+            and not context._wildtag_triggered then
+                context._wildtag_triggered = true
+                G.E_MANAGER:add_event(Event({
+                    func = (function()
+                        add_tag(Tag('tag_ina_wild_tag'))
+                        play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
+                        play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
+                        return true
+                    end)
+                }))
+            end
+            return true
+        end
     end
 }
 
@@ -63,7 +78,7 @@ local Chamaleon = {
     end,
     rarity = 2, -- Uncommon
     pools = { ["Wild"] = true }, 
-    cost = 4,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "MF", -- Midfielder
@@ -118,21 +133,46 @@ local Chamaleon = {
 local Eagle = {
     name = "Eagle",
     pos = {x = 2, y = 2},
-    config = {extra = {}},
+    config = {extra = {current_mult = 0, mult_mod = 1, triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        return {vars = {center.ability.extra.mult_mod, center.ability.extra.current_mult}}
     end,
     rarity = 1, -- Common
     pools = { ["Wild"] = true }, 
-    cost = 3,
+    cost = 4,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "MF", -- Midfielder
     pteam = "Wild",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.before and context.cardarea == G.jokers
+        and next(context.poker_hands['Straight']) and not context.blueprint then
+                local count = 0
+                for _, c in ipairs(context.scoring_hand) do
+                    if SMODS.has_enhancement(c, 'm_wild') then
+                        count = count + 1
+                    end
+                end
+                card.ability.extra.current_mult = card.ability.extra.current_mult + (card.ability.extra.mult_mod * count)
+                if count > 0 then
+                    return {
+                        message = localize('k_upgrade_ex'),
+                        colour = G.C.MULT,
+                        card = card
+                    }
+                end
+        end
+
+        if context.joker_main then
+            card.ability.extra.triggered = true
+            return {
+                message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.current_mult}}, 
+                colour = G.C.MULT,
+                mult_mod = card.ability.extra.current_mult
+            }
+         end
     end
 }
 
@@ -148,7 +188,7 @@ local Monkey = {
     end,
     rarity = 2, -- Uncommon
     pools = { ["Wild"] = true }, 
-    cost = 4,
+    cost = 6,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "MF", -- Midfielder
@@ -189,7 +229,7 @@ local Gorilla = {
     end,
     rarity = 1, -- Common
     pools = { ["Wild"] = true }, 
-    cost = 3,
+    cost = 4,
     atlas = "Jokers01",
     ptype = "Mountain",
     pposition = "FW", -- Forward
@@ -221,7 +261,7 @@ local Cheetah = {
     end,
     rarity = 2, -- Uncommon
     pools = { ["Wild"] = true }, 
-    cost = 4,
+    cost = 6,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "FW", -- Forward

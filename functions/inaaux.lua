@@ -644,7 +644,7 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys)
   if #ina_keys > 0 then
     ina_key = pseudorandom_element(ina_keys, pseudoseed(pseed))
   else
-    ina_key = "j_ina_Mark"
+    ina_key = "j_ina_Willy"
   end
 
   return ina_key

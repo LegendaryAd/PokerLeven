@@ -1,7 +1,56 @@
 return {
     descriptions = {
         Back = {},
-        Blind = {},
+        Blind = {
+            bl_ina_goalkeeper = {
+                name = "Goalkeeper",
+                text = {
+                    "FW Players are debuffed",
+                }, 
+            },
+            bl_ina_forward = {
+                name = "Forward",
+                text = {
+                    "GK Players are debuffed",
+                }, 
+            },
+            bl_ina_defense = {
+                name = "Defense",
+                text = {
+                    "MF Players are debuffed",
+                }, 
+            },
+            bl_ina_midfielder = {
+                name = "Midfielder",
+                text = {
+                    "DF Players are debuffed",
+                }, 
+            },
+            bl_ina_fire = {
+                name = "Fire Boss",
+                text = {
+                    "Forest Players are debuffed",
+                }, 
+            },
+            bl_ina_forest = {
+                name = "Forest Boss",
+                text = {
+                    "Wind Players are debuffed",
+                }, 
+            },
+            bl_ina_mountain = {
+                name = "Mountain Boss",
+                text = {
+                    "Fire Players are debuffed",
+                }, 
+            },
+            bl_ina_wind = {
+                name = "Wind Boss",
+                text = {
+                    "Mountain Players are debuffed",
+                }, 
+            },
+        },
         Strat = {  
             c_ina_tech_book = {
                 name = "Tech. Book",
@@ -196,9 +245,10 @@ return {
             j_ina_Boar = {
                 name = "Boar",
                 text = {
-                    "{C:fire}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:fire}Wild Claw{}",
+                    "If you play a {C:attention}Pair of Deuces{}",
+                    "destroy them and generate",
+                    " a {C:attention}Wild Tag{}"
                 }
             },
             j_ina_Chamaleon = {
@@ -215,9 +265,10 @@ return {
                 name = "Eagle",
                 text = {
                     "{C:wind}Condor Dive{}",
-                    "Gains {C:mult}+1 mult{} for each",
+                    "Gains {C:mult}+#1# mult{} for each",
                     "{C:tarot}Wild Card{} scoring in a hand",
-                    "that contains a {C:attention}Straight{}"
+                    "that contains a {C:attention}Straight{}",
+                    "{C:inactive}Currently{} {C:mult}+#2#{}"
                 }
             },
             j_ina_Monkey = {
