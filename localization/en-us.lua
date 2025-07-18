@@ -311,9 +311,10 @@ return {
             j_ina_Marvel = {
                 name = "Marvel",
                 text = {
-                    "{C:mountain}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:mountain}Defence Scan",
+                    "If {C:chips}chips value{} of the card in",
+                    "scoring hand has {C:attention}exactly 3 bit to 1{}",
+                    "{C:mult}+#1#{} mult when scoring{}"
                 }
             },
 

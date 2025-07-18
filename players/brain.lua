@@ -23,10 +23,10 @@ local Feldt = {
 local Marvel = {
     name = "Marvel",
     pos = {x = 8, y = 2},
-    config = {extra = {}},
+    config = {extra = {mult_mod = 10, triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        return {vars = {center.ability.extra.mult_mod}}
     end,
     rarity = 1, -- Common
     cost = 3,
@@ -36,7 +36,27 @@ local Marvel = {
     pteam = "Brain",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.individual and context.cardarea == G.play then
+            function count_ones_in_binary(n)
+                local count = 0
+                while n > 0 do
+                    if n % 2 == 1 then
+                        count = count + 1
+                    end
+                    n = math.floor(n / 2)
+                end
+                return count
+            end
+
+            if count_ones_in_binary(context.other_card:get_chip_bonus()) == 3 then 
+                card.ability.extra.triggered = true
+                return {
+                    message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.mult_mod}}, 
+                    colour = G.C.MULT,
+                    mult_mod = card.ability.extra.mult_mod
+                }
+            end
+        end
     end
 }
 

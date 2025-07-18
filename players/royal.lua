@@ -324,7 +324,7 @@ local Master = {
             return {
               message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.mult_mod*count}}, 
               colour = G.C.MULT,
-              Xmult_mod = card.ability.extra.mult_mod*count
+              mult_mod = card.ability.extra.mult_mod*count
             }
           end
         end
