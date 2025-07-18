@@ -8,7 +8,7 @@ local Feldt = {
         return {}
     end,
     rarity = 3, -- Rare
-    cost = 7,
+    cost = 8,
     atlas = "Jokers01",
     ptype = "Forest",
     pposition = "GK", -- Goalkeeper
@@ -29,7 +29,7 @@ local Marvel = {
         return {}
     end,
     rarity = 1, -- Common
-    cost = 3,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Mountain",
     pposition = "DF", -- Defense
@@ -50,7 +50,7 @@ local Tell = {
         return {}
     end,
     rarity = 2, -- Uncommon
-    cost = 4,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Forest",
     pposition = "MF", -- Midfielder
@@ -71,7 +71,7 @@ local Seller = {
         return {vars = {center.ability.extra.sell_potential, center.ability.extra.sell_mod}}
     end,
     rarity = 1, -- Common
-    cost = 3,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "FW", -- Forward
@@ -115,7 +115,7 @@ local Kind = {
         return {}
     end,
     rarity = 2, -- Uncommon
-    cost = 4,
+    cost = 6,
     atlas = "Jokers01",
     ptype = "Forest",
     pposition = "MF", -- Midfielder
@@ -166,7 +166,7 @@ local Turner = {
         return {}
     end,
     rarity = 2, -- Uncommon
-    cost = 4,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "FW", -- Forward
@@ -187,7 +187,7 @@ local Under = {
         return {vars = {center.ability.extra.chips_mod, #find_player_position("GK") or 0}}
     end,
     rarity = 1, -- Common
-    cost = 3,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Forest",
     pposition = "GK", -- Goalkeeper
