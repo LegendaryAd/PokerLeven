@@ -151,10 +151,10 @@ local Turner = {
 local Under = {
     name = "Under",
     pos = {x = 12, y = 2},
-    config = {extra = {}},
+    config = {extra = {chips_mod = 225, triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        return {vars = {center.ability.extra.chips_mod, #find_player_position("GK") or 0}}
     end,
     rarity = 1, -- Common
     cost = 3,
@@ -164,7 +164,17 @@ local Under = {
     pteam = "Brain",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.cardarea == G.jokers and context.joker_main then
+        local gkCount = #find_player_position("GK")
+        local result = card.ability.extra.chips_mod / (math.log(gkCount + 1) / math.log(2))
+        card.ability.extra.triggered = true
+
+        return {
+              message = localize{type = 'variable', key = 'a_chips', vars = {result}}, 
+              colour = G.C.CHIPS,
+              chip_mod = result
+            }
+        end
     end
 }
 
