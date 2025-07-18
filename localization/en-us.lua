@@ -329,9 +329,13 @@ return {
             j_ina_Seller = {
                 name = "Seller",
                 text = {
-                    "{C:wind}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:wind}Phsycho Shot{}",
+                    "After each round played",
+                    "gain {C:money}+#2#$ sell potential{}.",
+                    "When Seller is sold, increase",
+                    "{C:money}sell value{} of others jokers",
+                    "by his sell potential",
+                    "{C:inactive}Currently{} {C:money}#1#${}"
                 }
             },
 
@@ -827,7 +831,9 @@ return {
             ina_training = "Swap!",
             ina_next_match = "Match",
             k_team_pack = "Team Pack",
-            ina_convert = "Converted!"
+            ina_convert = "Converted!",
+            ina_potential_increased = "Potential Increased!",
+            ina_sell_increased= "Jokers Buffed!"
         },
         high_scores = {},
         labels = {},

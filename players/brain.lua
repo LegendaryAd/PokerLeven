@@ -65,10 +65,10 @@ local Tell = {
 local Seller = {
     name = "Seller",
     pos = {x = 9, y = 2},
-    config = {extra = {}},
+    config = {extra = {sell_potential = 0, sell_mod = 1, triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        return {vars = {center.ability.extra.sell_potential, center.ability.extra.sell_mod}}
     end,
     rarity = 1, -- Common
     cost = 3,
@@ -78,7 +78,30 @@ local Seller = {
     pteam = "Brain",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.end_of_round and not context.game_over and context.main_eval then
+            card.ability.extra.triggered = true
+            card.ability.extra.sell_potential = 
+                (card.ability.extra.sell_potential or 0) + (card.ability.extra.sell_mod or 0)
+            return {
+                message = localize("ina_potential_increased"),
+                colour = G.C.DARK_EDITION,
+                card = card,
+            }
+        end
+
+        if context.selling_self then
+            for i, joker in ipairs(G.jokers.cards) do
+                if joker ~= card then
+                    joker.sell_cost = (joker.sell_cost or 0) + (card.ability.extra.sell_potential or 0)
+                end
+            end
+            card.ability.extra.triggered = true
+            return {
+                message = localize("ina_sell_increased"),
+                colour = G.C.DARK_EDITION,
+                card = card,
+            }
+        end
     end
 }
 

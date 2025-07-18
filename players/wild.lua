@@ -34,7 +34,7 @@ local Chicken = {
 local Boar = {
     name = "Boar",
     pos = {x = 12, y = 1},
-    config = {extra = {}},
+    config = {extra = {triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         return {}
@@ -53,6 +53,7 @@ local Boar = {
             and context.scoring_hand[1]:get_id() == 2
             and not context._wildtag_triggered then
                 context._wildtag_triggered = true
+                card.ability.extra.triggered = true
                 G.E_MANAGER:add_event(Event({
                     func = (function()
                         add_tag(Tag('tag_ina_wild_tag'))
