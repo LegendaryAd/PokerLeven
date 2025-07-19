@@ -10,7 +10,6 @@ local ff_regional_a = {
     boss_colour = HEX("B7865B") ,
     dollars = 4,
     big = {min = 0},
-    boss = {min = 1000}
 }
 
 local ff_regional_b = {
@@ -25,7 +24,6 @@ local ff_regional_b = {
     boss_colour = HEX("B7865B") ,
     dollars = 4,
     big = {min = 0},
-    boss = {min = 1000}
 }
 
 local ff_national_a = {
@@ -40,7 +38,6 @@ local ff_national_a = {
     boss_colour = HEX("B7865B") ,
     dollars = 4,
     big = {min = 0},
-    boss = {min = 1000}
 }
 
 local ff_national_b = {
@@ -55,7 +52,6 @@ local ff_national_b = {
     boss_colour = HEX("B7865B") ,
     dollars = 4,
     big = {min = 0},
-    boss = {min = 1000}
 }
 
 return {
