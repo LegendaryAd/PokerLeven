@@ -47,11 +47,13 @@ return {
             bl_ina_ff_national_a = {
                 name = "FF National Pick A",
                 text = {
+                    "A little more bigger"
                 }, 
             },
             bl_ina_ff_national_b = {
                 name = "FF National Pick B",
                 text = {
+                    "A little bigger"
                 }, 
             },
             -- Boss Blinds
@@ -101,6 +103,16 @@ return {
                 name = "Wind Boss",
                 text = {
                     "Mountain Players are debuffed",
+                }, 
+            },
+            bl_ina_inazuma_og = {
+                name = "Inazuma Eleven",
+                text = {
+                }, 
+            },
+            bl_ina_royal_blind = {
+                name = "Royal Academy",
+                text = {
                 }, 
             },
         },

@@ -2,7 +2,7 @@ local goalkeeper = {
     object_type = "Blind",
     name = "ina-goalkeeper",
     key = "goalkeeper",
-    pos = { x = 0, y = 13 },
+    pos = { x = 0, y = 3 },
     boss = {
         min = 3,
         max = 10,
@@ -28,7 +28,7 @@ local forward = {
     object_type = "Blind",
     name = "ina-forward",
     key = "forward",
-    pos = { x = 0, y = 10 },
+    pos = { x = 0, y = 0 },
     boss = {
         min = 3,
         max = 10,
@@ -54,7 +54,7 @@ local defense = {
     object_type = "Blind",
     name = "ina-defense",
     key = "defense",
-    pos = { x = 0, y = 12 },
+    pos = { x = 0, y = 2 },
     boss = {
         min = 3,
         max = 10,
@@ -80,7 +80,7 @@ local midfielder = {
     object_type = "Blind",
     name = "ina-midfielder",
     key = "midfielder",
-    pos = { x = 0, y = 11 },
+    pos = { x = 0, y = 1 },
     boss = {
         min = 3,
         max = 10,
@@ -106,7 +106,7 @@ local fire = {
     object_type = "Blind",
     name = "ina-fire",
     key = "fire",
-    pos = { x = 0, y = 14 },
+    pos = { x = 0, y = 4 },
     boss = {
         min = 3,
         max = 10,
@@ -132,7 +132,7 @@ local mountain = {
     object_type = "Blind",
     name = "ina-mountain",
     key = "mountain",
-    pos = { x = 0, y = 17 },
+    pos = { x = 0, y = 7 },
     boss = {
         min = 3,
         max = 10,
@@ -158,7 +158,7 @@ local wind = {
     object_type = "Blind",
     name = "ina-wind",
     key = "wind",
-    pos = { x = 0, y = 15 },
+    pos = { x = 0, y = 5 },
     boss = {
         min = 3,
         max = 10,
@@ -184,7 +184,7 @@ local forest = {
     object_type = "Blind",
     name = "ina-forest",
     key = "forest",
-    pos = { x = 0, y = 16 },
+    pos = { x = 0, y = 6 },
     boss = {
         min = 3,
         max = 10,
@@ -206,7 +206,39 @@ local forest = {
 	}
 }
 
+local inazuma_og = {
+    object_type = "Blind",
+    name = "ina-inazuma-og",
+    key = "inazuma_og",
+    pos = { x = 0, y = 8 },
+    boss = {
+        min = 10000,
+    },
+    discovered = true,
+    mult = 2,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("2e7d32"),
+}
+
+local royal_blind = {
+    object_type = "Blind",
+    name = "ina-royal_blind",
+    key = "royal_blind",
+    pos = { x = 0, y = 9 },
+    boss = {
+        min = 10000,
+    },
+    discovered = true,
+    mult = 2,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("2e7d32"),
+}
+
 return {
     name = "Boss Blinds",
-    list = {goalkeeper, forward, defense, midfielder, fire, mountain, wind, forest}
+    list = {goalkeeper, forward, defense,
+        midfielder, fire, mountain, wind,
+        forest, inazuma_og, royal_blind}
 }

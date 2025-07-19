@@ -45,7 +45,10 @@ local Hero = {
                 }
             end
         end
-    end
+    end,
+    ina_credits = {
+        idea = {"LegendaryAd"}
+    }
 }
 
 local Custom = {
@@ -144,7 +147,10 @@ local Artist = {
                 }
             end
         end
-    end
+    end,
+    ina_credits = {
+        idea = {"Shadorossa"}
+    }
 }
 
 local Arcade = {

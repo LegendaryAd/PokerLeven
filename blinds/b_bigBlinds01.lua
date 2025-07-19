@@ -7,7 +7,7 @@ local ff_regional_a = {
     mult = 1.5,
     atlas = "bigBlinds01",
     order = 1,
-    boss_colour = HEX("5EC2E8") ,
+    boss_colour = HEX("B7865B") ,
     dollars = 4,
     big = {min = 0},
     boss = {min = 1000}
@@ -22,7 +22,7 @@ local ff_regional_b = {
     mult = 1.5,
     atlas = "bigBlinds01",
     order = 1,
-    boss_colour = HEX("5EC2E8") ,
+    boss_colour = HEX("B7865B") ,
     dollars = 4,
     big = {min = 0},
     boss = {min = 1000}
@@ -34,10 +34,10 @@ local ff_national_a = {
     key = "ff_national_a",
     pos = { x = 0, y = 2 },
     discovered = true,
-    mult = 1.5,
+    mult = pokerleven_config.middle_blinds_abilities and 1.8 or 1.5,
     atlas = "bigBlinds01",
     order = 1,
-    boss_colour = HEX("5EC2E8") ,
+    boss_colour = HEX("B7865B") ,
     dollars = 4,
     big = {min = 0},
     boss = {min = 1000}
@@ -49,10 +49,10 @@ local ff_national_b = {
     key = "ff_national_b",
     pos = { x = 0, y = 3 },
     discovered = true,
-    mult = 1.5,
+    mult = pokerleven_config.middle_blinds_abilities and 1.7 or 1.5,
     atlas = "bigBlinds01",
     order = 1,
-    boss_colour = HEX("5EC2E8") ,
+    boss_colour = HEX("B7865B") ,
     dollars = 4,
     big = {min = 0},
     boss = {min = 1000}

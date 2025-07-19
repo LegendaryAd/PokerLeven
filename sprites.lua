@@ -52,7 +52,7 @@ SMODS.Atlas({
 SMODS.Atlas({
     key = "bossBlinds",
     atlas_table = "ANIMATION_ATLAS",
-    path = "blinds01.png",
+    path = "bossBlinds01.png",
     px = 34,
     py = 34,
     frames = 21,
