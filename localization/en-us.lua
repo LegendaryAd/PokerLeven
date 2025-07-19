@@ -427,9 +427,9 @@ return {
             j_ina_Artist = {
                 name = "Artist",
                 text = {
-                    "{C:wind}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:wind}Gambler{}",
+                    "If played hand contains scoring {C:attention}K{} and {C:attention}Q{},",
+                    "convert all scored cards in {C:attention}Lucky Cards{}"
                 }
             },
 
