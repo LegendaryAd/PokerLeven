@@ -35,7 +35,16 @@ local Hero = {
     pteam = "Otaku",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.cardarea == G.play and context.individual and context.other_card then
+            if context.other_card:get_id() == 11 or context.other_card:get_id() == 12 or context.other_card:get_id() == 13 then
+                convert_cards_to(context.other_card, {set_rank = "4"}, false, false)
+                return {
+                    message = localize("ina_convert"),
+                    colour = G.C.XMULT,
+                    card = context.other_card,
+                }
+            end
+        end
     end
 }
 
