@@ -115,7 +115,26 @@ local Artist = {
     pteam = "Otaku",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.cardarea == G.jokers and context.joker_main then
+            local hasQueen = false
+            local hasKing = false
+            for i, c in ipairs(context.scoring_hand) do
+                if c:get_id() == 12 then
+                    hasQueen = true
+                end
+                if c:get_id() == 13 then
+                    hasKing = true
+                end
+            end
+
+            if(hasQueen and hasKing) then
+                convert_cards_to(context.scoring_hand, {mod_conv = "m_lucky"})
+                return {
+                    message = localize("ina_convert"),
+                    colour = G.C.XMULT,
+                }
+            end
+        end
     end
 }
 
