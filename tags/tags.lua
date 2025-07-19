@@ -51,6 +51,9 @@ local wild_tag = {
       return card
     end
 	end,
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 return{

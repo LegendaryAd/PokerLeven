@@ -860,7 +860,8 @@ return {
         tutorial = {},
         v_dictionary = {
             a_powmult = { "^#1# Mult" },
-            ina_idea = {"Idea: #1#"}
+            ina_idea = {"Idea: #1#"},
+            ina_art = {"Art: #1#"}
         },
         v_text = {}
     }

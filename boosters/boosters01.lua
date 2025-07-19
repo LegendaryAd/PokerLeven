@@ -24,6 +24,9 @@ local Raimon = {
 		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 local Occult = {
@@ -52,6 +55,9 @@ local Occult = {
 		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 local RoyalAcademy = {
@@ -80,6 +86,9 @@ local RoyalAcademy = {
 		return { vars = { card.config.center.config.choose, card.ability.extra} }
 	end,
 	group_key = "k_team_pack",
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 local Wild = {
@@ -108,6 +117,9 @@ local Wild = {
 		return { vars = { card.config.center.config.choose, card.ability.extra} }
 	end,
 	group_key = "k_team_pack",
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 local test5 = {

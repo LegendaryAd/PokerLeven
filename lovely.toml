@@ -186,7 +186,7 @@ elseif G.GAME.round_resets.blind.big then
 [patches.pattern]
 target = 'blind.lua'
 match_indent = true
-position = 'after'
+position = 'before'
 pattern = '''
 self.boss = blind and not not blind.boss
 '''

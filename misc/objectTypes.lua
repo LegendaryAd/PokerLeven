@@ -27,5 +27,5 @@ local Wild = {
 }
 
 return {name = "Joker Types",
-        list = {Raimon, Occult, Royal Academy, Wild}
+        list = {Raimon, Occult, Royal, Wild}
 }

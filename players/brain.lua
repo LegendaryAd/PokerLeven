@@ -140,7 +140,7 @@ local Seller = {
         end
     end,
     ina_credits = {
-        idea = "Shadorossa"
+        idea = {"Shadorossa"}
     }
 }
 

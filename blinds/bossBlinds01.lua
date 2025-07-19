@@ -9,7 +9,8 @@ local small_blind_1 = {
     order = 1,
     boss_colour = HEX("5EC2E8") ,
     dollars = 2,
-    small = {min = 0}
+    small = {min = 0},
+    boss = {min = 1000}
 }
 
 local big_blind_1 = {
@@ -22,7 +23,8 @@ local big_blind_1 = {
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("B7865B") ,
-    big = {min = 0}
+    big = {min = 0},
+    boss = {min = 1000}
 }
 
 local goalkeeper = {
@@ -46,6 +48,9 @@ local goalkeeper = {
         end
         return false
     end,
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 local forward = {
@@ -69,6 +74,9 @@ local forward = {
         end
         return false
     end,
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 local defense = {
@@ -92,6 +100,9 @@ local defense = {
         end
         return false
     end,
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 local midfielder = {
@@ -115,6 +126,9 @@ local midfielder = {
         end
         return false
     end,
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 local fire = {
@@ -138,6 +152,9 @@ local fire = {
         end
         return false
     end,
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 local mountain = {
@@ -161,6 +178,9 @@ local mountain = {
         end
         return false
     end,
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 local wind = {
@@ -184,6 +204,9 @@ local wind = {
         end
         return false
     end,
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 local forest = {
@@ -207,6 +230,9 @@ local forest = {
         end
         return false
     end,
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 return {

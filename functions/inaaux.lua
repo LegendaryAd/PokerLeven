@@ -655,7 +655,7 @@ local base_create_badges = SMODS.create_mod_badges
 function SMODS.create_mod_badges(obj, badges)
     base_create_badges(obj, badges)
 
-    if obj and obj.ina_credits and obj.ina_credits.idea then
+    if obj and obj.ina_credits then
         local function calc_scale_fac(text)
             local size = 0.9
             local font = G.LANG.font
@@ -670,9 +670,19 @@ function SMODS.create_mod_badges(obj, badges)
         end
 
         local strings = { "Pokerleven" }
-        for i = 1, #obj.ina_credits.idea do
-            localized = localize({ type = "variable", key = "ina_idea", vars = { obj.ina_credits.idea[i] } })[1]
-            strings[#strings + 1] = localized
+        
+        if obj.ina_credits.idea then
+          for i = 1, #obj.ina_credits.idea do
+              localized = localize({ type = "variable", key = "ina_idea", vars = { obj.ina_credits.idea[i] } })[1]
+              strings[#strings + 1] = localized
+          end
+        end
+
+        if obj.ina_credits.art then
+          for i = 1, #obj.ina_credits.art do
+              localized = localize({ type = "variable", key = "ina_art", vars = { obj.ina_credits.art[i] } })[1]
+              strings[#strings + 1] = localized
+          end
         end
 
         local scale_fac = {}
@@ -756,17 +766,16 @@ function get_new_small()
     end
 
     for k, v in pairs(eligible_bosses) do
-        local is_mod = G.P_BLINDS[k].mod and G.P_BLINDS[k].mod.id == 'Pokerleven'
-        
-        if pokerleven_config.no_custom_middle_blinds then
-            if is_mod then
-                eligible_bosses[k] = nil
-            end
-        else
-            if not is_mod then
-                eligible_bosses[k] = nil
-            end
+      local mod = G.P_BLINDS[k] and G.P_BLINDS[k].mod
+      if pokerleven_config.no_custom_middle_blinds then
+        if mod and mod.id == 'Pokerleven' then
+          eligible_bosses[k] = nil
         end
+      else
+        if not mod or mod.id ~= 'Pokerleven' then
+          eligible_bosses[k] = nil
+        end
+      end
     end
 
     local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
