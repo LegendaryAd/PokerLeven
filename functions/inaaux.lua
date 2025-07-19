@@ -520,6 +520,9 @@ convert_cards_to = function(cards, t, noflip, immediate)
     if t.random then
       vary_rank(cards[i], nil, nil, immediate)
     end
+    if t.set_rank then
+      conversion_event_helper(function() SMODS.change_base(cards[i], nil, t.set_rank) end, nil, immediate)
+    end
     if t.up or t.down then
       vary_rank(cards[i], not t.up, nil, immediate)
     end

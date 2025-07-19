@@ -434,9 +434,9 @@ return {
             j_ina_Hero = {
                 name = "Hero",
                 text = {
-                    "{C:fire}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:fire}Fake ball{}",
+                    "Transform every scored",
+                    "{C:attention}face{} card to {C:attention}4{}"
                 }
             },
 
