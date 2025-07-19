@@ -491,9 +491,10 @@ return {
             j_ina_Arcade = {
                 name = "Arcade",
                 text = {
-                    "{C:forest}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:forest}Comet Shot {}",
+                    "Lucky cards now trigger {C:green}#1# in 15{}",
+                    "Now every {C:attention}lucky card{} scored",
+                    "costs {C:money}#2#${} to play"
                 }
             },
 
@@ -868,6 +869,20 @@ return {
                 text = {
                     "Choose {C:attention}#1#{} from among",
                     "{C:attention}#2#{} {X:wild,C:white}Wild{} players"
+                },
+            },
+            p_ina_team_pack_brain = {
+                name = "Brain Pack",
+                text = {
+                    "Choose {C:attention}#1#{} from among",
+                    "{C:attention}#2#{} {X:brain,C:white}Brain{} players"
+                },
+            },
+            p_ina_team_pack_otaku = {
+                name = "Otaku Pack",
+                text = {
+                    "Choose {C:attention}#1#{} from among",
+                    "{C:attention}#2#{} {X:otaku,C:white}Otaku{} players"
                 },
             },
         },

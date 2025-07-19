@@ -122,46 +122,66 @@ local Wild = {
 	}
 }
 
-local test5 = {
-    name = "Test",
-	key = "test5",
-	kind = "Test",
+local Brain = {
+    name = "Brain",
+	key = "team_pack_brain",
+	kind = "Team",
 	atlas = "Boosters01",
 	pos = { x = 0, y = 1 },
-	config = { extra = 4, choose = 1, c_keys = {}},
-	cost = 4,
+	config = { extra = 2, choose = 1, c_keys = {}},
+	cost = 6,
 	order = 1,
-    weight = 0,
+	weight = function()
+		if #find_player_team("Brain") > 0 then
+			return 0.35
+		else
+			return 0
+		end
+	end,
     draw_hand = true,
     unlocked = true,
     discovered = true,
 	create_card = function(self, card, i)
+		return create_card("Brain", G.pack_cards, nil, nil, true, true, nil, nil)
     end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra - 1, 1 } }
+		return { vars = { card.config.center.config.choose, card.ability.extra} }
 	end,
-	group_key = "k_ina_test",
+	group_key = "k_team_pack",
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
-local test6 = {
-    name = "Test",
-	key = "test6",
+local Otaku = {
+    name = "Otaku",
+	key = "team_pack_otaku",
 	kind = "Test",
 	atlas = "Boosters01",
 	pos = { x = 1, y = 1 },
-	config = { extra = 4, choose = 1, c_keys = {}},
-	cost = 4,
+	config = { extra = 2, choose = 1, c_keys = {}},
+	cost = 6,
 	order = 1,
-    weight = 0,
+	weight = function()
+		if #find_player_team("Otaku") > 0 then
+			return 0.35
+		else
+			return 0
+		end
+	end,
     draw_hand = true,
     unlocked = true,
     discovered = true,
 	create_card = function(self, card, i)
+		return create_card("Otaku", G.pack_cards, nil, nil, true, true, nil, nil)
     end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra - 1, 1 } }
+		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
-	group_key = "k_ina_test",
+	group_key = "k_team_pack",
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
 }
 
 local test7 = {
@@ -271,5 +291,5 @@ local test11 = {
 
 return{
     name = "Boosters01",
-    list = {Raimon, Occult, RoyalAcademy, Wild, test5, test6, test7, test8, test9, test10, test11}
+    list = {Raimon, Occult, RoyalAcademy, Wild, Brain, Otaku, test7, test8, test9, test10, test11}
 }

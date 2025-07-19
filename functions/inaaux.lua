@@ -829,3 +829,15 @@ function get_new_big()
     
     return boss
 end
+
+-- CUSTOM PROBABILITIES HOOK
+local original_get_probability_vars = SMODS.get_probability_vars
+function SMODS.get_probability_vars(trigger_obj, base_numerator, base_denominator, identifier, from_roll)
+    local lucky = G.GAME.probabilities.new_lucky or G.GAME.probabilities.normal
+    if identifier == "lucky_mult" then
+        return G.GAME.probabilities.normal, 5
+    elseif identifier == "lucky_money" then
+        return lucky, 15
+    end
+    return original_get_probability_vars(trigger_obj, base_numerator, base_denominator, identifier, from_roll)
+end

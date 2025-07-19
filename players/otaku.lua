@@ -8,6 +8,7 @@ local Idol = {
         return {}
     end,
     rarity = 1, -- Common
+    pools = { ["Otaku"] = true }, 
     cost = 3,
     atlas = "Jokers01",
     ptype = "Mountain",
@@ -22,12 +23,13 @@ local Idol = {
 local Hero = {
     name = "Hero",
     pos = {x = 3, y = 3},
-    config = {extra = {}},
+    config = {extra = {triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 1, -- Common
+    pools = { ["Otaku"] = true }, 
     cost = 3,
     atlas = "Jokers01",
     ptype = "Fire",
@@ -37,6 +39,7 @@ local Hero = {
     calculate = function(self, card, context)
         if context.cardarea == G.play and context.individual and context.other_card then
             if context.other_card:get_id() == 11 or context.other_card:get_id() == 12 or context.other_card:get_id() == 13 then
+                card.ability.extra.triggered = true
                 convert_cards_to(context.other_card, {set_rank = "4"}, false, false)
                 return {
                     message = localize("ina_convert"),
@@ -60,6 +63,7 @@ local Custom = {
         return {}
     end,
     rarity = 1, -- Common
+    pools = { ["Otaku"] = true }, 
     cost = 3,
     atlas = "Jokers01",
     ptype = "Wind",
@@ -80,6 +84,7 @@ local Robot = {
         return {}
     end,
     rarity = 2, -- Uncommon
+    pools = { ["Otaku"] = true }, 
     cost = 4,
     atlas = "Jokers01",
     ptype = "Wind",
@@ -100,6 +105,7 @@ local Gamer = {
         return {}
     end,
     rarity = 2, -- Uncommon
+    pools = { ["Otaku"] = true }, 
     cost = 4,
     atlas = "Jokers01",
     ptype = "Fire",
@@ -120,6 +126,7 @@ local Artist = {
         return {}
     end,
     rarity = 3, -- Rare
+    pools = { ["Otaku"] = true }, 
     cost = 7,
     atlas = "Jokers01",
     ptype = "Wind",
@@ -141,6 +148,7 @@ local Artist = {
 
             if(hasQueen and hasKing) then
                 convert_cards_to(context.scoring_hand, {mod_conv = "m_lucky"})
+                card.ability.extra.triggered = true
                 return {
                     message = localize("ina_convert"),
                     colour = G.C.XMULT,
@@ -156,12 +164,13 @@ local Artist = {
 local Arcade = {
     name = "Arcade",
     pos = {x = 1, y = 3},
-    config = {extra = {}},
+    config = {extra = {new_lucky = 5, minus_dollars = -5, triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        return {vars = {center.ability.extra.new_lucky, center.ability.extra.minus_dollars}}
     end,
     rarity = 2, -- Uncommon
+    pools = { ["Otaku"] = true }, 
     cost = 4,
     atlas = "Jokers01",
     ptype = "Forest",
@@ -169,8 +178,24 @@ local Arcade = {
     pteam = "Otaku",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
-    end
+        if context.individual and context.cardarea == G.play and not context.blueprint then
+            if SMODS.get_enhancements(context.other_card)["m_lucky"] == true then
+                return {
+                    dollars = card.ability.extra.minus_dollars,
+                    colour = G.C.MONEY
+                }
+            end
+        end
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.probabilities.new_lucky = card.ability.extra.new_lucky
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.probabilities.new_lucky = nil
+    end,
+    ina_credits = {
+        idea = {"Shadorossa"}
+    }
 }
 
 return{

@@ -8,6 +8,7 @@ local Feldt = {
         return {}
     end,
     rarity = 3, -- Rare
+    pools = { ["Brain"] = true }, 
     cost = 8,
     atlas = "Jokers01",
     ptype = "Forest",
@@ -29,6 +30,7 @@ local Marvel = {
         return {vars = {center.ability.extra.mult_mod}}
     end,
     rarity = 1, -- Common
+    pools = { ["Brain"] = true }, 
     cost = 5,
     atlas = "Jokers01",
     ptype = "Mountain",
@@ -70,6 +72,7 @@ local Tell = {
         return {}
     end,
     rarity = 2, -- Uncommon
+    pools = { ["Brain"] = true }, 
     cost = 7,
     atlas = "Jokers01",
     ptype = "Forest",
@@ -107,6 +110,7 @@ local Seller = {
         return {vars = {center.ability.extra.sell_potential, center.ability.extra.sell_mod}}
     end,
     rarity = 1, -- Common
+    pools = { ["Brain"] = true }, 
     cost = 5,
     atlas = "Jokers01",
     ptype = "Wind",
@@ -154,6 +158,7 @@ local Kind = {
         return {}
     end,
     rarity = 2, -- Uncommon
+    pools = { ["Brain"] = true }, 
     cost = 6,
     atlas = "Jokers01",
     ptype = "Forest",
@@ -205,6 +210,7 @@ local Turner = {
         return {}
     end,
     rarity = 2, -- Uncommon
+    pools = { ["Brain"] = true }, 
     cost = 7,
     atlas = "Jokers01",
     ptype = "Fire",
@@ -250,6 +256,7 @@ local Under = {
         return {vars = {center.ability.extra.chips_mod, #find_player_position("GK") or 0}}
     end,
     rarity = 1, -- Common
+    pools = { ["Brain"] = true }, 
     cost = 5,
     atlas = "Jokers01",
     ptype = "Forest",

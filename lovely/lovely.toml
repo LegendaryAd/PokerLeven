@@ -1,7 +1,7 @@
 [manifest]
 version = "1.0.0"
 dump_lua = true
-priority = 0
+priority = 1000
 
 # Players only functionality
 [[patches]]
@@ -33,7 +33,7 @@ payload = '''
         G.ASSET_ATLAS[ina_logo], {x=0.0,y=0})
 '''
 match_indent = true
-overwrite = true
+override = true
 
 # Replace start menu logo with inazuma
 [[patches]]
@@ -54,7 +54,7 @@ payload = '''
         G.ASSET_ATLAS[ina_logo], {x=0.0,y=0})
 '''
 match_indent = true
-overwrite = true
+override = true
 
 # Round replaced by matches
 [[patches]]
@@ -68,7 +68,7 @@ payload = '''
 {n=G.UIT.T, config={text = localize('ina_next_match'), scale = 0.4, colour = G.C.WHITE, shadow = true}}
 '''
 match_indent = true
-overwrite = true
+override = true
 
 # Add total moons played
 [[patches]]
