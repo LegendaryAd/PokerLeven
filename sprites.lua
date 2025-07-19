@@ -58,6 +58,24 @@ SMODS.Atlas({
     frames = 21,
 }):register()
 
+SMODS.Atlas({
+    key = "smallBlinds01",
+    atlas_table = "ANIMATION_ATLAS",
+    path = "smallBlinds01.png",
+    px = 34,
+    py = 34,
+    frames = 21,
+}):register()
+
+SMODS.Atlas({
+    key = "bigBlinds01",
+    atlas_table = "ANIMATION_ATLAS",
+    path = "bigBlinds01.png",
+    px = 34,
+    py = 34,
+    frames = 21,
+}):register()
+
 
 SMODS.Sound({
 	key = "music_titlescreen",

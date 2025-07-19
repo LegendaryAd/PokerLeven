@@ -2,16 +2,59 @@ return {
     descriptions = {
         Back = {},
         Blind = {
-            bl_ina_small_blind_1 = {
+            -- Small Blinds
+            bl_ina_benchers = {
+                name = "Benchers",
+                text = {
+                }, 
+            },
+            bl_ina_baseball_all_stars = {
+                name = "Baseball All Stars",
+                text = {
+                }, 
+            },
+            bl_ina_strange_guys = {
+                name = "Strange Guys",
+                text = {
+                }, 
+            },
+            bl_ina_inazuma08 = {
+                name = "Inazuma 08",
+                text = {
+                }, 
+            },
+            bl_ina_inazuma_town = {
+                name = "Inazuma Town",
+                text = {
+                }, 
+            },
+            bl_ina_glasses = {
+                name = "Glasses",
+                text = {
+                }, 
+            },
+            -- Big Blinds
+            bl_ina_ff_regional_a = {
                 name = "FF Pick A",
                 text = {
                 }, 
             },
-            bl_ina_big_blind_1 = {
+            bl_ina_ff_regional_b = {
                 name = "FF Pick B",
                 text = {
                 }, 
             },
+            bl_ina_ff_national_a = {
+                name = "FF National Pick A",
+                text = {
+                }, 
+            },
+            bl_ina_ff_national_b = {
+                name = "FF National Pick B",
+                text = {
+                }, 
+            },
+            -- Boss Blinds
             bl_ina_goalkeeper = {
                 name = "Goalkeeper",
                 text = {
@@ -847,7 +890,8 @@ return {
             ina_convert = "Converted!",
             ina_potential_increased = "Potential Increased!",
             ina_sell_increased= "Jokers Buffed!",
-            ina_settings_no_custom_middle_blinds = "No custom Small or Big Blinds"
+            ina_settings_no_custom_middle_blinds = "No custom Small or Big Blinds",
+            ina_settings_middle_blinds_abilities = "Small and Big Blinds won't have abilities"
         },
         high_scores = {},
         labels = {},

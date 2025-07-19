@@ -1,32 +1,3 @@
-local small_blind_1 = {
-    object_type = "Blind",
-    name = "ina-small_blind_1",
-    key = "small_blind_1",
-    pos = { x = 0, y = 0 },
-    discovered = true,
-    mult = 1,
-    atlas = "bossBlinds",
-    order = 1,
-    boss_colour = HEX("5EC2E8") ,
-    dollars = 2,
-    small = {min = 0},
-    boss = {min = 1000}
-}
-
-local big_blind_1 = {
-    object_type = "Blind",
-    name = "ina-big_blind_1",
-    key = "big_blind_1",
-    pos = { x = 0, y = 1 },
-    discovered = true,
-    mult = 1.5,
-    atlas = "bossBlinds",
-    order = 1,
-    boss_colour = HEX("B7865B") ,
-    big = {min = 0},
-    boss = {min = 1000}
-}
-
 local goalkeeper = {
     object_type = "Blind",
     name = "ina-goalkeeper",
@@ -237,5 +208,5 @@ local forest = {
 
 return {
     name = "Boss Blinds",
-    list = {goalkeeper, forward, defense, midfielder, fire, mountain, wind, forest, small_blind_1, big_blind_1}
+    list = {goalkeeper, forward, defense, midfielder, fire, mountain, wind, forest}
 }
