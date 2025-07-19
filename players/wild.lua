@@ -65,7 +65,10 @@ local Boar = {
             end
             return true
         end
-    end
+    end,
+    ina_credits = {
+        idea = {"YellowAlberto"}
+    }
 }
 
 -- Chamaleon
@@ -174,7 +177,12 @@ local Eagle = {
                 mult_mod = card.ability.extra.current_mult
             }
          end
-    end
+    end,
+    ina_credits = {
+		idea = {
+			"Shadorossa",
+		}
+	},
 }
 
 -- Monkey
@@ -216,7 +224,12 @@ local Monkey = {
                 }
             end
         end
-    end
+    end,
+    ina_credits = {
+		idea = {
+			"Shadorossa",
+		}
+	},
 }
 
 -- Gorilla
@@ -295,7 +308,12 @@ local Cheetah = {
                 }
             end
         end
-    end
+    end,
+    ina_credits = {
+		idea = {
+			"Shadorossa",
+		}
+	},
 }
 
 return {

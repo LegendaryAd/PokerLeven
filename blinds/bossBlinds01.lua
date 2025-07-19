@@ -1,8 +1,35 @@
+local small_blind_1 = {
+    object_type = "Blind",
+    name = "ina-small_blind_1",
+    key = "small_blind_1",
+    pos = { x = 0, y = 0 },
+    discovered = true,
+    mult = 1,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("5EC2E8") ,
+    dollars = 2,
+    small = {min = 0}
+}
+
+local big_blind_1 = {
+    object_type = "Blind",
+    name = "ina-big_blind_1",
+    key = "big_blind_1",
+    pos = { x = 0, y = 1 },
+    discovered = true,
+    mult = 1.5,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("B7865B") ,
+    big = {min = 0}
+}
+
 local goalkeeper = {
     object_type = "Blind",
     name = "ina-goalkeeper",
     key = "goalkeeper",
-    pos = { x = 0, y = 5 },
+    pos = { x = 0, y = 13 },
     boss = {
         min = 3,
         max = 10,
@@ -25,7 +52,7 @@ local forward = {
     object_type = "Blind",
     name = "ina-forward",
     key = "forward",
-    pos = { x = 0, y = 2 },
+    pos = { x = 0, y = 10 },
     boss = {
         min = 3,
         max = 10,
@@ -48,7 +75,7 @@ local defense = {
     object_type = "Blind",
     name = "ina-defense",
     key = "defense",
-    pos = { x = 0, y = 4 },
+    pos = { x = 0, y = 12 },
     boss = {
         min = 3,
         max = 10,
@@ -71,7 +98,7 @@ local midfielder = {
     object_type = "Blind",
     name = "ina-midfielder",
     key = "midfielder",
-    pos = { x = 0, y = 3 },
+    pos = { x = 0, y = 11 },
     boss = {
         min = 3,
         max = 10,
@@ -94,7 +121,7 @@ local fire = {
     object_type = "Blind",
     name = "ina-fire",
     key = "fire",
-    pos = { x = 0, y = 6 },
+    pos = { x = 0, y = 14 },
     boss = {
         min = 3,
         max = 10,
@@ -117,7 +144,7 @@ local mountain = {
     object_type = "Blind",
     name = "ina-mountain",
     key = "mountain",
-    pos = { x = 0, y = 9 },
+    pos = { x = 0, y = 17 },
     boss = {
         min = 3,
         max = 10,
@@ -140,7 +167,7 @@ local wind = {
     object_type = "Blind",
     name = "ina-wind",
     key = "wind",
-    pos = { x = 0, y = 7 },
+    pos = { x = 0, y = 15 },
     boss = {
         min = 3,
         max = 10,
@@ -163,7 +190,7 @@ local forest = {
     object_type = "Blind",
     name = "ina-forest",
     key = "forest",
-    pos = { x = 0, y = 8 },
+    pos = { x = 0, y = 16 },
     boss = {
         min = 3,
         max = 10,
@@ -184,5 +211,5 @@ local forest = {
 
 return {
     name = "Boss Blinds",
-    list = {goalkeeper, forward, defense, midfielder, fire, mountain, wind, forest}
+    list = {goalkeeper, forward, defense, midfielder, fire, mountain, wind, forest, small_blind_1, big_blind_1}
 }

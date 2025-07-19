@@ -2,6 +2,16 @@ return {
     descriptions = {
         Back = {},
         Blind = {
+            bl_ina_small_blind_1 = {
+                name = "FF Pick A",
+                text = {
+                }, 
+            },
+            bl_ina_big_blind_1 = {
+                name = "FF Pick B",
+                text = {
+                }, 
+            },
             bl_ina_goalkeeper = {
                 name = "Goalkeeper",
                 text = {
@@ -836,7 +846,8 @@ return {
             k_team_pack = "Team Pack",
             ina_convert = "Converted!",
             ina_potential_increased = "Potential Increased!",
-            ina_sell_increased= "Jokers Buffed!"
+            ina_sell_increased= "Jokers Buffed!",
+            ina_settings_no_custom_middle_blinds = "No custom Small or Big Blinds"
         },
         high_scores = {},
         labels = {},
@@ -849,6 +860,7 @@ return {
         tutorial = {},
         v_dictionary = {
             a_powmult = { "^#1# Mult" },
+            ina_idea = {"Idea: #1#"}
         },
         v_text = {}
     }

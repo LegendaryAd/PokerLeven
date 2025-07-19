@@ -649,3 +649,171 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys)
 
   return ina_key
 end
+
+-- CREDITS
+local base_create_badges = SMODS.create_mod_badges
+function SMODS.create_mod_badges(obj, badges)
+    base_create_badges(obj, badges)
+
+    if obj and obj.ina_credits and obj.ina_credits.idea then
+        local function calc_scale_fac(text)
+            local size = 0.9
+            local font = G.LANG.font
+            local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
+            local calced_text_width = 0
+            for _, c in utf8.chars(text) do
+                local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE
+                    + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+                calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
+            end
+            return calced_text_width > max_text_width and max_text_width / calced_text_width or 1
+        end
+
+        local strings = { "Pokerleven" }
+        for i = 1, #obj.ina_credits.idea do
+            localized = localize({ type = "variable", key = "ina_idea", vars = { obj.ina_credits.idea[i] } })[1]
+            strings[#strings + 1] = localized
+        end
+
+        local scale_fac = {}
+        local min_scale_fac = 1
+        for i = 1, #strings do
+            scale_fac[i] = calc_scale_fac(strings[i])
+            min_scale_fac = math.min(min_scale_fac, scale_fac[i])
+        end
+
+        local ct = {}
+        for i = 1, #strings do
+            ct[i] = { string = strings[i] }
+        end
+
+        local badge = {
+            n = G.UIT.R,
+            config = { align = "cm" },
+            nodes = {
+                {
+                    n = G.UIT.R,
+                    config = {
+                        align = "cm",
+                        colour = G.C.RED,
+                        r = 0.1,
+                        minw = 2 / min_scale_fac,
+                        minh = 0.36,
+                        emboss = 0.05,
+                        padding = 0.03 * 0.9,
+                    },
+                    nodes = {
+                        { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                        {
+                            n = G.UIT.O,
+                            config = {
+                                object = DynaText({
+                                    string = ct,
+                                    colours = { obj.ina_credits.text_colour or G.C.WHITE },
+                                    silent = true,
+                                    float = true,
+                                    shadow = true,
+                                    offset_y = -0.03,
+                                    spacing = 1,
+                                    scale = 0.33 * 0.9,
+                                }),
+                            },
+                        },
+                        { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                    },
+                },
+            },
+        }
+
+        badges[#badges] = badge
+    end
+end
+
+-- CUSTOM Small Y Big Blinds
+function get_new_small()
+    G.GAME.perscribed_small = G.GAME.perscribed_small or {
+    }
+    if G.GAME.perscribed_small and G.GAME.perscribed_small[G.GAME.round_resets.ante] then 
+        local ret_boss = G.GAME.perscribed_small[G.GAME.round_resets.ante] 
+        G.GAME.perscribed_small[G.GAME.round_resets.ante] = nil
+        return ret_boss
+    end
+    if G.FORCE_SMALL then return G.FORCE_SMALL end
+
+    local eligible_bosses = {bl_small = true}
+    for k, v in pairs(G.P_BLINDS) do
+        if not v.small then
+            -- don't add
+        elseif v.in_pool and type(v.in_pool) == 'function' then
+            local res, options = v:in_pool()
+            eligible_bosses[k] = res and true or nil
+        elseif v.small.min <= math.max(1, G.GAME.round_resets.ante) then
+            eligible_bosses[k] = true
+        end
+    end
+    for k, v in pairs(G.GAME.banned_keys) do
+        if eligible_bosses[k] then eligible_bosses[k] = nil end
+    end
+
+    for k, v in pairs(eligible_bosses) do
+        local is_mod = G.P_BLINDS[k].mod and G.P_BLINDS[k].mod.id == 'Pokerleven'
+        
+        if pokerleven_config.no_custom_middle_blinds then
+            if is_mod then
+                eligible_bosses[k] = nil
+            end
+        else
+            if not is_mod then
+                eligible_bosses[k] = nil
+            end
+        end
+    end
+
+    local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
+    
+    return boss
+end
+
+function get_new_big()
+    G.GAME.perscribed_big = G.GAME.perscribed_big or {
+    }
+    if G.GAME.perscribed_big and G.GAME.perscribed_big[G.GAME.round_resets.ante] then 
+        local ret_boss = G.GAME.perscribed_big[G.GAME.round_resets.ante] 
+        G.GAME.perscribed_big[G.GAME.round_resets.ante] = nil
+        return ret_boss
+    end
+    if G.FORCE_BIG then return G.FORCE_BIG end
+
+    local eligible_bosses = {bl_big = true}
+    for k, v in pairs(G.P_BLINDS) do
+        if not v.big then
+            -- don't add
+        elseif v.in_pool and type(v.in_pool) == 'function' then
+            local res, options = v:in_pool()
+            eligible_bosses[k] = res and true or nil
+        elseif v.big.min <= math.max(1, G.GAME.round_resets.ante) then
+            eligible_bosses[k] = true
+        end
+    end
+    for k, v in pairs(G.GAME.banned_keys) do
+        if eligible_bosses[k] then eligible_bosses[k] = nil end
+    end
+
+    for k, v in pairs(eligible_bosses) do
+        local is_mod = G.P_BLINDS[k].mod and G.P_BLINDS[k].mod.id == 'Pokerleven'
+        
+        if pokerleven_config.no_custom_middle_blinds then
+            if is_mod then
+                eligible_bosses[k] = nil
+            end
+        else
+            if not is_mod then
+                eligible_bosses[k] = nil
+            end
+        end
+    end
+
+    local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
+    
+    return boss
+end

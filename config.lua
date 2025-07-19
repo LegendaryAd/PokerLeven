@@ -1,0 +1,1 @@
+return {["no_custom_middle_blinds"]=false,}

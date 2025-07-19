@@ -78,6 +78,8 @@ function Controller:queue_R_cursor_press(x, y)
     end
 end
 
+
+
 local ina_capture_focused_input = Controller.capture_focused_input
 function Controller:capture_focused_input(button, input_type, dt)
   if self.focused then
@@ -98,4 +100,103 @@ function Controller:capture_focused_input(button, input_type, dt)
   end
   
   return ina_capture_focused_input(self, button, input_type, dt)
+end
+
+-- Config tab
+local restart_toggles_left = { 
+}
+                
+local restart_toggles_right = { 
+}
+local no_restart_toggles = {
+  {ref_value = "no_custom_middle_blinds", label = "ina_settings_no_custom_middle_blinds"}
+}
+
+local create_menu_toggles = function (parent, toggles)
+  for k, v in ipairs(toggles) do
+    parent.nodes[#parent.nodes + 1] = create_toggle({
+          label = localize(v.label),
+          ref_table = pokerleven_config,
+          ref_value = v.ref_value,
+          callback = function(_set_toggle)
+            NFS.write(mod_dir.."/config.lua", STR_PACK(pokerleven_config))
+          end,
+    })
+    if v.tooltip then
+      parent.nodes[#parent.nodes].config.detailed_tooltip = v.tooltip
+    end
+  end
+end
+
+pokerlevenconfig = function()
+  local restart_left_settings = {n = G.UIT.C, config = {align = "tl", padding = 0.05, scale = 0.75, colour = G.C.CLEAR,}, nodes = {}}
+  create_menu_toggles(restart_left_settings, restart_toggles_left)
+
+  local restart_right_settings = {n = G.UIT.C, config = {align = "tl", padding = 0.05, scale = 0.75, colour = G.C.CLEAR,}, nodes = {}}
+  create_menu_toggles(restart_right_settings, restart_toggles_right)
+
+  local no_restart_settings = {n = G.UIT.R, config = {align = "tm", padding = 0.05, scale = 0.75, colour = G.C.CLEAR,}, nodes = {}}
+  create_menu_toggles(no_restart_settings, no_restart_toggles)
+  
+  local config_nodes =   
+  {
+    {
+      n = G.UIT.R,
+      config = {
+        padding = 0,
+        align = "cm"
+      },
+      nodes = {
+        {
+          n = G.UIT.T,
+          config = {
+            text = "No restart required",
+            shadow = true,
+            scale = 0.75 * 0.8,
+            colour = HEX("ED533A")
+          }
+        }
+      },
+    },
+    no_restart_settings,
+    {
+      n = G.UIT.R,
+      config = {
+        padding = 0,
+        align = "cm"
+      },
+      nodes = {
+        {
+          n = G.UIT.T,
+          config = {
+            text = "Requires restart",
+            shadow = true,
+            scale = 0.75 * 0.8,
+            colour = HEX("ED533A")
+          }
+        }
+      },
+    },
+    {
+      n = G.UIT.R,
+      config = {
+        padding = 0,
+        align = "tm"
+      },
+      nodes = {restart_left_settings, restart_right_settings},
+    },
+  }
+  return config_nodes
+end
+
+SMODS.current_mod.config_tab = function()
+    return {
+      n = G.UIT.ROOT,
+      config = {
+        align = "cm",
+        padding = 0.05,
+        colour = G.C.CLEAR,
+      },
+      nodes = pokerlevenconfig()
+    }
 end

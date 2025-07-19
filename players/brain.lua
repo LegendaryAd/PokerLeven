@@ -94,7 +94,7 @@ local Tell = {
                 end
             end
         end
-    end
+    end,
 }
 
 -- Seller
@@ -138,7 +138,10 @@ local Seller = {
                 card = card,
             }
         end
-    end
+    end,
+    ina_credits = {
+        idea = "Shadorossa"
+    }
 }
 
 -- Kind
