@@ -1,4 +1,5 @@
 local benchers = {
+    object_type = "SmallBlind",
     key = "benchers",
     pos = { x = 0, y = 0 },
     discovered = true,
@@ -10,6 +11,7 @@ local benchers = {
 }
 
 local baseball = {
+    object_type = "SmallBlind",
     key = "baseball_all_stars",
     pos = { x = 0, y = 1 },
     discovered = true,
@@ -21,6 +23,7 @@ local baseball = {
 }
 
 local strange = {
+    object_type = "SmallBlind",
     key = "strange_guys",
     pos = { x = 0, y = 2 },
     discovered = true,
@@ -32,6 +35,7 @@ local strange = {
 }
 
 local inazuma08 = {
+    object_type = "SmallBlind",
     key = "inazuma08",
     pos = { x = 0, y = 3 },
     discovered = true,
@@ -43,6 +47,7 @@ local inazuma08 = {
 }
 
 local inazuma_town = {
+    object_type = "SmallBlind",
     key = "inazuma_town",
     pos = { x = 0, y = 4 },
     discovered = true,
@@ -54,6 +59,7 @@ local inazuma_town = {
 }
 
 local glasses = {
+    object_type = "SmallBlind",
     key = "glasses",
     pos = { x = 0, y = 5 },
     discovered = true,

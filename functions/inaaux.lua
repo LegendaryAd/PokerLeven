@@ -853,3 +853,68 @@ function SMODS.get_probability_vars(trigger_obj, base_numerator, base_denominato
     end
     return original_get_probability_vars(trigger_obj, base_numerator, base_denominator, identifier, from_roll)
 end
+
+-- RERROLL BIG BLINDS
+reroll_big = function(e) 
+  stop_use()
+  G.GAME.round_resets.big_rerolled = true
+  G.from_boss_tag = nil  -- Por si quieres reutilizar el flag
+  G.CONTROLLER.locks.big_reroll = true
+
+  G.E_MANAGER:add_event(Event({
+      trigger = 'immediate',
+      func = function()
+        play_sound('other1')
+        G.blind_select_opts.big:set_role({xy_bond = 'Weak'})
+        G.blind_select_opts.big.alignment.offset.y = 20
+        return true
+      end
+  }))
+
+  G.E_MANAGER:add_event(Event({
+    trigger = 'after',
+    delay = 0.3,
+    func = (function()
+      local par = G.blind_select_opts.big.parent
+      G.GAME.round_resets.blind_choices.Big = get_new_big()
+
+      G.blind_select_opts.big:remove()
+      G.blind_select_opts.big = UIBox{
+        T = {par.T.x, 0, 0, 0},
+        definition = {
+          n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={
+            UIBox_dyn_container({create_UIBox_blind_choice('Big')}, false, get_blind_main_colour('Big'), mix_colours(G.C.BLACK, get_blind_main_colour('Big'), 0.8))
+          }
+        },
+        config = {
+          align = "bmi",
+          offset = {x=0, y=G.ROOM.T.y + 9},
+          major = par,
+          xy_bond = 'Weak'
+        }
+      }
+
+      par.config.object = G.blind_select_opts.big
+      par.config.object:recalculate()
+      G.blind_select_opts.big.parent = par
+      G.blind_select_opts.big.alignment.offset.y = 0
+
+      G.E_MANAGER:add_event(Event({
+        blocking = false,
+        trigger = 'after',
+        delay = 0.5,
+        func = function()
+          G.CONTROLLER.locks.big_reroll = nil
+          return true
+        end
+      }))
+
+      save_run()
+      for i = 1, #G.GAME.tags do
+        if G.GAME.tags[i]:apply_to_run({type = 'new_blind_choice'}) then break end
+      end
+
+      return true
+    end)
+  }))
+end

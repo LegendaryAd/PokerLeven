@@ -132,6 +132,10 @@ local Gamer = {
             local fps = love.timer.getFPS()
             local otaku_count = #find_player_team("Otaku")
             card.ability.extra.triggered = true
+            
+            if fps > 144 then
+                fps = 144
+            end
             return {
                 message = fps .. " FPS!",
                 chip_mod = otaku_count > 1 and fps or fps/2 ,

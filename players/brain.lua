@@ -250,7 +250,7 @@ local Turner = {
 local Under = {
     name = "Under",
     pos = {x = 12, y = 2},
-    config = {extra = {chips_mod = 225, triggered = false}},
+    config = {extra = {chips_mod = 120, triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         return {vars = {center.ability.extra.chips_mod, #find_player_position("GK") or 0}}

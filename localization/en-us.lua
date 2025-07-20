@@ -125,6 +125,16 @@ return {
                 text = {
                 }, 
             },
+            bl_ina_kirkwood = {
+                name = "Kirkwood",
+                text = {
+                }, 
+            },
+            bl_ina_zeus = {
+                name = "Zeus",
+                text = {
+                }, 
+            },
         },
         Strat = {  
             c_ina_tech_book = {
@@ -489,6 +499,7 @@ return {
                     "Gain {C:chips}chips{} equals to your {C:attention}FPS / 2{}",
                     "Bonus becomes {C:attention}FPS{} if you",
                     "have at least 2 {X:otaku,C:white}Otaku{} players",
+                    "Max value is {C:attention}144 FPS{}",
                     "{C:inactive}Currently{} {C:chips}+#1#{}"
                 }
             },
@@ -909,6 +920,13 @@ return {
                 text = {
                     "Shop has a {C:attention}free{} {C:uncommon}Uncommon{} player",
                     "from one of your teams",
+                }, 
+            },
+            tag_ina_chain_tag = {
+                name = "Chain Tag",
+                text = {
+                    "Reroll the {C:attention}Big Blind{}",
+                    "If on Big Blind, reroll the {C:attention}Boss Blind{}",
                 }, 
             },
         },

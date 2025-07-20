@@ -236,9 +236,39 @@ local royal_blind = {
     boss_colour = HEX("2e7d32"),
 }
 
+local kirkwood = {
+    object_type = "Blind",
+    name = "ina-kirkwood",
+    key = "kirkwood",
+    pos = { x = 0, y = 15 },
+    boss = {
+        min = 10000,
+    },
+    discovered = true,
+    mult = 2,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("2e7d32"),
+}
+
+local zeus = {
+    object_type = "Blind",
+    name = "ina-zeus",
+    key = "zeus",
+    pos = { x = 0, y = 16 },
+    boss = {
+        min = 10000,
+    },
+    discovered = true,
+    mult = 2,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("2e7d32"),
+}
+
 return {
     name = "Boss Blinds",
     list = {goalkeeper, forward, defense,
         midfielder, fire, mountain, wind,
-        forest, inazuma_og, royal_blind}
+        forest, inazuma_og, royal_blind, kirkwood, zeus}
 }
