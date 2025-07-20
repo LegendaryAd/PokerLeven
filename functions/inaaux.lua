@@ -57,6 +57,15 @@ is_position = function(card, target_position)
   end
 end
 
+is_type = function(card, target_type)
+  if card.ability and (card.ability.extra and type(card.ability.extra) == "table" and target_type == card.ability.extra.ptype) then
+    return true
+  else
+    return false
+  end
+end
+
+
 get_adjacent_jokers = function(card)
   local jokers = {}
   if #G.jokers.cards > 1 then
@@ -363,6 +372,9 @@ get_family_keys = function(cardname, custom_prefix, card)
   end
 
 player_in_pool = function (self)
+  if next(find_joker("Custom")) and self.ptype == "Wind" then
+    return true
+  end 
   local name
   if not self.name and self.ability.name then
     name = self.ability.name
@@ -770,7 +782,7 @@ function get_new_small()
 
     for k, v in pairs(eligible_bosses) do
       local mod = G.P_BLINDS[k] and G.P_BLINDS[k].mod
-      if pokerleven_config.no_custom_middle_blinds then
+      if pokerleven_config.custom_middle_blinds == false then
         if mod and mod.id == 'Pokerleven' then
           eligible_bosses[k] = nil
         end
@@ -814,7 +826,7 @@ function get_new_big()
     for k, v in pairs(eligible_bosses) do
         local is_mod = G.P_BLINDS[k].mod and G.P_BLINDS[k].mod.id == 'Pokerleven'
         
-        if pokerleven_config.no_custom_middle_blinds then
+        if pokerleven_config.custom_middle_blinds == false then
             if is_mod then
                 eligible_bosses[k] = nil
             end

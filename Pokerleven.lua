@@ -177,10 +177,6 @@ for _, file in ipairs(pfiles) do
                 item.key = item.name
             end
 
-            item.in_pool = function(self)
-                return player_in_pool(self)
-            end
-            
             if item.ptype then
               if item.config and item.config.extra then
                 item.config.extra.ptype = item.ptype
@@ -205,6 +201,10 @@ for _, file in ipairs(pfiles) do
               end
             end
 
+            item.in_pool = function(self)
+                return player_in_pool(self)
+            end
+            
             item.set_badges = ina_set_badges
 
             SMODS.Joker(item)

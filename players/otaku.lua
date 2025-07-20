@@ -62,23 +62,22 @@ local Custom = {
         type_tooltip(self, info_queue, center)
         return {}
     end,
-    rarity = 1, -- Common
+    rarity = 2, -- Common
     pools = { ["Otaku"] = true }, 
-    cost = 3,
+    cost = 6,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "FW",
     pteam = "Otaku",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
     end
 }
 
 local Robot = {
     name = "Robot",
     pos = {x = 5, y = 3},
-    config = {extra = {}},
+    config = {extra = {retrigger_count = 1, triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         return {}
@@ -92,19 +91,35 @@ local Robot = {
     pteam = "Otaku",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.repetition and context.cardarea == G.play and next(context.poker_hands['Straight']) then
+            for pos, joker in ipairs(G.jokers.cards) do
+                if is_position(joker, "MF") then
+                    if context.other_card == context.scoring_hand[pos] 
+                    and SMODS.has_enhancement(context.other_card, 'm_lucky') then
+                        joker.ability.extra.triggered = true
+                        return {
+                            message = localize('k_again_ex'),
+                            repetitions = card.ability.extra.retrigger_count,
+                            card = context.other_card
+                        }
+                    end
+                end
+            end
+        end
     end
 }
 
 local Gamer = {
     name = "Gamer",
     pos = {x = 6, y = 3},
-    config = {extra = {}},
+    config = {extra = {triggered = false}},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        local otaku_count = #find_player_team("Otaku")
+        local fps = love.timer.getFPS()
+        return {vars = {otaku_count > 1 and fps or fps/2 }}
     end,
-    rarity = 2, -- Uncommon
+    rarity = 1, -- Uncommon
     pools = { ["Otaku"] = true }, 
     cost = 4,
     atlas = "Jokers01",
@@ -113,7 +128,16 @@ local Gamer = {
     pteam = "Otaku",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if context.cardarea == G.jokers and context.scoring_hand and context.joker_main then
+            local fps = love.timer.getFPS()
+            local otaku_count = #find_player_team("Otaku")
+            card.ability.extra.triggered = true
+            return {
+                message = fps .. " FPS!",
+                chip_mod = otaku_count > 1 and fps or fps/2 ,
+                colour = G.C.DARK_EDITION,
+            }
+        end
     end
 }
 

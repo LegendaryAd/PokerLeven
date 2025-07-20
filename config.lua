@@ -1,1 +1,1 @@
-return {["no_custom_middle_blinds"]=false,["middle_blinds_abilities"]=true}
+return {["custom_middle_blinds"]=true,["middle_blinds_abilities"]=true}

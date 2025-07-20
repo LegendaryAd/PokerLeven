@@ -465,27 +465,31 @@ return {
             j_ina_Custom = {
                 name = "Custom",
                 text = {
-                    "{C:wind}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:wind}Cyclone{}",
+                    "{X:wind,C:white}Wind{} jokers",
+                    "can appear multiple times"
                 }
             },
 
             j_ina_Robot = {
                 name = "Robot",
                 text = {
-                    "{C:wind}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:wind}Bewildered{}",
+                    "Retriggers {C:attention}lucky cards{} scored ",
+                    "on a {C:attention}straight{} which are",
+                    "in the same position of each",
+                    "of your {X:mf,C:white}MF{} jokers starting left"
                 }
             },
 
             j_ina_Gamer = {
                 name = "Gamer",
                 text = {
-                    "{C:fire}Placeholder{}",
-                    "Placeholder effect line 1",
-                    "Placeholder effect line 2"
+                    "{C:fire}Utter Gutsiness Bat{}",
+                    "Gain {C:chips}chips{} equals to your {C:attention}FPS / 2{}",
+                    "Bonus becomes {C:attention}FPS{} if you",
+                    "have at least 2 {X:otaku,C:white}Otaku{} players",
+                    "{C:inactive}Currently{} {C:chips}+#1#{}"
                 }
             },
 
@@ -927,8 +931,8 @@ return {
             ina_convert = "Converted!",
             ina_potential_increased = "Potential Increased!",
             ina_sell_increased= "Jokers Buffed!",
-            ina_settings_no_custom_middle_blinds = "No custom Small or Big Blinds",
-            ina_settings_middle_blinds_abilities = "Small and Big Blinds won't have abilities"
+            ina_settings_custom_middle_blinds = "Custom Small or Big Blinds Textures",
+            ina_settings_middle_blinds_abilities = "Custom Small and Big Blinds Abilities"
         },
         high_scores = {},
         labels = {},
