@@ -56,6 +56,11 @@ return {
                     "A little bigger"
                 }, 
             },
+            bl_ina_umbrella = {
+                name = "Umbrella",
+                text = {
+                }, 
+            },
             bl_ina_occult = {
                 name = "Occult",
                 text = {
@@ -63,6 +68,16 @@ return {
             },
             bl_ina_raimonOB = {
                 name = "Raimon OB",
+                text = {
+                }, 
+            },
+            bl_ina_shun = {
+                name = "Shun",
+                text = {
+                }, 
+            },
+            bl_ina_empress = {
+                name = "Empress",
                 text = {
                 }, 
             },

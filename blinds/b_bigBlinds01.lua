@@ -54,6 +54,20 @@ local ff_national_b = {
     big = {min = 0},
 }
 
+local umbrella = {
+    object_type = "Blind",
+    name = "ina-umbrella",
+    key = "umbrella",
+    pos = { x = 0, y = 4 },
+    discovered = true,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B") ,
+    dollars = 4,
+    big = {min = 0},
+}
+
 local occult = {
     object_type = "Blind",
     name = "ina-occult",
@@ -82,7 +96,35 @@ local raimonOB = {
     big = {min = 0},
 }
 
+local shun = {
+    object_type = "Blind",
+    name = "ina-shun",
+    key = "shun",
+    pos = { x = 0, y = 9 },
+    discovered = true,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B") ,
+    dollars = 4,
+    big = {min = 0},
+}
+
+local empress = {
+    object_type = "Blind",
+    name = "ina-empress",
+    key = "empress",
+    pos = { x = 0, y = 10 },
+    discovered = true,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B") ,
+    dollars = 4,
+    big = {min = 0},
+}
+
 return {
     name = "bigBlinds01",
-    list = {ff_regional_a, ff_regional_b, ff_national_a, ff_national_b, occult, raimonOB}
+    list = {ff_regional_a, ff_regional_b, ff_national_a, ff_national_b, umbrella, occult, raimonOB, shun, empress}
 }
