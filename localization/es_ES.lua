@@ -62,19 +62,19 @@ return {
                 text = {"Los jugadores {X:df,C:white}DF{} están debilitados"}
             },
             bl_ina_fire = {
-                name = "Jefe Fuego",
+                name = "Jefe de Fuego",
                 text = {"Los jugadores de tipo {X:forest,C:white}Bosque{} están debilitados"}
             },
             bl_ina_forest = {
-                name = "Jefe Bosque",
+                name = "Jefe de Bosque",
                 text = {"Los jugadores de tipo {X:wind,C:white}Viento{} están debilitados"}
             },
             bl_ina_mountain = {
-                name = "Jefe Montaña",
+                name = "Jefe de Montaña",
                 text = {"Los jugadores de tipo {X:fire,C:white}Fuego{} están debilitados"}
             },
             bl_ina_wind = {
-                name = "Jefe Viento",
+                name = "Jefe de Viento",
                 text = {"Los jugadores de tipo {X:mountain,C:white}Montaña{} están debilitados"}
             },
             bl_ina_inazuma_og = {
@@ -101,7 +101,7 @@ return {
         Joker = {
             j_ina_Kevin = {
                 name = "Kevin",
-                text = {"{C:forest}Tornado Dragón{}", "Vuelve a activar el comodín {X:fw,C:white}DC{}",
+                text = {"{C:forest}Tornado Dragón{}", "Vuelve a activar el comodín {X:fw,C:white}Delantero{}",
                         "que está a su derecha{}"}
             },
             j_ina_Mark = {
@@ -117,7 +117,7 @@ return {
             },
             j_ina_Jack = {
                 name = "Jack",
-                text = {"{C:mountain}El Muro{}", "Por cada comodín {X:df,C:white}DF{} jugado",
+                text = {"{C:mountain}El Muro{}", "Por cada comodín {X:df,C:white}Defensa{} jugado",
                         "la piedra gana {C:chips}+#1#{} fichas permanentemente"}
             },
             j_ina_Axel = {
@@ -184,7 +184,7 @@ return {
             },
             j_ina_Mummy = {
                 name = "Mummy",
-                text = {"{C:forest}Gravedad{}", "Cada {C:clubs}#3#{} otorga {C:mult}+#1#{} y {C:chips}+#2#{}"}
+                text = {"{C:forest}Gravedad{}", "Cada {C:clubs}#3#{} otorga {C:mult}+#1#{} Mult y {C:chips}+#2#{} Chips"}
             },
             j_ina_King = {
                 name = "King",
@@ -225,7 +225,7 @@ return {
             j_ina_Samford = {
                 name = "Samford",
                 text = {"{C:forest}Pingüino Emperador N.º 2{}", "{X:mult,C:white}X#1#{} si tienes al menos",
-                        "{C:attention}1{} {X:mf,C:white}MC{} y {C:attention}2{} {X:fw,C:white}DC{} comodines"}
+                        "{C:attention}1{} {X:mf,C:white}Centrocampista{} y {C:attention}2{} {X:fw,C:white}Delanteros{} comodines"}
             },
             j_ina_Swing = {
                 name = "Swing",
@@ -234,43 +234,43 @@ return {
                         "mano contiene un {C:attention}Trío{}"}
             },
             j_ina_Chicken = {
-                name = "Pollo",
-                text = {"{C:fire}Huevo Dorado{}", "Las cartas {C:attention}Salvajes{} tienen",
+                name = "Chicken",
+                text = {"{C:fire}Huevo Dorado{}", "Las cartas {C:attention}Versatiles{} tienen",
                         "{C:green}#1# de #2#{} de probabilidad", "de ganar {C:money}#3#${} al puntuar"}
             },
             j_ina_Boar = {
-                name = "Jabalí",
+                name = "Boar",
                 text = {"{C:fire}Garra Salvaje{}", "Si juegas una {C:attention}pareja de doses{}",
-                        "destrúyela y genera", "una {C:attention}Etiqueta Salvaje{}"}
+                        "destrúyela y genera", "una {C:attention}Etiqueta Wild{}"}
             },
             j_ina_Chamaleon = {
-                name = "Camaleón",
+                name = "Chamaleon",
                 text = {"{C:wind}Espejismo{}",
                         "Puedes jugar {C:attention}Escaleras de color con {C:attention}4 cartas{}",
                         "Si juegas una 5.ª carta", "y es de otro palo,",
-                        "la transforma en una {C:tarot}Carta Salvaje{}"}
+                        "la transforma en una {C:tarot}Carta Versatil{}"}
             },
             j_ina_Eagle = {
-                name = "Águila",
+                name = "Eagle",
                 text = {"{C:wind}Ataque de Cóndor{}", "Gana {C:mult}+#1#{} Mult por cada",
-                        "{C:tarot}Carta Salvaje{} que puntúe en una mano", "que contenga una {C:attention}escalera{}",
+                        "{C:tarot}Carta Versatil{} que puntúe en una mano", "que contenga una {C:attention}escalera{}",
                         "{C:inactive}Actualmente{} {C:mult}+#2#{}"}
             },
             j_ina_Monkey = {
-                name = "Mono",
+                name = "Monkey",
                 text = {"{C:wind}Giro del Mono{}",
-                        "Obtén {X:mult,C:white}XMult{} igual al número de {C:tarot}Cartas Salvajes{}",
-                        "en el mazo multiplicado por", "los jugadores {X:wild,C:white}Salvajes{} del equipo / 10",
+                        "Obtén {X:mult,C:white}XMult{} igual al número de {C:tarot}Cartas Versatiles{}",
+                        "en el mazo multiplicado por", "los jugadores {X:wild,C:white}Wild{} del equipo / 10",
                         "Actualmente {X:mult,C:white}X#1#{}"}
             },
             j_ina_Gorilla = {
-                name = "Gorila",
-                text = {"{C:mountain}Remate Tarzán{}", "Crea una {C:attention}Etiqueta Salvaje{}",
+                name = "Gorilla",
+                text = {"{C:mountain}Remate Tarzán{}", "Crea una {C:attention}Etiqueta Wild{}",
                         "al derrotar a la Ciega Jefe"}
             },
             j_ina_Cheetah = {
-                name = "Guepardo",
-                text = {"{C:wind}Superaceleración{}", "Si juegas {C:attention}5 cartas Salvajes que puntúan{}",
+                name = "Cheetah",
+                text = {"{C:wind}Superaceleración{}", "Si juegas {C:attention}5 cartas versatiles que puntúan{}",
                         "vuelve a activarlas una vez", "por cada jugador del elemento {X:select_element,C:white}#1#{}",
                         "El elemento cambia cada ronda"}
             },
@@ -293,16 +293,16 @@ return {
             },
 
             j_ina_Seller = {
-                name = "Vendedor",
+                name = "Seller",
                 text = {"{C:wind}Psicorremate{}", "Tras cada ronda jugada",
-                        "gana {C:money}+#2#$ de potencial de venta{}.", "Cuando se venda el Vendedor, aumenta",
+                        "gana {C:money}+#2#$ de potencial de venta{}.", "Cuando se venda Seller, aumenta",
                         "el {C:money}valor de venta{} de otros jokers", "por su potencial de venta",
                         "{C:inactive}Actualmente{} {C:money}#1#${}"}
             },
 
             j_ina_Kind = {
-                name = "Amable",
-                text = {"{C:forest}Escaner ataque{}", "Si la mano de puntuación es un {C:attention}palíndrome{},",
+                name = "Kind",
+                text = {"{C:forest}Escaner ataque{}", "Si la mano de puntuación es un {C:attention}palíndromo{},",
                         "reactiva la primera y la última carta."}
             },
 
@@ -310,13 +310,13 @@ return {
                 name = "Turner",
                 text = {"{C:fire}Tornado de fuego{}", "Crea una copia de la {C:attention}primera carta{}",
                         "puntuada en la {C:attention}primera mano{} jugada",
-                        "por cada jugador {X:brain,C:white}Cerebro{} en tu equipo",
+                        "por cada jugador {X:brain,C:white}Brain{} en tu equipo",
                         "si la mano jugada contiene un {C:attention}póker{}"}
             },
 
             j_ina_Under = {
-                name = "Subterráneo",
-                text = {"{C:forest}Abajo", "Obtiene {C:chips}#1# / log2(#2# + 1){} chips",
+                name = "Under",
+                text = {"{C:forest}Calculo Dificil", "Obtiene {C:chips}#1# / log2(#2# + 1){} chips",
                         "por cada {X:gk,C:white}Portero{}{}"}
             },
 
@@ -327,7 +327,7 @@ return {
             },
 
             j_ina_Hero = {
-                name = "Héroe",
+                name = "Hero",
                 text = {"{C:fire}Bola falsa{}", "Transforma cada carta puntuada",
                         "{C:attention}figura{} en un {C:attention}4{}"}
             },
@@ -348,7 +348,7 @@ return {
             },
 
             j_ina_Artist = {
-                name = "Artista",
+                name = "Artist",
                 text = {"{C:wind}Jugador de azar{}",
                         "Si la mano jugada contiene un {C:attention}K{} y una {C:attention}Q{},",
                         "convierte todas las cartas puntuadas en {C:attention}Cartas de la Suerte{}"}
@@ -573,17 +573,17 @@ return {
                 text = {"Elige {C:attention}#1#{} entre", "{C:attention}#2#{} jugadores {X:raimon,C:white}Raimon{}"}
             },
             p_ina_team_pack_occult = {
-                name = "Pack Ocultos",
-                text = {"Elige {C:attention}#1#{} entre", "{C:attention}#2#{} jugadores {X:occult,C:white}Ocultos{}"}
+                name = "Pack Occult",
+                text = {"Elige {C:attention}#1#{} entre", "{C:attention}#2#{} jugadores {X:occult,C:white}Occult{}"}
             },
             p_ina_team_pack_royal = {
                 name = "Pack Royal",
                 text = {"Elige {C:attention}#1#{} entre",
-                        "{C:attention}#2#{} jugadores {X:royal academy,C:white}Royal Academy{}"}
+                        "{C:attention}#2#{} jugadores {X:royal academy,C:white}R. Academy{}"}
             },
             p_ina_team_pack_wild = {
-                name = "Pack Salvajes",
-                text = {"Elige {C:attention}#1#{} entre", "{C:attention}#2#{} jugadores {X:wild,C:white}Salvajes{}"}
+                name = "Pack Wild",
+                text = {"Elige {C:attention}#1#{} entre", "{C:attention}#2#{} jugadores {X:wild,C:white}Wild{}"}
             }
         },
         Planet = {},
@@ -591,7 +591,7 @@ return {
         Stake = {},
         Tag = {
             tag_ina_wild_tag = {
-                name = "Etiqueta Salvaje",
+                name = "Etiqueta Wild",
                 text = {"La tienda tiene un {C:attention}jugador gratuito{} {C:uncommon}Poco Común{}",
                         "de uno de tus equipos"}
             }

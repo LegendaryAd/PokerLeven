@@ -180,7 +180,7 @@ return {
             },
             j_ina_Mummy = {
                 name = "Mummy",
-                text = {"{C:forest}Ghost Pull{}", "Each {C:clubs}#3#{} gives {C:mult}+#1#{} and {C:chips}+#2#{}"}
+                text = {"{C:forest}Ghost Pull{}", "Each {C:clubs}#3#{} gives {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips"}
             },
             j_ina_King = {
                 name = "King",
@@ -306,7 +306,7 @@ return {
             },
 
             j_ina_Under = {
-                name = "Under",
+                name = "Hard Calculation",
                 text = {"{C:forest}Below", "Scores {C:chips}#1# / log2(#2# + 1){} chips",
                         "for each {X:gk,C:white}GK{}{}"}
             },
