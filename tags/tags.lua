@@ -6,7 +6,7 @@ local wild_tag = {
 	pos = { x = 0, y = 0 },
 	config = { type = "store_joker_create" },
 	key = "wild_tag",
-	min_ante = 2,
+	min_ante = 0,
     discovered = true,
 	loc_vars = function(self, info_queue)
 		return { vars = {} }
@@ -64,7 +64,7 @@ local chain_tag = {
 	pos = { x = 2, y = 0 },
 	config = {},
 	key = "chain_tag",
-    min_ante = 0,
+    min_ante = 2,
     discovered = true,
 	loc_vars = function(self, info_queue)
 		return { vars = {} }

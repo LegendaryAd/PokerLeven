@@ -135,6 +135,12 @@ return {
                 text = {
                 }, 
             },
+            -- Final Boss Blinds
+            bl_ina_zeus_caido = {
+                name = "Fallen Zeus",
+                text = {
+                }, 
+            },
         },
         Strat = {  
             c_ina_tech_book = {
