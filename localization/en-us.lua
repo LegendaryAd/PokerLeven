@@ -56,6 +56,16 @@ return {
                     "A little bigger"
                 }, 
             },
+            bl_ina_occult = {
+                name = "Occult",
+                text = {
+                }, 
+            },
+            bl_ina_raimonOB = {
+                name = "Raimon OB",
+                text = {
+                }, 
+            },
             -- Boss Blinds
             bl_ina_goalkeeper = {
                 name = "Goalkeeper",

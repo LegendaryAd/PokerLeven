@@ -54,7 +54,35 @@ local ff_national_b = {
     big = {min = 0},
 }
 
+local occult = {
+    object_type = "Blind",
+    name = "ina-occult",
+    key = "occult",
+    pos = { x = 0, y = 7 },
+    discovered = true,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B") ,
+    dollars = 4,
+    big = {min = 0},
+}
+
+local raimonOB = {
+    object_type = "Blind",
+    name = "ina-raimonOB",
+    key = "raimonOB",
+    pos = { x = 0, y = 8 },
+    discovered = true,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B") ,
+    dollars = 4,
+    big = {min = 0},
+}
+
 return {
     name = "bigBlinds01",
-    list = {ff_regional_a, ff_regional_b, ff_national_a, ff_national_b}
+    list = {ff_regional_a, ff_regional_b, ff_national_a, ff_national_b, occult, raimonOB}
 }
