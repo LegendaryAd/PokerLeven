@@ -1,0 +1,144 @@
+-- Inazuma Eleven Jokers
+
+local hillman = {
+  name = "Hillman",
+  pos = { x = 7, y = 3 },
+  config = {},
+  rarity = 2, -- Rare
+  pools = { ["Inazuma Eleven"] = true },
+  cost = 6,
+  atlas = "Jokers01",
+  ptype = "Mountain",
+  pposition = "GK",
+  pteam = "Inazuma Eleven",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end,
+}
+
+local island = {
+  name = "Island",
+  pos = { x = 8, y = 3 },
+  config = {},
+  rarity = 1, -- Common
+  pools = { ["Inazuma Eleven"] = true },
+  cost = 5,
+  atlas = "Jokers01",
+  ptype = "Forest",
+  pposition = "DF",
+  pteam = "Inazuma Eleven",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end,
+}
+
+local sweet = {
+  name = "Sweet",
+  pos = { x = 9, y = 3 },
+  config = {
+    extra = {
+      triggered = false,
+      rarity_chance = 0.20,
+      raimon_chance = 0.5
+    }
+  },
+  rarity = 1, -- Common
+  pools = { ["Inazuma Eleven"] = true },
+  cost = 4,
+  atlas = "Jokers01",
+  ptype = "Mountain",
+  pposition = "DF",
+  pteam = "Inazuma Eleven",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    if context.setting_blind and not context.blueprint then
+      return {
+        func = function()
+          local created_joker = false
+          if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+            created_joker = true
+            G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+            local rarity_roll = pseudorandom('sweet_rarity')
+            local rarity = (rarity_roll < (card.ability.extra.rarity_chance or 0.25)) and "Uncommon" or "Common"
+
+            -- Determinar equipo
+            local team_roll = pseudorandom('sweet_team')
+            local selected_team = (team_roll < (card.ability.extra.raimon_chance or 0.3)) and "Raimon" or
+                "Inazuma Eleven"
+            G.E_MANAGER:add_event(Event({
+              trigger = 'immediate',
+              func = function()
+                G.GAME.joker_buffer = 0
+                local _card = create_random_ina_joker('sweet', rarity, G.jokers, selected_team)
+                _card:add_to_deck()
+                G.jokers:emplace(_card)
+                return true
+              end
+            }))
+          end
+          if created_joker then
+            card.ability.extra.triggered = true
+            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {
+              message = localize('k_plus_joker'),
+              colour = G.C.BLUE
+            })
+          end
+          return true
+        end
+      }
+    end
+  end
+}
+
+local butler = {
+  name = "Butler",
+  pos = { x = 10, y = 3 },
+  config = {},
+  rarity = 1, -- Common
+  pools = { ["Inazuma Eleven"] = true },
+  cost = 4,
+  atlas = "Jokers01",
+  ptype = "Forest",
+  pposition = "MF",
+  pteam = "Inazuma Eleven",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end,
+}
+
+local barista = {
+  name = "Barista",
+  pos = { x = 11, y = 3 },
+  config = {},
+  rarity = 2, -- Uncommon
+  pools = { ["Inazuma Eleven"] = true },
+  cost = 5,
+  atlas = "Jokers01",
+  ptype = "Wind",
+  pposition = "FW",
+  pteam = "Inazuma Eleven",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end,
+}
+
+local builder = {
+  name = "Builder",
+  pos = { x = 12, y = 3 },
+  config = {},
+  rarity = 2, -- Uncommon
+  pools = { ["Inazuma Eleven"] = true },
+  cost = 5,
+  atlas = "Jokers01",
+  ptype = "Fire",
+  pposition = "FW",
+  pteam = "Inazuma Eleven",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end,
+}
+
+return {
+  name = "Raimon",
+  list = { hillman, island, sweet, butler, barista, builder },
+}

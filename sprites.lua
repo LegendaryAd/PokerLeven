@@ -87,38 +87,39 @@ SMODS.Atlas({
 
 
 SMODS.Sound({
-	key = "music_titlescreen",
-	path = "titlescreen.mp3",
-	volume = 0.7,
-	sync = {
-		ina_music_mainline = true
-	},
-	pitch = 1,
-	select_music_track = function()
-		return G.STAGE == G.STAGES.MAIN_MENU
-	end,
+    key = "music_titlescreen",
+    path = "titlescreen.mp3",
+    volume = 0.7,
+    sync = {
+        ina_music_mainline = true
+    },
+    pitch = 1,
+    select_music_track = function()
+        return G.STAGE == G.STAGES.MAIN_MENU
+    end,
 })
 
 local custom_colours = loc_colour
 function loc_colour(_c, _default)
-  if not G.ARGS.LOC_COLOURS then
-    custom_colours()
-  end
-G.ARGS.LOC_COLOURS["mountain"] = HEX("f57c00")  
-G.ARGS.LOC_COLOURS["gk"] = HEX("ffa726")
-G.ARGS.LOC_COLOURS["fire"] = HEX("d32f2f")      
-G.ARGS.LOC_COLOURS["fw"] = HEX("ef5350")       
-G.ARGS.LOC_COLOURS["forest"] = HEX("2e7d32")  
-G.ARGS.LOC_COLOURS["df"] = HEX("66bb6a")        
-G.ARGS.LOC_COLOURS["wind"] = HEX("81d4fa")      
-G.ARGS.LOC_COLOURS["mf"] = HEX("4fc3f7")        
-G.ARGS.LOC_COLOURS["raimon"] = HEX("ffa726")   
-G.ARGS.LOC_COLOURS["occult"] = HEX("4B0082")
-G.ARGS.LOC_COLOURS["royal academy"] = HEX("2C5E4F")  
-G.ARGS.LOC_COLOURS["wild"] = HEX("797B49")     
-G.ARGS.LOC_COLOURS["brain"] = HEX("888888")  
-G.ARGS.LOC_COLOURS["otaku"] = HEX("A754C4")
-G.ARGS.LOC_COLOURS["pink"] = HEX("FF7ABF")
+    if not G.ARGS.LOC_COLOURS then
+        custom_colours()
+    end
+    G.ARGS.LOC_COLOURS["mountain"] = HEX("f57c00")
+    G.ARGS.LOC_COLOURS["gk"] = HEX("ffa726")
+    G.ARGS.LOC_COLOURS["fire"] = HEX("d32f2f")
+    G.ARGS.LOC_COLOURS["fw"] = HEX("ef5350")
+    G.ARGS.LOC_COLOURS["forest"] = HEX("2e7d32")
+    G.ARGS.LOC_COLOURS["df"] = HEX("66bb6a")
+    G.ARGS.LOC_COLOURS["wind"] = HEX("81d4fa")
+    G.ARGS.LOC_COLOURS["mf"] = HEX("4fc3f7")
+    G.ARGS.LOC_COLOURS["raimon"] = HEX("ffa726")
+    G.ARGS.LOC_COLOURS["occult"] = HEX("4B0082")
+    G.ARGS.LOC_COLOURS["royal academy"] = HEX("2C5E4F")
+    G.ARGS.LOC_COLOURS["wild"] = HEX("797B49")
+    G.ARGS.LOC_COLOURS["brain"] = HEX("888888")
+    G.ARGS.LOC_COLOURS["otaku"] = HEX("A754C4")
+    G.ARGS.LOC_COLOURS["pink"] = HEX("FF7ABF")
+    G.ARGS.LOC_COLOURS["inazuma_eleven"] = HEX("fb8c00")
 
-  return custom_colours(_c, _default)
+    return custom_colours(_c, _default)
 end
