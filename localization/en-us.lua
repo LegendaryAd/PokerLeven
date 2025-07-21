@@ -6,158 +6,158 @@ return {
             bl_ina_benchers = {
                 name = "Benchers",
                 text = {
-                }, 
+                },
             },
             bl_ina_baseball_all_stars = {
                 name = "Baseball All Stars",
                 text = {
-                }, 
+                },
             },
             bl_ina_strange_guys = {
                 name = "Strange Guys",
                 text = {
-                }, 
+                },
             },
             bl_ina_inazuma08 = {
                 name = "Inazuma 08",
                 text = {
-                }, 
+                },
             },
             bl_ina_inazuma_town = {
                 name = "Inazuma Town",
                 text = {
-                }, 
+                },
             },
             bl_ina_glasses = {
                 name = "Glasses",
                 text = {
-                }, 
+                },
             },
             -- Big Blinds
             bl_ina_ff_regional_a = {
                 name = "FF Pick A",
                 text = {
-                }, 
+                },
             },
             bl_ina_ff_regional_b = {
                 name = "FF Pick B",
                 text = {
-                }, 
+                },
             },
             bl_ina_ff_national_a = {
                 name = "FF National Pick A",
                 text = {
                     "A little more bigger"
-                }, 
+                },
             },
             bl_ina_ff_national_b = {
                 name = "FF National Pick B",
                 text = {
                     "A little bigger"
-                }, 
+                },
             },
             bl_ina_umbrella = {
                 name = "Umbrella",
                 text = {
-                }, 
+                },
             },
             bl_ina_occult = {
                 name = "Occult",
                 text = {
-                }, 
+                },
             },
             bl_ina_raimonOB = {
                 name = "Raimon OB",
                 text = {
-                }, 
+                },
             },
             bl_ina_shun = {
                 name = "Shun",
                 text = {
-                }, 
+                },
             },
             bl_ina_empress = {
                 name = "Empress",
                 text = {
-                }, 
+                },
             },
             -- Boss Blinds
             bl_ina_goalkeeper = {
                 name = "Goalkeeper",
                 text = {
                     "FW Players are debuffed",
-                }, 
+                },
             },
             bl_ina_forward = {
                 name = "Forward",
                 text = {
                     "GK Players are debuffed",
-                }, 
+                },
             },
             bl_ina_defense = {
                 name = "Defense",
                 text = {
                     "MF Players are debuffed",
-                }, 
+                },
             },
             bl_ina_midfielder = {
                 name = "Midfielder",
                 text = {
                     "DF Players are debuffed",
-                }, 
+                },
             },
             bl_ina_fire = {
                 name = "Fire Boss",
                 text = {
                     "Forest Players are debuffed",
-                }, 
+                },
             },
             bl_ina_forest = {
                 name = "Forest Boss",
                 text = {
                     "Wind Players are debuffed",
-                }, 
+                },
             },
             bl_ina_mountain = {
                 name = "Mountain Boss",
                 text = {
                     "Fire Players are debuffed",
-                }, 
+                },
             },
             bl_ina_wind = {
                 name = "Wind Boss",
                 text = {
                     "Mountain Players are debuffed",
-                }, 
+                },
             },
             bl_ina_inazuma_og = {
                 name = "Inazuma Eleven",
                 text = {
-                }, 
+                },
             },
             bl_ina_royal_blind = {
                 name = "Royal Academy",
                 text = {
-                }, 
+                },
             },
             bl_ina_kirkwood = {
                 name = "Kirkwood",
                 text = {
-                }, 
+                },
             },
             bl_ina_zeus = {
                 name = "Zeus",
                 text = {
-                }, 
+                },
             },
             -- Final Boss Blinds
             bl_ina_zeus_caido = {
                 name = "Fallen Zeus",
                 text = {
-                }, 
+                },
             },
         },
-        Strat = {  
+        Strat = {
             c_ina_tech_book = {
                 name = "Tech. Book",
                 text = {
@@ -173,172 +173,183 @@ return {
                 },
             },
         },
-        Edition = {},
+        Edition = {
+            e_ina_glass = {
+                name = "Glass",
+                label = "Glass",
+                text = {
+                    "{C:attention}+#3# Retrigger{}",
+                    "{C:green}#1# in #2#{} chance this",
+                    "card is {C:red}destroyed",
+                    "when retriggered",
+                },
+            },
+        },
         Enhanced = {},
         Joker = {
             j_ina_Kevin = {
                 name = "Kevin",
-                text = {"{C:forest}Dragon Tornado{}",
-                        "Retriggers the {X:fw,C:white}FW{} joker",
-                        "to his right{}"}
+                text = { "{C:forest}Dragon Tornado{}",
+                    "Retriggers the {X:fw,C:white}FW{} joker",
+                    "to his right{}" }
             },
             j_ina_Mark = {
                 name = "Mark",
-                text = {"Never surrender!", "{C:mult}+#1#{} Mult on your last hand",
-                        "Increases by {C:mult}+#2#{} per last hand played",
-                        "{C:inactive}(Grows up at {C:mult}+#1#{C:inactive} / {C:mult}+#3#{C:inactive}  Mult)"}
+                text = { "Never surrender!", "{C:mult}+#1#{} Mult on your last hand",
+                    "Increases by {C:mult}+#2#{} per last hand played",
+                    "{C:inactive}(Grows up at {C:mult}+#1#{C:inactive} / {C:mult}+#3#{C:inactive}  Mult)" }
             },
             j_ina_Nathan = {
                 name = "Nathan",
-                text = {"{C:wind}Flurry Dash{}",
-                        "Each {X:raimon,C:white}Raimon{} player gives {X:mult,C:white}X#2#{}"}
+                text = { "{C:wind}Flurry Dash{}",
+                    "Each {X:raimon,C:white}Raimon{} player gives {X:mult,C:white}X#2#{}" }
             },
             j_ina_Jack = {
                 name = "Jack",
-                text = {"{C:mountain}The Wall{}",
-                        "For each {X:df,C:white}DF{} Joker every played",
-                        "stone gains {C:chips}+#1#{} chips permanently"}
+                text = { "{C:mountain}The Wall{}",
+                    "For each {X:df,C:white}DF{} Joker every played",
+                    "stone gains {C:chips}+#1#{} chips permanently" }
             },
             j_ina_Axel = {
                 name = "Axel",
-                text = {"{C:fire}Fire Tornado",
-                        "{X:mult,C:white}X#1#{} if the played hand",
-                        "contains a {C:red}heart{} flush"}
+                text = { "{C:fire}Fire Tornado",
+                    "{X:mult,C:white}X#1#{} if the played hand",
+                    "contains a {C:red}heart{} flush" }
             },
             j_ina_Shadow = {
                 name = "Shadow",
-                text = {"{C:forest}Shadow Tornado{}",
-                        "{C:mult}+#1#{} Mult",
-                        "Gains {C:mult}+#2#{} Mult for each hand played without",
-                        "any other joker being activated"}
+                text = { "{C:forest}Shadow Tornado{}",
+                    "{C:mult}+#1#{} Mult",
+                    "Gains {C:mult}+#2#{} Mult for each hand played without",
+                    "any other joker being activated" }
             },
             j_ina_Willy = {
                 name = "Willy",
-                text = {"Never surrender!", "{C:mult}+#1#{} Mult on your last hand",
-                        "Increases by {C:mult}+#2#{} per last hand played",
-                        "{C:inactive}(Grows up at {C:mult}+#1#{C:inactive} / {C:mult}+#3#{C:inactive}  Mult)"}
+                text = { "Never surrender!", "{C:mult}+#1#{} Mult on your last hand",
+                    "Increases by {C:mult}+#2#{} per last hand played",
+                    "{C:inactive}(Grows up at {C:mult}+#1#{C:inactive} / {C:mult}+#3#{C:inactive}  Mult)" }
             },
             j_ina_Max = {
                 name = "Max",
-                text = {"{C:wind}Spiral Shot{}",
-                        "{C:chips}+#2#{} Chips",
-                        "{C:chips}+#1#{} Chips for each {X:wind,C:white}Wind{} joker"}
+                text = { "{C:wind}Spiral Shot{}",
+                    "{C:chips}+#2#{} Chips",
+                    "{C:chips}+#1#{} Chips for each {X:wind,C:white}Wind{} joker" }
             },
             j_ina_Peabody = {
                 name = "Peabody",
-                text = {"{C:mountain}God Hand{}", "{C:mult}+#1#{} Mult on your last hand",
-                        "Increases by {C:mult}+#2#{} per last hand played"}
+                text = { "{C:mountain}God Hand{}", "{C:mult}+#1#{} Mult on your last hand",
+                    "Increases by {C:mult}+#2#{} per last hand played" }
             },
             j_ina_Talisman = {
                 name = "Talisman",
-                text = {"{C:forest}Teleport Shot{}",
-                        "Retriggers the {X:occult,C:white}Occult{} joker",
-                        "to his right{}"}
-             },
+                text = { "{C:forest}Teleport Shot{}",
+                    "Retriggers the {X:occult,C:white}Occult{} joker",
+                    "to his right{}" }
+            },
             j_ina_Wolfy = {
                 name = "Wolfy",
-                text = {"{C:fire}Moonsault{}",
+                text = { "{C:fire}Moonsault{}",
                     "{X:mult,C:white}X#1#{}",
                     "Gains {X:mult,C:white}X#2#{} for each",
-                    "{C:tarot}The Moon{} card used"}
+                    "{C:tarot}The Moon{} card used" }
             },
             j_ina_Blood = {
                 name = "Blood",
-                text = {"{C:mountain}Poison Fog{}",
-                        "{C:attention}Drains{} {C:money}#1#${} from adjacent jokers",
-                        "{C:chips}+#2#{} chips per each {C:money}1${} ",
-                        "in sell value",
-                        "{C:inactive}Currently{} {C:chips}+#3#{}",
-                    }
+                text = { "{C:mountain}Poison Fog{}",
+                    "{C:attention}Drains{} {C:money}#1#${} from adjacent jokers",
+                    "{C:chips}+#2#{} chips per each {C:money}1${} ",
+                    "in sell value",
+                    "{C:inactive}Currently{} {C:chips}+#3#{}",
+                }
             },
             j_ina_Grave = {
                 name = "Grave",
-                text = {"{C:fire}Curse{}", "{C:green}#1# in #2#{} chance",
-                        "to create a {C:tarot}Death{} card",
-                        "for every {C:attention}6{} scored"}
+                text = { "{C:fire}Curse{}", "{C:green}#1# in #2#{} chance",
+                    "to create a {C:tarot}Death{} card",
+                    "for every {C:attention}6{} scored" }
             },
             j_ina_Mask = {
                 name = "Mask",
-                text = {"{C:wind}Killer Blade{}", 
+                text = { "{C:wind}Killer Blade{}",
                     "Sacrifices the right joker",
                     "and gains {C:money}#1#${} sell value",
-                    "when blind is selected"}
+                    "when blind is selected" }
             },
             j_ina_Styx = {
                 name = "Styx",
-                text = {"{C:forest}Ghost Shot{}",
-                        "{C:chips}+#1#{} Chips",
-                        "{C:chips}+#2#{} Chips for each {C:tarot}tarot{} card used"}
+                text = { "{C:forest}Ghost Shot{}",
+                    "{C:chips}+#1#{} Chips",
+                    "{C:chips}+#2#{} Chips for each {C:tarot}tarot{} card used" }
             },
             j_ina_Franky = {
                 name = "Franky",
-                text = {"{C:mountain}Mega Quake{}", "{C:attention}High card{} gives {C:mult}+#1#{} Mult"}
+                text = { "{C:mountain}Mega Quake{}", "{C:attention}High card{} gives {C:mult}+#1#{} Mult" }
             },
             j_ina_Mummy = {
                 name = "Mummy",
-                text = {"{C:forest}Ghost Pull{}", 
-                    "Each {C:clubs}#3#{} gives {C:mult}+#1#{} and {C:chips}+#2#{}"}
+                text = { "{C:forest}Ghost Pull{}",
+                    "Each {C:clubs}#3#{} gives {C:mult}+#1#{} and {C:chips}+#2#{}" }
             },
             j_ina_King = {
                 name = "King",
-                text = {"{C:fire}Power Shield{}", 
-                        "If the played hand contains", 
-                        "a {C:attention}Three of a Kind{} of {C:attention}Kings{}:", 
-                        "Create a copy of the {C:attention}rightmost{} king"}
+                text = { "{C:fire}Power Shield{}",
+                    "If the played hand contains",
+                    "a {C:attention}Three of a Kind{} of {C:attention}Kings{}:",
+                    "Create a copy of the {C:attention}rightmost{} king" }
             },
             j_ina_Bloom = {
                 name = "Bloom",
-                text = {"{C:fire}Wrath Shot{}", 
-                        "{C:mult}+#1#{} mult", 
-                        "Gains {C:mult}+#2#{} mult if played hand",
-                        "contains a {C:attention}straight{}"}
+                text = { "{C:fire}Wrath Shot{}",
+                    "{C:mult}+#1#{} mult",
+                    "Gains {C:mult}+#2#{} mult if played hand",
+                    "contains a {C:attention}straight{}" }
             },
             j_ina_Drent = {
                 name = "Drent",
-                text = {"{C:mountain}Earthquake{}", 
-                        "{C:green}#1# in #2#{} chance",
-                        "to create a {C:tarot}The Tower{} card",
-                        "after every {C:attention}hand{} played.",
-                        "Odds improve by 1",
-                        "for each {X:mountain,C:white}Mountain{} joker",}
+                text = { "{C:mountain}Earthquake{}",
+                    "{C:green}#1# in #2#{} chance",
+                    "to create a {C:tarot}The Tower{} card",
+                    "after every {C:attention}hand{} played.",
+                    "Odds improve by 1",
+                    "for each {X:mountain,C:white}Mountain{} joker", }
             },
             j_ina_Jude = {
                 name = "Jude",
-                text = {"{C:wind}Illusion Ball{}", 
-                        "{X:mult,C:white}X#1#{}", 
-                        "After each hand played",
-                        "gains {X:mult,C:white}X#2#{} each time the joker",
-                        "to his {C:attention}left{} has triggered",
-                        "in the scoring hand"}
+                text = { "{C:wind}Illusion Ball{}",
+                    "{X:mult,C:white}X#1#{}",
+                    "After each hand played",
+                    "gains {X:mult,C:white}X#2#{} each time the joker",
+                    "to his {C:attention}left{} has triggered",
+                    "in the scoring hand" }
             },
             j_ina_Martin = {
                 name = "Martin",
-                text = {"{C:forest}Killer Slide{}", 
-                        "{C:blue}Common{} jokers give {C:mult}+#1#{} mult", 
-                        "{C:green}Uncommon{} jokers give {C:mult}+#2#{} mult",
-                        "{C:red}Rare{} jokers give {X:mult,C:white}X#3#{} mult",
-                        "{C:purple}Legendary{} jokers give {{X:dark_edition,C:white}^#4#{} mult"}
+                text = { "{C:forest}Killer Slide{}",
+                    "{C:blue}Common{} jokers give {C:mult}+#1#{} mult",
+                    "{C:green}Uncommon{} jokers give {C:mult}+#2#{} mult",
+                    "{C:red}Rare{} jokers give {X:mult,C:white}X#3#{} mult",
+                    "{C:purple}Legendary{} jokers give {{X:dark_edition,C:white}^#4#{} mult" }
             },
             j_ina_Master = {
                 name = "Master",
-                text = {"{C:wind}Breakthrough{}", 
-                        "{C:mult}+#1#{} mult per", 
-                        "{X:royal academy,C:white}R.Academy{} Joker",
-                        "if this is the {C:attention}leftmost{} Joker"}
+                text = { "{C:wind}Breakthrough{}",
+                    "{C:mult}+#1#{} mult per",
+                    "{X:royal academy,C:white}R.Academy{} Joker",
+                    "if this is the {C:attention}leftmost{} Joker" }
             },
             j_ina_Samford = {
                 name = "Samford",
-                text = {"{C:forest}Emperor Penguin No. 2{}", 
-                        "{X:mult,C:white}X#1#{} if you have at least",
-                        "{C:attention}1{} {X:mf,C:white}MF{} and {C:attention}2{} {X:fw,C:white}FW{} jokers"}
+                text = { "{C:forest}Emperor Penguin No. 2{}",
+                    "{X:mult,C:white}X#1#{} if you have at least",
+                    "{C:attention}1{} {X:mf,C:white}MF{} and {C:attention}2{} {X:fw,C:white}FW{} jokers" }
             },
             j_ina_Swing = {
                 name = "Swing",
-                text = {"{C:wind}Clone Faker{}", 
-                        "{C:wind}+#1#{} Chips per", 
-                        "{X:royal academy,C:white}R.Academy{} Joker if the",
-                        "played hand contains {C:attention}Three of a Kind{}"}
-            }, 
+                text = { "{C:wind}Clone Faker{}",
+                    "{C:wind}+#1#{} Chips per",
+                    "{X:royal academy,C:white}R.Academy{} Joker if the",
+                    "played hand contains {C:attention}Three of a Kind{}" }
+            },
             j_ina_Chicken = {
                 name = "Chicken",
                 text = {
@@ -859,35 +870,35 @@ return {
         Other = {
             Mountain = {
                 name = "Type",
-                text = {"{X:mountain,C:white}Mountain{}"}
+                text = { "{X:mountain,C:white}Mountain{}" }
             },
             Fire = {
                 name = "Type",
-                text = {"{X:fire,C:white}Fire{}"}
+                text = { "{X:fire,C:white}Fire{}" }
             },
             GK = {
                 name = "Position",
-                text = {"{X:gk,C:white}GK{}"}
+                text = { "{X:gk,C:white}GK{}" }
             },
             FW = {
                 name = "Position",
-                text = {"{X:fw,C:white}FW{}"}
+                text = { "{X:fw,C:white}FW{}" }
             },
             Forest = {
                 name = "Type",
-                text = {"{X:forest,C:white}Forest{}"}
+                text = { "{X:forest,C:white}Forest{}" }
             },
             Wind = {
                 name = "Type",
-                text = {"{X:wind,C:white}Wind{}"}
+                text = { "{X:wind,C:white}Wind{}" }
             },
             DF = {
                 name = "Position",
-                text = {"{X:df,C:white}DF{}"}
+                text = { "{X:df,C:white}DF{}" }
             },
             MF = {
                 name = "Position",
-                text = {"{X:mf,C:white}MF{}"}
+                text = { "{X:mf,C:white}MF{}" }
             },
             p_ina_team_pack_raimon = {
                 name = "Raimon Pack",
@@ -941,14 +952,14 @@ return {
                 text = {
                     "Shop has a {C:attention}free{} {C:uncommon}Uncommon{} player",
                     "from one of your teams",
-                }, 
+                },
             },
             tag_ina_chain_tag = {
                 name = "Chain Tag",
                 text = {
                     "Reroll the {C:attention}Big Blind{}",
                     "If on Big Blind, reroll the {C:attention}Boss Blind{}",
-                }, 
+                },
             },
         },
         Tarot = {},
@@ -969,12 +980,14 @@ return {
             k_team_pack = "Team Pack",
             ina_convert = "Converted!",
             ina_potential_increased = "Potential Increased!",
-            ina_sell_increased= "Jokers Buffed!",
+            ina_sell_increased = "Jokers Buffed!",
             ina_settings_custom_middle_blinds = "Custom Small or Big Blinds Textures",
             ina_settings_middle_blinds_abilities = "Custom Small and Big Blinds Abilities"
         },
         high_scores = {},
-        labels = {},
+        labels = {
+            ina_glass = "Glass",
+        },
         poker_hand_descriptions = {},
         poker_hands = {},
         quips = {},
@@ -984,8 +997,8 @@ return {
         tutorial = {},
         v_dictionary = {
             a_powmult = { "^#1# Mult" },
-            ina_idea = {"Idea: #1#"},
-            ina_art = {"Art: #1#"}
+            ina_idea = { "Idea: #1#" },
+            ina_art = { "Art: #1#" }
         },
         v_text = {}
     }

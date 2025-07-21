@@ -306,7 +306,7 @@ local Peabody = {
     end,
     rarity = 1,
     pools = { ["Raimon"] = true }, 
-    cost = 5, 
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "GK",
