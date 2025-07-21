@@ -46,28 +46,23 @@ return {
             },
             bl_ina_umbrella = {
                 name = "Umbrella",
-                text = {
-                }, 
+                text = {}
             },
             bl_ina_occult = {
                 name = "Occult",
-                text = {
-                }, 
+                text = {}
             },
             bl_ina_raimonOB = {
                 name = "Raimon OB",
-                text = {
-                }, 
+                text = {}
             },
             bl_ina_shun = {
                 name = "Shun",
-                text = {
-                }, 
+                text = {}
             },
             bl_ina_empress = {
                 name = "Empress",
-                text = {
-                }, 
+                text = {}
             },
             -- Boss Blinds
             bl_ina_goalkeeper = {
@@ -108,25 +103,21 @@ return {
             },
             bl_ina_royal_blind = {
                 name = "Royal Academy",
-                text = {
-                }, 
+                text = {}
             },
             bl_ina_kirkwood = {
                 name = "Kirkwood",
-                text = {
-                }, 
+                text = {}
             },
             bl_ina_zeus = {
                 name = "Zeus",
-                text = {
-                }, 
+                text = {}
             },
             -- Final Boss Blinds
             bl_ina_zeus_caido = {
                 name = "Fallen Zeus",
-                text = {
-                }, 
-            },
+                text = {}
+            }
         },
         Strat = {
             c_ina_tech_book = {
@@ -222,7 +213,8 @@ return {
             },
             j_ina_Mummy = {
                 name = "Mummy",
-                text = {"{C:forest}Ghost Pull{}", "Each {C:clubs}#3#{} gives {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips"}
+                text = {"{C:forest}Ghost Pull{}",
+                        "Each {C:clubs}#3#{} gives {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips"}
             },
             j_ina_King = {
                 name = "King",
@@ -365,50 +357,33 @@ return {
 
             j_ina_Custom = {
                 name = "Custom",
-                text = {
-                    "{C:wind}Cyclone{}",
-                    "{X:wind,C:white}Wind{} jokers",
-                    "can appear multiple times"
-                }
+                text = {"{C:wind}Cyclone{}", "{X:wind,C:white}Wind{} jokers", "can appear multiple times"}
             },
 
             j_ina_Robot = {
                 name = "Robot",
-                text = {
-                    "{C:wind}Bewildered{}",
-                    "Retriggers {C:attention}lucky cards{} scored ",
-                    "on a {C:attention}straight{} which are",
-                    "in the same position of each",
-                    "of your {X:mf,C:white}MF{} jokers starting left"
-                }
+                text = {"{C:wind}Bewildered{}", "Retriggers {C:attention}lucky cards{} scored ",
+                        "on a {C:attention}straight{} which are", "in the same position of each",
+                        "of your {X:mf,C:white}MF{} jokers starting left"}
             },
 
             j_ina_Gamer = {
                 name = "Gamer",
-                text = {
-                    "{C:fire}Utter Gutsiness Bat{}",
-                    "Gain {C:chips}chips{} equals to your {C:attention}FPS / 2{}",
-                    "Bonus becomes {C:attention}FPS{} if you",
-                    "have at least 2 {X:otaku,C:white}Otaku{} players",
-                    "Max value is {C:attention}144 FPS{}",
-                    "{C:inactive}Currently{} {C:chips}+#1#{}"
-                }
+                text = {"{C:fire}Utter Gutsiness Bat{}", "Gain {C:chips}chips{} equals to your {C:attention}FPS / 2{}",
+                        "Bonus becomes {C:attention}FPS{} if you", "have at least 2 {X:otaku,C:white}Otaku{} players",
+                        "Max value is {C:attention}144 FPS{}", "{C:inactive}Currently{} {C:chips}+#1#{}"}
             },
 
             j_ina_Artist = {
                 name = "Artist",
-                text = {"{C:wind}Gambler{}", "If played hand contains scoring {C:attention}K{} and {C:attention}Q{},",
+                text = {"{C:wind}Maximun Gambler{}", "If played hand contains scoring {C:attention}K{} and {C:attention}Q{},",
                         "convert all scored cards in {C:attention}Lucky Cards{}"}
             },
 
             j_ina_Arcade = {
                 name = "Arcade",
-                text = {
-                    "{C:forest}Comet Shot {}",
-                    "Lucky cards now trigger {C:green}#1# in 15{}",
-                    "Now every {C:attention}lucky card{} scored",
-                    "costs {C:money}#2#${} to play"
-                }
+                text = {"{C:forest}Comet Shot{}", "Lucky cards now trigger {C:green}#1# in 15{}",
+                        "Now every {C:attention}lucky card{} scored", "costs {C:money}#2#${} to play"}
             },
 
             -- Inazuma Eleven
@@ -635,25 +610,37 @@ return {
             },
             p_ina_team_pack_wild = {
                 name = "Wild Pack",
-                text = {
-                    "Choose {C:attention}#1#{} from among",
-                    "{C:attention}#2#{} {X:wild,C:white}Wild{} players"
-                },
+                text = {"Choose {C:attention}#1#{} from among", "{C:attention}#2#{} {X:wild,C:white}Wild{} players"}
             },
             p_ina_team_pack_brain = {
                 name = "Brain Pack",
-                text = {
-                    "Choose {C:attention}#1#{} from among",
-                    "{C:attention}#2#{} {X:brain,C:white}Brain{} players"
-                },
+                text = {"Choose {C:attention}#1#{} from among", "{C:attention}#2#{} {X:brain,C:white}Brain{} players"}
             },
             p_ina_team_pack_otaku = {
                 name = "Otaku Pack",
-                text = {
-                    "Choose {C:attention}#1#{} from among",
-                    "{C:attention}#2#{} {X:otaku,C:white}Otaku{} players"
-                },
+                text = {"Choose {C:attention}#1#{} from among", "{C:attention}#2#{} {X:otaku,C:white}Otaku{} players"}
             },
+            p_ina_team_pack_inazuma = {
+                name = "Inazuma Pack",
+                text = {"Choose {C:attention}#1#{} from among", "{C:attention}#2#{} {X:inazuma,C:white}Inazuma{} players"}
+            },
+            p_ina_team_pack_shuriken = {
+                name = "Shuriken Pack",
+                text = {"Choose {C:attention}#1#{} from among", "{C:attention}#2#{} {X:shuriken,C:white}Shuriken{} players"}
+            },
+            p_ina_team_pack_farm = {
+                name = "Farm Pack",
+                text = {"Choose {C:attention}#1#{} from among", "{C:attention}#2#{} {X:farm,C:white}Farm{} players"}
+            },
+            p_ina_team_pack_kirwood = {
+                name = "Kirwood Pack",
+                text = {"Choose {C:attention}#1#{} from among", "{C:attention}#2#{} {X:kirwood,C:white}Kirwood{} players"}
+            },
+            p_ina_team_pack_zeus = {
+                name = "Zeus Pack",
+                text = {"Choose {C:attention}#1#{} from among", "{C:attention}#2#{} {X:zeus,C:white}Zeus{} players"}
+            }
+
         },
         Planet = {},
         Spectral = {},
@@ -661,18 +648,12 @@ return {
         Tag = {
             tag_ina_wild_tag = {
                 name = "Wild Tag",
-                text = {
-                    "Shop has a {C:attention}free{} {C:uncommon}Uncommon{} player",
-                    "from one of your teams",
-                }, 
+                text = {"Shop has a {C:attention}free{} {C:uncommon}Uncommon{} player", "from one of your teams"}
             },
             tag_ina_chain_tag = {
                 name = "Chain Tag",
-                text = {
-                    "Reroll the {C:attention}Big Blind{}",
-                    "If on Big Blind, reroll the {C:attention}Boss Blind{}",
-                }, 
-            },
+                text = {"Reroll the {C:attention}Big Blind{}", "If on Big Blind, reroll the {C:attention}Boss Blind{}"}
+            }
         },
         Tarot = {},
         Voucher = {}
@@ -692,7 +673,7 @@ return {
             k_team_pack = "Team Pack",
             ina_convert = "Converted!",
             ina_potential_increased = "Potential Increased!",
-            ina_sell_increased= "Jokers Buffed!",
+            ina_sell_increased = "Jokers Buffed!",
             ina_settings_custom_middle_blinds = "Custom Small or Big Blinds Textures",
             ina_settings_middle_blinds_abilities = "Custom Small and Big Blinds Abilities"
         },

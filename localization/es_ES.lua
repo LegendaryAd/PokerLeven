@@ -4,15 +4,15 @@ return {
         Blind = {
             -- Blinds pequeños
             bl_ina_benchers = {
-                name = "Suplentes",
+                name = "ChupaBanquillos",
                 text = {}
             },
             bl_ina_baseball_all_stars = {
-                name = "Estrellas del Béisbol",
+                name = "Grandes Bateadores",
                 text = {}
             },
             bl_ina_strange_guys = {
-                name = "Chicos Extraños",
+                name = "Sospechosos",
                 text = {}
             },
             bl_ina_inazuma08 = {
@@ -24,7 +24,7 @@ return {
                 text = {}
             },
             bl_ina_glasses = {
-                name = "Gafas",
+                name = "Gafitas",
                 text = {}
             },
             -- Blinds grandes
@@ -44,21 +44,41 @@ return {
                 name = "Selección Nacional B",
                 text = {"Un poco grandes"}
             },
+            bl_ina_umbrella = {
+                name = "Umbrella",
+                text = {}
+            },
+            bl_ina_occult = {
+                name = "Occult",
+                text = {}
+            },
+            bl_ina_raimonOB = {
+                name = "Raimon OB",
+                text = {}
+            },
+            bl_ina_shun = {
+                name = "Shun",
+                text = {}
+            },
+            bl_ina_empress = {
+                name = "Empress",
+                text = {}
+            },
             -- Blinds jefes
             bl_ina_goalkeeper = {
-                name = "Portero",
+                name = "GK",
                 text = {"Los jugadores {X:fw,C:white}DC{} están debilitados"}
             },
             bl_ina_forward = {
-                name = "Delantero",
+                name = "FW",
                 text = {"Los jugadores {X:gk,C:white}PT{} están debilitados"}
             },
             bl_ina_defense = {
-                name = "Defensa",
+                name = "DF",
                 text = {"Los jugadores {X:mf,C:white}MC{} están debilitados"}
             },
             bl_ina_midfielder = {
-                name = "Centrocampista",
+                name = "MF",
                 text = {"Los jugadores {X:df,C:white}DF{} están debilitados"}
             },
             bl_ina_fire = {
@@ -82,18 +102,34 @@ return {
                 text = {}
             },
             bl_ina_royal_blind = {
-                name = "Academia Royal",
+                name = "Royal Academy",
+                text = {}
+            },
+            bl_ina_kirkwood = {
+                name = "Kirkwood",
+                text = {}
+            },
+            bl_ina_zeus = {
+                name = "Zeus",
+                text = {}
+            },
+
+            -- Final Boss Blinds
+            bl_ina_zeus_caido = {
+                name = "Ultra Zeus",
                 text = {}
             }
         },
         Strat = {
             c_ina_tech_book = {
                 name = "Libro Técnico",
-                text = {"Aplica un {C:pink}Tipo{} aleatorio al Joker más a la izquierda{}"}
+                text = {"Aplica un {C:pink}Tipo{} aleatorio", 
+                        "al Joker más a la izquierda{}"}
             },
             c_ina_tactic_pos = {
                 name = "Posición Táctica",
-                text = {"Aplica una {C:pink}Posición{} aleatoria al Joker más a la izquierda{}"}
+                text = {"Aplica una {C:pink}Posición{} aleatoria", 
+                        "al Joker más a la izquierda{}"}
             }
         },
         Edition = {},
@@ -101,7 +137,7 @@ return {
         Joker = {
             j_ina_Kevin = {
                 name = "Kevin",
-                text = {"{C:forest}Tornado Dragón{}", "Vuelve a activar el comodín {X:fw,C:white}Delantero{}",
+                text = {"{C:forest}Tornado Dragón{}", "Vuelve a activar el comodín {X:fw,C:white}FW{}",
                         "que está a su derecha{}"}
             },
             j_ina_Mark = {
@@ -117,8 +153,9 @@ return {
             },
             j_ina_Jack = {
                 name = "Jack",
-                text = {"{C:mountain}El Muro{}", "Por cada comodín {X:df,C:white}Defensa{} jugado",
-                        "la piedra gana {C:chips}+#1#{} fichas permanentemente"}
+                text = {"{C:mountain}El Muro{}", "Por cada comodín {X:df,C:white}DF{}",
+                        "{C:attention}Las Piedras{} ganan", 
+                        "{C:chips}+#1#{} fichas permanentemente"}
             },
             j_ina_Axel = {
                 name = "Axel",
@@ -225,7 +262,7 @@ return {
             j_ina_Samford = {
                 name = "Samford",
                 text = {"{C:forest}Pingüino Emperador N.º 2{}", "{X:mult,C:white}X#1#{} si tienes al menos",
-                        "{C:attention}1{} {X:mf,C:white}Centrocampista{} y {C:attention}2{} {X:fw,C:white}Delanteros{} comodines"}
+                        "{C:attention}1{} {X:mf,C:white}MF{} y {C:attention}2{} {X:fw,C:white}FW{} comodines"}
             },
             j_ina_Swing = {
                 name = "Swing",
@@ -246,8 +283,8 @@ return {
             j_ina_Chamaleon = {
                 name = "Chamaleon",
                 text = {"{C:wind}Espejismo{}",
-                        "Puedes jugar {C:attention}Escaleras de color con {C:attention}4 cartas{}",
-                        "Si juegas una 5.ª carta", "y es de otro palo,",
+                        "Puedes jugar {C:attention}Color{} con 4 cartas",
+                        "Si juegas una 5ta carta", "y es de otro palo,",
                         "la transforma en una {C:tarot}Carta Versatil{}"}
             },
             j_ina_Eagle = {
@@ -259,7 +296,8 @@ return {
             j_ina_Monkey = {
                 name = "Monkey",
                 text = {"{C:wind}Giro del Mono{}",
-                        "Obtén {X:mult,C:white}XMult{} igual al número de {C:tarot}Cartas Versatiles{}",
+                        "Obtén {X:mult,C:white}XMult{} igual al", 
+                        "número de {C:tarot}Cartas Versatiles{}",
                         "en el mazo multiplicado por", "los jugadores {X:wild,C:white}Wild{} del equipo / 10",
                         "Actualmente {X:mult,C:white}X#1#{}"}
             },
@@ -281,9 +319,10 @@ return {
 
             j_ina_Marvel = {
                 name = "Marvel",
-                text = {"{C:mountain}Escaner defensa", "Si el valor en {C:chips}chips{} de la carta en",
-                        "la mano de puntuación tiene {C:attention}exactamente 3 bits en 1{}",
-                        "{C:mult}+#1#{} multiplicador al puntuar{}"}
+                text = {"{C:mountain}Escaner Defensa", "Si el valor en {C:chips}chips{}",
+                        "de la carta que puntua",
+                        "tiene {C:attention}exactamente 3 bits en 1{}",
+                        "{C:mult}+#1#{} mult{}"}
             },
 
             j_ina_Tell = {
@@ -317,7 +356,7 @@ return {
             j_ina_Under = {
                 name = "Under",
                 text = {"{C:forest}Calculo Dificil", "Obtiene {C:chips}#1# / log2(#2# + 1){} chips",
-                        "por cada {X:gk,C:white}Portero{}{}"}
+                        "por cada {X:gk,C:white}GK{}{}"}
             },
 
             -- Otaku
@@ -334,29 +373,39 @@ return {
 
             j_ina_Custom = {
                 name = "Custom",
-                text = {"{C:wind}Marcador personalizado{}", "Efecto pendiente línea 1", "Efecto pendiente línea 2"}
+                text = {"{C:wind}Ciclón{}", "Los jokers de {X:wind,C:white}Viento{}", "pueden aparecer múltiples veces"}
             },
 
             j_ina_Robot = {
                 name = "Robot",
-                text = {"{C:wind}Marcador robótico{}", "Efecto pendiente línea 1", "Efecto pendiente línea 2"}
+                text = {"{C:wind}Confusión{}", "Vuelve a activar las {C:attention}Lucky Cards{}", 
+                        "puntuadas en una {C:attention}escalera{}", 
+                        "que estén en la misma posición", 
+                        "que cada uno de tus jokers",
+                        "{X:mf,C:white}MF{} empezando por la izquierda"}
             },
 
             j_ina_Gamer = {
                 name = "Gamer",
-                text = {"{C:fire}Marcador gamer{}", "Efecto pendiente línea 1", "Efecto pendiente línea 2"}
+                text = {"{C:fire}Bateo Total{}", "Ganas {C:chips}fichas{} iguales a tus {C:attention}FPS / 2{}",
+                        "El bono pasa a ser {C:attention}FPS{} si", "tienes al menos 2 jugadores {X:otaku,C:white}Otaku{}",
+                        "El valor máximo es {C:attention}144 FPS{}", "{C:inactive}Actualmente{} {C:chips}+#1#{}"}
             },
 
             j_ina_Artist = {
-                name = "Artist",
-                text = {"{C:wind}Jugador de azar{}",
-                        "Si la mano jugada contiene un {C:attention}K{} y una {C:attention}Q{},",
-                        "convierte todas las cartas puntuadas en {C:attention}Cartas de la Suerte{}"}
+                name = "Artista",
+                text = {"{C:wind}Ludopatía Máxima{}", "Si la mano jugada contiene", 
+                        "un {C:attention}Rey{} y una {C:attention}Reina{} que puntúen",
+                        "convierte todas las cartas puntuadas", 
+                        "en {C:attention}Cartas de la Suerte{}"}
             },
 
             j_ina_Arcade = {
                 name = "Arcade",
-                text = {"{C:forest}Marcador arcade{}", "Efecto pendiente línea 1", "Efecto pendiente línea 2"}
+                text = {"{C:forest}Tiro del Cometa{}", "La probabilidad de activar", 
+                        "el dinero extra en las {C:attention}Lucky Card{}", 
+                        "es ahora {C:green}#1# en 15{}, Ahora cada",
+                        "{C:attention}Lucky Card{}", "cuesta {C:money}#2#${} para jugarse"}
             },
 
             -- Inazuma Eleven
@@ -546,11 +595,11 @@ return {
             },
             GK = {
                 name = "Posición",
-                text = {"{X:gk,C:white}Portero{}"}
+                text = {"{X:gk,C:white}GK{}"}
             },
             FW = {
                 name = "Posición",
-                text = {"{X:fw,C:white}Delantero{}"}
+                text = {"{X:fw,C:white}FW{}"}
             },
             Forest = {
                 name = "Tipo",
@@ -562,11 +611,11 @@ return {
             },
             DF = {
                 name = "Posición",
-                text = {"{X:df,C:white}Defensa{}"}
+                text = {"{X:df,C:white}DF{}"}
             },
             MF = {
                 name = "Posición",
-                text = {"{X:mf,C:white}Centrocampista{}"}
+                text = {"{X:mf,C:white}MF{}"}
             },
             p_ina_team_pack_raimon = {
                 name = "Pack Raimon",
@@ -584,7 +633,32 @@ return {
             p_ina_team_pack_wild = {
                 name = "Pack Wild",
                 text = {"Elige {C:attention}#1#{} entre", "{C:attention}#2#{} jugadores {X:wild,C:white}Wild{}"}
+            },
+            p_ina_team_pack_brain = {
+                name = "Pack Brain",
+                text = {"Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:brain,C:white}Brain{} jugadores"}
+            },
+            p_ina_team_pack_inazuma = {
+                name = "Pack Inazuma",
+                text = {"Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:inazuma,C:white}Inazuma{} jugadores"}
+            },
+            p_ina_team_pack_shuriken = {
+                name = "Pack Shuriken",
+                text = {"Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:shuriken,C:white}Shuriken{} jugadores"}
+            },
+            p_ina_team_pack_farm = {
+                name = "Pack Farm",
+                text = {"Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:farm,C:white}Farm{} jugadores"}
+            },
+            p_ina_team_pack_kirwood = {
+                name = "Pack Kirwood",
+                text = {"Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:kirwood,C:white}Kirwood{} jugadores"}
+            },
+            p_ina_team_pack_zeus = {
+                name = "Pack Zeus",
+                text = {"Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:zeus,C:white}Zeus{} jugadores"}
             }
+            
         },
         Planet = {},
         Spectral = {},
@@ -592,8 +666,13 @@ return {
         Tag = {
             tag_ina_wild_tag = {
                 name = "Etiqueta Wild",
-                text = {"La tienda tiene un {C:attention}jugador gratuito{} {C:uncommon}Poco Común{}",
-                        "de uno de tus equipos"}
+                text = {"La tienda tiene un {C:attention}jugador gratuito{}",
+                        "{C:uncommon}Poco Común{} de uno de tus equipos"}
+            },
+            tag_ina_chain_tag = {
+                name = "Etiqueta Cadena",
+                text = {"Cambia la {C:attention}Ciega grande{}, Si estas en",
+                        "una ciega grande, cambia la {C:attention}Ciega Jefe{}"}
             }
         },
         Tarot = {},
