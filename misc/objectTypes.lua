@@ -26,6 +26,20 @@ local Wild = {
 	cards = {},
 }
 
+local Brain = {
+	object_type = "ObjectType",
+	key = "Brain",
+	default = "v_blank",
+	cards = {},
+}
+
+local Otaku = {
+	object_type = "ObjectType",
+	key = "Otaku",
+	default = "v_blank",
+	cards = {},
+}
+
 return {name = "Joker Types",
-        list = {Raimon, Occult, Royal, Wild}
+        list = {Raimon, Occult, Royal, Wild, Brain, Otaku}
 }

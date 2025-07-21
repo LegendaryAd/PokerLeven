@@ -238,7 +238,7 @@ local Styx = {
           return {
             message = localize{type='variable',key='a_chips',vars={current_chips}},
             colour = G.C.CHIPS,
-            chips_mod = current_chips
+            chip_mod = current_chips
           }
         end
       end

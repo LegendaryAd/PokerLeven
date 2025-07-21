@@ -1,7 +1,7 @@
 [manifest]
 version = "1.0.0"
 dump_lua = true
-priority = 0
+priority = 1000
 
 # Players only functionality
 [[patches]]
@@ -33,7 +33,7 @@ payload = '''
         G.ASSET_ATLAS[ina_logo], {x=0.0,y=0})
 '''
 match_indent = true
-overwrite = true
+override = true
 
 # Replace start menu logo with inazuma
 [[patches]]
@@ -54,7 +54,7 @@ payload = '''
         G.ASSET_ATLAS[ina_logo], {x=0.0,y=0})
 '''
 match_indent = true
-overwrite = true
+override = true
 
 # Round replaced by matches
 [[patches]]
@@ -68,7 +68,7 @@ payload = '''
 {n=G.UIT.T, config={text = localize('ina_next_match'), scale = 0.4, colour = G.C.WHITE, shadow = true}}
 '''
 match_indent = true
-overwrite = true
+override = true
 
 # Add total moons played
 [[patches]]
@@ -139,58 +139,3 @@ pattern = "replace_card.states.visible = false"
 position = "after"
 payload = "replace_card.seal = nil"
 match_indent = true
-
-
-## Custom Small/Big Blinds
-[[patches]]
-[patches.pattern]
-target = 'functions/common_events.lua'
-pattern = '''G.GAME.round_resets.blind_choices.Boss = get_new_boss()'''
-position = 'before'
-match_indent = true
-payload = '''
-G.GAME.round_resets.blind_choices.Small = get_new_small()
-G.GAME.round_resets.blind_choices.Big = get_new_big()
-'''
-
-# Add Custom Small/Big Blinds
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-match_indent = true
-position = 'before'
-pattern = '''
-self.GAME.round_resets.blind_choices.Boss = get_new_boss()
-'''
-payload = '''
-self.GAME.round_resets.blind_choices.Small = get_new_small()
-self.GAME.round_resets.blind_choices.Big = get_new_big()
-'''
-
-# Handle defeating custom small/big blinds
-[[patches]]
-[patches.pattern]
-target = 'functions/state_events.lua'
-pattern = "G.GAME.round_resets.blind_states.Big = 'Defeated'"
-position = 'after'
-match_indent = true
-payload = '''
-elseif G.GAME.round_resets.blind.small then
-    G.GAME.round_resets.blind_states.Small = 'Defeated'
-elseif G.GAME.round_resets.blind.big then
-    G.GAME.round_resets.blind_states.Big = 'Defeated'
-'''
-
-# Handle setting new blinds
-[[patches]]
-[patches.pattern]
-target = 'blind.lua'
-match_indent = true
-position = 'before'
-pattern = '''
-self.boss = blind and not not blind.boss
-'''
-payload = '''
-self.small = blind and not not blind.small
-self.big = blind and not not blind.big
-'''

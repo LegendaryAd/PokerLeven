@@ -1,3 +1,4 @@
+---@diagnostic disable: need-check-nil
 mod_dir = ''..SMODS.current_mod.path
 
 SMODS.current_mod.optional_features = {
@@ -11,7 +12,7 @@ pokerleven_config = SMODS.current_mod.config
 local sprite, load_error = SMODS.load_file("sprites.lua")
 if load_error then
   sendDebugMessage ("The error is: "..load_error)
-else
+elseif sprite ~= nil then
   sprite()
 end
 
@@ -19,35 +20,39 @@ end
 local helper, load_error = SMODS.load_file("functions/inaaux.lua")
 if load_error then
   sendDebugMessage ("The error is: "..load_error)
-else
-  helper()
+elseif helper ~= nil then
+    helper()
 end
 
 --Load UI file
 local UI, load_error = SMODS.load_file("pokeui.lua")
 if load_error then
   sendDebugMessage ("The error is: "..load_error)
-else
-  UI()
+elseif UI ~= nil then
+    UI()
 end
 
 --Load consumable types
 local pconsumable_types = NFS.getDirectoryItems(mod_dir.."consumable types")
 
 for _, file in ipairs(pconsumable_types) do
-  sendDebugMessage ("The file is: "..file)
-  local con_type, load_error = SMODS.load_file("consumable types/"..file)
+  sendDebugMessage("The file is: " .. file)
+  local con_type, load_error = SMODS.load_file("consumable types/" .. file)
+
   if load_error then
-    sendDebugMessage ("The error is: "..load_error)
-  else
+    sendDebugMessage("The error is: " .. load_error)
+  elseif con_type ~= nil then
     local curr_type = con_type()
     if curr_type.init then curr_type:init() end
-    
+
     for i, item in ipairs(curr_type.list) do
       SMODS.ConsumableType(item)
     end
+  else
+    sendDebugMessage("con_type is nil for file: " .. file)
   end
 end
+
 
 --Load joker types
 local p_joker_types = NFS.getDirectoryItems(mod_dir.."misc")
@@ -58,11 +63,15 @@ for _, file in ipairs(p_joker_types) do
   if load_error then
     sendDebugMessage ("The error is: "..load_error)
   else
-    local curr_type = joker_type()
-    if curr_type.init then curr_type:init() end
-    
-    for i, item in ipairs(curr_type.list) do
-      SMODS.ObjectType(item)
+    if joker_type ~= nil then
+      local curr_type = joker_type()
+      if curr_type.init then curr_type:init() end
+
+      for i, item in ipairs(curr_type.list) do
+        SMODS.ObjectType(item)
+      end
+    else
+      sendDebugMessage("joker_type is nil for file: " .. file)
     end
   end
 end
@@ -83,7 +92,7 @@ for _, file in ipairs(consumables) do
         SMODS.Consumable(item)
     end
   end
-end 
+end
 
 --Load stickers
 local pseals = NFS.getDirectoryItems(mod_dir.."stickers")
@@ -96,7 +105,7 @@ for _, file in ipairs(pseals) do
   else
     local curr_sticker = sticker()
     if curr_sticker.init then curr_sticker:init() end
-    
+
     for i, item in ipairs(curr_sticker.list) do
       SMODS.Sticker(item)
     end
@@ -114,7 +123,7 @@ for _, file in ipairs(tags) do
   else
     local curr_tag = tag()
     if curr_tag.init then curr_tag:init() end
-    
+
     for i, item in ipairs(curr_tag.list) do
       SMODS.Tag(item)
     end
@@ -133,7 +142,7 @@ for _, file in ipairs(pboosters) do
   else
     local curr_booster = booster()
     if curr_booster.init then curr_booster:init() end
-    
+
     for i, item in ipairs(curr_booster.list) do
       SMODS.Booster(item)
     end
@@ -151,7 +160,7 @@ for _, file in ipairs(blinds) do
   else
     local curr_blind = blind()
     if curr_blind.init then curr_blind:init() end
-    
+
     for i, item in ipairs(curr_blind.list) do
       SMODS.Blind(item)
     end
@@ -177,10 +186,6 @@ for _, file in ipairs(pfiles) do
                 item.key = item.name
             end
 
-            item.in_pool = function(self)
-                return player_in_pool(self)
-            end
-            
             if item.ptype then
               if item.config and item.config.extra then
                 item.config.extra.ptype = item.ptype
@@ -203,6 +208,10 @@ for _, file in ipairs(pfiles) do
               elseif item.config then
                 item.config.extra = {pteam = item.pteam}
               end
+            end
+
+            item.in_pool = function(self)
+                return player_in_pool(self)
             end
 
             item.set_badges = ina_set_badges

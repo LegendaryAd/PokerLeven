@@ -6,7 +6,7 @@ local wild_tag = {
 	pos = { x = 0, y = 0 },
 	config = { type = "store_joker_create" },
 	key = "wild_tag",
-	min_ante = 2,
+	min_ante = 0,
     discovered = true,
 	loc_vars = function(self, info_queue)
 		return { vars = {} }
@@ -56,7 +56,42 @@ local wild_tag = {
 	}
 }
 
+local chain_tag = {
+	object_type = "Tag",
+	atlas = "Tags01",
+	name = "chain_tag",
+	order = 27,
+	pos = { x = 2, y = 0 },
+	config = {},
+	key = "chain_tag",
+    min_ante = 2,
+    discovered = true,
+	loc_vars = function(self, info_queue)
+		return { vars = {} }
+	end,
+	apply = function(self, tag, context)
+        if G.GAME.round_resets.blind == G.P_BLINDS.bl_small then
+            tag:yep('+', G.C.GREEN,function() 
+                        reroll_big()
+                    return true
+                end)
+        else
+            tag:yep('+', G.C.GREEN,function() 
+                        G.FUNCS.reroll_boss()
+                    return true
+                end)
+        end
+        
+        tag.triggered = true
+        return true
+	end,
+	ina_credits = {
+		art = {"Shadorossa"}
+	}
+}
+
+
 return{
     name = "Tags",
-    list = {wild_tag}
+    list = {wild_tag, chain_tag}
 }

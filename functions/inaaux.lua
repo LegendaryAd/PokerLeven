@@ -57,6 +57,15 @@ is_position = function(card, target_position)
   end
 end
 
+is_type = function(card, target_type)
+  if card.ability and (card.ability.extra and type(card.ability.extra) == "table" and target_type == card.ability.extra.ptype) then
+    return true
+  else
+    return false
+  end
+end
+
+
 get_adjacent_jokers = function(card)
   local jokers = {}
   if #G.jokers.cards > 1 then
@@ -67,10 +76,10 @@ get_adjacent_jokers = function(card)
         break
       end
     end
-    if pos > 1 and G.jokers.cards[pos-1] then 
+    if pos > 1 and G.jokers.cards[pos-1] then
       table.insert(jokers, G.jokers.cards[pos-1])
     end
-    if pos < #G.jokers.cards and G.jokers.cards[pos+1] then 
+    if pos < #G.jokers.cards and G.jokers.cards[pos+1] then
       table.insert(jokers, G.jokers.cards[pos+1])
     end
   end
@@ -89,7 +98,7 @@ drain = function(card, target, amount, one_way)
      target.ability.extra_value = target.ability.extra_value - amt
      amt_drained = amt
   end
-  
+
   if amt_drained > 0 then
     target:set_cost()
     card_eval_status_text(target, 'extra', nil, nil, nil, {message = localize('ina_val_down'), colour = G.C.RED})
@@ -98,7 +107,7 @@ drain = function(card, target, amount, one_way)
       card.ability.extra_value = card.ability.extra_value + amt_drained
       card:set_cost()
       card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_val_up')})
-    end    
+    end
   end
 end
 
@@ -127,12 +136,6 @@ type_tooltip = function(self, info_queue, center)
     end
     if center.ability.extra and type(center.ability.extra) == "table" and center.ability.extra.pposition then
         info_queue[#info_queue+1] = {set = 'Other', key = center.ability.extra.pposition}
-    end
-
-    if (center.ability and center.ability.extra and type(center.ability.extra) == "table" and ((center.ability.extra.energy_count or 0) + (center.ability.extra.c_energy_count or 0) > 0)) then
-        info_queue[#info_queue+1] = {set = 'Other', key = "energy", vars = {(center.ability.extra.energy_count or 0) + (center.ability.extra.c_energy_count or 0), energy_max + (G.GAME.energy_plus or 0)}}
-    elseif (center.ability and ((center.ability.energy_count or 0) + (center.ability.c_energy_count or 0) > 0)) then
-        info_queue[#info_queue+1] = {set = 'Other', key = "energy", vars = {(center.ability.energy_count or 0) + (center.ability.c_energy_count or 0), energy_max + (G.GAME.energy_plus or 0)}}
     end
 end
 
@@ -195,13 +198,13 @@ end
 ina_backend_evolve = function(card, to_key)
     local new_card = G.P_CENTERS[to_key]
     if card.config.center == new_card then return end
-  
+
     local old_key = card.config.center.key
-  
+
     if card.ability.perishable and card.ability.perish_tally > 0 then
       card.ability.perish_tally = G.GAME.perishable_rounds
     end
-  
+
     local names_to_keep = {"targets", "rank", "id", "cards_scored", "upgrade", "mult", "mult_mod"}
     local values_to_keep = copy_scaled_values(card)
     if type(card.ability.extra) == "table" then
@@ -228,7 +231,7 @@ ina_backend_evolve = function(card, to_key)
           end
         end
       end
-  
+
     if new_card.soul_pos then
       card.children.floating_sprite = Sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS[new_card.atlas], new_card.soul_pos)
       card.children.floating_sprite.role.draw_major = card
@@ -238,7 +241,7 @@ ina_backend_evolve = function(card, to_key)
       card.children.floating_sprite:remove()
       card.children.floating_sprite = nil
     end
-  
+
     if not card.edition then
       card:juice_up()
       play_sound('generic1')
@@ -249,7 +252,7 @@ ina_backend_evolve = function(card, to_key)
       if card.edition.polychrome then play_sound('polychrome1', 1.2, 0.7) end
       if card.edition.negative then play_sound('negative', 1.5, 0.4) end
     end
-  
+
     local to_fix = {}
     for k,_ in pairs(G.GAME.used_jokers) do
       if not next(SMODS.find_card(k, true)) then
@@ -270,7 +273,7 @@ can_evolve = function(self, card, context, forced_key, ignore_step, allow_level)
       return false
     end
  end
-  
+
 level_evo = function(self, card, context, forced_key)
       if not card.ability.extra.rounds then return end
       if card.debuff then return end
@@ -312,7 +315,7 @@ scaling_evo = function (self, card, context, forced_key, current, target)
       end
     end
   end
-  
+
 
 
 get_family_keys = function(cardname, custom_prefix, card)
@@ -363,6 +366,9 @@ get_family_keys = function(cardname, custom_prefix, card)
   end
 
 player_in_pool = function (self)
+  if next(find_joker("Custom")) and self.ptype == "Wind" then
+    return true
+  end
   local name
   if not self.name and self.ability.name then
     name = self.ability.name
@@ -409,15 +415,15 @@ apply_type_sticker = function(card, sticker_type, property)
     end
   end
 
-  if property == "type" then 
+  if property == "type" then
     if card.ability and card.ability.extra and type(card.ability.extra) == "table" and card.ability.extra.ptype then
-      card.ability.extra.ptype = apply_type 
+      card.ability.extra.ptype = apply_type
     end
   end
 
-  if property == "position" then 
+  if property == "position" then
     if card.ability and card.ability.extra and type(card.ability.extra) == "table" and card.ability.extra.pposition then
-      card.ability.extra.pposition = apply_type 
+      card.ability.extra.pposition = apply_type
     end
   end
 end
@@ -442,7 +448,7 @@ function get_pack(_key, _type)
   end
   local poll = pseudorandom(pseudoseed((_key or 'pack_generic')..G.GAME.round_resets.ante)) * cume
   for k, v in ipairs(G.P_CENTER_POOLS['Booster']) do
-    if not G.GAME.banned_keys[v.key] then 
+    if not G.GAME.banned_keys[v.key] then
       if not _type or _type == v.kind then
         it = it + get_weight(v)
       end
@@ -468,7 +474,7 @@ function get_flush(hand)
       local suit = suits[j]
       local flush_count = 0
       for i=1, #hand do
-        if hand[i]:is_suit(suit, nil, true) then flush_count = flush_count + 1;  t[#t+1] = hand[i] end 
+        if hand[i]:is_suit(suit, nil, true) then flush_count = flush_count + 1;  t[#t+1] = hand[i] end
       end
       if flush_count >= (5 - (chamaleon and 1 or 0)) then
         table.insert(ret, t)
@@ -521,7 +527,10 @@ convert_cards_to = function(cards, t, noflip, immediate)
       vary_rank(cards[i], nil, nil, immediate)
     end
     if t.set_rank then
-      conversion_event_helper(function() SMODS.change_base(cards[i], nil, t.set_rank) end, nil, immediate)
+      conversion_event_helper(function()
+        local new_card = SMODS.change_base(cards[i], nil, t.set_rank)
+        if new_card then cards[i] = new_card end
+      end, nil, immediate)
     end
     if t.up or t.down then
       vary_rank(cards[i], not t.up, nil, immediate)
@@ -596,11 +605,11 @@ vary_rank = function(card, decrease, seed, immediate)
   end
 
   if immediate then
-    SMODS.change_base(card, nil, next_rank)
+    card = SMODS.change_base(card, nil, next_rank)
   else
     G.E_MANAGER:add_event(Event({
       func = function()
-        SMODS.change_base(card, nil, next_rank)
+        card = SMODS.change_base(card, nil, next_rank)
         return true
       end
     }))
@@ -609,7 +618,7 @@ end
 
 -- Creates random card
 create_random_ina_joker = function(pseed, inararity, area, inateam)
-  local create_args = {set = "Joker", area = inaarea, key = ''}
+  local create_args = {set = "Joker", key = ''}
   create_args.key = get_random_joker_key(pseed, inararity, area, inateam)
 
   return SMODS.create_card(create_args)
@@ -620,13 +629,13 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys)
   local inaarea = area or G.jokers
   local ina_key
   exclude_keys = exclude_keys or {}
-  
+
   if inararity then
     if string.lower(inararity) == "common" then inararity = 1 end
     if string.lower(inararity) == "uncommon" then inararity = 2 end
     if string.lower(inararity) == "rare" then inararity = 3 end
   end
-  
+
   for k, v in pairs(G.P_CENTERS) do
     if v.pteam and not (inararity and v.rarity ~= inararity)
        and not (inateam and inateam ~= v.pteam) and player_in_pool(v) and not v.aux_ina and not exclude_keys[v.key] then
@@ -643,7 +652,7 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys)
       end
     end
   end
-  
+
   if #ina_keys > 0 then
     ina_key = pseudorandom_element(ina_keys, pseudoseed(pseed))
   else
@@ -665,7 +674,9 @@ function SMODS.create_mod_badges(obj, badges)
             local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
             local calced_text_width = 0
             for _, c in utf8.chars(text) do
+---@diagnostic disable-next-line: undefined-field
                 local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE
+---@diagnostic disable-next-line: undefined-field
                     + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
                 calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
             end
@@ -673,7 +684,7 @@ function SMODS.create_mod_badges(obj, badges)
         end
 
         local strings = { "Pokerleven" }
-        
+
         if obj.ina_credits.idea then
           for i = 1, #obj.ina_credits.idea do
               localized = localize({ type = "variable", key = "ina_idea", vars = { obj.ina_credits.idea[i] } })[1]
@@ -746,8 +757,8 @@ end
 function get_new_small()
     G.GAME.perscribed_small = G.GAME.perscribed_small or {
     }
-    if G.GAME.perscribed_small and G.GAME.perscribed_small[G.GAME.round_resets.ante] then 
-        local ret_boss = G.GAME.perscribed_small[G.GAME.round_resets.ante] 
+    if G.GAME.perscribed_small and G.GAME.perscribed_small[G.GAME.round_resets.ante] then
+        local ret_boss = G.GAME.perscribed_small[G.GAME.round_resets.ante]
         G.GAME.perscribed_small[G.GAME.round_resets.ante] = nil
         return ret_boss
     end
@@ -770,7 +781,7 @@ function get_new_small()
 
     for k, v in pairs(eligible_bosses) do
       local mod = G.P_BLINDS[k] and G.P_BLINDS[k].mod
-      if pokerleven_config.no_custom_middle_blinds then
+      if pokerleven_config.custom_middle_blinds == false then
         if mod and mod.id == 'Pokerleven' then
           eligible_bosses[k] = nil
         end
@@ -782,15 +793,15 @@ function get_new_small()
     end
 
     local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
-    
+
     return boss
 end
 
 function get_new_big()
     G.GAME.perscribed_big = G.GAME.perscribed_big or {
     }
-    if G.GAME.perscribed_big and G.GAME.perscribed_big[G.GAME.round_resets.ante] then 
-        local ret_boss = G.GAME.perscribed_big[G.GAME.round_resets.ante] 
+    if G.GAME.perscribed_big and G.GAME.perscribed_big[G.GAME.round_resets.ante] then
+        local ret_boss = G.GAME.perscribed_big[G.GAME.round_resets.ante]
         G.GAME.perscribed_big[G.GAME.round_resets.ante] = nil
         return ret_boss
     end
@@ -813,8 +824,8 @@ function get_new_big()
 
     for k, v in pairs(eligible_bosses) do
         local is_mod = G.P_BLINDS[k].mod and G.P_BLINDS[k].mod.id == 'Pokerleven'
-        
-        if pokerleven_config.no_custom_middle_blinds then
+
+        if pokerleven_config.custom_middle_blinds == false then
             if is_mod then
                 eligible_bosses[k] = nil
             end
@@ -826,6 +837,83 @@ function get_new_big()
     end
 
     local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
-    
+
     return boss
+end
+
+-- CUSTOM PROBABILITIES HOOK
+local original_get_probability_vars = SMODS.get_probability_vars
+function SMODS.get_probability_vars(trigger_obj, base_numerator, base_denominator, identifier, from_roll)
+    local lucky = G.GAME.probabilities.new_lucky or G.GAME.probabilities.normal
+    if identifier == "lucky_mult" then
+        return G.GAME.probabilities.normal, 5
+    elseif identifier == "lucky_money" then
+        return lucky, 15
+    end
+    return original_get_probability_vars(trigger_obj, base_numerator, base_denominator, identifier, from_roll)
+end
+
+-- RERROLL BIG BLINDS
+reroll_big = function(e)
+  stop_use()
+  G.GAME.round_resets.big_rerolled = true
+  G.from_boss_tag = nil  -- Por si quieres reutilizar el flag
+  G.CONTROLLER.locks.big_reroll = true
+
+  G.E_MANAGER:add_event(Event({
+      trigger = 'immediate',
+      func = function()
+        play_sound('other1')
+        G.blind_select_opts.big:set_role({xy_bond = 'Weak'})
+        G.blind_select_opts.big.alignment.offset.y = 20
+        return true
+      end
+  }))
+
+  G.E_MANAGER:add_event(Event({
+    trigger = 'after',
+    delay = 0.3,
+    func = (function()
+      local par = G.blind_select_opts.big.parent
+      G.GAME.round_resets.blind_choices.Big = get_new_big()
+
+      G.blind_select_opts.big:remove()
+      G.blind_select_opts.big = UIBox{
+        T = {par.T.x, 0, 0, 0},
+        definition = {
+          n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={
+            UIBox_dyn_container({create_UIBox_blind_choice('Big')}, false, get_blind_main_colour('Big'), mix_colours(G.C.BLACK, get_blind_main_colour('Big'), 0.8))
+          }
+        },
+        config = {
+          align = "bmi",
+          offset = {x=0, y=G.ROOM.T.y + 9},
+          major = par,
+          xy_bond = 'Weak'
+        }
+      }
+
+      par.config.object = G.blind_select_opts.big
+      par.config.object:recalculate()
+      G.blind_select_opts.big.parent = par
+      G.blind_select_opts.big.alignment.offset.y = 0
+
+      G.E_MANAGER:add_event(Event({
+        blocking = false,
+        trigger = 'after',
+        delay = 0.5,
+        func = function()
+          G.CONTROLLER.locks.big_reroll = nil
+          return true
+        end
+      }))
+
+      save_run()
+      for i = 1, #G.GAME.tags do
+        if G.GAME.tags[i]:apply_to_run({type = 'new_blind_choice'}) then break end
+      end
+
+      return true
+    end)
+  }))
 end

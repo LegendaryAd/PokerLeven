@@ -59,6 +59,15 @@ SMODS.Atlas({
 }):register()
 
 SMODS.Atlas({
+    key = "finalBossBlinds",
+    atlas_table = "ANIMATION_ATLAS",
+    path = "finalBossBlinds.png",
+    px = 34,
+    py = 34,
+    frames = 34,
+}):register()
+
+SMODS.Atlas({
     key = "smallBlinds01",
     atlas_table = "ANIMATION_ATLAS",
     path = "smallBlinds01.png",
@@ -108,6 +117,7 @@ G.ARGS.LOC_COLOURS["occult"] = HEX("4B0082")
 G.ARGS.LOC_COLOURS["royal academy"] = HEX("2C5E4F")  
 G.ARGS.LOC_COLOURS["wild"] = HEX("797B49")     
 G.ARGS.LOC_COLOURS["brain"] = HEX("888888")  
+G.ARGS.LOC_COLOURS["otaku"] = HEX("A754C4")
 G.ARGS.LOC_COLOURS["pink"] = HEX("FF7ABF")
 
   return custom_colours(_c, _default)
