@@ -443,7 +443,9 @@ return {
 
             j_ina_Barista = {
                 name = "Barista",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:wind}Master{}",
+                    "La última carta jugada da",
+                    "{X:chips,C:white}X2{} {C:attention}sus{} chips a mayores" }
             },
 
             j_ina_Builder = {
@@ -701,7 +703,7 @@ return {
             ina_evolve_success = "¡Ha crecido!",
             ina_val_down = "¡Drenado!",
             ina_training = "¡Cambio!",
-            ina_next_match = "Partido",
+            ina_next_match = "Siguiente",
             k_team_pack = "Pack de Equipo",
             ina_convert = "¡Convertido!",
             ina_potential_increased = "¡Potencial aumentado!",
