@@ -10,11 +10,13 @@ return {
             },
             bl_ina_baseball_all_stars = {
                 name = "Grandes Bateadores",
-                text = {}
+                text = { "Gana con 4 manos" }
             },
             bl_ina_strange_guys = {
                 name = "Sospechosos",
-                text = {}
+                text = { "La primera carta jugada",
+                    "de la primera mano se",
+                    "convierte en otra aleatoria" }
             },
             bl_ina_inazuma08 = {
                 name = "Inazuma 08",

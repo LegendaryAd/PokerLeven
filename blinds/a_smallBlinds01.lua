@@ -7,10 +7,10 @@ local benchers = {
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
     dollars = 3,
-    small = { min = 0 },
+    small = { min = 2 },
 }
 
-local baseball = {
+local baseball = B({
     object_type = "SmallBlind",
     key = "baseball_all_stars",
     pos = { x = 0, y = 1 },
@@ -19,10 +19,15 @@ local baseball = {
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
     dollars = 3,
-    small = { min = 2 },
-}
+    small = { min = 3 },
+    set_blind = function(self)
+        local target_hands = 4
+        G.GAME.blind.hands_sub = G.GAME.round_resets.hands - target_hands
+        ease_hands_played(-G.GAME.blind.hands_sub)
+    end
+})
 
-local strange = {
+local strange = B({
     object_type = "SmallBlind",
     key = "strange_guys",
     pos = { x = 0, y = 2 },
@@ -31,8 +36,22 @@ local strange = {
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
     dollars = 3,
-    small = { min = 2 },
-}
+    small = { min = 0 },
+    calculate = function(self, blind, context)
+        if context.cardarea == G.play and context.other_card == context.scoring_hand[1]
+            and context.individual and G.GAME.current_round.hands_played == 0 then
+            local rank = tostring(math.random(2, 14))
+            local suit = { "Hearts", "Clubs", "Spades", "Diamonds" }
+            local selected_suit = suit[math.random(1, #suit)]
+            convert_cards_to(context.other_card, { set_rank = rank, suit_conv = selected_suit })
+            return {
+                message = localize("ina_convert"),
+                colour = G.C.XMULT,
+                card = context.other_card,
+            }
+        end
+    end
+})
 
 local inazuma08 = {
     object_type = "SmallBlind",
@@ -58,7 +77,7 @@ local inazuma_town = {
     small = { min = 2 },
 }
 
-local glasses = {
+local glasses = B({
     object_type = "SmallBlind",
     key = "glasses",
     pos = { x = 0, y = 5 },
@@ -85,7 +104,7 @@ local glasses = {
             end
         end
     end
-}
+})
 
 return {
     name = "SmallBlinds01",
