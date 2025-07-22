@@ -415,7 +415,10 @@ return {
             -- Inazuma Eleven
             j_ina_Hillman = {
                 name = "Hillman",
-                text = { "{C:mountain}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:mountain}Restaurante Ray Ray{}",
+                    "Gana {X:chips,C:white}X#1#{} fichas por",
+                    "{C:pink}Strat{} usada esta partida",
+                    "{C:inactive}Actualmente{} {X:chips,C:white}X#2#{}" }
             },
 
             j_ina_Island = {

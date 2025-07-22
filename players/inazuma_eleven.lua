@@ -1,25 +1,49 @@
 -- Inazuma Eleven Jokers
-
-local hillman = {
+local hillman = J({
   name = "Hillman",
   pos = { x = 7, y = 3 },
-  config = {},
-  rarity = 2, -- Rare
+  config = { extra = { Xchip_mod = 0.2, triggered = false } },
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return {
+      vars = {
+        center.ability.extra.Xchip_mod,
+        1 + center.ability.extra.Xchip_mod * (G.GAME.strat_cards_used or 0) }
+    }
+  end,
+  rarity = 3, -- Rare
   pools = { ["Inazuma Eleven"] = true },
-  cost = 6,
+  cost = 8,
   atlas = "Jokers01",
   ptype = "Mountain",
   pposition = "GK",
   pteam = "Inazuma Eleven",
   blueprint_compat = true,
   calculate = function(self, card, context)
+    if context.cardarea == G.jokers and context.joker_main then
+      return {
+        message = localize {
+          type = 'variable',
+          key = 'a_xchips',
+          vars = { 1 + card.ability.extra.Xchip_mod * (G.GAME.strat_cards_used or 0) } },
+        colour = G.C.CHIPS,
+        Xchip_mod = 1 + card.ability.extra.Xchip_mod * (G.GAME.strat_cards_used or 0),
+      }
+    end
   end,
-}
+  ina_credits = {
+    idea = { 'LegendaryAd' }
+  }
+})
 
-local island = {
+local island = J({
   name = "Island",
   pos = { x = 8, y = 3 },
   config = {},
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return {}
+  end,
   rarity = 1, -- Common
   pools = { ["Inazuma Eleven"] = true },
   cost = 5,
@@ -30,9 +54,9 @@ local island = {
   blueprint_compat = true,
   calculate = function(self, card, context)
   end,
-}
+})
 
-local sweet = {
+local sweet = J({
   name = "Sweet",
   pos = { x = 9, y = 3 },
   config = {
@@ -88,12 +112,16 @@ local sweet = {
       }
     end
   end
-}
+})
 
-local butler = {
+local butler = J({
   name = "Butler",
   pos = { x = 10, y = 3 },
   config = {},
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return {}
+  end,
   rarity = 1, -- Common
   pools = { ["Inazuma Eleven"] = true },
   cost = 4,
@@ -104,12 +132,16 @@ local butler = {
   blueprint_compat = true,
   calculate = function(self, card, context)
   end,
-}
+})
 
-local barista = {
+local barista = J({
   name = "Barista",
   pos = { x = 11, y = 3 },
   config = {},
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return {}
+  end,
   rarity = 2, -- Uncommon
   pools = { ["Inazuma Eleven"] = true },
   cost = 5,
@@ -120,12 +152,16 @@ local barista = {
   blueprint_compat = true,
   calculate = function(self, card, context)
   end,
-}
+})
 
-local builder = {
+local builder = J({
   name = "Builder",
   pos = { x = 12, y = 3 },
   config = {},
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return {}
+  end,
   rarity = 2, -- Uncommon
   pools = { ["Inazuma Eleven"] = true },
   cost = 5,
@@ -136,9 +172,9 @@ local builder = {
   blueprint_compat = true,
   calculate = function(self, card, context)
   end,
-}
+})
 
 return {
-  name = "Raimon",
+  name = "Inazuma Eleven",
   list = { hillman, island, sweet, butler, barista, builder },
 }

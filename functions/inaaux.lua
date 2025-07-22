@@ -1,7 +1,7 @@
 family = {
 }
 
--- Credits to inarmon
+-- Credits to pokermon
 find_player_type = function(target_type)
   local found = {}
   if G.jokers and G.jokers.cards then
@@ -769,7 +769,7 @@ function SMODS.create_mod_badges(obj, badges)
   end
 end
 
--- CUSTOM Small Y Big Blinds
+-- CUSTOM Small And Big Blinds
 function get_new_small()
   G.GAME.perscribed_small = G.GAME.perscribed_small or {
   }
@@ -932,4 +932,20 @@ reroll_big = function(e)
       return true
     end)
   }))
+end
+
+-- * For using context autocomplete inside jokers
+---@param data SMODS.Joker
+---@return SMODS.Joker
+function J(data)
+  return data
+end
+
+-- * Strat cards used on run counter
+local original_card_use = Card.use_consumeable
+function Card:use_consumeable(area, copier)
+  if self.ability.set == "Strat" then
+    G.GAME.strat_cards_used = (G.GAME.strat_cards_used or 0) + 1
+  end
+  return original_card_use(self, area, copier)
 end
