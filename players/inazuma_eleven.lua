@@ -111,7 +111,10 @@ local sweet = J({
         end
       }
     end
-  end
+  end,
+  ina_credits = {
+    idea = { 'LegendaryAd' }
+  }
 })
 
 local butler = J({
