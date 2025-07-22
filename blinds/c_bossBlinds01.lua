@@ -11,7 +11,7 @@ local goalkeeper = {
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
-    boss_colour = HEX("ffa726") ,
+    boss_colour = HEX("ffa726"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
             and card.config.center.pposition == "GK" then
@@ -19,9 +19,9 @@ local goalkeeper = {
         end
         return false
     end,
-	ina_credits = {
-		art = {"Shadorossa"}
-	}
+    ina_credits = {
+        art = { "Shadorossa" }
+    }
 }
 
 local forward = {
@@ -37,7 +37,7 @@ local forward = {
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
-    boss_colour = HEX("ef5350") ,
+    boss_colour = HEX("ef5350"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
             and card.config.center.pposition == "GK" then
@@ -45,9 +45,9 @@ local forward = {
         end
         return false
     end,
-	ina_credits = {
-		art = {"Shadorossa"}
-	}
+    ina_credits = {
+        art = { "Shadorossa" }
+    }
 }
 
 local defense = {
@@ -63,7 +63,7 @@ local defense = {
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
-    boss_colour = HEX("66bb6a")  ,
+    boss_colour = HEX("66bb6a"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
             and card.config.center.pposition == "MF" then
@@ -71,9 +71,9 @@ local defense = {
         end
         return false
     end,
-	ina_credits = {
-		art = {"Shadorossa"}
-	}
+    ina_credits = {
+        art = { "Shadorossa" }
+    }
 }
 
 local midfielder = {
@@ -89,7 +89,7 @@ local midfielder = {
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
-    boss_colour = HEX("4fc3f7") ,
+    boss_colour = HEX("4fc3f7"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
             and card.config.center.pposition == "DF" then
@@ -97,9 +97,9 @@ local midfielder = {
         end
         return false
     end,
-	ina_credits = {
-		art = {"Shadorossa"}
-	}
+    ina_credits = {
+        art = { "Shadorossa" }
+    }
 }
 
 local fire = {
@@ -115,7 +115,7 @@ local fire = {
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
-    boss_colour = HEX("d32f2f")  ,
+    boss_colour = HEX("d32f2f"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
             and card.config.center.ptype == "Fire" then
@@ -123,9 +123,9 @@ local fire = {
         end
         return false
     end,
-	ina_credits = {
-		art = {"Shadorossa"}
-	}
+    ina_credits = {
+        art = { "Shadorossa" }
+    }
 }
 
 local mountain = {
@@ -149,9 +149,9 @@ local mountain = {
         end
         return false
     end,
-	ina_credits = {
-		art = {"Shadorossa"}
-	}
+    ina_credits = {
+        art = { "Shadorossa" }
+    }
 }
 
 local wind = {
@@ -167,7 +167,7 @@ local wind = {
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
-    boss_colour = HEX("81d4fa") ,
+    boss_colour = HEX("81d4fa"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
             and card.config.center.ptype == "Wind" then
@@ -175,9 +175,9 @@ local wind = {
         end
         return false
     end,
-	ina_credits = {
-		art = {"Shadorossa"}
-	}
+    ina_credits = {
+        art = { "Shadorossa" }
+    }
 }
 
 local forest = {
@@ -201,9 +201,9 @@ local forest = {
         end
         return false
     end,
-	ina_credits = {
-		art = {"Shadorossa"}
-	}
+    ina_credits = {
+        art = { "Shadorossa" }
+    }
 }
 
 local inazuma_og = {
@@ -255,20 +255,20 @@ local zeus = {
     object_type = "Blind",
     name = "ina-zeus",
     key = "zeus",
-    pos = { x = 0, y = 16 },
+    pos = { x = 0, y = 0 },
     boss = {
         min = 10000,
     },
     discovered = true,
     mult = 2,
-    atlas = "bossBlinds",
+    atlas = "finalBossBlinds",
     order = 1,
     boss_colour = HEX("2e7d32"),
 }
 
 return {
     name = "Boss Blinds",
-    list = {goalkeeper, forward, defense,
+    list = { goalkeeper, forward, defense,
         midfielder, fire, mountain, wind,
-        forest, inazuma_og, royal_blind, kirkwood, zeus}
+        forest, inazuma_og, royal_blind, kirkwood, zeus }
 }
