@@ -24,6 +24,19 @@ elseif helper ~= nil then
   helper()
 end
 
+--Load helpers
+local helpers = NFS.getDirectoryItems(mod_dir .. "helpers")
+for _, file in ipairs(helpers) do
+  sendDebugMessage("The file is: " .. file)
+
+  local helper, load_error = SMODS.load_file("helpers/" .. file)
+  if load_error then
+    sendDebugMessage("The error is: " .. load_error)
+  elseif helper ~= nil then
+    helper()
+  end
+end
+
 --Load UI file
 local UI, load_error = SMODS.load_file("pokeui.lua")
 if load_error then

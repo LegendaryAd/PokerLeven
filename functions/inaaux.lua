@@ -934,13 +934,6 @@ reroll_big = function(e)
   }))
 end
 
--- * For using context autocomplete inside jokers
----@param data SMODS.Joker
----@return SMODS.Joker
-function J(data)
-  return data
-end
-
 -- * Strat cards used on run counter
 local original_card_use = Card.use_consumeable
 function Card:use_consumeable(area, copier)
