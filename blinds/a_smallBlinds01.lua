@@ -43,6 +43,7 @@ local strange = B({
             local rank = tostring(math.random(2, 14))
             local suit = { "Hearts", "Clubs", "Spades", "Diamonds" }
             local selected_suit = suit[math.random(1, #suit)]
+            --TODO REVISAR PORQUE SOLO SE PUEDE HACER UN CONVERT DE UNA COSA A LA VEZ
             convert_cards_to(context.other_card, { set_rank = rank, suit_conv = selected_suit })
             return {
                 message = localize("ina_convert"),
