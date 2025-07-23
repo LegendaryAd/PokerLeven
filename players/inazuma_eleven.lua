@@ -79,6 +79,9 @@ local island = J({
       }
     end
   end,
+  ina_credits = {
+    idea = { 'Shadorossa' }
+  }
 })
 
 local sweet = J({
