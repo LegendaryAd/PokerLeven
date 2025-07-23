@@ -7,7 +7,7 @@ local benchers = {
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
     dollars = 3,
-    small = { min = 2 },
+    small = { min = 0 },
 }
 
 local baseball = B({
@@ -19,7 +19,7 @@ local baseball = B({
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
     dollars = 3,
-    small = { min = 3 },
+    small = { min = 2 },
     set_blind = function(self)
         local target_hands = 4
         G.GAME.blind.hands_sub = G.GAME.round_resets.hands - target_hands
@@ -36,7 +36,7 @@ local strange = B({
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
     dollars = 3,
-    small = { min = 0 },
+    small = { min = 2 },
     calculate = function(self, blind, context)
         if context.cardarea == G.play and context.other_card == context.scoring_hand[1]
             and context.individual and G.GAME.current_round.hands_played == 0 then
