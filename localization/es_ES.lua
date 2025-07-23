@@ -441,7 +441,12 @@ return {
 
             j_ina_Butler = {
                 name = "Butler",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:forest}Rentista{}",
+                    "La deuda ahora puede",
+                    "llegar hasta {C:money}-#1#${}",
+                    "por cada {C:money}-#2#${}, cada",
+                    "carta que puntue gana",
+                    "{C:chips}+#3#{} fichas" }
             },
 
             j_ina_Barista = {

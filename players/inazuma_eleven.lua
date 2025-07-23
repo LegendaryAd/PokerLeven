@@ -148,10 +148,20 @@ local sweet = J({
 local butler = J({
   name = "Butler",
   pos = { x = 10, y = 3 },
-  config = {},
+  config = {
+    extra = {
+      dollars_mod = 4,
+      chips_mod = 1,
+      triggered = false,
+      bankrupt_at = 20
+    }
+  },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return {}
+    return {
+      vars = { center.ability.extra.bankrupt_at, center.ability.extra.dollars_mod,
+        center.ability.extra.chips_mod }
+    }
   end,
   rarity = 1, -- Common
   pools = { ["Inazuma Eleven"] = true },
@@ -162,7 +172,28 @@ local butler = J({
   pteam = "Inazuma Eleven",
   blueprint_compat = true,
   calculate = function(self, card, context)
+    if context.individual and context.scoring_hand and context.cardarea == G.play
+        and context.other_card and to_big(G.GAME.dollars) < to_big(0) then
+      local raw_division = -to_number(G.GAME.dollars) / 4
+      local chips_to_add = math.floor(raw_division) * card.ability.extra.chips_mod
+      if chips_to_add ~= 0 then
+        context.other_card.ability.bonus =
+            context.other_card.ability.bonus + chips_to_add
+        card.ability.extra.triggered = true
+        return {
+          message = localize('k_upgrade_ex'),
+          colour = G.C.CHIPS,
+          card = context.other_card
+        }
+      end
+    end
   end,
+  add_to_deck = function(self, card, from_debuff)
+    G.GAME.bankrupt_at = G.GAME.bankrupt_at - card.ability.extra.bankrupt_at
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    G.GAME.bankrupt_at = 0
+  end
 })
 
 local barista = J({
