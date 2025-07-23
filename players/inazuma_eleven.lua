@@ -39,10 +39,15 @@ local hillman = J({
 local island = J({
   name = "Island",
   pos = { x = 8, y = 3 },
-  config = {},
+  config = { extra = { current_chips = 0, chips_mod = 10, triggered = false } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return {}
+    return {
+      vars = {
+        center.ability.extra.chips_mod,
+        center.ability.extra.current_chips
+      }
+    }
   end,
   rarity = 1, -- Common
   pools = { ["Inazuma Eleven"] = true },
@@ -53,6 +58,23 @@ local island = J({
   pteam = "Inazuma Eleven",
   blueprint_compat = true,
   calculate = function(self, card, context)
+    if context.before and context.cardarea == G.jokers
+        and next(context.poker_hands['Two Pair']) and not context.blueprint then
+      card.ability.extra.current_chips = card.ability.extra.current_chips + card.ability.extra.chips_mod
+      return {
+        message = localize('k_upgrade_ex'),
+        colour = G.C.CHIPS,
+        card = card
+      }
+    end
+
+    if context.scoring_hand and context.joker_main then
+      return {
+        message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.current_chips } },
+        colour = G.C.CHIPS,
+        chip_mod = card.ability.extra.current_chips
+      }
+    end
   end,
 })
 
