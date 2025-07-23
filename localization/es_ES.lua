@@ -453,7 +453,11 @@ return {
 
             j_ina_Builder = {
                 name = "Builder",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:fire}A Construir{}",
+                    "Si la mano jugada contiene",
+                    " {C:attention}Full{} transforma una carta",
+                    "al azar en {C:attention}Acero{}",
+                    "y {C:mult}destruye{} otra carta" }
             },
 
             -- Shuriken
