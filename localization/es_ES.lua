@@ -425,7 +425,10 @@ return {
 
             j_ina_Island = {
                 name = "Island",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:forest}Zig zag chispeante{}",
+                    "Gana {C:chips}+#1#{} fichas si la mano jugada",
+                    "contiene {C:attention}doble pareja{}",
+                    "{C:inactive}Actualmente{} {C:chips}+#2#{}" }
             },
 
             j_ina_Sweet = {
