@@ -40,11 +40,11 @@ local strange = B({
     calculate = function(self, blind, context)
         if context.cardarea == G.play and context.other_card == context.scoring_hand[1]
             and context.individual and G.GAME.current_round.hands_played == 0 then
-            local rank = tostring(math.random(2, 14))
+            local rank = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14" }
+            local selected_rank = pseudorandom_element(rank, pseudoseed('rank'))
             local suit = { "Hearts", "Clubs", "Spades", "Diamonds" }
-            local selected_suit = suit[math.random(1, #suit)]
-            --TODO REVISAR PORQUE SOLO SE PUEDE HACER UN CONVERT DE UNA COSA A LA VEZ
-            convert_cards_to(context.other_card, { set_rank = rank, suit_conv = selected_suit })
+            local selected_suit = pseudorandom_element(suit, pseudoseed('suit'))
+            convert_cards_to(context.other_card, { set_rank = selected_rank, suit_conv = selected_suit })
             return {
                 message = localize("ina_convert"),
                 colour = G.C.XMULT,
