@@ -206,7 +206,7 @@ local barista = J({
   end,
   rarity = 2, -- Uncommon
   pools = { ["Inazuma Eleven"] = true },
-  cost = 5,
+  cost = 6,
   atlas = "Jokers01",
   ptype = "Wind",
   pposition = "FW",
@@ -239,7 +239,7 @@ local builder = J({
   end,
   rarity = 2, -- Uncommon
   pools = { ["Inazuma Eleven"] = true },
-  cost = 5,
+  cost = 6,
   atlas = "Jokers01",
   ptype = "Fire",
   pposition = "FW",
