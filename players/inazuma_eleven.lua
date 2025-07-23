@@ -61,6 +61,8 @@ local island = J({
     if context.before and context.cardarea == G.jokers
         and next(context.poker_hands['Two Pair']) and not context.blueprint then
       card.ability.extra.current_chips = card.ability.extra.current_chips + card.ability.extra.chips_mod
+
+      context.card.ability.extra.triggered = true
       return {
         message = localize('k_upgrade_ex'),
         colour = G.C.CHIPS,
@@ -69,6 +71,7 @@ local island = J({
     end
 
     if context.scoring_hand and context.joker_main then
+      context.card.ability.extra.triggered = true
       return {
         message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.current_chips } },
         colour = G.C.CHIPS,
