@@ -495,7 +495,8 @@ return {
 
             j_ina_Star = {
                 name = "Star",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:wind}Regate Múltiple{}", "Por cada carta de {C:red}diamantes{}",
+                    "gana {C:money}+#1#${} y {C:mult}+#2#{} Mult", }
             },
 
             j_ina_Cleats = {
@@ -734,7 +735,8 @@ return {
             ina_sell_increased = "¡Jokers mejorados!",
             ina_settings_no_custom_middle_blinds = "Sin Ciegas Pequeñas o Grandes personalizadas",
             ina_settings_middle_blinds_abilities = "Las Ciegas Pequeñas y Grandes no tendrán habilidades",
-            ina_destroy = "¡Destruido!"
+            ina_destroy = "¡Destruido!",
+            ina_dribbling = "¡Regate!"
         },
         high_scores = {},
         labels = {},
