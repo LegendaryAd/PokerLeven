@@ -436,7 +436,8 @@ return {
             j_ina_Sweet = {
                 name = "Sweet",
                 text = { "{C:mountain}Reclutamiento{}",
-                    "Crea un joker del {X:raimon,C:white}Raimon{} o {X:inazuma_eleven,C:white}I.Eleven{}",
+                    "Crea un comodín del {X:raimon,C:white}Raimon{} o {X:inazuma_eleven,C:white}I.Eleven",
+                    "cuando se selecciona la ciega{}",
                     "Puede ser {C:chips}Común{} o {C:green}Poco Común{}",
                     "{C:inactive}Tienes que tener espacio{}" }
             },
@@ -448,7 +449,8 @@ return {
                     "llegar hasta {C:money}-#1#${}",
                     "por cada {C:money}-#2#${}, cada",
                     "carta que puntue gana",
-                    "{C:chips}+#3#{} fichas" }
+                    "{C:chips}+#3#{} fichas para el",
+                    "resto de la partida" }
             },
 
             j_ina_Barista = {
