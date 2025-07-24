@@ -36,7 +36,7 @@ local strange = B({
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
     dollars = 3,
-    small = { min = 0 },
+    small = { min = 2 },
     calculate = function(self, blind, context)
         if context.cardarea == G.play and context.other_card == context.scoring_hand[1]
             and context.individual and G.GAME.current_round.hands_played == 0 then
@@ -53,19 +53,19 @@ local strange = B({
     end
 })
 
-local inazuma08 = {
+local inazuma08 = B({
     object_type = "SmallBlind",
     key = "inazuma08",
     pos = { x = 0, y = 3 },
     discovered = true,
-    mult = 1,
+    mult = 1.25,
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
-    dollars = 3,
+    dollars = 8,
     small = { min = 2 },
-}
+})
 
-local inazuma_town = {
+local inazuma_town = B({
     object_type = "SmallBlind",
     key = "inazuma_town",
     pos = { x = 0, y = 4 },
@@ -74,8 +74,14 @@ local inazuma_town = {
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
     dollars = 3,
-    small = { min = 2 },
-}
+    small = { min = 0 },
+
+    calculate = function(self, blind, context)
+        if context.poker_hands then
+
+        end
+    end
+})
 
 local glasses = B({
     object_type = "SmallBlind",
