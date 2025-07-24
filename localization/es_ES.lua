@@ -503,9 +503,9 @@ return {
                 name = "Cleats",
                 text = { "{C:wind}Luna creciente{}",
                     "Al seleccionar la ciega",
-                    "transforma el jugador de",
+                    "{C:green}transforma{} el jugador de",
                     "la derecha en otro",
-                    "de la misma rareza" }
+                    "de la misma {C:green}rareza{}" }
             },
 
             j_ina_Hattori = {

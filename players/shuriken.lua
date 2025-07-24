@@ -41,7 +41,7 @@ local hillfort = J({
     config = { extra = { triggered = false } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return { vars = { calculate_avg_sell_cost("Wind") } }
+        return { vars = { calculate_avg_sell_cost("Wind") or center.sell_cost } }
     end,
     rarity = 1, -- Common
     pools = { ["Shuriken"] = true },

@@ -155,24 +155,28 @@ end
 
 --- Returns the average sell value of a group of type jokers
 ---@param ptype string The reference type
----@return number avg_sell_value Average sell value of the group of jokers
+---@return number|nil avg_sell_value Average sell value of the group of jokers. Nil for collection
 calculate_avg_sell_cost = function(ptype)
     local sumSellCost = 0
-    for _, v in pairs(G.jokers.cards) do
-        if ptype == nil then
-            sumSellCost = sumSellCost + v.sell_cost
-        else
-            if v.ability.extra.ptype == ptype then
+    if G.jokers then
+        for _, v in pairs(G.jokers.cards) do
+            if ptype == nil then
                 sumSellCost = sumSellCost + v.sell_cost
+            else
+                if v.ability.extra.ptype == ptype then
+                    sumSellCost = sumSellCost + v.sell_cost
+                end
             end
+        end
+
+        if ptype == nil then
+            return sumSellCost / #G.jokers.cards
+        else
+            return sumSellCost / #find_player_type(ptype)
         end
     end
 
-    if ptype == nil then
-        return sumSellCost / #G.jokers.cards
-    else
-        return sumSellCost / #find_player_type(ptype)
-    end
+    return nil
 end
 
 --- Returns the joker to the right of the given joker in the active jokers row.
