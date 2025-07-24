@@ -24,7 +24,9 @@ return {
             },
             bl_ina_inazuma_town = {
                 name = "Ciudad Inazuma",
-                text = {}
+                text = { "Si has jugado más",
+                    "de #1# tipos de mano",
+                    "-#2# descarte" }
             },
             bl_ina_glasses = {
                 name = "Gafitas",
@@ -425,7 +427,10 @@ return {
 
             j_ina_Island = {
                 name = "Island",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:forest}Zig zag chispeante{}",
+                    "Gana {C:chips}+#1#{} fichas si la mano jugada",
+                    "contiene {C:attention}doble pareja{}",
+                    "{C:inactive}Actualmente{} {C:chips}+#2#{}" }
             },
 
             j_ina_Sweet = {
@@ -438,17 +443,28 @@ return {
 
             j_ina_Butler = {
                 name = "Butler",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:forest}Rentista{}",
+                    "La deuda ahora puede",
+                    "llegar hasta {C:money}-#1#${}",
+                    "por cada {C:money}-#2#${}, cada",
+                    "carta que puntue gana",
+                    "{C:chips}+#3#{} fichas" }
             },
 
             j_ina_Barista = {
                 name = "Barista",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:wind}Master{}",
+                    "La última carta jugada da",
+                    "{X:chips,C:white}X2{} {C:attention}sus{} chips a mayores" }
             },
 
             j_ina_Builder = {
                 name = "Builder",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:fire}A Construir{}",
+                    "Si la mano jugada contiene",
+                    " {C:attention}Full{} transforma una carta",
+                    "al azar en {C:attention}Acero{}",
+                    "y {C:mult}destruye{} otra carta" }
             },
 
             -- Shuriken
@@ -701,13 +717,14 @@ return {
             ina_evolve_success = "¡Ha crecido!",
             ina_val_down = "¡Drenado!",
             ina_training = "¡Cambio!",
-            ina_next_match = "Partido",
+            ina_next_match = "Siguiente",
             k_team_pack = "Pack de Equipo",
             ina_convert = "¡Convertido!",
             ina_potential_increased = "¡Potencial aumentado!",
             ina_sell_increased = "¡Jokers mejorados!",
             ina_settings_no_custom_middle_blinds = "Sin Ciegas Pequeñas o Grandes personalizadas",
-            ina_settings_middle_blinds_abilities = "Las Ciegas Pequeñas y Grandes no tendrán habilidades"
+            ina_settings_middle_blinds_abilities = "Las Ciegas Pequeñas y Grandes no tendrán habilidades",
+            ina_destroy = "¡Destruido!"
         },
         high_scores = {},
         labels = {},

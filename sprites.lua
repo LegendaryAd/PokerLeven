@@ -15,6 +15,13 @@ SMODS.Atlas({
 }):register()
 
 SMODS.Atlas({
+    key = "legendary01",
+    path = "legendary01.png",
+    px = 71,
+    py = 95
+}):register()
+
+SMODS.Atlas({
     key = "ina_logo",
     path = "ina_logo.png",
     px = 389,

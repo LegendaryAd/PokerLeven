@@ -7,7 +7,7 @@ local benchers = {
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
     dollars = 3,
-    small = { min = 2 },
+    small = { min = 0 },
 }
 
 local baseball = B({
@@ -19,7 +19,7 @@ local baseball = B({
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
     dollars = 3,
-    small = { min = 3 },
+    small = { min = 2 },
     set_blind = function(self)
         local target_hands = 4
         G.GAME.blind.hands_sub = G.GAME.round_resets.hands - target_hands
@@ -40,10 +40,11 @@ local strange = B({
     calculate = function(self, blind, context)
         if context.cardarea == G.play and context.other_card == context.scoring_hand[1]
             and context.individual and G.GAME.current_round.hands_played == 0 then
-            local rank = tostring(math.random(2, 14))
+            local rank = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14" }
+            local selected_rank = pseudorandom_element(rank, pseudoseed('rank'))
             local suit = { "Hearts", "Clubs", "Spades", "Diamonds" }
-            local selected_suit = suit[math.random(1, #suit)]
-            convert_cards_to(context.other_card, { set_rank = rank, suit_conv = selected_suit })
+            local selected_suit = pseudorandom_element(suit, pseudoseed('suit'))
+            convert_cards_to(context.other_card, { set_rank = selected_rank, suit_conv = selected_suit })
             return {
                 message = localize("ina_convert"),
                 colour = G.C.XMULT,
@@ -69,19 +70,36 @@ local inazuma_town = B({
     object_type = "SmallBlind",
     key = "inazuma_town",
     pos = { x = 0, y = 4 },
+    config = { extra = { discards = 1, max_hand_types = 6 } },
+    collection_loc_vars = function(self)
+        return {
+            vars = {
+                self.config.extra.max_hand_types,
+                self.config.extra.discards
+            },
+            key = self.key
+        }
+    end,
     discovered = true,
     mult = 1,
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
     dollars = 3,
-    small = { min = 0 },
+    small = { min = 2 },
+    set_blind = function(self)
+        local count = 0
+        for _, hand in ipairs(G.GAME.hands) do
+            if hand.played and hand.played > 0 then
+                count = count + 1
+            end
+        end
 
-    calculate = function(self, blind, context)
-        if context.poker_hands then
-
+        if count > self.config.extra.max_hand_types then
+            G.GAME.round_resets.discards = G.GAME.round_resets.discards - self.config.extra.discards
+            ease_discard(-1)
         end
     end
-})
+}
 
 local glasses = B({
     object_type = "SmallBlind",
