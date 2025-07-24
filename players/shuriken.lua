@@ -38,10 +38,10 @@ local hood = J({
 local hillfort = J({
     name = "Hillfort",
     pos = { x = 1, y = 4 },
-    config = {},
+    config = { extra = { triggered = false } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        return { vars = { calculate_avg_sell_cost("Wind") } }
     end,
     rarity = 1, -- Common
     pools = { ["Shuriken"] = true },
@@ -52,7 +52,14 @@ local hillfort = J({
     pteam = "Shuriken",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        --Add logic
+        if context.cardarea == G.jokers and context.joker_main and context.scoring_hand then
+            card.ability.extra.triggered = true
+            return {
+                message = localize { type = 'variable', key = 'a_chips', vars = { calculate_avg_sell_cost("Wind") } },
+                colour = G.C.CHIPS,
+                chip_mod = calculate_avg_sell_cost("Wind")
+            }
+        end
     end,
 })
 

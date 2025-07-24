@@ -152,3 +152,22 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys)
 
     return ina_key
 end
+
+calculate_avg_sell_cost = function(ptype)
+    local sumSellCost = 0
+    for _, v in pairs(G.jokers.cards) do
+        if ptype == nil then
+            sumSellCost = sumSellCost + v.sell_cost
+        else
+            if v.ability.extra.ptype == ptype then
+                sumSellCost = sumSellCost + v.sell_cost
+            end
+        end
+    end
+
+    if ptype == nil then
+        return sumSellCost / #G.jokers.cards
+    else
+        return sumSellCost / #find_player_type(ptype)
+    end
+end

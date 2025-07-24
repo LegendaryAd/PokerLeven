@@ -482,7 +482,10 @@ return {
 
             j_ina_Hillfort = {
                 name = "Hillfort",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:wind}Ataque de las Sombras{}", "Gana {C:chips}+X{} fichas donde {C:chips}X{} es",
+                    "{C:attention}la media del valor de venta{}",
+                    "de los comodines de {X:wind,C:white}viento{}",
+                    "{C:inactive}Actualmente{} {C:chips}+#1#{}" }
             },
 
             j_ina_Code = {
