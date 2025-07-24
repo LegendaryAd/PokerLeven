@@ -501,7 +501,11 @@ return {
 
             j_ina_Cleats = {
                 name = "Cleats",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:wind}Luna creciente{}",
+                    "Al seleccionar la ciega",
+                    "{C:green}transforma{} el jugador de",
+                    "la derecha en otro",
+                    "de la misma {C:green}rareza{}" }
             },
 
             j_ina_Hattori = {
@@ -725,7 +729,7 @@ return {
         collabs = {},
         dictionary = {
             ina_evolve_level = "¡Nivel subido!",
-            ina_evolve_success = "¡Ha crecido!",
+            ina_evolve_success = "¡Intercambio!",
             ina_val_down = "¡Drenado!",
             ina_training = "¡Cambio!",
             ina_next_match = "Siguiente",

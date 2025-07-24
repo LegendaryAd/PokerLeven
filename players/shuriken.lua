@@ -11,7 +11,7 @@ local hood = J({
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         local count = #find_player_position("GK")
-        return { vars = { count, count * (center.ability.extra.xmult_per_gk or 0) + 1 } }
+        return { vars = { center.ability.extra.xmult_per_gk, count * (center.ability.extra.xmult_per_gk or 0) + 1 } }
     end,
     rarity = 2,
     pools = { ["Shuriken"] = true },
@@ -41,7 +41,7 @@ local hillfort = J({
     config = { extra = { triggered = false } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return { vars = { calculate_avg_sell_cost("Wind") } }
+        return { vars = { calculate_avg_sell_cost("Wind") or center.sell_cost } }
     end,
     rarity = 1, -- Common
     pools = { ["Shuriken"] = true },
@@ -129,7 +129,17 @@ local cleats = J({
     pteam = "Shuriken",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        --Add logic
+        if context.setting_blind then
+            local right_joker = get_right_joker(card)
+            if right_joker then
+                local selected_joker =
+                    get_random_joker_key("Cleats", right_joker.config.center.rarity, nil, nil, nil)
+                sendDebugMessage('Selected joker: ' .. selected_joker)
+                return {
+                    message = ina_evolve(right_joker, selected_joker)
+                }
+            end
+        end
     end,
 })
 
