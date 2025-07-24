@@ -27,19 +27,7 @@ local hillfort = J({
     config = { extra = { triggered = false } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-
-        function calculate_avg_sell_cost()
-            local sumSellCost = 0
-            for _, v in pairs(G.jokers.cards) do
-                if v.ability.extra.ptype then
-                    sumSellCost = sumSellCost + v.sell_cost
-                end
-            end
-
-            return sumSellCost / #find_player_type("Wind")
-        end
-
-        return { vars = { calculate_avg_sell_cost() } }
+        return { vars = { calculate_avg_sell_cost("Wind") } }
     end,
     rarity = 1, -- Common
     pools = { ["Shuriken"] = true },
@@ -53,9 +41,9 @@ local hillfort = J({
         if context.cardarea == G.jokers and context.joker_main and context.scoring_hand then
             card.ability.extra.triggered = true
             return {
-                message = localize { type = 'variable', key = 'a_chips', vars = { calculate_avg_sell_cost() } },
+                message = localize { type = 'variable', key = 'a_chips', vars = { calculate_avg_sell_cost("Wind") } },
                 colour = G.C.CHIPS,
-                chip_mod = calculate_avg_sell_cost()
+                chip_mod = calculate_avg_sell_cost("Wind")
             }
         end
     end,
