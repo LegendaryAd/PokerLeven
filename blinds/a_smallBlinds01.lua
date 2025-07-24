@@ -99,7 +99,7 @@ local inazuma_town = B({
             ease_discard(-1)
         end
     end
-}
+})
 
 local glasses = B({
     object_type = "SmallBlind",
