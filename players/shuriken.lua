@@ -11,7 +11,7 @@ local hood = J({
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         local count = #find_player_position("GK")
-        return { vars = { count, count * (center.ability.extra.xmult_per_gk or 0) } }
+        return { vars = { count, count * (center.ability.extra.xmult_per_gk or 0) + 1 } }
     end,
     rarity = 2,
     pools = { ["Shuriken"] = true },
@@ -24,8 +24,7 @@ local hood = J({
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.scoring_hand and context.joker_main then
             local count = #find_player_position("GK")
-            local mult_per_gk = card.ability.extra.xmult_per_gk or 0
-            local total_xmult = count * mult_per_gk
+            local total_xmult = count * card.ability.extra.xmult_per_gk + 1
             card.ability.extra.triggered = true
             return {
                 message = localize { type = 'variable', key = 'a_xmult', vars = { total_xmult } },
