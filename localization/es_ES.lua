@@ -470,9 +470,9 @@ return {
                 name = "Hood",
                 text = {
                     "{C:forest}Jutsu de Protección{}",
-                    "Multiplica por {X:chips,C:white}X0.5{} por",
+                    "Multiplica por {X:mult,C:white}X#1#{} por",
                     "cada Joker {X:gk,C:white}GK{}{}",
-                    "{C:inactive}Actualmente{} {X:chips,C:white}X#2#{}"
+                    "{C:inactive}Actualmente{} {X:mult,C:white}X#2#{}"
                 }
             },
 
