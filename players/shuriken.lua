@@ -129,7 +129,17 @@ local cleats = J({
     pteam = "Shuriken",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        --Add logic
+        if context.setting_blind then
+            local right_joker = get_right_joker(card)
+            if right_joker then
+                local selected_joker =
+                    get_random_joker_key("Cleats", right_joker.config.center.rarity, nil, nil, nil)
+                sendDebugMessage('Selected joker: ' .. selected_joker)
+                return {
+                    message = ina_evolve(right_joker, selected_joker)
+                }
+            end
+        end
     end,
 })
 
