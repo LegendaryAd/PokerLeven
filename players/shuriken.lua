@@ -24,10 +24,22 @@ local hood = J({
 local hillfort = J({
     name = "Hillfort",
     pos = { x = 1, y = 4 },
-    config = { extra = { current_chips = 0, triggered = false } },
+    config = { extra = { triggered = false } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return { vars = { center.ability.extra.current_chips } }
+
+        function calculate_avg_sell_cost()
+            local sumSellCost = 0
+            for _, v in pairs(G.jokers.cards) do
+                if v.ability.extra.ptype then
+                    sumSellCost = sumSellCost + v.sell_cost
+                end
+            end
+
+            return sumSellCost / #find_player_type("Wind")
+        end
+
+        return { vars = { calculate_avg_sell_cost() } }
     end,
     rarity = 1, -- Common
     pools = { ["Shuriken"] = true },
@@ -38,22 +50,12 @@ local hillfort = J({
     pteam = "Shuriken",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        local sumSellCost = 0
-        for _, v in pairs(G.jokers.cards) do
-            if v.ability.extra.ptype then
-                sumSellCost = sumSellCost + v.sell_cost
-            end
-        end
-
-        local avgSellCost = sumSellCost / #find_player_type("Wind")
-        card.ability.extra.current_chips = avgSellCost;
-
         if context.cardarea == G.jokers and context.joker_main and context.scoring_hand then
             card.ability.extra.triggered = true
             return {
-                message = localize { type = 'variable', key = 'a_chips', vars = { avgSellCost } },
+                message = localize { type = 'variable', key = 'a_chips', vars = { calculate_avg_sell_cost() } },
                 colour = G.C.CHIPS,
-                chip_mod = avgSellCost
+                chip_mod = calculate_avg_sell_cost()
             }
         end
     end,
