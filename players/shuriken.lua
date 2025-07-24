@@ -80,8 +80,8 @@ local star = J({
             if context.scoring_hand then
                 card.ability.extra.triggered = true
                 return {
-                    message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult_mod } },
-                    colour = G.C.MULT,
+                    message = localize("ina_dribbling"),
+                    colour = G.C.DARK_EDITION,
                     mult_mod = card.ability.extra.mult_mod,
                     dollars = card.ability.extra.money,
                     card = card
