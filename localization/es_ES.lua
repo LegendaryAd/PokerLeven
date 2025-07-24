@@ -485,7 +485,9 @@ return {
 
             j_ina_Star = {
                 name = "Star",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:wind}Polvo Estelar Azul{}", "Por cada carta que anota",
+                    "con el palo de {C:red}diamantes{}",
+                    "gana {C:money}+#1#${} y {C:mult}+#2#{} Mult", }
             },
 
             j_ina_Cleats = {
