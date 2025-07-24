@@ -470,7 +470,7 @@ return {
             -- Shuriken
             j_ina_Hood = {
                 name = "Hood",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
             },
 
             j_ina_Hillfort = {
