@@ -1,24 +1,39 @@
--- Shuriken Jokers
 local hood = J({
     name = "Hood",
     pos = { x = 0, y = 4 },
-    config = {},
+    config = {
+        extra = {
+            xmult_per_gk = 0.5,
+            triggered = false,
+            pposition = "GK"
+        }
+    },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        local count = #find_player_position("GK")
+        return { vars = { count, count * (center.ability.extra.xmult_per_gk or 0) } }
     end,
-    rarity = 2, -- Uncommon
+    rarity = 2,
     pools = { ["Shuriken"] = true },
     cost = 8,
     atlas = "Jokers01",
     ptype = "Forest",
-    pposition = "GK",
     pteam = "Shuriken",
     blueprint_compat = true,
-    calculate = function(self, card, context)
-        -- Add logic
-    end,
 
+    calculate = function(self, card, context)
+        if context.cardarea == G.jokers and context.scoring_hand and context.joker_main then
+            local count = #find_player_position("GK")
+            local mult_per_gk = card.ability.extra.xmult_per_gk or 0
+            local total_xmult = count * mult_per_gk
+            card.ability.extra.triggered = true
+            return {
+                message = localize { type = 'variable', key = 'a_xmult', vars = { total_xmult } },
+                colour = G.C.XMULT,
+                Xmult_mod = total_xmult
+            }
+        end
+    end,
 })
 
 local hillfort = J({
