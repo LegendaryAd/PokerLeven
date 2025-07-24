@@ -726,7 +726,7 @@ return {
             ina_settings_no_custom_middle_blinds = "Sin Ciegas Pequeñas o Grandes personalizadas",
             ina_settings_middle_blinds_abilities = "Las Ciegas Pequeñas y Grandes no tendrán habilidades",
             ina_destroy = "¡Destruido!",
-            ina_dribbling = "Regate!"
+            ina_dribbling = "¡Regate!"
         },
         high_scores = {},
         labels = {},
