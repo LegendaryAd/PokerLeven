@@ -150,6 +150,9 @@ local cleats = J({
             end
         end
     end,
+    ina_credits = {
+        idea = { 'LegendaryAd' }
+    }
 })
 
 local hattori = J({
