@@ -11,7 +11,7 @@ local hood = J({
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         local count = #find_player_position("GK")
-        return { vars = { count, count * (center.ability.extra.xmult_per_gk or 0) + 1 } }
+        return { vars = { center.ability.extra.xmult_per_gk, count * (center.ability.extra.xmult_per_gk or 0) + 1 } }
     end,
     rarity = 2,
     pools = { ["Shuriken"] = true },
