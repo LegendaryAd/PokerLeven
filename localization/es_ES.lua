@@ -470,7 +470,12 @@ return {
             -- Shuriken
             j_ina_Hood = {
                 name = "Hood",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = {
+                    "{C:forest}Jutsu de Protección{}",
+                    "Gana {X:mult,C:white}X#1#{} por",
+                    "cada Joker {X:gk,C:white}GK{}{}",
+                    "{C:inactive}Actualmente{} {X:mult,C:white}X#2#{}"
+                }
             },
 
             j_ina_Hillfort = {
