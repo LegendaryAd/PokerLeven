@@ -22,8 +22,9 @@ jobs:
           [ -d "$HOME/.luarocks/bin" ] && echo "$HOME/.luarocks/bin" >> $GITHUB_PATH
 
       - name: Run Luacheck
+        continue-on-error: true
         run: |
-          luacheck . --formatter plain
+          luacheck . --formatter plain > luacheck-report.txt
 
       - name: Convert to SonarCloud format
         run: |
