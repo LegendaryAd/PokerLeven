@@ -22,7 +22,11 @@ jobs:
           echo "$HOME/.luarocks/bin" >> $GITHUB_PATH
 
       - name: Run Luacheck
-        run: luacheck . --formatter json > luacheck-report.json
+        run: |
+          export PATH=$HOME/.luarocks/bin:$PATH
+          export LUA_PATH="$HOME/.luarocks/share/lua/5.1/?.lua;$HOME/.luarocks/share/lua/5.1/?/init.lua;;"
+          export LUA_CPATH="$HOME/.luarocks/lib/lua/5.1/?.so;;"
+          luacheck . --formatter json > luacheck-report.json
 
       - name: Convert to SonarCloud format
         run: |
