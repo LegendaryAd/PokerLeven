@@ -100,7 +100,8 @@ local Dawson = J({
     pteam = "Farm",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.joker_main and to_big(G.GAME.dollars) < to_big(card.ability.extra.max_money) and #context.full_hand == 1 then
+        if context.cardarea == G.jokers and context.joker_main and to_big(G.GAME.dollars) < to_big(card.ability.extra.max_money)
+            and #context.full_hand == 1 then
             G.E_MANAGER:add_event(Event({
                 delay = 0.5,
                 func = function()
