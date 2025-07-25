@@ -158,12 +158,12 @@ local cleats = J({
 local hattori = J({
     name = "Hattori",
     pos = { x = 5, y = 4 },
-    config = {},
+    config = { extra = { copies = {}, copies_number = 2 } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.copies_number } }
     end,
-    rarity = 2, -- Uncommon
+    rarity = 2,
     pools = { ["Shuriken"] = true },
     cost = 8,
     atlas = "Jokers01",
@@ -172,7 +172,39 @@ local hattori = J({
     pteam = "Shuriken",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        --Add logic
+        if context.setting_blind then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'immediate',
+                func = function()
+                    G.GAME.joker_buffer = 0
+                    card.ability.extra.copies = card.ability.extra.copies or {}
+
+                    for i = 1, card.ability.extra.copies_number do
+                        local create_args = {
+                            set = 'Joker',
+                            key = 'j_ina_Hattori',
+                            edition = 'e_negative'
+                        }
+                        local _card = SMODS.create_card(create_args)
+                        _card:add_to_deck()
+                        G.jokers:emplace(_card)
+                        table.insert(card.ability.extra.copies, _card)
+                    end
+
+                    return true
+                end
+            }))
+        end
+
+        if context.end_of_round then
+            if card.ability.extra.copies then
+                for _, copy in ipairs(card.ability.extra.copies) do
+                    copy:start_dissolve({ HEX("57ecab") }, nil, 1.6)
+                    copy:remove_from_deck()
+                end
+                card.ability.extra.copies = nil
+            end
+        end
     end,
 })
 

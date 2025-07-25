@@ -73,35 +73,35 @@ return {
             -- Blinds jefes
             bl_ina_goalkeeper = {
                 name = "GK",
-                text = { "Los jugadores {X:fw,C:white}DC{} están debilitados" }
+                text = { "Los jugadores {X:fw,C:white}GK{} están debilitados" }
             },
             bl_ina_forward = {
                 name = "FW",
-                text = { "Los jugadores {X:gk,C:white}PT{} están debilitados" }
+                text = { "Los jugadores {X:gk,C:white}FW{} están debilitados" }
             },
             bl_ina_defense = {
                 name = "DF",
-                text = { "Los jugadores {X:mf,C:white}MC{} están debilitados" }
+                text = { "Los jugadores {X:mf,C:white}DF{} están debilitados" }
             },
             bl_ina_midfielder = {
                 name = "MF",
-                text = { "Los jugadores {X:df,C:white}DF{} están debilitados" }
+                text = { "Los jugadores {X:df,C:white}MF{} están debilitados" }
             },
             bl_ina_fire = {
                 name = "Jefe de Fuego",
-                text = { "Los jugadores de tipo {X:forest,C:white}Bosque{} están debilitados" }
+                text = { "Los jugadores de tipo {X:fire,C:white}Fuego{} están debilitados" }
             },
             bl_ina_forest = {
                 name = "Jefe de Bosque",
-                text = { "Los jugadores de tipo {X:wind,C:white}Viento{} están debilitados" }
+                text = { "Los jugadores de tipo {X:forest,C:white}Bosque{} están debilitados" }
             },
             bl_ina_mountain = {
                 name = "Jefe de Montaña",
-                text = { "Los jugadores de tipo {X:fire,C:white}Fuego{} están debilitados" }
+                text = { "Los jugadores de tipo {X:Mountain,C:white}Montaña{} están debilitados" }
             },
             bl_ina_wind = {
                 name = "Jefe de Viento",
-                text = { "Los jugadores de tipo {X:mountain,C:white}Montaña{} están debilitados" }
+                text = { "Los jugadores de tipo {X:Wind,C:white}Viento{} están debilitados" }
             },
             bl_ina_inazuma_og = {
                 name = "Inazuma Eleven",
@@ -514,7 +514,11 @@ return {
 
             j_ina_Hattori = {
                 name = "Hattori",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:forest}Trama Trama{}",
+                    "Al seleccionar la ciega crea",
+                    "{C:attention}#1#{} copias básicas",
+                    "{C:dark_edition}negativas{} de si mismo.",
+                    "Se destruyen al finalizar la ronda" }
             },
 
             j_ina_Cloack = {
@@ -729,7 +733,17 @@ return {
             }
         },
         Tarot = {},
-        Voucher = {}
+        Voucher = {
+            v_ina_ex_law = {
+                name = "Ley del Ex",
+                text = {
+                    "Por cada jugador que",
+                    "lleves del equipo al",
+                    "que te enfrentas, reduce",
+                    "en un {C:attention}#1#%{} las {C:chips}fichas{} necesarias"
+                },
+            },
+        }
     },
     misc = {
         achievement_descriptions = {},

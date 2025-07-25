@@ -90,6 +90,12 @@ SMODS.Atlas({
     frames = 21,
 }):register()
 
+SMODS.Atlas({
+    key = "vouchers01",
+    path = "vouchers01.png",
+    px = 71,
+    py = 95
+}):register()
 
 SMODS.Sound({
     key = "music_titlescreen",
