@@ -18,20 +18,17 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y luarocks
           luarocks install --local luacheck
-          luarocks install --local lua-cjson
           echo "$HOME/.luarocks/bin" >> $GITHUB_PATH
 
-      - name: Run Luacheck
+      - name: Run Luacheck (plain formatter)
         run: |
           export PATH=$HOME/.luarocks/bin:$PATH
-          export LUA_PATH="$HOME/.luarocks/share/lua/5.1/?.lua;$HOME/.luarocks/share/lua/5.1/?/init.lua;;"
-          export LUA_CPATH="$HOME/.luarocks/lib/lua/5.1/?.so;;"
-          luacheck . --formatter json > luacheck-report.json
+          luacheck . --formatter plain > luacheck-report.txt
 
       - name: Convert to SonarCloud format
         run: |
           sudo apt-get install -y python3
-          python3 luacheck_to_sonarcloud.py luacheck-report.json luacheck-sonar.json
+          python3 luacheck_to_sonarcloud.py luacheck-report.txt luacheck-sonar.json
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2

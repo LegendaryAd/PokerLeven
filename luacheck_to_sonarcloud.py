@@ -1,5 +1,6 @@
 import sys
 import json
+import re
 
 def luacheck_level_to_severity(code):
     """Map Luacheck warning codes to Sonar severity levels."""
@@ -13,35 +14,40 @@ def luacheck_level_to_severity(code):
         return "INFO"
 
 def main(input_file, output_file):
-    with open(input_file, 'r') as f:
-        data = json.load(f)
-
     issues = []
-    for file in data:
-        for warning in file.get("warnings", []):
-            issue = {
-                "engineId": "luacheck",
-                "ruleId": warning["code"],
-                "type": "CODE_SMELL",
-                "severity": luacheck_level_to_severity(str(warning["code"])),
-                "primaryLocation": {
-                    "message": warning["message"],
-                    "filePath": file["file"],
-                    "textRange": {
-                        "startLine": warning["line"],
-                        "startColumn": warning.get("column", 1),
-                        "endLine": warning["line"],
-                        "endColumn": warning.get("end_column", warning.get("column", 1) + 1)
+
+    # Ejemplo línea plain: path/to/file.lua:10:5: (211) unused variable 'x'
+    pattern = re.compile(r"^(.*):(\d+):(\d+): \((\d+)\) (.*)$")
+
+    with open(input_file, 'r') as f:
+        for line in f:
+            line = line.strip()
+            match = pattern.match(line)
+            if match:
+                filepath, line_num, col_num, code, message = match.groups()
+                issue = {
+                    "engineId": "luacheck",
+                    "ruleId": code,
+                    "type": "CODE_SMELL",
+                    "severity": luacheck_level_to_severity(code),
+                    "primaryLocation": {
+                        "message": message,
+                        "filePath": filepath,
+                        "textRange": {
+                            "startLine": int(line_num),
+                            "startColumn": int(col_num),
+                            "endLine": int(line_num),
+                            "endColumn": int(col_num) + 1
+                        }
                     }
                 }
-            }
-            issues.append(issue)
+                issues.append(issue)
 
     with open(output_file, 'w') as f:
         json.dump({"issues": issues}, f, indent=2)
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python luacheck_to_sonarcloud.py input.json output.json")
+        print("Usage: python luacheck_to_sonarcloud.py input.txt output.json")
         sys.exit(1)
     main(sys.argv[1], sys.argv[2])
