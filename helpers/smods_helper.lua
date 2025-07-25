@@ -11,3 +11,10 @@ end
 function B(data)
     return data
 end
+
+-- * For using context autocomplete inside vouchers
+---@param data SMODS.Voucher
+---@return SMODS.Voucher
+function V(data)
+    return data
+end
