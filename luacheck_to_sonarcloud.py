@@ -17,10 +17,10 @@ def severity_from_code(code):
         return "BLOCKER"
     elif code.startswith("E"):
         return "CRITICAL"
-    elif code.startswith("W2") or code.startswith("W3"):
-        return "MAJOR"
+    elif re.match(r"W[2-9]\d{2}", code):
+        return "CRITICAL"  # W2xx y superiores → HIGH (se verá como High)
     elif code.startswith("W"):
-        return "MINOR"
+        return "MINOR"     # W1xx → Low
     else:
         return "INFO"
 
