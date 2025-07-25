@@ -29,6 +29,11 @@ def main(input_file, output_file):
             parsed = parse_luacheck_line(line.strip())
             if parsed:
                 file_path, line_no, col_no, code, message = parsed
+                start_line = line_no
+                end_line = line_no
+                start_col = col_no
+                end_col = col_no + 1
+
                 issue = {
                     "engineId": "luacheck",
                     "ruleId": code,
@@ -38,10 +43,10 @@ def main(input_file, output_file):
                         "message": f"{code}: {message}",
                         "filePath": file_path,
                         "textRange": {
-                            "startLine": line_no,
-                            "endLine": line_no,
-                            "startColumn": col_no,
-                            "endColumn": col_no
+                            "startLine": start_line,
+                            "endLine": end_line,
+                            "startColumn": start_col,
+                            "endColumn": end_col
                         }
                     }
                 }
