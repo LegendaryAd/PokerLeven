@@ -86,10 +86,10 @@ local Spray = J({
 local Dawson = J({
     name = "Dawson",
     pos = { x = 9, y = 4 },
-    config = {},
+    config = { extra = { max_money = 2, triggered = false } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.max_money } }
     end,
     rarity = 2, -- Uncommon
     pools = { ["Farm"] = true },
@@ -100,7 +100,32 @@ local Dawson = J({
     pteam = "Farm",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- Add logic
+        if context.cardarea == G.jokers and context.joker_main and to_big(G.GAME.dollars) < to_big(card.ability.extra.max_money) and #context.full_hand == 1 then
+            G.E_MANAGER:add_event(Event({
+                delay = 0.5,
+                func = function()
+                    local copy = copy_card(context.scoring_hand[1], nil, nil, G.playing_card)
+                    copy:add_to_deck()
+                    G.deck.config.card_limit = G.deck.config.card_limit + 1
+                    table.insert(G.playing_cards, copy)
+                    G.deck:emplace(copy)
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            copy:start_materialize()
+                            return true
+                        end
+                    }))
+
+                    return true
+                end
+            }))
+
+            card.ability.extra.triggered = true
+            return {
+                message = "DAWSON!",
+                colour = G.C.XMULT
+            }
+        end
     end,
 })
 

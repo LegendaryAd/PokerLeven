@@ -541,7 +541,10 @@ return {
 
             j_ina_Dawson = {
                 name = "Dawson",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:wind}Regate topo{}",
+                    "Si se tiene menos de {C:money}#1#${} y",
+                    "la mano jugada es {C:attention}carta alta{}",
+                    "se {C:attention}duplica{} esa carta" }
             },
 
             j_ina_Muffs = {
