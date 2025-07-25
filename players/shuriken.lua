@@ -158,7 +158,7 @@ local cleats = J({
 local hattori = J({
     name = "Hattori",
     pos = { x = 5, y = 4 },
-    config = { extra = { copies = {}, copies_number = 2 } },
+    config = { extra = { copies = {}, copies_number = 2, triggered = false } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.copies_number } }
@@ -191,12 +191,14 @@ local hattori = J({
                         table.insert(card.ability.extra.copies, _card)
                     end
 
+                    card.ability.extra.triggered = true
                     return true
                 end
             }))
         end
 
         if context.end_of_round then
+            card.abitliy.extra.triggered = true
             if card.ability.extra.copies then
                 for _, copy in ipairs(card.ability.extra.copies) do
                     copy:start_dissolve({ HEX("57ecab") }, nil, 1.6)
