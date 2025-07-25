@@ -1,7 +1,7 @@
 -- Farm Jokers
-local greeny = J({
+local Greeny = J({
     name = "Greeny",
-    pos = { x = 0, y = 4 },
+    pos = { x = 0, y = 5 },
     config = {},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
@@ -20,9 +20,9 @@ local greeny = J({
     end,
 })
 
-local hayseed = J({
+local Hayseed = J({
     name = "Hayseed",
-    pos = { x = 1, y = 4 },
+    pos = { x = 11, y = 4 },
     config = {},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
@@ -41,9 +41,9 @@ local hayseed = J({
     end,
 })
 
-local sherman = J({
+local Sherman = J({
     name = "Sherman",
-    pos = { x = 2, y = 4 },
+    pos = { x = 12, y = 4 },
     config = {},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
@@ -62,9 +62,9 @@ local sherman = J({
     end,
 })
 
-local spray = J({
+local Spray = J({
     name = "Spray",
-    pos = { x = 3, y = 4 },
+    pos = { x = 8, y = 4 },
     config = {},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
@@ -83,9 +83,9 @@ local spray = J({
     end,
 })
 
-local dawson = J({
+local Dawson = J({
     name = "Dawson",
-    pos = { x = 4, y = 4 },
+    pos = { x = 9, y = 4 },
     config = {},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
@@ -104,9 +104,9 @@ local dawson = J({
     end,
 })
 
-local muffs = J({
+local Muffs = J({
     name = "Muffs",
-    pos = { x = 5, y = 4 },
+    pos = { x = 10, y = 4 },
     config = {},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
@@ -125,9 +125,9 @@ local muffs = J({
     end,
 })
 
-local hillvalley = J({
+local Hillvalley = J({
     name = "Hillvalley",
-    pos = { x = 6, y = 4 },
+    pos = { x = 7, y = 4 },
     config = {},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
@@ -148,5 +148,5 @@ local hillvalley = J({
 
 return {
     name = "Farm",
-    list = { greeny, hayseed, sherman, spray, dawson, muffs, hillvalley },
+    list = { Greeny, Hayseed, Sherman, Spray, Dawson, Muffs, Hillvalley },
 }
