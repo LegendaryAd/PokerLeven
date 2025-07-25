@@ -543,7 +543,7 @@ return {
                 text = { "{C:fire}Superbalón rodante{}",
                     "Cuando se selecciona una {C:attention}ciega{} y",
                     "se tiene menos de {C:money}#1#${} gana {X:mult,C:white}X#2#{}",
-                    "Actualmente: {X:mult,C:white}X#3#{}" }
+                    "{C:inactive}Actualmente{}: {X:mult,C:white}X#3#{}" }
             },
 
             j_ina_Dawson = {
@@ -561,7 +561,11 @@ return {
 
             j_ina_Hillvalley = {
                 name = "Hillvalley",
-                text = { "{C:mountain}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:mountain}Muralla infinita{}",
+                    "Gana {C:chips}+X{} fichas permanentemente ",
+                    "al anotar un {C:attention}8{}, {C:attention}9{} o {C:attention}10{} siendo {C:chips}X{} el",
+                    "{C:attention}valor más alto{} entre esas cartas",
+                    "{C:inactive}Actualmente{}: {C:chips}+#1#{}" }
             },
 
             -- Kirkwood

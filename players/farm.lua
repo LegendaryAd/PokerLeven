@@ -172,10 +172,10 @@ local Muffs = J({
 local Hillvalley = J({
     name = "Hillvalley",
     pos = { x = 7, y = 4 },
-    config = {},
+    config = { extra = { current_chips = 0, triggered = false } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.current_chips } }
     end,
     rarity = 1, -- Common
     pools = { ["Farm"] = true },
@@ -186,7 +186,37 @@ local Hillvalley = J({
     pteam = "Farm",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- Add logic
+        if context.after and context.cardarea == G.jokers and not context.blueprint then
+            local max_val = nil
+
+            for _, c in ipairs(context.scoring_hand) do
+                local id = c:get_id()
+                if id == 8 or id == 9 or id == 10 then
+                    if not max_val or id > max_val then
+                        max_val = id
+                    end
+                end
+            end
+
+            if max_val then
+                card.ability.extra.current_chips = card.ability.extra.current_chips + max_val
+                card.ability.extra.triggered = true
+                return {
+                    message = localize('k_upgrade_ex'),
+                    colour = G.C.CHIPS,
+                    card = card
+                }
+            end
+        end
+
+        if context.scoring_hand and context.joker_main and card.ability.extra.current_chips > 0 then
+            card.ability.extra.triggered = true
+            return {
+                message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.current_chips } },
+                colour = G.C.CHIPS,
+                chip_mod = card.ability.extra.current_chips
+            }
+        end
     end,
 })
 
