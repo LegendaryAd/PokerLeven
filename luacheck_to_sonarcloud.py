@@ -13,10 +13,12 @@ def parse_luacheck_line(line):
     return None
 
 def severity_from_code(code):
-    # Mapear códigos a severidad SonarCloud
-    # E = error (CRITICAL), W = warning (MINOR), otros = INFO
-    if code.startswith("E"):
+    if code.startswith("E1") or code.startswith("E5") or code.startswith("E6"):
+        return "BLOCKER"
+    elif code.startswith("E"):
         return "CRITICAL"
+    elif code.startswith("W2") or code.startswith("W3"):
+        return "MAJOR"
     elif code.startswith("W"):
         return "MINOR"
     else:
