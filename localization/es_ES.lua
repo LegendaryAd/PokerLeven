@@ -536,7 +536,10 @@ return {
 
             j_ina_Spray = {
                 name = "Spray",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:fire}Superbalón rodante{}",
+                    "Cuando se selecciona una {C:attention}ciega{} y",
+                    "se tiene menos de {C:money}#1#${} gana {X:mult,C:white}X#2#{}",
+                    "Actualmente: {X:mult,C:white}X#3#{}" }
             },
 
             j_ina_Dawson = {
