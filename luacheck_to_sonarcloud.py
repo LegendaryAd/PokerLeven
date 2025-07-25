@@ -48,7 +48,7 @@ def main(input_file, output_file):
                 issues.append(issue)
 
     with open(output_file, 'w', encoding='utf-8') as out_f:
-        json.dump(issues, out_f, indent=2, ensure_ascii=False)
+        json.dump({"issues": issues}, out_f, indent=2, ensure_ascii=False)
     print(f"Archivo JSON generado: {output_file}")
 
 if __name__ == "__main__":
