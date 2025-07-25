@@ -44,10 +44,10 @@ local Hayseed = J({
 local Sherman = J({
     name = "Sherman",
     pos = { x = 12, y = 4 },
-    config = {},
+    config = { extra = { current_chips = 0, chip_mod = 2 } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.chip_mod, center.ability.extra.current_chips } }
     end,
     rarity = 1, -- Common
     pools = { ["Farm"] = true },
@@ -58,7 +58,26 @@ local Sherman = J({
     pteam = "Farm",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- Add logic
+        if context.post_trigger and context.other_card.ability
+            and context.other_card.ability.extra.pteam and context.other_card.ability.extra.pteam == "Farm" then
+            card.ability.extra.current_chips =
+                card.ability.extra.current_chips + card.ability.extra.chip_mod
+            return {
+                message = localize("k_upgrade_ex"),
+                card = card
+            }
+        end
+
+        if context.scoring_hand and context.cardarea == G.jokers
+            and context.joker_main then
+            if card.ability.extra.current_chips > 0 then
+                return {
+                    message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.current_chips } },
+                    colour = G.C.CHIPS,
+                    chip_mod = card.ability.extra.current_chips
+                }
+            end
+        end
     end,
 })
 
@@ -170,6 +189,7 @@ local Muffs = J({
             card.ability.extra.current_mult =
                 card.ability.extra.current_mult + card.ability.extra.mult_mod
             card.ability.extra.triggered = true
+            context.other_card.ability["ina_harvest_sticker"] = false
             return {
                 message = localize("ina_harvest"),
                 colour = G.C.MULT,

@@ -539,7 +539,10 @@ return {
 
             j_ina_Sherman = {
                 name = "Sherman",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:fire}Trama Trama{}",
+                    "Gana {C:chips}+#1# Fichas{}", "cuando se activa un",
+                    "jugador del {X:farm,C:white}Farm{}",
+                    "{C:inactive}Actualmente{} {C:chips}+#2# Chips{}" }
             },
 
             j_ina_Spray = {
@@ -561,7 +564,7 @@ return {
             j_ina_Muffs = {
                 name = "Muffs",
                 text = { "{C:forest}Tiro Cegador{}",
-                    "Tras jugar una mano {C:attention}siembra{}",
+                    "Tras jugar una mano {C:attention}Siembra{}.",
                     "{C:attention}Cosechador:{} Gana {C:mult}+#1# Mult{}",
                     "{C:inactive}Actualmente{} {C:mult}+#2# Mult{}" }
             },
@@ -684,7 +687,7 @@ return {
             Harvester = {
                 name = "Cosechador",
                 text = { "Se activa al descartar",
-                    "descartar una carta {C:attention}Cosechable{}" }
+                    "una carta {C:attention}Cosechable{}" }
             },
             p_ina_team_pack_raimon = {
                 name = "Pack Raimon",
