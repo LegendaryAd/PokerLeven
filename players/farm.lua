@@ -65,10 +65,10 @@ local Sherman = J({
 local Spray = J({
     name = "Spray",
     pos = { x = 8, y = 4 },
-    config = {},
+    config = { extra = { current_Xmult = 1, max_money = 4, Xmult_mod = 0.25, triggered = false } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.max_money, center.ability.extra.Xmult_mod, center.ability.extra.current_Xmult } }
     end,
     rarity = 2, -- Uncommon
     pools = { ["Farm"] = true },
@@ -79,7 +79,25 @@ local Spray = J({
     pteam = "Farm",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- Add logic
+        if context.setting_blind then
+            if to_big(G.GAME.dollars) < to_big(card.ability.extra.max_money) then
+                card.ability.extra.current_Xmult = card.ability.extra.current_Xmult + card.ability.extra.Xmult_mod
+                card.ability.extra.triggered = true
+                return {
+                    message = localize('k_upgrade_ex'),
+                    colour = G.C.MULT
+                }
+            end
+        end
+
+        if context.cardarea == G.jokers and context.joker_main and context.scoring_hand and card.ability.extra.current_Xmult > 1 then
+            card.ability.extra.triggered = true
+            return {
+                message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.current_Xmult } },
+                colour = G.C.XMULT,
+                Xmult_mod = card.ability.extra.current_Xmult
+            }
+        end
     end,
 })
 
