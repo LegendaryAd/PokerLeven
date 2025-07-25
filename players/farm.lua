@@ -151,10 +151,11 @@ local Dawson = J({
 local Muffs = J({
     name = "Muffs",
     pos = { x = 10, y = 4 },
-    config = {},
+    config = { extra = { current_mult = 0, mult_mod = 1, triggered = false } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        info_queue[#info_queue + 1] = { set = 'Other', key = 'Harvester' }
+        return { vars = { center.ability.extra.mult_mod, center.ability.extra.current_mult } }
     end,
     rarity = 2, -- Uncommon
     pools = { ["Farm"] = true },
@@ -165,7 +166,44 @@ local Muffs = J({
     pteam = "Farm",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- Add logic
+        if context.discard and context.other_card.ability["ina_harvest_sticker"] == true then
+            card.ability.extra.current_mult =
+                card.ability.extra.current_mult + card.ability.extra.mult_mod
+            card.ability.extra.triggered = true
+            return {
+                message = localize("ina_harvest"),
+                colour = G.C.MULT,
+                card = context.other_card
+            }
+        end
+        if context.after and context.cardarea == G.jokers then
+            local random_index = math.random(1, #G.hand.cards)
+            local selected_card = G.hand.cards[random_index]
+
+            G.E_MANAGER:add_event(Event({
+                delay = 0.5,
+                func = function()
+                    selected_card.ability["ina_harvest_sticker"] = true
+                    return true
+                end
+            }))
+            card.ability.extra.triggered = true
+            return {
+                message = localize("ina_seed"),
+                colour = G.C.MULT,
+                card = selected_card
+            }
+        end
+
+        if context.scoring_hand and context.cardarea == G.jokers and context.joker_main
+            and card.ability.extra.current_mult > 0 then
+            card.ability.extra.triggered = true
+            return {
+                message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.current_mult } },
+                colour = G.C.MULT,
+                mult_mod = card.ability.extra.current_mult,
+            }
+        end
     end,
 })
 

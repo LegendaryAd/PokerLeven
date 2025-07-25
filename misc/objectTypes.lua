@@ -40,6 +40,28 @@ local Otaku = {
 	cards = {},
 }
 
-return {name = "Joker Types",
-        list = {Raimon, Occult, Royal, Wild, Brain, Otaku}
+local Farm = {
+	object_type = "ObjectType",
+	key = "Farm",
+	default = "v_blank",
+	cards = {},
+}
+
+local Kirkwood = {
+	object_type = "ObjectType",
+	key = "Kirkwood",
+	default = "v_blank",
+	cards = {},
+}
+
+local Zeus = {
+	object_type = "ObjectType",
+	key = "Zeus",
+	default = "v_blank",
+	cards = {},
+}
+
+return {
+	name = "Joker Types",
+	list = { Raimon, Occult, Royal, Wild, Brain, Otaku, Farm, Kirkwood, Zeus }
 }

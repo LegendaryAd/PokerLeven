@@ -17,7 +17,7 @@ type_tooltip = function(self, info_queue, center)
     end
 end
 
-apply_type_sticker = function(card, sticker_type, property)
+apply_property_sticker = function(card, sticker_type, property)
     local inateam_list = { "Forest", "Fire", "Wind", "Mountain" }
     local inaposition_list = { "FW", "DF", "MF", "GK" }
     local apply_type = nil
@@ -62,7 +62,6 @@ apply_type_sticker = function(card, sticker_type, property)
         end
     end
 end
-
 
 -- CREDITS
 local base_create_badges = SMODS.create_mod_badges

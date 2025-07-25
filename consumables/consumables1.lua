@@ -23,8 +23,9 @@ local tech_book = {
     else
       return
     end
-    apply_type_sticker(choice, nil, "type")
-    card_eval_status_text(choice, 'extra', nil, nil, nil, {message = localize("ina_training"), colour = G.C.SECONDARY_SET.Spectral})
+    apply_property_sticker(choice, nil, "type")
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_training"), colour = G.C.SECONDARY_SET.Spectral })
   end,
   in_pool = function(self)
     return true
@@ -54,13 +55,16 @@ local tactic_pos = {
     else
       return
     end
-    apply_type_sticker(choice, nil, "position")
-    card_eval_status_text(choice, 'extra', nil, nil, nil, {message = localize("ina_training"), colour = G.C.SECONDARY_SET.Spectral})
+    apply_property_sticker(choice, nil, "position")
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_training"), colour = G.C.SECONDARY_SET.Spectral })
   end,
   in_pool = function(self)
     return true
   end
 }
 
-return {name ="Strats",
-    list = {tech_book, tactic_pos}}
+return {
+  name = "Strats",
+  list = { tech_book, tactic_pos }
+}
