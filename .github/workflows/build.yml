@@ -31,7 +31,7 @@ jobs:
       - name: Convert to SonarCloud format
         run: |
           sudo apt-get install -y python3
-          python3 luacheck_to_sonarcloud.py luacheck-report.txt luacheck-sonar.xml
+          python3 luacheck_to_sonarcloud.py luacheck-report.txt /github/workspace/luacheck-sonar.json
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
