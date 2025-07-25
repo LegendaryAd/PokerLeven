@@ -179,7 +179,7 @@ local hattori = J({
                     G.GAME.joker_buffer = 0
                     card.ability.extra.copies = card.ability.extra.copies or {}
 
-                    for i = 1, card.ability.extra.copies_number do
+                    for _ = 1, card.ability.extra.copies_number do
                         local create_args = {
                             set = 'Joker',
                             key = 'j_ina_Hattori',

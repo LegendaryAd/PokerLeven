@@ -203,7 +203,7 @@ for _, file in ipairs(vouchers) do
     local curr_voucher = voucher()
     if curr_voucher.init then curr_voucher:init() end
 
-    for i, item in ipairs(curr_voucher.list) do
+    for _, item in ipairs(curr_voucher.list) do
       SMODS.Voucher(item)
     end
   end
