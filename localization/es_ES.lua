@@ -490,7 +490,11 @@ return {
 
             j_ina_Code = {
                 name = "Code",
-                text = { "{C:mountain}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:mountain}Telaraña{}",
+                    "Reactiva las cartas {C:attention}doradas{}",
+                    "en la mano al final de la ronda",
+                    "tantas veces como",
+                    "jugadores del {X:shuriken,C:white}Shuriken{}" }
             },
 
             j_ina_Star = {

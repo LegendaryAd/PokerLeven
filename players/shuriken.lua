@@ -20,7 +20,6 @@ local hood = J({
     ptype = "Forest",
     pteam = "Shuriken",
     blueprint_compat = true,
-
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.scoring_hand and context.joker_main then
             local count = #find_player_position("GK")
@@ -66,7 +65,7 @@ local hillfort = J({
 local code = J({
     name = "Code",
     pos = { x = 2, y = 4 },
-    config = {},
+    config = { extra = { { triggered = false } } },
     rarity = 2, -- Uncommon
     pools = { ["Shuriken"] = true },
     cost = 8,
@@ -76,7 +75,17 @@ local code = J({
     pteam = "Shuriken",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        --Add logic
+        if context.repetition and context.cardarea == G.hand
+            and context.other_card
+            and SMODS.has_enhancement(context.other_card, 'm_gold') then
+            card.ability.extra.triggered = true
+            local count = #find_player_team("Shuriken")
+            return {
+                message = localize('k_again_ex'),
+                repetitions = count,
+                card = card
+            }
+        end
     end,
 })
 
@@ -141,6 +150,9 @@ local cleats = J({
             end
         end
     end,
+    ina_credits = {
+        idea = { 'LegendaryAd' }
+    }
 })
 
 local hattori = J({
