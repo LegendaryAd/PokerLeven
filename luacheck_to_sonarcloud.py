@@ -1,53 +1,54 @@
-import sys
-import json
 import re
+import sys
+import xml.etree.ElementTree as ET
 
-def luacheck_level_to_severity(code):
-    """Map Luacheck warning codes to Sonar severity levels."""
-    if code.startswith("1"):  # style, unused, etc.
-        return "MINOR"
-    elif code.startswith("2"):  # possible bugs
-        return "MAJOR"
-    elif code.startswith("3"):  # serious bugs
-        return "CRITICAL"
-    else:
-        return "INFO"
+def parse_luacheck_line(line):
+    # Ejemplo línea típica:
+    # path/to/file.lua:130:7: (W213) unused loop variable 'k'
+    pattern = r"^(.*):(\d+):(\d+): \((\w\d+)\) (.*)$"
+    m = re.match(pattern, line)
+    if m:
+        file_path, line_no, col_no, code, message = m.groups()
+        return file_path, int(line_no), int(col_no), code, message
+    return None
 
 def main(input_file, output_file):
-    issues = []
-
-    # Ejemplo línea plain: path/to/file.lua:10:5: (211) unused variable 'x'
-    pattern = re.compile(r"^(.*):(\d+):(\d+): \((\d+)\) (.*)$")
-
-    with open(input_file, 'r') as f:
+    files = {}
+    with open(input_file, encoding='utf-8') as f:
         for line in f:
-            line = line.strip()
-            match = pattern.match(line)
-            if match:
-                filepath, line_num, col_num, code, message = match.groups()
-                issue = {
-                    "engineId": "luacheck",
-                    "ruleId": code,
-                    "type": "CODE_SMELL",
-                    "severity": luacheck_level_to_severity(code),
-                    "primaryLocation": {
-                        "message": message,
-                        "filePath": filepath,
-                        "textRange": {
-                            "startLine": int(line_num),
-                            "startColumn": int(col_num),
-                            "endLine": int(line_num),
-                            "endColumn": int(col_num) + 1
-                        }
-                    }
-                }
-                issues.append(issue)
+            parsed = parse_luacheck_line(line.strip())
+            if parsed:
+                file_path, line_no, col_no, code, message = parsed
+                if file_path not in files:
+                    files[file_path] = []
+                files[file_path].append({
+                    "line": line_no,
+                    "column": col_no,
+                    "severity": "warning" if code.startswith("W") else "error",
+                    "message": message,
+                    "code": code
+                })
 
-    with open(output_file, 'w') as f:
-        json.dump({"issues": issues}, f, indent=2)
+    # Construir XML Checkstyle
+    root = ET.Element("checkstyle", version="4.3")
+
+    for file_path, issues in files.items():
+        file_elem = ET.SubElement(root, "file", name=file_path)
+        for issue in issues:
+            ET.SubElement(file_elem, "error", 
+                line=str(issue["line"]),
+                column=str(issue["column"]),
+                severity=issue["severity"],
+                message=f"{issue['code']}: {issue['message']}",
+                source="luacheck"
+            )
+
+    tree = ET.ElementTree(root)
+    tree.write(output_file, encoding="utf-8", xml_declaration=True)
+    print(f"Archivo XML generado: {output_file}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python luacheck_to_sonarcloud.py input.txt output.json")
+        print("Uso: python luacheck_to_checkstyle.py luacheck_report.txt luacheck_report.xml")
         sys.exit(1)
     main(sys.argv[1], sys.argv[2])
