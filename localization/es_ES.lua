@@ -514,7 +514,7 @@ return {
 
             j_ina_Hattori = {
                 name = "Hattori",
-                text = { "{C:forest}Trama Trama{}",
+                text = { "{C:forest}Remate Múltiple{}",
                     "Al seleccionar la ciega crea",
                     "{C:attention}#1#{} copias básicas",
                     "{C:dark_edition}negativas{} de si mismo.",
@@ -560,7 +560,10 @@ return {
 
             j_ina_Muffs = {
                 name = "Muffs",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:forest}Tiro Cegador{}",
+                    "Tras jugar una mano {C:attention}siembra{}",
+                    "{C:attention}Cosechador:{} Gana {C:mult}+#1# Mult{}",
+                    "{C:inactive}Actualmente{} {C:mult}+#2# Mult{}" }
             },
 
             j_ina_Hillvalley = {
@@ -678,6 +681,11 @@ return {
                 name = "Posición",
                 text = { "{X:mf,C:white}MF{}" }
             },
+            Harvester = {
+                name = "Cosechador",
+                text = { "Se activa al descartar",
+                    "descartar una carta {C:attention}Cosechable{}" }
+            },
             p_ina_team_pack_raimon = {
                 name = "Pack Raimon",
                 text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} jugadores {X:raimon,C:white}Raimon{}" }
@@ -718,8 +726,14 @@ return {
             p_ina_team_pack_zeus = {
                 name = "Pack Zeus",
                 text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:zeus,C:white}Zeus{} jugadores" }
-            }
-
+            },
+            ina_harvest_sticker = {
+                name = "Cosechable",
+                text = {
+                    "Esta carta puede ser",
+                    "cosechada por jokers"
+                },
+            },
         },
         Planet = {},
         Spectral = {},
@@ -768,10 +782,14 @@ return {
             ina_settings_no_custom_middle_blinds = "Sin Ciegas Pequeñas o Grandes personalizadas",
             ina_settings_middle_blinds_abilities = "Las Ciegas Pequeñas y Grandes no tendrán habilidades",
             ina_destroy = "¡Destruido!",
-            ina_dribbling = "¡Regate!"
+            ina_dribbling = "¡Regate!",
+            ina_harvest = "Cosecha!",
+            ina_seed = "Siembra!"
         },
         high_scores = {},
-        labels = {},
+        labels = {
+            ina_harvest_sticker = "Cosechable"
+        },
         poker_hand_descriptions = {},
         poker_hands = {},
         quips = {},

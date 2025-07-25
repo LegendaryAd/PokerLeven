@@ -4,7 +4,7 @@ local ex_law = V({
     order = 33,
     set = "Voucher",
     pos = { x = 0, y = 0 },
-    config = { extra = { percent = 2 } },
+    config = { extra = { percent = 5 } },
     discovered = true,
     unlocked = true,
     available = true,
