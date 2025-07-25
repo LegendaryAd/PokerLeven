@@ -35,7 +35,7 @@ apply_type_sticker = function(card, sticker_type, property)
     end
 
     if property == "type" then
-        for l, v in pairs(inateam_list) do
+        for _, v in pairs(inateam_list) do
             if string.lower(v) ~= string.lower(apply_type) then
                 card.ability[string.lower(v) .. "_sticker"] = false
             end

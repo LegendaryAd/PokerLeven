@@ -1,5 +1,3 @@
-local lovely = require("lovely")
-
 SMODS.Atlas({
     key = "modicon",
     path = "icon.png",
