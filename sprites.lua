@@ -1,5 +1,3 @@
-local lovely = require("lovely")
-
 SMODS.Atlas({
     key = "modicon",
     path = "icon.png",
@@ -125,6 +123,7 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS["wild"] = HEX("797B49")
     G.ARGS.LOC_COLOURS["brain"] = HEX("888888")
     G.ARGS.LOC_COLOURS["otaku"] = HEX("A754C4")
+    G.ARGS.LOC_COLOURS["shuriken"] = HEX("4B0082")
     G.ARGS.LOC_COLOURS["pink"] = HEX("FF7ABF")
     G.ARGS.LOC_COLOURS["inazuma_eleven"] = HEX("fb8c00")
 

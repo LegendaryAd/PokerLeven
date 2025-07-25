@@ -6,14 +6,39 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  sonarqube:
-    name: SonarQube
+  analyze:
+    name: Luacheck + SonarCloud
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set up Lua and Luacheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y luarocks
+          luarocks install --local luacheck
+          [ -d "$HOME/.luarocks/bin" ] && echo "$HOME/.luarocks/bin" >> $GITHUB_PATH
+
+      - name: Run Luacheck
+        continue-on-error: true
+        env:
+          LANG: en_US.UTF-8
+          LC_ALL: en_US.UTF-8
+        run: |
+          luacheck . --codes --no-color > luacheck-report.txt
+
+      - name: Convert to SonarCloud format
+        run: |
+          sudo apt-get install -y python3
+          python3 luacheck_to_sonarcloud.py luacheck-report.txt luacheck-sonar.json
+
+      - name: List files for debugging
+        run: ls -la
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v5
+          projectBaseDir: .
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
