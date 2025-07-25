@@ -121,7 +121,7 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys)
     local ina_key
     exclude_keys = exclude_keys or {}
 
-    if inararity then
+    if inararity and type(inararity) == "string" then
         if string.lower(inararity) == "common" then inararity = 1 end
         if string.lower(inararity) == "uncommon" then inararity = 2 end
         if string.lower(inararity) == "rare" then inararity = 3 end
@@ -151,4 +151,45 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys)
     end
 
     return ina_key
+end
+
+--- Returns the average sell value of a group of type jokers
+---@param ptype string The reference type
+---@return number|nil avg_sell_value Average sell value of the group of jokers. Nil for collection
+calculate_avg_sell_cost = function(ptype)
+    local sumSellCost = 0
+    if G.jokers then
+        for _, v in pairs(G.jokers.cards) do
+            if ptype == nil then
+                sumSellCost = sumSellCost + v.sell_cost
+            else
+                if v.ability.extra.ptype == ptype then
+                    sumSellCost = sumSellCost + v.sell_cost
+                end
+            end
+        end
+
+        if ptype == nil then
+            return sumSellCost / #G.jokers.cards
+        else
+            return sumSellCost / #find_player_type(ptype)
+        end
+    end
+
+    return nil
+end
+
+--- Returns the joker to the right of the given joker in the active jokers row.
+---@param main_card SMODS.Joker The reference joker.
+---@return SMODS.Joker|nil Right_Joker Joker immediately to the right, or nil if not found or at the end.
+function get_right_joker(main_card)
+    sendDebugMessage("Looking for main_card in G.jokers.cards")
+    for k, v in ipairs(G.jokers.cards) do
+        if v == main_card then
+            sendDebugMessage("Index: " .. k .. " Card: " .. tostring(v))
+            return G.jokers.cards[k + 1]
+        end
+    end
+    sendDebugMessage("main_card: " .. tostring(main_card))
+    return nil
 end

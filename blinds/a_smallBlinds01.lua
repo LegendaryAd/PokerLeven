@@ -54,29 +54,52 @@ local strange = B({
     end
 })
 
-local inazuma08 = {
+local inazuma08 = B({
     object_type = "SmallBlind",
     key = "inazuma08",
     pos = { x = 0, y = 3 },
     discovered = true,
-    mult = 1,
+    mult = 1.25,
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
-    dollars = 3,
+    dollars = 8,
     small = { min = 2 },
-}
+})
 
-local inazuma_town = {
+local inazuma_town = B({
     object_type = "SmallBlind",
     key = "inazuma_town",
     pos = { x = 0, y = 4 },
+    config = { extra = { discards = 1, max_hand_types = 6 } },
+    collection_loc_vars = function(self)
+        return {
+            vars = {
+                self.config.extra.max_hand_types,
+                self.config.extra.discards
+            },
+            key = self.key
+        }
+    end,
     discovered = true,
     mult = 1,
     atlas = "smallBlinds01",
     boss_colour = HEX("5EC2E8"),
     dollars = 3,
     small = { min = 2 },
-}
+    set_blind = function(self)
+        local count = 0
+        for _, hand in ipairs(G.GAME.hands) do
+            if hand.played and hand.played > 0 then
+                count = count + 1
+            end
+        end
+
+        if count > self.config.extra.max_hand_types then
+            G.GAME.round_resets.discards = G.GAME.round_resets.discards - self.config.extra.discards
+            ease_discard(-1)
+        end
+    end
+})
 
 local glasses = B({
     object_type = "SmallBlind",

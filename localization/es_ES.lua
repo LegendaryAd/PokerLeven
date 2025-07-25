@@ -20,11 +20,13 @@ return {
             },
             bl_ina_inazuma08 = {
                 name = "Inazuma 08",
-                text = {}
+                text = { "Gana 8$!!" }
             },
             bl_ina_inazuma_town = {
                 name = "Ciudad Inazuma",
-                text = {}
+                text = { "Si has jugado más",
+                    "de #1# tipos de mano",
+                    "-#2# descarte" }
             },
             bl_ina_glasses = {
                 name = "Gafitas",
@@ -470,12 +472,20 @@ return {
             -- Shuriken
             j_ina_Hood = {
                 name = "Hood",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = {
+                    "{C:forest}Jutsu de Protección{}",
+                    "Gana {X:mult,C:white}X#1#{} por",
+                    "cada Joker {X:gk,C:white}GK{}{}",
+                    "{C:inactive}Actualmente{} {X:mult,C:white}X#2#{}"
+                }
             },
 
             j_ina_Hillfort = {
                 name = "Hillfort",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:wind}Ataque de las Sombras{}", "Gana {C:chips}+X{} fichas donde {C:chips}X{} es",
+                    "{C:attention}la media del valor de venta{}",
+                    "de los comodines de {X:wind,C:white}viento{}",
+                    "{C:inactive}Actualmente{} {C:chips}+#1#{}" }
             },
 
             j_ina_Code = {
@@ -485,12 +495,17 @@ return {
 
             j_ina_Star = {
                 name = "Star",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:wind}Regate Múltiple{}", "Por cada carta de {C:red}diamantes{}",
+                    "gana {C:money}+#1#${} y {C:mult}+#2#{} Mult", }
             },
 
             j_ina_Cleats = {
                 name = "Cleats",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:wind}Luna creciente{}",
+                    "Al seleccionar la ciega",
+                    "{C:green}transforma{} el jugador de",
+                    "la derecha en otro",
+                    "de la misma {C:green}rareza{}" }
             },
 
             j_ina_Hattori = {
@@ -714,7 +729,7 @@ return {
         collabs = {},
         dictionary = {
             ina_evolve_level = "¡Nivel subido!",
-            ina_evolve_success = "¡Ha crecido!",
+            ina_evolve_success = "¡Intercambio!",
             ina_val_down = "¡Drenado!",
             ina_training = "¡Cambio!",
             ina_next_match = "Siguiente",
@@ -724,7 +739,8 @@ return {
             ina_sell_increased = "¡Jokers mejorados!",
             ina_settings_no_custom_middle_blinds = "Sin Ciegas Pequeñas o Grandes personalizadas",
             ina_settings_middle_blinds_abilities = "Las Ciegas Pequeñas y Grandes no tendrán habilidades",
-            ina_destroy = "¡Destruido!"
+            ina_destroy = "¡Destruido!",
+            ina_dribbling = "¡Regate!"
         },
         high_scores = {},
         labels = {},
