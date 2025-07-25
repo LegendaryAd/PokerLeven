@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Luacheck
         run: |
-          luacheck . --formatter plain > luacheck-report.txt
+          luacheck . --formatter plain
 
       - name: Convert to SonarCloud format
         run: |
