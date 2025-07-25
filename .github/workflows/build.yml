@@ -18,11 +18,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y luarocks
           luarocks install --local luacheck
-          echo "$HOME/.luarocks/bin" >> $GITHUB_PATH
+          luarocks install --local lua-cjson
+          [ -d "$HOME/.luarocks/bin" ] && echo "$HOME/.luarocks/bin" >> $GITHUB_PATH
 
-      - name: Run Luacheck (plain formatter)
+      - name: Run Luacheck
         run: |
-          export PATH=$HOME/.luarocks/bin:$PATH
+          [ -d "$HOME/.luarocks/bin" ] && export PATH="$HOME/.luarocks/bin:$PATH"
+          export LUA_PATH="$HOME/.luarocks/share/lua/5.1/?.lua;$HOME/.luarocks/share/lua/5.1/?/init.lua;;"
+          export LUA_CPATH="$HOME/.luarocks/lib/lua/5.1/?.so;;"
           luacheck . --formatter plain > luacheck-report.txt
 
       - name: Convert to SonarCloud format
