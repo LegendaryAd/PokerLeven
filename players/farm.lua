@@ -15,15 +15,18 @@ local Greeny = J({
     pposition = "GK",
     pteam = "Farm",
     blueprint_compat = true,
-    calculate = function(self, card, context)
-        -- Add logic
-    end,
 })
+
 
 local Hayseed = J({
     name = "Hayseed",
     pos = { x = 11, y = 4 },
-    config = { extra = { current_mult = 0, mult_mod = 2 } },
+    config = {
+        extra = {
+            current_mult = 0,
+            mult_mod = 2
+        }
+    },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.current_mult or 0 } }
@@ -55,6 +58,7 @@ local Hayseed = J({
         end
     end,
 })
+
 
 local Sherman = J({
     name = "Sherman",
