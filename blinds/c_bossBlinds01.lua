@@ -218,7 +218,7 @@ local inazuma_og = {
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
-    boss_colour = HEX("2e7d32"),
+    boss_colour = HEX("ffa726"),
 }
 
 local royal_blind = {
@@ -323,7 +323,7 @@ local kirkwood = {
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
-    boss_colour = HEX("2e7d32"),
+    boss_colour = HEX("7A5E3C"),
 }
 
 local zeus = {
@@ -338,7 +338,7 @@ local zeus = {
     mult = 2,
     atlas = "finalBossBlinds",
     order = 1,
-    boss_colour = HEX("2e7d32"),
+    boss_colour = HEX("ffa726"),
 }
 
 return {
