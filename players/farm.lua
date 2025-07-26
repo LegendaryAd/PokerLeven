@@ -58,14 +58,22 @@ local Sherman = J({
     pteam = "Farm",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.post_trigger and context.other_card.ability
-            and context.other_card.ability.extra.pteam and context.other_card.ability.extra.pteam == "Farm" then
+        if context.post_trigger and context.other_card ~= card
+            and context.other_card.ability and context.other_card.ability.extra.pteam
+            and context.other_card.ability.extra.pteam == "Farm" then
             card.ability.extra.current_chips =
                 card.ability.extra.current_chips + card.ability.extra.chip_mod
-            return {
-                message = localize("k_upgrade_ex"),
-                card = card
-            }
+
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    card_eval_status_text(card, 'extra', nil, nil, nil, {
+                        message = localize("ina_evolve_level"),
+                        colour = G.C.XMULT
+                    })
+                    return true
+                end
+            }))
+            return {}
         end
 
         if context.scoring_hand and context.cardarea == G.jokers
