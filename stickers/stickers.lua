@@ -85,8 +85,8 @@ local harvest_sticker = {
   key = "harvest_sticker",
   badge_colour = HEX("289830"),
   rate = 0.0,
-  atlas = "stickers",
-  pos = { x = 8, y = 0 },
+  atlas = "stickers02",
+  pos = { x = 2, y = 0 },
   hide_badge = false
 }
 
