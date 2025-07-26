@@ -621,7 +621,9 @@ return {
             -- Kirkwood
             j_ina_Neville = {
                 name = "Neville",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:fire}Bloque Dureza{}",
+                    "Las cartas de {C:attention}Cristal{}",
+                    "ahora se rompen {C:green}#1# de #2#{} veces" }
             },
 
             j_ina_Night = {

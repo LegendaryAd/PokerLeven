@@ -1,10 +1,10 @@
 local Neville = J({
     name = "Neville",
     pos = { x = 1, y = 5 },
-    config = {},
+    config = { extra = { new_glass_denom = 6 } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+        return { vars = { G.GAME.probabilities.normal, G.GAME.probabilities.new_glass_denom or center.ability.extra.new_glass_denom } }
     end,
     rarity = 1, -- Common
     pools = { ["Kirkwood"] = true },
@@ -14,8 +14,11 @@ local Neville = J({
     pposition = "GK",
     pteam = "Kirkwood",
     blueprint_compat = true,
-    calculate = function(self, card, context)
-        -- Add logic
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.probabilities.new_glass_denom = card.ability.extra.new_glass_denom
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.probabilities.new_glass_denom = nil
     end,
 })
 
