@@ -192,3 +192,46 @@ G.FUNCS.your_collection_techniques = function(e)
         definition = create_UIBox_your_collection_techniques(),
     }
 end
+
+-- -- TODO BUTTON TO FUSE CARDS, MAYBE ITS BETTER TO HAVE A GENERAL BUTTON. WE NEED TO THINK ABOUT WHAT IT WILL COST
+-- -- TODO CHANGE THIS TO A FUSE_HELPER
+-- local use_and_sell_buttonsref = G.UIDEF.use_and_sell_buttons
+-- function G.UIDEF.use_and_sell_buttons(card)
+--     local retval = use_and_sell_buttonsref(card)
+
+--     local fuse =
+--     {
+--         n = G.UIT.C,
+--         config = { align = "cr" },
+--         nodes = {
+--             {
+--                 n = G.UIT.C,
+--                 config = { ref_table = card, align = "cr", padding = 0.1, r = 0.08, minw = 1.25, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'sell_card', func = 'can_fuse_card' },
+--                 nodes = {
+--                     { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
+--                     {
+--                         n = G.UIT.C,
+--                         config = { align = "cm" },
+--                         nodes = {
+--                             {
+--                                 n = G.UIT.R,
+--                                 config = { align = "cm", maxw = 1.25 },
+--                                 nodes = {
+--                                     { n = G.UIT.T, config = { text = "Fusionar", colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true } }
+--                                 }
+--                             }
+--                         }
+--                     }
+--                 }
+--             },
+--         }
+--     }
+--     retval.nodes[1].nodes[2].nodes = retval.nodes[1].nodes[2].nodes or {}
+--     table.insert(retval.nodes[1].nodes[2].nodes, fuse)
+--     return retval
+-- end
+
+-- G.FUNCS.can_fuse_card = function(e)
+--     e.config.colour = G.C.DARK_EDITION
+--     e.config.button = 'sell_card'
+-- end
