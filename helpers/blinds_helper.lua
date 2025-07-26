@@ -150,3 +150,15 @@ reroll_big = function(e)
         end)
     }))
 end
+
+---Decreases blind size by a percent per member o blind team
+---@param percent_per_member number Percent to decrease per player
+function apply_team_discount_to_blind(percent_per_member)
+    local team = find_player_team(G.GAME.blind.name)
+    local count = #team
+
+    if count > 0 then
+        G.GAME.blind.chips = G.GAME.blind.chips * (1 - (percent_per_member * count / 100))
+        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+    end
+end

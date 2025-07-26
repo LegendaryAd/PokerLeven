@@ -792,6 +792,15 @@ return {
                     "en un {C:attention}#1#%{} las {C:chips}fichas{} necesarias"
                 },
             },
+            v_ina_ex_law_2 = {
+                name = "Ley del Ex",
+                text = {
+                    "Por cada jugador que",
+                    "lleves del equipo al",
+                    "que te enfrentas, reduce",
+                    "en un {C:attention}#1#%{} las {C:chips}fichas{} necesarias"
+                },
+            },
         }
     },
     misc = {

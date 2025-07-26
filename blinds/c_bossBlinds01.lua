@@ -208,7 +208,7 @@ local forest = {
 
 local inazuma_og = {
     object_type = "Blind",
-    name = "ina-inazuma-og",
+    name = "Inazuma Eleven",
     key = "inazuma_og",
     pos = { x = 0, y = 8 },
     boss = {
@@ -223,7 +223,7 @@ local inazuma_og = {
 
 local royal_blind = {
     object_type = "Blind",
-    name = "ina-royal_blind",
+    name = "Royal Academy",
     key = "royal_blind",
     pos = { x = 0, y = 9 },
     boss = {
@@ -238,7 +238,7 @@ local royal_blind = {
 
 local wild = {
     object_type = "Blind",
-    name = "ina-wild",
+    name = "Wild",
     key = "wild",
     pos = { x = 0, y = 10 },
     boss = {
@@ -253,7 +253,7 @@ local wild = {
 
 local brain = {
     object_type = "Blind",
-    name = "ina-brain",
+    name = "Brain",
     key = "brain",
     pos = { x = 0, y = 11 },
     boss = {
@@ -268,7 +268,7 @@ local brain = {
 
 local otaku = {
     object_type = "Blind",
-    name = "ina-otaku",
+    name = "Otaku",
     key = "otaku",
     pos = { x = 0, y = 12 },
     boss = {
@@ -283,7 +283,7 @@ local otaku = {
 
 local shuriken = {
     object_type = "Blind",
-    name = "ina-shuriken",
+    name = "Shuriken",
     key = "shuriken",
     pos = { x = 0, y = 13 },
     boss = {
@@ -298,7 +298,7 @@ local shuriken = {
 
 local farm = {
     object_type = "Blind",
-    name = "ina-farm",
+    name = "Farm",
     key = "farm",
     pos = { x = 0, y = 14 },
     boss = {
@@ -313,7 +313,7 @@ local farm = {
 
 local kirkwood = {
     object_type = "Blind",
-    name = "ina-kirkwood",
+    name = "Kirkwood",
     key = "kirkwood",
     pos = { x = 0, y = 15 },
     boss = {
@@ -328,7 +328,7 @@ local kirkwood = {
 
 local zeus = {
     object_type = "Blind",
-    name = "ina-zeus",
+    name = "Zeus",
     key = "zeus",
     pos = { x = 0, y = 0 },
     boss = {

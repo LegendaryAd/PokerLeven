@@ -96,9 +96,9 @@ local sallys = {
     big = { min = 10000 },
 }
 
-local occult = {
+local occult = B({
     object_type = "Blind",
-    name = "ina-occult",
+    name = "Occult",
     key = "occult",
     pos = { x = 0, y = 7 },
     discovered = true,
@@ -108,7 +108,7 @@ local occult = {
     boss_colour = HEX("B7865B"),
     dollars = 4,
     big = { min = 0 },
-}
+})
 
 local raimonOB = {
     object_type = "Blind",
