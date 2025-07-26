@@ -170,6 +170,8 @@ create_UIBox_your_collection_jokers = function()
     })
 end
 
+--#region Technique UI
+
 ---Creates the UI for techniques in collection
 ---@return UINode node UI for techniques in collection
 create_UIBox_your_collection_techniques = function()
@@ -192,6 +194,43 @@ G.FUNCS.your_collection_techniques = function(e)
         definition = create_UIBox_your_collection_techniques(),
     }
 end
+
+local original_buildAdditionsTab = buildAdditionsTab
+function buildAdditionsTab(mod)
+    local tab = original_buildAdditionsTab(mod)
+    if not tab then return nil end
+
+    local techniques_pool = {}
+    for _, joker in ipairs(G.P_CENTER_POOLS.Joker) do
+        if joker.special then
+            table.insert(techniques_pool, joker)
+        end
+    end
+
+    if #techniques_pool > 0 then
+        local tally = modsCollectionTally(techniques_pool)
+        if tally.of > 0 then
+            local techniques_node = UIBox_button({
+                button = 'your_collection_techniques',
+                label = { localize('ina_special_technique') },
+                count = tally,
+                minw = 5,
+                minh = 1.2,
+                scale = 0.6,
+                id = 'your_collection_techniques'
+            })
+
+            local tab_nodes = tab.tab_definition_function().nodes
+            if tab_nodes and tab_nodes[1] and tab_nodes[1].nodes and tab_nodes[1].nodes[1] and tab_nodes[1].nodes[1].nodes then
+                table.insert(tab_nodes[1].nodes[1].nodes, 2, techniques_node)
+            end
+        end
+    end
+
+    return tab
+end
+
+--#endregion
 
 -- -- TODO BUTTON TO FUSE CARDS, MAYBE ITS BETTER TO HAVE A GENERAL BUTTON. WE NEED TO THINK ABOUT WHAT IT WILL COST
 -- -- TODO CHANGE THIS TO A FUSE_HELPER
