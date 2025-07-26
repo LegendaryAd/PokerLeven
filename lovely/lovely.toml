@@ -125,7 +125,6 @@ payload = '''
 if not G.P_CENTERS.j_ina_Mark then
   print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
 else
-    print("j_ina_Mark encontrado:", G.P_CENTERS.j_ina_Mark)
 end
 local replace_card = Card(self.title_top.T.x, self.title_top.T.y, 1.2*G.CARD_W*SC_scale, 1.2*G.CARD_H*SC_scale, G.P_CARDS.empty, G.P_CENTERS.j_ina_Mark)
 G.P_CENTERS.j_ina_Mark:set_sprites(replace_card)

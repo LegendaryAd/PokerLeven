@@ -153,3 +153,42 @@ function SMODS.create_mod_badges(obj, badges)
         badges[#badges] = badge
     end
 end
+
+---Creates the UI for jokers in collection
+---@return UINode node UI for jokers in collection
+create_UIBox_your_collection_jokers = function()
+    local filtered_jokers = {}
+    for _, joker in ipairs(G.P_CENTER_POOLS.Joker) do
+        if not joker.special then
+            table.insert(filtered_jokers, joker)
+        end
+    end
+    return SMODS.card_collection_UIBox(filtered_jokers, { 5, 5, 5 }, {
+        no_materialize = true,
+        modify_card = function(card, center) card.sticker = get_joker_win_sticker(center) end,
+        h_mod = 0.95,
+    })
+end
+
+---Creates the UI for techniques in collection
+---@return UINode node UI for techniques in collection
+create_UIBox_your_collection_techniques = function()
+    local filtered_jokers = {}
+    for _, joker in ipairs(G.P_CENTER_POOLS.Joker) do
+        if joker.special then
+            table.insert(filtered_jokers, joker)
+        end
+    end
+    return SMODS.card_collection_UIBox(filtered_jokers, { 5, 5, 5 }, {
+        no_materialize = true,
+        modify_card = function(card, center) card.sticker = get_joker_win_sticker(center) end,
+        h_mod = 0.95,
+    })
+end
+
+G.FUNCS.your_collection_techniques = function(e)
+    G.SETTINGS.paused = true
+    G.FUNCS.overlay_menu {
+        definition = create_UIBox_your_collection_techniques(),
+    }
+end

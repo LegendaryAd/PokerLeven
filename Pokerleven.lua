@@ -249,6 +249,14 @@ for _, file in ipairs(pfiles) do
         end
       end
 
+      if item.special then
+        if item.config and item.config.extra then
+          item.config.extra.special = item.special
+        elseif item.config then
+          item.config.extra = { special = item.special }
+        end
+      end
+
       if not item.custom_pool_func then
         item.in_pool = function(self)
           return player_in_pool(self)

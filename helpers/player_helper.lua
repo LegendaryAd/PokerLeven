@@ -80,7 +80,7 @@ player_in_pool = function(self)
     else
         name = self.name or "Mark"
     end
-    if next(find_joker(name)) then
+    if next(find_joker(name)) or self.special then
         return false
     else
         return true

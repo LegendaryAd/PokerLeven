@@ -159,7 +159,29 @@ local Nashmith = J({
     end,
 })
 
+local z_triangle = J({
+    name = "Z_Triangle",
+    pos = { x = 11, y = 6 },
+    config = {},
+    loc_vars = function(self, info_queue, center)
+        type_tooltip(self, info_queue, center)
+        return {}
+    end,
+    rarity = 1, -- Common
+    pools = { ["Kirkwood"] = true },
+    cost = 8,
+    atlas = "Jokers01",
+    ptype = "Fire",
+    pposition = "FW",
+    pteam = "Kirkwood",
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        -- Add logic
+    end,
+    special = "Technique"
+})
+
 return {
     name = "Kirkwood",
-    list = { Neville, Night, Marvin, Thomas, Tyler, Damian, Nashmith }
+    list = { Neville, Night, Marvin, Thomas, Tyler, Damian, Nashmith, z_triangle }
 }

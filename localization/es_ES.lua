@@ -660,7 +660,10 @@ return {
                 name = "Nashmith",
                 text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
             },
-
+            j_ina_Z_Triangle = {
+                name = "Triángulo Z",
+                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+            },
             -- Zeus
             j_ina_Poseidon = {
                 name = "Poseidon",
@@ -843,7 +846,8 @@ return {
             ina_destroy = "¡Destruido!",
             ina_dribbling = "¡Regate!",
             ina_harvest = "Cosecha!",
-            ina_seed = "Siembra!"
+            ina_seed = "Siembra!",
+            ina_special_technique = "Super Técnicas"
         },
         high_scores = {},
         labels = {

@@ -1,0 +1,69 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 3
+
+# New tab for Special Techniques on colection
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = "UIBox_button({button = 'your_collection_jokers', label = {localize('b_jokers')}, count = G.DISCOVER_TALLIES.jokers,  minw = 5, minh = 1.7, scale = 0.6, id = 'your_collection_jokers'}),"
+position = 'after'
+match_indent = true
+payload = '''
+UIBox_button({button = 'your_collection_techniques', label = {localize('ina_special_technique')}, count = G.DISCOVER_TALLIES.techniques, minw = 5, id = 'your_collection_techniques'}),
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = "jokers = {tally = 0, of = 0},"
+position = 'before'
+match_indent = true
+payload = '''
+techniques = {tally = 0, of = 0},
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = "if v.set and ((v.set == 'Joker') or v.consumeable or (v.set == 'Edition') or (v.set == 'Voucher') or (v.set == 'Back') or (v.set == 'Booster')) then"
+position = 'at'
+match_indent = true
+overwrite = true
+payload = '''
+if v.set and (
+    (v.set == 'Joker') or
+    v.consumeable or
+    (v.special and v.special == "Technique") or
+    (v.set == 'Edition') or
+    (v.set == 'Voucher') or
+    (v.set == 'Back') or
+    (v.set == 'Booster')
+) then'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = "if v.set and v.set == 'Joker' then"
+position = 'before'
+match_indent = true
+payload = '''
+if v.special and v.special == "Technique" then
+    G.DISCOVER_TALLIES.techniques.of = G.DISCOVER_TALLIES.techniques.of+1
+    if v.discovered then 
+        G.DISCOVER_TALLIES.techniques.tally = G.DISCOVER_TALLIES.techniques.tally+1
+    end
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = "if v.set and v.set == 'Joker' then"
+position = 'at'
+overwrite = true
+match_indent = true
+payload = '''
+if v.set and v.set == 'Joker' and v.special == nil then
+'''
