@@ -54,6 +54,14 @@ return {
                 name = "Umbrella",
                 text = {}
             },
+            bl_ina_inazuma_kids = {
+                name = "Inazuma Kids",
+                text = {}
+            },
+            bl_ina_sallys = {
+                name = "Sallys",
+                text = {}
+            },
             bl_ina_occult = {
                 name = "Occult",
                 text = {}
@@ -109,6 +117,26 @@ return {
             },
             bl_ina_royal_blind = {
                 name = "Royal Academy",
+                text = {}
+            },
+            bl_ina_wild = {
+                name = "Wild",
+                text = {}
+            },
+            bl_ina_brain = {
+                name = "Brain",
+                text = {}
+            },
+            bl_ina_otaku = {
+                name = "Otaku",
+                text = {}
+            },
+            bl_ina_shuriken = {
+                name = "Shuriken",
+                text = {}
+            },
+            bl_ina_farm = {
+                name = "Farm",
                 text = {}
             },
             bl_ina_kirkwood = {

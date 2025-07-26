@@ -236,6 +236,81 @@ local royal_blind = {
     boss_colour = HEX("2e7d32"),
 }
 
+local wild = {
+    object_type = "Blind",
+    name = "ina-wild",
+    key = "wild",
+    pos = { x = 0, y = 10 },
+    boss = {
+        min = 10000,
+    },
+    discovered = true,
+    mult = 2,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("797B49"),
+}
+
+local brain = {
+    object_type = "Blind",
+    name = "ina-brain",
+    key = "brain",
+    pos = { x = 0, y = 11 },
+    boss = {
+        min = 10000,
+    },
+    discovered = true,
+    mult = 2,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("888888"),
+}
+
+local otaku = {
+    object_type = "Blind",
+    name = "ina-otaku",
+    key = "otaku",
+    pos = { x = 0, y = 12 },
+    boss = {
+        min = 10000,
+    },
+    discovered = true,
+    mult = 2,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("A754C4"),
+}
+
+local shuriken = {
+    object_type = "Blind",
+    name = "ina-shuriken",
+    key = "shuriken",
+    pos = { x = 0, y = 13 },
+    boss = {
+        min = 10000,
+    },
+    discovered = true,
+    mult = 2,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("4B0082"),
+}
+
+local farm = {
+    object_type = "Blind",
+    name = "ina-farm",
+    key = "farm",
+    pos = { x = 0, y = 14 },
+    boss = {
+        min = 10000,
+    },
+    discovered = true,
+    mult = 2,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("7AC943"),
+}
+
 local kirkwood = {
     object_type = "Blind",
     name = "ina-kirkwood",
@@ -270,5 +345,7 @@ return {
     name = "Boss Blinds",
     list = { goalkeeper, forward, defense,
         midfielder, fire, mountain, wind,
-        forest, inazuma_og, royal_blind, kirkwood, zeus }
+        forest, inazuma_og, royal_blind, wild,
+        brain, otaku, shuriken, farm,
+        kirkwood, zeus }
 }

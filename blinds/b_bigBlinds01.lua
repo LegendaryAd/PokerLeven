@@ -7,9 +7,9 @@ local ff_regional_a = {
     mult = 1.5,
     atlas = "bigBlinds01",
     order = 1,
-    boss_colour = HEX("B7865B") ,
+    boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = {min = 0},
+    big = { min = 0 },
 }
 
 local ff_regional_b = {
@@ -21,9 +21,9 @@ local ff_regional_b = {
     mult = 1.5,
     atlas = "bigBlinds01",
     order = 1,
-    boss_colour = HEX("B7865B") ,
+    boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = {min = 0},
+    big = { min = 0 },
 }
 
 local ff_national_a = {
@@ -35,9 +35,9 @@ local ff_national_a = {
     mult = pokerleven_config.middle_blinds_abilities and 1.7 or 1.5,
     atlas = "bigBlinds01",
     order = 1,
-    boss_colour = HEX("B7865B") ,
+    boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = {min = 0},
+    big = { min = 0 },
 }
 
 local ff_national_b = {
@@ -49,9 +49,9 @@ local ff_national_b = {
     mult = pokerleven_config.middle_blinds_abilities and 1.6 or 1.5,
     atlas = "bigBlinds01",
     order = 1,
-    boss_colour = HEX("B7865B") ,
+    boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = {min = 0},
+    big = { min = 0 },
 }
 
 local umbrella = {
@@ -63,9 +63,37 @@ local umbrella = {
     mult = 1.5,
     atlas = "bigBlinds01",
     order = 1,
-    boss_colour = HEX("B7865B") ,
+    boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = {min = 0},
+    big = { min = 0 },
+}
+
+local inazuma_kids = {
+    object_type = "Blind",
+    name = "ina-inazuma_kids",
+    key = "inazuma_kids",
+    pos = { x = 0, y = 5 },
+    discovered = true,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 10000 },
+}
+
+local sallys = {
+    object_type = "Blind",
+    name = "ina-sallys",
+    key = "sallys",
+    pos = { x = 0, y = 6 },
+    discovered = true,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 10000 },
 }
 
 local occult = {
@@ -77,9 +105,9 @@ local occult = {
     mult = 1.5,
     atlas = "bigBlinds01",
     order = 1,
-    boss_colour = HEX("B7865B") ,
+    boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = {min = 0},
+    big = { min = 0 },
 }
 
 local raimonOB = {
@@ -91,9 +119,9 @@ local raimonOB = {
     mult = 1.5,
     atlas = "bigBlinds01",
     order = 1,
-    boss_colour = HEX("B7865B") ,
+    boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = {min = 0},
+    big = { min = 0 },
 }
 
 local shun = {
@@ -105,9 +133,9 @@ local shun = {
     mult = 1.5,
     atlas = "bigBlinds01",
     order = 1,
-    boss_colour = HEX("B7865B") ,
+    boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = {min = 0},
+    big = { min = 0 },
 }
 
 local empress = {
@@ -119,12 +147,14 @@ local empress = {
     mult = 1.5,
     atlas = "bigBlinds01",
     order = 1,
-    boss_colour = HEX("B7865B") ,
+    boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = {min = 0},
+    big = { min = 0 },
 }
 
 return {
     name = "bigBlinds01",
-    list = {ff_regional_a, ff_regional_b, ff_national_a, ff_national_b, umbrella, occult, raimonOB, shun, empress}
+    list = { ff_regional_a, ff_regional_b, ff_national_a, ff_national_b,
+        umbrella, inazuma_kids, sallys,
+        occult, raimonOB, shun, empress }
 }
