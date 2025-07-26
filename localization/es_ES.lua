@@ -562,7 +562,12 @@ return {
 
             j_ina_Hayseed = {
                 name = "Hayseed",
-                text = { "{C:mountain}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = {
+                    "{C:mountain}Semilla del Trío{}",
+                    "Gana {C:mult}+3{} de multiplicador",
+                    "por cada {C:attention}Trío exacto{} jugado",
+                    "{C:inactive}Actualmente{} {C:mult}+#1#{} Mult"
+                }
             },
 
             j_ina_Sherman = {
