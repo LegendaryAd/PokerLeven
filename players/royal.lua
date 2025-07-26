@@ -1,399 +1,405 @@
 -- King
 local King = {
-    name = "King",
-    pos = {x = 4, y = 1},
-    config = {extra = {triggered = false}},
-    loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-        return {}
-    end,
-    rarity = 2,
-    pools = { ["Royal Academy"] = true }, 
-    cost = 8,
-    atlas = "Jokers01",
-    ptype = "Fire",
-    pposition = "GK",
-    pteam = "Royal Academy",
-    blueprint_compat = true,
-    calculate = function(self, card, context)
-      if context.cardarea == G.jokers and context.joker_main then
-        local rankCount = 0
-        for i, c in ipairs(context.scoring_hand) do
-          if c:get_id() == 13 then
-            rankCount = rankCount + 1
+  name = "King",
+  pos = { x = 4, y = 1 },
+  config = { extra = { triggered = false } },
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return {}
+  end,
+  rarity = 2,
+  pools = { ["Royal Academy"] = true },
+  cost = 8,
+  atlas = "Jokers01",
+  ptype = "Fire",
+  pposition = "GK",
+  pteam = "Royal Academy",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    if context.cardarea == G.jokers and context.joker_main then
+      local rankCount = 0
+      for i, c in ipairs(context.scoring_hand) do
+        if c:get_id() == 13 then
+          rankCount = rankCount + 1
+        end
+      end
+
+      if rankCount >= 3 then
+        local rightmost_king = nil
+        for i = #context.full_hand, 1, -1 do
+          local c = context.full_hand[i]
+          if c and c:get_id() == 13 then
+            rightmost_king = c
+            break
           end
         end
 
-        if rankCount >= 3 then
-          local rightmost_king = nil
-          for i = #context.full_hand, 1, -1 do
-            local c = context.full_hand[i]
-            if c and c:get_id() == 13 then
-              rightmost_king = c
-              break
+        if rightmost_king then
+          card.ability.extra.triggered = true
+          G.E_MANAGER:add_event(Event({
+            delay = 0.5,
+            func = function()
+              local copied_card = copy_card(rightmost_king, nil, nil, G.playing_card or 1)
+              copied_card:add_to_deck()
+              G.deck.config.card_limit = G.deck.config.card_limit + 1
+              G.deck:emplace(copied_card)
+              table.insert(G.playing_cards, copied_card)
+              playing_card_joker_effects({ true })
+
+              G.E_MANAGER:add_event(Event({
+                func = function()
+                  copied_card:start_materialize()
+                  return true
+                end
+              }))
+
+              return true
             end
-          end
+          }))
 
-          if rightmost_king then
-            card.ability.extra.triggered = true
-            G.E_MANAGER:add_event(Event({
-              delay = 0.5,
-              func = function()
-                local copied_card = copy_card(rightmost_king, nil, nil, G.playing_card or 1)
-                copied_card:add_to_deck()
-                G.deck.config.card_limit = G.deck.config.card_limit + 1
-                G.deck:emplace(copied_card)
-                table.insert(G.playing_cards, copied_card)
-                playing_card_joker_effects({true})
-
-                G.E_MANAGER:add_event(Event({
-                  func = function()
-                    copied_card:start_materialize()
-                    return true
-                  end
-                }))
-
-                return true
-              end
-            }))
-
-            return {
-              message = "KING!",
-              colour = G.C.XMULT
-            }
-          end
+          return {
+            message = "KING!",
+            colour = G.C.XMULT
+          }
         end
       end
     end
+  end
 
 }
 
 -- Bloom
 local Bloom = {
-    name = "Bloom",
-    pos = {x = 5, y = 1},
-    config = {extra = {current_mult = 0, mult_mod = 1, triggered = false}},
-    loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-        return {vars = {center.ability.extra.current_mult, center.ability.extra.mult_mod}}
-    end,
-    rarity = 1,
-    pools = { ["Royal Academy"] = true }, 
-    cost = 5,
-    atlas = "Jokers01",
-    ptype = "Fire",
-    pposition = "MF",
-    pteam = "Royal Academy",
-    blueprint_compat = true,
-    calculate = function(self, card, context)
-      if context.joker_main and context.scoring_hand and next(context.poker_hands['Straight']) then
-        card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult_mod
-        card.ability.extra.triggered = true
-        return {
-            message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.current_mult}}, 
-            colour = G.C.MULT,
-            mult_mod = card.ability.extra.current_mult
-          }
-      end
-    end,
+  name = "Bloom",
+  pos = { x = 5, y = 1 },
+  config = { extra = { current_mult = 0, mult_mod = 1, triggered = false } },
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return { vars = { center.ability.extra.current_mult, center.ability.extra.mult_mod } }
+  end,
+  rarity = 1,
+  pools = { ["Royal Academy"] = true },
+  cost = 5,
+  atlas = "Jokers01",
+  ptype = "Fire",
+  pposition = "MF",
+  pteam = "Royal Academy",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    if context.joker_main and context.scoring_hand and next(context.poker_hands['Straight']) then
+      card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult_mod
+      card.ability.extra.triggered = true
+      return {
+        message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.current_mult } },
+        colour = G.C.MULT,
+        mult_mod = card.ability.extra.current_mult
+      }
+    end
+  end,
 }
 
 -- Drent
 local Drent = {
-    name = "Drent",
-    pos = {x = 6, y = 1},
-    config = {extra = {odds = 5, triggered = false}},
-    loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-        local count = #find_player_type("Mountain");
-        local odds = center.ability.extra.odds - count
-        if odds < 0 then
-          odds = 1
-        end       
-        return {vars = {G.GAME.probabilities.normal, odds}}
-    end,
-    rarity = 2,
-    pools = { ["Royal Academy"] = true }, 
-    cost = 7,
-    atlas = "Jokers01",
-    ptype = "Mountain",
-    pposition = "DF",
-    pteam = "Royal Academy",
-    blueprint_compat = true,
-    calculate = function(self, card, context)
-        if context.after and context.cardarea == G.jokers then
-                local count = #find_player_type("Mountain");
-                local odds = card.ability.extra.odds - count
-                if odds < 0 then
-                  odds = 1
-                end
-                if pseudorandom('group_0_05214300') < G.GAME.probabilities.normal / odds then
-                        SMODS.calculate_effect({func = function()local created_tarot = false
-                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-                    created_tarot = true
-                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            local tarot_card = create_card('Tarot', G.consumeables, nil, nil, nil, nil, 'c_tower')
-                            tarot_card:add_to_deck()
-                            G.consumeables:emplace(tarot_card)
-                            G.GAME.consumeable_buffer = 0
-                            return true
-                        end
-                    }))
-                    card.ability.extra.triggered = true
-                end
-                    if created_tarot then
-                        card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "Quake!", colour = G.C.PURPLE})
-                    end
-                    return true
-                end}, card)
-                    end
-        end
+  name = "Drent",
+  pos = { x = 6, y = 1 },
+  config = { extra = { odds = 5, triggered = false } },
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    local count = #find_player_type("Mountain");
+    local odds = center.ability.extra.odds - count
+    if odds < 0 then
+      odds = 1
     end
+    return { vars = { G.GAME.probabilities.normal, odds } }
+  end,
+  rarity = 2,
+  pools = { ["Royal Academy"] = true },
+  cost = 7,
+  atlas = "Jokers01",
+  ptype = "Mountain",
+  pposition = "DF",
+  pteam = "Royal Academy",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    if context.after and context.cardarea == G.jokers then
+      local count = #find_player_type("Mountain");
+      local odds = card.ability.extra.odds - count
+      if odds < 0 then
+        odds = 1
+      end
+      if pseudorandom('group_0_05214300') < G.GAME.probabilities.normal / odds then
+        SMODS.calculate_effect({
+          func = function()
+            local created_tarot = false
+            if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+              created_tarot = true
+              G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+              G.E_MANAGER:add_event(Event({
+                func = function()
+                  local tarot_card = create_card('Tarot', G.consumeables, nil, nil, nil, nil, 'c_tower')
+                  tarot_card:add_to_deck()
+                  G.consumeables:emplace(tarot_card)
+                  G.GAME.consumeable_buffer = 0
+                  return true
+                end
+              }))
+              card.ability.extra.triggered = true
+            end
+            if created_tarot then
+              card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil,
+                { message = "Quake!", colour = G.C.PURPLE })
+            end
+            return true
+          end
+        }, card)
+      end
+    end
+  end
 }
 
 -- Jude
 local Jude = {
-    name = "Jude",
-    pos = {x = 7, y = 1},
-    config = {
-      extra = {current_xmult = 1, xmult_mod = 0.10, next_xmult = 1, triggered = false
-    }},
-    loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-        return {vars = {center.ability.extra.current_xmult, center.ability.extra.xmult_mod}}
-    end,
-    rarity = 3,
-    pools = { ["Royal Academy"] = true }, 
-    cost = 8,
-    atlas = "Jokers01",
-    ptype = "Wind",
-    pposition = "MF",
-    pteam = "Royal Academy",
-    blueprint_compat = true,
-    calculate = function(self, card, context)
-          local index
-          for k, v in ipairs(G.jokers.cards) do
-              if v == card then
-                  index = k
-                  break
-              end
-          end
-          if context.other_card and context.other_card == G.jokers.cards[index-1]
-            and context.other_card.ability.extra.triggered then
-            context.other_card.ability.extra.triggered = false
-            card.ability.extra.next_xmult = (card.ability.extra.next_xmult or 0) + card.ability.extra.xmult_mod
-
-            G.E_MANAGER:add_event(Event({
-              func = function()
-                card_eval_status_text(card, 'extra', nil, nil, nil, {
-                  message = localize("ina_evolve_level"),
-                  colour = G.C.XMULT
-                })
-                return true
-              end
-            }))
-
-            return {}
-          end
-          if context.after then
-            card.ability.extra.current_xmult = card.ability.extra.next_xmult
-          end
-
-      if context.joker_main and context.scoring_hand then
-        card.ability.extra.triggered = true
-      return {
-            message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.current_xmult}}, 
-            colour = G.C.XMULT,
-            Xmult_mod = card.ability.extra.current_xmult
-          }
+  name = "Jude",
+  pos = { x = 7, y = 1 },
+  config = {
+    extra = { current_xmult = 1, xmult_mod = 0.10, next_xmult = 1, triggered = false
+    }
+  },
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return { vars = { center.ability.extra.current_xmult, center.ability.extra.xmult_mod } }
+  end,
+  rarity = 3,
+  pools = { ["Royal Academy"] = true },
+  cost = 8,
+  atlas = "Jokers01",
+  ptype = "Wind",
+  stage = "base",
+  pposition = "MF",
+  pteam = "Royal Academy",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    local index
+    for k, v in ipairs(G.jokers.cards) do
+      if v == card then
+        index = k
+        break
       end
-    end,
+    end
+    if context.other_card and context.other_card == G.jokers.cards[index - 1]
+        and context.other_card.ability.extra.triggered then
+      context.other_card.ability.extra.triggered = false
+      card.ability.extra.next_xmult = (card.ability.extra.next_xmult or 0) + card.ability.extra.xmult_mod
 
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          card_eval_status_text(card, 'extra', nil, nil, nil, {
+            message = localize("ina_evolve_level"),
+            colour = G.C.XMULT
+          })
+          return true
+        end
+      }))
+
+      return {}
+    end
+    if context.after then
+      card.ability.extra.current_xmult = card.ability.extra.next_xmult
+    end
+
+    if context.joker_main and context.scoring_hand then
+      card.ability.extra.triggered = true
+      return {
+        message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.current_xmult } },
+        colour = G.C.XMULT,
+        Xmult_mod = card.ability.extra.current_xmult
+      }
+    end
+  end,
 }
 
 -- Martin
 local Martin = {
-    name = "Martin",
-    pos = {x = 8, y = 1},
-    config = {extra = {common_mult = 6, uncommon_mult = 12, rare_xmult = 1.5, legendary_exp = 1.15, triggered = false}},
-    loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-        return {vars = {center.ability.extra.common_mult, center.ability.extra.uncommon_mult,
-         center.ability.extra.rare_xmult, center.ability.extra.legendary_exp}}
-    end,
-    rarity = 2,
-    pools = { ["Royal Academy"] = true }, 
-    cost = 8,
-    atlas = "Jokers01",
-    ptype = "Forest",
-    pposition = "DF",
-    pteam = "Royal Academy",
-    blueprint_compat = true,
-    calculate = function(self, card, context)
-      if context.other_joker and context.other_joker.config.center.rarity == 4 and card ~= context.other_joker then
-          card.ability.extra.triggered = true;
-          G.E_MANAGER:add_event(Event({
-            func = function()
-              context.other_joker:juice_up(0.5, 0.5)
-              return true
-            end
-          }))
-          return {
-                message = localize({
-                  type = "variable",
-                  key = "a_powmult",
-                  vars = { number_format(card.ability.extra.legendary_exp) },
-                }),
-                Emult_mod = card.ability.extra.legendary_exp,
-                colour = G.C.DARK_EDITION,
-                card = card,
-          }
-      elseif context.other_joker and context.other_joker.config.center.rarity == 3 and card ~= context.other_joker  then
-            card.ability.extra.triggered = true;
-            G.E_MANAGER:add_event(Event({
-              func = function()
-                context.other_joker:juice_up(0.5, 0.5)
-                return true
-              end
-            }))
-            return {
-              message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.rare_xmult}}, 
-              colour = G.C.XMULT,
-              Xmult_mod = card.ability.extra.rare_xmult
-            }
-      elseif context.other_joker and context.other_joker.config.center.rarity == 2 and card ~= context.other_joker  then
-            card.ability.extra.triggered = true;
-            G.E_MANAGER:add_event(Event({
-              func = function()
-                context.other_joker:juice_up(0.5, 0.5)
-                return true
-              end
-            }))
-            return {
-              message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.uncommon_mult}}, 
-              colour = G.C.MULT,
-              mult_mod = card.ability.extra.uncommon_mult
-            }
-      elseif context.other_joker and context.other_joker.config.center.rarity == 1 and card ~= context.other_joker  then
-            card.ability.extra.triggered = true;
-            G.E_MANAGER:add_event(Event({
-              func = function()
-                context.other_joker:juice_up(0.5, 0.5)
-                return true
-              end
-            }))
-            return {
-              message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.common_mult}}, 
-              colour = G.C.MULT,
-              mult_mod = card.ability.extra.common_mult
-            }
-      end
-    end,
+  name = "Martin",
+  pos = { x = 8, y = 1 },
+  config = { extra = { common_mult = 6, uncommon_mult = 12, rare_xmult = 1.5, legendary_exp = 1.15, triggered = false } },
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return {
+      vars = { center.ability.extra.common_mult, center.ability.extra.uncommon_mult,
+        center.ability.extra.rare_xmult, center.ability.extra.legendary_exp }
+    }
+  end,
+  rarity = 2,
+  pools = { ["Royal Academy"] = true },
+  cost = 8,
+  atlas = "Jokers01",
+  ptype = "Forest",
+  pposition = "DF",
+  pteam = "Royal Academy",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    if context.other_joker and context.other_joker.config.center.rarity == 4 and card ~= context.other_joker then
+      card.ability.extra.triggered = true;
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          context.other_joker:juice_up(0.5, 0.5)
+          return true
+        end
+      }))
+      return {
+        message = localize({
+          type = "variable",
+          key = "a_powmult",
+          vars = { number_format(card.ability.extra.legendary_exp) },
+        }),
+        Emult_mod = card.ability.extra.legendary_exp,
+        colour = G.C.DARK_EDITION,
+        card = card,
+      }
+    elseif context.other_joker and context.other_joker.config.center.rarity == 3 and card ~= context.other_joker then
+      card.ability.extra.triggered = true;
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          context.other_joker:juice_up(0.5, 0.5)
+          return true
+        end
+      }))
+      return {
+        message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.rare_xmult } },
+        colour = G.C.XMULT,
+        Xmult_mod = card.ability.extra.rare_xmult
+      }
+    elseif context.other_joker and context.other_joker.config.center.rarity == 2 and card ~= context.other_joker then
+      card.ability.extra.triggered = true;
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          context.other_joker:juice_up(0.5, 0.5)
+          return true
+        end
+      }))
+      return {
+        message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.uncommon_mult } },
+        colour = G.C.MULT,
+        mult_mod = card.ability.extra.uncommon_mult
+      }
+    elseif context.other_joker and context.other_joker.config.center.rarity == 1 and card ~= context.other_joker then
+      card.ability.extra.triggered = true;
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          context.other_joker:juice_up(0.5, 0.5)
+          return true
+        end
+      }))
+      return {
+        message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.common_mult } },
+        colour = G.C.MULT,
+        mult_mod = card.ability.extra.common_mult
+      }
+    end
+  end,
 }
 
 -- Master
 local Master = {
-    name = "Master",
-    pos = {x = 9, y = 1},
-    config = {extra = {mult_mod = 7, triggered = false}},
-    loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-        return {vars = {center.ability.extra.mult_mod}}
-    end,
-    rarity = 1,
-    pools = { ["Royal Academy"] = true }, 
-    cost = 4,
-    atlas = "Jokers01",
-    ptype = "Wind",
-    pposition = "MF",
-    pteam = "Royal Academy",
-    blueprint_compat = true,
-    calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.joker_main then
-          local index
-          for k, v in ipairs(G.jokers.cards) do
-              if v == card then
-                  index = k
-                  break
-              end
-          end
-          if not G.jokers.cards[index-1] then
-            local count = #find_player_team("Royal Academy")
-            return {
-              message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.mult_mod*count}}, 
-              colour = G.C.MULT,
-              mult_mod = card.ability.extra.mult_mod*count
-            }
-          end
+  name = "Master",
+  pos = { x = 9, y = 1 },
+  config = { extra = { mult_mod = 7, triggered = false } },
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return { vars = { center.ability.extra.mult_mod } }
+  end,
+  rarity = 1,
+  pools = { ["Royal Academy"] = true },
+  cost = 4,
+  atlas = "Jokers01",
+  ptype = "Wind",
+  pposition = "MF",
+  pteam = "Royal Academy",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    if context.cardarea == G.jokers and context.joker_main then
+      local index
+      for k, v in ipairs(G.jokers.cards) do
+        if v == card then
+          index = k
+          break
         end
-    end,
+      end
+      if not G.jokers.cards[index - 1] then
+        local count = #find_player_team("Royal Academy")
+        return {
+          message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult_mod * count } },
+          colour = G.C.MULT,
+          mult_mod = card.ability.extra.mult_mod * count
+        }
+      end
+    end
+  end,
 }
 
 -- Samford
 local Samford = {
-    name = "Samford",
-    pos = {x = 10, y = 1},
-    config = {extra = {xmult_mod = 2.25, triggered = false}},
-    loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-        return {vars = {center.ability.extra.xmult_mod}}
-    end,
-    rarity = 2,
-    pools = { ["Royal Academy"] = true }, 
-    cost = 7,
-    atlas = "Jokers01",
-    ptype = "Forest",
-    pposition = "FW",
-    pteam = "Royal Academy",
-    blueprint_compat = true,
-    calculate = function(self, card, context)
-      if context.joker_main and context.scoring_hand then
-        if #find_player_position("FW") >= 2 and #find_player_position("MF") >= 1 then
-          card.ability.extra.triggered = true
-          return {
-              message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult_mod}}, 
-              colour = G.C.XMULT,
-              xmult_mod = card.ability.extra.xmult_mod
-            }
-        end
+  name = "Samford",
+  pos = { x = 10, y = 1 },
+  config = { extra = { xmult_mod = 2.25, triggered = false } },
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return { vars = { center.ability.extra.xmult_mod } }
+  end,
+  rarity = 2,
+  pools = { ["Royal Academy"] = true },
+  cost = 7,
+  atlas = "Jokers01",
+  ptype = "Forest",
+  pposition = "FW",
+  pteam = "Royal Academy",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    if context.joker_main and context.scoring_hand then
+      if #find_player_position("FW") >= 2 and #find_player_position("MF") >= 1 then
+        card.ability.extra.triggered = true
+        return {
+          message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult_mod } },
+          colour = G.C.XMULT,
+          xmult_mod = card.ability.extra.xmult_mod
+        }
       end
-    end,
+    end
+  end,
 }
 
 -- Swing
 local Swing = {
-    name = "Swing",
-    pos = {x = 11, y = 1},
-    config = {extra = {chips_mod = 60, triggered = false}},
-    loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-        return {vars = {center.ability.extra.chips_mod}}
-    end,
-    rarity = 1,
-    pools = { ["Royal Academy"] = true }, 
-    cost = 4,
-    atlas = "Jokers01",
-    ptype = "Wind",
-    pposition = "MF",
-    pteam = "Royal Academy",
-    blueprint_compat = true,
-    calculate = function(self, card, context)
-      if context.scoring_hand and context.joker_main and next(context.poker_hands['Three of a Kind']) then
-        local count = #find_player_team("Royal Academy")
-        card.ability.extra.triggered = true
-        return {
-            message = localize{type = 'variable', key = 'a_chips', vars = {card.ability.extra.chips_mod * count}}, 
-            colour = G.C.CHIPS,
-            chip_mod = card.ability.extra.chips_mod * count
-          }
-      end
-
-    end,
+  name = "Swing",
+  pos = { x = 11, y = 1 },
+  config = { extra = { chips_mod = 60, triggered = false } },
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return { vars = { center.ability.extra.chips_mod } }
+  end,
+  rarity = 1,
+  pools = { ["Royal Academy"] = true },
+  cost = 4,
+  atlas = "Jokers01",
+  ptype = "Wind",
+  pposition = "MF",
+  pteam = "Royal Academy",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    if context.scoring_hand and context.joker_main and next(context.poker_hands['Three of a Kind']) then
+      local count = #find_player_team("Royal Academy")
+      card.ability.extra.triggered = true
+      return {
+        message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips_mod * count } },
+        colour = G.C.CHIPS,
+        chip_mod = card.ability.extra.chips_mod * count
+      }
+    end
+  end,
 }
 
 return {
-    name = "Royal Academy",
-    list = {King, Bloom, Drent, Jude, Martin, Master, Samford, Swing},
+  name = "Royal Academy",
+  list = { King, Bloom, Drent, Jude, Martin, Master, Samford, Swing },
 }

@@ -249,8 +249,10 @@ for _, file in ipairs(pfiles) do
         end
       end
 
-      item.in_pool = function(self)
-        return player_in_pool(self)
+      if not item.custom_pool_func then
+        item.in_pool = function(self)
+          return player_in_pool(self)
+        end
       end
 
       item.set_badges = ina_set_badges

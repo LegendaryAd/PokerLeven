@@ -217,6 +217,13 @@ return {
                 text = { "{C:mountain}Mano Celestial{}", "{C:mult}+#1#{} Mult en tu última mano",
                     "Aumenta en {C:mult}+#2#{} por cada última mano jugada" }
             },
+            j_ina_Jude_Raimon = {
+                name = "Jude",
+                text = { "{C:wind}Espejismo de Balón{}", "{X:mult,C:white}X#1#{}", "Después de cada mano jugada",
+                    "gana {X:mult,C:white}X#2#{} cada vez que el comodín",
+                    "a su {C:attention}izquierda{} se activa", "en la mano con puntuación" }
+            },
+            -- Occult
             j_ina_Talisman = {
                 name = "Talisman",
                 text = { "{C:forest}Rapto Divino{}", "Vuelve a activar el comodín {X:occult,C:white}Occult{}",
@@ -614,7 +621,12 @@ return {
 
             j_ina_Night = {
                 name = "Night",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:fire}Corte Giratorio{}",
+                    "Al seleccionar una",
+                    "ciega, genera un jugador",
+                    "del {X:kirkwood,C:white}Kirkwood{}, {C:chips}Común{}, o {C:green}Poco Común{}",
+                    "{C:attention}Puede generar repetidos{}",
+                    "{C:inactive}Requiere espacio{}" }
             },
 
             j_ina_Marvin = {

@@ -135,7 +135,7 @@ local Jack = {
       local count = #find_player_position("DF");
       context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0;
       context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus +
-      card.ability.extra.chips_mod * count;
+          card.ability.extra.chips_mod * count;
       return {
         extra = { message = localize('k_upgrade_ex'), colour = G.C.CHIPS },
         colour = G.C.CHIPS,
@@ -334,7 +334,72 @@ local Peabody = {
   end
 }
 
+-- Jude
+local Jude_Raimon = J({
+  name = "Jude_Raimon",
+  pos = { x = 12, y = 6 },
+  config = {
+    extra = { current_xmult = 1, xmult_mod = 0.10, next_xmult = 1, triggered = false
+    }
+  },
+  loc_vars = function(self, info_queue, center)
+    type_tooltip(self, info_queue, center)
+    return { vars = { center.ability.extra.current_xmult, center.ability.extra.xmult_mod } }
+  end,
+  rarity = 3,
+  pools = { ["Royal Academy"] = true },
+  cost = 8,
+  atlas = "Jokers01",
+  stage = "one",
+  ptype = "Wind",
+  pposition = "MF",
+  pteam = "Raimon",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    local index
+    for k, v in ipairs(G.jokers.cards) do
+      if v == card then
+        index = k
+        break
+      end
+    end
+    if context.other_card and context.other_card == G.jokers.cards[index - 1]
+        and context.other_card.ability.extra.triggered then
+      context.other_card.ability.extra.triggered = false
+      card.ability.extra.next_xmult = (card.ability.extra.next_xmult or 0) + card.ability.extra.xmult_mod
+
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          card_eval_status_text(card, 'extra', nil, nil, nil, {
+            message = localize("ina_evolve_level"),
+            colour = G.C.XMULT
+          })
+          return true
+        end
+      }))
+
+      return {}
+    end
+    if context.after then
+      card.ability.extra.current_xmult = card.ability.extra.next_xmult
+    end
+
+    if context.joker_main and context.scoring_hand then
+      card.ability.extra.triggered = true
+      return {
+        message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.current_xmult } },
+        colour = G.C.XMULT,
+        Xmult_mod = card.ability.extra.current_xmult
+      }
+    end
+  end,
+  custom_pool_func = true,
+  in_pool = function(self, args)
+    return false
+  end
+})
+
 return {
   name = "Raimon",
-  list = { Kevin, Mark, Nathan, Jack, Axel, Shadow, Willy, Max, Peabody },
+  list = { Kevin, Mark, Nathan, Jack, Axel, Shadow, Willy, Max, Peabody, Jude_Raimon },
 }

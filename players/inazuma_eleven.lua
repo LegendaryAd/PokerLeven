@@ -104,40 +104,17 @@ local sweet = J({
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.setting_blind and not context.blueprint then
-      return {
-        func = function()
-          local created_joker = false
-          if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
-            created_joker = true
-            G.GAME.joker_buffer = G.GAME.joker_buffer + 1
-            local rarity_roll = pseudorandom('sweet_rarity')
-            local rarity = (rarity_roll < (card.ability.extra.rarity_chance or 0.25)) and "Uncommon" or "Common"
-
-            -- Determinar equipo
-            local team_roll = pseudorandom('sweet_team')
-            local selected_team = (team_roll < (card.ability.extra.raimon_chance or 0.3)) and "Raimon" or
-                "Inazuma Eleven"
-            G.E_MANAGER:add_event(Event({
-              trigger = 'immediate',
-              func = function()
-                G.GAME.joker_buffer = 0
-                local _card = create_random_ina_joker('sweet', rarity, G.jokers, selected_team)
-                _card:add_to_deck()
-                G.jokers:emplace(_card)
-                return true
-              end
-            }))
-          end
-          if created_joker then
-            card.ability.extra.triggered = true
-            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {
-              message = localize('k_plus_joker'),
-              colour = G.C.BLUE
-            })
-          end
-          return true
-        end
-      }
+      local spawn_effect = spawn_random_ina_joker(card, context,
+        {
+          ["Common"] = 0.8,
+          ["Uncommon"] = 0.2
+        },
+        {
+          ["Raimon"] = 0.5,
+          ["Inazuma Eleven"] = 0.5,
+        }
+      )
+      spawn_effect.func()
     end
   end,
   ina_credits = {

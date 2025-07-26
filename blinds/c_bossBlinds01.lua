@@ -40,7 +40,7 @@ local forward = {
     boss_colour = HEX("ef5350"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.config.center.pposition == "GK" then
+            and card.config.center.pposition == "FW" then
             return true
         end
         return false
@@ -66,7 +66,7 @@ local defense = {
     boss_colour = HEX("66bb6a"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.config.center.pposition == "MF" then
+            and card.config.center.pposition == "DF" then
             return true
         end
         return false
@@ -92,7 +92,7 @@ local midfielder = {
     boss_colour = HEX("4fc3f7"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.config.center.pposition == "DF" then
+            and card.config.center.pposition == "MF" then
             return true
         end
         return false

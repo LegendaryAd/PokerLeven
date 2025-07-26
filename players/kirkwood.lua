@@ -36,7 +36,18 @@ local Night = J({
     pteam = "Kirkwood",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- If you have 2 jokers that are DF, put the red seal on your first card
+        if context.setting_blind and not context.blueprint then
+            local spawn_effect = spawn_random_ina_joker(card, context,
+                {
+                    ["Common"] = 0.6,
+                    ["Uncommon"] = 0.4
+                },
+                {
+                    ["Kirkwood"] = 1,
+                }
+            )
+            spawn_effect.func()
+        end
     end,
 })
 

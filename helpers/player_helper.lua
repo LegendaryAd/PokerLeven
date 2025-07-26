@@ -108,14 +108,14 @@ get_adjacent_jokers = function(card)
 end
 
 -- Creates random card
-create_random_ina_joker = function(pseed, inararity, area, inateam)
+create_random_ina_joker = function(pseed, inararity, area, inateam, enable_dupes)
     local create_args = { set = "Joker", area = nil, key = '' }
-    create_args.key = get_random_joker_key(pseed, inararity, area, inateam)
+    create_args.key = get_random_joker_key(pseed, inararity, area, inateam, nil, enable_dupes or nil)
 
     return SMODS.create_card(create_args)
 end
 
-get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys)
+get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys, enable_dupes)
     local ina_keys = {}
     local inaarea = area or G.jokers
     local ina_key
@@ -127,18 +127,35 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys)
         if string.lower(inararity) == "rare" then inararity = 3 end
     end
 
-    for k, v in pairs(G.P_CENTERS) do
+    for _, v in pairs(G.P_CENTERS) do
         if v.pteam and not (inararity and v.rarity ~= inararity)
-            and not (inateam and inateam ~= v.pteam) and player_in_pool(v) and not v.aux_ina and not exclude_keys[v.key] then
+            and not (inateam and inateam ~= v.pteam)
+            and player_in_pool(v)
+            and not v.aux_ina
+            and not exclude_keys[v.key] then
             local no_dup = true
-            if G.jokers and G.jokers.cards and not next(find_joker("Showman")) then
-                for l, m in pairs(G.jokers.cards) do
+            if not enable_dupes and G.jokers and G.jokers.cards and not next(find_joker("Showman")) then
+                for _, m in pairs(G.jokers.cards) do
                     if v.key == m.config.center_key then
                         no_dup = false
+                        break
                     end
                 end
             end
+
             if no_dup then
+                table.insert(ina_keys, v.key)
+            end
+        end
+    end
+
+    if #ina_keys == 0 and enable_dupes then
+        for _, v in pairs(G.P_CENTERS) do
+            if v.pteam and not (inararity and v.rarity ~= inararity)
+                and not (inateam and inateam ~= v.pteam)
+                and player_in_pool(v)
+                and not v.aux_ina
+                and not exclude_keys[v.key] then
                 table.insert(ina_keys, v.key)
             end
         end
@@ -151,6 +168,63 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys)
     end
 
     return ina_key
+end
+
+--- Spawns a random Ina Joker with custom rarity/team tables.
+---@param card table The card triggering the effect
+---@param context table The current game context
+---@param rarity_table table<string, number> A table of rarities and their corresponding chance
+---@param team_table table<string, number> A table of team names and their corresponding chance
+---@return table Effect table with a `.func` function to be executed to spawn the joker
+function spawn_random_ina_joker(card, context, rarity_table, team_table)
+    local function roll_from_table(t, seed)
+        local roll = pseudorandom(seed)
+        local cumulative = 0
+        for key, chance in pairs(t) do
+            cumulative = cumulative + chance
+            if roll < cumulative then return key end
+        end
+
+        local last_key = nil
+        for k in pairs(t) do last_key = k end
+        return last_key
+    end
+
+    return {
+        func = function()
+            local created_joker = false
+            if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+                created_joker = true
+                G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+
+                local rarity = roll_from_table(rarity_table, 'ina_rarity')
+                local team = roll_from_table(team_table, 'ina_team')
+
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'immediate',
+                    func = function()
+                        G.GAME.joker_buffer = 0
+                        print("Rarity:", rarity)
+                        print("Team:", team)
+                        local _card = create_random_ina_joker('sweet', rarity, G.jokers, team, true)
+                        _card:add_to_deck()
+                        G.jokers:emplace(_card)
+                        return true
+                    end
+                }))
+            end
+
+            if created_joker then
+                card.ability.extra.triggered = true
+                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {
+                    message = localize('k_plus_joker'),
+                    colour = G.C.BLUE
+                })
+            end
+
+            return true
+        end
+    }
 end
 
 --- Returns the average sell value of a group of type jokers
