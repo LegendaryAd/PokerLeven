@@ -646,8 +646,14 @@ return {
 
             j_ina_Tyler = {
                 name = "Tyler",
-                text = { "{C:mountain}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = {
+                    "{C:mountain}Tornado Inverso{}",
+                    "Cuando se juega una {C:attention}pareja{}",
+                    "convierte la otra carta en una",
+                    "{C:attention}versión dorada{} de sí misma"
+                }
             },
+
 
             j_ina_Damian = {
                 name = "Damian",
