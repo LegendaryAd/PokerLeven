@@ -33,7 +33,7 @@ match_indent = true
 overwrite = true
 payload = '''
 if v.set and (
-    (v.set == 'Joker') or
+    (v.set == 'Joker' and v.ptype) or
     v.consumeable or
     (v.special and v.special == "Technique") or
     (v.set == 'Edition') or
@@ -65,5 +65,47 @@ position = 'at'
 overwrite = true
 match_indent = true
 payload = '''
-if v.set and v.set == 'Joker' and v.special == nil then
+if v.set and v.set == 'Joker' and v.special == nil and v.ptype then
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = "local alert_joker, alert_voucher, alert_tarot, alert_planet, alert_spectral, alert_blind, alert_edition, alert_tag, alert_seal, alert_booster = false,false,false,false,false,false,false,false,false,false"
+position = 'at'
+overwrite = true
+match_indent = true
+payload = '''
+local alert_technique, alert_joker, alert_voucher, alert_tarot, alert_planet, alert_spectral, alert_blind, alert_edition, alert_tag, alert_seal, alert_booster = false,false,false,false,false,false,false,false,false,false,false
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = "if v.set == 'Joker' then alert_joker = true end"
+position = 'at'
+match_indent = true
+payload = '''
+if v.set == 'Joker' and not v.special then alert_joker = true end
+if v.set == 'Joker' and v.special then alert_technique = true end
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = "{id = 'your_collection_boosters', alert_uibox_name = 'your_collection_boosters_alert'},"
+position = 'after'
+match_indent = true
+payload = '''
+{id = 'your_collection_techniques', alert_uibox_name = 'your_collection_techniques_alert'},
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = "G.ARGS.set_alerts_alertables[11].should_alert = alert_booster"
+position = 'after'
+match_indent = true
+payload = '''
+G.ARGS.set_alerts_alertables[12].should_alert = alert_technique
 '''

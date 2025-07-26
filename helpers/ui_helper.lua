@@ -159,7 +159,7 @@ end
 create_UIBox_your_collection_jokers = function()
     local filtered_jokers = {}
     for _, joker in ipairs(G.P_CENTER_POOLS.Joker) do
-        if not joker.special then
+        if not joker.special and joker.ptype then
             table.insert(filtered_jokers, joker)
         end
     end
