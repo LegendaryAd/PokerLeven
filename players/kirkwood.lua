@@ -129,10 +129,11 @@ local Tyler = J({
 local Damian = J({
     name = "Damian",
     pos = { x = 3, y = 5 },
-    config = {},
+    config = { extra = { chips_mod = 7, current_chips = 0, triggered = false } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return {}
+
+        return { vars = { center.ability.extra.chips_mod, center.ability.extra.current_chips } }
     end,
     rarity = 1, -- Common
     pools = { ["Kirkwood"] = true },
@@ -143,7 +144,29 @@ local Damian = J({
     pteam = "Kirkwood",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- Add logic
+        if context.ending_shop then
+            card.ability.extra.triggered = true
+            local count = #find_player_type("Fire")
+
+            if count > 0 then
+                card.ability.extra.current_chips = card.ability.extra.current_chips +
+                    card.ability.extra.chips_mod * count
+            end
+            return {
+                message = localize("k_upgrade_ex"),
+                colour = G.C.CHIPS,
+            }
+        end
+
+        if context.scoring_hand and context.cardarea == G.jokers and context.joker_main then
+            if card.ability.extra.current_chips > 0 then
+                return {
+                    message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.current_chips } },
+                    colour = G.C.CHIPS,
+                    chip_mod = card.ability.extra.current_chips
+                }
+            end
+        end
     end,
 })
 
