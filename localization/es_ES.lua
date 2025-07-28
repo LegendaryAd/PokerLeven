@@ -674,7 +674,6 @@ return {
                     "por cada {C:attention}Pica{} jugada",
                     "segun cada jugador del",
                     "elemento {C:forest}Bosque{}",
-                    "{C:inactive}Actualmente{}: {C:chips}+#2#{}"
                 }
             },
 
