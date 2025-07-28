@@ -176,12 +176,13 @@ local Damian = J({
 local Nashmith = J({
     name = "Nashmith",
     pos = { x = 2, y = 5 },
-    config = {},
+    config = { extra = { chip_mod = 10, triggered = false } },
     loc_vars = function(self, info_queue, center)
+        local count = #find_player_type("Forest") or 0
         type_tooltip(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.chip_mod, count * center.ability.extra.chip_mod } }
     end,
-    rarity = 1, -- Common
+    rarity = 1,
     pools = { ["Kirkwood"] = true },
     cost = 8,
     atlas = "Jokers01",
@@ -190,9 +191,23 @@ local Nashmith = J({
     pteam = "Kirkwood",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- Add logic
+        if context.cardarea == G.jokers and context.scoring_hand then
+            if context.joker_main then
+                local count = #find_player_type("Forest") or 0
+                local total_chips = card.ability.extra.chip_mod * count
+                if total_chips > 0 then
+                    card.ability.extra.triggered = true
+                    return {
+                        message = localize { type = 'variable', key = 'a_chips', vars = { total_chips } },
+                        colour = G.C.CHIPS,
+                        chip_mod = total_chips,
+                    }
+                end
+            end
+        end
     end,
 })
+
 
 local z_triangle = J({
     name = "Z_Triangle",
