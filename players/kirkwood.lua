@@ -176,11 +176,11 @@ local Damian = J({
 local Nashmith = J({
     name = "Nashmith",
     pos = { x = 2, y = 5 },
-    config = { extra = { chip_mod = 10, triggered = false } },
+    config = { extra = { chip_mod = 10 } },
     loc_vars = function(self, info_queue, center)
         local count = #find_player_type("Forest") or 0
         type_tooltip(self, info_queue, center)
-        return { vars = { center.ability.extra.chip_mod, count * center.ability.extra.chip_mod } }
+        return { vars = { center.ability.extra.chip_mod, 0 } } -- empieza en 0
     end,
     rarity = 1,
     pools = { ["Kirkwood"] = true },
@@ -191,12 +191,20 @@ local Nashmith = J({
     pteam = "Kirkwood",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.scoring_hand then
-            if context.joker_main then
-                local count = #find_player_type("Forest") or 0
-                local total_chips = card.ability.extra.chip_mod * count
+        -- Solo se activa en la mano jugada
+        if context.joker_main and context.scoring_hand then
+            -- contar cartas de picas en la mano jugada
+            local spades_count = 0
+            for _, played_card in ipairs(context.full_hand) do
+                if played_card:is_suit("Spades") then
+                    spades_count = spades_count + 1
+                end
+            end
+
+            if spades_count > 0 then
+                local forest_count = #find_player_type("Forest") or 0
+                local total_chips = card.ability.extra.chip_mod * spades_count * forest_count
                 if total_chips > 0 then
-                    card.ability.extra.triggered = true
                     return {
                         message = localize { type = 'variable', key = 'a_chips', vars = { total_chips } },
                         colour = G.C.CHIPS,
