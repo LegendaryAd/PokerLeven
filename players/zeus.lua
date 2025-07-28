@@ -44,21 +44,53 @@ local Hephestus = {
 local Apollo = {
   name = "Apollo",
   pos = { x = 11, y = 5 },
-  config = { extra = {} },
+  config = { extra = { chips_mod = 7, alt_chips_mod = 3, current_bonus = 0, triggered = false } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return {}
+    return { vars = { center.ability.extra.current_bonus } }
   end,
-  rarity = 1, -- Common
+  rarity = 1,
   pools = { ["Zeus"] = true },
   cost = 4,
   atlas = "Jokers01",
   ptype = "Forest",
-  pposition = "DF", -- Defense
+  pposition = "DF",
   pteam = "Zeus",
   blueprint_compat = true,
+
   calculate = function(self, card, context)
-  end
+    -- Da los chips acumulados al puntuar
+    if context.cardarea == G.jokers and context.scoring_hand and context.joker_main
+        and card.ability.extra.current_bonus > 0 then
+      return {
+        message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.current_bonus } },
+        chip_mod = card.ability.extra.current_bonus,
+        colour = G.C.CHIPS
+      }
+    end
+
+    -- Mejora el bonus según la hora y la cantidad de dobles parejas
+    if context.before and context.cardarea == G.jokers and context.scoring_hand
+        and next(context.poker_hands["Two Pair"]) then
+      local hour = tonumber(os.date("%H"))
+      local mod = card.ability.extra.alt_chips_mod
+
+      -- Entre 12 y 15:59 usa el mod alto
+      if hour >= 12 and hour < 16 then
+        mod = card.ability.extra.chips_mod
+      end
+
+      local two_pairs_count = #context.poker_hands["Two Pair"]
+      local added_bonus = two_pairs_count * mod
+
+      card.ability.extra.current_bonus = card.ability.extra.current_bonus + added_bonus
+
+      return {
+        message = localize("k_upgrade_ex"),
+        colour = G.C.CHIPS
+      }
+    end
+  end,
 }
 
 -- Artemis

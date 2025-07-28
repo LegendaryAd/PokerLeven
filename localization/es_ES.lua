@@ -696,7 +696,13 @@ return {
 
             j_ina_Apollo = {
                 name = "Apollo",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = {
+                    "{C:forest}Resplandor Solar{}",
+                    "Si juegas una mano con {C:attention}doble pareja{}",
+                    "Gana {C:chips}+7 fichas{} {C:inactive}entre las 12 y las 16 pm{}",
+                    "Gana {C:chips}+3 fichas{} {C:inactive}en caso contrario{}",
+                    "{C:inactive}Actualmente{}: {C:chips}+#1#{}"
+                }
             },
 
             j_ina_Artemis = {
