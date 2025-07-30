@@ -181,7 +181,7 @@ local Nashmith = J({
         type_tooltip(self, info_queue, center)
         return {}
     end,
-    rarity = 1,
+    rarity = 1, -- Common
     pools = { ["Kirkwood"] = true },
     cost = 8,
     atlas = "Jokers01",
@@ -193,8 +193,6 @@ local Nashmith = J({
         -- Add logic
     end,
 })
-
-
 
 local z_triangle = J({
     name = "Z_Triangle",
