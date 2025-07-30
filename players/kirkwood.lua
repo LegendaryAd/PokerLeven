@@ -208,9 +208,6 @@ local Nashmith = J({
     end,
 })
 
-
-
-
 local z_triangle = J({
     name = "Z_Triangle",
     pos = { x = 11, y = 6 },
