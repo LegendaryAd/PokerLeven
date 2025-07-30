@@ -80,10 +80,7 @@ local Apollo = {
         mod = card.ability.extra.chips_mod
       end
 
-      local two_pairs_count = #context.poker_hands["Two Pair"]
-      local added_bonus = two_pairs_count * mod
-
-      card.ability.extra.current_bonus = card.ability.extra.current_bonus + added_bonus
+      card.ability.extra.current_bonus = card.ability.extra.current_bonus + mod
 
       return {
         message = localize("k_upgrade_ex"),
