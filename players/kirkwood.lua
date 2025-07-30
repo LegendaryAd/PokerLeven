@@ -176,10 +176,10 @@ local Damian = J({
 local Nashmith = J({
     name = "Nashmith",
     pos = { x = 2, y = 5 },
-    config = { extra = { chip_mod = 10 } },
+    config = {},
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return { vars = { center.ability.extra.chip_mod } }
+        return {}
     end,
     rarity = 1,
     pools = { ["Kirkwood"] = true },
@@ -190,24 +190,7 @@ local Nashmith = J({
     pteam = "Kirkwood",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- Se activa para cada carta que puntúa individualmente
-        if context.individual
-            and context.cardarea == G.play
-            and context.other_card:is_suit("Spades")
-            and not context.other_card.debuff then
-            -- contar cuántos jokers tipo Forest tienes
-            local forest_count = #find_player_type("Forest") or 0
-
-            -- chips: 10 base + 10 por cada Forest
-            local total_chips = card.ability.extra.chip_mod * forest_count
-
-            return {
-                message = localize { type = 'variable', key = 'a_chips', vars = { total_chips } },
-                colour = G.C.CHIPS,
-                chip_mod = total_chips,
-                card = card
-            }
-        end
+        -- Add logic
     end,
 })
 
