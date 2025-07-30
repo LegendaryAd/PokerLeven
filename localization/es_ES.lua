@@ -864,7 +864,8 @@ return {
             ina_dribbling = "¡Regate!",
             ina_harvest = "Cosecha!",
             ina_seed = "Siembra!",
-            ina_special_technique = "Super Técnicas"
+            ina_special_technique = "Super Técnicas",
+            ina_technique_upgrade = "Técnica mejorada"
         },
         high_scores = {},
         labels = {
