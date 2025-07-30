@@ -47,7 +47,7 @@ local Apollo = {
   config = { extra = { chips_mod = 7, alt_chips_mod = 3, current_bonus = 0, triggered = false } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return { vars = { center.ability.extra.current_bonus } }
+    return { vars = { center.ability.extra.chips_mod, center.ability.extra.alt_chips_mod, center.ability.extra.current_bonus } }
   end,
   rarity = 1,
   pools = { ["Zeus"] = true },
@@ -79,9 +79,6 @@ local Apollo = {
       if hour >= 12 and hour < 16 then
         mod = card.ability.extra.chips_mod
       end
-
-      local two_pairs_count = #context.poker_hands["Two Pair"]
-      local added_bonus = two_pairs_count * mod
 
       card.ability.extra.current_bonus = card.ability.extra.current_bonus + added_bonus
 
