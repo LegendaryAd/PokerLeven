@@ -804,6 +804,27 @@ return {
                     "cosechada por jokers"
                 },
             },
+            ina_tech_level1_sticker = {
+                name = "Técnica nivel 1",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_level2_sticker = {
+                name = "Técnica nivel 2",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_level3_sticker = {
+                name = "Técnica nivel 3",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
         },
         Planet = {},
         Spectral = {},
@@ -869,7 +890,10 @@ return {
         },
         high_scores = {},
         labels = {
-            ina_harvest_sticker = "Cosechable"
+            ina_harvest_sticker = "Cosechable",
+            ina_tech_level1_sticker = "Técnica mejorada",
+            ina_tech_level2_sticker = "Técnica mejorada",
+            ina_tech_level3_sticker = "Técnica mejorada",
         },
         poker_hand_descriptions = {},
         poker_hands = {},

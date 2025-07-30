@@ -88,6 +88,7 @@ local increase_technique = {
       return
     end
     increment_technique(choice)
+    choice.ability["ina_tech_level3_sticker"] = true
     card_eval_status_text(choice, 'extra', nil, nil, nil,
       { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
   end,

@@ -90,10 +90,40 @@ local harvest_sticker = {
   hide_badge = false
 }
 
+local tech_level1_sticker = {
+  object_type = "Sticker",
+  key = "tech_level1_sticker",
+  badge_colour = HEX("289830"),
+  rate = 0.0,
+  atlas = "stickers",
+  pos = { x = 5, y = 1 },
+  hide_badge = false
+}
+
+local tech_level2_sticker = {
+  object_type = "Sticker",
+  key = "tech_level2_sticker",
+  badge_colour = HEX("289830"),
+  rate = 0.0,
+  atlas = "stickers",
+  pos = { x = 6, y = 1 },
+  hide_badge = false
+}
+
+local tech_level3_sticker = {
+  object_type = "Sticker",
+  key = "tech_level3_sticker",
+  badge_colour = HEX("289830"),
+  rate = 0.0,
+  atlas = "stickers",
+  pos = { x = 7, y = 1 },
+  hide_badge = false
+}
+
 return
 {
   name = "Stickers",
   list = { wind_sticker, fire_sticker, mountain_sticker,
     forest_sticker, gk_sticker, df_sticker,
-    mf_sticker, fw_sticker, harvest_sticker }
+    mf_sticker, fw_sticker, harvest_sticker, tech_level1_sticker, tech_level2_sticker, tech_level3_sticker }
 }
