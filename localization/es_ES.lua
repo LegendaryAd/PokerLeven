@@ -668,13 +668,7 @@ return {
 
             j_ina_Nashmith = {
                 name = "Nashmith",
-                text = {
-                    "{C:forest}Flecha Huracán{}",
-                    "Gana {C:chips}+#1# Fichas{}",
-                    "por cada {C:attention}Pica{} jugada",
-                    "segun cada jugador del",
-                    "elemento {C:forest}Bosque{}",
-                }
+                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
             },
 
             j_ina_Z_Triangle = {
@@ -694,7 +688,13 @@ return {
 
             j_ina_Apollo = {
                 name = "Apollo",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = {
+                    "{C:forest}Resplandor Solar{}",
+                    "Si juegas una mano con {C:attention}doble pareja{}",
+                    "Gana {C:chips}+#1# fichas{} {C:inactive}entre las 12 y las 16 pm{}",
+                    "Gana {C:chips}+#2# fichas{} {C:inactive}en caso contrario{}",
+                    "{C:inactive}Actualmente{}: {C:chips}+#3#{}"
+                }
             },
 
             j_ina_Artemis = {
