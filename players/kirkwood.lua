@@ -179,7 +179,7 @@ local Nashmith = J({
     config = { extra = { chip_mod = 10 } },
     loc_vars = function(self, info_queue, center)
         type_tooltip(self, info_queue, center)
-        return { vars = { center.ability.extra.chip_mod, 0 } }
+        return { vars = { center.ability.extra.chip_mod } }
     end,
     rarity = 1,
     pools = { ["Kirkwood"] = true },
@@ -198,7 +198,7 @@ local Nashmith = J({
 
                 if extra_chips > 0 then
                     return {
-                        message = "+" .. extra_chips .. " Chips",
+                        message = localize { type = 'a_chips', key = extra_chips },
                         chip_mod = extra_chips,
                         colour = G.C.CHIPS,
                     }
@@ -207,6 +207,7 @@ local Nashmith = J({
         end
     end,
 })
+
 local z_triangle = J({
     name = "Z_Triangle",
     pos = { x = 11, y = 6 },

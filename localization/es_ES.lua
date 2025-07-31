@@ -670,10 +670,9 @@ return {
                 name = "Nashmith",
                 text = {
                     "{C:forest}Flecha Huracán{}",
-                    "Gana {C:chips}+#1# Fichas{}",
-                    "por cada {C:attention}Pica{} jugada",
-                    "segun cada jugador del",
-                    "elemento {C:forest}Bosque{}",
+                    "Cada {C:attention}Pica{} jugada otorga",
+                    "{C:chips}+#1# Fichas{} por cada",
+                    "jugador de {C:forest}Bosque{}",
                 }
             },
 
