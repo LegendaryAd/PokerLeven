@@ -198,7 +198,7 @@ local Nashmith = J({
 
                 if extra_chips > 0 then
                     return {
-                        message = localize { type = 'a_chips', key = extra_chips },
+                        message = localize { type = 'a_chips', value = extra_chips },
                         chip_mod = extra_chips,
                         colour = G.C.CHIPS,
                     }
