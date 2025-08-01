@@ -1,3 +1,4 @@
+-- Multipliers for  technique upgrades
 technique_values = {
     money = .3,
     mult_mod = .2,
@@ -6,18 +7,19 @@ technique_values = {
     Xchip_mod = .2
 }
 
--- Increments the level of technique of a card
+-- Increments technique level of a joker and applies stat changes based on technique values
 increment_technique = function(card)
     if card.ability.extra and type(card.ability.extra) == "table" then
-        if card.ability.extra.energy_count then
-            card.ability.extra.energy_count = card.ability.extra.energy_count + 1
+        if card.ability.extra.tech_level then
+            card.ability.extra.tech_level = card.ability.extra.tech_level + 1
         else
-            card.ability.extra.energy_count = 1
+            card.ability.extra.tech_level = 1
         end
     end
     modify_values(card)
 end
 
+-- Applies value updates to a joker based on its center config and technique multipliers
 modify_values = function(card)
     for name, _ in pairs(technique_values) do
         local data = card.ability.extra[name]
@@ -39,6 +41,7 @@ modify_values = function(card)
 end
 
 
+-- Rounds a stat value based adn returns the integer part and fractional part (if applicable)
 round_value = function(value, field)
     local rounded = nil
     local frac = nil
@@ -51,6 +54,8 @@ round_value = function(value, field)
     return rounded, frac
 end
 
+-- Stores and manages fractional values for a joker's stat field
+-- Converts to full stat point when fraction reaches 1.0+
 set_frac = function(card, frac, field)
     local frac_name = field .. "_frac"
     if card.ability[frac_name] then
