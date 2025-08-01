@@ -20,6 +20,19 @@ increment_technique = function(card)
         end
     end
     modify_values(card)
+    set_sticker(card)
+end
+
+set_sticker = function(card)
+    local tech_level = card.ability.extra.tech_level
+
+    if tech_level > 1 then
+        local old_sticker_key = "ina_tech_level" .. tostring(tech_level - 1) .. "_sticker"
+        card.ability[old_sticker_key] = false
+    end
+
+    local new_sticker_key = "ina_tech_level" .. tostring(tech_level) .. "_sticker"
+    card.ability[new_sticker_key] = true
 end
 
 -- Applies value updates to a joker based on its center config and technique multipliers
@@ -73,6 +86,6 @@ set_frac = function(card, frac, field)
     end
 end
 
-can_upgrade_tech_level = function(card)
-    return (card.ability.extra.tech_level or 0) < max_tech_level
+can_upgrade_tech_level = function(card, type, position)
+    return is_type(card, type) and is_position(card, position) and (card.ability.extra.tech_level or 0) < max_tech_level
 end

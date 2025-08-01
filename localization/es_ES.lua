@@ -164,7 +164,103 @@ return {
                 name = "Posición Táctica",
                 text = { "Aplica una {C:pink}Posición{} aleatoria",
                     "al Joker más a la izquierda{}" }
-            }
+            },
+            c_ina_upgrade_technique_Forest_GK = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:forest}Bosque{} y su posición es {X:gk,C:white}GK{}" }
+            },
+            c_ina_upgrade_technique_Forest_DF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:forest}Bosque{} y su posición es {X:df,C:white}DF{}" }
+            },
+            c_ina_upgrade_technique_Forest_MF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:forest}Bosque{} y su posición es {X:mf,C:white}MF{}" }
+            },
+            c_ina_upgrade_technique_Forest_FW = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:forest}Bosque{} y su posición es {X:fw,C:white}FW{}" }
+            },
+            c_ina_upgrade_technique_Fire_GK = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:fire}Fuego{} y su posición es {X:gk,C:white}GK{}" }
+            },
+            c_ina_upgrade_technique_Fire_DF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:fire}Fuego{} y su posición es {X:df,C:white}DF{}" }
+            },
+            c_ina_upgrade_technique_Fire_MF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:fire}Fuego{} y su posición es {X:mf,C:white}MF{}" }
+            },
+            c_ina_upgrade_technique_Fire_FW = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:fire}Fuego{} y su posición es {X:fw,C:white}FW{}" }
+            },
+            c_ina_upgrade_technique_Wind_GK = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:wind}Viento{} y su posición es {X:gk,C:white}GK{}" }
+            },
+            c_ina_upgrade_technique_Wind_DF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:wind}Viento{} y su posición es {X:df,C:white}DF{}" }
+            },
+            c_ina_upgrade_technique_Wind_MF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:wind}Viento{} y su posición es {X:mf,C:white}MF{}" }
+            },
+            c_ina_upgrade_technique_Wind_FW = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:wind}Viento{} y su posición es {X:fw,C:white}FW{}" }
+            },
+            c_ina_upgrade_technique_Mountain_GK = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:mountain}Montaña{} y su posición es {X:gk,C:white}GK{}" }
+            },
+            c_ina_upgrade_technique_Mountain_DF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:mountain}Montaña{} y su posición es {X:df,C:white}DF{}" }
+            },
+            c_ina_upgrade_technique_Mountain_MF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:mountain}Montaña{} y su posición es {X:mf,C:white}MF{}" }
+            },
+            c_ina_upgrade_technique_Mountain_FW = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:mountain}Montaña{} y su posición es {X:fw,C:white}FW{}" }
+            },
         },
         Edition = {},
         Enhanced = {},
