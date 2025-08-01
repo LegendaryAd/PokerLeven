@@ -76,17 +76,10 @@ local increase_technique = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return #G.jokers.cards > 0
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and can_upgrade_tech_level(G.jokers.highlighted[1])
   end,
   use = function(self, card, area, copier)
-    local choice = nil
-    if G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      choice = G.jokers.highlighted[1]
-    elseif G.jokers.cards and #G.jokers.cards > 0 then
-      choice = G.jokers.cards[1]
-    else
-      return
-    end
+    local choice = G.jokers.highlighted[1]
 
     increment_technique(choice)
 

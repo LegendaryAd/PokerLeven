@@ -7,6 +7,9 @@ technique_values = {
     Xchip_mod = .2
 }
 
+-- Max allowed tech level a joker can reach
+max_tech_level = 3
+
 -- Increments technique level of a joker and applies stat changes based on technique values
 increment_technique = function(card)
     if card.ability.extra and type(card.ability.extra) == "table" then
@@ -68,4 +71,8 @@ set_frac = function(card, frac, field)
         card.ability.extra[field] = card.ability.extra[field] + int
         card.ability[frac_name] = frac
     end
+end
+
+can_upgrade_tech_level = function(card)
+    return (card.ability.extra.tech_level or 0) < max_tech_level
 end
