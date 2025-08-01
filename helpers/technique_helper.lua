@@ -23,6 +23,7 @@ increment_technique = function(card)
     set_sticker(card)
 end
 
+-- Sets the appropriate sticker for the current technique level and removes the previous one (if any)
 set_sticker = function(card)
     local tech_level = card.ability.extra.tech_level
 
@@ -86,6 +87,7 @@ set_frac = function(card, frac, field)
     end
 end
 
+-- Returns true if the card matches the type and position and its technique level is below the max
 can_upgrade_tech_level = function(card, type, position)
     return is_type(card, type) and is_position(card, position) and (card.ability.extra.tech_level or 0) < max_tech_level
 end
