@@ -668,7 +668,12 @@ return {
 
             j_ina_Nashmith = {
                 name = "Nashmith",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = {
+                    "{C:forest}Flecha Huracán{}",
+                    "Cada {C:spades}Pica{} jugada otorga",
+                    "{C:chips}+#1# Fichas{} por cada",
+                    "jugador de {X:forest,C:white}Bosque{}",
+                }
             },
 
             j_ina_Z_Triangle = {
