@@ -19,26 +19,52 @@ local Poseidon = {
   end
 }
 
--- Hephestus
-local Hephestus = {
+local Hephestus = J({
   name = "Hephestus",
   pos = { x = 12, y = 5 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return {}
   end,
-  rarity = 2, -- Uncommon
+  rarity = 2,
   pools = { ["Zeus"] = true },
-  cost = 6,
+  cost = 7,
   atlas = "Jokers01",
   ptype = "Fire",
-  pposition = "DF", -- Defense
+  pposition = "DF",
   pteam = "Zeus",
   blueprint_compat = true,
   calculate = function(self, card, context)
+    if context.blind_defeated and not context.blueprint then
+      local fire_defense_jokers = find_player_type_and_position("Fire", "DF")
+      local count = #fire_defense_jokers
+
+      if count > 0 and G.deck and G.deck.cards and #G.deck.cards > 0 then
+        table.unpack = table.unpack or unpack
+
+        local candidates = { table.unpack(G.deck.cards) }
+
+        for i = 1, count do
+          if #candidates == 0 then break end
+
+          local steelCard = pseudorandom_element(candidates, pseudoseed("steel_card_" .. i))
+          if steelCard then
+            convert_cards_to(steelCard, { mod_conv = "m_steel", true, true })
+            card_eval_status_text(steelCard, 'extra', nil, nil, nil,
+              { message = localize("ina_convert"), colour = G.C.MULT })
+
+            for j, c in ipairs(candidates) do
+              if c == steelCard then
+                table.remove(candidates, j)
+                break
+              end
+            end
+          end
+        end
+      end
+    end
   end
-}
+})
 
 -- Apollo
 local Apollo = {

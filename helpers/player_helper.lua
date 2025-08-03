@@ -24,6 +24,24 @@ find_player_position = function(target_type)
     return found
 end
 
+--- Returns players of target type and position
+---@param target_type string the type of the player
+---@param target_position string the position of the player
+---@return table
+find_player_type_and_position = function(target_type, target_position)
+    local found = {}
+    if G.jokers and G.jokers.cards then
+        for k, v in pairs(G.jokers.cards) do
+            if v.ability and v.ability.extra and type(v.ability.extra) == "table" then
+                if v.ability.extra.ptype == target_type and v.ability.extra.pposition == target_position then
+                    table.insert(found, v)
+                end
+            end
+        end
+    end
+    return found
+end
+
 find_player_team = function(target_type)
     local found = {}
     if G.jokers and G.jokers.cards then
