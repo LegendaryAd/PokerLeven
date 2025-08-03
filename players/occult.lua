@@ -4,7 +4,6 @@ local Talisman = {
   pos = { x = 9, y = 0 },
   config = { extra = { retriggers = 2, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = {} }
   end,
   rarity = 3,
@@ -44,7 +43,6 @@ local Wolfy = {
   pos = { x = 10, y = 0 },
   config = { extra = { xmult_mod = 0.26, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { 1 + center.ability.extra.xmult_mod * (G.GAME.used_moon_cards or 0), center.ability.extra.xmult_mod } }
   end,
   rarity = 2,
@@ -76,7 +74,6 @@ local Blood = {
   pos = { x = 11, y = 0 },
   config = { extra = { drain = 1, chips_mod = 10, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.drain, center.ability.extra.chips_mod, center.sell_cost * center.ability.extra.chips_mod } }
   end,
   rarity = 2,
@@ -115,7 +112,6 @@ local Grave = {
   pos = { x = 12, y = 0 },
   config = { extra = { odds = 5, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { '' .. (G.GAME and G.GAME.probabilities.normal or 1), center.ability.extra.odds } }
   end,
   rarity = 1,
@@ -166,7 +162,6 @@ local Mask = {
   pos = { x = 0, y = 1 },
   config = { extra = { sell_value = 6 } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.sell_value } }
   end,
   rarity = 2,
@@ -220,7 +215,6 @@ local Styx = {
   pos = { x = 1, y = 1 },
   config = { extra = { chips_mod = 6, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     local current_chips = 0
     if G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.tarot > 0 then
       current_chips = G.GAME.consumeable_usage_total.tarot * center.ability.extra.chips_mod
@@ -257,7 +251,6 @@ local Franky = {
   pos = { x = 2, y = 1 },
   config = { extra = { mult_mod = 16, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.mult_mod } }
   end,
   rarity = 1,
@@ -288,7 +281,6 @@ local Mummy = {
   pos = { x = 3, y = 1 },
   config = { extra = { mult_mod = 6, chip_mod = 6, suit = "Clubs", triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {
       vars = { center.ability.extra.mult_mod,
         center.ability.extra.chip_mod, localize(center.ability.extra.suit, 'suits_singular') }

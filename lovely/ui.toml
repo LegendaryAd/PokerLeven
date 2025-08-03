@@ -12,6 +12,7 @@ position = 'after'
 match_indent = true
 payload = '''
 UIBox_button({button = 'your_collection_techniques', label = {localize('ina_special_technique')}, count = G.DISCOVER_TALLIES.techniques, minw = 5, id = 'your_collection_techniques'}),
+UIBox_button({button = 'your_collection_managers', label = {localize('ina_special_manager')}, count = G.DISCOVER_TALLIES.managers, minw = 5, id = 'your_collection_managers'}),
 '''
 
 [[patches]]
@@ -22,6 +23,7 @@ position = 'before'
 match_indent = true
 payload = '''
 techniques = {tally = 0, of = 0},
+managers = {tally = 0, of = 0},
 '''
 
 [[patches]]
@@ -35,7 +37,7 @@ payload = '''
 if v.set and (
     (v.set == 'Joker' and v.ptype) or
     v.consumeable or
-    (v.special and v.special == "Technique") or
+    (v.special and (v.special == "Technique" or v.special == "Manager")) or
     (v.set == 'Edition') or
     (v.set == 'Voucher') or
     (v.set == 'Back') or
@@ -53,6 +55,12 @@ if v.special and v.special == "Technique" then
     G.DISCOVER_TALLIES.techniques.of = G.DISCOVER_TALLIES.techniques.of+1
     if v.discovered then 
         G.DISCOVER_TALLIES.techniques.tally = G.DISCOVER_TALLIES.techniques.tally+1
+    end
+end
+if v.special and v.special == "Manager" then
+    G.DISCOVER_TALLIES.managers.of = G.DISCOVER_TALLIES.managers.of+1
+    if v.discovered then 
+        G.DISCOVER_TALLIES.managers.tally = G.DISCOVER_TALLIES.managers.tally+1
     end
 end
 '''
@@ -76,7 +84,7 @@ position = 'at'
 overwrite = true
 match_indent = true
 payload = '''
-local alert_technique, alert_joker, alert_voucher, alert_tarot, alert_planet, alert_spectral, alert_blind, alert_edition, alert_tag, alert_seal, alert_booster = false,false,false,false,false,false,false,false,false,false,false
+local alert_manager, alert_technique, alert_joker, alert_voucher, alert_tarot, alert_planet, alert_spectral, alert_blind, alert_edition, alert_tag, alert_seal, alert_booster = false,false,false,false,false,false,false,false,false,false,false,false
 '''
 
 [[patches]]
@@ -87,7 +95,8 @@ position = 'at'
 match_indent = true
 payload = '''
 if v.set == 'Joker' and not v.special then alert_joker = true end
-if v.set == 'Joker' and v.special then alert_technique = true end
+if v.set == 'Joker' and v.special and v.special == "Technique" then alert_technique = true end
+if v.set == 'Joker' and v.special and v.special == "Manager" then alert_manager = true end
 '''
 
 [[patches]]
@@ -98,6 +107,7 @@ position = 'after'
 match_indent = true
 payload = '''
 {id = 'your_collection_techniques', alert_uibox_name = 'your_collection_techniques_alert'},
+{id = 'your_collection_managers', alert_uibox_name = 'your_collection_managers_alert'},
 '''
 
 [[patches]]
@@ -108,4 +118,5 @@ position = 'after'
 match_indent = true
 payload = '''
 G.ARGS.set_alerts_alertables[12].should_alert = alert_technique
+G.ARGS.set_alerts_alertables[13].should_alert = alert_manager
 '''

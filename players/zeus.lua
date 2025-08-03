@@ -4,7 +4,6 @@ local Poseidon = {
   pos = { x = 10, y = 5 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {}
   end,
   rarity = 3, -- Rare
@@ -25,7 +24,6 @@ local Hephestus = {
   pos = { x = 12, y = 5 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {}
   end,
   rarity = 2, -- Uncommon
@@ -46,7 +44,6 @@ local Apollo = {
   pos = { x = 11, y = 5 },
   config = { extra = { chips_mod = 7, alt_chips_mod = 3, current_bonus = 0, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.chips_mod, center.ability.extra.alt_chips_mod, center.ability.extra.current_bonus } }
   end,
   rarity = 1,
@@ -96,7 +93,6 @@ local Artemis = {
   pos = { x = 0, y = 6 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {}
   end,
   rarity = 2, -- Uncommon
@@ -117,7 +113,6 @@ local Hermes = {
   pos = { x = 9, y = 5 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {}
   end,
   rarity = 2, -- Uncommon
@@ -138,7 +133,6 @@ local Demeter = {
   pos = { x = 8, y = 5 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {}
   end,
   rarity = 1, -- Common
@@ -159,7 +153,6 @@ local Aphrodite = {
   pos = { x = 1, y = 6 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {}
   end,
   rarity = 4, -- Legendary

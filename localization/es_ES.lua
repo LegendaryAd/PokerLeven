@@ -720,6 +720,11 @@ return {
             j_ina_Aphrodite = {
                 name = "Aphrodite",
                 text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+            },
+
+            j_ina_Nelly = {
+                name = "Nelly",
+                text = { "Placeholder", "Placeholder effect line 1", "Placeholder effect line 2" }
             }
 
         },
@@ -869,7 +874,18 @@ return {
             ina_dribbling = "¡Regate!",
             ina_harvest = "Cosecha!",
             ina_seed = "Siembra!",
-            ina_special_technique = "Super Técnicas"
+            ina_special_technique = "Super Técnicas",
+            ina_special_manager = "Gerentes",
+            ina_manager_info = "Gerente",
+            ina_Fire = "Fuego",
+            ina_Forest = "Bosque",
+            ina_Wind = "Viento",
+            ina_Mountain = "Montaña",
+            ina_FW = "Delantero",
+            ina_MF = "Mediocentro",
+            ina_DF = "Defensa",
+            ina_GK = "Portero",
+            ina_Technique = "Fusión"
         },
         high_scores = {},
         labels = {

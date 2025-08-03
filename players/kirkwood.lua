@@ -3,7 +3,6 @@ local Neville = J({
     pos = { x = 1, y = 5 },
     config = { extra = { new_glass_denom = 6 } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { G.GAME.probabilities.normal, G.GAME.probabilities.new_glass_denom or center.ability.extra.new_glass_denom } }
     end,
     rarity = 1, -- Common
@@ -27,7 +26,6 @@ local Night = J({
     pos = { x = 4, y = 5 },
     config = {},
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 3, -- Rare
@@ -59,7 +57,6 @@ local Marvin = J({
     pos = { x = 5, y = 5 },
     config = {},
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Uncommon
@@ -80,7 +77,6 @@ local Thomas = J({
     pos = { x = 6, y = 5 },
     config = {},
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Uncommon
@@ -101,7 +97,6 @@ local Tyler = J({
     pos = { x = 7, y = 5 },
     config = {},
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Uncommon
@@ -134,8 +129,6 @@ local Damian = J({
     pos = { x = 3, y = 5 },
     config = { extra = { chips_mod = 7, current_chips = 0, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-
         return { vars = { center.ability.extra.chips_mod, center.ability.extra.current_chips } }
     end,
     rarity = 1, -- Common
@@ -178,7 +171,6 @@ local Nashmith = J({
     pos = { x = 2, y = 5 },
     config = { extra = { chip_mod = 10 } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.chip_mod } }
     end,
     rarity = 1,
@@ -217,7 +209,6 @@ local z_triangle = J({
     pos = { x = 11, y = 6 },
     config = {},
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 1, -- Common

@@ -4,7 +4,6 @@ local Greeny = J({
     pos = { x = 0, y = 5 },
     config = {},
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 1, -- Common
@@ -28,7 +27,6 @@ local Hayseed = J({
         }
     },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.current_mult or 0 } }
     end,
     rarity = 1,
@@ -65,7 +63,6 @@ local Sherman = J({
     pos = { x = 12, y = 4 },
     config = { extra = { current_chips = 0, chip_mod = 2 } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.chip_mod, center.ability.extra.current_chips } }
     end,
     rarity = 1, -- Common
@@ -113,7 +110,6 @@ local Spray = J({
     pos = { x = 8, y = 4 },
     config = { extra = { current_Xmult = 1, max_money = 4, Xmult_mod = 0.25, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.max_money, center.ability.extra.Xmult_mod, center.ability.extra.current_Xmult } }
     end,
     rarity = 2, -- Uncommon
@@ -152,7 +148,6 @@ local Dawson = J({
     pos = { x = 9, y = 4 },
     config = { extra = { max_money = 2, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.max_money } }
     end,
     rarity = 2, -- Uncommon
@@ -199,7 +194,6 @@ local Muffs = J({
     pos = { x = 10, y = 4 },
     config = { extra = { current_mult = 0, mult_mod = 1, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         info_queue[#info_queue + 1] = { set = 'Other', key = 'Harvester' }
         return { vars = { center.ability.extra.mult_mod, center.ability.extra.current_mult } }
     end,
@@ -259,7 +253,6 @@ local Hillvalley = J({
     pos = { x = 7, y = 4 },
     config = { extra = { current_chips = 0, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.current_chips } }
     end,
     rarity = 1, -- Common

@@ -4,7 +4,6 @@ local King = {
   pos = { x = 4, y = 1 },
   config = { extra = { triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {}
   end,
   rarity = 2,
@@ -74,7 +73,6 @@ local Bloom = {
   pos = { x = 5, y = 1 },
   config = { extra = { current_mult = 0, mult_mod = 1, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.current_mult, center.ability.extra.mult_mod } }
   end,
   rarity = 1,
@@ -104,7 +102,6 @@ local Drent = {
   pos = { x = 6, y = 1 },
   config = { extra = { odds = 5, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     local count = #find_player_type("Mountain");
     local odds = center.ability.extra.odds - count
     if odds < 0 then
@@ -166,7 +163,6 @@ local Jude = {
     }
   },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.current_xmult, center.ability.extra.xmult_mod } }
   end,
   rarity = 3,
@@ -224,7 +220,6 @@ local Martin = {
   pos = { x = 8, y = 1 },
   config = { extra = { common_mult = 6, uncommon_mult = 12, rare_xmult = 1.5, legendary_exp = 1.15, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {
       vars = { center.ability.extra.common_mult, center.ability.extra.uncommon_mult,
         center.ability.extra.rare_xmult, center.ability.extra.legendary_exp }
@@ -306,7 +301,6 @@ local Master = {
   pos = { x = 9, y = 1 },
   config = { extra = { mult_mod = 7, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.mult_mod } }
   end,
   rarity = 1,
@@ -344,7 +338,6 @@ local Samford = {
   pos = { x = 10, y = 1 },
   config = { extra = { xmult_mod = 2.25, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.xmult_mod } }
   end,
   rarity = 2,
@@ -375,7 +368,6 @@ local Swing = {
   pos = { x = 11, y = 1 },
   config = { extra = { chips_mod = 60, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.chips_mod } }
   end,
   rarity = 1,

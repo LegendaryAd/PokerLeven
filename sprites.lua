@@ -48,6 +48,13 @@ SMODS.Atlas({
 }):register()
 
 SMODS.Atlas({
+    key = "Managers01",
+    path = "managers01.png",
+    px = 71,
+    py = 95
+}):register()
+
+SMODS.Atlas({
     key = "Boosters01",
     path = "Boosters01.png",
     px = 71,
