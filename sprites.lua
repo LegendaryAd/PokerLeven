@@ -140,6 +140,7 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS["farm"] = HEX("7AC943")
     G.ARGS.LOC_COLOURS["inazuma"] = HEX("ffa726")
     G.ARGS.LOC_COLOURS["kirkwood"] = HEX("7A5E3C")
+    G.ARGS.LOC_COLOURS["zeus"] = HEX("D4AF37")
     G.ARGS.LOC_COLOURS["pink"] = HEX("FF7ABF")
     G.ARGS.LOC_COLOURS["inazuma_eleven"] = HEX("fb8c00")
 

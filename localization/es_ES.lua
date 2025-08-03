@@ -794,9 +794,9 @@ return {
                 name = "Pack Farm",
                 text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:farm,C:white}Farm{} jugadores" }
             },
-            p_ina_team_pack_kirwood = {
-                name = "Pack Kirwood",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:kirwood,C:white}Kirwood{} jugadores" }
+            p_ina_team_pack_kirkwood = {
+                name = "Pack Kirkwood",
+                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:kirkwood,C:white}Kirwood{} jugadores" }
             },
             p_ina_team_pack_zeus = {
                 name = "Pack Zeus",

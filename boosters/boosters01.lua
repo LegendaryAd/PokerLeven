@@ -1,10 +1,10 @@
 local Raimon = {
-    name = "Raimon Pack",
+	name = "Raimon Pack",
 	key = "team_pack_raimon",
 	kind = "Team",
 	atlas = "Boosters01",
 	pos = { x = 0, y = 0 },
-	config = { extra = 2, choose = 1, c_keys = {}},
+	config = { extra = 2, choose = 1, c_keys = {} },
 	cost = 6,
 	order = 1,
 	weight = function()
@@ -14,28 +14,28 @@ local Raimon = {
 			return 0
 		end
 	end,
-    draw_hand = true,
-    unlocked = true,
-    discovered = true,
+	draw_hand = true,
+	unlocked = true,
+	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Raimon", G.pack_cards, nil, nil, true, true, nil, nil)
-    end,
+	end,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
-		art = {"Shadorossa"}
+		art = { "Shadorossa" }
 	}
 }
 
 local Occult = {
-    name = "Occult",
+	name = "Occult",
 	key = "team_pack_occult",
 	kind = "Team",
 	atlas = "Boosters01",
 	pos = { x = 2, y = 0 },
-	config = { extra = 2, choose = 1, c_keys = {}},
+	config = { extra = 2, choose = 1, c_keys = {} },
 	cost = 6,
 	order = 1,
 	weight = function()
@@ -45,28 +45,28 @@ local Occult = {
 			return 0
 		end
 	end,
-    draw_hand = true,
-    unlocked = true,
-    discovered = true,
+	draw_hand = true,
+	unlocked = true,
+	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Occult", G.pack_cards, nil, nil, true, true, nil, nil)
-    end,
+	end,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
-		art = {"Shadorossa"}
+		art = { "Shadorossa" }
 	}
 }
 
 local RoyalAcademy = {
-    name = "Royal Academy",
+	name = "Royal Academy",
 	key = "team_pack_royal",
 	kind = "Team",
 	atlas = "Boosters01",
 	pos = { x = 1, y = 0 },
-	config = { extra = 2, choose = 1, c_keys = {}},
+	config = { extra = 2, choose = 1, c_keys = {} },
 	cost = 4,
 	order = 1,
 	weight = function()
@@ -76,28 +76,28 @@ local RoyalAcademy = {
 			return 0
 		end
 	end,
-    draw_hand = true,
-    unlocked = true,
-    discovered = true,
+	draw_hand = true,
+	unlocked = true,
+	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Royal Academy", G.pack_cards, nil, nil, true, true, nil, nil)
-    end,
+	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra} }
+		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
-		art = {"Shadorossa"}
+		art = { "Shadorossa" }
 	}
 }
 
 local Wild = {
-    name = "Wild",
+	name = "Wild",
 	key = "team_pack_wild",
 	kind = "Team",
 	atlas = "Boosters01",
 	pos = { x = 3, y = 0 },
-	config = { extra = 2, choose = 1, c_keys = {}},
+	config = { extra = 2, choose = 1, c_keys = {} },
 	cost = 6,
 	order = 1,
 	weight = function()
@@ -107,28 +107,28 @@ local Wild = {
 			return 0
 		end
 	end,
-    draw_hand = true,
-    unlocked = true,
-    discovered = true,
+	draw_hand = true,
+	unlocked = true,
+	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Wild", G.pack_cards, nil, nil, true, true, nil, nil)
-    end,
+	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra} }
+		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
-		art = {"Shadorossa"}
+		art = { "Shadorossa" }
 	}
 }
 
 local Brain = {
-    name = "Brain",
+	name = "Brain",
 	key = "team_pack_brain",
 	kind = "Team",
 	atlas = "Boosters01",
 	pos = { x = 0, y = 1 },
-	config = { extra = 2, choose = 1, c_keys = {}},
+	config = { extra = 2, choose = 1, c_keys = {} },
 	cost = 6,
 	order = 1,
 	weight = function()
@@ -138,28 +138,28 @@ local Brain = {
 			return 0
 		end
 	end,
-    draw_hand = true,
-    unlocked = true,
-    discovered = true,
+	draw_hand = true,
+	unlocked = true,
+	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Brain", G.pack_cards, nil, nil, true, true, nil, nil)
-    end,
+	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra} }
+		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
-		art = {"Shadorossa"}
+		art = { "Shadorossa" }
 	}
 }
 
 local Otaku = {
-    name = "Otaku",
+	name = "Otaku",
 	key = "team_pack_otaku",
 	kind = "Team",
 	atlas = "Boosters01",
 	pos = { x = 1, y = 1 },
-	config = { extra = 2, choose = 1, c_keys = {}},
+	config = { extra = 2, choose = 1, c_keys = {} },
 	cost = 6,
 	order = 1,
 	weight = function()
@@ -169,28 +169,28 @@ local Otaku = {
 			return 0
 		end
 	end,
-    draw_hand = true,
-    unlocked = true,
-    discovered = true,
+	draw_hand = true,
+	unlocked = true,
+	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Otaku", G.pack_cards, nil, nil, true, true, nil, nil)
-    end,
+	end,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
-		art = {"Shadorossa"}
+		art = { "Shadorossa" }
 	}
 }
 
 local Inazuma = {
-    name = "Inazuma",
+	name = "Inazuma",
 	key = "team_pack_inazuma",
 	kind = "Team",
 	atlas = "Boosters01",
 	pos = { x = 2, y = 1 },
-	config = { extra = 2, choose = 1, c_keys = {}},
+	config = { extra = 2, choose = 1, c_keys = {} },
 	cost = 4,
 	order = 1,
 	weight = function()
@@ -200,28 +200,28 @@ local Inazuma = {
 			return 0
 		end
 	end,
-    draw_hand = true,
-    unlocked = true,
-    discovered = true,
+	draw_hand = true,
+	unlocked = true,
+	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Inazuma", G.pack_cards, nil, nil, true, true, nil, nil)
-    end,
+	end,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
-		art = {"Shadorossa"}
+		art = { "Shadorossa" }
 	}
 }
 
 local Shuriken = {
-    name = "Shuriken",
+	name = "Shuriken",
 	key = "team_pack_shuriken",
 	kind = "Team",
 	atlas = "Boosters01",
 	pos = { x = 3, y = 1 },
-	config = { extra = 2, choose = 1, c_keys = {}},
+	config = { extra = 2, choose = 1, c_keys = {} },
 	cost = 4,
 	order = 1,
 	weight = function()
@@ -231,28 +231,28 @@ local Shuriken = {
 			return 0
 		end
 	end,
-    draw_hand = true,
-    unlocked = true,
-    discovered = true,
+	draw_hand = true,
+	unlocked = true,
+	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Shuriken", G.pack_cards, nil, nil, true, true, nil, nil)
-    end,
+	end,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
-		art = {"Shadorossa"}
+		art = { "Shadorossa" }
 	}
 }
 
 local Farm = {
-    name = "Farm",
+	name = "Farm",
 	key = "team_pack_farm",
 	kind = "Team",
 	atlas = "Boosters01",
 	pos = { x = 0, y = 2 },
-	config = { extra = 2, choose = 1, c_keys = {}},
+	config = { extra = 2, choose = 1, c_keys = {} },
 	cost = 4,
 	order = 1,
 	weight = function()
@@ -262,59 +262,59 @@ local Farm = {
 			return 0
 		end
 	end,
-    draw_hand = true,
-    unlocked = true,
-    discovered = true,
+	draw_hand = true,
+	unlocked = true,
+	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Farm", G.pack_cards, nil, nil, true, true, nil, nil)
-    end,
+	end,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
-		art = {"Shadorossa"}
+		art = { "Shadorossa" }
 	}
 }
 
 local Kirwood = {
-    name = "Kirwood",
-	key = "team_pack_kirwood",
+	name = "Kirkwood",
+	key = "team_pack_kirkwood",
 	kind = "Team",
 	atlas = "Boosters01",
 	pos = { x = 1, y = 2 },
-	config = { extra = 2, choose = 1, c_keys = {}},
+	config = { extra = 2, choose = 1, c_keys = {} },
 	cost = 4,
 	order = 1,
 	weight = function()
-		if #find_player_team("Kirwood") > 0 then
+		if #find_player_team("Kirkwood") > 0 then
 			return 0.35
 		else
 			return 0
 		end
 	end,
-    draw_hand = true,
-    unlocked = true,
-    discovered = true,
+	draw_hand = true,
+	unlocked = true,
+	discovered = true,
 	create_card = function(self, card, i)
-		return create_card("Kirwood", G.pack_cards, nil, nil, true, true, nil, nil)
-    end,
+		return create_card("Kirkwood", G.pack_cards, nil, nil, true, true, nil, nil)
+	end,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
-		art = {"Shadorossa"}
+		art = { "Shadorossa" }
 	}
 }
 
 local Zeus = {
-    name = "Zeus",
+	name = "Zeus",
 	key = "team_pack_zeus",
 	kind = "Team",
 	atlas = "Boosters01",
 	pos = { x = 2, y = 2 },
-	config = { extra = 2, choose = 1, c_keys = {}},
+	config = { extra = 2, choose = 1, c_keys = {} },
 	cost = 4,
 	order = 1,
 	weight = function()
@@ -324,22 +324,22 @@ local Zeus = {
 			return 0
 		end
 	end,
-    draw_hand = true,
-    unlocked = true,
-    discovered = true,
+	draw_hand = true,
+	unlocked = true,
+	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Zeus", G.pack_cards, nil, nil, true, true, nil, nil)
-    end,
+	end,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
-		art = {"Shadorossa"}
+		art = { "Shadorossa" }
 	}
 }
 
-return{
-    name = "Boosters01",
-    list = {Raimon, Occult, RoyalAcademy, Wild, Brain, Otaku, Inazuma, Shuriken, Farm, Kirwood, Zeus}
+return {
+	name = "Boosters01",
+	list = { Raimon, Occult, RoyalAcademy, Wild, Brain, Otaku, Inazuma, Shuriken, Farm, Kirwood, Zeus }
 }
