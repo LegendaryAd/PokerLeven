@@ -157,7 +157,6 @@ local Demeter = {
   pposition = "FW",
   pteam = "Zeus",
   blueprint_compat = true,
-
   calculate = function(self, card, context)
     if context.cardarea == G.jokers and context.joker_main then
       local remaining_discards = G.GAME.current_round.discards_left or 0
@@ -175,7 +174,6 @@ local Demeter = {
     end
   end,
 }
-
 
 -- Aphrodite
 local Aphrodite = {
