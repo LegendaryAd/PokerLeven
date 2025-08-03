@@ -686,7 +686,14 @@ return {
 
             j_ina_Hephestus = {
                 name = "Hephestus",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = {
+                    "{C:fire}Forja Llameante{}",
+                    "Al ganar la ciega convierte",
+                    "una {C:attention}carta aleatoria{}",
+                    "en una carta de {C:attention}Acero{}",
+                    "por cada jugador de",
+                    "tipo {X:fire,C:white}Fuego{} y posicion {X:df,C:white}DF{}"
+                }
             },
 
             j_ina_Apollo = {
