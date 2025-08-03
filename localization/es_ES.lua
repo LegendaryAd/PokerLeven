@@ -900,22 +900,155 @@ return {
                     "cosechada por jokers"
                 },
             },
-            ina_tech_level1_sticker = {
-                name = "Técnica nivel 1",
+            ina_tech_plus1_sticker = {
+                name = "Técnica +1",
                 text = {
                     "Este comodín tiene las",
                     "estadísticas aumentadas"
                 },
             },
-            ina_tech_level2_sticker = {
-                name = "Técnica nivel 2",
+            ina_tech_plus2_sticker = {
+                name = "Técnica +2",
                 text = {
                     "Este comodín tiene las",
                     "estadísticas aumentadas"
                 },
             },
-            ina_tech_level3_sticker = {
-                name = "Técnica nivel 3",
+            ina_tech_plus3_sticker = {
+                name = "Técnica +3",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_plus4_sticker = {
+                name = "Técnica +4",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_plus5_sticker = {
+                name = "Técnica +5",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_number2_sticker = {
+                name = "Técnica número 2",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_number3_sticker = {
+                name = "Técnica número 3",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_number4_sticker = {
+                name = "Técnica número 4",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_numbera_sticker = {
+                name = "Técnica A",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_numbers_sticker = {
+                name = "Técnica S",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_numberz_sticker = {
+                name = "Técnica Z",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_numberinf_sticker = {
+                name = "Técnica infinito",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_grade2_sticker = {
+                name = "Técnica grado 2",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_grade3_sticker = {
+                name = "Técnica grado 3",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_grade4_sticker = {
+                name = "Técnica grado 4",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_grade5_sticker = {
+                name = "Técnica grado 5",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_grade0_sticker = {
+                name = "Técnica grado 0",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_j_sticker = {
+                name = "Técnica J",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_q_sticker = {
+                name = "Técnica Q",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_k_sticker = {
+                name = "Técnica K",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_a_sticker = {
+                name = "Técnica A",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_joker_sticker = {
+                name = "Técnica Joker",
                 text = {
                     "Este comodín tiene las",
                     "estadísticas aumentadas"
@@ -987,9 +1120,27 @@ return {
         high_scores = {},
         labels = {
             ina_harvest_sticker = "Cosechable",
-            ina_tech_level1_sticker = "Técnica mejorada",
-            ina_tech_level2_sticker = "Técnica mejorada",
-            ina_tech_level3_sticker = "Técnica mejorada",
+            ina_tech_plus1_sticker = "Técnica mejorada",
+            ina_tech_plus2_sticker = "Técnica mejorada",
+            ina_tech_plus3_sticker = "Técnica mejorada",
+            ina_tech_plus4_sticker = "Técnica mejorada",
+            ina_tech_number2_sticker = "Técnica mejorada",
+            ina_tech_number3_sticker = "Técnica mejorada",
+            ina_tech_number4_sticker = "Técnica mejorada",
+            ina_tech_numbera_sticker = "Técnica mejorada",
+            ina_tech_numbers_sticker = "Técnica mejorada",
+            ina_tech_numberz_sticker = "Técnica mejorada",
+            ina_tech_numberinf_sticker = "Técnica mejorada",
+            ina_tech_grade2_sticker = "Técnica mejorada",
+            ina_tech_grade3_sticker = "Técnica mejorada",
+            ina_tech_grade4_sticker = "Técnica mejorada",
+            ina_tech_grade5_sticker = "Técnica mejorada",
+            ina_tech_grade0_sticker = "Técnica mejorada",
+            ina_tech_j_sticker = "Técnica mejorada",
+            ina_tech_q_sticker = "Técnica mejorada",
+            ina_tech_k_sticker = "Técnica mejorada",
+            ina_tech_a_sticker = "Técnica mejorada",
+            ina_tech_joker_sticker = "Técnica mejorada",
         },
         poker_hand_descriptions = {},
         poker_hands = {},

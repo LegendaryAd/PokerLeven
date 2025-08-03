@@ -28,11 +28,11 @@ set_sticker = function(card)
     local tech_level = card.ability.extra.tech_level
 
     if tech_level > 1 then
-        local old_sticker_key = "ina_tech_level" .. tostring(tech_level - 1) .. "_sticker"
+        local old_sticker_key = "ina_tech_plus" .. tostring(tech_level - 1) .. "_sticker"
         card.ability[old_sticker_key] = false
     end
 
-    local new_sticker_key = "ina_tech_level" .. tostring(tech_level) .. "_sticker"
+    local new_sticker_key = "ina_tech_plus" .. tostring(tech_level) .. "_sticker"
     card.ability[new_sticker_key] = true
 end
 

@@ -446,6 +446,7 @@ local upgrade_technique_Mountain_DF = {
   use = function(self, card, area, copier)
     local choice = G.jokers.highlighted[1]
 
+    print(choice.ability.extra)
     increment_technique(choice)
 
     card_eval_status_text(choice, 'extra', nil, nil, nil,

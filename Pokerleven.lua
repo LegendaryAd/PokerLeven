@@ -257,6 +257,14 @@ for _, file in ipairs(pfiles) do
         end
       end
 
+      if item.techtype then
+        if item.config and item.config.extra then
+          item.config.extra.techtype = item.techtype
+        elseif item.config then
+          item.config.extra = { techtype = item.techtype }
+        end
+      end
+
       if not item.custom_pool_func then
         item.in_pool = function(self)
           return player_in_pool(self)
