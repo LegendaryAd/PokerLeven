@@ -108,20 +108,7 @@ local Tyler = J({
     pteam = "Kirkwood",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.individual and context.other_card and G.GAME.current_round.hands_played == 0
-            and context.cardarea == G.play and context.scoring_hand
-            and next(context.poker_hands["Pair"]) and #context.scoring_hand == 2 then
-            convert_cards_to(context.other_card, {
-                mod_conv = "m_gold"
-            }, false, false)
-            return {
-                message = localize("ina_convert"),
-                colour = G.C.XMULT,
-                card = context.other_card,
-            }
-        end
     end
-
 })
 
 local Damian = J({
