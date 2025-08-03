@@ -136,22 +136,50 @@ local Hermes = {
 local Demeter = {
   name = "Demeter",
   pos = { x = 8, y = 5 },
-  config = { extra = {} },
+  config = { extra = { mult_mod = 4, chip_mod = 10 } },
   loc_vars = function(self, info_queue, center)
     type_tooltip(self, info_queue, center)
-    return {}
+    local remaining_discards = G.GAME and G.GAME.current_round and G.GAME.current_round.discards_left or 0
+    return {
+      vars = {
+        center.ability.extra.mult_mod,
+        center.ability.extra.chip_mod,
+        remaining_discards * center.ability.extra.mult_mod,
+        remaining_discards * center.ability.extra.chip_mod
+      }
+    }
   end,
-  rarity = 1, -- Common
+  rarity = 1,
   pools = { ["Zeus"] = true },
   cost = 4,
   atlas = "Jokers01",
   ptype = "Fire",
-  pposition = "FW", -- Forward
+  pposition = "FW",
   pteam = "Zeus",
   blueprint_compat = true,
+
   calculate = function(self, card, context)
-  end
+    if context.individual and context.cardarea == G.play and context.other_card then
+      if not context.end_of_round and not context.before and not context.after
+          and not context.other_card.debuff then
+        local remaining_discards = G.GAME.current_round.discards_left or 0
+        local extra_mult = card.ability.extra.mult_mod * remaining_discards
+        local extra_chips = card.ability.extra.chip_mod * remaining_discards
+
+        if extra_mult > 0 or extra_chips > 0 then
+          return {
+            message = localize("ina_divine"),
+            colour = G.C.MULT,
+            mult_mod = extra_mult,
+            chip_mod = extra_chips,
+            card = card
+          }
+        end
+      end
+    end
+  end,
 }
+
 
 -- Aphrodite
 local Aphrodite = {

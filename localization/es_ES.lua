@@ -714,7 +714,12 @@ return {
 
             j_ina_Demeter = {
                 name = "Demeter",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = {
+                    "{C:fire}Gracia Ardiente{}",
+                    "Otorga {C:mult}+#1# Mult{} y {C:chips}+#2# Fichas{}",
+                    "por cada descarte restante",
+                    "{C:inactive}Actualmente{}: {C:mult}+#3#{} {C:chips}+#4#{}"
+                }
             },
 
             j_ina_Aphrodite = {
@@ -863,6 +868,7 @@ return {
             ina_convert = "¡Convertido!",
             ina_potential_increased = "¡Potencial aumentado!",
             ina_sell_increased = "¡Jokers mejorados!",
+            ina_divine = "¡Poder Divino!",
             ina_settings_no_custom_middle_blinds = "Sin Ciegas Pequeñas o Grandes personalizadas",
             ina_settings_middle_blinds_abilities = "Las Ciegas Pequeñas y Grandes no tendrán habilidades",
             ina_destroy = "¡Destruido!",
