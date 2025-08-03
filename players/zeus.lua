@@ -23,7 +23,6 @@ local Hephestus = J({
   pos = { x = 12, y = 5 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
   end,
   rarity = 2,
   pools = { ["Zeus"] = true },
@@ -114,12 +113,13 @@ local Apollo = {
 }
 
 -- Artemis
-local Artemis = {
+local Artemis = J({
   name = "Artemis",
   pos = { x = 0, y = 6 },
-  config = { extra = {} },
+  config = { extra = { current_chips = 0, chips_mod = 10 } },
   loc_vars = function(self, info_queue, center)
-    return {}
+    info_queue[#info_queue + 1] = { set = 'Other', key = 'Harvester' }
+    return { vars = { center.ability.extra.chips_mod, center.ability.extra.current_chips } }
   end,
   rarity = 2, -- Uncommon
   pools = { ["Zeus"] = true },
@@ -130,8 +130,40 @@ local Artemis = {
   pteam = "Zeus",
   blueprint_compat = true,
   calculate = function(self, card, context)
-  end
-}
+    if context.discard and context.other_card.ability["ina_harvest_sticker"] == true then
+      card.ability.extra.current_chips =
+          card.ability.extra.current_chips + card.ability.extra.chips_mod
+      context.other_card.ability["ina_harvest_sticker"] = false
+      return {
+        message = localize("ina_harvest"),
+        colour = G.C.MULT,
+        card = context.other_card
+      }
+    end
+    if context.individual
+        and context.cardarea == G.play
+        and context.scoring_hand
+        and context.other_card ~= nil
+        and context.other_card:is_face() then
+      context.other_card.ability["ina_harvest_sticker"] = true
+      return {
+        message = localize("ina_seed"),
+        colour = G.C.MULT,
+        card = context.other_card
+      }
+    end
+
+    if context.scoring_hand and context.cardarea == G.jokers and context.joker_main
+        and card.ability.extra.current_chips > 0 then
+      card.ability.extra.triggered = true
+      return {
+        message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.current_chips } },
+        colour = G.C.CHIPS,
+        mult_mod = card.ability.extra.current_chips,
+      }
+    end
+  end,
+})
 
 -- Hermes
 local Hermes = {
@@ -171,7 +203,6 @@ local Demeter = {
   pos = { x = 8, y = 5 },
   config = { extra = { mult_mod = 4, chip_mod = 10 } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     local remaining_discards = G.GAME and G.GAME.current_round and G.GAME.current_round.discards_left or 0
     return {
       vars = {

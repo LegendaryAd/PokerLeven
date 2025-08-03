@@ -709,7 +709,10 @@ return {
 
             j_ina_Artemis = {
                 name = "Artemis",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:wind}Esfera luminosa{}",
+                    "Tras jugar una figura {C:attention}Siémbrala{}.",
+                    "{C:attention}Cosechador:{} Gana {C:chips}+#1# Chips{}",
+                    "{C:inactive}Actualmente{} {C:chips}+#2# Chips{}" }
             },
 
             j_ina_Hermes = {
