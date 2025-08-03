@@ -36,7 +36,6 @@ local Marvel = {
     ptype = "Mountain",
     pposition = "DF", -- Defense
     pteam = "Brain",
-    techtype = "grade",
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
