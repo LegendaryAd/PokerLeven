@@ -35,8 +35,7 @@ local Hephestus = J({
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.blind_defeated and not context.blueprint then
-      local fire_defense_jokers = find_player_type_and_position("Fire", "DF")
-      local count = #fire_defense_jokers
+      local count = #Pokerleven.find_player_type_and_position("Fire", "DF")
 
       if count > 0 and G.deck and G.deck.cards and #G.deck.cards > 0 then
         table.unpack = table.unpack or unpack
