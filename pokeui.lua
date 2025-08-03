@@ -130,10 +130,10 @@ local create_menu_toggles = function(parent, toggles)
   for k, v in ipairs(toggles) do
     parent.nodes[#parent.nodes + 1] = create_toggle({
       label = localize(v.label),
-      ref_table = pokerleven_config,
+      ref_table = Pokerleven.config,
       ref_value = v.ref_value,
       callback = function(_set_toggle)
-        NFS.write(mod_dir .. "/config.lua", STR_PACK(pokerleven_config))
+        NFS.write(mod_dir .. "/config.lua", STR_PACK(Pokerleven.config))
       end,
     })
     if v.tooltip then

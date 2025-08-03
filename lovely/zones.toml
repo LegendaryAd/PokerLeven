@@ -1,0 +1,15 @@
+[manifest]
+version = "0.1.0"
+dump_lua = true
+priority = 0
+
+# Add field spell area to joker evaluation
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "-- TARGET: add your own CardAreas for joker evaluation"
+position = 'before'
+match_indent = true
+payload = '''
+if Pokerleven and Pokerleven.ina_manager_area then table.insert(t, Pokerleven.ina_manager_area) end
+'''

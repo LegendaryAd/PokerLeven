@@ -6,7 +6,8 @@ SMODS.current_mod.optional_features = {
   post_trigger = true
 }
 
-pokerleven_config = SMODS.current_mod.config
+Pokerleven = {}
+Pokerleven.config = SMODS.current_mod.config
 
 --Load Sprites file
 local sprite, load_error = SMODS.load_file("sprites.lua")
