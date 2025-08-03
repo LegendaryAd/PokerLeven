@@ -649,11 +649,7 @@ return {
             j_ina_Tyler = {
                 name = "Tyler",
                 text = {
-                    "{C:mountain}Tornado Inverso{}",
-                    "Cuando se juega una {C:attention}pareja{}",
-                    "convierte la otra carta en una",
-                    "{C:attention}versión dorada{} de sí misma"
-                }
+                    "{C:mountain}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
             },
 
             j_ina_Damian = {
@@ -680,7 +676,9 @@ return {
                 name = "Triángulo Z",
                 text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
             },
+
             -- Zeus
+
             j_ina_Poseidon = {
                 name = "Poseidon",
                 text = { "{C:mountain}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
@@ -716,7 +714,11 @@ return {
 
             j_ina_Hermes = {
                 name = "Hermes",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:forest}Oro divino",
+                    "Si la primera mano",
+                    "jugada es {C:attention}pareja{}",
+                    "convierte la pareja",
+                    "en {C:attention}cartas doradas{}" }
             },
 
             j_ina_Demeter = {
@@ -727,9 +729,15 @@ return {
             j_ina_Aphrodite = {
                 name = "Aphrodite",
                 text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+            },
+
+            j_ina_Nelly = {
+                name = "Nelly",
+                text = { "Placeholder", "Placeholder effect line 1", "Placeholder effect line 2" }
             }
 
         },
+
         Other = {
             Mountain = {
                 name = "Tipo",
@@ -876,7 +884,18 @@ return {
             ina_dribbling = "¡Regate!",
             ina_harvest = "Cosecha!",
             ina_seed = "Siembra!",
-            ina_special_technique = "Super Técnicas"
+            ina_special_technique = "Super Técnicas",
+            ina_special_manager = "Gerentes",
+            ina_manager_info = "Gerente",
+            ina_Fire = "Fuego",
+            ina_Forest = "Bosque",
+            ina_Wind = "Viento",
+            ina_Mountain = "Montaña",
+            ina_FW = "Delantero",
+            ina_MF = "Mediocentro",
+            ina_DF = "Defensa",
+            ina_GK = "Portero",
+            ina_Technique = "Fusión"
         },
         high_scores = {},
         labels = {

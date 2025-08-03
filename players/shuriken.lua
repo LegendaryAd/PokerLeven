@@ -9,7 +9,6 @@ local hood = J({
         }
     },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         local count = #find_player_position("GK")
         return { vars = { center.ability.extra.xmult_per_gk, count * (center.ability.extra.xmult_per_gk or 0) + 1 } }
     end,
@@ -39,7 +38,6 @@ local hillfort = J({
     pos = { x = 1, y = 4 },
     config = { extra = { triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { calculate_avg_sell_cost("Wind") or center.sell_cost } }
     end,
     rarity = 1, -- Common
@@ -94,7 +92,6 @@ local star = J({
     pos = { x = 3, y = 4 },
     config = { extra = { mult_mod = 1, money = 1, suit = "Diamonds", triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.money, center.ability.extra.mult_mod } }
     end,
     rarity = 1, -- Common
@@ -126,7 +123,6 @@ local cleats = J({
     pos = { x = 4, y = 4 },
     config = {},
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 1, -- Common
@@ -160,7 +156,6 @@ local hattori = J({
     pos = { x = 5, y = 4 },
     config = { extra = { copies = {}, copies_number = 2, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.copies_number } }
     end,
     rarity = 2,
@@ -215,7 +210,6 @@ local cloack = J({
     pos = { x = 6, y = 4 },
     config = {},
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 3, -- Rare

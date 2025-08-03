@@ -1,14 +1,13 @@
 -- Feldt
 local Feldt = {
     name = "Feldt",
-    pos = {x = 6, y = 2},
-    config = {extra = {}},
+    pos = { x = 6, y = 2 },
+    config = { extra = {} },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 3, -- Rare
-    pools = { ["Brain"] = true }, 
+    pools = { ["Brain"] = true },
     cost = 8,
     atlas = "Jokers01",
     ptype = "Forest",
@@ -23,14 +22,13 @@ local Feldt = {
 -- Marvel
 local Marvel = {
     name = "Marvel",
-    pos = {x = 8, y = 2},
-    config = {extra = {mult_mod = 10, triggered = false}},
+    pos = { x = 8, y = 2 },
+    config = { extra = { mult_mod = 10, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-        return {vars = {center.ability.extra.mult_mod}}
+        return { vars = { center.ability.extra.mult_mod } }
     end,
     rarity = 1, -- Common
-    pools = { ["Brain"] = true }, 
+    pools = { ["Brain"] = true },
     cost = 5,
     atlas = "Jokers01",
     ptype = "Mountain",
@@ -50,10 +48,10 @@ local Marvel = {
                 return count
             end
 
-            if count_ones_in_binary(context.other_card:get_chip_bonus()) == 3 then 
+            if count_ones_in_binary(context.other_card:get_chip_bonus()) == 3 then
                 card.ability.extra.triggered = true
                 return {
-                    message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.mult_mod}}, 
+                    message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult_mod } },
                     colour = G.C.MULT,
                     mult_mod = card.ability.extra.mult_mod
                 }
@@ -65,14 +63,13 @@ local Marvel = {
 -- Tell
 local Tell = {
     name = "Tell",
-    pos = {x = 10, y = 2},
-    config = {extra = {Xchips_mod = 3.1416}},
+    pos = { x = 10, y = 2 },
+    config = { extra = { Xchips_mod = 3.1416 } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Uncommon
-    pools = { ["Brain"] = true }, 
+    pools = { ["Brain"] = true },
     cost = 7,
     atlas = "Jokers01",
     ptype = "Forest",
@@ -87,7 +84,7 @@ local Tell = {
             end
 
             for i = 1, #values - 2 do
-                if values[i] == 3 and values[i+1] == 14 and values[i+2] == 4 then
+                if values[i] == 3 and values[i + 1] == 14 and values[i + 2] == 4 then
                     return {
                         message = "Pi!",
                         colour = G.C.RED,
@@ -103,14 +100,13 @@ local Tell = {
 -- Seller
 local Seller = {
     name = "Seller",
-    pos = {x = 9, y = 2},
-    config = {extra = {sell_potential = 0, sell_mod = 1, triggered = false}},
+    pos = { x = 9, y = 2 },
+    config = { extra = { sell_potential = 0, sell_mod = 1, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-        return {vars = {center.ability.extra.sell_potential, center.ability.extra.sell_mod}}
+        return { vars = { center.ability.extra.sell_potential, center.ability.extra.sell_mod } }
     end,
     rarity = 1, -- Common
-    pools = { ["Brain"] = true }, 
+    pools = { ["Brain"] = true },
     cost = 5,
     atlas = "Jokers01",
     ptype = "Wind",
@@ -120,7 +116,7 @@ local Seller = {
     calculate = function(self, card, context)
         if context.end_of_round and not context.game_over and context.main_eval then
             card.ability.extra.triggered = true
-            card.ability.extra.sell_potential = 
+            card.ability.extra.sell_potential =
                 (card.ability.extra.sell_potential or 0) + (card.ability.extra.sell_mod or 0)
             return {
                 message = localize("ina_potential_increased"),
@@ -144,21 +140,20 @@ local Seller = {
         end
     end,
     ina_credits = {
-        idea = {"Shadorossa"}
+        idea = { "Shadorossa" }
     }
 }
 
 -- Kind
 local Kind = {
     name = "Kind",
-    pos = {x = 7, y = 2},
-    config = {extra = {triggered = false}},
+    pos = { x = 7, y = 2 },
+    config = { extra = { triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Uncommon
-    pools = { ["Brain"] = true }, 
+    pools = { ["Brain"] = true },
     cost = 6,
     atlas = "Jokers01",
     ptype = "Forest",
@@ -203,14 +198,13 @@ local Kind = {
 -- Turner
 local Turner = {
     name = "Turner",
-    pos = {x = 11, y = 2},
-    config = {extra = {}},
+    pos = { x = 11, y = 2 },
+    config = { extra = {} },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Uncommon
-    pools = { ["Brain"] = true }, 
+    pools = { ["Brain"] = true },
     cost = 7,
     atlas = "Jokers01",
     ptype = "Fire",
@@ -223,24 +217,24 @@ local Turner = {
             card.ability.extra.triggered = true
             for i = 1, #find_player_team("Brain") do
                 G.E_MANAGER:add_event(Event({
-                delay = 2,
-                func = function()
-                    local copied_card = copy_card(context.scoring_hand[1], nil, nil, G.playing_card or 1)
-                    copied_card:add_to_deck()
-                    G.deck.config.card_limit = G.deck.config.card_limit + 1
-                    G.hand:emplace(copied_card)
-                    table.insert(G.playing_cards, copied_card)
-                    playing_card_joker_effects({true})
+                    delay = 2,
+                    func = function()
+                        local copied_card = copy_card(context.scoring_hand[1], nil, nil, G.playing_card or 1)
+                        copied_card:add_to_deck()
+                        G.deck.config.card_limit = G.deck.config.card_limit + 1
+                        G.hand:emplace(copied_card)
+                        table.insert(G.playing_cards, copied_card)
+                        playing_card_joker_effects({ true })
 
-                    return true
-                end
+                        return true
+                    end
                 }))
             end
             return {
                 message = localize('k_copied_ex'),
                 colour = G.C.CHIPS,
                 card = card,
-                playing_cards_created = {true}
+                playing_cards_created = { true }
             }
         end
     end
@@ -249,14 +243,13 @@ local Turner = {
 -- Under
 local Under = {
     name = "Under",
-    pos = {x = 12, y = 2},
-    config = {extra = {chips_mod = 120, triggered = false}},
+    pos = { x = 12, y = 2 },
+    config = { extra = { chips_mod = 120, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-        return {vars = {center.ability.extra.chips_mod, #find_player_position("GK") or 0}}
+        return { vars = { center.ability.extra.chips_mod, #find_player_position("GK") or 0 } }
     end,
     rarity = 1, -- Common
-    pools = { ["Brain"] = true }, 
+    pools = { ["Brain"] = true },
     cost = 5,
     atlas = "Jokers01",
     ptype = "Forest",
@@ -265,14 +258,14 @@ local Under = {
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main then
-        local gkCount = #find_player_position("GK")
-        local result = card.ability.extra.chips_mod / (math.log(gkCount + 1) / math.log(2))
-        card.ability.extra.triggered = true
+            local gkCount = #find_player_position("GK")
+            local result = card.ability.extra.chips_mod / (math.log(gkCount + 1) / math.log(2))
+            card.ability.extra.triggered = true
 
-        return {
-              message = localize{type = 'variable', key = 'a_chips', vars = {result}}, 
-              colour = G.C.CHIPS,
-              chip_mod = result
+            return {
+                message = localize { type = 'variable', key = 'a_chips', vars = { result } },
+                colour = G.C.CHIPS,
+                chip_mod = result
             }
         end
     end
@@ -280,5 +273,5 @@ local Under = {
 
 return {
     name = "Brain",
-    list = {Feldt, Marvel, Tell, Seller, Kind, Turner, Under},
+    list = { Feldt, Marvel, Tell, Seller, Kind, Turner, Under },
 }
