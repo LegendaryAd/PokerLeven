@@ -7,8 +7,19 @@ technique_values = {
     Xchip_mod = .2
 }
 
--- Max allowed tech level a joker can reach
-max_tech_level = 3
+plus_stickers = { "ina_tech_plus1_sticker", "ina_tech_plus2_sticker", "ina_tech_plus3_sticker", "ina_tech_plus4_sticker",
+    "ina_tech_plus5_sticker" }
+
+number_stickers = { "ina_tech_number2_sticker", "ina_tech_number3_sticker", "ina_tech_number4_sticker",
+    "ina_tech_numbera_sticker",
+    "ina_tech_numbers_sticker", "ina_tech_numberz_sticker", "ina_tech_numberinf_sticker" }
+
+grade_stickers = { "ina_tech_grade2_sticker", "ina_tech_grade3_sticker", "ina_tech_grade4_sticker",
+    "ina_tech_grade5_sticker",
+    "ina_tech_grade0_sticker" }
+
+new_stickers = { "ina_tech_j_sticker", "ina_tech_q_sticker", "ina_tech_k_sticker", "ina_tech_a_sticker",
+    "ina_tech_joker_sticker" }
 
 -- Increments technique level of a joker and applies stat changes based on technique values
 increment_technique = function(card)
@@ -23,16 +34,24 @@ increment_technique = function(card)
     set_sticker(card)
 end
 
--- Sets the appropriate sticker for the current technique level and removes the previous one (if any)
+-- Sets the appropriate sticker for the current technique type and level and removes the previous one (if any)
 set_sticker = function(card)
     local tech_level = card.ability.extra.tech_level
 
+    local sticker_map = {
+        plus = plus_stickers,
+        number = number_stickers,
+        grade = grade_stickers
+    }
+
+    local sticker_list = sticker_map[card.ability.extra.techtype] or new_stickers
+
     if tech_level > 1 then
-        local old_sticker_key = "ina_tech_plus" .. tostring(tech_level - 1) .. "_sticker"
+        local old_sticker_key = sticker_list[tech_level - 1]
         card.ability[old_sticker_key] = false
     end
 
-    local new_sticker_key = "ina_tech_plus" .. tostring(tech_level) .. "_sticker"
+    local new_sticker_key = sticker_list[tech_level]
     card.ability[new_sticker_key] = true
 end
 
@@ -89,5 +108,6 @@ end
 
 -- Returns true if the card matches the type and position and its technique level is below the max
 can_upgrade_tech_level = function(card, type, position)
-    return is_type(card, type) and is_position(card, position) and (card.ability.extra.tech_level or 0) < max_tech_level
+    return is_type(card, type) and is_position(card, position) and
+        (card.ability.extra.tech_level or 0) < G.GAME.max_tech_level
 end
