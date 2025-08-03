@@ -159,22 +159,18 @@ local Demeter = {
   blueprint_compat = true,
 
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and context.other_card then
-      if not context.end_of_round and not context.before and not context.after
-          and not context.other_card.debuff then
-        local remaining_discards = G.GAME.current_round.discards_left or 0
-        local extra_mult = card.ability.extra.mult_mod * remaining_discards
-        local extra_chips = card.ability.extra.chip_mod * remaining_discards
+    if context.cardarea == G.jokers and context.joker_main then
+      local remaining_discards = G.GAME.current_round.discards_left or 0
+      local extra_mult = card.ability.extra.mult_mod * remaining_discards
+      local extra_chips = card.ability.extra.chip_mod * remaining_discards
 
-        if extra_mult > 0 or extra_chips > 0 then
-          return {
-            message = localize("ina_divine"),
-            colour = G.C.MULT,
-            mult_mod = extra_mult,
-            chip_mod = extra_chips,
-            card = card
-          }
-        end
+      if extra_mult > 0 or extra_chips > 0 then
+        return {
+          message = localize("ina_divine"),
+          colour = G.C.MULT,
+          mult_mod = extra_mult,
+          chip_mod = extra_chips,
+        }
       end
     end
   end,
