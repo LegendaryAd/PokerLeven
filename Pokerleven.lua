@@ -211,62 +211,43 @@ for _, file in ipairs(vouchers) do
 end
 
 --Load jokers files
-local pfiles = NFS.getDirectoryItems(mod_dir .. "players")
-for _, file in ipairs(pfiles) do
-  sendDebugMessage("The file is: " .. file)
-  local player, load_error = SMODS.load_file("players/" .. file)
-  if load_error then
-    sendDebugMessage("The error is: " .. load_error)
-  else
-    local curr_player = player()
-    if curr_player.init then curr_player:init() end
-    for i, item in ipairs(curr_player.list) do
-      item.discovered = true
-      if not item.key then
-        item.key = item.name
-      end
+local function load_joker_folder(folder_name, item_constructor)
+  local files = NFS.getDirectoryItems(mod_dir .. folder_name)
+  for _, file in ipairs(files) do
+    sendDebugMessage("The file is: " .. file)
+    local mod_func, load_error = SMODS.load_file(folder_name .. "/" .. file)
+    if load_error then
+      sendDebugMessage("The error is: " .. load_error)
+    else
+      local source = mod_func()
+      if source.init then source:init() end
 
-      if item.ptype then
-        if item.config and item.config.extra then
-          item.config.extra.ptype = item.ptype
-        elseif item.config then
-          item.config.extra = { ptype = item.ptype }
+      for _, item in ipairs(source.list) do
+        item.discovered = true
+        item.key = item.key or item.name
+
+        item.config = item.config or {}
+        item.config.extra = item.config.extra or {}
+
+        if item.ptype then item.config.extra.ptype = item.ptype end
+        if item.pposition then item.config.extra.pposition = item.pposition end
+        if item.pteam then item.config.extra.pteam = item.pteam end
+        if item.special then item.config.extra.special = item.special end
+
+        if not item.custom_pool_func then
+          item.in_pool = function(self)
+            return player_in_pool(self)
+          end
         end
+
+        item.generate_ui = Pokerleven.generate_info_ui
+        item.set_badges = ina_set_badges
+
+        item_constructor(item)
       end
-
-      if item.pposition then
-        if item.config and item.config.extra then
-          item.config.extra.pposition = item.pposition
-        elseif item.config then
-          item.config.extra = { pposition = item.pposition }
-        end
-      end
-
-      if item.pteam then
-        if item.config and item.config.extra then
-          item.config.extra.pteam = item.pteam
-        elseif item.config then
-          item.config.extra = { pteam = item.pteam }
-        end
-      end
-
-      if item.special then
-        if item.config and item.config.extra then
-          item.config.extra.special = item.special
-        elseif item.config then
-          item.config.extra = { special = item.special }
-        end
-      end
-
-      if not item.custom_pool_func then
-        item.in_pool = function(self)
-          return player_in_pool(self)
-        end
-      end
-
-      item.set_badges = ina_set_badges
-
-      SMODS.Joker(item)
     end
   end
 end
+
+load_joker_folder("players", SMODS.Joker)
+load_joker_folder("managers", SMODS.Joker)

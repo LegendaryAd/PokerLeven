@@ -4,7 +4,6 @@ local Idol = {
     pos = { x = 2, y = 3 },
     config = { extra = { odds = 2, retrigger_count = 1, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { G.GAME.probabilities.normal, center.ability.extra.odds } }
     end,
     rarity = 1, -- Common
@@ -38,7 +37,6 @@ local Hero = {
     pos = { x = 3, y = 3 },
     config = { extra = { triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 1, -- Common
@@ -72,7 +70,6 @@ local Custom = {
     pos = { x = 4, y = 3 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Common
@@ -92,7 +89,6 @@ local Robot = {
     pos = { x = 5, y = 3 },
     config = { extra = { retrigger_count = 1, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Uncommon
@@ -127,7 +123,6 @@ local Gamer = {
     pos = { x = 6, y = 3 },
     config = { extra = { triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         local otaku_count = #find_player_team("Otaku")
         local fps = love.timer.getFPS()
         return { vars = { otaku_count > 1 and fps or fps / 2 } }
@@ -163,7 +158,6 @@ local Artist = {
     pos = { x = 0, y = 3 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 3, -- Rare
@@ -207,7 +201,6 @@ local Arcade = {
     pos = { x = 1, y = 3 },
     config = { extra = { new_lucky = 5, minus_dollars = -5, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.new_lucky, center.ability.extra.minus_dollars } }
     end,
     rarity = 2, -- Uncommon
