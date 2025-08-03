@@ -7,6 +7,7 @@ technique_values = {
     Xchip_mod = .2
 }
 
+-- List of stickers depending of technique type
 plus_stickers = { "ina_tech_plus1_sticker", "ina_tech_plus2_sticker", "ina_tech_plus3_sticker", "ina_tech_plus4_sticker",
     "ina_tech_plus5_sticker" }
 
