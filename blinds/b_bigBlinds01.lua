@@ -32,12 +32,12 @@ local ff_national_a = {
     key = "ff_national_a",
     pos = { x = 0, y = 2 },
     discovered = true,
-    mult = Pokerleven.config.middle_blinds_abilities and 1.7 or 1.5,
+    mult = 1.55,
     atlas = "bigBlinds01",
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 2 },
 }
 
 local ff_national_b = {
@@ -46,12 +46,12 @@ local ff_national_b = {
     key = "ff_national_b",
     pos = { x = 0, y = 3 },
     discovered = true,
-    mult = Pokerleven.config.middle_blinds_abilities and 1.6 or 1.5,
+    mult = 1.55,
     atlas = "bigBlinds01",
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 2 },
 }
 
 local umbrella = {
