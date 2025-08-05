@@ -9,7 +9,7 @@ local ff_regional_a = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local ff_regional_b = {
@@ -23,7 +23,7 @@ local ff_regional_b = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local ff_national_a = {
@@ -37,7 +37,7 @@ local ff_national_a = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local ff_national_b = {
@@ -51,7 +51,7 @@ local ff_national_b = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local umbrella = {
@@ -65,7 +65,7 @@ local umbrella = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local inazuma_kids = {
@@ -107,7 +107,7 @@ local occult = B({
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 })
 
 local raimonOB = {
@@ -121,7 +121,7 @@ local raimonOB = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local shun = {
@@ -135,7 +135,7 @@ local shun = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local empress = {
@@ -148,9 +148,18 @@ local empress = {
     atlas = "bigBlinds01",
     order = 1,
     boss_colour = HEX("B7865B"),
-    dollars = 4,
+    dollars = 0,
     big = { min = 0 },
+
+    defeat = function(self)
+        local new_card = create_card("Tarot", G.consumeables, nil, nil, nil, nil, "c_emperor")
+        if new_card then
+            new_card:add_to_deck()
+            G.consumeables:emplace(new_card)
+        end
+    end,
 }
+
 
 return {
     name = "bigBlinds01",

@@ -76,7 +76,8 @@ return {
             },
             bl_ina_empress = {
                 name = "Empress",
-                text = {}
+                text = { "Gana una carta emperador",
+                    "al derrotar la ciega" }
             },
             -- Blinds jefes
             bl_ina_goalkeeper = {
