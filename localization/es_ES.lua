@@ -36,23 +36,23 @@ return {
             -- Blinds grandes
             bl_ina_ff_regional_a = {
                 name = "Selección FF A",
-                text = {}
+                text = { "Malardos A" }
             },
             bl_ina_ff_regional_b = {
                 name = "Selección FF B",
-                text = {}
+                text = { "Malardos B" }
             },
             bl_ina_ff_national_a = {
                 name = "Selección Nacional A",
-                text = { "Un poco más grandes" }
+                text = { "No tan Malardos A" }
             },
             bl_ina_ff_national_b = {
                 name = "Selección Nacional B",
-                text = { "Un poco grandes" }
+                text = { "No tan Malardos B" }
             },
             bl_ina_umbrella = {
                 name = "Umbrella",
-                text = {}
+                text = { "Gana 1 descarte y pierde 1 mano" }
             },
             bl_ina_inazuma_kids = {
                 name = "Inazuma Kids",
