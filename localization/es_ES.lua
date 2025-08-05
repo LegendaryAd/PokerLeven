@@ -68,7 +68,7 @@ return {
             },
             bl_ina_raimonOB = {
                 name = "Raimon OB",
-                text = {}
+                text = { "Cada corazon otorga 20 chips extra!" }
             },
             bl_ina_shun = {
                 name = "Shun",
