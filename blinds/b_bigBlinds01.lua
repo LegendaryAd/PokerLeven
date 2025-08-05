@@ -9,7 +9,7 @@ local ff_regional_a = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local ff_regional_b = {
@@ -23,7 +23,7 @@ local ff_regional_b = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local ff_national_a = {
@@ -37,7 +37,7 @@ local ff_national_a = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local ff_national_b = {
@@ -51,7 +51,7 @@ local ff_national_b = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local umbrella = {
@@ -65,7 +65,7 @@ local umbrella = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local inazuma_kids = {
@@ -101,6 +101,7 @@ local occult = B({
     name = "Occult",
     key = "occult",
     pos = { x = 0, y = 7 },
+    config = { extra = { retriggerCount = 1 } },
     discovered = true,
     mult = 1.5,
     atlas = "bigBlinds01",
@@ -108,6 +109,15 @@ local occult = B({
     boss_colour = HEX("B7865B"),
     dollars = 4,
     big = { min = 0 },
+    calculate = function(self, blind, context)
+        if context.cardarea == G.play and context.repetition and context.other_card:get_id() == 6 then
+            return {
+                message = localize('k_again_ex'),
+                repetitions = self.config.extra.retriggerCount,
+                card = context.other_card
+            }
+        end
+    end
 })
 
 local raimonOB = {
@@ -121,7 +131,7 @@ local raimonOB = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local shun = {
@@ -135,7 +145,7 @@ local shun = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local empress = {
@@ -149,7 +159,7 @@ local empress = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 return {

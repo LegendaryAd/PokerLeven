@@ -64,7 +64,7 @@ return {
             },
             bl_ina_occult = {
                 name = "Occult",
-                text = {}
+                text = { "Los 6 puntuan dos veces" }
             },
             bl_ina_raimonOB = {
                 name = "Raimon OB",
