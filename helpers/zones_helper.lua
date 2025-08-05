@@ -94,7 +94,7 @@ function Game:start_run(args)
         definition = {
             n = G.UIT.ROOT,
             config = {
-                align = "cm", -- centra el contenido horizontalmente
+                align = "cm",
                 minw = 1,
                 minh = 0.3,
                 padding = 0.15,
@@ -283,7 +283,7 @@ function Card:highlight(is_highlighted)
 end
 
 G.FUNCS.can_toggle_bench_card = function(e, area, button_name, active_colour)
-    if area.config.card_count >= area.config.card_limit then
+    if area.config.card_count >= area.config.card_limit or (G.hand and G.GAME.blind.in_blind) then
         e.config.colour = G.C.UI.BACKGROUND_INACTIVE
         e.config.button = nil
         return false
@@ -358,7 +358,7 @@ G.FUNCS.unbench_card = function(e)
 
     G.E_MANAGER:add_event(Event({
         trigger = 'after',
-        delay = 0.2,
+        delay = 0.25,
         func = function()
             card:remove()
             return true

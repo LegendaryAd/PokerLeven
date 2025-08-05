@@ -918,7 +918,10 @@ return {
             ina_GK = "Portero",
             ina_Technique = "Fusión",
             ina_bench = "Banquillo",
-            ina_unbench = "Titular"
+            ina_unbench = "Titular",
+
+            -- Resources
+            ina_resource_barriers = "Barreras"
         },
         high_scores = {},
         labels = {

@@ -27,6 +27,13 @@ SMODS.Atlas({
 }):register()
 
 SMODS.Atlas({
+    key = "ina_resources",
+    path = "resources.png",
+    px = 18,
+    py = 18
+}):register()
+
+SMODS.Atlas({
     key = "stickers",
     path = "stickers.png",
     px = 71,
