@@ -9,7 +9,7 @@ local ff_regional_a = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 },
+    big = { min = 0 },
 }
 
 local ff_regional_b = {
@@ -23,7 +23,7 @@ local ff_regional_b = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 },
+    big = { min = 0 },
 }
 
 local ff_national_a = {
@@ -37,7 +37,7 @@ local ff_national_a = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 },
+    big = { min = 0 },
 }
 
 local ff_national_b = {
@@ -51,7 +51,7 @@ local ff_national_b = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 },
+    big = { min = 0 },
 }
 
 local umbrella = {
@@ -65,7 +65,7 @@ local umbrella = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 },
+    big = { min = 0 },
 }
 
 local inazuma_kids = {
@@ -107,7 +107,7 @@ local occult = B({
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 },
+    big = { min = 0 },
 })
 
 local raimonOB = {
@@ -121,7 +121,7 @@ local raimonOB = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 },
+    big = { min = 0 },
 }
 
 local shun = B({
@@ -130,12 +130,12 @@ local shun = B({
     key = "shun",
     pos = { x = 0, y = 9 },
     discovered = true,
-    mult = 1.5,
+    mult = 1.75,
     atlas = "bigBlinds01",
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 2 },
     calculate = function(self, blind, context)
         if context.game_over then
             return {
