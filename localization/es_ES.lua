@@ -742,6 +742,18 @@ return {
             j_ina_Nelly = {
                 name = "Nelly",
                 text = { "Placeholder", "Placeholder effect line 1", "Placeholder effect line 2" }
+            },
+
+            j_ina_Celia = {
+                name = "Celia",
+                text = { {
+                    "Si tienes un {C:attention}Jude{},",
+                    "lo transforma a su forma del {X:raimon,C:white}Raimon{}",
+                    "al comienzo de la próxima tienda"
+                },
+                    { "Genera un {C:attention}Scout{} en el {C:bench}Banquillo{}",
+                        "al seleccionar una ciega",
+                        "{C:inactive}Debe haber espacio{}" } }
             }
 
         },
@@ -904,7 +916,9 @@ return {
             ina_MF = "Mediocentro",
             ina_DF = "Defensa",
             ina_GK = "Portero",
-            ina_Technique = "Fusión"
+            ina_Technique = "Fusión",
+            ina_bench = "Banquillo",
+            ina_unbench = "Titular"
         },
         high_scores = {},
         labels = {

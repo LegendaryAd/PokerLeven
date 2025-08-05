@@ -29,8 +29,19 @@ local Celia = J({
     cost = 4,
     atlas = "Managers01",
     calculate = function(self, card, context)
-        -- TODO Add logic
-    end
+        if context.starting_shop then
+            jude = get_joker_with_key("j_ina_Jude")
+            if jude then
+                return {
+                    message = ina_evolve(jude, "j_ina_Jude_Raimon")
+                }
+            end
+        end
+        --TODO BANQUILLO
+    end,
+    ina_credits = {
+        idea = { "Killer_Patata" }
+    }
 })
 
 -- Silvia
@@ -81,7 +92,10 @@ local Koudera = J({
     atlas = "Managers01",
     calculate = function(self, card, context)
         -- TODO Add logic
-    end
+    end,
+    ina_credits = {
+        art = { "KirineMoe" }
+    }
 })
 
 
