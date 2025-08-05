@@ -72,7 +72,8 @@ return {
             },
             bl_ina_shun = {
                 name = "Shun",
-                text = {}
+                text = { "Si pierdes en esta ciega",
+                    "revives con 0 de oro" }
             },
             bl_ina_empress = {
                 name = "Empress",
@@ -904,7 +905,8 @@ return {
             ina_MF = "Mediocentro",
             ina_DF = "Defensa",
             ina_GK = "Portero",
-            ina_Technique = "Fusión"
+            ina_Technique = "Fusión",
+            ina_saved = "Te salvó el super mister crack Shun"
         },
         high_scores = {},
         labels = {

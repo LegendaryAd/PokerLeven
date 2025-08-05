@@ -56,6 +56,20 @@ payload = '''
 match_indent = true
 override = true
 
+# Change save message
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+{n=G.UIT.O, config={object = DynaText({string = {' '..localize('ph_mr_bones')..' '}, colours = {G.C.FILTER}, shadow = true, pop_in = 0, scale = 0.5*scale, silent = true})}}
+'''
+position = "at"
+payload = '''
+{n=G.UIT.O, config={object = DynaText({string = {' '..localize('ina_saved')..' '}, colours = {G.C.FILTER}, shadow = true, pop_in = 0, scale = 0.5*scale, silent = true})}}
+'''
+match_indent = true
+override = true
+
 # Round replaced by matches
 [[patches]]
 [patches.pattern]

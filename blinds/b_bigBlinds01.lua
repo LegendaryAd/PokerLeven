@@ -9,7 +9,7 @@ local ff_regional_a = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local ff_regional_b = {
@@ -23,7 +23,7 @@ local ff_regional_b = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local ff_national_a = {
@@ -37,7 +37,7 @@ local ff_national_a = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local ff_national_b = {
@@ -51,7 +51,7 @@ local ff_national_b = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local umbrella = {
@@ -65,7 +65,7 @@ local umbrella = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 local inazuma_kids = {
@@ -107,7 +107,7 @@ local occult = B({
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 })
 
 local raimonOB = {
@@ -121,10 +121,10 @@ local raimonOB = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
-local shun = {
+local shun = B({
     object_type = "Blind",
     name = "ina-shun",
     key = "shun",
@@ -136,7 +136,17 @@ local shun = {
     boss_colour = HEX("B7865B"),
     dollars = 4,
     big = { min = 0 },
-}
+    calculate = function(self, blind, context)
+        if context.game_over then
+            return {
+                message = localize('k_saved_ex'),
+                saved = 'ina_saved',
+                colour = G.C.RED,
+                ease_dollars(-G.GAME.dollars, true)
+            }
+        end
+    end
+})
 
 local empress = {
     object_type = "Blind",
@@ -149,7 +159,7 @@ local empress = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 9 },
 }
 
 return {
