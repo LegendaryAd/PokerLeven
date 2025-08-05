@@ -37,7 +37,15 @@ local Celia = J({
                 }
             end
         end
-        --TODO BANQUILLO
+        if context.setting_blind then
+            --TODO only common?
+            local selected_joker = create_random_ina_joker('Celia', 'Common', G.ina_bench_area, 'Scout', false)
+            G.ina_bench_area:emplace(selected_joker)
+            selected_joker:add_to_deck()
+            Pokerleven.open_bench(true, true)
+            delay(0.5)
+            Pokerleven.open_bench(true, false)
+        end
     end,
     ina_credits = {
         idea = { "Killer_Patata" }

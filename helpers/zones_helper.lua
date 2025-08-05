@@ -282,36 +282,27 @@ function Card:highlight(is_highlighted)
     end
 end
 
----Determines if a card can be benched
----@param e any
+G.FUNCS.can_toggle_bench_card = function(e, area, button_name, active_colour)
+    if area.config.card_count >= area.config.card_limit then
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+        return false
+    else
+        e.config.colour = active_colour
+        e.config.button = button_name
+        return true
+    end
+end
+
 G.FUNCS.can_bench_card = function(e)
-    if G.ina_bench_area.config.card_count >= G.ina_bench_area.config.card_limit then
-        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
-        e.config.button = nil
-        return false
-    else
-        e.config.colour = G.ARGS.LOC_COLOURS['bench']
-        e.config.button = 'bench_card'
-        return true
-    end
+    return G.FUNCS.can_toggle_bench_card(e, G.ina_bench_area, 'bench_card', G.ARGS.LOC_COLOURS['bench'])
 end
 
----Determines if a card can be unbenched
----@param e any
 G.FUNCS.can_unbench_card = function(e)
-    if G.jokers.config.card_count >= G.jokers.config.card_limit then
-        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
-        e.config.button = nil
-        return false
-    else
-        e.config.colour = G.C.ORANGE
-        e.config.button = 'unbench_card'
-        return true
-    end
+    return G.FUNCS.can_toggle_bench_card(e, G.jokers, 'unbench_card', G.C.ORANGE)
 end
 
----Benches a card
-G.FUNCS.bench_card = function(e)
+G.FUNCS.toggle_bench_card = function(e, add_func, open_bench_flag)
     local card = e.config.ref_table
 
     G.E_MANAGER:add_event(Event({
@@ -322,20 +313,25 @@ G.FUNCS.bench_card = function(e)
             return true
         end
     }))
-    local bench_card = copy_card(card)
+
+    local new_card = copy_card(card)
     card:remove()
+
     G.E_MANAGER:add_event(Event({
         trigger = 'immediate',
         func = function()
-            Pokerleven.add_to_bench(bench_card)
-            bench_card:add_to_deck()
-            Pokerleven.open_bench(true, true)
+            add_func(new_card)
+            new_card:add_to_deck()
+            Pokerleven.open_bench(true, open_bench_flag)
             return true
         end
     }))
 end
 
----Unbenches a card
+G.FUNCS.bench_card = function(e)
+    G.FUNCS.toggle_bench_card(e, Pokerleven.add_to_bench, true)
+end
+
 G.FUNCS.unbench_card = function(e)
     local card = e.config.ref_table
 
@@ -347,6 +343,7 @@ G.FUNCS.unbench_card = function(e)
             return true
         end
     }))
+
     local unbench_card = copy_card(card)
 
     G.E_MANAGER:add_event(Event({
