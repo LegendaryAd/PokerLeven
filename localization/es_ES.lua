@@ -64,11 +64,11 @@ return {
             },
             bl_ina_occult = {
                 name = "Occult",
-                text = {}
+                text = { "Los 6 puntuan dos veces" }
             },
             bl_ina_raimonOB = {
                 name = "Raimon OB",
-                text = {}
+                text = { "Cada corazon otorga 20 chips extra!" }
             },
             bl_ina_shun = {
                 name = "Shun",
@@ -165,6 +165,104 @@ return {
                 text = { "Aplica una {C:pink}Posición{} aleatoria",
                     "al Joker más a la izquierda{}" }
             }
+        },
+        Training = {
+            c_ina_upgrade_technique_Forest_GK = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:forest}Bosque{} y su posición es {X:gk,C:white}GK{}" }
+            },
+            c_ina_upgrade_technique_Forest_DF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:forest}Bosque{} y su posición es {X:df,C:white}DF{}" }
+            },
+            c_ina_upgrade_technique_Forest_MF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:forest}Bosque{} y su posición es {X:mf,C:white}MF{}" }
+            },
+            c_ina_upgrade_technique_Forest_FW = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:forest}Bosque{} y su posición es {X:fw,C:white}FW{}" }
+            },
+            c_ina_upgrade_technique_Fire_GK = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:fire}Fuego{} y su posición es {X:gk,C:white}GK{}" }
+            },
+            c_ina_upgrade_technique_Fire_DF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:fire}Fuego{} y su posición es {X:df,C:white}DF{}" }
+            },
+            c_ina_upgrade_technique_Fire_MF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:fire}Fuego{} y su posición es {X:mf,C:white}MF{}" }
+            },
+            c_ina_upgrade_technique_Fire_FW = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:fire}Fuego{} y su posición es {X:fw,C:white}FW{}" }
+            },
+            c_ina_upgrade_technique_Wind_GK = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:wind}Viento{} y su posición es {X:gk,C:white}GK{}" }
+            },
+            c_ina_upgrade_technique_Wind_DF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:wind}Viento{} y su posición es {X:df,C:white}DF{}" }
+            },
+            c_ina_upgrade_technique_Wind_MF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:wind}Viento{} y su posición es {X:mf,C:white}MF{}" }
+            },
+            c_ina_upgrade_technique_Wind_FW = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:wind}Viento{} y su posición es {X:fw,C:white}FW{}" }
+            },
+            c_ina_upgrade_technique_Mountain_GK = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:mountain}Montaña{} y su posición es {X:gk,C:white}GK{}" }
+            },
+            c_ina_upgrade_technique_Mountain_DF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:mountain}Montaña{} y su posición es {X:df,C:white}DF{}" }
+            },
+            c_ina_upgrade_technique_Mountain_MF = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:mountain}Montaña{} y su posición es {X:mf,C:white}MF{}" }
+            },
+            c_ina_upgrade_technique_Mountain_FW = {
+                name = "Mejora de técnica",
+                text = { "Mejora el nivel de técnica del",
+                    "jugador seleccionado si este es del",
+                    "tipo {C:mountain}Montaña{} y su posición es {X:fw,C:white}FW{}" }
+            },
         },
         Edition = {},
         Enhanced = {},
@@ -678,7 +776,7 @@ return {
                     "{C:wind}Viento Ardiente{}",
                     "Al salir de la tienda, gana",
                     "{C:chips}+#1# Fichas{} por cada",
-                    "jugador del tipo {C:fire}Fuego{} en juego",
+                    "jugador del tipo {X:fire,C:white}Fuego{} en juego",
                     "{C:inactive}Actualmente{}: {C:chips}+#2#{}" }
             },
 
@@ -757,6 +855,15 @@ return {
             j_ina_Aphrodite = {
                 name = "Aphrodite",
                 text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+            },
+
+            j_ina_Blazer = {
+                name = "Blazer",
+                text = {
+                    "{C:fire}Infierno{}",
+                    "Todos los {C:attention}Jokers{}",
+                    "son de {X:fire,C:white}Fuego{}"
+                }
             },
 
             j_ina_Nelly = {
@@ -864,6 +971,160 @@ return {
                     "cosechada por jokers"
                 },
             },
+            ina_tech_plus1_sticker = {
+                name = "Técnica +1",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_plus2_sticker = {
+                name = "Técnica +2",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_plus3_sticker = {
+                name = "Técnica +3",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_plus4_sticker = {
+                name = "Técnica +4",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_plus5_sticker = {
+                name = "Técnica +5",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_number2_sticker = {
+                name = "Técnica número 2",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_number3_sticker = {
+                name = "Técnica número 3",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_number4_sticker = {
+                name = "Técnica número 4",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_numbera_sticker = {
+                name = "Técnica A",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_numbers_sticker = {
+                name = "Técnica S",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_numberz_sticker = {
+                name = "Técnica Z",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_numberinf_sticker = {
+                name = "Técnica infinito",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_grade2_sticker = {
+                name = "Técnica grado 2",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_grade3_sticker = {
+                name = "Técnica grado 3",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_grade4_sticker = {
+                name = "Técnica grado 4",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_grade5_sticker = {
+                name = "Técnica grado 5",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_grade0_sticker = {
+                name = "Técnica grado 0",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_j_sticker = {
+                name = "Técnica J",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_q_sticker = {
+                name = "Técnica Q",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_k_sticker = {
+                name = "Técnica K",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_a_sticker = {
+                name = "Técnica A",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
+            ina_tech_joker_sticker = {
+                name = "Técnica Joker",
+                text = {
+                    "Este comodín tiene las",
+                    "estadísticas aumentadas"
+                },
+            },
         },
         Planet = {},
         Spectral = {},
@@ -900,6 +1161,18 @@ return {
                     "en un {C:attention}#1#%{} las {C:chips}fichas{} necesarias"
                 },
             },
+            v_ina_training = {
+                name = "Entrenamiento",
+                text = {
+                    "{C:attention}+1{} al nivel máximo de técnica"
+                },
+            },
+            v_ina_training_2 = {
+                name = "Súper Entrenamiento",
+                text = {
+                    "{C:attention}+1{} al nivel máximo de técnica"
+                },
+            },
         }
     },
     misc = {
@@ -926,6 +1199,7 @@ return {
             ina_harvest = "Cosecha!",
             ina_seed = "Siembra!",
             ina_special_technique = "Super Técnicas",
+            ina_technique_upgrade = "Técnica mejorada",
             ina_special_manager = "Gerentes",
             ina_manager_info = "Gerente",
             ina_Fire = "Fuego",
@@ -940,13 +1214,35 @@ return {
             ina_bench = "Banquillo",
             ina_unbench = "Titular",
             ina_generate_barriers = "Barrera!",
+            ina_onfire = "On fire!",
 
             -- Resources
             ina_resource_barriers = "Barreras"
         },
         high_scores = {},
         labels = {
-            ina_harvest_sticker = "Cosechable"
+            ina_harvest_sticker = "Cosechable",
+            ina_tech_plus1_sticker = "Técnica mejorada",
+            ina_tech_plus2_sticker = "Técnica mejorada",
+            ina_tech_plus3_sticker = "Técnica mejorada",
+            ina_tech_plus4_sticker = "Técnica mejorada",
+            ina_tech_number2_sticker = "Técnica mejorada",
+            ina_tech_number3_sticker = "Técnica mejorada",
+            ina_tech_number4_sticker = "Técnica mejorada",
+            ina_tech_numbera_sticker = "Técnica mejorada",
+            ina_tech_numbers_sticker = "Técnica mejorada",
+            ina_tech_numberz_sticker = "Técnica mejorada",
+            ina_tech_numberinf_sticker = "Técnica mejorada",
+            ina_tech_grade2_sticker = "Técnica mejorada",
+            ina_tech_grade3_sticker = "Técnica mejorada",
+            ina_tech_grade4_sticker = "Técnica mejorada",
+            ina_tech_grade5_sticker = "Técnica mejorada",
+            ina_tech_grade0_sticker = "Técnica mejorada",
+            ina_tech_j_sticker = "Técnica mejorada",
+            ina_tech_q_sticker = "Técnica mejorada",
+            ina_tech_k_sticker = "Técnica mejorada",
+            ina_tech_a_sticker = "Técnica mejorada",
+            ina_tech_joker_sticker = "Técnica mejorada",
         },
         poker_hand_descriptions = {},
         poker_hands = {},

@@ -41,7 +41,7 @@ local Ryoma = {
 }
 
 -- Blazer
-local Blazer = {
+local Blazer = J({
     name = "Blazer",
     pos = { x = 5, y = 6 },
     config = { extra = {} },
@@ -57,9 +57,20 @@ local Blazer = {
     pteam = "Scout",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO Add logic
+        if G.jokers and G.jokers.cards then
+            local not_fire = find_player_type("Fire", true)
+            if #not_fire > 0 then
+                for _, player in ipairs(not_fire) do
+                    apply_property_sticker(player, "Fire", "type")
+                    card_eval_status_text(player, 'extra', nil, nil, nil, {
+                        message = localize("ina_onfire"),
+                        colour = G.C.RED
+                    })
+                end
+            end
+        end
     end
-}
+})
 
 -- Chester
 local Chester = {
