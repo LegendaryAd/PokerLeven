@@ -1,15 +1,30 @@
-find_player_type = function(target_type)
+find_player_type = function(target_type, is_not)
     local found = {}
     if G.jokers and G.jokers.cards then
-        for k, v in pairs(G.jokers.cards) do
-            if v.ability and ((v.ability.extra and type(v.ability.extra) == "table"
-                    and target_type == v.ability.extra.ptype) or v.ability[string.lower(target_type) .. "_sticker"]) then
-                table.insert(found, v)
+        for _, v in pairs(G.jokers.cards) do
+            if v.ability then
+                local extra = v.ability.extra
+                local has_sticker = v.ability[string.lower(target_type) .. "_sticker"]
+
+                if extra and type(extra) == "table" then
+                    if is_not then
+                        if extra.ptype ~= target_type then
+                            table.insert(found, v)
+                        end
+                    else
+                        if extra.ptype == target_type then
+                            table.insert(found, v)
+                        end
+                    end
+                elseif has_sticker then
+                    table.insert(found, v)
+                end
             end
         end
     end
     return found
 end
+
 
 find_player_position = function(target_type)
     local found = {}
