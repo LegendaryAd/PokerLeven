@@ -35,27 +35,6 @@ payload = '''
 match_indent = true
 override = true
 
-# Replace start menu logo with inazuma
-[[patches]]
-[patches.pattern]
-target = "game.lua"
-pattern = '''
-G.SPLASH_LOGO = Sprite(0, 0, 
-    13*SC_scale, 
-    13*SC_scale*(G.ASSET_ATLAS["balatro"].py/G.ASSET_ATLAS["balatro"].px),
-    G.ASSET_ATLAS["balatro"], {x=0,y=0})
-'''
-position = "at"
-payload = '''
-    local ina_logo = "ina_logo"
-    G.SPLASH_LOGO = Sprite(0, 0, 
-        13/333*389*SC_scale, 
-        13/333*389*SC_scale*(G.ASSET_ATLAS[ina_logo].py/G.ASSET_ATLAS[ina_logo].px),
-        G.ASSET_ATLAS[ina_logo], {x=0.0,y=0})
-'''
-match_indent = true
-override = true
-
 # Round replaced by matches
 [[patches]]
 [patches.pattern]

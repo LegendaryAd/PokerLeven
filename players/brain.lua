@@ -4,7 +4,6 @@ local Feldt = {
     pos = { x = 6, y = 2 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 3, -- Rare
@@ -26,7 +25,6 @@ local Marvel = {
     pos = { x = 8, y = 2 },
     config = { extra = { mult_mod = 10, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.mult_mod } }
     end,
     rarity = 1, -- Common
@@ -68,7 +66,6 @@ local Tell = {
     pos = { x = 10, y = 2 },
     config = { extra = { Xchips_mod = 3.1416 } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Uncommon
@@ -106,7 +103,6 @@ local Seller = {
     pos = { x = 9, y = 2 },
     config = { extra = { sell_potential = 0, sell_mod = 1, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.sell_potential, center.ability.extra.sell_mod } }
     end,
     rarity = 1, -- Common
@@ -154,7 +150,6 @@ local Kind = {
     pos = { x = 7, y = 2 },
     config = { extra = { triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Uncommon
@@ -206,7 +201,6 @@ local Turner = {
     pos = { x = 11, y = 2 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Uncommon
@@ -252,7 +246,6 @@ local Under = {
     pos = { x = 12, y = 2 },
     config = { extra = { chips_mod = 120, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { center.ability.extra.chips_mod, #find_player_position("GK") or 0 } }
     end,
     rarity = 1, -- Common

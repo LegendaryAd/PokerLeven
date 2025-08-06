@@ -1,15 +1,30 @@
-find_player_type = function(target_type)
+find_player_type = function(target_type, is_not)
     local found = {}
     if G.jokers and G.jokers.cards then
-        for k, v in pairs(G.jokers.cards) do
-            if v.ability and ((v.ability.extra and type(v.ability.extra) == "table"
-                    and target_type == v.ability.extra.ptype) or v.ability[string.lower(target_type) .. "_sticker"]) then
-                table.insert(found, v)
+        for _, v in pairs(G.jokers.cards) do
+            if v.ability then
+                local extra = v.ability.extra
+                local has_sticker = v.ability[string.lower(target_type) .. "_sticker"]
+
+                if extra and type(extra) == "table" then
+                    if is_not then
+                        if extra.ptype ~= target_type then
+                            table.insert(found, v)
+                        end
+                    else
+                        if extra.ptype == target_type then
+                            table.insert(found, v)
+                        end
+                    end
+                elseif has_sticker then
+                    table.insert(found, v)
+                end
             end
         end
     end
     return found
 end
+
 
 find_player_position = function(target_type)
     local found = {}
@@ -18,6 +33,24 @@ find_player_position = function(target_type)
             if v.ability and ((v.ability.extra and type(v.ability.extra) == "table"
                     and target_type == v.ability.extra.pposition) or v.ability[string.lower(target_type) .. "_sticker"]) then
                 table.insert(found, v)
+            end
+        end
+    end
+    return found
+end
+
+--- Returns players of target type and position
+---@param target_type string the type of the player
+---@param target_position string the position of the player
+---@return table
+Pokerleven.find_player_type_and_position = function(target_type, target_position)
+    local found = {}
+    if G.jokers and G.jokers.cards then
+        for _, v in pairs(G.jokers.cards) do
+            if v.ability and v.ability.extra and type(v.ability.extra) == "table" then
+                if v.ability.extra.ptype == target_type and v.ability.extra.pposition == target_position then
+                    table.insert(found, v)
+                end
             end
         end
     end
@@ -265,5 +298,18 @@ function get_right_joker(main_card)
         end
     end
     sendDebugMessage("main_card: " .. tostring(main_card))
+    return nil
+end
+
+--- Returns the joker with the key provided in play
+---@param key string The reference joker key
+---@return SMODS.Joker|nil Selected_Joker Joker with that key or nil if not found
+function get_joker_with_key(key)
+    for k, v in ipairs(G.jokers.cards) do
+        if v.config.center_key == key then
+            return G.jokers.cards[k]
+        end
+    end
+
     return nil
 end

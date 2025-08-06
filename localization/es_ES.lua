@@ -64,11 +64,11 @@ return {
             },
             bl_ina_occult = {
                 name = "Occult",
-                text = {}
+                text = { "Los 6 puntuan dos veces" }
             },
             bl_ina_raimonOB = {
                 name = "Raimon OB",
-                text = {}
+                text = { "Cada corazon otorga 20 chips extra!" }
             },
             bl_ina_shun = {
                 name = "Shun",
@@ -745,11 +745,7 @@ return {
             j_ina_Tyler = {
                 name = "Tyler",
                 text = {
-                    "{C:mountain}Tornado Inverso{}",
-                    "Cuando se juega una {C:attention}pareja{}",
-                    "convierte la otra carta en una",
-                    "{C:attention}versión dorada{} de sí misma"
-                }
+                    "{C:mountain}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
             },
 
             j_ina_Damian = {
@@ -758,20 +754,27 @@ return {
                     "{C:wind}Viento Ardiente{}",
                     "Al salir de la tienda, gana",
                     "{C:chips}+#1# Fichas{} por cada",
-                    "jugador del tipo {C:fire}Fuego{} en juego",
+                    "jugador del tipo {X:fire,C:white}Fuego{} en juego",
                     "{C:inactive}Actualmente{}: {C:chips}+#2#{}" }
             },
 
             j_ina_Nashmith = {
                 name = "Nashmith",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = {
+                    "{C:forest}Flecha Huracán{}",
+                    "Cada {C:spades}Pica{} jugada otorga",
+                    "{C:chips}+#1# Fichas{} por cada",
+                    "jugador de {X:forest,C:white}Bosque{}",
+                }
             },
 
             j_ina_Z_Triangle = {
                 name = "Triángulo Z",
                 text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
             },
+
             -- Zeus
+
             j_ina_Poseidon = {
                 name = "Poseidon",
                 text = { "{C:mountain}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
@@ -779,7 +782,14 @@ return {
 
             j_ina_Hephestus = {
                 name = "Hephestus",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = {
+                    "{C:fire}Forja Llameante{}",
+                    "Al ganar la ciega convierte",
+                    "una {C:attention}carta aleatoria{}",
+                    "en una carta de {C:attention}Acero{}",
+                    "por cada jugador de",
+                    "tipo {X:fire,C:white}Fuego{} y posicion {X:df,C:white}DF{}"
+                }
             },
 
             j_ina_Apollo = {
@@ -795,25 +805,64 @@ return {
 
             j_ina_Artemis = {
                 name = "Artemis",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:wind}Esfera luminosa{}",
+                    "Tras jugar una figura {C:attention}Siémbrala{}.",
+                    "{C:attention}Cosechador:{} Gana {C:chips}+#1# Chips{}",
+                    "{C:inactive}Actualmente{} {C:chips}+#2# Chips{}" }
             },
 
             j_ina_Hermes = {
                 name = "Hermes",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:forest}Oro divino",
+                    "Si la primera mano",
+                    "jugada es {C:attention}pareja{}",
+                    "convierte la pareja",
+                    "en {C:attention}cartas doradas{}" }
             },
 
             j_ina_Demeter = {
                 name = "Demeter",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = {
+                    "{C:fire}Gracia Ardiente{}",
+                    "Otorga {C:mult}+#1# Mult{} y {C:chips}+#2# Fichas{}",
+                    "por cada descarte restante",
+                    "{C:inactive}Actualmente{}: {C:mult}+#3#{} {C:chips}+#4#{}"
+                }
             },
 
             j_ina_Aphrodite = {
                 name = "Aphrodite",
                 text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+            },
+
+            j_ina_Blazer = {
+                name = "Blazer",
+                text = {
+                    "{C:fire}Infierno{}",
+                    "Todos los {C:attention}Jokers{}",
+                    "son de {X:fire,C:white}Fuego{}"
+                }
+            },
+
+            j_ina_Nelly = {
+                name = "Nelly",
+                text = { "Placeholder", "Placeholder effect line 1", "Placeholder effect line 2" }
+            },
+
+            j_ina_Celia = {
+                name = "Celia",
+                text = { {
+                    "Si tienes un {C:attention}Jude{},",
+                    "lo transforma a su forma del {X:raimon,C:white}Raimon{}",
+                    "al comienzo de la próxima tienda"
+                },
+                    { "Genera un {C:attention}Scout{} en el {C:bench}Banquillo{}",
+                        "al seleccionar una ciega",
+                        "{C:inactive}Debe haber espacio{}" } }
             }
 
         },
+
         Other = {
             Mountain = {
                 name = "Tipo",
@@ -885,9 +934,9 @@ return {
                 name = "Pack Farm",
                 text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:farm,C:white}Farm{} jugadores" }
             },
-            p_ina_team_pack_kirwood = {
-                name = "Pack Kirwood",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:kirwood,C:white}Kirwood{} jugadores" }
+            p_ina_team_pack_kirkwood = {
+                name = "Pack Kirkwood",
+                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:kirkwood,C:white}Kirwood{} jugadores" }
             },
             p_ina_team_pack_zeus = {
                 name = "Pack Zeus",
@@ -1108,6 +1157,7 @@ return {
             ina_convert = "¡Convertido!",
             ina_potential_increased = "¡Potencial aumentado!",
             ina_sell_increased = "¡Jokers mejorados!",
+            ina_divine = "¡Poder Divino!",
             ina_settings_no_custom_middle_blinds = "Sin Ciegas Pequeñas o Grandes personalizadas",
             ina_settings_middle_blinds_abilities = "Las Ciegas Pequeñas y Grandes no tendrán habilidades",
             ina_destroy = "¡Destruido!",
@@ -1115,7 +1165,24 @@ return {
             ina_harvest = "Cosecha!",
             ina_seed = "Siembra!",
             ina_special_technique = "Super Técnicas",
-            ina_technique_upgrade = "Técnica mejorada"
+            ina_technique_upgrade = "Técnica mejorada",
+            ina_special_manager = "Gerentes",
+            ina_manager_info = "Gerente",
+            ina_Fire = "Fuego",
+            ina_Forest = "Bosque",
+            ina_Wind = "Viento",
+            ina_Mountain = "Montaña",
+            ina_FW = "Delantero",
+            ina_MF = "Mediocentro",
+            ina_DF = "Defensa",
+            ina_GK = "Portero",
+            ina_Technique = "Fusión",
+            ina_bench = "Banquillo",
+            ina_unbench = "Titular",
+            ina_onfire = "On fire!",
+
+            -- Resources
+            ina_resource_barriers = "Barreras"
         },
         high_scores = {},
         labels = {

@@ -4,7 +4,6 @@ local hillman = J({
   pos = { x = 7, y = 3 },
   config = { extra = { Xchip_mod = 0.2, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {
       vars = {
         center.ability.extra.Xchip_mod,
@@ -41,7 +40,6 @@ local island = J({
   pos = { x = 8, y = 3 },
   config = { extra = { current_chips = 0, chips_mod = 10, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {
       vars = {
         center.ability.extra.chips_mod,
@@ -134,7 +132,6 @@ local butler = J({
     }
   },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {
       vars = { center.ability.extra.bankrupt_at, center.ability.extra.dollars_mod,
         center.ability.extra.chips_mod }
@@ -178,7 +175,6 @@ local barista = J({
   pos = { x = 11, y = 3 },
   config = {},
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {}
   end,
   rarity = 2, -- Uncommon
@@ -211,7 +207,6 @@ local builder = J({
   pos = { x = 12, y = 3 },
   config = {},
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return {}
   end,
   rarity = 2, -- Uncommon

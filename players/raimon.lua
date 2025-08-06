@@ -1,10 +1,9 @@
 -- Kevin Dragonfly
-local Kevin = {
+local Kevin = J({
   name = "Kevin",
   pos = { x = 0, y = 0 },
   config = { extra = { retriggers = 1, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = {} }
   end,
   rarity = 2,
@@ -15,6 +14,7 @@ local Kevin = {
   pposition = "FW",
   pteam = "Raimon",
   blueprint_compat = true,
+  generate_ui = Pokerleven.generate_info_ui,
   calculate = function(self, card, context)
     if context.retrigger_joker_check and not context.retrigger_joker and context.other_card ~= self then
       card.ability.extra.triggered = true;
@@ -36,7 +36,7 @@ local Kevin = {
       end
     end
   end,
-}
+})
 
 -- Mark Evans
 local Mark = {
@@ -44,7 +44,6 @@ local Mark = {
   pos = { x = 1, y = 0 },
   config = { extra = { mult = 0, mult_mod = 4, mult_mod2 = 0 }, evo_rqmt = 30 },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.mult, center.ability.extra.mult_mod, center.ability.evo_rqmt } }
   end,
   rarity = 4,
@@ -79,7 +78,6 @@ local Nathan = {
   pos = { x = 2, y = 0 },
   config = { extra = { xmult = 1.5, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     local count = #find_player_team("Raimon");
     return { vars = { count, center.ability.extra.xmult } }
   end,
@@ -115,7 +113,6 @@ local Jack = {
   pos = { x = 3, y = 0 },
   config = { extra = { chips_mod = 8, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.chips_mod } }
   end,
   rarity = 2,
@@ -151,7 +148,6 @@ local Axel = {
   pos = { x = 4, y = 0 },
   config = { extra = { xmult = 3.5, suit = "Hearts", triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.xmult } }
   end,
   rarity = 3,
@@ -188,7 +184,6 @@ local Shadow = {
   pos = { x = 5, y = 0 },
   config = { extra = { current_mult = 0, mult_mod = 2 } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.current_mult, center.ability.extra.mult_mod } }
   end,
   rarity = 1,
@@ -238,7 +233,6 @@ local Willy = {
   pos = { x = 6, y = 0 },
   config = { extra = { mult = 15 } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.mult } }
   end,
   rarity = 2,
@@ -269,7 +263,6 @@ local Max = {
   config = { extra = { chip_mod = 40, triggered = false } },
   loc_vars = function(self, info_queue, center)
     local count = #find_player_type("Wind")
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.chip_mod, count * center.ability.extra.chip_mod } }
   end,
   rarity = 1,
@@ -301,7 +294,6 @@ local Peabody = {
   pos = { x = 8, y = 0 },
   config = { extra = { current_mult = 0, mult_mod = 4, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.current_mult, center.ability.extra.mult_mod } }
   end,
   rarity = 1,
@@ -343,7 +335,6 @@ local Jude_Raimon = J({
     }
   },
   loc_vars = function(self, info_queue, center)
-    type_tooltip(self, info_queue, center)
     return { vars = { center.ability.extra.current_xmult, center.ability.extra.xmult_mod } }
   end,
   rarity = 3,

@@ -26,7 +26,7 @@ function get_new_small()
 
     for k, v in pairs(eligible_bosses) do
         local mod = G.P_BLINDS[k] and G.P_BLINDS[k].mod
-        if pokerleven_config.custom_middle_blinds == false then
+        if Pokerleven.config.custom_middle_blinds == false then
             if mod and mod.id == 'Pokerleven' then
                 eligible_bosses[k] = nil
             end
@@ -70,7 +70,7 @@ function get_new_big()
     for k, v in pairs(eligible_bosses) do
         local is_mod = G.P_BLINDS[k].mod and G.P_BLINDS[k].mod.id == 'Pokerleven'
 
-        if pokerleven_config.custom_middle_blinds == false then
+        if Pokerleven.config.custom_middle_blinds == false then
             if is_mod then
                 eligible_bosses[k] = nil
             end

@@ -3,7 +3,6 @@ local Neville = J({
     pos = { x = 1, y = 5 },
     config = { extra = { new_glass_denom = 6 } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return { vars = { G.GAME.probabilities.normal, G.GAME.probabilities.new_glass_denom or center.ability.extra.new_glass_denom } }
     end,
     rarity = 1, -- Common
@@ -27,7 +26,6 @@ local Night = J({
     pos = { x = 4, y = 5 },
     config = {},
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 3, -- Rare
@@ -59,7 +57,6 @@ local Marvin = J({
     pos = { x = 5, y = 5 },
     config = {},
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Uncommon
@@ -80,7 +77,6 @@ local Thomas = J({
     pos = { x = 6, y = 5 },
     config = {},
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Uncommon
@@ -101,7 +97,6 @@ local Tyler = J({
     pos = { x = 7, y = 5 },
     config = {},
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 2, -- Uncommon
@@ -113,20 +108,7 @@ local Tyler = J({
     pteam = "Kirkwood",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.individual and context.other_card and G.GAME.current_round.hands_played == 0
-            and context.cardarea == G.play and context.scoring_hand
-            and next(context.poker_hands["Pair"]) and #context.scoring_hand == 2 then
-            convert_cards_to(context.other_card, {
-                mod_conv = "m_gold"
-            }, false, false)
-            return {
-                message = localize("ina_convert"),
-                colour = G.C.XMULT,
-                card = context.other_card,
-            }
-        end
     end
-
 })
 
 local Damian = J({
@@ -134,8 +116,6 @@ local Damian = J({
     pos = { x = 3, y = 5 },
     config = { extra = { chips_mod = 7, current_chips = 0, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-
         return { vars = { center.ability.extra.chips_mod, center.ability.extra.current_chips } }
     end,
     rarity = 1, -- Common
@@ -176,12 +156,11 @@ local Damian = J({
 local Nashmith = J({
     name = "Nashmith",
     pos = { x = 2, y = 5 },
-    config = {},
+    config = { extra = { chip_mod = 10 } },
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.chip_mod } }
     end,
-    rarity = 1, -- Common
+    rarity = 1,
     pools = { ["Kirkwood"] = true },
     cost = 8,
     atlas = "Jokers01",
@@ -189,8 +168,26 @@ local Nashmith = J({
     pposition = "MF",
     pteam = "Kirkwood",
     blueprint_compat = true,
+
     calculate = function(self, card, context)
-        -- Add logic
+        if context.individual and context.cardarea == G.play and context.other_card then
+            if context.other_card:is_suit("Spades") then
+                local forest_count = #find_player_type("Forest") or 0
+                local extra_chips = card.ability.extra.chip_mod * forest_count
+
+                if extra_chips > 0 then
+                    return {
+                        message = localize {
+                            type = 'variable',
+                            key = 'a_chips',
+                            vars = { extra_chips }
+                        },
+                        chip_mod = extra_chips,
+                        colour = G.C.CHIPS,
+                    }
+                end
+            end
+        end
     end,
 })
 
@@ -199,7 +196,6 @@ local z_triangle = J({
     pos = { x = 11, y = 6 },
     config = {},
     loc_vars = function(self, info_queue, center)
-        type_tooltip(self, info_queue, center)
         return {}
     end,
     rarity = 1, -- Common
@@ -213,6 +209,7 @@ local z_triangle = J({
     calculate = function(self, card, context)
         -- Add logic
     end,
+    unlocked = false,
     special = "Technique"
 })
 

@@ -1,0 +1,79 @@
+[manifest]
+version = "0.1.0"
+dump_lua = true
+priority = 0
+
+# Add manager area to joker evaluation
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "-- TARGET: add your own CardAreas for joker evaluation"
+position = 'before'
+match_indent = true
+payload = '''
+if Pokerleven and Pokerleven.ina_manager_area and type(Pokerleven.ina_manager_area.cards) == "table" then
+    table.insert(t, Pokerleven.ina_manager_area)
+end
+'''
+
+# Add joker to managers when buying from the shop
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.jokers:emplace(c1)"
+position = 'at'
+match_indent = true
+payload = '''
+if Pokerleven and Pokerleven.is_manager(c1) then
+    Pokerleven.add_to_managers(c1)
+else
+    G.jokers:emplace(c1)
+end
+'''
+
+# Change other_joker key
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "-- TARGET: add context.other_something identifier to your cards"
+position = 'before'
+match_indent = true
+payload = '''
+if Pokerleven and Pokerleven.is_manager(_card) then other_key = 'other_manager' end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''print("ERROR LOADING GAME: Card area '"..k.."' not instantiated before load") end'''
+position = 'at'
+match_indent = true
+payload = '''
+local skip_print = k == "shop_jokers" or k == "shop_vouchers" or k == "shop_booster"
+    if not skip_print then
+        print("ERROR LOADING GAME: Card area '" .. k .. "' not instantiated before load")
+    end
+end
+'''
+
+# Set counter on the left for bench area
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = '''local card_count = self ~= G.shop_vouchers and {n=G.UIT.R, config={align = self == G.jokers and 'cl' or self == G.hand and 'cm' or 'cr', padding = 0.03, no_fill = true}, nodes={'''
+position = 'at'
+match_indent = true
+payload = '''
+local card_count = self ~= G.shop_vouchers and {n=G.UIT.R, config={align = (self == G.jokers or self == G.ina_bench_area) and 'cl' or self == G.hand and 'cm' or 'cr', padding = 0.03, no_fill = true}, nodes={
+'''
+
+# Change background color
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "{n=G.UIT.R, config={minw = self.T.w,minh = self.T.h,align = \"cm\", padding = 0.1, mid = true, r = 0.1, colour = self ~= G.shop_vouchers and {0,0,0,0.1} or nil, ref_table = self}, nodes={"
+position = 'at'
+match_indent = true
+payload = '''
+{n=G.UIT.R, config={minw = self.T.w,minh = self.T.h,align = "cm", padding = 0.1, mid = true, r = 0.1, colour = self == G.ina_bench_area and G.ARGS.LOC_COLOURS["bench"] or self ~= G.shop_vouchers and {0,0,0,0.1} or nil, ref_table = self}, nodes={
+'''

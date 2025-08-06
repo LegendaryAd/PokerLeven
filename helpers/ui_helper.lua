@@ -172,12 +172,13 @@ end
 
 --#region Technique UI
 
----Creates the UI for techniques in collection
----@return UINode node UI for techniques in collection
-create_UIBox_your_collection_techniques = function()
+---Creates the UI for additions in collection
+---@param requirement string special requierment to filter on cards
+---@return UINode node UI for additions in collection
+create_UIBox_your_collection_addition = function(requirement)
     local filtered_jokers = {}
     for _, joker in ipairs(G.P_CENTER_POOLS.Joker) do
-        if joker.special then
+        if joker.special and joker.special == requirement then
             table.insert(filtered_jokers, joker)
         end
     end
@@ -191,38 +192,53 @@ end
 G.FUNCS.your_collection_techniques = function(e)
     G.SETTINGS.paused = true
     G.FUNCS.overlay_menu {
-        definition = create_UIBox_your_collection_techniques(),
+        definition = create_UIBox_your_collection_addition("Technique"),
     }
 end
 
+G.FUNCS.your_collection_managers = function(e)
+    G.SETTINGS.paused = true
+    G.FUNCS.overlay_menu {
+        definition = create_UIBox_your_collection_addition("Manager"),
+    }
+end
+
+Pokerleven.Extra_Additions = { "Manager", "Technique" }
 local original_buildAdditionsTab = buildAdditionsTab
 function buildAdditionsTab(mod)
     local tab = original_buildAdditionsTab(mod)
     if not tab then return nil end
 
-    local techniques_pool = {}
-    for _, joker in ipairs(G.P_CENTER_POOLS.Joker) do
-        if joker.special then
-            table.insert(techniques_pool, joker)
+    local insert_index = 2
+    for _, addition in ipairs(Pokerleven.Extra_Additions) do
+        local pool = {}
+        for _, joker in ipairs(G.P_CENTER_POOLS.Joker) do
+            if joker.special and joker.special == addition then
+                table.insert(pool, joker)
+            end
         end
-    end
 
-    if #techniques_pool > 0 then
-        local tally = modsCollectionTally(techniques_pool)
-        if tally.of > 0 then
-            local techniques_node = UIBox_button({
-                button = 'your_collection_techniques',
-                label = { localize('ina_special_technique') },
-                count = tally,
-                minw = 5,
-                minh = 1.2,
-                scale = 0.6,
-                id = 'your_collection_techniques'
-            })
+        if #pool > 0 then
+            local tally = modsCollectionTally(pool)
+            if tally.of > 0 then
+                local button_id = "your_collection_" .. string.lower(addition) .. "s"
+                local label_key = "ina_special_" .. string.lower(addition)
 
-            local tab_nodes = tab.tab_definition_function().nodes
-            if tab_nodes and tab_nodes[1] and tab_nodes[1].nodes and tab_nodes[1].nodes[1] and tab_nodes[1].nodes[1].nodes then
-                table.insert(tab_nodes[1].nodes[1].nodes, 2, techniques_node)
+                local addition_node = UIBox_button({
+                    button = button_id,
+                    label = { localize(label_key) },
+                    count = tally,
+                    minw = 5,
+                    minh = 1.2,
+                    scale = 0.6,
+                    id = button_id
+                })
+
+                local tab_nodes = tab.tab_definition_function().nodes
+                if tab_nodes and tab_nodes[1] and tab_nodes[1].nodes and tab_nodes[1].nodes[1] and tab_nodes[1].nodes[1].nodes then
+                    table.insert(tab_nodes[1].nodes[1].nodes, insert_index, addition_node)
+                    insert_index = insert_index + 1
+                end
             end
         end
     end
@@ -231,6 +247,269 @@ function buildAdditionsTab(mod)
 end
 
 --#endregion
+
+---Creates button ui for custom cards
+---@param card Card Card you want to create buttons on
+---@param args table Table of configs for creating custom buttons
+---@return table
+Pokerleven.create_custom_buttons = function(card, args)
+    local args = args or {}
+    local sell = nil
+    local use = nil
+    local bench = nil
+
+    if args.sell then
+        sell = {
+            n = G.UIT.C,
+            config = { align = "cr" },
+            nodes = {
+                {
+                    n = G.UIT.C,
+                    config = { ref_table = card, align = "cr", padding = 0.1, r = 0.08, minw = 1.25, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'sell_card', func = 'can_sell_card', handy_insta_action = "sell" },
+                    nodes = {
+                        { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
+                        {
+                            n = G.UIT.C,
+                            config = { align = "tm" },
+                            nodes = {
+                                {
+                                    n = G.UIT.R,
+                                    config = { align = "cm", maxw = 1.25 },
+                                    nodes = {
+                                        { n = G.UIT.T, config = { text = localize('b_sell'), colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true } }
+                                    }
+                                },
+                                {
+                                    n = G.UIT.R,
+                                    config = { align = "cm" },
+                                    nodes = {
+                                        { n = G.UIT.T, config = { text = localize('$'), colour = G.C.WHITE, scale = 0.4, shadow = true } },
+                                        { n = G.UIT.T, config = { ref_table = card, ref_value = 'sell_cost_label', colour = G.C.WHITE, scale = 0.55, shadow = true } }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+            }
+        }
+    end
+    if args.bench or args.unbench then
+        bench = {
+            n = G.UIT.C,
+            config = { align = "cr" },
+            nodes = {
+                {
+                    n = G.UIT.C,
+                    config = {
+                        ref_table = card,
+                        align = "cr",
+                        padding = 0.1,
+                        r = 0.08,
+                        minw = 1.25,
+                        hover = true,
+                        shadow = true,
+                        colour = G.C.UI.BACKGROUND_INACTIVE,
+                        one_press = true,
+                        button = args.bench and 'bench_card' or 'unbench_card',
+                        func = args.bench and 'can_bench_card' or 'can_unbench_card',
+                        handy_insta_action = "use"
+                    },
+                    nodes = {
+                        { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
+                        {
+                            n = G.UIT.C,
+                            config = { align = "cr" },
+                            nodes = {
+                                {
+                                    n = G.UIT.R,
+                                    config = { align = "cm", maxw = 1.25 },
+                                    nodes = {
+                                        { n = G.UIT.T, config = { text = args.bench and localize('ina_bench') or localize('ina_unbench'), colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true } }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+            }
+        }
+    end
+
+    return {
+        n = G.UIT.ROOT,
+        config = {
+            align = "cr",
+            padding = 0,
+            colour = G.C.CLEAR
+        },
+        nodes = {
+            {
+                n = G.UIT.C,
+                config = { padding = 0.15, align = 'cl' },
+                nodes = {
+                    sell and {
+                        n = G.UIT.R,
+                        config = { align = 'cl' },
+                        nodes = { sell }
+                    } or nil,
+                    bench and {
+                        n = G.UIT.R,
+                        config = { align = 'cl' },
+                        nodes = { bench }
+                    } or nil
+                }
+            }
+        }
+    }
+end
+
+---Creates UI for type information
+---@param card Card
+---@return table
+Pokerleven.get_type_ui = function(card)
+    if Pokerleven.is_manager(card) then
+        return {
+            {
+                n = G.UIT.O,
+                config = {
+                    object = DynaText({
+                        string = { localize("ina_manager_info") },
+                        colours = { G.ARGS.LOC_COLOURS["pink"] },
+                        bump = true,
+                        silent = true,
+                        pop_in = 0,
+                        pop_in_rate = 4,
+                        maxw = 5,
+                        shadow = true,
+                        y_offset = 0,
+                        spacing = math.max(0, 0.32 * (17 - #localize("ina_manager_info"))),
+                        scale = (0.4 - 0.004 * #localize("ina_manager_info"))
+                    })
+                }
+            }
+        }
+    end
+
+    local type_text = localize("ina_" .. (card.ability.extra.ptype or "Fire"))
+    local position_text = localize("ina_" .. (card.ability.extra.pposition or "FW"))
+    local special_text = card.ability.extra.special and localize("ina_" .. card.ability.extra.special) or nil
+    local full_text = type_text ..
+        " / " .. position_text .. " / " .. (special_text or "")
+
+    local type = {
+        n = G.UIT.O,
+        config = {
+            object = DynaText({
+                string = { type_text },
+                colours = { G.ARGS.LOC_COLOURS[string.lower(card.ability.extra.ptype) or "fire"] },
+                bump = true,
+                silent = true,
+                pop_in = 0,
+                pop_in_rate = 4,
+                maxw = 5,
+                shadow = true,
+                y_offset = 0,
+                spacing = math.max(0, 0.32 * (17 - #full_text)),
+                scale = (0.4 - 0.004 * #full_text)
+            })
+        }
+    }
+
+    local position = {
+        n = G.UIT.O,
+        config = {
+            object = DynaText({
+                string = { position_text },
+                colours = { G.ARGS.LOC_COLOURS[string.lower(card.ability.extra.pposition) or "fw"] },
+                bump = true,
+                silent = true,
+                pop_in = 0,
+                pop_in_rate = 4,
+                maxw = 5,
+                shadow = true,
+                y_offset = 0,
+                spacing = math.max(0, 0.32 * (17 - #full_text)),
+                scale = (0.4 - 0.004 * #full_text)
+            })
+        }
+    }
+
+    local special
+    if special_text then
+        special = {
+            n = G.UIT.O,
+            config = {
+                object = DynaText({
+                    string = { special_text },
+                    colours = { G.ARGS.LOC_COLOURS["pink"] },
+                    bump = true,
+                    silent = true,
+                    pop_in = 0,
+                    pop_in_rate = 4,
+                    maxw = 5,
+                    shadow = true,
+                    y_offset = 0,
+                    spacing = math.max(0, 0.32 * (17 - #full_text)),
+                    scale = (0.4 - 0.004 * #full_text)
+                })
+            }
+        }
+    end
+
+    local separator = {
+        n = G.UIT.T,
+        config = {
+            text = " / ",
+            colour = G.C.UI.TEXT_LIGHT,
+            scale = (0.4 - 0.004 * #full_text)
+        }
+    }
+    return {
+        type,
+        separator,
+        position,
+        special and separator or nil,
+        special,
+    }
+end
+
+
+---Generates Joker's description UI. This is done to add:
+---* Type information under names
+---* Some tooltips to info_queue automatically
+---@param self table
+---@param info_queue table
+---@param card Card
+---@param desc_nodes table
+---@param specific_vars table
+---@param full_UI_table table
+Pokerleven.generate_info_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+
+    if desc_nodes == full_UI_table.main then
+        -- Add type information under names
+        full_UI_table.name = {
+            {
+                n = G.UIT.C,
+                config = { align = "cm", padding = 0.05 },
+                nodes = {
+                    {
+                        n = G.UIT.R,
+                        config = { align = "cm" },
+                        nodes = full_UI_table.name
+                    },
+                    {
+                        n = G.UIT.R,
+                        config = { align = "cm" },
+                        nodes = Pokerleven.get_type_ui(card)
+                    },
+                }
+            }
+        }
+    end
+end
+
 
 -- -- TODO BUTTON TO FUSE CARDS, MAYBE ITS BETTER TO HAVE A GENERAL BUTTON. WE NEED TO THINK ABOUT WHAT IT WILL COST
 -- -- TODO CHANGE THIS TO A FUSE_HELPER
