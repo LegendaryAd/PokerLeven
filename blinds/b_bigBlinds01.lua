@@ -115,13 +115,25 @@ local raimonOB = {
     name = "ina-raimonOB",
     key = "raimonOB",
     pos = { x = 0, y = 8 },
+    config = { extra = { suit = "Hearts", chips_mod = 20 } },
     discovered = true,
-    mult = 1.5,
+    mult = 1.65,
     atlas = "bigBlinds01",
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 3 },
+    calculate = function(self, blind, context)
+        if context.individual and context.cardarea == G.play and context.other_card:is_suit(self.config.extra.suit) and context.scoring_hand then
+            return {
+                message = localize { type = 'variable', key = 'a_chips',
+                    vars = { self.config.extra.chips_mod } },
+                colour = G.C.CHIPS,
+                chip_mod = self.config.extra.chips_mod,
+                card = context.other_card
+            }
+        end
+    end
 }
 
 local shun = {
