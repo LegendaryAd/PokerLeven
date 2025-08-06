@@ -100,7 +100,6 @@ end
 
 -- Rounds a stat value based adn returns the integer part and fractional part (if applicable)
 round_value = function(value, field)
-    local rounded = nil
     local frac = nil
 
     if field == "money" or field == "mult_mod" or field == "chip_mod" or field == "copies_number" then
@@ -121,9 +120,9 @@ set_frac = function(card, frac, field)
         card.ability[frac_name] = frac
     end
     if card.ability[frac_name] >= 1 then
-        local int, frac = math.modf(card.ability[frac_name])
-        card.ability.extra[field] = card.ability.extra[field] + int
-        card.ability[frac_name] = frac
+        local int_part, remaining_frac = math.modf(card.ability[frac_name])
+        card.ability.extra[field] = card.ability.extra[field] + int_part
+        card.ability[frac_name] = remaining_frac
     end
 end
 
