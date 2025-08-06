@@ -122,7 +122,7 @@ local raimonOB = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 3 },
     calculate = function(self, blind, context)
         if context.individual and context.cardarea == G.play and context.other_card:is_suit(self.config.extra.suit) and context.scoring_hand then
             return {
