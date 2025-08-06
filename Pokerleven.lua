@@ -233,6 +233,7 @@ local function load_joker_folder(folder_name, item_constructor)
         if item.pposition then item.config.extra.pposition = item.pposition end
         if item.pteam then item.config.extra.pteam = item.pteam end
         if item.special then item.config.extra.special = item.special end
+        if item.techtype then item.config.extra.techtype = item.techtype end
 
         if not item.custom_pool_func then
           item.in_pool = function(self)

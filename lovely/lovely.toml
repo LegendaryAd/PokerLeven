@@ -71,6 +71,19 @@ end
 '''
 match_indent = true
 
+# Max allowed tech level a joker can reach
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+joker_usage = {},
+'''
+position = "after"
+payload = '''
+max_tech_level = 3,
+'''
+match_indent = true
+
 # Splash Screen
 [[patches]]
 [patches.pattern]
