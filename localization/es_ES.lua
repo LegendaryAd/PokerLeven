@@ -658,7 +658,7 @@ return {
                     "{C:wind}Viento Ardiente{}",
                     "Al salir de la tienda, gana",
                     "{C:chips}+#1# Fichas{} por cada",
-                    "jugador del tipo {C:fire}Fuego{} en juego",
+                    "jugador del tipo {X:fire,C:white}Fuego{} en juego",
                     "{C:inactive}Actualmente{}: {C:chips}+#2#{}" }
             },
 
@@ -737,6 +737,15 @@ return {
             j_ina_Aphrodite = {
                 name = "Aphrodite",
                 text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+            },
+
+            j_ina_Blazer = {
+                name = "Blazer",
+                text = {
+                    "{C:fire}Infierno{}",
+                    "Todos los {C:attention}Jokers{}",
+                    "son de {X:fire,C:white}Fuego{}"
+                }
             },
 
             j_ina_Nelly = {
@@ -919,6 +928,7 @@ return {
             ina_Technique = "Fusión",
             ina_bench = "Banquillo",
             ina_unbench = "Titular",
+            ina_onfire = "On fire!",
 
             -- Resources
             ina_resource_barriers = "Barreras"
