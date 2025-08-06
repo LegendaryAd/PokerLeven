@@ -164,7 +164,9 @@ return {
                 name = "Posición Táctica",
                 text = { "Aplica una {C:pink}Posición{} aleatoria",
                     "al Joker más a la izquierda{}" }
-            },
+            }
+        },
+        Training = {
             c_ina_upgrade_technique_Forest_GK = {
                 name = "Mejora de técnica",
                 text = { "Mejora el nivel de técnica del",
@@ -1137,6 +1139,18 @@ return {
                     "lleves del equipo al",
                     "que te enfrentas, reduce",
                     "en un {C:attention}#1#%{} las {C:chips}fichas{} necesarias"
+                },
+            },
+            v_ina_training = {
+                name = "Entrenamiento",
+                text = {
+                    "{C:attention}+1{} al nivel máximo de técnica"
+                },
+            },
+            v_ina_training_2 = {
+                name = "Súper Entrenamiento",
+                text = {
+                    "{C:attention}+1{} al nivel máximo de técnica"
                 },
             },
         }

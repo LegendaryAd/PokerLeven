@@ -3,8 +3,28 @@ technique_values = {
     money = .3,
     mult_mod = .2,
     chip_mod = .2,
+    chips_mod = .2,
     Xmult_mod = .2,
-    Xchip_mod = .2
+    Xchip_mod = .2,
+    Xchips_mod = .2,
+    sell_mod = .2,       -- es de Seller
+    sell_potential = .2, -- es de Seller
+    current_Xmult = .2,
+    current_xmult = .2,
+    current_chips = .2,
+    current_mult = .2,
+    new_glass_denom = .2,
+    xmult_mod = .2,
+    xmult = .2,
+    drain = .2,
+    odds = -.05,
+    sell_value = .2,
+    common_mult = .2,    -- es de Martin
+    uncommon_mult = .2,  -- es de Martin
+    rare_xmult = .2,     -- es de Martin
+    legendary_exp = .2,  -- es de Martin
+    copies_number = .25, -- es de Hattori
+    alt_chips_mod = .2
 }
 
 -- List of stickers depending of technique type
@@ -83,7 +103,7 @@ round_value = function(value, field)
     local rounded = nil
     local frac = nil
 
-    if field == "money" or field == "mult_mod" or field == "chip_mod" then
+    if field == "money" or field == "mult_mod" or field == "chip_mod" or field == "copies_number" then
         rounded, frac = math.modf(value)
     else
         rounded = value
