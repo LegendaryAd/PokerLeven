@@ -9,7 +9,7 @@ local ff_regional_a = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 }, -- 0
+    big = { min = 0 },
 }
 
 local ff_regional_b = {
@@ -23,7 +23,7 @@ local ff_regional_b = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 }, -- 0
+    big = { min = 0 },
 }
 
 local ff_national_a = {
@@ -32,12 +32,12 @@ local ff_national_a = {
     key = "ff_national_a",
     pos = { x = 0, y = 2 },
     discovered = true,
-    mult = 1.55,
+    mult = Pokerleven.config.middle_blinds_abilities and 1.7 or 1.5,
     atlas = "bigBlinds01",
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 2 },
+    big = { min = 0 },
 }
 
 local ff_national_b = {
@@ -46,12 +46,12 @@ local ff_national_b = {
     key = "ff_national_b",
     pos = { x = 0, y = 3 },
     discovered = true,
-    mult = 1.55,
+    mult = Pokerleven.config.middle_blinds_abilities and 1.6 or 1.5,
     atlas = "bigBlinds01",
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 2 },
+    big = { min = 0 },
 }
 
 local umbrella = {
@@ -65,7 +65,7 @@ local umbrella = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 2 },
     set_blind = function(self)
         G.GAME.blind.hands_sub = -1
         ease_hands_played(1)
@@ -113,7 +113,7 @@ local occult = B({
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 }, -- 0
+    big = { min = 0 },
 })
 
 local raimonOB = {
@@ -127,7 +127,7 @@ local raimonOB = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 }, -- 0
+    big = { min = 0 },
 }
 
 local shun = {
@@ -141,7 +141,7 @@ local shun = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 }, -- 0
+    big = { min = 0 },
 }
 
 local empress = {
@@ -155,7 +155,7 @@ local empress = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 }, -- 0
+    big = { min = 0 },
 }
 
 return {
