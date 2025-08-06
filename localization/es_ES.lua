@@ -676,7 +676,11 @@ return {
 
             j_ina_Cloack = {
                 name = "Cloack",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:fire}Espejismo{}", "{C:attention}Frontal{}",
+                    "Al seleccionar la ciega",
+                    "gasta {C:mountain}#1# Barreras{} para clonar",
+                    "un joker al azar {C:dark_edition}negativo{}",
+                    "perecedero con {C:attention}#2#{} rondas restantes" }
             },
 
             -- Farm
@@ -922,6 +926,11 @@ return {
                 name = "Cosechador",
                 text = { "Se activa al descartar",
                     "una carta {C:attention}Cosechable{}" }
+            },
+            Frontal = {
+                name = "Frontal",
+                text = { "Se activa si es el",
+                    "joker de más a la {C:attention}Izquierda{}" }
             },
             p_ina_team_pack_raimon = {
                 name = "Pack Raimon",
