@@ -930,6 +930,7 @@ return {
             ina_bench = "Banquillo",
             ina_unbench = "Titular",
             ina_onfire = "On fire!",
+            ina_gafas = "GAFITAAAS",
 
             -- Resources
             ina_resource_barriers = "Barreras"

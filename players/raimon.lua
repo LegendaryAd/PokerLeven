@@ -248,7 +248,7 @@ local Willy = {
       card.ability.extra.triggered = true;
       convert_cards_to(context.scoring_hand, { mod_conv = "m_glass", edition = "e_polychrome", seal = "Red" })
       return {
-        message = localize("ina_convert"),
+        message = localize("ina_gafas"),
         colour = G.C.XMULT
       }
     end
