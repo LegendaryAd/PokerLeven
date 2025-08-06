@@ -32,7 +32,7 @@ function Game:start_run(args)
         definition = Pokerleven.create_UIBox_manager_area(),
         config = {
             align = 'cmi',
-            offset = { x = 2.3, y = 3.5 },
+            offset = { x = 2, y = 3.5 },
             major = self.consumeables,
             bond = 'Weak'
         } }

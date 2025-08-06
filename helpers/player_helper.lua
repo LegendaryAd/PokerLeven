@@ -42,6 +42,33 @@ Pokerleven.find_player_type_and_position = function(target_type, target_position
     return found
 end
 
+---Returns the team with most players
+---@return string|nil most_played Team with most players
+Pokerleven.most_played_team = function()
+    local team_counts = {}
+
+    if G.jokers and G.jokers.cards then
+        for _, v in pairs(G.jokers.cards) do
+            if v.ability and v.ability.extra and type(v.ability.extra) == "table" and v.ability.extra.pteam and v.config.center_key ~= "j_ina_Bobby" then
+                local team = v.ability.extra.pteam
+                team_counts[team] = (team_counts[team] or 0) + 1
+            end
+        end
+    end
+
+    local most_played = nil
+    local max_count = 0
+
+    for team, count in pairs(team_counts) do
+        if count > max_count then
+            most_played = team
+            max_count = count
+        end
+    end
+
+    return most_played
+end
+
 find_player_team = function(target_type)
     local found = {}
     if G.jokers and G.jokers.cards then

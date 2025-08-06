@@ -165,14 +165,14 @@ for _, file in ipairs(editions) do
     sendDebugMessage("The error is: " .. load_error)
   else
     local curr_edition = edition()
-    if curr_edition.init then curr_edition:init() end
-
-    for i, item in ipairs(curr_edition.list) do
-      SMODS.Edition(item)
+    if curr_edition then
+      if curr_edition.init then curr_edition:init() end
+      for i, item in ipairs(curr_edition.list) do
+        SMODS.Edition(item)
+      end
     end
   end
 end
-
 
 --Load blinds
 local blinds = NFS.getDirectoryItems(mod_dir .. "blinds")

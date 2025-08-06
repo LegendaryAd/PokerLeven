@@ -223,11 +223,19 @@ return {
                     "gana {X:mult,C:white}X#2#{} cada vez que el comodín",
                     "a su {C:attention}izquierda{} se activa", "en la mano con puntuación" }
             },
+            j_ina_Bobby = {
+                name = "Bobby",
+                text = { { "{C:wind}El Traidor{}",
+                    "Al seleccionar la ciega cambia",
+                    "al equipo del que tengas más jugadores", },
+                    { "Los jugadores del equipo",
+                        "de {C:attention}Bobby{} otorgan {C:chips}+#1# Chips{}", } }
+            },
             -- Occult
             j_ina_Talisman = {
                 name = "Talisman",
-                text = { "{C:forest}Rapto Divino{}", "Vuelve a activar el comodín {X:occult,C:white}Occult{}",
-                    "que está a su derecha{}" }
+                text = { "{C:forest}Rapto Divino{}", "Vuelve a activar",
+                    " el comodín {X:occult,C:white}Occult{} que", "está a su derecha{} {C:attention}2 veces{}" }
             },
             j_ina_Wolfy = {
                 name = "Wolfy",
@@ -355,7 +363,19 @@ return {
             },
             j_ina_Feldt = {
                 name = "Feldt",
-                text = { "{C:forest}Marcador Temporal{}", "Línea de efecto temporal 1", "Línea de efecto temporal 2" }
+                text = { {
+                    "{C:forest}Campo de Fuerza Defensivo{}",
+                    "Genera {C:attention}#1#{} {X:mountain,C:white}Barrera{}",
+                    "si juegas al menos {C:attention}3{} {C:spades}Picas{}"
+                },
+                    {
+                        "En la {C:attention}última mano{},",
+                        "consume todas las {X:mountain,C:white}Barreras{}",
+                        "para dar {X:mult,C:white}X#2#{} por",
+                        "cada jugador de {X:forest,C:white}Bosque{}",
+                        "{C:inactive}Actualmente{} {X:mult,C:white}X#3#"
+                    }
+                }
             },
 
             j_ina_Marvel = {
@@ -919,6 +939,7 @@ return {
             ina_Technique = "Fusión",
             ina_bench = "Banquillo",
             ina_unbench = "Titular",
+            ina_generate_barriers = "Barrera!",
 
             -- Resources
             ina_resource_barriers = "Barreras"

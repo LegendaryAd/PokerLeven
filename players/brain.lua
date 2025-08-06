@@ -1,10 +1,12 @@
 -- Feldt
-local Feldt = {
+local Feldt = J({
     name = "Feldt",
     pos = { x = 6, y = 2 },
-    config = { extra = {} },
+    config = { extra = { barriers = 1, Xmult_mod = 1 } },
     loc_vars = function(self, info_queue, center)
-        return {}
+        local Xmult_mod = center.ability.extra.Xmult_mod
+        local current_mult = Xmult_mod * #find_player_type('Forest')
+        return { vars = { center.ability.extra.barriers, Xmult_mod, current_mult } }
     end,
     rarity = 3, -- Rare
     pools = { ["Brain"] = true },
@@ -15,9 +17,28 @@ local Feldt = {
     pteam = "Brain",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO: Placeholder
+        if Pokerleven.is_joker_last_hand(context) and G.GAME.current_round.barriers > 0 then
+            local current_mult = #find_player_type('Forest') * card.ability.extra.Xmult_mod
+            Pokerleven.ease_barriers(-G.GAME.current_round.barriers)
+            return {
+                message = localize { type = 'variable', key = 'a_xmult', vars = { current_mult } },
+                colour = G.C.MULT,
+                Xmult_mod = current_mult
+            }
+        end
+
+        if Pokerleven.is_joker_turn(context) then
+            if Pokerleven.get_cards_of_suite('Spades', context.scoring_hand) >= 3 then
+                Pokerleven.ease_barriers(1)
+                return {
+                    message = localize('ina_generate_barriers'),
+                    colour = G.C.ORANGE,
+                    card = card
+                }
+            end
+        end
     end
-}
+})
 
 -- Marvel
 local Marvel = {
