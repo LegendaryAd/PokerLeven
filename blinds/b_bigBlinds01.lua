@@ -148,6 +148,7 @@ local shun = B({
     end
 })
 
+
 local empress = {
     object_type = "Blind",
     name = "ina-empress",
@@ -159,7 +160,7 @@ local empress = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 9 },
+    big = { min = 0 },
 }
 
 return {
