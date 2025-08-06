@@ -149,7 +149,7 @@ local empress = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 0,
-    big = { min = 0 },
+    big = { min = 2 },
 
     defeat = function(self)
         local new_card = create_card("Tarot", G.consumeables, nil, nil, nil, nil, "c_emperor")
