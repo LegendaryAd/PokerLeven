@@ -873,7 +873,10 @@ return {
 
             j_ina_Nelly = {
                 name = "Nelly",
-                text = { "Placeholder", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "Por cada ronda se otorga entre {C:money}#1#${} a {C:money}#2#${},",
+                    "si se {C:attention}pierde la partida{}, en vez de eso,",
+                    "se {C:mult}destruyen{} todos los jokers",
+                    "fuera del banquillo y esta carta." }
             },
 
             j_ina_Celia = {
@@ -1226,6 +1229,7 @@ return {
             ina_generate_barriers = "Barrera!",
             ina_onfire = "On fire!",
             ina_gafas = "GAFITAAAS",
+            ina_saved = "Fuiste salvado",
 
             -- Resources
             ina_resource_barriers = "Barreras"
