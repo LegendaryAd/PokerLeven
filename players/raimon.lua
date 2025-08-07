@@ -34,12 +34,12 @@ local Kevin = J({
 })
 
 -- Mark Evans
-local Mark = {
+local Mark = J({
   name = "Mark",
   pos = { x = 1, y = 0 },
-  config = { extra = { mult = 0, mult_mod = 4, mult_mod2 = 0 }, evo_rqmt = 30 },
+  config = { extra = { extra_hands = 1 } },
   loc_vars = function(self, info_queue, center)
-    return { vars = { center.ability.extra.mult, center.ability.extra.mult_mod, center.ability.evo_rqmt } }
+    return { vars = { center.ability.extra.extra_hands } }
   end,
   rarity = 4,
   pools = { ["Raimon"] = true },
@@ -49,23 +49,19 @@ local Mark = {
   pposition = "GK",
   pteam = "Raimon",
   blueprint_compat = true,
-  calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.scoring_hand and G.GAME.current_round.hands_left == 0 then
-      if context.joker_main then
-        return {
-          message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
-          colour = G.C.MULT,
-          mult_mod = card.ability.extra.mult
-        }
-      end
-    end
+  add_to_deck = function(self, card, from_debuff)
+    SMODS.change_play_limit(card.ability.extra.extra_hands)
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    SMODS.change_play_limit(-card.ability.extra.extra_hands)
   end,
   set_sprites = function(self, card, front)
     if card.children and card.children.center and card.children.center.set_visible then
       card.children.center:set_visible(true)
     end
   end,
-}
+})
+
 
 -- Nathan
 local Nathan = {

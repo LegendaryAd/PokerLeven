@@ -220,7 +220,6 @@ local function generate_cloack_card(perish_tally)
     new_joker:set_edition('e_negative')
 end
 
-
 local cloack = J({
     name = "Cloack",
     pos = { x = 6, y = 4 },

@@ -210,6 +210,24 @@ for _, file in ipairs(vouchers) do
   end
 end
 
+--Load poker_hands
+local poker_hands = NFS.getDirectoryItems(mod_dir .. "poker_hands")
+
+for _, file in ipairs(poker_hands) do
+  sendDebugMessage("The file is: " .. file)
+  local poker_hand, load_error = SMODS.load_file("poker_hands/" .. file)
+  if load_error then
+    sendDebugMessage("The error is: " .. load_error)
+  else
+    local curr_poker_hand = poker_hand()
+    if curr_poker_hand.init then curr_poker_hand:init() end
+
+    for _, item in ipairs(curr_poker_hand.list) do
+      SMODS.PokerHand(item)
+    end
+  end
+end
+
 --Load jokers files
 local function load_joker_folder(folder_name, item_constructor)
   local files = NFS.getDirectoryItems(mod_dir .. folder_name)

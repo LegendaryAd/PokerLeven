@@ -18,3 +18,9 @@ end
 function V(data)
     return data
 end
+
+---@param data SMODS.PokerHand
+---@return SMODS.PokerHand
+function P(data)
+    return data
+end

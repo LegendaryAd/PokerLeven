@@ -274,9 +274,7 @@ return {
             },
             j_ina_Mark = {
                 name = "Mark",
-                text = { "¡Nunca te rindas!", "{C:mult}+#1#{} Mult en tu última mano",
-                    "Aumenta en {C:mult}+#2#{} por cada última mano jugada",
-                    "{C:inactive}(Crece con {C:mult}+#1#{C:inactive} / {C:mult}+#3#{C:inactive} Mult)" }
+                text = { "{C:attention}+#1#{} Al tamaño de mano jugada" }
             },
             j_ina_Nathan = {
                 name = "Nathan",
@@ -1136,7 +1134,17 @@ return {
                 },
             },
         },
-        Planet = {},
+        Planet = {
+            c_ina_make = {
+                name = "Make",
+                text = {
+                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                    "{C:attention}#2#",
+                    "{C:mult}+#3#{} Mult and",
+                    "{C:chips}+#4#{} chips",
+                },
+            },
+        },
         Spectral = {},
         Stake = {},
         Tag = {
@@ -1255,8 +1263,18 @@ return {
             ina_tech_a_sticker = "Técnica mejorada",
             ina_tech_joker_sticker = "Técnica mejorada",
         },
-        poker_hand_descriptions = {},
-        poker_hands = {},
+        poker_hand_descriptions = {
+            ["ina_FullMansion"] = {
+                "2 Tríos distintos",
+            },
+            ["ina_GodHand"] = {
+                "6 cartas del mismo rango"
+            }
+        },
+        poker_hands = {
+            ["ina_FullMansion"] = "Full Mansion",
+            ["ina_GodHand"] = "Mano Celestial",
+        },
         quips = {},
         ranks = {},
         suits_plural = {},

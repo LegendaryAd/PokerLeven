@@ -7,7 +7,7 @@ function Game:start_run(args)
     local sprite = Sprite(0, 0, 0.6, 0.6, atlas, { x = 0, y = 0 })
 
     G.GAME.ina_show_barriers = G.GAME.ina_show_barriers or false
-    G.GAME.current_round.barriers = G.GAME.current_round.barriers or 1
+    G.GAME.current_round.barriers = G.GAME.current_round.barriers or 0
     self.ina_resources_info = UIBox {
         definition = {
             n = G.UIT.ROOT,
