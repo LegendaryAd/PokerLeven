@@ -328,15 +328,14 @@ function get_right_joker(main_card)
     return nil
 end
 
---- Returns the joker with the key provided in play
+--- Returns the joker with the key provided, in the area provided or jokers if nil
 ---@param key string The reference joker key
----@return SMODS.Joker|nil Selected_Joker Joker with that key or nil if not found
-function get_joker_with_key(key)
-    for k, v in ipairs(G.jokers.cards) do
+---@param areaCards table | nil The area to search
+---@return Card|SMODS.Joker|nil Selected_Joker Joker with that key or nil if not found
+function get_joker_with_key(key, areaCards)
+    for _, v in ipairs(areaCards or G.jokers.cards) do
         if v.config.center_key == key then
-            return G.jokers.cards[k]
+            return v
         end
     end
-
-    return nil
 end

@@ -2,17 +2,37 @@
 local Nelly = J({
     name = "Nelly",
     pos = { x = 0, y = 0 },
-    config = { extra = {} },
+    config = { extra = { min_money = 1, max_money = 5 } },
     loc_vars = function(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.min_money, center.ability.extra.max_money } }
     end,
     rarity = 1,
     special = "Manager",
     cost = 4,
     atlas = "Managers01",
     generate_ui = Pokerleven.generate_info_ui,
+    calc_dollar_bonus = function(self, card)
+        return math.floor(pseudorandom("nelly", card.ability.extra.min_money, card.ability.extra.max_money + 1))
+    end,
     calculate = function(self, card, context)
-        -- TODO Add logic
+        if context.game_over then
+            for _, c in ipairs(G.jokers.cards) do
+                c:start_dissolve({ HEX("57ecab") }, nil, 1.6)
+                c:remove_from_deck()
+            end
+            local nelly = get_joker_with_key("j_ina_Nelly", Pokerleven.ina_manager_area.cards)
+
+            if nelly then
+                nelly:start_dissolve({ HEX("57ecab") }, nil, 1.6)
+                nelly:remove_from_deck()
+            end
+
+            return {
+                message = localize('k_saved_ex'),
+                saved = 'ina_saved',
+                colour = G.C.RED,
+            }
+        end
     end
 })
 
