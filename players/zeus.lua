@@ -244,7 +244,6 @@ local Aphrodite = {
     return {}
   end,
   rarity = 4, -- Legendary
-  pools = { ["Zeus"] = true },
   cost = 12,
   atlas = "Jokers01",
   ptype = "Forest",

@@ -984,6 +984,11 @@ return {
                 name = "Pack Zeus",
                 text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:zeus,C:white}Zeus{} jugadores" }
             },
+            p_ina_item_pack_ina = {
+                name = "Ina Pack",
+                text = { "Elige {C:attention}#1#{} de {C:attention}#2#{} Cartas del {C:tarot}Tarot{}",
+                    "#3# {C:strat}Strats{} o #4# {C:training}Entrenamientos{}" }
+            },
             ina_harvest_sticker = {
                 name = "Cosechable",
                 text = {
@@ -1217,6 +1222,7 @@ return {
             ina_training = "¡Cambio!",
             ina_next_match = "Siguiente",
             k_team_pack = "Pack de Equipo",
+            k_item_pack = "Pack de Objetos",
             ina_convert = "¡Convertido!",
             ina_potential_increased = "¡Potencial aumentado!",
             ina_sell_increased = "¡Jokers mejorados!",

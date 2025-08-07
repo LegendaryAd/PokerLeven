@@ -18,7 +18,7 @@ end
 local Make = {
     key = 'make',
     set = 'Planet',
-    atlas = 'Consumables',
+    atlas = 'upgrade_techniques',
     discovered = true,
     config = { hand_type = 'ina_FullMansion', softlock = true },
     pos = { x = 7, y = 1 },
@@ -33,7 +33,7 @@ local Make = {
 local Haumer = {
     key = 'haumer',
     set = 'Planet',
-    atlas = 'Consumables',
+    atlas = 'upgrade_techniques',
     discovered = true,
     config = { hand_type = 'ina_GodHand', softlock = true },
     pos = { x = 8, y = 1 },

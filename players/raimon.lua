@@ -42,7 +42,6 @@ local Mark = J({
     return { vars = { center.ability.extra.extra_hands } }
   end,
   rarity = 4,
-  pools = { ["Raimon"] = true },
   cost = 11,
   atlas = "Jokers01",
   ptype = "Mountain",

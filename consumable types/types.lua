@@ -8,7 +8,7 @@ local strat = {
   },
   collection_row = { 6, 6 },
   shop_rate = 4,
-  default = "c_ina_strat"
+  default = "c_ina_tactic_pos"
 }
 
 local training = {
@@ -20,8 +20,8 @@ local training = {
     collection = 'Training Cards', -- label for the button to access the collection
   },
   collection_row = { 8, 8 },
-  shop_rate = 4,
-  default = "c_ina_training"
+  shop_rate = 0,
+  default = "c_ina_upgrade_technique_Wind_FW"
 }
 
 return {
