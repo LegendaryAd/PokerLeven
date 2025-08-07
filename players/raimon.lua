@@ -3,9 +3,6 @@ local Kevin = J({
   name = "Kevin",
   pos = { x = 0, y = 0 },
   config = { extra = { retriggers = 1, triggered = false } },
-  loc_vars = function(self, info_queue, center)
-    return { vars = {} }
-  end,
   rarity = 2,
   pools = { ["Raimon"] = true },
   cost = 8,
@@ -13,8 +10,6 @@ local Kevin = J({
   ptype = "Forest",
   pposition = "FW",
   pteam = "Raimon",
-  blueprint_compat = true,
-  generate_ui = Pokerleven.generate_info_ui,
   calculate = function(self, card, context)
     if context.retrigger_joker_check and not context.retrigger_joker and context.other_card ~= self then
       card.ability.extra.triggered = true;
@@ -389,7 +384,106 @@ local Jude_Raimon = J({
   end
 })
 
+-- Bobby
+Bobby_Teams = {
+  ["Royal Academy"]  = { x = 3, y = 14 },
+  ["Occult"]         = { x = 7, y = 14 },
+  ["Wild"]           = { x = 8, y = 14 },
+  ["Brain"]          = { x = 9, y = 14 },
+  ["Otaku"]          = { x = 10, y = 14 },
+  ["Inazuma Eleven"] = { x = 11, y = 14 },
+  ["Shuriken"]       = { x = 12, y = 14 },
+  ["Farm"]           = { x = 0, y = 15 },
+  ["Kirkwood"]       = { x = 1, y = 15 },
+  ["Zeus"]           = { x = 2, y = 15 }
+}
+
+
+local Bobby = J({
+  name = "Bobby",
+  pos = { x = 10, y = 6 },
+  config = { extra = { chips_mod = 20 } },
+  loc_vars = function(self, info_queue, center)
+    return { vars = { center.ability.extra.chips_mod } }
+  end,
+  rarity = 2,
+  pools = { ["Raimon"] = true },
+  cost = 4,
+  atlas = "Jokers01",
+  ptype = "Wind",
+  pposition = "DF",
+  pteam = "Raimon",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    if context.other_joker then
+      if is_team(context.other_joker, card.ability.extra.pteam) then
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            context.other_joker:juice_up(0.5, 0.5)
+            return true
+          end
+        }))
+        return {
+          message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips_mod } },
+          colour = G.C.CHIPS,
+          chip_mod = card.ability.extra.chips_mod,
+          card = context.other_joker
+        }
+      end
+    end
+
+    if context.setting_blind then
+      local selected_team = Pokerleven.most_played_team()
+      if selected_team and selected_team ~= card.ability.extra.pteam then
+        card.ability.extra.pteam = Pokerleven.most_played_team()
+
+        local coords = Bobby_Teams[selected_team]
+        if coords then
+          G.E_MANAGER:add_event(Event({
+            func = function()
+              if card.evolution_timer then return true end
+              card.evolution_timer = 0
+              G.E_MANAGER:add_event(Event({
+                trigger = 'ease',
+                ref_table = card,
+                ref_value = 'evolution_timer',
+                ease_to = 1.5,
+                delay = 2.0,
+                func = (function(t) return t end)
+              }))
+              G.E_MANAGER:add_event(Event({
+                func = function()
+                  card.children.center:set_sprite_pos({ x = coords.x, y = coords.y })
+                  return true
+                end
+              }))
+              G.E_MANAGER:add_event(Event({
+                trigger = 'ease',
+                ref_table = card,
+                ref_value = 'evolution_timer',
+                ease_to = 2.25,
+                delay = 1.0,
+                func = (function(t) return t end)
+              }))
+              G.E_MANAGER:add_event(Event({
+                func = function()
+                  card.evolution_timer = nil
+                  play_sound('tarot1')
+                  card_eval_status_text(card, 'extra', nil, nil, nil,
+                    { message = localize("ina_evolve_success"), colour = G.C.FILTER, instant = true })
+                  return true
+                end
+              }))
+              return true
+            end
+          }))
+        end
+      end
+    end
+  end
+})
+
 return {
   name = "Raimon",
-  list = { Kevin, Mark, Nathan, Jack, Axel, Shadow, Willy, Max, Peabody, Jude_Raimon },
+  list = { Kevin, Mark, Nathan, Jack, Axel, Shadow, Willy, Max, Peabody, Jude_Raimon, Bobby },
 }

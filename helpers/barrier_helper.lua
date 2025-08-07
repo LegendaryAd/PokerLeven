@@ -6,9 +6,9 @@ function Game:start_run(args)
 
     local sprite = Sprite(0, 0, 0.6, 0.6, atlas, { x = 0, y = 0 })
 
-    G.GAME.ina_show_barriers = false
-    G.GAME.barriers = 0
-    self.resources_info = UIBox {
+    G.GAME.ina_show_barriers = G.GAME.ina_show_barriers or false
+    G.GAME.current_round.barriers = G.GAME.current_round.barriers or 0
+    self.ina_resources_info = UIBox {
         definition = {
             n = G.UIT.ROOT,
             config = {
@@ -54,11 +54,23 @@ function Game:start_run(args)
                                     }
                                 },
                                 {
-                                    n = G.UIT.T,
+                                    n = G.UIT.O,
                                     config = {
-                                        ref_table = G.GAME, ref_value = 'barriers',
-                                        scale = 0.5,
-                                        colour = G.C.UI.TEXT_LIGHT,
+                                        id = 'barrier_text_UI',
+                                        object = DynaText({
+                                            string = {
+                                                {
+                                                    ref_table = G.GAME.current_round,
+                                                    ref_value = 'barriers'
+                                                }
+                                            },
+                                            maxw = 1.35,
+                                            colours = { G.C.WHITE },
+                                            shadow = true,
+                                            spacing = 2,
+                                            bump = true,
+                                            scale = 0.5 -- ajusta el scale según quieras
+                                        })
                                     }
                                 }
                             }
@@ -79,7 +91,7 @@ end
 
 ---Shows barriers
 G.FUNCS.ina_show_barriers = function(e)
-    if G.GAME.barriers and G.GAME.barriers > 0 then
+    if G.GAME.current_round.barriers and G.GAME.current_round.barriers > 0 then
         G.GAME.ina_show_barriers = true
     end
     if G.GAME.ina_show_barriers then

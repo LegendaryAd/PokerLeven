@@ -39,24 +39,9 @@ match_indent = true
 payload = '''
 elseif G.GAME.round_resets.blind.small then
     G.GAME.round_resets.blind_states.Small = 'Defeated'
+    print(G.GAME.round_resets.blind_states.Small)
 elseif G.GAME.round_resets.blind.big then
     G.GAME.round_resets.blind_states.Big = 'Defeated'
-'''
-
-[[patches]]
-[patches.pattern]
-target = 'functions/state_events.lua'
-pattern = "delay(0.4); ease_ante(1); delay(0.4); check_for_unlock({type = 'ante_up', ante = G.GAME.round_resets.ante + 1})"
-position = 'at'
-match_indent = true
-override = true
-payload = '''
-if not G.GAME.blind.small and not G.GAME.blind.big then
-    delay(0.4)
-    ease_ante(1)
-    delay(0.4)
-    check_for_unlock({type = 'ante_up', ante = G.GAME.round_resets.ante + 1})
-end
 '''
 
 # Handle setting new blinds

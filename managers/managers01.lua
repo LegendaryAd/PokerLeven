@@ -43,8 +43,14 @@ local Celia = J({
             G.ina_bench_area:emplace(selected_joker)
             selected_joker:add_to_deck()
             Pokerleven.open_bench(true, true)
-            delay(0.5)
-            Pokerleven.open_bench(true, false)
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 2.0,
+                func = (function()
+                    Pokerleven.open_bench(true, false)
+                    return true
+                end)
+            }))
         end
     end,
     ina_credits = {
