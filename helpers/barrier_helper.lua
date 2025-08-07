@@ -7,7 +7,7 @@ function Game:start_run(args)
     local sprite = Sprite(0, 0, 0.6, 0.6, atlas, { x = 0, y = 0 })
 
     G.GAME.ina_show_barriers = G.GAME.ina_show_barriers or false
-    G.GAME.current_round.barriers = G.GAME.current_round.barriers or 0
+    G.GAME.current_round.barriers = G.GAME.current_round.barriers or 1
     self.ina_resources_info = UIBox {
         definition = {
             n = G.UIT.ROOT,
@@ -24,7 +24,7 @@ function Game:start_run(args)
                         align = "cm",
                         colour = { 0.15, 0.15, 0.15, 0.5 },
                         r = 0.1,
-                        minw = 2,
+                        minw = 1.5,
                         padding = 0.05,
                         outline = 1,
                         outline_colour = G.C.BLACK,
@@ -81,7 +81,7 @@ function Game:start_run(args)
         },
         config = {
             align = "cm",
-            offset = { x = 2.45, y = 0 },
+            offset = { x = 2.1, y = 0 },
             major = G.deck,
             bond = 'Weak',
         }

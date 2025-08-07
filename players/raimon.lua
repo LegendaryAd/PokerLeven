@@ -226,9 +226,9 @@ local Shadow = {
 local Willy = {
   name = "Willy",
   pos = { x = 6, y = 0 },
-  config = { extra = { mult = 15 } },
+  config = { extra = { odds = 30 } },
   loc_vars = function(self, info_queue, center)
-    return { vars = { center.ability.extra.mult } }
+    return { vars = { G.GAME.probabilities.normal, center.ability.extra.odds } }
   end,
   rarity = 2,
   pools = { ["Raimon"] = true },
@@ -239,14 +239,12 @@ local Willy = {
   pteam = "Raimon",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.scoring_hand and G.GAME.current_round.hands_left == 0 then
-      if context.joker_main then
-        return {
-          message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
-          colour = G.C.MULT,
-          mult_mod = card.ability.extra.mult
-        }
-      end
+    if Pokerleven.is_joker_turn(context) and pseudorandom('glasis') < G.GAME.probabilities.normal / card.ability.extra.odds then
+      convert_cards_to(context.scoring_hand, { mod_conv = "m_glass", edition = "e_polychrome", seal = "Red" })
+      return {
+        message = localize("ina_gafas"),
+        colour = G.C.XMULT
+      }
     end
   end,
 }

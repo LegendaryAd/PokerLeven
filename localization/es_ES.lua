@@ -301,9 +301,10 @@ return {
             },
             j_ina_Willy = {
                 name = "Willy",
-                text = { "¡Nunca te rindas!", "{C:mult}+#1#{} Mult en tu última mano",
-                    "Aumenta en {C:mult}+#2#{} por cada última mano jugada",
-                    "{C:inactive}(Crece con {C:mult}+#1#{C:inactive} / {C:mult}+#3#{C:inactive} Mult)" }
+                text = { "{C:forest}Remate gafas{}",
+                    "Probabilidad de {C:green}#1# entre #2#{} de convertir",
+                    "la mano jugada en cartas {C:attention}policromáticas{},",
+                    "de {C:attention}cristal{} y con {C:attention}sello rojo{}" }
             },
             j_ina_Max = {
                 name = "Max",
@@ -1224,6 +1225,7 @@ return {
             ina_unbench = "Titular",
             ina_generate_barriers = "Barrera!",
             ina_onfire = "On fire!",
+            ina_gafas = "GAFITAAAS",
 
             -- Resources
             ina_resource_barriers = "Barreras"
