@@ -228,7 +228,7 @@ local Willy = {
   pos = { x = 6, y = 0 },
   config = { extra = { odds = 30, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    return { vars = { center.ability.extra.odds } }
+    return { vars = { G.GAME.probabilities.normal, center.ability.extra.odds } }
   end,
   rarity = 2,
   pools = { ["Raimon"] = true },
@@ -239,7 +239,7 @@ local Willy = {
   pteam = "Raimon",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.joker_main and pseudorandom('gafas') < G.GAME.probabilities.normal / card.ability.extra.odds then
+    if Pokerleven.is_joker_turn(context) and pseudorandom('gafas') < G.GAME.probabilities.normal / card.ability.extra.odds then
       card.ability.extra.triggered = true;
       convert_cards_to(context.scoring_hand, { mod_conv = "m_glass", edition = "e_polychrome", seal = "Red" })
       return {

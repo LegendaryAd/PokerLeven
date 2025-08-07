@@ -302,7 +302,7 @@ return {
             j_ina_Willy = {
                 name = "Willy",
                 text = { "{C:forest}Remate gafas{}",
-                    "Probabilidad de {C:green}1 entre #1#{} de convertir",
+                    "Probabilidad de {C:green}#1# entre #2#{} de convertir",
                     "la mano jugada en cartas {C:attention}policromáticas{},",
                     "de {C:attention}cristal{} y con {C:attention}sello rojo{}" }
             },
