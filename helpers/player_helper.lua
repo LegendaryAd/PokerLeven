@@ -339,3 +339,20 @@ function get_joker_with_key(key, areaCards)
         end
     end
 end
+
+Pokerleven.destroy_all_jokers = function()
+    for _, c in ipairs(G.jokers.cards) do
+        c:start_dissolve({ HEX("57ecab") }, nil, 1.6)
+        c:remove_from_deck()
+    end
+end
+
+---@param manager_key string
+Pokerleven.destroy_manager_with_key = function(manager_key)
+    local manager = get_joker_with_key(manager_key, Pokerleven.ina_manager_area.cards)
+
+    if manager then
+        manager:start_dissolve({ HEX("57ecab") }, nil, 1.6)
+        manager:remove_from_deck()
+    end
+end

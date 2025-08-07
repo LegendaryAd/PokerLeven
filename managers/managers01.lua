@@ -16,16 +16,8 @@ local Nelly = J({
     end,
     calculate = function(self, card, context)
         if context.game_over then
-            for _, c in ipairs(G.jokers.cards) do
-                c:start_dissolve({ HEX("57ecab") }, nil, 1.6)
-                c:remove_from_deck()
-            end
-            local nelly = get_joker_with_key("j_ina_Nelly", Pokerleven.ina_manager_area.cards)
-
-            if nelly then
-                nelly:start_dissolve({ HEX("57ecab") }, nil, 1.6)
-                nelly:remove_from_deck()
-            end
+            Pokerleven.destroy_all_jokers()
+            Pokerleven.destroy_manager_with_key('j_ina_Nelly')
 
             return {
                 message = localize('k_saved_ex'),

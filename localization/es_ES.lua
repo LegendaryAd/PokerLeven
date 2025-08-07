@@ -1,3 +1,12 @@
+local generate_planet_text = function()
+    return {
+        "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+        "{C:attention}#2#",
+        "{C:mult}+#3#{} Mult and",
+        "{C:chips}+#4#{} chips",
+    }
+end
+
 return {
     descriptions = {
         Back = {},
@@ -1140,13 +1149,12 @@ return {
         Planet = {
             c_ina_make = {
                 name = "Make",
-                text = {
-                    "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
-                    "{C:attention}#2#",
-                    "{C:mult}+#3#{} Mult and",
-                    "{C:chips}+#4#{} chips",
-                },
+                text = generate_planet_text()
             },
+            c_ina_haumer = {
+                name = "Haumer",
+                text = generate_planet_text()
+            }
         },
         Spectral = {},
         Stake = {},

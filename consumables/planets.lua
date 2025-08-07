@@ -30,13 +30,13 @@ local Make = {
     end,
 }
 
-local godhand = {
-    key = 'godhand',
+local Haumer = {
+    key = 'haumer',
     set = 'Planet',
     atlas = 'Consumables',
     discovered = true,
     config = { hand_type = 'ina_GodHand', softlock = true },
-    pos = { x = 7, y = 1 },
+    pos = { x = 8, y = 1 },
     generate_ui = 0,
     loc_vars = function(self, info_queue, center)
         return {
@@ -47,5 +47,5 @@ local godhand = {
 
 return {
     name = "Planets",
-    list = { Make, }
+    list = { Make, Haumer }
 }
