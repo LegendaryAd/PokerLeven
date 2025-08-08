@@ -209,6 +209,7 @@ local z_triangle = J({
     calculate = function(self, card, context)
         -- Add logic
     end,
+    unlocked = false,
     special = "Technique"
 })
 

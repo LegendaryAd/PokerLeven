@@ -205,23 +205,48 @@ local hattori = J({
     end,
 })
 
+--- Cloack
+local function can_duplicate_joker(card, context)
+    return Pokerleven.is_leftmost_joker(card)
+        and context.setting_blind
+        and #G.jokers.cards > 1
+end
+
+local function generate_cloack_card(perish_tally)
+    local joker_index = pseudorandom("Cloack", 2, #G.jokers.cards)
+    local new_joker = copy_card(G.jokers.cards[joker_index])
+    new_joker.ability.perishable = true
+    new_joker.ability.perish_tally = perish_tally
+    new_joker:set_edition('e_negative')
+end
+
 local cloack = J({
     name = "Cloack",
     pos = { x = 6, y = 4 },
-    config = {},
-    loc_vars = function(self, info_queue, center)
-        return {}
-    end,
-    rarity = 3, -- Rare
-    pools = { ["Shuriken"] = true },
-    cost = 8,
     atlas = "Jokers01",
+    rarity = 3,
+    cost = 8,
     ptype = "Fire",
     pposition = "FW",
     pteam = "Shuriken",
+    pools = { Shuriken = true },
     blueprint_compat = true,
+    config = {
+        extra = {
+            barriers = 5,
+            perish_tally = 3
+        }
+    },
+    loc_vars = function(self, info_queue, center)
+        info_queue[#info_queue + 1] = { set = 'Other', key = 'Frontal' }
+        return { vars = { center.ability.extra.barriers, center.ability.extra.perish_tally } }
+    end,
     calculate = function(self, card, context)
-        --Add logic
+        if Pokerleven.has_enough_barriers(card) and can_duplicate_joker(card, context) then
+            local new_joker = generate_cloack_card(card.ability.extra.perish_tally)
+            Pokerleven.add_card_to_jokers(new_joker)
+            Pokerleven.ease_barriers(-card.ability.extra.barriers)
+        end
     end,
 })
 

@@ -3,9 +3,6 @@ local Kevin = J({
   name = "Kevin",
   pos = { x = 0, y = 0 },
   config = { extra = { retriggers = 1, triggered = false } },
-  loc_vars = function(self, info_queue, center)
-    return { vars = {} }
-  end,
   rarity = 2,
   pools = { ["Raimon"] = true },
   cost = 8,
@@ -13,8 +10,6 @@ local Kevin = J({
   ptype = "Forest",
   pposition = "FW",
   pteam = "Raimon",
-  blueprint_compat = true,
-  generate_ui = Pokerleven.generate_info_ui,
   calculate = function(self, card, context)
     if context.retrigger_joker_check and not context.retrigger_joker and context.other_card ~= self then
       card.ability.extra.triggered = true;
@@ -39,38 +34,33 @@ local Kevin = J({
 })
 
 -- Mark Evans
-local Mark = {
+local Mark = J({
   name = "Mark",
   pos = { x = 1, y = 0 },
-  config = { extra = { mult = 0, mult_mod = 4, mult_mod2 = 0 }, evo_rqmt = 30 },
+  config = { extra = { extra_hands = 1 } },
   loc_vars = function(self, info_queue, center)
-    return { vars = { center.ability.extra.mult, center.ability.extra.mult_mod, center.ability.evo_rqmt } }
+    return { vars = { center.ability.extra.extra_hands } }
   end,
   rarity = 4,
-  pools = { ["Raimon"] = true },
   cost = 11,
   atlas = "Jokers01",
   ptype = "Mountain",
   pposition = "GK",
   pteam = "Raimon",
   blueprint_compat = true,
-  calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.scoring_hand and G.GAME.current_round.hands_left == 0 then
-      if context.joker_main then
-        return {
-          message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
-          colour = G.C.MULT,
-          mult_mod = card.ability.extra.mult
-        }
-      end
-    end
+  add_to_deck = function(self, card, from_debuff)
+    SMODS.change_play_limit(card.ability.extra.extra_hands)
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    SMODS.change_play_limit(-card.ability.extra.extra_hands)
   end,
   set_sprites = function(self, card, front)
     if card.children and card.children.center and card.children.center.set_visible then
       card.children.center:set_visible(true)
     end
   end,
-}
+})
+
 
 -- Nathan
 local Nathan = {
@@ -231,9 +221,9 @@ local Shadow = {
 local Willy = {
   name = "Willy",
   pos = { x = 6, y = 0 },
-  config = { extra = { mult = 15 } },
+  config = { extra = { odds = 30 } },
   loc_vars = function(self, info_queue, center)
-    return { vars = { center.ability.extra.mult } }
+    return { vars = { G.GAME.probabilities.normal, center.ability.extra.odds } }
   end,
   rarity = 2,
   pools = { ["Raimon"] = true },
@@ -244,14 +234,12 @@ local Willy = {
   pteam = "Raimon",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.scoring_hand and G.GAME.current_round.hands_left == 0 then
-      if context.joker_main then
-        return {
-          message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
-          colour = G.C.MULT,
-          mult_mod = card.ability.extra.mult
-        }
-      end
+    if Pokerleven.is_joker_turn(context) and pseudorandom('glasis') < G.GAME.probabilities.normal / card.ability.extra.odds then
+      convert_cards_to(context.scoring_hand, { mod_conv = "m_glass", edition = "e_polychrome", seal = "Red" })
+      return {
+        message = localize("ina_gafas"),
+        colour = G.C.XMULT
+      }
     end
   end,
 }
@@ -390,7 +378,106 @@ local Jude_Raimon = J({
   end
 })
 
+-- Bobby
+Bobby_Teams = {
+  ["Royal Academy"]  = { x = 3, y = 14 },
+  ["Occult"]         = { x = 7, y = 14 },
+  ["Wild"]           = { x = 8, y = 14 },
+  ["Brain"]          = { x = 9, y = 14 },
+  ["Otaku"]          = { x = 10, y = 14 },
+  ["Inazuma Eleven"] = { x = 11, y = 14 },
+  ["Shuriken"]       = { x = 12, y = 14 },
+  ["Farm"]           = { x = 0, y = 15 },
+  ["Kirkwood"]       = { x = 1, y = 15 },
+  ["Zeus"]           = { x = 2, y = 15 }
+}
+
+
+local Bobby = J({
+  name = "Bobby",
+  pos = { x = 10, y = 6 },
+  config = { extra = { chips_mod = 20 } },
+  loc_vars = function(self, info_queue, center)
+    return { vars = { center.ability.extra.chips_mod } }
+  end,
+  rarity = 2,
+  pools = { ["Raimon"] = true },
+  cost = 4,
+  atlas = "Jokers01",
+  ptype = "Wind",
+  pposition = "DF",
+  pteam = "Raimon",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    if context.other_joker then
+      if is_team(context.other_joker, card.ability.extra.pteam) then
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            context.other_joker:juice_up(0.5, 0.5)
+            return true
+          end
+        }))
+        return {
+          message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips_mod } },
+          colour = G.C.CHIPS,
+          chip_mod = card.ability.extra.chips_mod,
+          card = context.other_joker
+        }
+      end
+    end
+
+    if context.setting_blind then
+      local selected_team = Pokerleven.most_played_team()
+      if selected_team and selected_team ~= card.ability.extra.pteam then
+        card.ability.extra.pteam = Pokerleven.most_played_team()
+
+        local coords = Bobby_Teams[selected_team]
+        if coords then
+          G.E_MANAGER:add_event(Event({
+            func = function()
+              if card.evolution_timer then return true end
+              card.evolution_timer = 0
+              G.E_MANAGER:add_event(Event({
+                trigger = 'ease',
+                ref_table = card,
+                ref_value = 'evolution_timer',
+                ease_to = 1.5,
+                delay = 2.0,
+                func = (function(t) return t end)
+              }))
+              G.E_MANAGER:add_event(Event({
+                func = function()
+                  card.children.center:set_sprite_pos({ x = coords.x, y = coords.y })
+                  return true
+                end
+              }))
+              G.E_MANAGER:add_event(Event({
+                trigger = 'ease',
+                ref_table = card,
+                ref_value = 'evolution_timer',
+                ease_to = 2.25,
+                delay = 1.0,
+                func = (function(t) return t end)
+              }))
+              G.E_MANAGER:add_event(Event({
+                func = function()
+                  card.evolution_timer = nil
+                  play_sound('tarot1')
+                  card_eval_status_text(card, 'extra', nil, nil, nil,
+                    { message = localize("ina_evolve_success"), colour = G.C.FILTER, instant = true })
+                  return true
+                end
+              }))
+              return true
+            end
+          }))
+        end
+      end
+    end
+  end
+})
+
 return {
   name = "Raimon",
-  list = { Kevin, Mark, Nathan, Jack, Axel, Shadow, Willy, Max, Peabody, Jude_Raimon },
+  list = { Kevin, Mark, Nathan, Jack, Axel, Shadow, Willy, Max, Peabody, Jude_Raimon, Bobby },
 }

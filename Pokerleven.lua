@@ -165,14 +165,14 @@ for _, file in ipairs(editions) do
     sendDebugMessage("The error is: " .. load_error)
   else
     local curr_edition = edition()
-    if curr_edition.init then curr_edition:init() end
-
-    for i, item in ipairs(curr_edition.list) do
-      SMODS.Edition(item)
+    if curr_edition then
+      if curr_edition.init then curr_edition:init() end
+      for i, item in ipairs(curr_edition.list) do
+        SMODS.Edition(item)
+      end
     end
   end
 end
-
 
 --Load blinds
 local blinds = NFS.getDirectoryItems(mod_dir .. "blinds")
@@ -210,6 +210,24 @@ for _, file in ipairs(vouchers) do
   end
 end
 
+--Load poker_hands
+local poker_hands = NFS.getDirectoryItems(mod_dir .. "poker_hands")
+
+for _, file in ipairs(poker_hands) do
+  sendDebugMessage("The file is: " .. file)
+  local poker_hand, load_error = SMODS.load_file("poker_hands/" .. file)
+  if load_error then
+    sendDebugMessage("The error is: " .. load_error)
+  else
+    local curr_poker_hand = poker_hand()
+    if curr_poker_hand.init then curr_poker_hand:init() end
+
+    for _, item in ipairs(curr_poker_hand.list) do
+      SMODS.PokerHand(item)
+    end
+  end
+end
+
 --Load jokers files
 local function load_joker_folder(folder_name, item_constructor)
   local files = NFS.getDirectoryItems(mod_dir .. folder_name)
@@ -233,6 +251,7 @@ local function load_joker_folder(folder_name, item_constructor)
         if item.pposition then item.config.extra.pposition = item.pposition end
         if item.pteam then item.config.extra.pteam = item.pteam end
         if item.special then item.config.extra.special = item.special end
+        if item.techtype then item.config.extra.techtype = item.techtype end
 
         if not item.custom_pool_func then
           item.in_pool = function(self)

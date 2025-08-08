@@ -3,7 +3,7 @@ version = "0.1.0"
 dump_lua = true
 priority = 0
 
-# Add field spell area to joker evaluation
+# Add manager area to joker evaluation
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/utils.lua"]'
@@ -54,4 +54,26 @@ local skip_print = k == "shop_jokers" or k == "shop_vouchers" or k == "shop_boos
         print("ERROR LOADING GAME: Card area '" .. k .. "' not instantiated before load")
     end
 end
+'''
+
+# Set counter on the left for bench area
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = '''local card_count = self ~= G.shop_vouchers and {n=G.UIT.R, config={align = self == G.jokers and 'cl' or self == G.hand and 'cm' or 'cr', padding = 0.03, no_fill = true}, nodes={'''
+position = 'at'
+match_indent = true
+payload = '''
+local card_count = self ~= G.shop_vouchers and {n=G.UIT.R, config={align = (self == G.jokers or self == G.ina_bench_area) and 'cl' or self == G.hand and 'cm' or 'cr', padding = 0.03, no_fill = true}, nodes={
+'''
+
+# Change background color
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "{n=G.UIT.R, config={minw = self.T.w,minh = self.T.h,align = \"cm\", padding = 0.1, mid = true, r = 0.1, colour = self ~= G.shop_vouchers and {0,0,0,0.1} or nil, ref_table = self}, nodes={"
+position = 'at'
+match_indent = true
+payload = '''
+{n=G.UIT.R, config={minw = self.T.w,minh = self.T.h,align = "cm", padding = 0.1, mid = true, r = 0.1, colour = self == G.ina_bench_area and G.ARGS.LOC_COLOURS["bench"] or self ~= G.shop_vouchers and {0,0,0,0.1} or nil, ref_table = self}, nodes={
 '''
