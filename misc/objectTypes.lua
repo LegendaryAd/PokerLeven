@@ -61,7 +61,15 @@ local Zeus = {
 	cards = {},
 }
 
+local Training = {
+	object_type = "ObjectType",
+	key = "Training",
+	default = "v_blank",
+	cards = {},
+}
+
+
 return {
-	name = "Joker Types",
-	list = { Raimon, Occult, Royal, Wild, Brain, Otaku, Farm, Kirkwood, Zeus }
+	name = "Types",
+	list = { Raimon, Occult, Royal, Wild, Brain, Otaku, Farm, Kirkwood, Zeus, Training }
 }

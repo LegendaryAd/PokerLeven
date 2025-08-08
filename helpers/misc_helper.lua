@@ -156,3 +156,62 @@ function Card:use_consumeable(area, copier)
     end
     return original_card_use(self, area, copier)
 end
+
+--- Get the cards of a suite in played_hand
+---@param suite string
+---@param hand Card[]|table[]
+---@return number
+function Pokerleven.get_cards_of_suite(suite, hand)
+    local count = 0
+    for _, played_card in ipairs(hand) do
+        if played_card:is_suit(suite) then
+            count = count + 1
+        end
+    end
+    return count
+end
+
+function Pokerleven.ease_barriers(mod, instant)
+    local function _mod(mod)
+        local barrier_UI = G.ina_resources_info:get_UIE_by_ID('barrier_text_UI')
+        mod = mod or 0
+        local text = '+'
+        local col = G.ARGS.LOC_COLOURS['mountain']
+        if mod < 0 then
+            text = '-'
+            col = G.C.RED
+        end
+
+        G.GAME.current_round.barriers = (G.GAME.current_round.barriers or 0) + mod
+        G.GAME.current_round.barriers = math.max(G.GAME.current_round.barriers, 0)
+
+        if barrier_UI and barrier_UI.config and barrier_UI.config.object and barrier_UI.config.object.update then
+            barrier_UI.config.object:update()
+        end
+
+        G.HUD:recalculate()
+
+        attention_text({
+            text = text .. tostring(math.abs(mod)),
+            scale = 0.8,
+            hold = 0.7,
+            cover = barrier_UI and barrier_UI.parent,
+            cover_colour = col,
+            align = 'cm',
+        })
+
+        play_sound('tarot1')
+    end
+
+    if instant then
+        _mod(mod)
+    else
+        G.E_MANAGER:add_event(Event({
+            trigger = 'immediate',
+            func = function()
+                _mod(mod)
+                return true
+            end
+        }))
+    end
+end

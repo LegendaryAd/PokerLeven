@@ -1,15 +1,30 @@
-find_player_type = function(target_type)
+find_player_type = function(target_type, is_not)
     local found = {}
     if G.jokers and G.jokers.cards then
-        for k, v in pairs(G.jokers.cards) do
-            if v.ability and ((v.ability.extra and type(v.ability.extra) == "table"
-                    and target_type == v.ability.extra.ptype) or v.ability[string.lower(target_type) .. "_sticker"]) then
-                table.insert(found, v)
+        for _, v in pairs(G.jokers.cards) do
+            if v.ability then
+                local extra = v.ability.extra
+                local has_sticker = v.ability[string.lower(target_type) .. "_sticker"]
+
+                if extra and type(extra) == "table" then
+                    if is_not then
+                        if extra.ptype ~= target_type then
+                            table.insert(found, v)
+                        end
+                    else
+                        if extra.ptype == target_type then
+                            table.insert(found, v)
+                        end
+                    end
+                elseif has_sticker then
+                    table.insert(found, v)
+                end
             end
         end
     end
     return found
 end
+
 
 find_player_position = function(target_type)
     local found = {}
@@ -40,6 +55,33 @@ Pokerleven.find_player_type_and_position = function(target_type, target_position
         end
     end
     return found
+end
+
+---Returns the team with most players
+---@return string|nil most_played Team with most players
+Pokerleven.most_played_team = function()
+    local team_counts = {}
+
+    if G.jokers and G.jokers.cards then
+        for _, v in pairs(G.jokers.cards) do
+            if v.ability and v.ability.extra and type(v.ability.extra) == "table" and v.ability.extra.pteam and v.config.center_key ~= "j_ina_Bobby" then
+                local team = v.ability.extra.pteam
+                team_counts[team] = (team_counts[team] or 0) + 1
+            end
+        end
+    end
+
+    local most_played = nil
+    local max_count = 0
+
+    for team, count in pairs(team_counts) do
+        if count > max_count then
+            most_played = team
+            max_count = count
+        end
+    end
+
+    return most_played
 end
 
 find_player_team = function(target_type)
@@ -284,4 +326,33 @@ function get_right_joker(main_card)
     end
     sendDebugMessage("main_card: " .. tostring(main_card))
     return nil
+end
+
+--- Returns the joker with the key provided, in the area provided or jokers if nil
+---@param key string The reference joker key
+---@param areaCards table | nil The area to search
+---@return Card|SMODS.Joker|nil Selected_Joker Joker with that key or nil if not found
+function get_joker_with_key(key, areaCards)
+    for _, v in ipairs(areaCards or G.jokers.cards) do
+        if v.config.center_key == key then
+            return v
+        end
+    end
+end
+
+Pokerleven.destroy_all_jokers = function()
+    for _, c in ipairs(G.jokers.cards) do
+        c:start_dissolve({ HEX("57ecab") }, nil, 1.6)
+        c:remove_from_deck()
+    end
+end
+
+---@param manager_key string
+Pokerleven.destroy_manager_with_key = function(manager_key)
+    local manager = get_joker_with_key(manager_key, Pokerleven.ina_manager_area.cards)
+
+    if manager then
+        manager:start_dissolve({ HEX("57ecab") }, nil, 1.6)
+        manager:remove_from_deck()
+    end
 end

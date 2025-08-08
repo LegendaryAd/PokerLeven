@@ -49,7 +49,52 @@ local ex_law_2 = V({
     end
 })
 
+local training = V({
+    key = "training",
+    atlas = "vouchers01",
+    order = 33,
+    set = "Voucher",
+    pos = { x = 1, y = 0 },
+    discovered = true,
+    unlocked = true,
+    available = true,
+    cost = 10,
+    loc_vars = function(self, info_queue)
+        return {}
+    end,
+    ina_credits = {
+        art = { 'Shadorossa' },
+        idea = { 'Shadorossa' }
+    },
+    redeem = function(self, card)
+        G.GAME.max_tech_level = G.GAME.max_tech_level + 1
+    end
+})
+
+local training_2 = V({
+    key = "training_2",
+    atlas = "vouchers01",
+    order = 33,
+    set = "Voucher",
+    pos = { x = 1, y = 1 },
+    discovered = true,
+    unlocked = true,
+    available = true,
+    requires = { "v_ina_training" },
+    cost = 10,
+    loc_vars = function(self, info_queue)
+        return {}
+    end,
+    ina_credits = {
+        art = { 'Shadorossa' },
+        idea = { 'Shadorossa' }
+    },
+    redeem = function(self, card)
+        G.GAME.max_tech_level = G.GAME.max_tech_level + 1
+    end
+})
+
 return {
     name = "Vouchers01",
-    list = { ex_law, ex_law_2 }
+    list = { ex_law, ex_law_2, training, training_2 }
 }

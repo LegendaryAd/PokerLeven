@@ -107,13 +107,23 @@ local occult = B({
     name = "Occult",
     key = "occult",
     pos = { x = 0, y = 7 },
+    config = { extra = { retriggerCount = 1 } },
     discovered = true,
     mult = 1.5,
     atlas = "bigBlinds01",
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 3 },
+    calculate = function(self, blind, context)
+        if context.cardarea == G.play and context.repetition and context.other_card:get_id() == 6 then
+            return {
+                message = localize('k_again_ex'),
+                repetitions = self.config.extra.retriggerCount,
+                card = context.other_card
+            }
+        end
+    end
 })
 
 local raimonOB = {
@@ -121,28 +131,51 @@ local raimonOB = {
     name = "ina-raimonOB",
     key = "raimonOB",
     pos = { x = 0, y = 8 },
+    config = { extra = { suit = "Hearts", chips_mod = 20 } },
     discovered = true,
-    mult = 1.5,
+    mult = 1.65,
     atlas = "bigBlinds01",
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 3 },
+    calculate = function(self, blind, context)
+        if context.individual and context.cardarea == G.play and context.other_card:is_suit(self.config.extra.suit) and context.scoring_hand then
+            return {
+                message = localize { type = 'variable', key = 'a_chips',
+                    vars = { self.config.extra.chips_mod } },
+                colour = G.C.CHIPS,
+                chip_mod = self.config.extra.chips_mod,
+                card = context.other_card
+            }
+        end
+    end
 }
 
-local shun = {
+local shun = B({
     object_type = "Blind",
     name = "ina-shun",
     key = "shun",
     pos = { x = 0, y = 9 },
     discovered = true,
-    mult = 1.5,
+    mult = 1.75,
     atlas = "bigBlinds01",
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
-}
+    big = { min = 2 },
+    calculate = function(self, blind, context)
+        if context.game_over then
+            return {
+                message = localize('k_saved_ex'),
+                saved = 'ina_saved',
+                colour = G.C.RED,
+                ease_dollars(-G.GAME.dollars, true)
+            }
+        end
+    end
+})
+
 
 local empress = {
     object_type = "Blind",
@@ -155,7 +188,16 @@ local empress = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 2 },
+
+    defeat = function(self)
+        if not Pokerleven.has_enough_space_consumables() then
+            return
+        end
+
+        local new_card = create_card("Tarot", G.consumeables, nil, nil, nil, nil, "c_emperor")
+        Pokerleven.add_card_to_consumables(new_card)
+    end,
 }
 
 return {

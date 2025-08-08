@@ -252,10 +252,11 @@ end
 ---@param card Card Card you want to create buttons on
 ---@param args table Table of configs for creating custom buttons
 ---@return table
-Pokerleven.create_sell_and_use_buttons = function(card, args)
+Pokerleven.create_custom_buttons = function(card, args)
     local args = args or {}
     local sell = nil
     local use = nil
+    local bench = nil
 
     if args.sell then
         sell = {
@@ -293,20 +294,44 @@ Pokerleven.create_sell_and_use_buttons = function(card, args)
             }
         }
     end
-    if args.use then
-        use = {
+    if args.bench or args.unbench then
+        bench = {
             n = G.UIT.C,
             config = { align = "cr" },
             nodes = {
-
                 {
                     n = G.UIT.C,
-                    config = { ref_table = card, align = "cr", maxw = 1.25, padding = 0.1, r = 0.08, minw = 1.25, minh = 0, hover = true, shadow = true, colour = G.C.JOY.PENDULUM or G.C.UI.BACKGROUND_INACTIVE, one_press = true, func = 'joy_can_use', button = 'joy_use_card', handy_insta_action = "use" },
+                    config = {
+                        ref_table = card,
+                        align = "cr",
+                        padding = 0.1,
+                        r = 0.08,
+                        minw = 1.25,
+                        hover = true,
+                        shadow = true,
+                        colour = G.C.UI.BACKGROUND_INACTIVE,
+                        one_press = true,
+                        button = args.bench and 'bench_card' or 'unbench_card',
+                        func = args.bench and 'can_bench_card' or 'can_unbench_card',
+                        handy_insta_action = "use"
+                    },
                     nodes = {
                         { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
-                        { n = G.UIT.T, config = { text = localize('b_use'), colour = G.C.UI.TEXT_LIGHT, scale = 0.55, shadow = true } }
+                        {
+                            n = G.UIT.C,
+                            config = { align = "cr" },
+                            nodes = {
+                                {
+                                    n = G.UIT.R,
+                                    config = { align = "cm", maxw = 1.25 },
+                                    nodes = {
+                                        { n = G.UIT.T, config = { text = args.bench and localize('ina_bench') or localize('ina_unbench'), colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true } }
+                                    }
+                                }
+                            }
+                        }
                     }
-                }
+                },
             }
         }
     end
@@ -328,17 +353,16 @@ Pokerleven.create_sell_and_use_buttons = function(card, args)
                         config = { align = 'cl' },
                         nodes = { sell }
                     } or nil,
-                    use and {
+                    bench and {
                         n = G.UIT.R,
                         config = { align = 'cl' },
-                        nodes = { use }
-                    } or nil,
+                        nodes = { bench }
+                    } or nil
                 }
             }
         }
     }
 end
-
 
 ---Creates UI for type information
 ---@param card Card

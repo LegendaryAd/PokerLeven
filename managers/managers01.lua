@@ -2,17 +2,29 @@
 local Nelly = J({
     name = "Nelly",
     pos = { x = 0, y = 0 },
-    config = { extra = {} },
+    config = { extra = { min_money = 1, max_money = 5 } },
     loc_vars = function(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.min_money, center.ability.extra.max_money } }
     end,
     rarity = 1,
     special = "Manager",
     cost = 4,
     atlas = "Managers01",
     generate_ui = Pokerleven.generate_info_ui,
+    calc_dollar_bonus = function(self, card)
+        return math.floor(pseudorandom("nelly", card.ability.extra.min_money, card.ability.extra.max_money + 1))
+    end,
     calculate = function(self, card, context)
-        -- TODO Add logic
+        if context.game_over then
+            Pokerleven.destroy_all_jokers()
+            Pokerleven.destroy_manager_with_key('j_ina_Nelly')
+
+            return {
+                message = localize('k_saved_ex'),
+                saved = 'ina_saved',
+                colour = G.C.RED,
+            }
+        end
     end
 })
 
@@ -29,8 +41,33 @@ local Celia = J({
     cost = 4,
     atlas = "Managers01",
     calculate = function(self, card, context)
-        -- TODO Add logic
-    end
+        if context.starting_shop then
+            jude = get_joker_with_key("j_ina_Jude")
+            if jude then
+                return {
+                    message = ina_evolve(jude, "j_ina_Jude_Raimon")
+                }
+            end
+        end
+        if context.setting_blind then
+            --TODO only common?
+            local selected_joker = create_random_ina_joker('Celia', 'Common', G.ina_bench_area, 'Scout', false)
+            G.ina_bench_area:emplace(selected_joker)
+            selected_joker:add_to_deck()
+            Pokerleven.open_bench(true, true)
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 2.0,
+                func = (function()
+                    Pokerleven.open_bench(true, false)
+                    return true
+                end)
+            }))
+        end
+    end,
+    ina_credits = {
+        idea = { "Killer_Patata" }
+    }
 })
 
 -- Silvia
@@ -81,7 +118,10 @@ local Koudera = J({
     atlas = "Managers01",
     calculate = function(self, card, context)
         -- TODO Add logic
-    end
+    end,
+    ina_credits = {
+        art = { "KirineMoe" }
+    }
 })
 
 

@@ -1,5 +1,3 @@
-local item_list = {}
-
 local tech_book = {
   name = "tech_book",
   key = "tech_book",
@@ -64,7 +62,476 @@ local tactic_pos = {
   end
 }
 
+local upgrade_technique_Wind_FW = {
+  name = "upgrade_technique_Wind_FW",
+  key = "upgrade_technique_Wind_FW",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 0, y = 0 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Wind", "FW")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Fire_FW = {
+  name = "upgrade_technique_Fire_FW",
+  key = "upgrade_technique_Fire_FW",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 1, y = 0 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Fire", "FW")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Forest_FW = {
+  name = "upgrade_technique_Forest_FW",
+  key = "upgrade_technique_Forest_FW",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 2, y = 0 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Forest", "FW")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Mountain_FW = {
+  name = "upgrade_technique_Mountain_FW",
+  key = "upgrade_technique_Mountain_FW",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 3, y = 0 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Mountain", "FW")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Wind_MF = {
+  name = "upgrade_technique_Wind_MF",
+  key = "upgrade_technique_Wind_MF",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 4, y = 0 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Wind", "MF")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Fire_MF = {
+  name = "upgrade_technique_Fire_MF",
+  key = "upgrade_technique_Fire_MF",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 5, y = 0 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Fire", "MF")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Forest_MF = {
+  name = "upgrade_technique_Forest_MF",
+  key = "upgrade_technique_Forest_MF",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 6, y = 0 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Forest", "MF")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Mountain_MF = {
+  name = "upgrade_technique_Mountain_MF",
+  key = "upgrade_technique_Mountain_MF",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 7, y = 0 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Mountain", "MF")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Wind_DF = {
+  name = "upgrade_technique_Wind_DF",
+  key = "upgrade_technique_Wind_DF",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 8, y = 0 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Wind", "DF")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Fire_DF = {
+  name = "upgrade_technique_Fire_DF",
+  key = "upgrade_technique_Fire_DF",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 9, y = 0 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Fire", "DF")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Forest_DF = {
+  name = "upgrade_technique_Forest_DF",
+  key = "upgrade_technique_Forest_DF",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 0, y = 1 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Forest", "DF")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Mountain_DF = {
+  name = "upgrade_technique_Mountain_DF",
+  key = "upgrade_technique_Mountain_DF",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 1, y = 1 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Mountain", "DF")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Wind_GK = {
+  name = "upgrade_technique_Wind_GK",
+  key = "upgrade_technique_Wind_GK",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 2, y = 1 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Wind", "GK")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Fire_GK = {
+  name = "upgrade_technique_Fire_GK",
+  key = "upgrade_technique_Fire_GK",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 3, y = 1 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Fire", "GK")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Forest_GK = {
+  name = "upgrade_technique_Forest_GK",
+  key = "upgrade_technique_Forest_GK",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 4, y = 1 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Forest", "GK")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
+local upgrade_technique_Mountain_GK = {
+  name = "upgrade_technique_Mountain_GK",
+  key = "upgrade_technique_Mountain_GK",
+  set = "Training",
+  loc_vars = function(self, info_queue, center)
+  end,
+  pos = { x = 5, y = 1 },
+  atlas = "upgrade_techniques",
+  pools = { ["Training"] = true },
+  cost = 3,
+  unlocked = true,
+  discovered = true,
+  can_use = function(self, card)
+    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
+        can_upgrade_tech_level(G.jokers.highlighted[1], "Mountain", "GK")
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1]
+
+    increment_technique(choice)
+
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end,
+  in_pool = function(self)
+    return true
+  end
+}
+
 return {
-  name = "Strats",
-  list = { tech_book, tactic_pos }
+  name = "Trainings",
+  list = { tech_book, tactic_pos,
+    upgrade_technique_Forest_GK, upgrade_technique_Forest_DF, upgrade_technique_Forest_MF, upgrade_technique_Forest_FW,
+    upgrade_technique_Fire_GK, upgrade_technique_Fire_DF, upgrade_technique_Fire_MF, upgrade_technique_Fire_FW,
+    upgrade_technique_Wind_GK, upgrade_technique_Wind_DF, upgrade_technique_Wind_MF, upgrade_technique_Wind_FW,
+    upgrade_technique_Mountain_GK, upgrade_technique_Mountain_DF, upgrade_technique_Mountain_MF,
+    upgrade_technique_Mountain_FW, }
 }

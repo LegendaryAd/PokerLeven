@@ -277,7 +277,7 @@ local Farm = {
 	}
 }
 
-local Kirwood = {
+local Kirkwood = {
 	name = "Kirkwood",
 	key = "team_pack_kirkwood",
 	kind = "Team",
@@ -339,7 +339,50 @@ local Zeus = {
 	}
 }
 
+
+--- INA PACKS
+local Consts = {
+	max_quantity = 4,
+	strats = 1,
+	trainings = 1
+}
+
+local CARD_ORDER = {
+	default = "Tarot",
+	[Consts.max_quantity - 1] = "Strat",
+	[Consts.max_quantity] = "Training",
+}
+
+local create_card_by_order = function(position_index)
+	local card_type = CARD_ORDER[position_index] or CARD_ORDER.default
+	return create_card(card_type, G.pack_cards, nil, nil, true, true, nil, nil)
+end
+
+local Ina_Pack = {
+	name = "Ina Pack",
+	key = "item_pack_ina",
+	kind = "Item",
+	atlas = "Boosters01",
+	pos = { x = 3, y = 2 },
+	config = { extra = Consts.max_quantity, choose = 1 },
+	cost = 4,
+	order = 1,
+	weight = 1,
+	draw_hand = true,
+	unlocked = true,
+	discovered = true,
+	create_card = function(self, card, i)
+		return create_card_by_order(i)
+	end,
+	loc_vars = function(self, info_queue, card)
+		local tarots = Consts.max_quantity - Consts.strats - Consts.trainings
+		return { vars = { card.config.center.config.choose, tarots, Consts.strats, Consts.trainings } }
+	end,
+	group_key = "k_ina_item_pack",
+}
+
 return {
 	name = "Boosters01",
-	list = { Raimon, Occult, RoyalAcademy, Wild, Brain, Otaku, Inazuma, Shuriken, Farm, Kirwood, Zeus }
+	list = { Raimon, Occult, RoyalAcademy, Wild, Brain, Otaku, Inazuma, Shuriken, Farm, Kirkwood, Zeus,
+		Ina_Pack }
 }

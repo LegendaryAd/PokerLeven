@@ -80,6 +80,15 @@ local inazuma_town = B({
             key = self.key
         }
     end,
+    loc_vars = function(self)
+        return {
+            vars = {
+                self.config.extra.max_hand_types,
+                self.config.extra.discards
+            },
+            key = self.key
+        }
+    end,
     discovered = true,
     mult = 1,
     atlas = "smallBlinds01",
