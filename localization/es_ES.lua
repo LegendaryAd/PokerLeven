@@ -81,7 +81,8 @@ return {
             },
             bl_ina_shun = {
                 name = "Shun",
-                text = {}
+                text = { "Si pierdes en esta ciega",
+                    "revives con 0 de oro" }
             },
             bl_ina_empress = {
                 name = "Empress",

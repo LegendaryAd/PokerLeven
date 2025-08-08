@@ -146,19 +146,30 @@ local raimonOB = {
     end
 }
 
-local shun = {
+local shun = B({
     object_type = "Blind",
     name = "ina-shun",
     key = "shun",
     pos = { x = 0, y = 9 },
     discovered = true,
-    mult = 1.5,
+    mult = 1.75,
     atlas = "bigBlinds01",
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
-}
+    big = { min = 2 },
+    calculate = function(self, blind, context)
+        if context.game_over then
+            return {
+                message = localize('k_saved_ex'),
+                saved = 'ina_saved',
+                colour = G.C.RED,
+                ease_dollars(-G.GAME.dollars, true)
+            }
+        end
+    end
+})
+
 
 local empress = {
     object_type = "Blind",
