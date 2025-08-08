@@ -107,7 +107,7 @@ local Aurelia = J({
 -- Silvia
 local Koudera = J({
     name = "Koudera",
-    pos = { x = 6, y = 0 },
+    pos = { x = 6, y = 1 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}

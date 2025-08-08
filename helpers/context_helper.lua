@@ -20,6 +20,13 @@ Pokerleven.is_leftmost_joker = function(card)
     return G.jokers.cards[1] == card
 end
 
+---Returns true if the joker is the rightmost one
+---@param card Card
+---@return boolean
+Pokerleven.is_leftmost_joker = function(card)
+    return G.jokers.cards[#G.jokers.cards] == card
+end
+
 ---Emplaces joker and adds it to deck
 ---@param card Card
 Pokerleven.add_card_to_jokers = function(card)

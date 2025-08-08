@@ -92,35 +92,35 @@ return {
             -- Blinds jefes
             bl_ina_goalkeeper = {
                 name = "GK",
-                text = { "Los jugadores {X:fw,C:white}GK{} están debilitados" }
+                text = { "Los jugadores {X:gk,C:white}GK{}", "están debilitados" }
             },
             bl_ina_forward = {
                 name = "FW",
-                text = { "Los jugadores {X:gk,C:white}FW{} están debilitados" }
+                text = { "Los jugadores {X:fw,C:white}FW{}", "están debilitados" }
             },
             bl_ina_defense = {
                 name = "DF",
-                text = { "Los jugadores {X:mf,C:white}DF{} están debilitados" }
+                text = { "Los jugadores {X:df,C:white}DF{}", "están debilitados" }
             },
             bl_ina_midfielder = {
                 name = "MF",
-                text = { "Los jugadores {X:df,C:white}MF{} están debilitados" }
+                text = { "Los jugadores {X:mf,C:white}MF{}", "están debilitados" }
             },
             bl_ina_fire = {
                 name = "Jefe de Fuego",
-                text = { "Los jugadores de tipo {X:fire,C:white}Fuego{} están debilitados" }
+                text = { "Los jugadores de {X:fire,C:white}Fuego{}", "están debilitados" }
             },
             bl_ina_forest = {
                 name = "Jefe de Bosque",
-                text = { "Los jugadores de tipo {X:forest,C:white}Bosque{} están debilitados" }
+                text = { "Los jugadores de tipo {X:forest,C:white}Bosque{}", "están debilitados" }
             },
             bl_ina_mountain = {
                 name = "Jefe de Montaña",
-                text = { "Los jugadores de tipo {X:Mountain,C:white}Montaña{} están debilitados" }
+                text = { "Los jugadores de tipo {X:Mountain,C:white}Montaña{}", "están debilitados" }
             },
             bl_ina_wind = {
                 name = "Jefe de Viento",
-                text = { "Los jugadores de tipo {X:Wind,C:white}Viento{} están debilitados" }
+                text = { "Los jugadores de tipo {X:Wind,C:white}Viento{}", "están debilitados" }
             },
             bl_ina_inazuma_og = {
                 name = "Inazuma Eleven",
