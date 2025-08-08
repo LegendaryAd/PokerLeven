@@ -236,12 +236,64 @@ local Demeter = {
 }
 
 -- Aphrodite
-local Aphrodite = {
+---@param card Card
+local swap_random_to_fw_or_mf = function(card)
+  local POS_FW = "FW"
+  local POS_MF = "MF"
+
+  local roll = math.random()
+  local selected_pos = (roll < card.ability.extra.mf_probability) and POS_MF or POS_FW
+
+  apply_property_sticker(card, selected_pos, "position")
+
+  card_eval_status_text(card, 'extra', nil, nil, nil,
+    { message = selected_pos, colour = G.C.DARK_EDITION })
+end
+
+local get_byron_xmult = function(card, selected_position)
+  local MULT_KEYS = {
+    MF = "byron_mult_mf",
+    FW = "byron_mult_fw"
+  }
+
+  local position_count = #find_player_position(selected_position)
+  local zeus_count = #find_player_team("Zeus")
+
+  local mult_key = MULT_KEYS[selected_position] or MULT_KEYS.MF
+  local selected_mult = card.ability.extra[mult_key]
+
+  local turns_left = (selected_position == "FW")
+      and G.GAME.current_round.discards_left
+      or G.GAME.current_round.hands_left
+
+  local factor = position_count + zeus_count
+  local Xmult_mod = 1 + selected_mult * factor * turns_left
+  return Xmult_mod
+end
+
+---@param card Card
+---@param selected_position string
+local select_byron_ability = function(card, selected_position)
+  local Xmult_mod = get_byron_xmult(card, selected_position)
+
+  return {
+    message = localize {
+      type = 'variable',
+      key = 'a_xmult',
+      vars = { Xmult_mod }
+    },
+    colour = G.C.MULT,
+    Xmult_mod = Xmult_mod
+  }
+end
+
+local Aphrodite = J({
   name = "Aphrodite",
   pos = { x = 1, y = 6 },
-  config = { extra = {} },
+  config = { extra = { mf_probability = 0.7, byron_mult_fw = 0.3, byron_mult_mf = 0.15 } },
   loc_vars = function(self, info_queue, center)
-    return {}
+    local position = center.ability.extra.pposition
+    return { vars = { center.ability.extra.byron_mult_fw, center.ability.extra.byron_mult_mf, get_byron_xmult(center, position) } }
   end,
   rarity = 4, -- Legendary
   cost = 12,
@@ -251,8 +303,16 @@ local Aphrodite = {
   pteam = "Zeus",
   blueprint_compat = true,
   calculate = function(self, card, context)
+    if Pokerleven.is_joker_end_of_round(context) then
+      return swap_random_to_fw_or_mf(card)
+    end
+
+    if Pokerleven.is_joker_turn(context) then
+      byron_position = card.ability.extra.pposition
+      return select_byron_ability(card, byron_position)
+    end
   end
-}
+})
 
 return {
   name = "Zeus",

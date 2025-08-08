@@ -24,7 +24,9 @@ technique_values = {
     rare_xmult = .2,     -- es de Martin
     legendary_exp = .2,  -- es de Martin
     copies_number = .25, -- es de Hattori
-    alt_chips_mod = .2
+    alt_chips_mod = .2,
+    byron_mult_fw = .2,
+    byron_mult_mf = .2
 }
 
 -- List of stickers depending of technique type

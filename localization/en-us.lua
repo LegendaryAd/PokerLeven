@@ -560,11 +560,6 @@ return {
                 text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
             },
 
-            j_ina_Aphrodite = {
-                name = "Aphrodite",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
-            }
-
         },
         Other = {
             Mountain = {

@@ -13,6 +13,13 @@ Pokerleven.is_joker_last_hand = function(context)
     return Pokerleven.is_joker_turn(context) and G.GAME.current_round.hands_left == 0
 end
 
+---Returns true if its the joker turn at the end of the round
+---@param context table|CalcContext
+---@return boolean?
+Pokerleven.is_joker_end_of_round = function(context)
+    return context.end_of_round and context.main_eval
+end
+
 ---Returns true if the joker is the leftmost one
 ---@param card Card
 ---@return boolean
@@ -20,10 +27,11 @@ Pokerleven.is_leftmost_joker = function(card)
     return G.jokers.cards[1] == card
 end
 
+
 ---Returns true if the joker is the rightmost one
 ---@param card Card
 ---@return boolean
-Pokerleven.is_leftmost_joker = function(card)
+Pokerleven.is_rightmost_joker = function(card)
     return G.jokers.cards[#G.jokers.cards] == card
 end
 
