@@ -65,7 +65,13 @@ local umbrella = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 2 },
+    set_blind = function(self)
+        G.GAME.blind.hands_sub = -1
+        ease_hands_played(1)
+        G.GAME.blind.discards_sub = 1
+        ease_discard(-1)
+    end,
 }
 
 local inazuma_kids = {
