@@ -283,7 +283,8 @@ return {
             },
             j_ina_Mark = {
                 name = "Mark",
-                text = { "{C:attention}+#1#{} Al tamaño de mano jugada" }
+                text = { "{C:mountain}Mano Mágica{}",
+                    "{C:attention}+#1#{} Al tamaño de mano jugada" }
             },
             j_ina_Nathan = {
                 name = "Nathan",
