@@ -57,6 +57,13 @@ Pokerleven.find_player_type_and_position = function(target_type, target_position
     return found
 end
 
+---@param selected_pos string
+---@param required number
+---@return boolean
+Pokerleven.has_enough_position = function(selected_pos, required)
+    return #find_player_position(selected_pos) >= required
+end
+
 ---Returns the team with most players
 ---@return string|nil most_played Team with most players
 Pokerleven.most_played_team = function()

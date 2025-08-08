@@ -697,7 +697,19 @@ return {
             -- Farm
             j_ina_Greeny = {
                 name = "Greeny",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = {
+                    {
+                        "{C:fire}Muralla infinita{}",
+                        "Genera {C:attention}#1#{} {X:mountain,C:white}barrera{} si al ",
+                        "entrar en la ciega tienes {C:attention}#2#{} {X:df,C:white}DF{}"
+                    },
+                    {
+                        "Si es el comodín más a la {C:attention}derecha{}",
+                        "consumirá {C:attention}#3#{} {X:mountain,C:white}barreras{} para crear",
+                        "una carta de {C:training}entrenamiento{} que sea",
+                        "apta para un comodín cualquiera"
+                    }
+                }
             },
 
             j_ina_Hayseed = {
@@ -1262,6 +1274,8 @@ return {
             ina_onfire = "On fire!",
             ina_gafas = "GAFITAAAS",
             ina_saved = "Fuiste salvado",
+            ina_technique_card = "¡Técnica!",
+
 
             -- Resources
             ina_resource_barriers = "Barreras"

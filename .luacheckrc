@@ -1,7 +1,7 @@
 std = "luajit"
 
 globals = {
-    "G", "love", "lovely", "Controller", "SMODS", "Pokerleven"
+    "G", "love", "lovely", "Controller", "SMODS", "Pokerleven", "C"
 }
 
 ignore = {

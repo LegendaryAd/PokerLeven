@@ -66,6 +66,6 @@ end
 
 --- Returns true if consumables limit > current consumables
 ---@return boolean
-Pokerleven.has_enough_space_consumables = function()
+Pokerleven.has_enough_consumables_space = function()
     return G.consumeables.config.card_limit > G.consumeables.config.card_count
 end
