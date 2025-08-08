@@ -174,15 +174,12 @@ local empress = {
     big = { min = 2 },
 
     defeat = function(self)
-        if G.consumeables.config.card_limit > G.consumeables.config.card_count then
+        if not Pokerleven.has_enough_space_consumables() then
             return
         end
 
         local new_card = create_card("Tarot", G.consumeables, nil, nil, nil, nil, "c_emperor")
-        if new_card then
-            new_card:add_to_deck()
-            G.consumeables:emplace(new_card)
-        end
+        Pokerleven.add_card_to_consumables(new_card)
     end,
 }
 
