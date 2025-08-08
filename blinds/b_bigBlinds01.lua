@@ -191,7 +191,7 @@ local empress = {
     big = { min = 2 },
 
     defeat = function(self)
-        if not Pokerleven.has_enough_space_consumables() then
+        if not Pokerleven.has_enough_consumables_space() then
             return
         end
 

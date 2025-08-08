@@ -1,4 +1,20 @@
 -- Farm Jokers
+local get_all_type_pos_combinations = function()
+    local combinations = {}
+    local c_set = {}
+    for _, t in ipairs(Constants.ALL_TYPES) do
+        for _, p in ipairs(Constants.ALL_POSITIONS) do
+            local key = "c_ina_upgrade_technique_" .. t .. "_" .. p
+            if #Pokerleven.find_player_type_and_position(t, p) > 0 and not c_set[key] then
+                table.insert(combinations, key)
+                c_set[key] = true
+            end
+        end
+    end
+
+    return combinations
+end
+
 local Greeny = J({
     name = "Greeny",
     pos = { x = 0, y = 5 },
@@ -19,24 +35,11 @@ local Greeny = J({
     pteam = "Farm",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.setting_blind and Pokerleven.has_enough_barriers(card) and Pokerleven.is_rightmost_joker(card) and
-            Pokerleven.has_enough_space_consumables() then
-            local types = { "Wind", "Fire", "Forest", "Mountain" }
-            local positions = { "FW", "MF", "DF", "GK" }
-
-            local combinations = {}
-            local c_set = {}
-
-            for _, t in ipairs(types) do
-                for _, p in ipairs(positions) do
-                    local key = "c_ina_upgrade_technique_" .. t .. "_" .. p
-                    if #Pokerleven.find_player_type_and_position(t, p) > 0 and not c_set[key] then
-                        table.insert(combinations, key)
-                        c_set[key] = true
-                    end
-                end
-            end
-
+        if context.setting_blind
+            and Pokerleven.has_enough_barriers(card)
+            and Pokerleven.is_rightmost_joker(card) and
+            Pokerleven.has_enough_consumables_space() then
+            combinations = get_all_type_pos_combinations()
             local selected_combination = pseudorandom_element(combinations, pseudoseed('training'))
 
             local new_card = create_card("Training", G.consumeables, nil, nil, true, true,
