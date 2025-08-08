@@ -23,7 +23,7 @@ end
 ---Returns true if the joker is the rightmost one
 ---@param card Card
 ---@return boolean
-Pokerleven.is_leftmost_joker = function(card)
+Pokerleven.is_rightmost_joker = function(card)
     return G.jokers.cards[#G.jokers.cards] == card
 end
 

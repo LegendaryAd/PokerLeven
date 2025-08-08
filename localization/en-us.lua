@@ -457,12 +457,6 @@ return {
                 text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
             },
 
-            -- Farm
-            j_ina_Greeny = {
-                name = "Greeny",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
-            },
-
             j_ina_Hayseed = {
                 name = "Hayseed",
                 text = { "{C:mountain}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }

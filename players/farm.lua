@@ -2,9 +2,13 @@
 local Greeny = J({
     name = "Greeny",
     pos = { x = 0, y = 5 },
-    config = {},
+    config = { extra = { barriers_added = 1, DF_required = 2, barriers = 3 }
+    },
     loc_vars = function(self, info_queue, center)
-        return {}
+        return {
+            vars = { center.ability.extra.barriers_added, center.ability.extra.DF_required,
+                center.ability.extra.barriers }
+        }
     end,
     rarity = 1, -- Common
     pools = { ["Farm"] = true },
@@ -14,6 +18,43 @@ local Greeny = J({
     pposition = "GK",
     pteam = "Farm",
     blueprint_compat = true,
+    calculate = function(self, card, context)
+        if context.setting_blind and Pokerleven.has_enough_barriers(card) and Pokerleven.is_rightmost_joker(card) and
+            Pokerleven.has_enough_space_consumables() then
+            local types = { "Wind", "Fire", "Forest", "Mountain" }
+            local positions = { "FW", "MF", "DF", "GK" }
+
+            local combinations = {}
+            local c_set = {}
+
+            for _, t in ipairs(types) do
+                for _, p in ipairs(positions) do
+                    local key = "c_ina_upgrade_technique_" .. t .. "_" .. p
+                    if #Pokerleven.find_player_type_and_position(t, p) > 0 and not c_set[key] then
+                        table.insert(combinations, key)
+                        c_set[key] = true
+                    end
+                end
+            end
+
+            local selected_combination = pseudorandom_element(combinations, pseudoseed('training'))
+
+            local new_card = create_card("Training", G.consumeables, nil, nil, true, true,
+                selected_combination, nil)
+
+            Pokerleven.ease_barriers(-card.ability.extra.barriers)
+            Pokerleven.add_card_to_consumables(new_card)
+
+            return {
+                message = localize("ina_technique_card"),
+                colour = G.C.MULT
+            }
+        end
+
+        if context.setting_blind and #find_player_position("DF") >= 2 then
+            Pokerleven.ease_barriers(1, true)
+        end
+    end
 })
 
 
