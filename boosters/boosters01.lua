@@ -277,7 +277,7 @@ local Farm = {
 	}
 }
 
-local Kirwood = {
+local Kirkwood = {
 	name = "Kirkwood",
 	key = "team_pack_kirkwood",
 	kind = "Team",
@@ -342,7 +342,9 @@ local Zeus = {
 
 --- INA PACKS
 local Consts = {
-	max_quantity = 4
+	max_quantity = 4,
+	strats = 1,
+	trainings = 1
 }
 
 local CARD_ORDER = {
@@ -373,13 +375,14 @@ local Ina_Pack = {
 		return create_card_by_order(i)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra - 2, 1, 1 } }
+		local tarots = Consts.max_quantity - Consts.strats - Consts.trainings
+		return { vars = { card.config.center.config.choose, tarots, Consts.strats, Consts.trainings } }
 	end,
 	group_key = "k_ina_item_pack",
 }
 
 return {
 	name = "Boosters01",
-	list = { Raimon, Occult, RoyalAcademy, Wild, Brain, Otaku, Inazuma, Shuriken, Farm, Kirwood, Zeus,
+	list = { Raimon, Occult, RoyalAcademy, Wild, Brain, Otaku, Inazuma, Shuriken, Farm, Kirkwood, Zeus,
 		Ina_Pack }
 }
