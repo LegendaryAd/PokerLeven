@@ -2,9 +2,9 @@
 local get_all_type_pos_combinations = function()
     local combinations = {}
     local c_set = {}
-    for _, t in ipairs(Constants.ALL_TYPES) do
-        for _, p in ipairs(Constants.ALL_POSITIONS) do
-            local key = "c_ina_upgrade_technique_" .. t .. "_" .. p
+    for _, t in ipairs(C.ALL_TYPES) do
+        for _, p in ipairs(C.ALL_POSITIONS) do
+            local key = C.INA_UPGRADE_TECHNIQUE_KEY .. t .. "_" .. p
             if #Pokerleven.find_player_type_and_position(t, p) > 0 and not c_set[key] then
                 table.insert(combinations, key)
                 c_set[key] = true
@@ -42,7 +42,7 @@ local Greeny = J({
             combinations = get_all_type_pos_combinations()
             local selected_combination = pseudorandom_element(combinations, pseudoseed('training'))
 
-            local new_card = create_card("Training", G.consumeables, nil, nil, true, true,
+            local new_card = create_card(C.TRAINING, G.consumeables, nil, nil, true, true,
                 selected_combination, nil)
 
             Pokerleven.ease_barriers(-card.ability.extra.barriers)
@@ -54,8 +54,12 @@ local Greeny = J({
             }
         end
 
-        if context.setting_blind and #find_player_position("DF") >= 2 then
-            Pokerleven.ease_barriers(1, true)
+        if context.setting_blind then
+            local df_required = card.ability.extra.DF_required
+            if Pokerleven.has_enough_position(C.DF, df_required) then
+                local barriers_added = card.ability.extra.barriers_added
+                Pokerleven.ease_barriers(barriers_added, true)
+            end
         end
     end
 })
