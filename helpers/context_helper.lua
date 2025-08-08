@@ -33,9 +33,24 @@ Pokerleven.add_card_to_jokers = function(card)
     }))
 end
 
+---Emplaces consumable and adds it to deck
+---@param card Card
+Pokerleven.add_card_to_consumables = function(card)
+    if card then
+        card:add_to_deck()
+        G.consumeables:emplace(card)
+    end
+end
+
 --- Returns true if current barriers > card.ability.extra.barriers
 ---@param card Card
 ---@return boolean
 Pokerleven.has_enough_barriers = function(card)
     return G.GAME.current_round.barriers >= card.ability.extra.barriers
+end
+
+--- Returns true if consumables limit > current consumables
+---@return boolean
+Pokerleven.has_enough_space_consumables = function()
+    return G.consumeables.config.card_limit > G.consumeables.config.card_count
 end

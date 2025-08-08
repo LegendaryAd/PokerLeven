@@ -182,7 +182,16 @@ local empress = {
     order = 1,
     boss_colour = HEX("B7865B"),
     dollars = 4,
-    big = { min = 0 },
+    big = { min = 2 },
+
+    defeat = function(self)
+        if not Pokerleven.has_enough_space_consumables() then
+            return
+        end
+
+        local new_card = create_card("Tarot", G.consumeables, nil, nil, nil, nil, "c_emperor")
+        Pokerleven.add_card_to_consumables(new_card)
+    end,
 }
 
 return {
