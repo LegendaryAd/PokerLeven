@@ -143,10 +143,6 @@ return {
         },
         Enhanced = {},
         Joker = {
-            j_ina_Kevin = {
-                name = "Kevin",
-                text = { "{C:forest}Dragon Tornado{}", "Retriggers the {X:fw,C:white}FW{} joker", "to his right{}" }
-            },
             j_ina_Mark = {
                 name = "Mark",
                 text = { "Never surrender!", "{C:mult}+#1#{} Mult on your last hand",
@@ -311,10 +307,6 @@ return {
                 text = { "{C:wind}Dash Accelerator{}", "If you play {C:attention} 5 scoring Wild cards{}",
                     "retrigger all of them once", "for each player of element {X:select_element,C:white}#1#{}",
                     "Element change each round" }
-            },
-            j_ina_Feldt = {
-                name = "Feldt",
-                text = { "{C:forest}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
             },
 
             j_ina_Marvel = {

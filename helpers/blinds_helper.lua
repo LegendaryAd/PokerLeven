@@ -162,3 +162,29 @@ function apply_team_discount_to_blind(percent_per_member)
         G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
     end
 end
+
+local blind_get_type = Blind.get_type
+function Blind:get_type()
+    if self.small then
+        return 'Small'
+    elseif self.big then
+        return 'Big'
+    else
+        return blind_get_type(self)
+    end
+end
+
+local old_blind_save = Blind.save
+function Blind:save()
+    local save_table = old_blind_save(self)
+    save_table.small = self.small
+    save_table.big = self.big
+    return save_table
+end
+
+local old_blind_load = Blind.load
+function Blind:load(blindTable)
+    old_blind_load(self, blindTable)
+    self.small = blindTable.small
+    self.big = blindTable.big
+end

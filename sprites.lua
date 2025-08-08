@@ -27,6 +27,13 @@ SMODS.Atlas({
 }):register()
 
 SMODS.Atlas({
+    key = "ina_resources",
+    path = "resources.png",
+    px = 18,
+    py = 18
+}):register()
+
+SMODS.Atlas({
     key = "stickers",
     path = "stickers.png",
     px = 71,
@@ -105,6 +112,13 @@ SMODS.Atlas({
 }):register()
 
 SMODS.Atlas({
+    key = "upgrade_techniques",
+    path = "upgrade_techniques.png",
+    px = 71,
+    py = 95
+}):register()
+
+SMODS.Atlas({
     key = "vouchers01",
     path = "vouchers01.png",
     px = 71,
@@ -150,6 +164,9 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS["zeus"] = HEX("D4AF37")
     G.ARGS.LOC_COLOURS["pink"] = HEX("FF7ABF")
     G.ARGS.LOC_COLOURS["inazuma_eleven"] = HEX("fb8c00")
+    G.ARGS.LOC_COLOURS["bench"] = HEX("4ca0a5")
+    G.ARGS.LOC_COLOURS["training"] = HEX("5A00FF")
+    G.ARGS.LOC_COLOURS["strat"] = HEX("9AA4B7")
 
     return custom_colours(_c, _default)
 end
