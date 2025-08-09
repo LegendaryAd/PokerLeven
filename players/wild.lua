@@ -8,7 +8,7 @@ local Chicken = {
     end,
     rarity = 3, -- Rare
     pools = { ["Wild"] = true },
-    cost = 7,
+    cost = 8,
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "MF", -- Midfielder
@@ -39,7 +39,7 @@ local Boar = {
     end,
     rarity = 1, -- Common
     pools = { ["Wild"] = true },
-    cost = 4,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "GK", -- Goalkeeper
@@ -153,7 +153,7 @@ local Eagle = {
     end,
     rarity = 1, -- Common
     pools = { ["Wild"] = true },
-    cost = 4,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "MF", -- Midfielder
@@ -205,7 +205,7 @@ local Monkey = {
     end,
     rarity = 2, -- Uncommon
     pools = { ["Wild"] = true },
-    cost = 6,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "MF", -- Midfielder
@@ -250,7 +250,7 @@ local Gorilla = {
     end,
     rarity = 1, -- Common
     pools = { ["Wild"] = true },
-    cost = 4,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Mountain",
     pposition = "FW", -- Forward
@@ -282,7 +282,7 @@ local Cheetah = {
     end,
     rarity = 2, -- Uncommon
     pools = { ["Wild"] = true },
-    cost = 6,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "FW", -- Forward

@@ -73,7 +73,7 @@ local Apollo = {
   end,
   rarity = 1,
   pools = { ["Zeus"] = true },
-  cost = 4,
+  cost = 5,
   atlas = "Jokers01",
   ptype = "Forest",
   pposition = "DF",
@@ -119,7 +119,7 @@ local Artemis = J({
   end,
   rarity = 2, -- Uncommon
   pools = { ["Zeus"] = true },
-  cost = 6,
+  cost = 7,
   atlas = "Jokers01",
   ptype = "Wind",
   pposition = "MF", -- Midfielder
@@ -171,7 +171,7 @@ local Hermes = {
   end,
   rarity = 2, -- Uncommon
   pools = { ["Zeus"] = true },
-  cost = 6,
+  cost = 7,
   atlas = "Jokers01",
   ptype = "Forest",
   pposition = "MF", -- Midfielder
@@ -211,7 +211,7 @@ local Demeter = {
   end,
   rarity = 1,
   pools = { ["Zeus"] = true },
-  cost = 4,
+  cost = 5,
   atlas = "Jokers01",
   ptype = "Fire",
   pposition = "FW",
@@ -296,7 +296,7 @@ local Aphrodite = J({
     return { vars = { center.ability.extra.byron_mult_fw, center.ability.extra.byron_mult_mf, get_byron_xmult(center, position) } }
   end,
   rarity = 4, -- Legendary
-  cost = 12,
+  cost = 15,
   atlas = "Jokers01",
   ptype = "Forest",
   pposition = "MF", -- Midfielder

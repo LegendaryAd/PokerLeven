@@ -7,7 +7,7 @@ local Neville = J({
     end,
     rarity = 1, -- Common
     pools = { ["Kirkwood"] = true },
-    cost = 8,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "GK",
@@ -30,7 +30,7 @@ local Night = J({
     end,
     rarity = 3, -- Rare
     pools = { ["Kirkwood"] = true },
-    cost = 12,
+    cost = 8,
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "DF",
@@ -61,7 +61,7 @@ local Marvin = J({
     end,
     rarity = 2, -- Uncommon
     pools = { ["Kirkwood"] = true },
-    cost = 10,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "FW",
@@ -81,7 +81,7 @@ local Thomas = J({
     end,
     rarity = 2, -- Uncommon
     pools = { ["Kirkwood"] = true },
-    cost = 10,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "FW",
@@ -101,7 +101,7 @@ local Tyler = J({
     end,
     rarity = 2, -- Uncommon
     pools = { ["Kirkwood"] = true },
-    cost = 10,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Mountain",
     pposition = "FW",
@@ -120,7 +120,7 @@ local Damian = J({
     end,
     rarity = 1, -- Common
     pools = { ["Kirkwood"] = true },
-    cost = 8,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "MF",
@@ -162,7 +162,7 @@ local Nashmith = J({
     end,
     rarity = 1,
     pools = { ["Kirkwood"] = true },
-    cost = 8,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Forest",
     pposition = "MF",
@@ -200,7 +200,7 @@ local z_triangle = J({
     end,
     rarity = 1, -- Common
     pools = { ["Kirkwood"] = true },
-    cost = 8,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "FW",

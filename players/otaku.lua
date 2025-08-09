@@ -74,7 +74,7 @@ local Custom = {
     end,
     rarity = 2, -- Common
     pools = { ["Otaku"] = true },
-    cost = 6,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "FW",
@@ -93,7 +93,7 @@ local Robot = {
     end,
     rarity = 2, -- Uncommon
     pools = { ["Otaku"] = true },
-    cost = 6,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "MF",
@@ -205,7 +205,7 @@ local Arcade = {
     end,
     rarity = 2, -- Uncommon
     pools = { ["Otaku"] = true },
-    cost = 5,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Forest",
     pposition = "FW",

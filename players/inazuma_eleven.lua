@@ -94,7 +94,7 @@ local sweet = J({
   },
   rarity = 1, -- Common
   pools = { ["Inazuma Eleven"] = true },
-  cost = 4,
+  cost = 5,
   atlas = "Jokers01",
   ptype = "Mountain",
   pposition = "DF",
@@ -139,7 +139,7 @@ local butler = J({
   end,
   rarity = 1, -- Common
   pools = { ["Inazuma Eleven"] = true },
-  cost = 4,
+  cost = 5,
   atlas = "Jokers01",
   ptype = "Forest",
   pposition = "MF",
@@ -179,7 +179,7 @@ local barista = J({
   end,
   rarity = 2, -- Uncommon
   pools = { ["Inazuma Eleven"] = true },
-  cost = 6,
+  cost = 7,
   atlas = "Jokers01",
   ptype = "Wind",
   pposition = "FW",
@@ -211,7 +211,7 @@ local builder = J({
   end,
   rarity = 2, -- Uncommon
   pools = { ["Inazuma Eleven"] = true },
-  cost = 6,
+  cost = 7,
   atlas = "Jokers01",
   ptype = "Fire",
   pposition = "FW",
