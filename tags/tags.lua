@@ -61,7 +61,7 @@ local chain_tag = {
     atlas = "Tags01",
     name = "chain_tag",
     order = 27,
-    pos = { x = 2, y = 0 },
+    pos = { x = 1, y = 0 },
     config = {},
     key = "chain_tag",
     min_ante = 2,
