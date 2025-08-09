@@ -8,7 +8,7 @@ local Chicken = {
     end,
     rarity = 3, -- Rare
     pools = { ["Wild"] = true },
-    cost = 7,
+    cost = 8,
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "MF", -- Midfielder
@@ -39,7 +39,7 @@ local Boar = {
     end,
     rarity = 1, -- Common
     pools = { ["Wild"] = true },
-    cost = 4,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "GK", -- Goalkeeper
@@ -85,6 +85,7 @@ local Chamaleon = {
     ptype = "Wind",
     pposition = "MF", -- Midfielder
     pteam = "Wild",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main then
@@ -153,11 +154,12 @@ local Eagle = {
     end,
     rarity = 1, -- Common
     pools = { ["Wild"] = true },
-    cost = 4,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "MF", -- Midfielder
     pteam = "Wild",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers
@@ -205,11 +207,12 @@ local Monkey = {
     end,
     rarity = 2, -- Uncommon
     pools = { ["Wild"] = true },
-    cost = 6,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "MF", -- Midfielder
     pteam = "Wild",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if G.STAGE == G.STAGES.RUN then
@@ -250,11 +253,12 @@ local Gorilla = {
     end,
     rarity = 1, -- Common
     pools = { ["Wild"] = true },
-    cost = 4,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Mountain",
     pposition = "FW", -- Forward
     pteam = "Wild",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.end_of_round and context.main_eval and G.GAME.blind.boss and not context.blueprint then
@@ -282,7 +286,7 @@ local Cheetah = {
     end,
     rarity = 2, -- Uncommon
     pools = { ["Wild"] = true },
-    cost = 6,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "FW", -- Forward

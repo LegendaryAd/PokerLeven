@@ -15,6 +15,7 @@ local Feldt = J({
     ptype = "Forest",
     pposition = "GK", -- Goalkeeper
     pteam = "Brain",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if Pokerleven.is_joker_last_hand(context) and G.GAME.current_round.barriers > 0 then
@@ -55,6 +56,7 @@ local Marvel = {
     ptype = "Mountain",
     pposition = "DF", -- Defense
     pteam = "Brain",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
@@ -175,11 +177,12 @@ local Kind = {
     end,
     rarity = 2, -- Uncommon
     pools = { ["Brain"] = true },
-    cost = 6,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Forest",
     pposition = "MF", -- Midfielder
     pteam = "Brain",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play then
@@ -231,6 +234,7 @@ local Turner = {
     ptype = "Fire",
     pposition = "FW", -- Forward
     pteam = "Brain",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main and G.GAME.current_round.hands_played == 0

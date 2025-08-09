@@ -14,7 +14,7 @@ local hood = J({
     end,
     rarity = 2,
     pools = { ["Shuriken"] = true },
-    cost = 8,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Forest",
     pteam = "Shuriken",
@@ -42,11 +42,12 @@ local hillfort = J({
     end,
     rarity = 1, -- Common
     pools = { ["Shuriken"] = true },
-    cost = 8,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "DF",
     pteam = "Shuriken",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main and context.scoring_hand then
@@ -66,7 +67,7 @@ local code = J({
     config = { extra = { { triggered = false } } },
     rarity = 2, -- Uncommon
     pools = { ["Shuriken"] = true },
-    cost = 8,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Mountain",
     pposition = "MF",
@@ -96,11 +97,12 @@ local star = J({
     end,
     rarity = 1, -- Common
     pools = { ["Shuriken"] = true },
-    cost = 8,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "MF",
     pteam = "Shuriken",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:is_suit(card.ability.extra.suit) then
@@ -127,7 +129,7 @@ local cleats = J({
     end,
     rarity = 1, -- Common
     pools = { ["Shuriken"] = true },
-    cost = 8,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "MF",
@@ -160,11 +162,12 @@ local hattori = J({
     end,
     rarity = 2,
     pools = { ["Shuriken"] = true },
-    cost = 8,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Forest",
     pposition = "MF",
     pteam = "Shuriken",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.setting_blind then
