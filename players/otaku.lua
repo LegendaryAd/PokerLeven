@@ -13,6 +13,7 @@ local Idol = {
     ptype = "Mountain",
     pposition = "GK",
     pteam = "Otaku",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.repetition and context.scoring_hand and context.other_card then
@@ -134,6 +135,7 @@ local Gamer = {
     ptype = "Fire",
     pposition = "FW",
     pteam = "Otaku",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.scoring_hand and context.joker_main then
@@ -210,6 +212,7 @@ local Arcade = {
     ptype = "Forest",
     pposition = "FW",
     pteam = "Otaku",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and not context.blueprint then

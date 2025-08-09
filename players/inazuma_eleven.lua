@@ -54,6 +54,7 @@ local island = J({
   ptype = "Forest",
   pposition = "DF",
   pteam = "Inazuma Eleven",
+  techtype = C.UPGRADES.Number,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.before and context.cardarea == G.jokers

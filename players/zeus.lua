@@ -301,6 +301,7 @@ local Aphrodite = J({
   ptype = "Forest",
   pposition = "MF", -- Midfielder
   pteam = "Zeus",
+  techtype = C.UPGRADES.Plus,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if Pokerleven.is_joker_end_of_round(context) then
