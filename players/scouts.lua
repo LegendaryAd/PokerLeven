@@ -158,5 +158,5 @@ local George = {
 
 return {
     name = "Scout",
-    list = { Dulce, Ryoma, Blazer, Chester, Mach, Miles, George },
+    list = { Blazer },
 }
