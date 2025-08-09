@@ -4,7 +4,7 @@ local goalkeeper = {
     key = "goalkeeper",
     pos = { x = 0, y = 3 },
     boss = {
-        min = 3,
+        min = 1,
         max = 10,
     },
     discovered = true,
@@ -30,7 +30,7 @@ local forward = {
     key = "forward",
     pos = { x = 0, y = 0 },
     boss = {
-        min = 3,
+        min = 1,
         max = 10,
     },
     discovered = true,
@@ -56,7 +56,7 @@ local defense = {
     key = "defense",
     pos = { x = 0, y = 2 },
     boss = {
-        min = 3,
+        min = 1,
         max = 10,
     },
     discovered = true,
@@ -82,7 +82,7 @@ local midfielder = {
     key = "midfielder",
     pos = { x = 0, y = 1 },
     boss = {
-        min = 3,
+        min = 1,
         max = 10,
     },
     discovered = true,
@@ -108,7 +108,7 @@ local fire = {
     key = "fire",
     pos = { x = 0, y = 4 },
     boss = {
-        min = 3,
+        min = 1,
         max = 10,
     },
     discovered = true,
@@ -134,7 +134,7 @@ local mountain = {
     key = "mountain",
     pos = { x = 0, y = 7 },
     boss = {
-        min = 3,
+        min = 1,
         max = 10,
     },
     discovered = true,
@@ -160,7 +160,7 @@ local wind = {
     key = "wind",
     pos = { x = 0, y = 5 },
     boss = {
-        min = 3,
+        min = 1,
         max = 10,
     },
     discovered = true,
@@ -186,7 +186,7 @@ local forest = {
     key = "forest",
     pos = { x = 0, y = 6 },
     boss = {
-        min = 3,
+        min = 1,
         max = 10,
     },
     discovered = true,
@@ -218,6 +218,7 @@ local inazuma_og = {
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
+    debuff = { h_size_ge = 5 },
     boss_colour = HEX("ffa726"),
 }
 
@@ -227,29 +228,45 @@ local royal_blind = {
     key = "royal_blind",
     pos = { x = 0, y = 9 },
     boss = {
-        min = 0,
+        min = 2,
     },
     discovered = true,
-    mult = 2,
+    mult = 1.25,
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("2e7d32"),
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.setting_blind then
+                G.GAME.blind.hands_sub = G.GAME.round_resets.hands - 1
+                ease_hands_played(-G.GAME.blind.hands_sub)
+            end
+        end
+    end,
+    disable = function(self)
+        ease_hands_played(G.GAME.blind.hands_sub)
+    end
 }
 
-local wild = {
+local wild = B({
     object_type = "Blind",
     name = "Wild",
     key = "wild",
     pos = { x = 0, y = 10 },
     boss = {
-        min = 0,
+        min = 2,
     },
     discovered = true,
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
+    recalc_debuff = function(self, card, from_blind)
+        if SMODS.has_enhancement(card, "m_wild") then
+            return true
+        end
+    end,
     boss_colour = HEX("797B49"),
-}
+})
 
 local brain = {
     object_type = "Blind",
@@ -257,13 +274,38 @@ local brain = {
     key = "brain",
     pos = { x = 0, y = 11 },
     boss = {
-        min = 0,
+        min = 2,
     },
     discovered = true,
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("888888"),
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.press_play then
+                blind.prepped = true
+            end
+            if context.stay_flipped and context.to_area == G.hand and blind.prepped then
+                return {
+                    stay_flipped = true
+                }
+            end
+        end
+        if context.setting_blind or context.hand_drawn then
+            blind.prepped = nil
+        end
+    end,
+    disable = function(self)
+        for i = 1, #G.hand.cards do
+            if G.hand.cards[i].facing == 'back' then
+                G.hand.cards[i]:flip()
+            end
+        end
+        for _, playing_card in pairs(G.playing_cards) do
+            playing_card.ability.wheel_flipped = nil
+        end
+    end
 }
 
 local otaku = {
@@ -272,7 +314,7 @@ local otaku = {
     key = "otaku",
     pos = { x = 0, y = 12 },
     boss = {
-        min = 4,
+        min = 3,
     },
     discovered = true,
     mult = 2,
@@ -288,7 +330,7 @@ local shuriken = {
     key = "shuriken",
     pos = { x = 0, y = 13 },
     boss = {
-        min = 0,
+        min = 2,
     },
     discovered = true,
     mult = 2,
@@ -303,10 +345,10 @@ local farm = {
     key = "farm",
     pos = { x = 0, y = 14 },
     boss = {
-        min = 0,
+        min = 2,
     },
     discovered = true,
-    mult = 2,
+    mult = 4,
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("7AC943"),
@@ -332,9 +374,7 @@ local zeus = {
     name = "Zeus",
     key = "zeus",
     pos = { x = 0, y = 0 },
-    boss = {
-        min = 0,
-    },
+    boss = { showdown = true },
     discovered = true,
     mult = 2,
     atlas = "finalBossBlinds",

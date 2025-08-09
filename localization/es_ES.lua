@@ -124,19 +124,20 @@ return {
             },
             bl_ina_inazuma_og = {
                 name = "Inazuma Eleven",
-                text = {}
+                text = { "Tienes que jugar 5 cartas" }
             },
             bl_ina_royal_blind = {
                 name = "Royal Academy",
-                text = {}
+                text = { "Juega una sola mano" }
             },
             bl_ina_wild = {
                 name = "Wild",
-                text = {}
+                text = { "Debilita las cartas", "versátiles" }
             },
             bl_ina_brain = {
                 name = "Brain",
-                text = {}
+                text = { "Las cartas se roban",
+                    "boca abajo tras", "cada mano jugada" }
             },
             bl_ina_otaku = {
                 name = "Otaku",
@@ -148,7 +149,7 @@ return {
             },
             bl_ina_farm = {
                 name = "Farm",
-                text = {}
+                text = { "Ciega MUY grande" }
             },
             bl_ina_kirkwood = {
                 name = "Kirkwood",
