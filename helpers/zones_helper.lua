@@ -44,7 +44,7 @@ function Game:start_run(args)
             offset = { x = 0, y = -5 },
             major = self.jokers,
             bond = 'Weak',
-            instance_type = "ALERT" },
+            instance_type = "CARD" },
     }
 
     self.ina_bench.states.visible = false

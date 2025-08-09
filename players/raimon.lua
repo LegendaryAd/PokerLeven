@@ -470,7 +470,7 @@ local Bobby = J({
   end
 })
 
--- Max
+-- Steve
 local Steve = J({
   name = "Steve",
   pos = { x = 2, y = 7 },
