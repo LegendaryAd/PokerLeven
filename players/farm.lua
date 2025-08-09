@@ -28,7 +28,7 @@ local Greeny = J({
     end,
     rarity = 1, -- Common
     pools = { ["Farm"] = true },
-    cost = 8,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "GK",
@@ -79,7 +79,7 @@ local Hayseed = J({
     end,
     rarity = 1,
     pools = { ["Farm"] = true },
-    cost = 8,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Mountain",
     pposition = "DF",
@@ -115,7 +115,7 @@ local Sherman = J({
     end,
     rarity = 1, -- Common
     pools = { ["Farm"] = true },
-    cost = 8,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "DF",
@@ -162,7 +162,7 @@ local Spray = J({
     end,
     rarity = 2, -- Uncommon
     pools = { ["Farm"] = true },
-    cost = 8,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Fire",
     pposition = "MF",
@@ -200,7 +200,7 @@ local Dawson = J({
     end,
     rarity = 2, -- Uncommon
     pools = { ["Farm"] = true },
-    cost = 8,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Wind",
     pposition = "MF",
@@ -247,7 +247,7 @@ local Muffs = J({
     end,
     rarity = 2, -- Uncommon
     pools = { ["Farm"] = true },
-    cost = 8,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Forest",
     pposition = "FW",
@@ -305,7 +305,7 @@ local Hillvalley = J({
     end,
     rarity = 1, -- Common
     pools = { ["Farm"] = true },
-    cost = 8,
+    cost = 5,
     atlas = "Jokers01",
     ptype = "Mountain",
     pposition = "DF",

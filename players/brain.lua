@@ -175,7 +175,7 @@ local Kind = {
     end,
     rarity = 2, -- Uncommon
     pools = { ["Brain"] = true },
-    cost = 6,
+    cost = 7,
     atlas = "Jokers01",
     ptype = "Forest",
     pposition = "MF", -- Midfielder
