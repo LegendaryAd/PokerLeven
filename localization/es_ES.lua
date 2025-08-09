@@ -341,6 +341,11 @@ return {
                     { "Los jugadores del equipo",
                         "de {C:attention}Bobby{} otorgan {C:chips}+#1# Chips{}", } }
             },
+            j_ina_Steve = {
+                name = "Steve",
+                text = { "{C:wind}Disparo Rodante{}", "{C:chips}+#1#{} fichas",
+                    "{C:mult}+#2#{} mult" }
+            },
             -- Occult
             j_ina_Talisman = {
                 name = "Talisman",
@@ -1276,6 +1281,7 @@ return {
             ina_gafas = "GAFITAAAS",
             ina_saved = "Fuiste salvado",
             ina_technique_card = "¡Técnica!",
+            ina_gol = "¡Gol!",
 
 
             -- Resources
