@@ -230,7 +230,6 @@ Pokerleven.add_to_managers = function(card)
     end
 
     Pokerleven.ina_manager_area:emplace(card)
-    card:add_to_deck()
 end
 
 ---Adds card to bench area
@@ -242,7 +241,6 @@ Pokerleven.add_to_bench = function(card)
     end
 
     Pokerleven.ina_bench_area:emplace(card)
-    card:add_to_deck()
 end
 
 
@@ -321,7 +319,7 @@ G.FUNCS.toggle_bench_card = function(e, add_func, open_bench_flag)
         trigger = 'immediate',
         func = function()
             add_func(new_card)
-            new_card:add_to_deck()
+            new_card:remove_from_deck()
             Pokerleven.open_bench(true, open_bench_flag)
             return true
         end
