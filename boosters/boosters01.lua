@@ -185,7 +185,7 @@ local Otaku = {
 }
 
 local Inazuma = {
-	name = "Inazuma",
+	name = "Inazuma Eleven",
 	key = "team_pack_inazuma",
 	kind = "Team",
 	atlas = "Boosters01",
@@ -194,7 +194,7 @@ local Inazuma = {
 	cost = 4,
 	order = 1,
 	weight = function()
-		if #find_player_team("Inazuma") > 0 then
+		if #find_player_team("Inazuma Eleven") > 0 then
 			return 0.35
 		else
 			return 0
@@ -204,7 +204,7 @@ local Inazuma = {
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
-		return create_card("Inazuma", G.pack_cards, nil, nil, true, true, nil, nil)
+		return create_card("Inazuma Eleven", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.config.center.config.choose, card.ability.extra } }

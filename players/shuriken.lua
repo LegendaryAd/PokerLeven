@@ -232,7 +232,7 @@ local cloack = J({
     ptype = "Fire",
     pposition = "FW",
     pteam = "Shuriken",
-    pools = { Shuriken = true },
+    pools = { ["Shuriken"] = true },
     blueprint_compat = true,
     config = {
         extra = {

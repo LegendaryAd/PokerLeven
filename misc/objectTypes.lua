@@ -47,6 +47,20 @@ local Farm = {
 	cards = {},
 }
 
+local InazumaEleven = {
+	object_type = "ObjectType",
+	key = "Inazuma Eleven",
+	default = "v_blank",
+	cards = {},
+}
+
+local Shuriken = {
+	object_type = "ObjectType",
+	key = "Shuriken",
+	default = "v_blank",
+	cards = {},
+}
+
 local Kirkwood = {
 	object_type = "ObjectType",
 	key = "Kirkwood",
@@ -71,5 +85,5 @@ local Training = {
 
 return {
 	name = "Types",
-	list = { Raimon, Occult, Royal, Wild, Brain, Otaku, Farm, Kirkwood, Zeus, Training }
+	list = { Raimon, Occult, Royal, Wild, Brain, Otaku, Farm, InazumaEleven, Kirkwood, Shuriken, Zeus, Training }
 }
