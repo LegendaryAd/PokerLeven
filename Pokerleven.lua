@@ -31,7 +31,7 @@ for _, file in ipairs(helpers) do
 end
 
 --Load UI file
-local UI, load_error = SMODS.load_file("pokeui.lua")
+local UI, load_error = SMODS.load_file("mainui.lua")
 if load_error then
   sendDebugMessage("The error is: " .. load_error)
 elseif UI ~= nil then
