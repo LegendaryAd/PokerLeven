@@ -85,6 +85,7 @@ local Chamaleon = {
     ptype = "Wind",
     pposition = "MF", -- Midfielder
     pteam = "Wild",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main then
@@ -158,6 +159,7 @@ local Eagle = {
     ptype = "Wind",
     pposition = "MF", -- Midfielder
     pteam = "Wild",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers
@@ -210,6 +212,7 @@ local Monkey = {
     ptype = "Wind",
     pposition = "MF", -- Midfielder
     pteam = "Wild",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if G.STAGE == G.STAGES.RUN then
@@ -255,6 +258,7 @@ local Gorilla = {
     ptype = "Mountain",
     pposition = "FW", -- Forward
     pteam = "Wild",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.end_of_round and context.main_eval and G.GAME.blind.boss and not context.blueprint then

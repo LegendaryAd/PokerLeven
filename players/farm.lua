@@ -33,6 +33,7 @@ local Greeny = J({
     ptype = "Fire",
     pposition = "GK",
     pteam = "Farm",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.setting_blind
@@ -120,6 +121,7 @@ local Sherman = J({
     ptype = "Fire",
     pposition = "DF",
     pteam = "Farm",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.post_trigger and context.other_card ~= card
@@ -167,6 +169,7 @@ local Spray = J({
     ptype = "Fire",
     pposition = "MF",
     pteam = "Farm",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.setting_blind then
@@ -205,6 +208,7 @@ local Dawson = J({
     ptype = "Wind",
     pposition = "MF",
     pteam = "Farm",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main and to_big(G.GAME.dollars) < to_big(card.ability.extra.max_money)
@@ -252,6 +256,7 @@ local Muffs = J({
     ptype = "Forest",
     pposition = "FW",
     pteam = "Farm",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.discard and context.other_card.ability["ina_harvest_sticker"] == true then
@@ -310,6 +315,7 @@ local Hillvalley = J({
     ptype = "Mountain",
     pposition = "DF",
     pteam = "Farm",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.after and context.cardarea == G.jokers and not context.blueprint then

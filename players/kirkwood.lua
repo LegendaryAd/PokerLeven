@@ -12,6 +12,7 @@ local Neville = J({
     ptype = "Fire",
     pposition = "GK",
     pteam = "Kirkwood",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     add_to_deck = function(self, card, from_debuff)
         G.GAME.probabilities.new_glass_denom = card.ability.extra.new_glass_denom
@@ -35,6 +36,7 @@ local Night = J({
     ptype = "Fire",
     pposition = "DF",
     pteam = "Kirkwood",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.setting_blind and not context.blueprint then
@@ -167,8 +169,8 @@ local Nashmith = J({
     ptype = "Forest",
     pposition = "MF",
     pteam = "Kirkwood",
+    techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
-
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card then
             if context.other_card:is_suit("Spades") then
