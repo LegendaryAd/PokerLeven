@@ -196,7 +196,8 @@ local controller_queue_R_cursor_press_ref = Controller.queue_R_cursor_press
 function Controller:queue_R_cursor_press(x, y)
   controller_queue_R_cursor_press_ref(self, x, y)
   local clicked = self.hovering.target or self.focused.target
-  if clicked and type(clicked) == 'table' and clicked.config and type(clicked.config) == 'table' and clicked.config.center and clicked.facing ~= 'back' then
+  if clicked and type(clicked) == 'table' and clicked.config and type(clicked.config) == 'table' and clicked.config.center and clicked.facing ~= 'back'
+      and clicked.config.center.ptype then
     local menu = initialize_previous_menu()
     Pokerleven.ui.create_overlay_for_joker_properties(clicked.config.center_key, menu)
   end
