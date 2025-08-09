@@ -44,6 +44,7 @@ local Boar = {
     ptype = "Fire",
     pposition = "GK", -- Goalkeeper
     pteam = "Wild",
+    techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.destroying_card and not context.blueprint then
@@ -95,14 +96,22 @@ local Chamaleon = {
             }
 
             for _, c in ipairs(context.full_hand) do
-                if c:is_suit("Clubs") and not SMODS.has_enhancement(c, 'm_wild') then suit_counts.Clubs = suit_counts
-                    .Clubs + 1 end
-                if c:is_suit("Hearts") and not SMODS.has_enhancement(c, 'm_wild') then suit_counts.Hearts = suit_counts
-                    .Hearts + 1 end
-                if c:is_suit("Spades") and not SMODS.has_enhancement(c, 'm_wild') then suit_counts.Spades = suit_counts
-                    .Spades + 1 end
-                if c:is_suit("Diamonds") and not SMODS.has_enhancement(c, 'm_wild') then suit_counts.Diamonds =
-                    suit_counts.Diamonds + 1 end
+                if c:is_suit("Clubs") and not SMODS.has_enhancement(c, 'm_wild') then
+                    suit_counts.Clubs = suit_counts
+                        .Clubs + 1
+                end
+                if c:is_suit("Hearts") and not SMODS.has_enhancement(c, 'm_wild') then
+                    suit_counts.Hearts = suit_counts
+                        .Hearts + 1
+                end
+                if c:is_suit("Spades") and not SMODS.has_enhancement(c, 'm_wild') then
+                    suit_counts.Spades = suit_counts
+                        .Spades + 1
+                end
+                if c:is_suit("Diamonds") and not SMODS.has_enhancement(c, 'm_wild') then
+                    suit_counts.Diamonds =
+                        suit_counts.Diamonds + 1
+                end
             end
 
             local outlier_suit = nil
@@ -268,7 +277,7 @@ local Cheetah = {
     config = { extra = { current_element = "Wind", possible_elements = { "Wind", "Fire", "Forest", "Mountain" }, triggered = false } },
     loc_vars = function(self, info_queue, center)
         G.ARGS.LOC_COLOURS["select_element"] = G.ARGS.LOC_COLOURS[string.lower(center.ability.extra.current_element)] or
-        HEX("FFFFFF")
+            HEX("FFFFFF")
         return { vars = { center.ability.extra.current_element } }
     end,
     rarity = 2, -- Uncommon

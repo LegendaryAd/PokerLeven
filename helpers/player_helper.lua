@@ -138,16 +138,21 @@ get_team = function(card)
 end
 
 player_in_pool = function(self)
+    if self.special then
+        return false
+    end
+
     if next(find_joker("Custom")) and self.ptype == "Wind" then
         return true
     end
+
     local name
     if not self.name and self.ability.name then
         name = self.ability.name
     else
         name = self.name or "Mark"
     end
-    if next(find_joker(name)) or self.special then
+    if next(find_joker(name)) then
         return false
     else
         return true

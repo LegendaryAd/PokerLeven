@@ -13,6 +13,7 @@ local King = {
   ptype = "Fire",
   pposition = "GK",
   pteam = "Royal Academy",
+  techtype = C.UPGRADES.Number,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.cardarea == G.jokers and context.joker_main then
@@ -82,6 +83,7 @@ local Bloom = {
   ptype = "Fire",
   pposition = "MF",
   pteam = "Royal Academy",
+  techtype = C.UPGRADES.Number,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main and context.scoring_hand and next(context.poker_hands['Straight']) then
@@ -116,6 +118,7 @@ local Drent = {
   ptype = "Mountain",
   pposition = "DF",
   pteam = "Royal Academy",
+  techtype = C.UPGRADES.Plus,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.after and context.cardarea == G.jokers then
@@ -173,6 +176,7 @@ local Jude = {
   stage = "base",
   pposition = "MF",
   pteam = "Royal Academy",
+  techtype = C.UPGRADES.Plus,
   blueprint_compat = true,
   calculate = function(self, card, context)
     local index
@@ -232,6 +236,7 @@ local Martin = {
   ptype = "Forest",
   pposition = "DF",
   pteam = "Royal Academy",
+  techtype = C.UPGRADES.Plus,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.other_joker and context.other_joker.config.center.rarity == 4 and card ~= context.other_joker then
@@ -310,6 +315,7 @@ local Master = {
   ptype = "Wind",
   pposition = "MF",
   pteam = "Royal Academy",
+  techtype = C.UPGRADES.Plus,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.cardarea == G.jokers and context.joker_main then
@@ -347,6 +353,7 @@ local Samford = {
   ptype = "Forest",
   pposition = "FW",
   pteam = "Royal Academy",
+  techtype = C.UPGRADES.Number,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main and context.scoring_hand then
@@ -378,6 +385,7 @@ local Swing = {
   pposition = "MF",
   pteam = "Royal Academy",
   blueprint_compat = true,
+  techtype = C.UPGRADES.Number,
   calculate = function(self, card, context)
     if context.scoring_hand and context.joker_main and next(context.poker_hands['Three of a Kind']) then
       local count = #find_player_team("Royal Academy")
