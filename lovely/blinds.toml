@@ -3,6 +3,61 @@ version = "1.0.0"
 dump_lua = true
 priority = 3
 
+## Custom bosses only
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''if eligible_bosses[k] then
+            if eligible_bosses[k] > min_use then '''
+position = 'at'
+match_indent = true
+payload = '''
+if eligible_bosses[k] then
+    local is_mod = G.P_BLINDS[k].mod and G.P_BLINDS[k].mod.id == 'Pokerleven'
+    if Pokerleven.config.custom_middle_blinds == true then
+        if not is_mod then
+            eligible_bosses[k] = nil
+        end
+elseif eligible_bosses[k] > min_use then
+'''
+
+
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = '''G.DISCOVER_TALLIES.total.of = G.DISCOVER_TALLIES.total.of+1
+      G.DISCOVER_TALLIES.blinds.of = G.DISCOVER_TALLIES.blinds.of+1
+      if v.discovered then 
+          G.DISCOVER_TALLIES.blinds.tally = G.DISCOVER_TALLIES.blinds.tally+1
+          G.DISCOVER_TALLIES.total.tally = G.DISCOVER_TALLIES.total.tally+1
+      end'''
+position = 'at'
+match_indent = true
+payload = '''
+local is_mod = v.mod and v.mod.id == 'Pokerleven'
+if is_mod then
+    G.DISCOVER_TALLIES.total.of = G.DISCOVER_TALLIES.total.of+1
+    G.DISCOVER_TALLIES.blinds.of = G.DISCOVER_TALLIES.blinds.of+1
+    if v.discovered then 
+        G.DISCOVER_TALLIES.blinds.tally = G.DISCOVER_TALLIES.blinds.tally+1
+        G.DISCOVER_TALLIES.total.tally = G.DISCOVER_TALLIES.total.tally+1
+    end
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''blind_tab[#blind_tab+1] = v'''
+position = 'at'
+match_indent = true
+payload = '''
+local is_mod = v.mod and v.mod.id == 'Pokerleven'
+if is_mod then
+    blind_tab[#blind_tab + 1] = v
+end
+'''
+
 ## Custom Small/Big Blinds
 [[patches]]
 [patches.pattern]

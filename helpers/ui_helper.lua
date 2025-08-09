@@ -154,6 +154,28 @@ function SMODS.create_mod_badges(obj, badges)
     end
 end
 
+--- Only Mod Blinds
+local original_collection_pool = SMODS.collection_pool
+SMODS.collection_pool = function(_base_pool)
+    local result = original_collection_pool(_base_pool)
+
+    local is_blinds_pool = (_base_pool == G.P_BLINDS)
+
+    if is_blinds_pool then
+        local filtered_result = {}
+        for _, v in ipairs(result) do
+            local is_mod = (type(v.mod) == "string" and v.mod == "Pokerleven")
+                or (type(v.mod) == "table" and v.mod.id == "Pokerleven")
+            if is_mod then
+                filtered_result[#filtered_result + 1] = v
+            end
+        end
+        return filtered_result
+    else
+        return result
+    end
+end
+
 ---Creates the UI for jokers in collection
 ---@return UINode node UI for jokers in collection
 create_UIBox_your_collection_jokers = function()
@@ -203,7 +225,7 @@ G.FUNCS.your_collection_managers = function(e)
     }
 end
 
-Pokerleven.Extra_Additions = { "Manager", "Technique" }
+Pokerleven.Extra_Additions = { "Manager" }
 local original_buildAdditionsTab = buildAdditionsTab
 function buildAdditionsTab(mod)
     local tab = original_buildAdditionsTab(mod)

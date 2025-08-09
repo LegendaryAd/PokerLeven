@@ -37,7 +37,7 @@ local forward = {
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
-    boss_colour = HEX("ef5350"),
+    boss_colour = HEX("4fc3f7"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
             and card.config.center.pposition == "FW" then
@@ -63,7 +63,7 @@ local defense = {
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
-    boss_colour = HEX("66bb6a"),
+    boss_colour = HEX("ef5350"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
             and card.config.center.pposition == "DF" then
@@ -89,7 +89,7 @@ local midfielder = {
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
-    boss_colour = HEX("4fc3f7"),
+    boss_colour = HEX("66bb6a"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
             and card.config.center.pposition == "MF" then
@@ -212,7 +212,7 @@ local inazuma_og = {
     key = "inazuma_og",
     pos = { x = 0, y = 8 },
     boss = {
-        min = 10000,
+        min = 0,
     },
     discovered = true,
     mult = 2,
@@ -227,7 +227,7 @@ local royal_blind = {
     key = "royal_blind",
     pos = { x = 0, y = 9 },
     boss = {
-        min = 10000,
+        min = 0,
     },
     discovered = true,
     mult = 2,
@@ -242,7 +242,7 @@ local wild = {
     key = "wild",
     pos = { x = 0, y = 10 },
     boss = {
-        min = 10000,
+        min = 0,
     },
     discovered = true,
     mult = 2,
@@ -257,7 +257,7 @@ local brain = {
     key = "brain",
     pos = { x = 0, y = 11 },
     boss = {
-        min = 10000,
+        min = 0,
     },
     discovered = true,
     mult = 2,
@@ -272,13 +272,14 @@ local otaku = {
     key = "otaku",
     pos = { x = 0, y = 12 },
     boss = {
-        min = 10000,
+        min = 4,
     },
     discovered = true,
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("A754C4"),
+    debuff = { is_face = true },
 }
 
 local shuriken = {
@@ -287,7 +288,7 @@ local shuriken = {
     key = "shuriken",
     pos = { x = 0, y = 13 },
     boss = {
-        min = 10000,
+        min = 0,
     },
     discovered = true,
     mult = 2,
@@ -302,7 +303,7 @@ local farm = {
     key = "farm",
     pos = { x = 0, y = 14 },
     boss = {
-        min = 10000,
+        min = 0,
     },
     discovered = true,
     mult = 2,
@@ -317,7 +318,7 @@ local kirkwood = {
     key = "kirkwood",
     pos = { x = 0, y = 15 },
     boss = {
-        min = 10000,
+        min = 0,
     },
     discovered = true,
     mult = 2,
@@ -332,7 +333,7 @@ local zeus = {
     key = "zeus",
     pos = { x = 0, y = 0 },
     boss = {
-        min = 10000,
+        min = 0,
     },
     discovered = true,
     mult = 2,

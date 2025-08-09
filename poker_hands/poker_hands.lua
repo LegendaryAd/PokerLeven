@@ -14,8 +14,8 @@ local full_mansion = P({
     visible = true,
     chips = 220,
     mult = 22,
-    l_chips = 40,
-    l_mult = 4,
+    l_chips = 70,
+    l_mult = 15,
     example = {
         { "S_A", true },
         { "D_A", true },
@@ -40,8 +40,8 @@ local god_hand = P({
     visible = true,
     chips = 250,
     mult = 26,
-    l_chips = 40,
-    l_mult = 4,
+    l_chips = 70,
+    l_mult = 15,
     example = {
         { "S_A", true },
         { "D_A", true },

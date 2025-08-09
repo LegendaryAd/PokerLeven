@@ -140,7 +140,7 @@ return {
             },
             bl_ina_otaku = {
                 name = "Otaku",
-                text = {}
+                text = { "Las figuras se debilitan" }
             },
             bl_ina_shuriken = {
                 name = "Shuriken",
@@ -1249,8 +1249,8 @@ return {
             ina_potential_increased = "¡Potencial aumentado!",
             ina_sell_increased = "¡Jokers mejorados!",
             ina_divine = "¡Poder Divino!",
-            ina_settings_no_custom_middle_blinds = "Sin Ciegas Pequeñas o Grandes personalizadas",
-            ina_settings_middle_blinds_abilities = "Las Ciegas Pequeñas y Grandes no tendrán habilidades",
+            ina_settings_custom_middle_blinds = "Ciegas personalizadas",
+            ina_settings_middle_blinds_abilities = "Ciegas Pequeñas y Grandes con habilidades",
             ina_destroy = "¡Destruido!",
             ina_dribbling = "¡Regate!",
             ina_harvest = "Cosecha!",
@@ -1278,7 +1278,9 @@ return {
 
 
             -- Resources
-            ina_resource_barriers = "Barreras"
+            ina_resource_barriers = "Barreras",
+            ina_training_upgrades = "Trainings",
+            ina_forms = "Formas"
         },
         high_scores = {},
         labels = {

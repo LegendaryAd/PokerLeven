@@ -1,5 +1,6 @@
 family = {
-    { "Jude", "Jude_Raimon" }
+    { "Jude", "Jude_Raimon" },
+    { "Feldt" }
 }
 
 copy_scaled_values = function(card)

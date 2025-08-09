@@ -1,57 +1,177 @@
 ---@diagnostic disable: undefined-field
+Pokerleven.ui = {}
 ina_joker_page = 1
 
---Credits to pokermon for this
-create_UIBox_inadex_jokers = function(keys, previous_menu)
-  local deck_tables = {}
-
-  G.your_collection = {}
-  G.your_collection[1] = CardArea(
-    G.ROOM.T.x + 0.2 * G.ROOM.T.w / 2, G.ROOM.T.h,
-    math.min(4, #keys) * G.CARD_W,
-    0.95 * G.CARD_H,
-    { card_limit = #keys, type = 'title', highlight_limit = 0, collection = true })
-  table.insert(deck_tables,
-    {
-      n = G.UIT.R,
-      config = { align = "cm", padding = 0.07, no_fill = true },
-      nodes = {
-        { n = G.UIT.O, config = { object = G.your_collection[1] } }
-      }
-    }
-  )
-
-  for i = 1, #keys do
-    local key = (type(keys[i]) == "table" and keys[i].key) or keys[i]
-    local card = Card(G.your_collection[1].T.x + G.your_collection[1].T.w / 2, G.your_collection[1].T.y, G.CARD_W,
-      G.CARD_H, nil, G.P_CENTERS[key])
-    if type(keys[i]) == "table" then
-      card.ability.extra.form = keys[i].form
-      G.P_CENTERS[key]:set_sprites(card)
-    end
-    G.your_collection[1]:emplace(card)
-  end
-
-
-  local t = create_UIBox_generic_options({
-    back_func = previous_menu or 'exit_overlay_menu',
-    contents = {
-      { n = G.UIT.R, config = { align = "cm", r = 0.1, colour = G.C.BLACK, emboss = 0.05 }, nodes = deck_tables },
-    }
-  })
-  return t
-end
-
-G.FUNCS.inadexui = function(e)
-  if G.STAGE == G.STAGES.RUN then
-    if G.jokers and G.jokers.highlighted and G.jokers.highlighted[1] then
-      local selected = G.jokers.highlighted[1]
-      if selected.config.center.stage then
-        G.FUNCS.overlay_menu {
-          definition = create_UIBox_inadex_jokers(get_family_keys(selected.config.center.name, selected.config.center.ina_custom_prefix, selected)),
-        }
+local get_upgrade_cards = function(key, card_area)
+  local upgrade_cards = {}
+  for i = 1, 6 do
+    local added_card = SMODS.create_card({
+      key = key,
+      no_edition = true,
+      area = card_area
+    })
+    if i > 1 then
+      for _ = 0, i - 2 do
+        increment_technique(added_card)
       end
     end
+    table.insert(upgrade_cards, added_card)
+  end
+  return upgrade_cards
+end
+
+local get_form_cards = function(keys, card_area)
+  local form_cards = {}
+  for _, key in ipairs(keys) do
+    local added_card = SMODS.create_card({
+      key = key,
+      no_edition = true,
+      area = card_area
+    })
+    table.insert(form_cards, added_card)
+  end
+  return form_cards
+end
+
+local get_teams_for_bobby = function(key, card_area)
+  local form_cards = {}
+  for team_name, team_table in pairs(C.CUSTOM.Bobby_Teams) do
+    local added_card = SMODS.create_card({
+      key = key,
+      no_edition = true,
+      area = card_area
+    })
+    added_card.children.center:set_sprite_pos({ x = team_table.x, y = team_table.y })
+    added_card.ability.extra.pteam = team_name
+    table.insert(form_cards, added_card)
+  end
+  return form_cards
+end
+
+Pokerleven.ui.create_card_area = function(card_number, area_table)
+  local card_area = CardArea(
+    G.ROOM.T.x + 0.2 * G.ROOM.T.w / 2, G.ROOM.T.h,
+    card_number * G.CARD_W,
+    0.95 * G.CARD_H,
+    { card_limit = card_number, type = 'title', highlight_limit = 0, collection = true })
+  table.insert(area_table, card_area)
+  return card_area
+end
+
+Pokerleven.ui.emplace_collection_in_area = function(cards, card_area)
+  for _, card in ipairs(cards) do
+    card_area:emplace(card)
+  end
+end
+
+Pokerleven.ui.create_tab_from_card_area = function(card_area)
+  return {
+    n = G.UIT.ROOT,
+    config = {
+      align = "cm",
+      padding = 0.05,
+      colour = G.C.CLEAR,
+    },
+    nodes = {
+      {
+        n = G.UIT.R,
+        config = {
+          align = "cm",
+          r = 0.2,
+          padding = 0.5,
+          minh = 4.5,
+          colour = G.C.BLACK
+        },
+        nodes = {
+          {
+            n = G.UIT.O,
+            config = {
+              object = card_area,
+            }
+          },
+        }
+      }
+    }
+  }
+end
+
+Pokerleven.ui.create_tabs_menu = function(tabs, previous_menu)
+  G.FUNCS.overlay_menu({
+    definition = create_UIBox_generic_options({
+      back_colour = G.C.ORANGE,
+      back_func = previous_menu or 'exit_overlay_menu',
+      contents = {
+        {
+          n = G.UIT.R,
+          nodes = {
+            create_tabs({
+              snap_to_nav = true,
+              colour = G.C.PALE_GREEN,
+              tabs = tabs
+            }),
+          }
+        },
+      }
+    })
+  })
+end
+
+function create_upgrade_tab_for_joker(key)
+  Pokerleven.upgrades_area = {}
+  if G.P_CENTERS[key].special ~= 'Manager' then
+    return {
+      label = localize("ina_training_upgrades"),
+      chosen = true,
+      tab_definition_function = function(t)
+        local card_area = Pokerleven.ui.create_card_area(6, t.area_table)
+        local card_upgrade_list = get_upgrade_cards(key, card_area)
+        Pokerleven.ui.emplace_collection_in_area(card_upgrade_list, card_area)
+        return Pokerleven.ui.create_tab_from_card_area(card_area)
+      end,
+      tab_definition_function_args = { area_table = Pokerleven.upgrades_area }
+    }
+  end
+end
+
+function create_forms_tab_for_joker(key)
+  Pokerleven.forms_area = {}
+  local card_center = G.P_CENTERS[key]
+  local keys_to_add = get_family_keys(card_center.name)
+
+  if #keys_to_add > 1 or key == 'j_ina_Bobby' then
+    return {
+      label = localize("ina_forms"),
+      chosen = false,
+      tab_definition_function = function(t)
+        -- +4 to have a little more space
+        local card_area
+        if key == 'j_ina_Bobby' then
+          card_area = Pokerleven.ui.create_card_area(C.CUSTOM.Bobby_Teams_Number, t.area_table)
+          card_form_list = get_teams_for_bobby(key, card_area)
+        else
+          card_area = Pokerleven.ui.create_card_area(#keys_to_add, t.area_table)
+          card_form_list = get_form_cards(keys_to_add, card_area)
+        end
+
+        Pokerleven.ui.emplace_collection_in_area(card_form_list, card_area)
+        return Pokerleven.ui.create_tab_from_card_area(card_area)
+      end,
+      tab_definition_function_args = { area_table = Pokerleven.forms_area }
+    }
+  end
+end
+
+Pokerleven.ui.create_overlay_for_joker_properties = function(key, previous_menu)
+  local tabs = {}
+
+  local upgrade_tab = create_upgrade_tab_for_joker(key)
+  local forms_tab = create_forms_tab_for_joker(key)
+
+  table.insert(tabs, upgrade_tab)
+  table.insert(tabs, forms_tab)
+
+  if #tabs > 0 then
+    Pokerleven.ui.create_tabs_menu(tabs, previous_menu)
   end
 end
 
@@ -63,30 +183,22 @@ G.FUNCS.inadex_back = function()
   page.config.ref_table.current_option_val = page.config.ref_table.options[ina_joker_page]
 end
 
--- Functionality for inadex View
-SMODS.Keybind({
-  key = "openinadex",
-  key_pressed = "p",
-  action = function(controller)
-    G.FUNCS.inadexui()
+local initialize_previous_menu = function()
+  local menu = G.SETTINGS.paused and 'inadex_back' or nil
+  if menu and G.OVERLAY_MENU:get_UIE_by_ID('cycle_shoulders') then
+    ina_joker_page = G.OVERLAY_MENU:get_UIE_by_ID(
+      'cycle_shoulders').children[1].children[1].config.ref_table.current_option
   end
-})
+  return menu
+end
 
 local controller_queue_R_cursor_press_ref = Controller.queue_R_cursor_press
 function Controller:queue_R_cursor_press(x, y)
   controller_queue_R_cursor_press_ref(self, x, y)
   local clicked = self.hovering.target or self.focused.target
   if clicked and type(clicked) == 'table' and clicked.config and type(clicked.config) == 'table' and clicked.config.center and clicked.facing ~= 'back' then
-    if clicked.config.center.stage then
-      local menu = G.SETTINGS.paused and 'inadex_back' or nil
-      if menu and G.OVERLAY_MENU:get_UIE_by_ID('cycle_shoulders') then
-        ina_joker_page = G.OVERLAY_MENU:get_UIE_by_ID(
-          'cycle_shoulders').children[1].children[1].config.ref_table.current_option
-      end
-      G.FUNCS.overlay_menu {
-        definition = create_UIBox_inadex_jokers(get_family_keys(clicked.config.center.name, clicked.config.center.ina_custom_prefix, clicked), menu),
-      }
-    end
+    local menu = initialize_previous_menu()
+    Pokerleven.ui.create_overlay_for_joker_properties(clicked.config.center_key, menu)
   end
 end
 
@@ -103,9 +215,7 @@ function Controller:capture_focused_input(button, input_type, dt)
               'cycle_shoulders').children[1].children[1].config.ref_table.current_option
           end
           G.SETTINGS.paused = true
-          G.FUNCS.overlay_menu {
-            definition = create_UIBox_inadex_jokers(get_family_keys(clicked.config.center.name, clicked.config.center.ina_custom_prefix, clicked), menu),
-          }
+          Pokerleven.ui.create_overlay_for_joker_properties(clicked.config.center_key, menu)
           self:update_focus()
         end
       end
@@ -115,7 +225,8 @@ function Controller:capture_focused_input(button, input_type, dt)
   return ina_capture_focused_input(self, button, input_type, dt)
 end
 
--- Config tab
+--#region Config tab
+
 local restart_toggles_left = {
 }
 
@@ -214,3 +325,5 @@ SMODS.current_mod.config_tab = function()
     nodes = pokerlevenconfig()
   }
 end
+
+--#endregion

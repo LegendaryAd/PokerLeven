@@ -10,6 +10,7 @@ local Kevin = J({
   ptype = "Forest",
   pposition = "FW",
   pteam = "Raimon",
+  techtype = C.UPGRADES.Plus,
   calculate = function(self, card, context)
     if context.retrigger_joker_check and not context.retrigger_joker and context.other_card ~= self then
       card.ability.extra.triggered = true;
@@ -379,20 +380,6 @@ local Jude_Raimon = J({
 })
 
 -- Bobby
-Bobby_Teams = {
-  ["Royal Academy"]  = { x = 3, y = 14 },
-  ["Occult"]         = { x = 7, y = 14 },
-  ["Wild"]           = { x = 8, y = 14 },
-  ["Brain"]          = { x = 9, y = 14 },
-  ["Otaku"]          = { x = 10, y = 14 },
-  ["Inazuma Eleven"] = { x = 11, y = 14 },
-  ["Shuriken"]       = { x = 12, y = 14 },
-  ["Farm"]           = { x = 0, y = 15 },
-  ["Kirkwood"]       = { x = 1, y = 15 },
-  ["Zeus"]           = { x = 2, y = 15 }
-}
-
-
 local Bobby = J({
   name = "Bobby",
   pos = { x = 10, y = 6 },
@@ -431,7 +418,7 @@ local Bobby = J({
       if selected_team and selected_team ~= card.ability.extra.pteam then
         card.ability.extra.pteam = Pokerleven.most_played_team()
 
-        local coords = Bobby_Teams[selected_team]
+        local coords = C.CUSTOM.Bobby_Teams[selected_team]
         if coords then
           G.E_MANAGER:add_event(Event({
             func = function()

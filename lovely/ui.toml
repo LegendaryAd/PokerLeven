@@ -11,7 +11,7 @@ pattern = "UIBox_button({button = 'your_collection_jokers', label = {localize('b
 position = 'after'
 match_indent = true
 payload = '''
-UIBox_button({button = 'your_collection_techniques', label = {localize('ina_special_technique')}, count = G.DISCOVER_TALLIES.techniques, minw = 5, id = 'your_collection_techniques'}),
+--UIBox_button({button = 'your_collection_techniques', label = {localize('ina_special_technique')}, count = G.DISCOVER_TALLIES.techniques, minw = 5, id = 'your_collection_techniques'}),
 UIBox_button({button = 'your_collection_managers', label = {localize('ina_special_manager')}, count = G.DISCOVER_TALLIES.managers, minw = 5, id = 'your_collection_managers'}),
 '''
 
