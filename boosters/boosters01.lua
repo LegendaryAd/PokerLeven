@@ -14,14 +14,14 @@ local Raimon = {
 			return 0
 		end
 	end,
-	draw_hand = true,
+	draw_hand = false,
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Raimon", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
+		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
@@ -45,14 +45,14 @@ local Occult = {
 			return 0
 		end
 	end,
-	draw_hand = true,
+	draw_hand = false,
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Occult", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
+		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
@@ -76,14 +76,14 @@ local RoyalAcademy = {
 			return 0
 		end
 	end,
-	draw_hand = true,
+	draw_hand = false,
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Royal Academy", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
+		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
@@ -107,14 +107,14 @@ local Wild = {
 			return 0
 		end
 	end,
-	draw_hand = true,
+	draw_hand = false,
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Wild", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
+		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
@@ -138,14 +138,14 @@ local Brain = {
 			return 0
 		end
 	end,
-	draw_hand = true,
+	draw_hand = false,
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Brain", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
+		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
@@ -169,14 +169,14 @@ local Otaku = {
 			return 0
 		end
 	end,
-	draw_hand = true,
+	draw_hand = false,
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Otaku", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
+		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
@@ -200,14 +200,14 @@ local Inazuma = {
 			return 0
 		end
 	end,
-	draw_hand = true,
+	draw_hand = false,
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Inazuma Eleven", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
+		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
@@ -231,14 +231,14 @@ local Shuriken = {
 			return 0
 		end
 	end,
-	draw_hand = true,
+	draw_hand = false,
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Shuriken", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
+		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
@@ -262,14 +262,14 @@ local Farm = {
 			return 0
 		end
 	end,
-	draw_hand = true,
+	draw_hand = false,
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Farm", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
+		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
@@ -293,14 +293,14 @@ local Kirkwood = {
 			return 0
 		end
 	end,
-	draw_hand = true,
+	draw_hand = false,
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Kirkwood", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
+		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
@@ -324,14 +324,14 @@ local Zeus = {
 			return 0
 		end
 	end,
-	draw_hand = true,
+	draw_hand = false,
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
 		return create_card("Zeus", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
+		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	group_key = "k_team_pack",
 	ina_credits = {
@@ -376,13 +376,69 @@ local Ina_Pack = {
 	end,
 	loc_vars = function(self, info_queue, card)
 		local tarots = Consts.max_quantity - Consts.strats - Consts.trainings
-		return { vars = { card.config.center.config.choose, tarots, Consts.strats, Consts.trainings } }
+		return { vars = { card.ability.choose, tarots, Consts.strats, Consts.trainings } }
 	end,
-	group_key = "k_ina_item_pack",
+	group_key = "k_item_pack",
 }
+
+local Ina_Pack = {
+	name = "Mega Ina Pack",
+	key = "item_pack_ina",
+	kind = "Item",
+	atlas = "Boosters01",
+	pos = { x = 3, y = 2 },
+	config = { extra = Consts.max_quantity, choose = 2 },
+	cost = 4,
+	order = 1,
+	weight = 1,
+	draw_hand = true,
+	unlocked = true,
+	discovered = true,
+	create_card = function(self, card, i)
+		return create_card_by_order(i)
+	end,
+	loc_vars = function(self, info_queue, card)
+		local tarots = Consts.max_quantity - Consts.strats - Consts.trainings
+		return { vars = { card.ability.choose, tarots, Consts.strats, Consts.trainings } }
+	end,
+	group_key = "k_item_pack",
+}
+
+local excluded_keys = {}
+
+local Manager_Pack = {
+	name = "Manager Pack",
+	key = "manager_pack",
+	kind = "Manager",
+	atlas = "Boosters01",
+	pos = { x = 3, y = 2 },
+	config = { extra = 2, choose = 1 },
+	cost = 4,
+	order = 1,
+	weight = 0,
+	draw_hand = false,
+	unlocked = true,
+	discovered = true,
+	create_card = function(self, card, i)
+		if i == 1 then
+			excluded_keys = {}
+		end
+
+		local selected_card = create_random_ina_joker('Manager_Pack', nil, Pokerleven.ina_manager_area, nil, false,
+			"Manager",
+			excluded_keys)
+		excluded_keys[selected_card.config.center_key] = true
+		return selected_card
+	end,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.choose, card.ability.extra } }
+	end,
+	group_key = "k_manager_pack",
+}
+
 
 return {
 	name = "Boosters01",
 	list = { Raimon, Occult, RoyalAcademy, Wild, Brain, Otaku, Inazuma, Shuriken, Farm, Kirkwood, Zeus,
-		Ina_Pack }
+		Ina_Pack, Manager_Pack }
 }

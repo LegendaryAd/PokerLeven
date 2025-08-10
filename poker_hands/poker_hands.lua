@@ -11,7 +11,7 @@ end
 
 local full_mansion = P({
     key = "FullMansion",
-    visible = true,
+    visible = false,
     chips = 220,
     mult = 22,
     l_chips = 70,
@@ -37,7 +37,7 @@ local full_mansion = P({
 
 local god_hand = P({
     key = "GodHand",
-    visible = true,
+    visible = false,
     chips = 250,
     mult = 26,
     l_chips = 70,

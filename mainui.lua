@@ -49,11 +49,12 @@ local get_teams_for_bobby = function(key, card_area)
 end
 
 Pokerleven.ui.create_card_area = function(card_number, area_table)
+  local area_card_size = card_number < 8 and card_number or 8
   local card_area = CardArea(
     G.ROOM.T.x + 0.2 * G.ROOM.T.w / 2, G.ROOM.T.h,
-    card_number * G.CARD_W,
+    area_card_size * G.CARD_W,
     0.95 * G.CARD_H,
-    { card_limit = card_number, type = 'title', highlight_limit = 0, collection = true })
+    { card_limit = area_card_size, type = 'title', highlight_limit = 0, collection = true })
   table.insert(area_table, card_area)
   return card_area
 end

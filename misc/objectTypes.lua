@@ -82,8 +82,14 @@ local Training = {
 	cards = {},
 }
 
+local Manager = {
+	object_type = "ObjectType",
+	key = "Manager",
+	default = "v_blank",
+	cards = {},
+}
 
 return {
 	name = "Types",
-	list = { Raimon, Occult, Royal, Wild, Brain, Otaku, Farm, InazumaEleven, Kirkwood, Shuriken, Zeus, Training }
+	list = { Raimon, Occult, Royal, Wild, Brain, Otaku, Farm, InazumaEleven, Kirkwood, Shuriken, Zeus, Training, Manager }
 }

@@ -270,6 +270,25 @@ end
 
 --#endregion
 
+local can_select_card_ref = G.FUNCS.can_select_card
+G.FUNCS.can_select_card = function(e)
+    local card = e.config.ref_table
+    if card.ability.set ~= 'Joker' then
+        can_select_card_ref(e)
+    elseif Pokerleven.is_manager(card) then
+        if (card.edition and card.edition.negative) or
+            #Pokerleven.ina_manager_area.cards < Pokerleven.ina_manager_area.config.card_limit then
+            e.config.colour = G.C.GREEN
+            e.config.button = 'use_card'
+        else
+            e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+            e.config.button = nil
+        end
+    else
+        can_select_card_ref(e)
+    end
+end
+
 ---Creates button ui for custom cards
 ---@param card Card Card you want to create buttons on
 ---@param args table Table of configs for creating custom buttons

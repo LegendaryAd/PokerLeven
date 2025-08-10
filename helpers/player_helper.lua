@@ -180,14 +180,15 @@ get_adjacent_jokers = function(card)
 end
 
 -- Creates random card
-create_random_ina_joker = function(pseed, inararity, area, inateam, enable_dupes)
+create_random_ina_joker = function(pseed, inararity, area, inateam, enable_dupes, special, exclude_keys)
     local create_args = { set = "Joker", area = nil, key = '' }
-    create_args.key = get_random_joker_key(pseed, inararity, area, inateam, nil, enable_dupes or nil)
+    create_args.key = get_random_joker_key(pseed, inararity, area, inateam, exclude_keys or nil, enable_dupes or nil,
+        special or nil)
 
     return SMODS.create_card(create_args)
 end
 
-get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys, enable_dupes)
+get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys, enable_dupes, special)
     local ina_keys = {}
     local inaarea = area or G.jokers
     local ina_key
@@ -200,14 +201,15 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys, e
     end
 
     for _, v in pairs(G.P_CENTERS) do
-        if v.pteam and not (inararity and v.rarity ~= inararity)
-            and not (inateam and inateam ~= v.pteam)
-            and player_in_pool(v)
+        if ((special and v.special == special) or v.pteam)
+            and not (inararity and v.rarity ~= inararity)
+            and not (inateam and v.pteam and inateam ~= v.pteam)
+            and ((special and v.special == special) or (not special and player_in_pool(v)))
             and not v.aux_ina
             and not exclude_keys[v.key] then
             local no_dup = true
-            if not enable_dupes and G.jokers and G.jokers.cards and not next(find_joker("Showman")) then
-                for _, m in pairs(G.jokers.cards) do
+            if not enable_dupes and inaarea and inaarea.cards and not next(find_joker("Showman")) then
+                for _, m in pairs(inaarea.cards) do
                     if v.key == m.config.center_key then
                         no_dup = false
                         break
@@ -225,7 +227,7 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys, e
         for _, v in pairs(G.P_CENTERS) do
             if v.pteam and not (inararity and v.rarity ~= inararity)
                 and not (inateam and inateam ~= v.pteam)
-                and player_in_pool(v)
+                and ((special and v.special == special) or (not special and player_in_pool(v)))
                 and not v.aux_ina
                 and not exclude_keys[v.key] then
                 table.insert(ina_keys, v.key)

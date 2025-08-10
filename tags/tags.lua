@@ -90,8 +90,29 @@ local chain_tag = {
     }
 }
 
+local bench_tag = {
+    object_type = "Tag",
+    atlas = "Tags01",
+    name = "bench_tag",
+    order = 27,
+    pos = { x = 3, y = 4 },
+    config = {},
+    key = "bench_tag",
+    min_ante = 0,
+    discovered = true,
+    loc_vars = function(self, info_queue, tag)
+        info_queue[#info_queue + 1] = G.P_CENTERS.p_ina_manager_pack
+    end,
+    apply = function(self, tag, context)
+        return Pokerleven.open_booster_from_tag(tag, 'p_ina_manager_pack', context)
+    end,
+    ina_credits = {
+        art = { "Shadorossa" }
+    }
+}
+
 
 return {
     name = "Tags",
-    list = { wild_tag, chain_tag }
+    list = { wild_tag, chain_tag, bench_tag }
 }

@@ -1017,6 +1017,10 @@ return {
                 text = { "Elige {C:attention}#1#{} de {C:attention}#2#{} Cartas del {C:tarot}Tarot{}",
                     "#3# {C:strat}Strats{} o #4# {C:training}Entrenamientos{}" }
             },
+            p_ina_manager_pack = {
+                name = "Manager Pack",
+                text = { "Elige {C:attention}#1#{} de {C:attention}#2#{} {C:pink}Managers{}" }
+            },
             ina_harvest_sticker = {
                 name = "Cosechable",
                 text = {
@@ -1201,6 +1205,10 @@ return {
                 name = "Etiqueta Cadena",
                 text = { "Cambia la {C:attention}Ciega grande{}, Si estas en",
                     "una ciega grande, cambia la {C:attention}Ciega Jefe{}" }
+            },
+            tag_ina_bench_tag = {
+                name = "Etiqueta Banquillo",
+                text = { "Otorga gratis un {C:pink}Manager Pack{}" }
             }
         },
         Tarot = {},
@@ -1251,6 +1259,7 @@ return {
             ina_next_match = "Siguiente",
             k_team_pack = "Pack de Equipo",
             k_item_pack = "Pack de Objetos",
+            k_manager_pack = "Pack de Managers",
             ina_convert = "¡Convertido!",
             ina_potential_increased = "¡Potencial aumentado!",
             ina_sell_increased = "¡Jokers mejorados!",

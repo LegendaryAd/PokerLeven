@@ -8,6 +8,7 @@ local Nelly = J({
     end,
     rarity = 1,
     special = "Manager",
+    pools = { ["Manager"] = true },
     cost = 4,
     atlas = "Managers01",
     generate_ui = Pokerleven.generate_info_ui,
@@ -38,6 +39,7 @@ local Celia = J({
     end,
     rarity = 1,
     special = "Manager",
+    pools = { ["Manager"] = true },
     cost = 4,
     atlas = "Managers01",
     calculate = function(self, card, context)
@@ -127,5 +129,5 @@ local Koudera = J({
 
 return {
     name = "Managers",
-    list = { Nelly, Celia, Silvia, Aurelia, Koudera }
+    list = { Nelly, Celia }
 }

@@ -7,7 +7,7 @@ local strat = {
     collection = 'Strat Cards', -- label for the button to access the collection
   },
   collection_row = { 6, 6 },
-  shop_rate = 4,
+  shop_rate = 2.5,
   default = "c_ina_tactic_pos"
 }
 
