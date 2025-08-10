@@ -223,3 +223,12 @@ function Pokerleven.ease_barriers(mod, instant)
         colour = G.C.ORANGE
     }
 end
+
+local original_unlock_card = unlock_card
+
+function unlock_card(card)
+    if card.set == 'Joker' and not card.ptype then
+        return
+    end
+    original_unlock_card(card)
+end
