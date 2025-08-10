@@ -90,7 +90,7 @@ local chain_tag = {
     }
 }
 
-local bench_tag = {
+local bench_tag = T({
     object_type = "Tag",
     atlas = "Tags01",
     name = "bench_tag",
@@ -108,11 +108,37 @@ local bench_tag = {
     end,
     ina_credits = {
         art = { "Shadorossa" }
+    },
+    in_pool = function(self, args)
+        if #Pokerleven.ina_manager_area.cards > 0 then
+            return false
+        end
+        return true
+    end
+})
+
+local technique_tag = {
+    object_type = "Tag",
+    atlas = "Tags01",
+    name = "technique_tag",
+    order = 27,
+    pos = { x = 4, y = 3 },
+    config = {},
+    key = "technique_tag",
+    min_ante = 2,
+    discovered = true,
+    loc_vars = function(self, info_queue, tag)
+        info_queue[#info_queue + 1] = G.P_CENTERS.p_ina_training_pack
+    end,
+    apply = function(self, tag, context)
+        return Pokerleven.open_booster_from_tag(tag, 'p_ina_training_pack', context)
+    end,
+    ina_credits = {
+        art = { "Shadorossa" }
     }
 }
 
-
 return {
     name = "Tags",
-    list = { wild_tag, chain_tag, bench_tag }
+    list = { wild_tag, chain_tag, bench_tag, technique_tag }
 }

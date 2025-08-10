@@ -24,3 +24,9 @@ end
 function P(data)
     return data
 end
+
+---@param data SMODS.Tag
+---@return SMODS.Tag
+function T(data)
+    return data
+end

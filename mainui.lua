@@ -48,6 +48,22 @@ local get_teams_for_bobby = function(key, card_area)
   return form_cards
 end
 
+local get_full_team_from_card = function(key, card_area)
+  local team_cards = {}
+  local card_center = G.P_CENTERS[key]
+  for _, added_card_center in pairs(G.P_CENTERS) do
+    if card_center.pteam == added_card_center.pteam then
+      local added_card = SMODS.create_card({
+        key = added_card_center.key,
+        no_edition = true,
+        area = card_area
+      })
+      table.insert(team_cards, added_card)
+    end
+  end
+  return team_cards
+end
+
 Pokerleven.ui.create_card_area = function(card_number, area_table)
   local area_card_size = card_number < 8 and card_number or 8
   local card_area = CardArea(
@@ -117,7 +133,7 @@ Pokerleven.ui.create_tabs_menu = function(tabs, previous_menu)
   })
 end
 
-function create_upgrade_tab_for_joker(key)
+local function create_upgrade_tab_for_joker(key)
   Pokerleven.upgrades_area = {}
   if G.P_CENTERS[key].special ~= 'Manager' then
     return {
@@ -134,7 +150,7 @@ function create_upgrade_tab_for_joker(key)
   end
 end
 
-function create_forms_tab_for_joker(key)
+local function create_forms_tab_for_joker(key)
   Pokerleven.forms_area = {}
   local card_center = G.P_CENTERS[key]
   local keys_to_add = get_family_keys(card_center.name)
@@ -162,14 +178,31 @@ function create_forms_tab_for_joker(key)
   end
 end
 
+local function create_team_tab_for_joker(key)
+  Pokerleven.team_area = {}
+  return {
+    label = localize('ina_team'),
+    chosen = false,
+    tab_definition_function = function(t)
+      local card_area = Pokerleven.ui.create_card_area(6, t.area_table)
+      local team_cards = get_full_team_from_card(key, card_area)
+      Pokerleven.ui.emplace_collection_in_area(team_cards, card_area)
+      return Pokerleven.ui.create_tab_from_card_area(card_area)
+    end,
+    tab_definition_function_args = { area_table = Pokerleven.team_area }
+  }
+end
+
 Pokerleven.ui.create_overlay_for_joker_properties = function(key, previous_menu)
   local tabs = {}
 
   local upgrade_tab = create_upgrade_tab_for_joker(key)
   local forms_tab = create_forms_tab_for_joker(key)
+  local team_tab = create_team_tab_for_joker(key)
 
   table.insert(tabs, upgrade_tab)
   table.insert(tabs, forms_tab)
+  table.insert(tabs, team_tab)
 
   if #tabs > 0 then
     Pokerleven.ui.create_tabs_menu(tabs, previous_menu)

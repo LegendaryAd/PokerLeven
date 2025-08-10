@@ -9,7 +9,7 @@ local Raimon = {
 	order = 1,
 	weight = function()
 		if #find_player_team("Raimon") > 0 then
-			return 0.35
+			return 0.2
 		else
 			return 0
 		end
@@ -40,7 +40,7 @@ local Occult = {
 	order = 1,
 	weight = function()
 		if #find_player_team("Occult") > 0 then
-			return 0.35
+			return 0.2
 		else
 			return 0
 		end
@@ -71,7 +71,7 @@ local RoyalAcademy = {
 	order = 1,
 	weight = function()
 		if #find_player_team("Royal Academy") > 0 then
-			return 0.35
+			return 0.2
 		else
 			return 0
 		end
@@ -102,7 +102,7 @@ local Wild = {
 	order = 1,
 	weight = function()
 		if #find_player_team("Wild") > 0 then
-			return 0.35
+			return 0.2
 		else
 			return 0
 		end
@@ -133,7 +133,7 @@ local Brain = {
 	order = 1,
 	weight = function()
 		if #find_player_team("Brain") > 0 then
-			return 0.35
+			return 0.2
 		else
 			return 0
 		end
@@ -164,7 +164,7 @@ local Otaku = {
 	order = 1,
 	weight = function()
 		if #find_player_team("Otaku") > 0 then
-			return 0.35
+			return 0.2
 		else
 			return 0
 		end
@@ -195,7 +195,7 @@ local Inazuma = {
 	order = 1,
 	weight = function()
 		if #find_player_team("Inazuma Eleven") > 0 then
-			return 0.35
+			return 0.2
 		else
 			return 0
 		end
@@ -226,7 +226,7 @@ local Shuriken = {
 	order = 1,
 	weight = function()
 		if #find_player_team("Shuriken") > 0 then
-			return 0.35
+			return 0.2
 		else
 			return 0
 		end
@@ -257,7 +257,7 @@ local Farm = {
 	order = 1,
 	weight = function()
 		if #find_player_team("Farm") > 0 then
-			return 0.35
+			return 0.2
 		else
 			return 0
 		end
@@ -288,7 +288,7 @@ local Kirkwood = {
 	order = 1,
 	weight = function()
 		if #find_player_team("Kirkwood") > 0 then
-			return 0.35
+			return 0.2
 		else
 			return 0
 		end
@@ -319,7 +319,7 @@ local Zeus = {
 	order = 1,
 	weight = function()
 		if #find_player_team("Zeus") > 0 then
-			return 0.35
+			return 0.2
 		else
 			return 0
 		end
@@ -349,8 +349,8 @@ local Consts = {
 
 local CARD_ORDER = {
 	default = "Tarot",
-	[Consts.max_quantity - 1] = "Strat",
-	[Consts.max_quantity] = "Training",
+	[Consts.max_quantity - 1] = C.STRAT,
+	[Consts.max_quantity] = C.TRAINING,
 }
 
 local create_card_by_order = function(position_index)
@@ -381,25 +381,24 @@ local Ina_Pack = {
 	group_key = "k_item_pack",
 }
 
-local Ina_Pack = {
-	name = "Mega Ina Pack",
-	key = "item_pack_ina",
+local Training_Pack = {
+	name = "Training Pack",
+	key = "training_pack",
 	kind = "Item",
 	atlas = "Boosters01",
-	pos = { x = 3, y = 2 },
-	config = { extra = Consts.max_quantity, choose = 2 },
+	pos = { x = 1, y = 3 },
+	config = { extra = Consts.max_quantity, choose = 1 },
 	cost = 4,
 	order = 1,
-	weight = 1,
-	draw_hand = true,
+	weight = 0.05,
+	draw_hand = false,
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
-		return create_card_by_order(i)
+		return create_card(C.TRAINING, G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
 	loc_vars = function(self, info_queue, card)
-		local tarots = Consts.max_quantity - Consts.strats - Consts.trainings
-		return { vars = { card.ability.choose, tarots, Consts.strats, Consts.trainings } }
+		return { vars = { card.ability.choose, Consts.max_quantity } }
 	end,
 	group_key = "k_item_pack",
 }
@@ -411,7 +410,7 @@ local Manager_Pack = {
 	key = "manager_pack",
 	kind = "Manager",
 	atlas = "Boosters01",
-	pos = { x = 3, y = 2 },
+	pos = { x = 0, y = 3 },
 	config = { extra = 2, choose = 1 },
 	cost = 4,
 	order = 1,
@@ -436,9 +435,8 @@ local Manager_Pack = {
 	group_key = "k_manager_pack",
 }
 
-
 return {
 	name = "Boosters01",
 	list = { Raimon, Occult, RoyalAcademy, Wild, Brain, Otaku, Inazuma, Shuriken, Farm, Kirkwood, Zeus,
-		Ina_Pack, Manager_Pack }
+		Ina_Pack, Training_Pack, Manager_Pack }
 }

@@ -6,10 +6,10 @@ local Nelly = J({
     loc_vars = function(self, info_queue, center)
         return { vars = { center.ability.extra.min_money, center.ability.extra.max_money } }
     end,
-    rarity = 1,
+    rarity = 2,
     special = "Manager",
     pools = { ["Manager"] = true },
-    cost = 4,
+    cost = 7,
     atlas = "Managers01",
     generate_ui = Pokerleven.generate_info_ui,
     calc_dollar_bonus = function(self, card)
@@ -37,10 +37,10 @@ local Celia = J({
     loc_vars = function(self, info_queue, center)
         return {}
     end,
-    rarity = 1,
+    rarity = 2,
     special = "Manager",
     pools = { ["Manager"] = true },
-    cost = 4,
+    cost = 7,
     atlas = "Managers01",
     calculate = function(self, card, context)
         if context.starting_shop then

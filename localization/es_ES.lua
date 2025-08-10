@@ -163,7 +163,7 @@ return {
             -- Final Boss Blinds
             bl_ina_zeus_caido = {
                 name = "Ultra Zeus",
-                text = {}
+                text = { "Cada mano robada aumenta", "las fichas necesarias en un #1#%" }
             }
         },
         Strat = {
@@ -1015,11 +1015,17 @@ return {
             p_ina_item_pack_ina = {
                 name = "Ina Pack",
                 text = { "Elige {C:attention}#1#{} de {C:attention}#2#{} Cartas del {C:tarot}Tarot{}",
-                    "#3# {C:strat}Strats{} o #4# {C:training}Entrenamientos{}" }
+                    "#3# {C:strat}Strats{} o #4# {C:training}Entrenamientos{}",
+                    "para usar de inmediato" }
             },
             p_ina_manager_pack = {
                 name = "Manager Pack",
                 text = { "Elige {C:attention}#1#{} de {C:attention}#2#{} {C:pink}Managers{}" }
+            },
+            p_ina_training_pack = {
+                name = "Training Pack",
+                text = { "Elige {C:attention}#1#{} de {C:attention}#2#{} {C:training}Entrenamientos{}",
+                    "para usar de inmediato" }
             },
             ina_harvest_sticker = {
                 name = "Cosechable",
@@ -1209,6 +1215,10 @@ return {
             tag_ina_bench_tag = {
                 name = "Etiqueta Banquillo",
                 text = { "Otorga gratis un {C:pink}Manager Pack{}" }
+            },
+            tag_ina_technique_tag = {
+                name = "Etiqueta Técnica",
+                text = { "Otorga gratis un {C:training}Training Pack{}" }
             }
         },
         Tarot = {},
@@ -1293,10 +1303,12 @@ return {
             ina_gol = "¡Gol!",
 
 
+
             -- Resources
             ina_resource_barriers = "Barreras",
-            ina_training_upgrades = "Trainings",
-            ina_forms = "Formas"
+            ina_training_upgrades = "Entrenamiento",
+            ina_forms = "Formas",
+            ina_team = "Equipo",
         },
         high_scores = {},
         labels = {

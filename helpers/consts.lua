@@ -13,6 +13,7 @@ C.DF = C.ALL_POSITIONS[3]
 C.GK = C.ALL_POSITIONS[4]
 
 C.TRAINING = "Training"
+C.STRAT = "Strat"
 
 C.INA_UPGRADE_TECHNIQUE_KEY = "c_ina_upgrade_technique_"
 
