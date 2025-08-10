@@ -47,6 +47,7 @@ local Mark = J({
   atlas = "Jokers01",
   ptype = "Mountain",
   pposition = "GK",
+  discovered = true,
   pteam = "Raimon",
   blueprint_compat = true,
   add_to_deck = function(self, card, from_debuff)

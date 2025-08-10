@@ -911,7 +911,10 @@ return {
                         "{X:fw,C:white}FW{}, {X:zeus,C:white}Zeus{} y multiplicado por {C:mult}descartes",
                         "Si es {X:mf,C:white}MF{} {X:mult,C:white}X#2#{} por cada",
                         "{X:mf,C:white}MF{}, {X:zeus,C:white}Zeus{} y multiplicado por {C:chips}manos",
-                        "{C:inactive}Actualmente{} {X:mult,C:white}X#3#{}" } }
+                        "{C:inactive}Actualmente{} {X:mult,C:white}X#3#{}" } },
+                unlock = {
+                    "Llega al ante {C:attention}9",
+                },
             },
 
             j_ina_Blazer = {

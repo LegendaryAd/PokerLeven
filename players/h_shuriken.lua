@@ -141,7 +141,6 @@ local cleats = J({
             if right_joker then
                 local selected_joker =
                     get_random_joker_key("Cleats", right_joker.config.center.rarity, nil, nil, nil)
-                sendDebugMessage('Selected joker: ' .. selected_joker)
                 return {
                     message = ina_evolve(right_joker, selected_joker)
                 }

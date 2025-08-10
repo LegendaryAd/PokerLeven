@@ -7,7 +7,7 @@ local wild_tag = {
     config = { type = "store_joker_create" },
     key = "wild_tag",
     min_ante = 2,
-    discovered = true,
+    discovered = false,
     loc_vars = function(self, info_queue)
         return { vars = {} }
     end,
@@ -65,7 +65,7 @@ local chain_tag = {
     config = {},
     key = "chain_tag",
     min_ante = 2,
-    discovered = true,
+    discovered = false,
     loc_vars = function(self, info_queue)
         return { vars = {} }
     end,
@@ -99,7 +99,7 @@ local bench_tag = T({
     config = {},
     key = "bench_tag",
     min_ante = 0,
-    discovered = true,
+    discovered = false,
     loc_vars = function(self, info_queue, tag)
         info_queue[#info_queue + 1] = G.P_CENTERS.p_ina_manager_pack
     end,
@@ -126,7 +126,7 @@ local technique_tag = {
     config = {},
     key = "technique_tag",
     min_ante = 2,
-    discovered = true,
+    discovered = false,
     loc_vars = function(self, info_queue, tag)
         info_queue[#info_queue + 1] = G.P_CENTERS.p_ina_training_pack
     end,

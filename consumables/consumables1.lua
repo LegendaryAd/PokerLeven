@@ -8,7 +8,7 @@ local tech_book = {
   atlas = "Consumables",
   cost = 5,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return #G.jokers.cards > 0
   end,
@@ -41,7 +41,7 @@ local tactic_pos = {
   atlas = "Consumables",
   cost = 5,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return #G.jokers.cards > 0
   end,
@@ -75,7 +75,7 @@ local upgrade_technique_Wind_FW = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -105,7 +105,7 @@ local upgrade_technique_Fire_FW = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -135,7 +135,7 @@ local upgrade_technique_Forest_FW = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -165,7 +165,7 @@ local upgrade_technique_Mountain_FW = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -195,7 +195,7 @@ local upgrade_technique_Wind_MF = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -225,7 +225,7 @@ local upgrade_technique_Fire_MF = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -255,7 +255,7 @@ local upgrade_technique_Forest_MF = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -285,7 +285,7 @@ local upgrade_technique_Mountain_MF = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -315,7 +315,7 @@ local upgrade_technique_Wind_DF = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -345,7 +345,7 @@ local upgrade_technique_Fire_DF = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -375,7 +375,7 @@ local upgrade_technique_Forest_DF = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -405,7 +405,7 @@ local upgrade_technique_Mountain_DF = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -435,7 +435,7 @@ local upgrade_technique_Wind_GK = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -465,7 +465,7 @@ local upgrade_technique_Fire_GK = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -495,7 +495,7 @@ local upgrade_technique_Forest_GK = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
@@ -525,7 +525,7 @@ local upgrade_technique_Mountain_GK = {
   pools = { ["Training"] = true },
   cost = 3,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   can_use = function(self, card)
     return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
         (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and

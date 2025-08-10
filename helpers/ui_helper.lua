@@ -225,6 +225,23 @@ G.FUNCS.your_collection_managers = function(e)
     }
 end
 
+local old_modsCollectionTally = modsCollectionTally
+modsCollectionTally = function(pool, ...)
+    -- Si el pool es el de Jokers, filtramos antes
+    if pool == G.P_CENTER_POOLS.Joker then
+        local filtered_pool = {}
+        for _, card in ipairs(pool) do
+            if not (card.ability or card.special) then
+                table.insert(filtered_pool, card)
+            end
+        end
+        return old_modsCollectionTally(filtered_pool, ...)
+    end
+
+    -- Para el resto, comportamiento original
+    return old_modsCollectionTally(pool, ...)
+end
+
 Pokerleven.Extra_Additions = { "Manager" }
 local original_buildAdditionsTab = buildAdditionsTab
 function buildAdditionsTab(mod)

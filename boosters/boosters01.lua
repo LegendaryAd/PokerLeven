@@ -16,7 +16,7 @@ local Raimon = {
 	end,
 	draw_hand = false,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		return create_card("Raimon", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
@@ -47,7 +47,7 @@ local Occult = {
 	end,
 	draw_hand = false,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		return create_card("Occult", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
@@ -78,7 +78,7 @@ local RoyalAcademy = {
 	end,
 	draw_hand = false,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		return create_card("Royal Academy", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
@@ -109,7 +109,7 @@ local Wild = {
 	end,
 	draw_hand = false,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		return create_card("Wild", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
@@ -140,7 +140,7 @@ local Brain = {
 	end,
 	draw_hand = false,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		return create_card("Brain", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
@@ -171,7 +171,7 @@ local Otaku = {
 	end,
 	draw_hand = false,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		return create_card("Otaku", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
@@ -202,7 +202,7 @@ local Inazuma = {
 	end,
 	draw_hand = false,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		return create_card("Inazuma Eleven", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
@@ -233,7 +233,7 @@ local Shuriken = {
 	end,
 	draw_hand = false,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		return create_card("Shuriken", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
@@ -264,7 +264,7 @@ local Farm = {
 	end,
 	draw_hand = false,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		return create_card("Farm", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
@@ -295,7 +295,7 @@ local Kirkwood = {
 	end,
 	draw_hand = false,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		return create_card("Kirkwood", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
@@ -326,7 +326,7 @@ local Zeus = {
 	end,
 	draw_hand = false,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		return create_card("Zeus", G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
@@ -370,7 +370,7 @@ local Ina_Pack = {
 	weight = 1,
 	draw_hand = true,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		return create_card_by_order(i)
 	end,
@@ -393,7 +393,7 @@ local Training_Pack = {
 	weight = 0.05,
 	draw_hand = false,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		return create_card(C.TRAINING, G.pack_cards, nil, nil, true, true, nil, nil)
 	end,
@@ -417,7 +417,7 @@ local Manager_Pack = {
 	weight = 0,
 	draw_hand = false,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	create_card = function(self, card, i)
 		if i == 1 then
 			excluded_keys = {}

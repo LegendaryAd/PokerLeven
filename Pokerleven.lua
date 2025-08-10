@@ -241,7 +241,9 @@ local function load_joker_folder(folder_name, item_constructor)
       if source.init then source:init() end
 
       for _, item in ipairs(source.list) do
-        item.discovered = true
+        if not item.discovered then
+          item.discovered = false
+        end
         item.key = item.key or item.name
 
         item.config = item.config or {}

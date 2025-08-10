@@ -336,7 +336,13 @@ local Aphrodite = J({
       byron_position = card.ability.extra.pposition
       return select_byron_ability(card, byron_position)
     end
-  end
+  end,
+  unlocked = false,
+  check_for_unlock = function(self, args)
+    if G and G.GAME and G.GAME.round_resets and G.GAME.round_resets.ante and G.GAME.round_resets.ante > 8 then
+      unlock_card(self)
+    end
+  end,
 })
 
 return {

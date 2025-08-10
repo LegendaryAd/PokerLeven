@@ -7,7 +7,7 @@ local zeus_caido = B({
         showdown = true,
     },
     config = { extra_percent = 0.15 },
-    discovered = true,
+    discovered = false,
     mult = 2,
     atlas = "finalBossBlinds",
     order = 1,
