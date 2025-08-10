@@ -1309,6 +1309,13 @@ return {
             ina_training_upgrades = "Entrenamiento",
             ina_forms = "Formas",
             ina_team = "Equipo",
+
+            -- Credits menu
+            ina_credits = "Créditos",
+            ina_thanks = "Gracias a",
+            ina_lead_developer = "Desarrollador principal: ",
+            ina_graphic_designers = "Diseñadores: ",
+            ina_developers = "Desarrolladores: "
         },
         high_scores = {},
         labels = {

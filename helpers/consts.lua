@@ -42,3 +42,10 @@ for _ in pairs(C.CUSTOM.Bobby_Teams) do
     team_number = team_number + 1
 end
 C.CUSTOM.Bobby_Teams_Number = team_number
+
+
+--- FOR GENERAL CREDITS
+C.CREDITS = {}
+C.CREDITS.lead = 'Deco'
+C.CREDITS.developers = 'Synkro, Izan'
+C.CREDITS.graphic = 'Shadorossa, Synkro'
