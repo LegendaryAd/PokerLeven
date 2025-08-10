@@ -83,10 +83,14 @@ local Marvin = J({
     end,
 })
 
+local has_all_brothers = function()
+    return next(find_joker("Marvin")) and next(find_joker("Thomas")) and next(find_joker("Tyler"))
+end
+
 local Thomas = J({
     name = "Thomas",
     pos = { x = 6, y = 5 },
-    config = { extra = { chips_mod = 15 } },
+    config = { extra = { chips_mod = 15, retrigger_count = 1 } },
     loc_vars = function(self, info_queue, center)
         local chips_mod = center.ability.extra.chips_mod
         table.insert(info_queue, { set = "Other", key = "Trillizos" })
@@ -102,6 +106,17 @@ local Thomas = J({
     blueprint_compat = true,
     calculate = function(self, card, context)
         local scoring_card = Pokerleven.card_scoring(context)
+
+        if context.repetition and
+            has_all_brothers() and
+            scoring_card and scoring_card:is_uneven() then
+            return {
+                message = localize('k_again_ex'),
+                repetitions = card.ability.extra.retrigger_count,
+                card = scoring_card
+            }
+        end
+
         if scoring_card and scoring_card:is_uneven() then
             local chips_mod = card.ability.extra.chips_mod
             return {
@@ -115,9 +130,10 @@ local Thomas = J({
 local Tyler = J({
     name = "Tyler",
     pos = { x = 7, y = 5 },
-    config = {},
+    config = { extra = { odds = 8 } },
     loc_vars = function(self, info_queue, center)
-        return {}
+        table.insert(info_queue, { set = "Other", key = "Trillizos" })
+        return { vars = { G.GAME.probabilities.normal or 1, center.ability.extra.odds } }
     end,
     rarity = 2, -- Uncommon
     pools = { ["Kirkwood"] = true },
@@ -128,6 +144,23 @@ local Tyler = J({
     pteam = "Kirkwood",
     blueprint_compat = true,
     calculate = function(self, card, context)
+        local scoring_card = Pokerleven.card_scoring(context)
+        if scoring_card
+            and Pokerleven.has_enough_consumables_space()
+            and scoring_card:is_uneven()
+            and card:odds_triggered('Tyler') then
+            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+
+            card:show_text('k_plus_tarot')
+
+            local add_card_func = function()
+                local tarot_card = create_card("Tarot", G.consumeables, nil, nil, nil, nil)
+                Pokerleven.add_card_to_consumables(tarot_card)
+            end
+
+            Pokerleven.execute_function_with_delay(add_card_func, 0.1)
+            return {}
+        end
     end
 })
 

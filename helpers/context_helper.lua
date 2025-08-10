@@ -96,3 +96,31 @@ Card.is_uneven = function(self)
     end
     return false
 end
+
+---Returns true if odds of card triggered
+---@param self Card
+---@return boolean
+Card.odds_triggered = function(self, seed)
+    return pseudorandom(seed) < G.GAME.probabilities.normal / self.ability.extra.odds
+end
+
+---Shows a text on the card
+---@param self Card
+---@param text_key string
+Card.show_text = function(self, text_key)
+    card_eval_status_text(self, 'extra', nil, nil, nil, { message = localize(text_key) })
+end
+
+---comment
+---@param action function
+---@param delay any
+Pokerleven.execute_function_with_delay = function(action, delay)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = delay,
+        func = function()
+            action()
+            return true
+        end
+    }))
+end

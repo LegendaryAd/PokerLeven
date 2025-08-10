@@ -369,7 +369,7 @@ return {
             j_ina_Grave = {
                 name = "Grave",
                 text = { "{C:fire}Maldición{}", "{C:green}#1# de #2#{} de probabilidad",
-                    "de crear una carta {C:tarot}Muerte{}", "por cada {C:attention}6{} puntos anotados" }
+                    "de crear una carta {C:tarot}Muerte{}", "por cada {C:attention}6{} anotado" }
             },
             j_ina_Mask = {
                 name = "Mask",
@@ -808,7 +808,10 @@ return {
             j_ina_Tyler = {
                 name = "Tyler",
                 text = {
-                    "{C:mountain}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                    "{C:mountain}Tornado Inverso{}",
+                    "{X:attention,C:white}Trillizos{}",
+                    "Las cartas {C:attention}impares{}",
+                    "generan un {C:tarot}tarot{} {C:green}#1# de #2# veces{}" }
             },
 
             j_ina_Damian = {
