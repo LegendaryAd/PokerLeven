@@ -167,7 +167,7 @@ local butler = J({
     G.GAME.bankrupt_at = G.GAME.bankrupt_at - card.ability.extra.bankrupt_at
   end,
   remove_from_deck = function(self, card, from_debuff)
-    G.GAME.bankrupt_at = 0
+    G.GAME.bankrupt_at = G.GAME.bankrupt_at + card.ability.extra.bankrupt_at
   end
 })
 

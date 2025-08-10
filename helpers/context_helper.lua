@@ -111,9 +111,9 @@ Card.show_text = function(self, text_key)
     card_eval_status_text(self, 'extra', nil, nil, nil, { message = localize(text_key) })
 end
 
----comment
+---Executes a function with a certain delay
 ---@param action function
----@param delay any
+---@param delay number
 Pokerleven.execute_function_with_delay = function(action, delay)
     G.E_MANAGER:add_event(Event({
         trigger = 'after',

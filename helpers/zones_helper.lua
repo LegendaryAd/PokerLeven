@@ -316,11 +316,13 @@ G.FUNCS.toggle_bench_card = function(e, add_func, open_bench_flag)
     local new_card = copy_card(card)
     new_card.sell_cost = sell_cost
     card:remove()
+    G.GAME.used_jokers[card.config.center.key] = true
 
     G.E_MANAGER:add_event(Event({
         trigger = 'immediate',
         func = function()
             add_func(new_card)
+
             new_card:remove_from_deck()
             Pokerleven.open_bench(true, open_bench_flag)
             return true
