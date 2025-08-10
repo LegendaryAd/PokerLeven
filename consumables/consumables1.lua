@@ -14,8 +14,9 @@ local tech_book = {
   end,
   use = function(self, card, area, copier)
     local choice = nil
-    if G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      choice = G.jokers.highlighted[1]
+    if (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) then
+      choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
     elseif G.jokers.cards and #G.jokers.cards > 0 then
       choice = G.jokers.cards[1]
     else
@@ -46,8 +47,9 @@ local tactic_pos = {
   end,
   use = function(self, card, area, copier)
     local choice = nil
-    if G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      choice = G.jokers.highlighted[1]
+    if (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) then
+      choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
     elseif G.jokers.cards and #G.jokers.cards > 0 then
       choice = G.jokers.cards[1]
     else
@@ -75,11 +77,12 @@ local upgrade_technique_Wind_FW = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Wind", "FW")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Wind", "FW")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -104,11 +107,12 @@ local upgrade_technique_Fire_FW = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Fire", "FW")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Fire", "FW")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -133,11 +137,12 @@ local upgrade_technique_Forest_FW = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Forest", "FW")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Forest", "FW")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -162,11 +167,12 @@ local upgrade_technique_Mountain_FW = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Mountain", "FW")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Mountain", "FW")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -191,11 +197,12 @@ local upgrade_technique_Wind_MF = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Wind", "MF")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Wind", "MF")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -220,11 +227,12 @@ local upgrade_technique_Fire_MF = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Fire", "MF")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Fire", "MF")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -249,11 +257,12 @@ local upgrade_technique_Forest_MF = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Forest", "MF")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Forest", "MF")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -278,11 +287,12 @@ local upgrade_technique_Mountain_MF = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Mountain", "MF")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Mountain", "MF")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -307,11 +317,12 @@ local upgrade_technique_Wind_DF = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Wind", "DF")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Wind", "DF")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -336,11 +347,12 @@ local upgrade_technique_Fire_DF = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Fire", "DF")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Fire", "DF")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -365,11 +377,12 @@ local upgrade_technique_Forest_DF = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Forest", "DF")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Forest", "DF")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -394,11 +407,12 @@ local upgrade_technique_Mountain_DF = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Mountain", "DF")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Mountain", "DF")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -423,11 +437,12 @@ local upgrade_technique_Wind_GK = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Wind", "GK")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Wind", "GK")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -452,11 +467,12 @@ local upgrade_technique_Fire_GK = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Fire", "GK")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Fire", "GK")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -481,11 +497,12 @@ local upgrade_technique_Forest_GK = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Forest", "GK")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Forest", "GK")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
@@ -510,11 +527,12 @@ local upgrade_technique_Mountain_GK = {
   unlocked = true,
   discovered = true,
   can_use = function(self, card)
-    return G.jokers.highlighted and #G.jokers.highlighted == 1 and
-        can_upgrade_tech_level(G.jokers.highlighted[1], "Mountain", "GK")
+    return (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+        (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1) and
+        can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1], "Mountain", "GK")
   end,
   use = function(self, card, area, copier)
-    local choice = G.jokers.highlighted[1]
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
 
     increment_technique(choice)
 
