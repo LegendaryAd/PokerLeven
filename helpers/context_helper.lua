@@ -69,3 +69,14 @@ end
 Pokerleven.has_enough_consumables_space = function()
     return G.consumeables.config.card_limit > G.consumeables.config.card_count
 end
+
+---Returns true if all cards played are face
+---@return boolean
+Pokerleven.are_all_face = function()
+    for _, card in ipairs(G.play.cards) do
+        if not card:is_face() then
+            return false
+        end
+    end
+    return true
+end

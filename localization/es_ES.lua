@@ -710,8 +710,8 @@ return {
                         "entrar en la ciega tienes {C:attention}#2#{} {X:df,C:white}DF{}"
                     },
                     {
-                        "Si es el comodín más a la {C:attention}derecha{}",
-                        "consumirá {C:attention}#3#{} {X:mountain,C:white}barreras{} para crear",
+                        "{C:attention}Diestro{}",
+                        "Consume {C:attention}#3#{} {X:mountain,C:white}barreras{} para crear",
                         "una carta de {C:training}entrenamiento{} que sea",
                         "apta para un comodín cualquiera"
                     }
@@ -832,7 +832,13 @@ return {
 
             j_ina_Poseidon = {
                 name = "Poseidon",
-                text = { "{C:mountain}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { { "{C:mountain}Muralla Tsunami{}",
+                    "Genera {C:attention}#1#{} {X:mountain,C:white}barrera{} al jugar",
+                    "una mano de {C:attention}figuras{} con mínimo {C:attention}#2#{}" },
+                    { "{C:attention}Frontal{}",
+                        "{C:chips}+#3# Chips{} por cada {X:mountain,C:white}barrera{}",
+                        "{C:mult}Gasta{} todas las {X:mountain,C:white}barreras{}",
+                        "{C:inactive}Actualmente:{} {C:chips}+#4# Chips{}" } }
             },
 
             j_ina_Hephestus = {
@@ -970,6 +976,11 @@ return {
                 name = "Frontal",
                 text = { "Se activa si es el",
                     "joker de más a la {C:attention}Izquierda{}" }
+            },
+            Right_Footed = {
+                name = "Diestro",
+                text = { "Se activa si es el",
+                    "joker de más a la {C:attention}Derecha{}" }
             },
             p_ina_team_pack_raimon = {
                 name = "Pack Raimon",

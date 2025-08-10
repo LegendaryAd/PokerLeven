@@ -30,12 +30,8 @@ local Feldt = J({
 
         if Pokerleven.is_joker_turn(context) then
             if Pokerleven.get_cards_of_suite('Spades', context.scoring_hand) >= 3 then
-                Pokerleven.ease_barriers(1)
-                return {
-                    message = localize('ina_generate_barriers'),
-                    colour = G.C.ORANGE,
-                    card = card
-                }
+                local barriers = card.ability.extra.barriers
+                return Pokerleven.ease_barriers(barriers)
             end
         end
     end
