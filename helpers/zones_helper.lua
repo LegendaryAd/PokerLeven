@@ -312,7 +312,9 @@ G.FUNCS.toggle_bench_card = function(e, add_func, open_bench_flag)
         end
     }))
 
+    local sell_cost = card.sell_cost
     local new_card = copy_card(card)
+    new_card.sell_cost = sell_cost
     card:remove()
 
     G.E_MANAGER:add_event(Event({
@@ -342,7 +344,9 @@ G.FUNCS.unbench_card = function(e)
         end
     }))
 
+    local sell_cost = card.sell_cost
     local unbench_card = copy_card(card)
+    unbench_card.sell_cost = sell_cost
 
     G.E_MANAGER:add_event(Event({
         trigger = 'immediate',
