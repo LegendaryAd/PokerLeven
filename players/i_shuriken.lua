@@ -196,7 +196,7 @@ local hattori = J({
         end
 
         if context.end_of_round then
-            card.abitliy.extra.triggered = true
+            card.ability.extra.triggered = true
             if card.ability.extra.copies then
                 for _, copy in ipairs(card.ability.extra.copies) do
                     copy:start_dissolve({ HEX("57ecab") }, nil, 1.6)
