@@ -124,3 +124,9 @@ Pokerleven.execute_function_with_delay = function(action, delay)
         end
     }))
 end
+
+function Pokerleven.clone_table(tbl)
+    local copy = {}
+    for i, v in ipairs(tbl) do copy[i] = v end
+    return copy
+end

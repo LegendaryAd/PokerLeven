@@ -16,6 +16,7 @@ local Feldt = J({
     pposition = "GK", -- Goalkeeper
     pteam = "Brain",
     techtype = C.UPGRADES.Number,
+    numberTechType = C.UPGRADES.NumberType.Z,
     blueprint_compat = true,
     calculate = function(self, card, context)
         if Pokerleven.is_joker_last_hand(context) and G.GAME.current_round.barriers > 0 then

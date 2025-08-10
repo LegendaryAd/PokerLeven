@@ -33,9 +33,7 @@ technique_values = {
 plus_stickers = { "ina_tech_plus1_sticker", "ina_tech_plus2_sticker", "ina_tech_plus3_sticker", "ina_tech_plus4_sticker",
     "ina_tech_plus5_sticker" }
 
-number_stickers = { "ina_tech_number2_sticker", "ina_tech_number3_sticker", "ina_tech_number4_sticker",
-    "ina_tech_numbera_sticker",
-    "ina_tech_numbers_sticker", "ina_tech_numberz_sticker", "ina_tech_numberinf_sticker" }
+number_stickers = { "ina_tech_number2_sticker", "ina_tech_number3_sticker", "ina_tech_number4_sticker" }
 
 grade_stickers = { "ina_tech_grade2_sticker", "ina_tech_grade3_sticker", "ina_tech_grade4_sticker",
     "ina_tech_grade5_sticker",
@@ -61,9 +59,13 @@ end
 set_sticker = function(card)
     local tech_level = card.ability.extra.tech_level
 
+    local this_card_number_stickers = Pokerleven.clone_table(number_stickers)
+    table.insert(this_card_number_stickers, card.ability.extra.numberTechType or C.UPGRADES.NumberType.A)
+    table.insert(this_card_number_stickers, "ina_tech_numberinf_sticker")
+
     local sticker_map = {
         plus = plus_stickers,
-        number = number_stickers,
+        number = this_card_number_stickers,
         grade = grade_stickers
     }
 

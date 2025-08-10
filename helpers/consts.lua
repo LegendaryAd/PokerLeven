@@ -21,6 +21,10 @@ C.UPGRADES = { "plus", "number", "grade" }
 C.UPGRADES.Plus = C.UPGRADES[1]
 C.UPGRADES.Number = C.UPGRADES[2]
 C.UPGRADES.Grade = C.UPGRADES[3]
+C.UPGRADES.NumberType = {}
+C.UPGRADES.NumberType.A = "ina_tech_numbera_sticker"
+C.UPGRADES.NumberType.S = "ina_tech_numbers_sticker"
+C.UPGRADES.NumberType.Z = "ina_tech_numberz_sticker"
 
 --- For specific jokers
 C.CUSTOM = {}
