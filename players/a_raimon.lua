@@ -476,8 +476,8 @@ local Steve = J({
   pos = { x = 2, y = 7 },
   config = { extra = { chip_mod = 6, mult_mod = 3, money = 1 } },
   loc_vars = function(self, info_queue, center)
-    local count = #find_player_team("Raimon") or 0
-    return { vars = { count * center.ability.extra.chip_mod, count * center.ability.extra.mult_mod } }
+    local count = #find_player_team("Raimon")
+    return { vars = { center.ability.extra.chip_mod, center.ability.extra.mult_mod, center.ability.extra.money, count * center.ability.extra.chip_mod, count * center.ability.extra.mult_mod } }
   end,
   rarity = 1,
   pools = { ["Raimon"] = true },
@@ -491,7 +491,6 @@ local Steve = J({
   calculate = function(self, card, context)
     if Pokerleven.is_joker_turn(context) then
       local count = #find_player_team("Raimon");
-      card.ability.extra.triggered = true;
       return {
         message = localize("ina_gol"),
         colour = G.C.CHIPS,
@@ -501,7 +500,7 @@ local Steve = J({
     end
   end,
   calc_dollar_bonus = function(self, card)
-    return 1
+    return card.ability.extra.money
   end
 })
 

@@ -343,10 +343,10 @@ return {
             },
             j_ina_Steve = {
                 name = "Steve",
-                text = { "{C:wind}Disparo Rodante{}", "Cada jugador de {X:raimon,C:white}Raimon{}",
-                    "otorga {C:chips}+6{} fichas, {C:mult}+3{} y {C:money}+1${}.",
-                    "Obtiene {C:money}+#3#${} al terminar la ronda.",
-                    "{C:inactive}Actualmente{} {C:chips}+#1#{}{C:inactive} {C:inactive}y{} {C:mult}+#2#{}" }
+                text = { "{C:wind}Disparo Rodante{}", "Cada jugador del {X:raimon,C:white}Raimon{}",
+                    "otorga {C:chips}+#1#{} fichas y {C:mult}+#2#{} mult",
+                    "Obtiene {C:money}+#3#${} al terminar la ronda",
+                    "{C:inactive}Actualmente{} {C:chips}+#4#{}{C:inactive} {C:inactive}y{} {C:mult}+#5#{}" }
             },
             -- Occult
             j_ina_Talisman = {
