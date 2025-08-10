@@ -789,12 +789,18 @@ return {
 
             j_ina_Marvin = {
                 name = "Marvin",
-                text = { "{C:fire}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:fire}Tornado Inverso{}",
+                    "{X:attention,C:white}Trillizos{}",
+                    "Las cartas {C:attention}impares{}",
+                    "otorgan {C:mult}+#1# Mult{}" }
             },
 
             j_ina_Thomas = {
                 name = "Thomas",
-                text = { "{C:wind}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
+                text = { "{C:wind}Tornado Inverso{}",
+                    "{X:attention,C:white}Trillizos{}",
+                    "Las cartas {C:attention}impares{}",
+                    "otorgan {C:chips}+#1# Chips{}" }
             },
 
             j_ina_Tyler = {
@@ -976,6 +982,12 @@ return {
                 name = "Frontal",
                 text = { "Se activa si es el",
                     "joker de más a la {C:attention}Izquierda{}" }
+            },
+            Trillizos = {
+                name = "Trillizos",
+                text = { "Si tienes a {C:attention}Thomas{}",
+                    "{C:attention}Tyler{} y {C:attention}Marvin{} reactiva",
+                    "las cartas {C:attention}impares{}" }
             },
             Right_Footed = {
                 name = "Diestro",

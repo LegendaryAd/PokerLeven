@@ -38,8 +38,8 @@ local Greeny = J({
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.setting_blind
-            and Pokerleven.has_enough_barriers(card)
-            and Pokerleven.is_rightmost_joker(card) and
+            and card:has_enough_barriers()
+            and card:is_rightmost_joker() and
             Pokerleven.has_enough_consumables_space() then
             combinations = get_all_type_pos_combinations()
             local selected_combination = pseudorandom_element(combinations, pseudoseed('training'))

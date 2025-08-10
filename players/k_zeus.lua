@@ -23,8 +23,8 @@ local Poseidon = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if Pokerleven.is_joker_turn(context)
-        and Pokerleven.is_leftmost_joker(card)
-        and Pokerleven.has_enough_barriers(card) then
+        and card:is_leftmost_joker()
+        and card:has_enough_barriers() then
       local current_barriers = G.GAME.current_round.barriers
       local chips_mod = current_barriers * card.ability.extra.chips_mod
       card_eval_status_text(card, 'extra', nil, nil, nil, Pokerleven.ease_barriers(-current_barriers))

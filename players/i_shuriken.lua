@@ -210,7 +210,7 @@ local hattori = J({
 
 --- Cloack
 local function can_duplicate_joker(card, context)
-    return Pokerleven.is_leftmost_joker(card)
+    return card:is_leftmost_joker()
         and context.setting_blind
         and #G.jokers.cards > 1
 end
@@ -245,7 +245,7 @@ local cloack = J({
         return { vars = { center.ability.extra.barriers, center.ability.extra.perish_tally } }
     end,
     calculate = function(self, card, context)
-        if Pokerleven.has_enough_barriers(card) and can_duplicate_joker(card, context) then
+        if card:has_enough_barriers() and can_duplicate_joker(card, context) then
             local new_joker = generate_cloack_card(card.ability.extra.perish_tally)
             Pokerleven.add_card_to_jokers(new_joker)
             Pokerleven.ease_barriers(-card.ability.extra.barriers)

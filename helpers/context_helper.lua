@@ -21,18 +21,16 @@ Pokerleven.is_joker_end_of_round = function(context)
 end
 
 ---Returns true if the joker is the leftmost one
----@param card Card
 ---@return boolean
-Pokerleven.is_leftmost_joker = function(card)
-    return G.jokers.cards[1] == card
+Card.is_leftmost_joker = function(self)
+    return G.jokers.cards[1] == self
 end
 
 
 ---Returns true if the joker is the rightmost one
----@param card Card
 ---@return boolean
-Pokerleven.is_rightmost_joker = function(card)
-    return G.jokers.cards[#G.jokers.cards] == card
+Card.is_rightmost_joker = function(self)
+    return G.jokers.cards[#G.jokers.cards] == self
 end
 
 ---Emplaces joker and adds it to deck
@@ -58,10 +56,9 @@ Pokerleven.add_card_to_consumables = function(card)
 end
 
 --- Returns true if current barriers > card.ability.extra.barriers
----@param card Card
 ---@return boolean
-Pokerleven.has_enough_barriers = function(card)
-    return G.GAME.current_round.barriers >= card.ability.extra.barriers
+Card.has_enough_barriers = function(self)
+    return G.GAME.current_round.barriers >= self.ability.extra.barriers
 end
 
 --- Returns true if consumables limit > current consumables
@@ -79,4 +76,23 @@ Pokerleven.are_all_face = function()
         end
     end
     return true
+end
+
+---Returns a single card scoring or nil if it is not
+---@param context table|CalcContext
+---@return Card|nil
+Pokerleven.card_scoring = function(context)
+    if context.individual and context.cardarea == G.play and context.other_card and context.scoring_hand then
+        return context.other_card
+    end
+    return nil
+end
+
+---Returns true if card is uneven
+---@return boolean
+Card.is_uneven = function(self)
+    if not self:is_face() and self:get_id() % 2 ~= 0 then
+        return true
+    end
+    return false
 end
