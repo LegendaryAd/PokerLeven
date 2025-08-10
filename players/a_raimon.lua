@@ -474,13 +474,14 @@ local Bobby = J({
 local Steve = J({
   name = "Steve",
   pos = { x = 2, y = 7 },
-  config = { extra = { chip_mod = 10, mult_mod = 4 } },
+  config = { extra = { chip_mod = 6, mult_mod = 3, money = 1 } },
   loc_vars = function(self, info_queue, center)
-    return { vars = { center.ability.extra.chip_mod, center.ability.extra.mult_mod } }
+    local count = #find_player_team("Raimon")
+    return { vars = { center.ability.extra.chip_mod, center.ability.extra.mult_mod, center.ability.extra.money, count * center.ability.extra.chip_mod, count * center.ability.extra.mult_mod } }
   end,
   rarity = 1,
   pools = { ["Raimon"] = true },
-  cost = 5,
+  cost = 3,
   atlas = "Jokers01",
   ptype = C.Wind,
   pposition = C.MF,
@@ -489,13 +490,17 @@ local Steve = J({
   blueprint_compat = true,
   calculate = function(self, card, context)
     if Pokerleven.is_joker_turn(context) then
+      local count = #find_player_team("Raimon");
       return {
         message = localize("ina_gol"),
         colour = G.C.CHIPS,
-        chip_mod = card.ability.extra.chip_mod,
-        mult_mod = card.ability.extra.mult_mod,
+        chip_mod = card.ability.extra.chip_mod * count,
+        mult_mod = card.ability.extra.mult_mod * count,
       }
     end
+  end,
+  calc_dollar_bonus = function(self, card)
+    return card.ability.extra.money
   end
 })
 
