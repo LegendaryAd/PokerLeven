@@ -21,6 +21,7 @@ local Greeny = J({
     config = { extra = { barriers_added = 1, DF_required = 2, barriers = 3 }
     },
     loc_vars = function(self, info_queue, center)
+        table.insert(info_queue, { set = 'Other', key = 'Right_Footed' })
         return {
             vars = { center.ability.extra.barriers_added, center.ability.extra.DF_required,
                 center.ability.extra.barriers }
@@ -37,8 +38,8 @@ local Greeny = J({
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.setting_blind
-            and Pokerleven.has_enough_barriers(card)
-            and Pokerleven.is_rightmost_joker(card) and
+            and card:has_enough_barriers()
+            and card:is_rightmost_joker() and
             Pokerleven.has_enough_consumables_space() then
             combinations = get_all_type_pos_combinations()
             local selected_combination = pseudorandom_element(combinations, pseudoseed('training'))
@@ -59,7 +60,7 @@ local Greeny = J({
             local df_required = card.ability.extra.DF_required
             if Pokerleven.has_enough_position(C.DF, df_required) then
                 local barriers_added = card.ability.extra.barriers_added
-                Pokerleven.ease_barriers(barriers_added, true)
+                return Pokerleven.ease_barriers(barriers_added, true)
             end
         end
     end

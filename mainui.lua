@@ -380,7 +380,7 @@ local function create_text_row(text1, text2)
   }
 
   if text2 and text2 ~= "" then
-    table.insert(nodes, create_text_node(text2, G.C.BLUE))
+    table.insert(nodes, create_text_node(text2, G.ARGS.LOC_COLOURS["training"]))
   end
 
   return {

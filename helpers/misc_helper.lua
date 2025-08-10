@@ -171,6 +171,10 @@ function Pokerleven.get_cards_of_suite(suite, hand)
     return count
 end
 
+---Changes the current barriers. If you use it as a return it will print a message
+---@param mod any
+---@param instant any
+---@return table Loc the message to print on the joker calling this method
 function Pokerleven.ease_barriers(mod, instant)
     local function _mod(mod)
         local barrier_UI = G.ina_resources_info:get_UIE_by_ID('barrier_text_UI')
@@ -214,4 +218,8 @@ function Pokerleven.ease_barriers(mod, instant)
             end
         }))
     end
+    return {
+        message = localize('ina_generate_barriers'),
+        colour = G.C.ORANGE
+    }
 end

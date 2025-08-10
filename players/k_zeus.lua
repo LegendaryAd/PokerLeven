@@ -2,19 +2,43 @@
 local Poseidon = {
   name = "Poseidon",
   pos = { x = 10, y = 5 },
-  config = { extra = {} },
+  config = { extra = { min_face = 3, barriers_added = 1, chips_mod = 40, barriers = 1 } },
   loc_vars = function(self, info_queue, center)
-    return {}
+    table.insert(info_queue, { set = "Other", key = "Frontal" })
+    local barriers = center.ability.extra.barriers_added
+    local chips_mod = center.ability.extra.chips_mod
+    local min_face = center.ability.extra.min_face
+
+    local current_barriers = G.GAME.current_round.barriers or 0
+    local actual_chips_mod = current_barriers * chips_mod
+    return { vars = { barriers, min_face, chips_mod, actual_chips_mod } }
   end,
   rarity = 3, -- Rare
   pools = { ["Zeus"] = true },
   cost = 8,
   atlas = "Jokers01",
   ptype = "Mountain",
-  pposition = "GK", -- Goalkeeper
+  pposition = "GK",
   pteam = "Zeus",
   blueprint_compat = true,
   calculate = function(self, card, context)
+    if Pokerleven.is_joker_turn(context)
+        and card:is_leftmost_joker()
+        and card:has_enough_barriers() then
+      local current_barriers = G.GAME.current_round.barriers
+      local chips_mod = current_barriers * card.ability.extra.chips_mod
+      card_eval_status_text(card, 'extra', nil, nil, nil, Pokerleven.ease_barriers(-current_barriers))
+      return {
+        chips = chips_mod
+      }
+    end
+
+    if Pokerleven.is_joker_turn(context)
+        and #G.play.cards > 2
+        and Pokerleven.are_all_face() then
+      local barriers = card.ability.extra.barriers_added
+      return Pokerleven.ease_barriers(barriers)
+    end
   end
 }
 

@@ -524,10 +524,6 @@ return {
             },
 
             -- Zeus
-            j_ina_Poseidon = {
-                name = "Poseidon",
-                text = { "{C:mountain}Placeholder{}", "Placeholder effect line 1", "Placeholder effect line 2" }
-            },
 
             j_ina_Hephestus = {
                 name = "Hephestus",

@@ -57,9 +57,11 @@ local Night = J({
 local Marvin = J({
     name = "Marvin",
     pos = { x = 5, y = 5 },
-    config = {},
+    config = { extra = { mult_mod = 4 } },
     loc_vars = function(self, info_queue, center)
-        return {}
+        local mult_mod = center.ability.extra.mult_mod
+        table.insert(info_queue, { set = "Other", key = "Trillizos" })
+        return { vars = { mult_mod } }
     end,
     rarity = 2, -- Uncommon
     pools = { ["Kirkwood"] = true },
@@ -70,16 +72,25 @@ local Marvin = J({
     pteam = "Kirkwood",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- Add logic
+        local scoring_card = Pokerleven.card_scoring(context)
+        if scoring_card and scoring_card:is_uneven() then
+            local mult_mod = card.ability.extra.mult_mod
+            return {
+                mult = mult_mod,
+                card = card
+            }
+        end
     end,
 })
 
 local Thomas = J({
     name = "Thomas",
     pos = { x = 6, y = 5 },
-    config = {},
+    config = { extra = { chips_mod = 15 } },
     loc_vars = function(self, info_queue, center)
-        return {}
+        local chips_mod = center.ability.extra.chips_mod
+        table.insert(info_queue, { set = "Other", key = "Trillizos" })
+        return { vars = { chips_mod } }
     end,
     rarity = 2, -- Uncommon
     pools = { ["Kirkwood"] = true },
@@ -90,7 +101,14 @@ local Thomas = J({
     pteam = "Kirkwood",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- Add logic
+        local scoring_card = Pokerleven.card_scoring(context)
+        if scoring_card and scoring_card:is_uneven() then
+            local chips_mod = card.ability.extra.chips_mod
+            return {
+                chips = chips_mod,
+                card = card
+            }
+        end
     end,
 })
 
