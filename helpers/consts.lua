@@ -29,6 +29,7 @@ C.UPGRADES.NumberType.Z = "ina_tech_numberz_sticker"
 --- For specific jokers
 C.CUSTOM = {}
 C.CUSTOM.Bobby_Teams = {
+    ["Raimon"]         = { x = 10, y = 6 },
     ["Royal Academy"]  = { x = 3, y = 14 },
     ["Occult"]         = { x = 7, y = 14 },
     ["Wild"]           = { x = 8, y = 14 },
