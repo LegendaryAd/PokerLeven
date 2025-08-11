@@ -35,6 +35,99 @@ payload = '''
 match_indent = true
 override = true
 
+# Replace discord link
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+G.FUNCS.go_to_discord = function(e)
+  love.system.openURL( "https://discord.gg/balatro" )
+end
+'''
+position = "at"
+payload = '''
+G.FUNCS.go_to_discord = function(e)
+  love.system.openURL( "https://t.co/B87tVSx3gY" )
+end
+'''
+match_indent = true
+override = true
+
+# Replace twitter link
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+G.FUNCS.go_to_twitter = function(e)
+  love.system.openURL( "https://twitter.com/LocalThunk" )
+end
+'''
+position = "at"
+payload = '''
+G.FUNCS.go_to_twitter = function(e)
+  love.system.openURL( "https://x.com/MrDecou" )
+end
+G.FUNCS.go_to_twitterSynkro = function(e)
+  love.system.openURL( "https://x.com/_Synkro" )
+end
+'''
+match_indent = true
+override = true
+
+# Replace discord and twitter icons
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+  if G.F_DISCORD then 
+    discord = Sprite(0,0,0.6,0.6,G.ASSET_ATLAS["icons"], {x=0, y=0})
+    discord.states.drag.can = false
+    twitter = Sprite(0,0,0.6,0.6,G.ASSET_ATLAS["icons"], {x=0, y=1})
+    twitter.states.drag.can = false
+  end
+'''
+position = "at"
+payload = '''
+  if G.F_DISCORD then 
+    discord = Sprite(0,0,0.6,0.6,G.ASSET_ATLAS["ina_custom_icons"], {x=2, y=0})
+    discord.states.drag.can = false
+    twitter = Sprite(0,0,0.6,0.6,G.ASSET_ATLAS["ina_custom_icons"], {x=1, y=0})
+    twitter.states.drag.can = false
+    twitterSynkro = Sprite(0,0,0.6,0.6,G.ASSET_ATLAS["ina_custom_icons"], {x=0, y=0})
+    twitterSynkro.states.drag.can = false
+  end
+'''
+match_indent = true
+override = true
+
+# Add second twitter
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+{n=G.UIT.C, config={align = "cm", padding = 0.1, r = 0.1, hover = true, colour = mix_colours(G.C.BLUE, G.C.GREY, 0.4), button = 'go_to_discord', shadow = true}, nodes={
+  {n=G.UIT.O, config={object = discord}},
+}},
+{n=G.UIT.C, config={align = "cm", padding = 0.1, r = 0.1, hover = true, colour = G.C.BLACK, button = 'go_to_twitter', shadow = true}, nodes={
+  {n=G.UIT.O, config={object = twitter}},
+}}
+'''
+position = "at"
+payload = '''
+{n=G.UIT.C, config={align = "cm", padding = 0.1, r = 0.1, hover = true, colour = mix_colours(G.C.BLUE, G.C.GREY, 0.4), button = 'go_to_discord', shadow = true, tooltip = { title = 'Pokerleven Discord' }}, nodes={
+  {n=G.UIT.O, config={object = discord}},
+}},
+{n=G.UIT.C, config={align = "cm", padding = 0.1, r = 0.1, hover = true, colour = G.C.BLACK, button = 'go_to_twitter', shadow = true, tooltip = { title = '@MrDecou' }}, nodes={
+  {n=G.UIT.O, config={object = twitter}},
+}},
+{n=G.UIT.C, config={align = "cm", padding = 0.1, r = 0.1, hover = true, colour = G.C.BLACK, button = 'go_to_twitterSynkro', shadow = true, tooltip = { title = '@_Synkro' }}, nodes={
+  {n=G.UIT.O, config={object = twitterSynkro}},
+}}
+'''
+match_indent = true
+override = true
+
+
 # Replace start menu logo with inazuma
 [[patches]]
 [patches.pattern]
