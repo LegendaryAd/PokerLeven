@@ -347,5 +347,5 @@ local Aphrodite = J({
 
 return {
   name = "Zeus",
-  list = { Poseidon, Hephestus, Apollo, Artemis, Hermes, Demeter, Aphrodite },
+  list = { Poseidon, Apollo, Hephestus, Artemis, Hermes, Demeter, Aphrodite },
 }

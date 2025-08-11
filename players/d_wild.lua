@@ -330,5 +330,5 @@ local Cheetah = {
 
 return {
     name = "Wild",
-    list = { Chicken, Boar, Chamaleon, Eagle, Monkey, Gorilla, Cheetah },
+    list = { Boar, Chicken, Chamaleon, Eagle, Monkey, Gorilla, Cheetah },
 }

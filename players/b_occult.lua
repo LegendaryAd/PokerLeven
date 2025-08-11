@@ -320,5 +320,5 @@ local Mummy = {
 
 return {
   name = "Occult",
-  list = { Talisman, Wolfy, Blood, Grave, Mask, Styx, Franky, Mummy },
+  list = { Mask, Styx, Franky, Mummy, Grave, Talisman, Wolfy, Blood },
 }
