@@ -337,6 +337,49 @@ local shuriken = {
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("4B0082"),
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.press_play then
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.2,
+                    func = function()
+                        for i = 1, #G.play.cards do
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.play.cards[i]:juice_up()
+                                    return true
+                                end,
+                            }))
+                            ease_dollars(-1)
+                            delay(0.23)
+                        end
+                        return true
+                    end
+                }))
+                blind.triggered = true
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'immediate',
+                    func = (function()
+                        SMODS.juice_up_blind()
+                        G.E_MANAGER:add_event(Event({
+                            trigger = 'after',
+                            delay = 0.06 * G.SETTINGS.GAMESPEED,
+                            blockable = false,
+                            blocking = false,
+                            func = function()
+                                play_sound('tarot2', 0.76, 0.4)
+                                return true
+                            end
+                        }))
+                        play_sound('tarot2', 1, 0.4)
+                        return true
+                    end)
+                }))
+                delay(0.4)
+            end
+        end
+    end
 }
 
 local farm = {
@@ -367,6 +410,33 @@ local kirkwood = {
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("7A5E3C"),
+    loc_vars = function(self)
+        local numerator, denominator = SMODS.get_probability_vars(self, 1, 7, 'vremade_wheel')
+        return { vars = { numerator, denominator } }
+    end,
+    collection_loc_vars = function(self)
+        return { vars = { '1' } }
+    end,
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.stay_flipped and context.to_area == G.hand and
+                SMODS.pseudorandom_probability(blind, 'vremade_wheel', 1, 7) then
+                return {
+                    stay_flipped = true
+                }
+            end
+        end
+    end,
+    disable = function(self)
+        for i = 1, #G.hand.cards do
+            if G.hand.cards[i].facing == 'back' then
+                G.hand.cards[i]:flip()
+            end
+        end
+        for _, playing_card in pairs(G.playing_cards) do
+            playing_card.ability.wheel_flipped = nil
+        end
+    end
 }
 
 local zeus = {
@@ -380,6 +450,21 @@ local zeus = {
     atlas = "finalBossBlinds",
     order = 1,
     boss_colour = HEX("ffa726"),
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.debuff_hand then
+                blind.triggered = false
+                if G.GAME.hands[context.scoring_name].level > 1 then
+                    blind.triggered = true
+                    if not context.check then
+                        return {
+                            level_up = -1
+                        }
+                    end
+                end
+            end
+        end
+    end
 }
 
 return {

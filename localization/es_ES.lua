@@ -145,7 +145,8 @@ return {
             },
             bl_ina_shuriken = {
                 name = "Shuriken",
-                text = {}
+                text = { "Cada carta jugada",
+                    "resta 1 moneda" }
             },
             bl_ina_farm = {
                 name = "Farm",
@@ -153,11 +154,12 @@ return {
             },
             bl_ina_kirkwood = {
                 name = "Kirkwood",
-                text = {}
+                text = { "1 de 7 cartas esta volteada" }
             },
             bl_ina_zeus = {
                 name = "Zeus",
-                text = {}
+                text = { "Disminuye el nivel de la",
+                    "mano de póker jugada en 1" }
             },
 
             -- Final Boss Blinds
