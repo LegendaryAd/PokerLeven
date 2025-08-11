@@ -238,11 +238,12 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys, e
 
     if #ina_keys == 0 and enable_dupes then
         for _, v in pairs(G.P_CENTERS) do
-            if v.pteam and not (inararity and v.rarity ~= inararity)
+            if v.pteam
+                and not (inararity and v.rarity ~= inararity)
                 and not (inateam and inateam ~= v.pteam)
-                and ((special and v.special == special) or (not special and player_in_pool(v)))
                 and not v.aux_ina
                 and not exclude_keys[v.key] then
+                -- Para enable_dupes ignoramos player_in_pool y repetición
                 table.insert(ina_keys, v.key)
             end
         end
