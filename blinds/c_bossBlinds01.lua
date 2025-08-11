@@ -314,7 +314,7 @@ local otaku = {
     key = "otaku",
     pos = { x = 0, y = 12 },
     boss = {
-        min = 3,
+        min = 2,
     },
     discovered = false,
     mult = 2,
@@ -403,7 +403,7 @@ local kirkwood = {
     key = "kirkwood",
     pos = { x = 0, y = 15 },
     boss = {
-        min = 0,
+        min = 2,
     },
     discovered = false,
     mult = 2,
@@ -458,7 +458,7 @@ local zeus = {
                     blind.triggered = true
                     if not context.check then
                         return {
-                            level_up = -1
+                            level_up = -G.GAME.hands[context.scoring_name].level + 1
                         }
                     end
                 end

@@ -158,8 +158,8 @@ return {
             },
             bl_ina_zeus = {
                 name = "Zeus",
-                text = { "Disminuye el nivel de la",
-                    "mano de póker jugada en 1" }
+                text = { "Pone el nivel de la",
+                    "mano de póker jugada a 1" }
             },
 
             -- Final Boss Blinds
