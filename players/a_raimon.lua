@@ -65,7 +65,7 @@ local Mark = J({
 
 
 -- Nathan
-local Nathan = {
+local Nathan = J({
   name = "Nathan",
   pos = { x = 2, y = 0 },
   config = { extra = { xmult = 1.5, triggered = false } },
@@ -83,7 +83,7 @@ local Nathan = {
   pteam = "Raimon",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.other_joker and is_team(context.other_joker, "Raimon") then
+    if not context.debuff and context.other_joker and is_team(context.other_joker, "Raimon") then
       card.ability.extra.triggered = true;
       G.E_MANAGER:add_event(Event({
         func = function()
@@ -98,7 +98,7 @@ local Nathan = {
       }
     end
   end,
-}
+})
 
 -- Jack
 local Jack = {
