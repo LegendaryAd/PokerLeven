@@ -138,6 +138,10 @@ get_team = function(card)
 end
 
 local player_in_bench = function(name)
+    if (not Pokerleven.ina_bench_area) then
+        return false
+    end
+
     for _, card in ipairs(Pokerleven.ina_bench_area.cards) do
         if name == card.name then
             return true

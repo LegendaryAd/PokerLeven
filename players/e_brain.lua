@@ -109,7 +109,7 @@ local Tell = {
                         message = "Pi!",
                         colour = G.C.RED,
                         card = card,
-                        Xchips_mod = card.ability.extra.Xchips_mod
+                        Xchip_mod = card.ability.extra.Xchips_mod
                     }
                 end
             end

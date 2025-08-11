@@ -68,9 +68,9 @@ local umbrella = {
     big = { min = 2 },
     set_blind = function(self)
         G.GAME.blind.hands_sub = -1
-        ease_hands_played(1)
+        ease_hands_played(-1)
         G.GAME.blind.discards_sub = 1
-        ease_discard(-1)
+        ease_discard(1)
     end,
 }
 

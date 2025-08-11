@@ -365,7 +365,7 @@ return {
                 name = "Blood",
                 text = { "{C:mountain}Niebla Venenosa{}",
                     "{C:attention}Drena{} {C:money}#1#${} de los comodines adyacentes",
-                    "{C:chips}+#2#{} fichas por cada {C:money}1${}", "en valor de venta",
+                    "{C:chips}+#2#{} fichas por cada {C:money}1${}", "en su valor de venta",
                     "{C:inactive}Actualmente{} {C:chips}+#3#{}" }
             },
             j_ina_Grave = {
