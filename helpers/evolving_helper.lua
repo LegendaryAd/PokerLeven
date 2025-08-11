@@ -70,7 +70,7 @@ ina_backend_evolve = function(card, to_key)
         card.ability.perish_tally = G.GAME.perishable_rounds
     end
 
-    local names_to_keep = { "targets", "rank", "id", "cards_scored", "upgrade", "mult", "mult_mod" }
+    local names_to_keep = { "targets", "rank", "id", "cards_scored", "upgrade", "mult", "mult_mod", "current_xmult" }
     local values_to_keep = copy_scaled_values(card)
     if type(card.ability.extra) == "table" then
         for _, k in pairs(names_to_keep) do
