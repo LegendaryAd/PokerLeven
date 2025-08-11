@@ -14,7 +14,7 @@ local goalkeeper = {
     boss_colour = HEX("ffa726"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.config.center.pposition == "GK" then
+            and card.ability.extra.pposition == "GK" then
             return true
         end
         return false
@@ -40,7 +40,7 @@ local forward = {
     boss_colour = HEX("4fc3f7"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.config.center.pposition == "FW" then
+            and card.ability.extra.pposition == "FW" then
             return true
         end
         return false
@@ -66,7 +66,7 @@ local defense = {
     boss_colour = HEX("ef5350"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.config.center.pposition == "DF" then
+            and card.ability.extra.pposition == "DF" then
             return true
         end
         return false
@@ -92,7 +92,7 @@ local midfielder = {
     boss_colour = HEX("66bb6a"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.config.center.pposition == "MF" then
+            and card.ability.extra.pposition == "MF" then
             return true
         end
         return false
@@ -118,7 +118,7 @@ local fire = {
     boss_colour = HEX("d32f2f"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.config.center.ptype == "Fire" then
+            and card.ability.extra.ptype == "Fire" then
             return true
         end
         return false
@@ -144,7 +144,7 @@ local mountain = {
     boss_colour = HEX("f57c00"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.config.center.ptype == "Mountain" then
+            and card.ability.extra.ptype == "Mountain" then
             return true
         end
         return false
@@ -170,7 +170,7 @@ local wind = {
     boss_colour = HEX("81d4fa"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.config.center.ptype == "Wind" then
+            and card.ability.extra.ptype == "Wind" then
             return true
         end
         return false
@@ -196,7 +196,7 @@ local forest = {
     boss_colour = HEX("2e7d32"),
     recalc_debuff = function(self, card, from_blind)
         if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.config.center.ptype == "Forest" then
+            and card.ability.extra.ptype == "Forest" then
             return true
         end
         return false
@@ -317,11 +317,11 @@ local otaku = {
         min = 2,
     },
     discovered = false,
+    debuff = { is_face = 'face' },
     mult = 2,
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("A754C4"),
-    debuff = { is_face = true },
 }
 
 local shuriken = {
@@ -439,7 +439,7 @@ local kirkwood = {
     end
 }
 
-local zeus = {
+local zeus = B({
     object_type = "Blind",
     name = "Zeus",
     key = "zeus",
@@ -454,18 +454,19 @@ local zeus = {
         if not blind.disabled then
             if context.debuff_hand then
                 blind.triggered = false
-                if G.GAME.hands[context.scoring_name].level > 1 then
+                if G.GAME.hands[context.scoring_name].level > to_big(1) then
                     blind.triggered = true
                     if not context.check then
+                        local level_down = -G.GAME.hands[context.scoring_name].level + 1
                         return {
-                            level_up = -G.GAME.hands[context.scoring_name].level + 1
+                            level_up = lenient_bignum(level_down)
                         }
                     end
                 end
             end
         end
     end
-}
+})
 
 return {
     name = "Boss Blinds",

@@ -67,10 +67,17 @@ Pokerleven.has_enough_consumables_space = function()
     return G.consumeables.config.card_limit > G.consumeables.config.card_count
 end
 
----Returns true if all cards played are face
+--- Returns true if bench limit > current consumables
 ---@return boolean
-Pokerleven.are_all_face = function()
-    for _, card in ipairs(G.play.cards) do
+Pokerleven.has_enough_bench_space = function()
+    return Pokerleven.ina_bench_area.config.card_limit > Pokerleven.ina_bench_area.config.card_count
+end
+
+---Returns true if all cards played are face
+---@param context CalcContext
+---@return boolean
+Pokerleven.are_all_face = function(context)
+    for _, card in ipairs(context.scoring_hand) do
         if not card:is_face() then
             return false
         end
@@ -91,7 +98,7 @@ end
 ---Returns true if card is uneven
 ---@return boolean
 Card.is_uneven = function(self)
-    if not self:is_face() and self:get_id() % 2 ~= 0 then
+    if not self:is_face() and (self:get_id() % 2 ~= 0 or self:get_id() == 14) then
         return true
     end
     return false

@@ -137,6 +137,15 @@ get_team = function(card)
     return nil
 end
 
+local player_in_bench = function(name)
+    for _, card in ipairs(Pokerleven.ina_bench_area.cards) do
+        if name == card.name then
+            return true
+        end
+    end
+    return false
+end
+
 player_in_pool = function(self)
     if self.special then
         return false
@@ -152,7 +161,7 @@ player_in_pool = function(self)
     else
         name = self.name or "Mark"
     end
-    if next(find_joker(name)) then
+    if next(find_joker(name)) or player_in_bench(name) then
         return false
     else
         return true

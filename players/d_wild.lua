@@ -47,9 +47,8 @@ local Boar = {
     techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.destroying_card and not context.blueprint then
-            if context.scoring_name == "Pair"
-                and context.scoring_hand[1]:get_id() == 2
+        if context.scoring_name == "Pair" and context.destroying_card and not context.blueprint then
+            if context.scoring_hand[1]:get_id() == 2
                 and not context._wildtag_triggered then
                 context._wildtag_triggered = true
                 card.ability.extra.triggered = true
@@ -71,7 +70,7 @@ local Boar = {
 }
 
 -- Chamaleon
-local Chamaleon = {
+local Chamaleon = J({
     name = "Chamaleon",
     pos = { x = 1, y = 2 },
     config = { extra = { triggered = false } },
@@ -88,7 +87,8 @@ local Chamaleon = {
     techtype = C.UPGRADES.Number,
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.joker_main then
+        if context.cardarea == G.jokers and context.joker_main
+            and next(context.poker_hands['Flush']) then
             local suit_counts = {
                 Clubs = 0,
                 Hearts = 0,
@@ -142,7 +142,7 @@ local Chamaleon = {
             "Shadorossa",
         }
     },
-}
+})
 
 -- Eagle
 local Eagle = {

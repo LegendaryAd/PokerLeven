@@ -45,7 +45,7 @@ local Hero = {
     cost = 5,
     atlas = "Jokers01",
     ptype = "Fire",
-    pposition = "MF",
+    pposition = "DF",
     pteam = "Otaku",
     blueprint_compat = true,
     calculate = function(self, card, context)
@@ -126,6 +126,9 @@ local Gamer = {
     loc_vars = function(self, info_queue, center)
         local otaku_count = #find_player_team("Otaku")
         local fps = love.timer.getFPS()
+        if fps > 144 then
+            fps = 144
+        end
         return { vars = { otaku_count > 1 and fps or fps / 2 } }
     end,
     rarity = 1, -- Uncommon

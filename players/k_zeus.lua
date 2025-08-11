@@ -34,8 +34,8 @@ local Poseidon = {
     end
 
     if Pokerleven.is_joker_turn(context)
-        and #G.play.cards > 2
-        and Pokerleven.are_all_face() then
+        and #context.scoring_hand > 2
+        and Pokerleven.are_all_face(context) then
       local barriers = card.ability.extra.barriers_added
       return Pokerleven.ease_barriers(barriers)
     end

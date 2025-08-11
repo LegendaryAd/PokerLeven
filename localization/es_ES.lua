@@ -305,7 +305,7 @@ return {
             j_ina_Axel = {
                 name = "Axel",
                 text = { "{C:fire}Tornado de Fuego", "{X:mult,C:white}X#1#{} si la mano jugada",
-                    "contiene una escalera de {C:red}corazones{}" }
+                    "contiene {C:attention}5 cartas{} de {C:red}corazones{}" }
             },
             j_ina_Shadow = {
                 name = "Shadow",
@@ -331,9 +331,9 @@ return {
             },
             j_ina_Jude_Raimon = {
                 name = "Jude",
-                text = { "{C:wind}Espejismo de Balón{}", "{X:mult,C:white}X#1#{}", "Después de cada mano jugada",
-                    "gana {X:mult,C:white}X#2#{} cada vez que el comodín",
-                    "a su {C:attention}izquierda{} se activa", "en la mano con puntuación" }
+                text = { "{C:wind}Espejismo de Balón{}", "{X:mult,C:white}X#1#{}",
+                    "Gana {X:mult,C:white}X#2#{} cada vez que el comodín",
+                    "a su {C:attention}izquierda{} se activa" }
             },
             j_ina_Bobby = {
                 name = "Bobby",
@@ -410,8 +410,8 @@ return {
             },
             j_ina_Jude = {
                 name = "Jude",
-                text = { "{C:wind}Espejismo de Balón{}", "{X:mult,C:white}X#1#{}", "Después de cada mano jugada",
-                    "gana {X:mult,C:white}X#2#{} cada vez que el comodín",
+                text = { "{C:wind}Espejismo de Balón{}", "{X:mult,C:white}X#1#{}",
+                    "Gana {X:mult,C:white}X#2#{} cada vez que el comodín",
                     "a su {C:attention}izquierda{} se activa", "en la mano con puntuación" }
             },
             j_ina_Martin = {
@@ -434,7 +434,7 @@ return {
             },
             j_ina_Swing = {
                 name = "Swing",
-                text = { "{C:wind}Regate Multiple{}", "{C:wind}+#1#{} Fichas por cada",
+                text = { "{C:wind}Regate Multiple{}", "{C:chips}+#1#{} Fichas por cada",
                     "comodín de la {X:royal academy,C:white}Acad. Royal{} si la",
                     "mano contiene un {C:attention}Trío{}" }
             },
@@ -725,10 +725,10 @@ return {
             j_ina_Hayseed = {
                 name = "Hayseed",
                 text = {
-                    "{C:mountain}Semilla del Trío{}",
-                    "Gana {C:mult}+3{} de multiplicador",
+                    "{C:mountain}Siembra{}",
+                    "Gana {C:mult}+#1#{} de multiplicador",
                     "por cada {C:attention}Trío exacto{} jugado",
-                    "{C:inactive}Actualmente{} {C:mult}+#1#{} Mult"
+                    "{C:inactive}Actualmente{} {C:mult}+#2#{} Mult"
                 }
             },
 

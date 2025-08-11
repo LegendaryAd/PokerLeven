@@ -98,7 +98,7 @@ local bench_tag = T({
     pos = { x = 3, y = 4 },
     config = {},
     key = "bench_tag",
-    min_ante = 0,
+    min_ante = 2,
     discovered = false,
     loc_vars = function(self, info_queue, tag)
         info_queue[#info_queue + 1] = G.P_CENTERS.p_ina_manager_pack

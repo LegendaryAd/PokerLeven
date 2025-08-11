@@ -53,18 +53,19 @@ local Celia = J({
         end
         if context.setting_blind then
             --TODO only common?
-            local selected_joker = create_random_ina_joker('Celia', 'Common', G.ina_bench_area, 'Scout', false)
-            G.ina_bench_area:emplace(selected_joker)
-            selected_joker:add_to_deck()
-            Pokerleven.open_bench(true, true)
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 2.0,
-                func = (function()
-                    Pokerleven.open_bench(true, false)
-                    return true
-                end)
-            }))
+            if Pokerleven.has_enough_bench_space() then
+                local selected_joker = create_random_ina_joker('Celia', 'Common', G.ina_bench_area, 'Scout', false)
+                Pokerleven.add_to_bench(selected_joker)
+                Pokerleven.open_bench(true, true)
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 2.0,
+                    func = (function()
+                        Pokerleven.open_bench(true, false)
+                        return true
+                    end)
+                }))
+            end
         end
     end,
     ina_credits = {

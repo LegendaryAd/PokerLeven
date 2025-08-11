@@ -77,7 +77,7 @@ local Hayseed = J({
         }
     },
     loc_vars = function(self, info_queue, center)
-        return { vars = { center.ability.extra.current_mult or 0 } }
+        return { vars = { center.ability.extra.mult_mod, center.ability.extra.current_mult or 0 } }
     end,
     rarity = 1,
     pools = { ["Farm"] = true },

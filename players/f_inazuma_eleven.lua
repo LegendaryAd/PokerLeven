@@ -187,13 +187,10 @@ local barista = J({
   pteam = "Inazuma Eleven",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.scoring_hand and context.cardarea == G.play
+    if context.individual and context.scoring_hand and context.cardarea == G.play
         and context.other_card == context.scoring_hand[#context.scoring_hand] then
       return {
-        message = localize { type = 'variable', key = 'a_chips',
-          vars = { context.other_card:get_chip_bonus() * 2 } },
-        colour = G.C.CHIPS,
-        chip_mod = context.other_card:get_chip_bonus() * 2,
+        chips = context.other_card:get_chip_bonus() * 2,
         card = context.other_card
       }
     end

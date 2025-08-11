@@ -51,7 +51,7 @@ local Wolfy = {
   cost = 7,
   atlas = "Jokers01",
   ptype = "Fire",
-  pposition = "MF",
+  pposition = "FW",
   techtype = C.UPGRADES.Number,
   pteam = "Occult",
   blueprint_compat = true,
@@ -270,7 +270,7 @@ local Franky = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.cardarea == G.jokers and context.scoring_hand then
-      if context.joker_main and next(context.poker_hands['High Card']) and not next(context.poker_hands['Pair']) then
+      if context.joker_main and #context.scoring_hand == 1 then
         card.ability.extra.triggered = true
         return {
           message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult_mod } },

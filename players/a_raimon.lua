@@ -350,10 +350,9 @@ local Jude_Raimon = J({
         break
       end
     end
-    if context.other_card and context.other_card == G.jokers.cards[index - 1]
-        and context.other_card.ability.extra.triggered then
-      context.other_card.ability.extra.triggered = false
-      card.ability.extra.next_xmult = (card.ability.extra.next_xmult or 0) + card.ability.extra.xmult_mod
+    if context.post_trigger and context.other_card ~= card
+        and context.other_card == G.jokers.cards[index - 1] then
+      card.ability.extra.current_xmult = (card.ability.extra.current_xmult or 0) + card.ability.extra.xmult_mod
 
       G.E_MANAGER:add_event(Event({
         func = function()
@@ -366,9 +365,6 @@ local Jude_Raimon = J({
       }))
 
       return {}
-    end
-    if context.after then
-      card.ability.extra.current_xmult = card.ability.extra.next_xmult
     end
 
     if context.joker_main and context.scoring_hand then

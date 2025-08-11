@@ -235,12 +235,14 @@ end
 ---Adds card to bench area
 ---@param card table|Card|true card to add to the bench area
 Pokerleven.add_to_bench = function(card)
-    if card.edition and card.edition.card_limit then
-        Pokerleven.ina_bench_area.config.card_limit = Pokerleven.ina_bench_area.config.card_limit +
-            card.edition.card_limit
-    end
+    if #Pokerleven.ina_bench_area.cards < Pokerleven.ina_bench_area.config.card_limit then
+        if card.edition and card.edition.card_limit then
+            Pokerleven.ina_bench_area.config.card_limit = Pokerleven.ina_bench_area.config.card_limit +
+                card.edition.card_limit
+        end
 
-    Pokerleven.ina_bench_area:emplace(card)
+        Pokerleven.ina_bench_area:emplace(card)
+    end
 end
 
 

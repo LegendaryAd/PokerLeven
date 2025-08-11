@@ -38,7 +38,7 @@ local hillfort = J({
     pos = { x = 1, y = 4 },
     config = { extra = { triggered = false } },
     loc_vars = function(self, info_queue, center)
-        return { vars = { calculate_avg_sell_cost("Wind") or center.sell_cost } }
+        return { vars = { calculate_avg_sell_cost("Wind") or 0 } }
     end,
     rarity = 1, -- Common
     pools = { ["Shuriken"] = true },
@@ -53,9 +53,7 @@ local hillfort = J({
         if context.cardarea == G.jokers and context.joker_main and context.scoring_hand then
             card.ability.extra.triggered = true
             return {
-                message = localize { type = 'variable', key = 'a_chips', vars = { calculate_avg_sell_cost("Wind") } },
-                colour = G.C.CHIPS,
-                chip_mod = calculate_avg_sell_cost("Wind")
+                chips = calculate_avg_sell_cost("Wind") or 0
             }
         end
     end,
@@ -184,6 +182,17 @@ local hattori = J({
                         }
                         local _card = SMODS.create_card(create_args)
                         _card:add_to_deck()
+                        _card.can_sell_card = function(self, context)
+                            return false
+                        end
+
+                        _card.calculate_joker = function(self, context)
+                            if context.end_of_round then
+                                self:start_dissolve({ HEX("57ecab") }, nil, 1.6)
+                                self:remove_from_deck()
+                            end
+                        end
+
                         G.jokers:emplace(_card)
                         table.insert(card.ability.extra.copies, _card)
                     end
@@ -192,17 +201,6 @@ local hattori = J({
                     return true
                 end
             }))
-        end
-
-        if context.end_of_round then
-            card.ability.extra.triggered = true
-            if card.ability.extra.copies then
-                for _, copy in ipairs(card.ability.extra.copies) do
-                    copy:start_dissolve({ HEX("57ecab") }, nil, 1.6)
-                    copy:remove_from_deck()
-                end
-                card.ability.extra.copies = nil
-            end
         end
     end,
 })
@@ -220,6 +218,7 @@ local function generate_cloack_card(perish_tally)
     new_joker.ability.perishable = true
     new_joker.ability.perish_tally = perish_tally
     new_joker:set_edition('e_negative')
+    return new_joker
 end
 
 local cloack = J({
