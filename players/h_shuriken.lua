@@ -212,11 +212,13 @@ local function can_duplicate_joker(card, context)
         and #G.jokers.cards > 1
 end
 
-local function generate_cloack_card(perish_tally)
+local function generate_cloack_card(perish_tally, tech_level)
     local joker_index = pseudorandom("Cloack", 2, #G.jokers.cards)
     local new_joker = copy_card(G.jokers.cards[joker_index])
-    new_joker.ability.perishable = true
-    new_joker.ability.perish_tally = perish_tally
+    if tech_level ~= 5 then
+        new_joker.ability.perishable = true
+        new_joker.ability.perish_tally = perish_tally
+    end
     new_joker:set_edition('e_negative')
     return new_joker
 end
@@ -235,16 +237,20 @@ local cloack = J({
     config = {
         extra = {
             barriers = 5,
-            perish_tally = 3
+            perish_tally = 1
         }
     },
     loc_vars = function(self, info_queue, center)
         info_queue[#info_queue + 1] = { set = 'Other', key = 'Frontal' }
-        return { vars = { center.ability.extra.barriers, center.ability.extra.perish_tally } }
+        return {
+            key = (center.ability.extra.tech_level or 0) < 5 and 'j_ina_Cloack' or 'j_ina_Cloack_inf',
+            vars = { center.ability.extra.barriers, center.ability.extra.perish_tally }
+        }
     end,
     calculate = function(self, card, context)
         if card:has_enough_barriers() and can_duplicate_joker(card, context) then
-            local new_joker = generate_cloack_card(card.ability.extra.perish_tally)
+            local new_joker = generate_cloack_card(
+                card.ability.extra.perish_tally, card.ability.extra.tech_level or 0)
             Pokerleven.add_card_to_jokers(new_joker)
             Pokerleven.ease_barriers(-card.ability.extra.barriers)
         end

@@ -703,6 +703,13 @@ return {
                     "un joker al azar {C:dark_edition}negativo{}",
                     "perecedero con {C:attention}#2#{} rondas restantes" }
             },
+            j_ina_Cloack_inf = {
+                name = "Cloack",
+                text = { "{C:fire}Espejismo{}", "{C:attention}Frontal{}",
+                    "Al seleccionar la ciega",
+                    "gasta {C:mountain}#1# Barreras{} para clonar",
+                    "un joker al azar {C:dark_edition}negativo{}" }
+            },
 
             -- Farm
             j_ina_Greeny = {
@@ -871,7 +878,7 @@ return {
                 text = {
                     "{C:forest}Resplandor Solar{}",
                     "Si juegas una mano con {C:attention}doble pareja{}",
-                    "Gana {C:chips}+#1# fichas{} {C:inactive}entre las 12 y las 16 pm{}",
+                    "Gana {C:chips}+#1# fichas{} {C:inactive}entre las 14 y las 19 pm{}",
                     "Gana {C:chips}+#2# fichas{} {C:inactive}en caso contrario{}",
                     "{C:inactive}Actualmente{}: {C:chips}+#3#{}"
                 }

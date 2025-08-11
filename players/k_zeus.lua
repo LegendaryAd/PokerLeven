@@ -91,7 +91,7 @@ local Hephestus = J({
 local Apollo = {
   name = "Apollo",
   pos = { x = 11, y = 5 },
-  config = { extra = { chips_mod = 7, alt_chips_mod = 3, current_chips = 0, triggered = false } },
+  config = { extra = { chips_mod = 11, alt_chips_mod = 4, current_chips = 0, triggered = false } },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.chips_mod, center.ability.extra.alt_chips_mod, center.ability.extra.current_chips } }
   end,
@@ -118,7 +118,7 @@ local Apollo = {
       local hour = tonumber(os.date("%H"))
       local mod = card.ability.extra.alt_chips_mod
 
-      if hour >= 12 and hour < 16 then
+      if hour >= 14 and hour < 19 then
         mod = card.ability.extra.chips_mod
       end
 

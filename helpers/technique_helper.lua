@@ -26,7 +26,8 @@ technique_values = {
     copies_number = .25, -- es de Hattori
     alt_chips_mod = .2,
     byron_mult_fw = .2,
-    byron_mult_mf = .2
+    byron_mult_mf = .2,
+    perish_tally = 1 -- Cloak
 }
 
 -- List of stickers depending of technique type
