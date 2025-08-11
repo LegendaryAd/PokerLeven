@@ -355,5 +355,5 @@ local Hillvalley = J({
 
 return {
     name = "Farm",
-    list = { Greeny, Hayseed, Sherman, Spray, Dawson, Muffs, Hillvalley },
+    list = { Greeny, Hayseed, Hillvalley, Sherman, Spray, Dawson, Muffs, },
 }

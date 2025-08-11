@@ -268,5 +268,5 @@ local z_triangle = J({
 
 return {
     name = "Kirkwood",
-    list = { Neville, Night, Marvin, Thomas, Tyler, Damian, Nashmith, z_triangle }
+    list = { Neville, Night, Damian, Nashmith, Marvin, Thomas, Tyler, z_triangle }
 }

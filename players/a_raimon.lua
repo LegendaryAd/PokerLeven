@@ -507,5 +507,5 @@ local Steve = J({
 
 return {
   name = "Raimon",
-  list = { Kevin, Mark, Nathan, Jack, Axel, Shadow, Willy, Max, Peabody, Jude_Raimon, Bobby, Steve },
+  list = { Mark, Nathan, Jack, Steve, Peabody, Max, Axel, Kevin, Willy, Bobby, Jude_Raimon, Shadow, },
 }

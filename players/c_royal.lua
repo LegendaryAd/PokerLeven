@@ -401,5 +401,5 @@ local Swing = {
 
 return {
   name = "Royal Academy",
-  list = { King, Bloom, Drent, Jude, Martin, Master, Samford, Swing },
+  list = { King, Drent, Martin, Master, Bloom, Swing, Jude, Samford },
 }
