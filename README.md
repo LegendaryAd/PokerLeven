@@ -11,7 +11,7 @@ It is intended to play this mod without balatro content for the best experience.
 </p>
 
 ## Prerequisites
-In order to install Pokerleven you'll need [Lovely](https://github.com/ethangreen-dev/lovely-injector) and [Steammodded](https://github.com/Steamopollys/Steamodded), both at their latest release if possible.
+In order to install Pokerleven you'll need [Lovely](https://github.com/ethangreen-dev/lovely-injector) and [Steammodded](https://github.com/Steamopollys/Steamodded), both at their latest release if possible. You also need Talisman for Martin to work
 
 ## Installation
 Mod manager version still in progress.
