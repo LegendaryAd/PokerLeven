@@ -89,7 +89,7 @@ end
 ---@param context table|CalcContext
 ---@return Card|nil
 Pokerleven.card_scoring = function(context)
-    if context.individual and context.cardarea == G.play and context.other_card and context.scoring_hand then
+    if context.cardarea == G.play and context.other_card and context.scoring_hand then
         return context.other_card
     end
     return nil

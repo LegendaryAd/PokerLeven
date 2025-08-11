@@ -73,7 +73,7 @@ local Marvin = J({
     blueprint_compat = true,
     calculate = function(self, card, context)
         local scoring_card = Pokerleven.card_scoring(context)
-        if scoring_card and scoring_card:is_uneven() then
+        if context.individual and scoring_card and scoring_card:is_uneven() then
             local mult_mod = card.ability.extra.mult_mod
             return {
                 mult = mult_mod,
@@ -106,8 +106,7 @@ local Thomas = J({
     blueprint_compat = true,
     calculate = function(self, card, context)
         local scoring_card = Pokerleven.card_scoring(context)
-
-        if context.repetition and
+        if context.repetition and context.cardarea == G.play and
             has_all_brothers() and
             scoring_card and scoring_card:is_uneven() then
             return {
@@ -117,7 +116,7 @@ local Thomas = J({
             }
         end
 
-        if scoring_card and scoring_card:is_uneven() then
+        if context.individual and scoring_card and scoring_card:is_uneven() then
             local chips_mod = card.ability.extra.chips_mod
             return {
                 chips = chips_mod,
@@ -145,7 +144,7 @@ local Tyler = J({
     blueprint_compat = true,
     calculate = function(self, card, context)
         local scoring_card = Pokerleven.card_scoring(context)
-        if scoring_card
+        if context.individual and scoring_card
             and Pokerleven.has_enough_consumables_space()
             and scoring_card:is_uneven()
             and card:odds_triggered('Tyler') then
