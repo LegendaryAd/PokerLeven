@@ -235,63 +235,64 @@ local Martin = {
   techtype = C.UPGRADES.Plus,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.other_joker and context.other_joker.config.center.rarity == 4 and card ~= context.other_joker then
-      card.ability.extra.triggered = true;
-      G.E_MANAGER:add_event(Event({
-        func = function()
-          context.other_joker:juice_up(0.5, 0.5)
-          return true
-        end
-      }))
-      return {
-        message = localize({
-          type = "variable",
-          key = "a_powmult",
-          vars = { number_format(card.ability.extra.legendary_exp) },
-        }),
-        Emult_mod = card.ability.extra.legendary_exp,
-        colour = G.C.DARK_EDITION,
-        card = card,
-      }
-    elseif context.other_joker and context.other_joker.config.center.rarity == 3 and card ~= context.other_joker then
-      card.ability.extra.triggered = true;
-      G.E_MANAGER:add_event(Event({
-        func = function()
-          context.other_joker:juice_up(0.5, 0.5)
-          return true
-        end
-      }))
-      return {
-        message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.rare_xmult } },
-        colour = G.C.XMULT,
-        Xmult_mod = card.ability.extra.rare_xmult
-      }
-    elseif context.other_joker and context.other_joker.config.center.rarity == 2 and card ~= context.other_joker then
-      card.ability.extra.triggered = true;
-      G.E_MANAGER:add_event(Event({
-        func = function()
-          context.other_joker:juice_up(0.5, 0.5)
-          return true
-        end
-      }))
-      return {
-        message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.uncommon_mult } },
-        colour = G.C.MULT,
-        mult_mod = card.ability.extra.uncommon_mult
-      }
-    elseif context.other_joker and context.other_joker.config.center.rarity == 1 and card ~= context.other_joker then
-      card.ability.extra.triggered = true;
-      G.E_MANAGER:add_event(Event({
-        func = function()
-          context.other_joker:juice_up(0.5, 0.5)
-          return true
-        end
-      }))
-      return {
-        message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.common_mult } },
-        colour = G.C.MULT,
-        mult_mod = card.ability.extra.common_mult
-      }
+    if not context.debuff then
+      if context.other_joker and context.other_joker.config.center.rarity == 3 and card ~= context.other_joker then
+        card.ability.extra.triggered = true;
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            context.other_joker:juice_up(0.5, 0.5)
+            return true
+          end
+        }))
+        return {
+          message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.rare_xmult } },
+          colour = G.C.XMULT,
+          Xmult_mod = card.ability.extra.rare_xmult
+        }
+      elseif context.other_joker and context.other_joker.config.center.rarity == 2 and card ~= context.other_joker then
+        card.ability.extra.triggered = true;
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            context.other_joker:juice_up(0.5, 0.5)
+            return true
+          end
+        }))
+        return {
+          message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.uncommon_mult } },
+          colour = G.C.MULT,
+          mult_mod = card.ability.extra.uncommon_mult
+        }
+      elseif context.other_joker and context.other_joker.config.center.rarity == 1 and card ~= context.other_joker then
+        card.ability.extra.triggered = true;
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            context.other_joker:juice_up(0.5, 0.5)
+            return true
+          end
+        }))
+        return {
+          message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.common_mult } },
+          colour = G.C.MULT,
+          mult_mod = card.ability.extra.common_mult
+        }
+      elseif context.other_joker and context.other_joker.config.center.rarity == 4 and card ~= context.other_joker then
+        card.ability.extra.triggered = true;
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            context.other_joker:juice_up(0.5, 0.5)
+            return true
+          end
+        }))
+        return {
+          message = localize({
+            type = "variable",
+            key = "a_powmult",
+            vars = { number_format(card.ability.extra.legendary_exp) },
+          }),
+          Emult_mod = lenient_bignum(card.ability.extra.legendary_exp),
+          colour = G.C.DARK_EDITION,
+        }
+      end
     end
   end,
 }
