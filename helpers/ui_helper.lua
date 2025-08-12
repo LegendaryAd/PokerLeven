@@ -568,46 +568,61 @@ Pokerleven.generate_info_ui = function(self, info_queue, card, desc_nodes, speci
     end
 end
 
+-- Main menu (Stolen from Cryptid)
+local game_main_menu_ref = Game.main_menu
+function Game:main_menu(change_context)
+    local ret = game_main_menu_ref(self, change_context)
 
--- -- TODO BUTTON TO FUSE CARDS, MAYBE ITS BETTER TO HAVE A GENERAL BUTTON. WE NEED TO THINK ABOUT WHAT IT WILL COST
--- -- TODO CHANGE THIS TO A FUSE_HELPER
--- local use_and_sell_buttonsref = G.UIDEF.use_and_sell_buttons
--- function G.UIDEF.use_and_sell_buttons(card)
---     local retval = use_and_sell_buttonsref(card)
+    if #self.title_top.cards > 0 then
+        self.title_top.cards[1]:remove()
+    end
+    local newcard = SMODS.create_card { key = "j_ina_Mark", area = G.title_top, no_edition = true }
 
---     local fuse =
---     {
---         n = G.UIT.C,
---         config = { align = "cr" },
---         nodes = {
---             {
---                 n = G.UIT.C,
---                 config = { ref_table = card, align = "cr", padding = 0.1, r = 0.08, minw = 1.25, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'sell_card', func = 'can_fuse_card' },
---                 nodes = {
---                     { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
---                     {
---                         n = G.UIT.C,
---                         config = { align = "cm" },
---                         nodes = {
---                             {
---                                 n = G.UIT.R,
---                                 config = { align = "cm", maxw = 1.25 },
---                                 nodes = {
---                                     { n = G.UIT.T, config = { text = "Fusionar", colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true } }
---                                 }
---                             }
---                         }
---                     }
---                 }
---             },
---         }
---     }
---     retval.nodes[1].nodes[2].nodes = retval.nodes[1].nodes[2].nodes or {}
---     table.insert(retval.nodes[1].nodes[2].nodes, fuse)
---     return retval
--- end
+    self.title_top.T.w = self.title_top.T.w * 1.7675
+    self.title_top.T.x = self.title_top.T.x - 0.8
 
--- G.FUNCS.can_fuse_card = function(e)
---     e.config.colour = G.C.DARK_EDITION
---     e.config.button = 'sell_card'
--- end
+    newcard.T.w = newcard.T.w * 1.1 * 1.2
+    newcard.T.h = newcard.T.h * 1.1 * 1.2
+    newcard.no_ui = true
+    newcard.states.visible = false
+    self.title_top:emplace(newcard)
+    self.title_top:align_cards()
+    G.SPLASH_BACK:define_draw_steps({
+        {
+            shader = "splash",
+            send = {
+                { name = "time",       ref_table = G.TIMERS, ref_value = "REAL_SHADER" },
+                { name = "vort_speed", val = 0.4 },
+                { name = "colour_1",   val = HEX("5A00FF"),  ref_value = "EFFECT" },
+                { name = "colour_2",   ref_table = G.C,      ref_value = "BLACK" },
+            },
+        },
+    })
+    if change_context == "splash" then
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0,
+            blockable = false,
+            blocking = false,
+            func = function()
+                newcard.states.visible = true
+                newcard:start_materialize({ G.C.WHITE, G.C.WHITE }, true, 2.5)
+                return true
+            end,
+        }))
+    else
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0,
+            blockable = false,
+            blocking = false,
+            func = function()
+                newcard.states.visible = true
+                newcard:start_materialize({ G.C.WHITE, G.C.WHITE }, nil, 1.2)
+                return true
+            end,
+        }))
+    end
+
+    return ret
+end
