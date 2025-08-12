@@ -1244,6 +1244,10 @@ return {
             c_ina_haumer = {
                 name = "Haumer",
                 text = generate_planet_text()
+            },
+            c_ina_isherlon = {
+                name = "Isherlon",
+                text = generate_planet_text()
             }
         },
         Spectral = {},
@@ -1390,16 +1394,21 @@ return {
             ina_tech_joker_sticker = "Técnica mejorada",
         },
         poker_hand_descriptions = {
+            ["ina_TriplePair"] = {
+                "3 parejas distintas",
+            },
             ["ina_FullMansion"] = {
                 "2 Tríos distintos",
             },
             ["ina_GodHand"] = {
                 "6 cartas del mismo rango"
             }
+
         },
         poker_hands = {
-            ["ina_FullMansion"] = "Full Mansion",
+            ["ina_TriplePair"] = "Triple Pareja",
             ["ina_GodHand"] = "Mano Celestial",
+            ["ina_FullMansion"] = "Full Mansion",
         },
         quips = {},
         ranks = {},

@@ -47,7 +47,23 @@ local Haumer = {
     end,
 }
 
+local Orcus = {
+    key = 'orcus',
+    set = 'Planet',
+    atlas = 'upgrade_techniques',
+    discovered = false,
+    visible = false,
+    config = { hand_type = 'ina_TriplePair', softlock = true },
+    pos = { x = 9, y = 1 },
+    generate_ui = 0,
+    loc_vars = function(self, info_queue, center)
+        return {
+            get_vars('Triple pareja', 'ina_TriplePair')
+        }
+    end,
+}
+
 return {
     name = "Planets",
-    list = { Make, Haumer }
+    list = { Orcus, Make, Haumer, }
 }
