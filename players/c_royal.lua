@@ -338,7 +338,7 @@ local Master = {
 local Samford = {
   name = "Samford",
   pos = { x = 10, y = 1 },
-  config = { extra = { xmult_mod = 2.25, triggered = false } },
+  config = { extra = { xmult_mod = 3, triggered = false } },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.xmult_mod } }
   end,

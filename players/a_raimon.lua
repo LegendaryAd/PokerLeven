@@ -68,7 +68,7 @@ local Mark = J({
 local Nathan = J({
   name = "Nathan",
   pos = { x = 2, y = 0 },
-  config = { extra = { xmult = 1.5, triggered = false } },
+  config = { extra = { xmult = 1.25, triggered = false } },
   loc_vars = function(self, info_queue, center)
     local count = #find_player_team("Raimon");
     return { vars = { count, center.ability.extra.xmult } }
@@ -254,7 +254,7 @@ local Willy = {
 local Max = {
   name = "Max",
   pos = { x = 7, y = 0 },
-  config = { extra = { chip_mod = 40, triggered = false } },
+  config = { extra = { chip_mod = 20, triggered = false } },
   loc_vars = function(self, info_queue, center)
     local count = #find_player_type("Wind")
     return { vars = { center.ability.extra.chip_mod, count * center.ability.extra.chip_mod } }

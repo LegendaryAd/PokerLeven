@@ -365,7 +365,7 @@ return {
                 name = "Blood",
                 text = { "{C:mountain}Niebla Venenosa{}",
                     "{C:attention}Drena{} {C:money}#1#${} de los comodines adyacentes",
-                    "{C:chips}+#2#{} fichas por cada {C:money}1${}", "en valor de venta",
+                    "{C:chips}+#2#{} fichas por cada {C:money}1${}", "en su valor de venta",
                     "{C:inactive}Actualmente{} {C:chips}+#3#{}" }
             },
             j_ina_Grave = {
@@ -703,6 +703,13 @@ return {
                     "un joker al azar {C:dark_edition}negativo{}",
                     "perecedero con {C:attention}#2#{} rondas restantes" }
             },
+            j_ina_Cloack_inf = {
+                name = "Cloack",
+                text = { "{C:fire}Espejismo{}", "{C:attention}Frontal{}",
+                    "Al seleccionar la ciega",
+                    "gasta {C:mountain}#1# Barreras{} para clonar",
+                    "un joker al azar {C:dark_edition}negativo{}" }
+            },
 
             -- Farm
             j_ina_Greeny = {
@@ -871,7 +878,7 @@ return {
                 text = {
                     "{C:forest}Resplandor Solar{}",
                     "Si juegas una mano con {C:attention}doble pareja{}",
-                    "Gana {C:chips}+#1# fichas{} {C:inactive}entre las 12 y las 16 pm{}",
+                    "Gana {C:chips}+#1# fichas{} {C:inactive}entre las 14 y las 19 pm{}",
                     "Gana {C:chips}+#2# fichas{} {C:inactive}en caso contrario{}",
                     "{C:inactive}Actualmente{}: {C:chips}+#3#{}"
                 }
@@ -921,10 +928,16 @@ return {
 
             j_ina_Blazer = {
                 name = "Blazer",
-                text = {
+                text = { {
                     "{C:fire}Infierno{}",
                     "Todos los {C:attention}Jokers{}",
-                    "son de {X:fire,C:white}Fuego{}"
+                    "son de {X:fire,C:white}Fuego{}",
+                },
+                    {
+                        "Si no está en el area de juego ",
+                        "devuelve todos losjugadores",
+                        "a su tipo original"
+                    }
                 }
             },
 

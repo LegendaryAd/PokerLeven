@@ -928,10 +928,16 @@ return {
 
             j_ina_Blazer = {
                 name = "Blazer",
-                text = {
+                text = { {
                     "{C:fire}Infierno{}",
                     "Todos los {C:attention}Jokers{}",
-                    "son de {X:fire,C:white}Fuego{}"
+                    "son de {X:fire,C:white}Fuego{}",
+                },
+                    {
+                        "Si no está en el area de juego ",
+                        "devuelve todos losjugadores",
+                        "a su tipo original"
+                    }
                 }
             },
 

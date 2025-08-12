@@ -69,6 +69,19 @@ local Blazer = J({
                 end
             end
         end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        if G.jokers and G.jokers.cards then
+            for _, player in ipairs(G.jokers.cards) do
+                apply_property_sticker(player, player.config.center.ptype, "type")
+            end
+        end
+
+        if Pokerleven.ina_bench_area and Pokerleven.ina_bench_area.cards then
+            for _, player in ipairs(Pokerleven.ina_bench_area.cards) do
+                apply_property_sticker(player, player.config.center.ptype, "type")
+            end
+        end
     end
 })
 
