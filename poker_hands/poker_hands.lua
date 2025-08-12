@@ -9,6 +9,32 @@ local get_number_of_cards_of_same_rank = function(hand)
     return scoring_cards
 end
 
+local triple_pair = P({
+    key = "TriplePair",
+    visible = false,
+    chips = 190,
+    mult = 19,
+    l_chips = 60,
+    l_mult = 12,
+    example = {
+        { "S_A", true },
+        { "D_A", true },
+        { "H_K", true },
+        { "S_K", true },
+        { "D_Q", true },
+        { "H_Q", true },
+    },
+    evaluate = function(parts, hand)
+        if #parts._2 == 3 then
+            return { SMODS.merge_lists(parts._2) }
+        end
+        return {}
+    end,
+    modify_display_text = function(self, cards, scoring_hand)
+        return "TriplePair"
+    end
+})
+
 local full_mansion = P({
     key = "FullMansion",
     visible = false,
@@ -40,8 +66,8 @@ local god_hand = P({
     visible = false,
     chips = 250,
     mult = 26,
-    l_chips = 70,
-    l_mult = 15,
+    l_chips = 80,
+    l_mult = 20,
     example = {
         { "S_A", true },
         { "D_A", true },
@@ -61,5 +87,5 @@ local god_hand = P({
 
 return {
     name = "Hands",
-    list = { full_mansion, god_hand }
+    list = { triple_pair, full_mansion, god_hand }
 }
