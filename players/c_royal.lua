@@ -1,7 +1,7 @@
 -- King
 local King = {
   name = "King",
-  pos = { x = 4, y = 1 },
+  pos = { x = 6, y = 2 },
   config = { extra = { triggered = false } },
   loc_vars = function(self, info_queue, center)
     return {}
@@ -71,7 +71,7 @@ local King = {
 -- Bloom
 local Bloom = {
   name = "Bloom",
-  pos = { x = 5, y = 1 },
+  pos = { x = 12, y = 2 },
   config = { extra = { current_mult = 0, mult_mod = 1, triggered = false } },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.current_mult, center.ability.extra.mult_mod } }
@@ -101,7 +101,7 @@ local Bloom = {
 -- Drent
 local Drent = {
   name = "Drent",
-  pos = { x = 6, y = 1 },
+  pos = { x = 7, y = 3 },
   config = { extra = { odds = 5, triggered = false } },
   loc_vars = function(self, info_queue, center)
     local count = #find_player_type("Mountain");
@@ -160,7 +160,7 @@ local Drent = {
 -- Jude
 local Jude = {
   name = "Jude",
-  pos = { x = 7, y = 1 },
+  pos = { x = 2, y = 3 },
   config = {
     extra = { current_xmult = 1, xmult_mod = 0.10, next_xmult = 1, triggered = false
     }
@@ -217,7 +217,7 @@ local Jude = {
 -- Martin
 local Martin = {
   name = "Martin",
-  pos = { x = 8, y = 1 },
+  pos = { x = 10, y = 2 },
   config = { extra = { common_mult = 6, uncommon_mult = 12, rare_xmult = 1.5, legendary_exp = 1.15, triggered = false } },
   loc_vars = function(self, info_queue, center)
     return {
@@ -235,73 +235,71 @@ local Martin = {
   techtype = C.UPGRADES.Plus,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if not context.debuff then
-      if context.other_joker and context.other_joker.config.center.rarity == 3 and card ~= context.other_joker then
-        card.ability.extra.triggered = true;
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            context.other_joker:juice_up(0.5, 0.5)
-            return true
-          end
-        }))
-        return {
-          message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.rare_xmult } },
-          colour = G.C.XMULT,
-          Xmult_mod = card.ability.extra.rare_xmult
-        }
-      elseif context.other_joker and context.other_joker.config.center.rarity == 2 and card ~= context.other_joker then
-        card.ability.extra.triggered = true;
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            context.other_joker:juice_up(0.5, 0.5)
-            return true
-          end
-        }))
-        return {
-          message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.uncommon_mult } },
-          colour = G.C.MULT,
-          mult_mod = card.ability.extra.uncommon_mult
-        }
-      elseif context.other_joker and context.other_joker.config.center.rarity == 1 and card ~= context.other_joker then
-        card.ability.extra.triggered = true;
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            context.other_joker:juice_up(0.5, 0.5)
-            return true
-          end
-        }))
-        return {
-          message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.common_mult } },
-          colour = G.C.MULT,
-          mult_mod = card.ability.extra.common_mult
-        }
-      elseif context.other_joker and context.other_joker.config.center.rarity == 4 and card ~= context.other_joker then
-        card.ability.extra.triggered = true;
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            context.other_joker:juice_up(0.5, 0.5)
-            return true
-          end
-        }))
-        return {
-          message = localize({
-            type = "variable",
-            key = "a_powmult",
-            vars = { number_format(card.ability.extra.legendary_exp) },
-          }),
-          Emult_mod = lenient_bignum(card.ability.extra.legendary_exp),
-          colour = G.C.DARK_EDITION,
-        }
-      end
+    if context.other_joker and context.other_joker.config.center.rarity == 4 and card ~= context.other_joker then
+      card.ability.extra.triggered = true;
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          context.other_joker:juice_up(0.5, 0.5)
+          return true
+        end
+      }))
+      return {
+        message = localize({
+          type = "variable",
+          key = "a_powmult",
+          vars = { number_format(card.ability.extra.legendary_exp) },
+        }),
+        Emult_mod = card.ability.extra.legendary_exp,
+        colour = G.C.DARK_EDITION,
+        card = card,
+      }
+    elseif context.other_joker and context.other_joker.config.center.rarity == 3 and card ~= context.other_joker then
+      card.ability.extra.triggered = true;
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          context.other_joker:juice_up(0.5, 0.5)
+          return true
+        end
+      }))
+      return {
+        message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.rare_xmult } },
+        colour = G.C.XMULT,
+        Xmult_mod = card.ability.extra.rare_xmult
+      }
+    elseif context.other_joker and context.other_joker.config.center.rarity == 2 and card ~= context.other_joker then
+      card.ability.extra.triggered = true;
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          context.other_joker:juice_up(0.5, 0.5)
+          return true
+        end
+      }))
+      return {
+        message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.uncommon_mult } },
+        colour = G.C.MULT,
+        mult_mod = card.ability.extra.uncommon_mult
+      }
+    elseif context.other_joker and context.other_joker.config.center.rarity == 1 and card ~= context.other_joker then
+      card.ability.extra.triggered = true;
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          context.other_joker:juice_up(0.5, 0.5)
+          return true
+        end
+      }))
+      return {
+        message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.common_mult } },
+        colour = G.C.MULT,
+        mult_mod = card.ability.extra.common_mult
+      }
     end
-  end
-  ,
+  end,
 }
 
 -- Master
 local Master = {
   name = "Master",
-  pos = { x = 9, y = 1 },
+  pos = { x = 9, y = 2 },
   config = { extra = { mult_mod = 7, triggered = false } },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.mult_mod } }
@@ -339,7 +337,7 @@ local Master = {
 -- Samford
 local Samford = {
   name = "Samford",
-  pos = { x = 10, y = 1 },
+  pos = { x = 4, y = 3 },
   config = { extra = { xmult_mod = 3, triggered = false } },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.xmult_mod } }
@@ -370,7 +368,7 @@ local Samford = {
 -- Swing
 local Swing = {
   name = "Swing",
-  pos = { x = 11, y = 1 },
+  pos = { x = 0, y = 3 },
   config = { extra = { chips_mod = 60, triggered = false } },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.chips_mod } }
