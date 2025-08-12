@@ -52,9 +52,11 @@ local Mark = J({
   blueprint_compat = true,
   add_to_deck = function(self, card, from_debuff)
     SMODS.change_play_limit(card.ability.extra.extra_hands)
+    SMODS.change_discard_limit(card.ability.extra.extra_hands)
   end,
   remove_from_deck = function(self, card, from_debuff)
     SMODS.change_play_limit(-card.ability.extra.extra_hands)
+    SMODS.change_discard_limit(-card.ability.extra.extra_hands)
   end,
   set_sprites = function(self, card, front)
     if card.children and card.children.center and card.children.center.set_visible then

@@ -289,7 +289,8 @@ return {
             j_ina_Mark = {
                 name = "Mark",
                 text = { "{C:mountain}Mano Mágica{}",
-                    "{C:attention}+#1#{} Al tamaño de mano jugada" }
+                    "{C:attention}+#1#{} Al tamaño de mano jugada",
+                    "{C:attention}+#1#{} A la cantidad de cartas descartadas" }
             },
             j_ina_Nathan = {
                 name = "Nathan",
