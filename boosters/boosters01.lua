@@ -390,7 +390,7 @@ local Training_Pack = {
 	config = { extra = Consts.max_quantity, choose = 1 },
 	cost = 4,
 	order = 1,
-	weight = 0.05,
+	weight = 0.15,
 	draw_hand = false,
 	unlocked = true,
 	discovered = false,
