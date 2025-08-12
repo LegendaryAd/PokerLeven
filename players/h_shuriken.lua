@@ -203,6 +203,9 @@ local hattori = J({
             }))
         end
     end,
+    ina_credits = {
+        idea = { "LegendaryAd" },
+    }
 })
 
 --- Cloack
@@ -255,6 +258,9 @@ local cloack = J({
             Pokerleven.ease_barriers(-card.ability.extra.barriers)
         end
     end,
+    ina_credits = {
+        idea = { "Shadorossa" },
+    }
 })
 
 return {
