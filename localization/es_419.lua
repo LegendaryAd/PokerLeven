@@ -1245,8 +1245,8 @@ return {
                 name = "Haumer",
                 text = generate_planet_text()
             },
-            c_ina_isherlon = {
-                name = "Isherlon",
+            c_ina_orcus = {
+                name = "Orcus",
                 text = generate_planet_text()
             }
         },
