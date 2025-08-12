@@ -367,7 +367,7 @@ G.FUNCS.unbench_card = function(e)
         trigger = 'after',
         delay = 0.25,
         func = function()
-            if card.edition.negative then
+            if card.edition and card.edition.negative then
                 Pokerleven.ina_bench_area.config.card_limit = Pokerleven.ina_bench_area.config.card_limit - 1
             end
             card:remove()
