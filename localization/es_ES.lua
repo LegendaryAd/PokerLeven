@@ -936,7 +936,7 @@ return {
                 },
                     {
                         "Si no está en el area de juego ",
-                        "devuelve todos losjugadores",
+                        "devuelve todos los jugadores",
                         "a su tipo original"
                     }
                 }
