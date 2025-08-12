@@ -66,6 +66,7 @@ local Hero = {
     }
 }
 
+-- Custom
 local Custom = {
     name = "Custom",
     pos = { x = 4, y = 3 },
@@ -85,6 +86,7 @@ local Custom = {
     end
 }
 
+-- Robot
 local Robot = {
     name = "Robot",
     pos = { x = 5, y = 3 },

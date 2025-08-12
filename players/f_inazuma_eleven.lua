@@ -253,6 +253,9 @@ local builder = J({
       }
     end
   end,
+  ina_credits = {
+    idea = { "Shadorossa" },
+  }
 })
 
 return {

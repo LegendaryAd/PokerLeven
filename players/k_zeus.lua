@@ -130,6 +130,9 @@ local Apollo = {
       }
     end
   end,
+  ina_credits = {
+    idea = { "Shadorossa" },
+  }
 }
 
 -- Artemis
@@ -214,7 +217,10 @@ local Hermes = {
         card = context.other_card,
       }
     end
-  end
+  end,
+  ina_credits = {
+    idea = { "LegendaryAd" },
+  }
 }
 
 -- Demeter
@@ -257,6 +263,9 @@ local Demeter = {
       end
     end
   end,
+  ina_credits = {
+    idea = { "Shadorossa" },
+  }
 }
 
 -- Aphrodite
@@ -343,6 +352,9 @@ local Aphrodite = J({
       unlock_card(self)
     end
   end,
+  ina_credits = {
+    idea = { "Shadorossa" },
+  }
 })
 
 return {
