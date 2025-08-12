@@ -573,9 +573,6 @@ local game_main_menu_ref = Game.main_menu
 function Game:main_menu(change_context)
     local ret = game_main_menu_ref(self, change_context)
 
-    if #self.title_top.cards > 0 then
-        self.title_top.cards[1]:remove()
-    end
     local newcard = SMODS.create_card { key = "j_ina_Mark", area = G.title_top, no_edition = true }
 
     self.title_top.T.w = self.title_top.T.w * 1.7675
