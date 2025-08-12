@@ -396,7 +396,7 @@ local Bobby = J({
   pools = { ["Raimon"] = true },
   cost = 7,
   atlas = "Jokers01",
-  ptype = "Wind",
+  ptype = "Forest",
   pposition = "DF",
   pteam = "Raimon",
   blueprint_compat = true,

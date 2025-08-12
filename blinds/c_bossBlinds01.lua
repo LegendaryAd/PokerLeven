@@ -1,3 +1,34 @@
+local debuff_position = function(pposition)
+    if G.GAME.blind.prepped then
+        for _, y in pairs(G.jokers.cards) do
+            y:set_debuff(false)
+        end
+        for _, v in pairs(G.jokers.cards) do
+            if v.ability.extra.pposition == pposition then
+                v:set_debuff(true)
+                v:juice_up()
+                G.GAME.blind:wiggle()
+            end
+        end
+    end
+end
+
+local debuff_type = function(ptype)
+    if G.GAME.blind.prepped then
+        for _, y in pairs(G.jokers.cards) do
+            y:set_debuff(false)
+        end
+        for _, v in pairs(G.jokers.cards) do
+            if v.ability.extra.ptype == ptype then
+                v:set_debuff(true)
+                v:juice_up()
+                G.GAME.blind:wiggle()
+            end
+        end
+    end
+end
+
+
 local goalkeeper = {
     object_type = "Blind",
     name = "ina-goalkeeper",
@@ -12,12 +43,15 @@ local goalkeeper = {
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("ffa726"),
-    recalc_debuff = function(self, card, from_blind)
-        if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.ability.extra.pposition == "GK" then
-            return true
-        end
-        return false
+    press_play = function(self)
+        G.GAME.blind.triggered = true
+        G.GAME.blind.prepped = true
+    end,
+    drawn_to_hand = function(self)
+        debuff_position("GK")
+    end,
+    disable = function(self)
+        self.config.disabled = true
     end,
     ina_credits = {
         art = { "Shadorossa" }
@@ -38,12 +72,15 @@ local forward = {
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("4fc3f7"),
-    recalc_debuff = function(self, card, from_blind)
-        if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.ability.extra.pposition == "FW" then
-            return true
-        end
-        return false
+    press_play = function(self)
+        G.GAME.blind.triggered = true
+        G.GAME.blind.prepped = true
+    end,
+    drawn_to_hand = function(self)
+        debuff_position("FW")
+    end,
+    disable = function(self)
+        self.config.disabled = true
     end,
     ina_credits = {
         art = { "Shadorossa" }
@@ -64,12 +101,15 @@ local defense = {
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("ef5350"),
-    recalc_debuff = function(self, card, from_blind)
-        if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.ability.extra.pposition == "DF" then
-            return true
-        end
-        return false
+    press_play = function(self)
+        G.GAME.blind.triggered = true
+        G.GAME.blind.prepped = true
+    end,
+    drawn_to_hand = function(self)
+        debuff_position("DF")
+    end,
+    disable = function(self)
+        self.config.disabled = true
     end,
     ina_credits = {
         art = { "Shadorossa" }
@@ -90,12 +130,15 @@ local midfielder = {
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("66bb6a"),
-    recalc_debuff = function(self, card, from_blind)
-        if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.ability.extra.pposition == "MF" then
-            return true
-        end
-        return false
+    press_play = function(self)
+        G.GAME.blind.triggered = true
+        G.GAME.blind.prepped = true
+    end,
+    drawn_to_hand = function(self)
+        debuff_position("MF")
+    end,
+    disable = function(self)
+        self.config.disabled = true
     end,
     ina_credits = {
         art = { "Shadorossa" }
@@ -116,12 +159,15 @@ local fire = {
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("d32f2f"),
-    recalc_debuff = function(self, card, from_blind)
-        if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.ability.extra.ptype == "Fire" then
-            return true
-        end
-        return false
+    press_play = function(self)
+        G.GAME.blind.triggered = true
+        G.GAME.blind.prepped = true
+    end,
+    drawn_to_hand = function(self)
+        debuff_type("Fire")
+    end,
+    disable = function(self)
+        self.config.disabled = true
     end,
     ina_credits = {
         art = { "Shadorossa" }
@@ -142,12 +188,15 @@ local mountain = {
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("f57c00"),
-    recalc_debuff = function(self, card, from_blind)
-        if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.ability.extra.ptype == "Mountain" then
-            return true
-        end
-        return false
+    press_play = function(self)
+        G.GAME.blind.triggered = true
+        G.GAME.blind.prepped = true
+    end,
+    drawn_to_hand = function(self)
+        debuff_type("Mountain")
+    end,
+    disable = function(self)
+        self.config.disabled = true
     end,
     ina_credits = {
         art = { "Shadorossa" }
@@ -168,12 +217,15 @@ local wind = {
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("81d4fa"),
-    recalc_debuff = function(self, card, from_blind)
-        if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.ability.extra.ptype == "Wind" then
-            return true
-        end
-        return false
+    press_play = function(self)
+        G.GAME.blind.triggered = true
+        G.GAME.blind.prepped = true
+    end,
+    drawn_to_hand = function(self)
+        debuff_type("Wind")
+    end,
+    disable = function(self)
+        self.config.disabled = true
     end,
     ina_credits = {
         art = { "Shadorossa" }
@@ -194,12 +246,15 @@ local forest = {
     atlas = "bossBlinds",
     order = 1,
     boss_colour = HEX("2e7d32"),
-    recalc_debuff = function(self, card, from_blind)
-        if (card.area == G.jokers) and not G.GAME.blind.disabled
-            and card.ability.extra.ptype == "Forest" then
-            return true
-        end
-        return false
+    press_play = function(self)
+        G.GAME.blind.triggered = true
+        G.GAME.blind.prepped = true
+    end,
+    drawn_to_hand = function(self)
+        debuff_type("Forest")
+    end,
+    disable = function(self)
+        self.config.disabled = true
     end,
     ina_credits = {
         art = { "Shadorossa" }

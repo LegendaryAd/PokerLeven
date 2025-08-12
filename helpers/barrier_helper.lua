@@ -81,7 +81,7 @@ function Game:start_run(args)
         },
         config = {
             align = "cm",
-            offset = { x = 2.1, y = 0 },
+            offset = { x = 0.2, y = -2 },
             major = G.deck,
             bond = 'Weak',
         }

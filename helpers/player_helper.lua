@@ -143,7 +143,7 @@ local player_in_bench = function(name)
     end
 
     for _, card in ipairs(Pokerleven.ina_bench_area.cards) do
-        if name == card.name then
+        if name == card.config.center.name then
             return true
         end
     end
