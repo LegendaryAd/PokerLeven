@@ -2,7 +2,7 @@
 
 ![imagen](https://github.com/user-attachments/assets/55e1390b-415e-41e3-be33-867bd37e11f9)
 
-[![Release](https://img.shields.io/github/v/release/DecoXFE/PokerLeven?style=for-the-badge&logo=github&color=blue)](https://github.com/DecoXFE/PokerLeven/releases) [![Downloads](https://img.shields.io/github/downloads/DecoXFE/PokerLeven/total?style=for-the-badge&logo=github&color=brightgreen)](https://github.com/DecoXFE/PokerLeven) [![License](https://img.shields.io/github/license/DecoXFE/PokerLeven?style=for-the-badge&logo=opensourceinitiative&color=orange)](LICENSE) [![Discord](https://img.shields.io/discord/ID_DEL_SERVIDOR?style=for-the-badge&logo=discord&color=5865F2)](https://discord.gg/FYZPTTVZ)
+[![Release](https://img.shields.io/github/v/release/DecoXFE/PokerLeven?style=for-the-badge&logo=github&color=blue)](https://github.com/DecoXFE/PokerLeven/releases) [![Downloads](https://img.shields.io/github/downloads/DecoXFE/PokerLeven/total?style=for-the-badge&logo=github&color=brightgreen)](https://github.com/DecoXFE/PokerLeven) [![Discord](https://img.shields.io/discord/1394648762609041458?style=for-the-badge&logo=discord&color=5865F2)](https://discord.gg/FYZPTTVZ) [![License](https://img.shields.io/github/license/DecoXFE/PokerLeven?style=for-the-badge&logo=opensourceinitiative&color=orange)](LICENSE)
 
 **PokerLeven** is a full **overhaul mod** for *Balatro* inspired by the legendary **Inazuma Eleven** series.  
 > [!CAUTION]
@@ -23,9 +23,10 @@
 
 Before installing **Pokerleven**, make sure you have the following:  
 
-- 💘 [**Lovely**](https://github.com/ethangreen-dev/lovely-injector) — *Latest release recommended*  
-- ♠️ [**Steammodded**](https://github.com/Steamopollys/Steamodded) — *Latest release recommended*  
-- 🔮 **Talisman** — *Required for Gus Martin to work*  
+- 💘 [**Lovely**](https://github.com/ethangreen-dev/lovely-injector) | ***> 0.8.0** recommended*  
+- ♠️ [**Steammodded**](https://github.com/Steamopollys/smods) | ***> 8.0** recommended*  
+- 🔮 [**Talisman**](https://github.com/SpectralPack/Talisman) | *Required for Gus Martin to work (use the **latest release** just in case)* 
+ 
 
 > [!WARNING] 
 > Make sure all dependencies are up to date to avoid compatibility issues.
