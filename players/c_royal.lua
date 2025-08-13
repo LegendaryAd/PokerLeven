@@ -101,7 +101,7 @@ local Bloom = {
 -- Drent
 local Drent = {
   name = "Drent",
-  pos = { x = 7, y = 3 },
+  pos = { x = 7, y = 2 },
   config = { extra = { odds = 5, triggered = false } },
   loc_vars = function(self, info_queue, center)
     local count = #find_player_type("Mountain");
