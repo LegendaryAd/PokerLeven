@@ -1,12 +1,38 @@
 -- Dulce
-local Dulce = {
+---@param card Card
+local select_random_cards_for_harvest = function(card)
+    local count = #Pokerleven.find_player_type_and_position("Wind", "MF")
+
+    if count > 0 and G.deck and G.deck.cards and #G.deck.cards > 0 then
+        table.unpack = table.unpack or unpack
+        local candidates = { table.unpack(G.deck.cards) }
+
+        for i = 1, count do
+            if #candidates == 0 then break end
+
+            local target = pseudorandom_element(candidates, pseudoseed("dulce_harvest_" .. i))
+            if target then
+                target:set_as_harvestable()
+
+                for j, c in ipairs(candidates) do
+                    if c == target then
+                        table.remove(candidates, j)
+                        break
+                    end
+                end
+            end
+        end
+    end
+end
+
+local Dulce = J({
     name = "Dulce",
     pos = { x = 6, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
     end,
-    rarity = 1,
+    rarity = 3,
     pools = { ["Scout"] = true },
     cost = 5,
     atlas = "Jokers10",
@@ -15,9 +41,11 @@ local Dulce = {
     pteam = "Scout",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO Add logic
-    end
-}
+        if context.blind_defeated and not context.blueprint then
+            return select_random_cards_for_harvest(card)
+        end
+    end,
+})
 
 -- Ryoma
 local Ryoma = {
@@ -171,5 +199,5 @@ local George = {
 
 return {
     name = "Scout",
-    list = { Blazer },
+    list = { Blazer, Dulce },
 }

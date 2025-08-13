@@ -943,6 +943,17 @@ return {
                 }
             },
 
+            j_ina_Dulce = {
+                name = "Dulce",
+                text = {
+                    "{C:wind}Viento de cosecha{}",
+                    "Al seleccionar la {C:attention}ciega{} siembra",
+                    "una carta aleatoria del mazo",
+                    "por cada joker que sea",
+                    "de {X:wind,C:white}Viento{} y {X:mf,C:white}MF{}",
+                }
+            },
+
             j_ina_Nelly = {
                 name = "Nelly",
                 text = { { "Por cada ronda se otorga entre {C:money}#1#${} a {C:money}#2#${},",
