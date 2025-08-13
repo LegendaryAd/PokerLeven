@@ -179,13 +179,16 @@ local Axel = {
 local Shadow = {
   name = "Shadow",
   pos = { x = 2, y = 1 },
-  config = { extra = { current_mult = 0, mult_mod = 2 } },
+  config = { extra = { clone = false } },
   loc_vars = function(self, info_queue, center)
-    return { vars = { center.ability.extra.current_mult, center.ability.extra.mult_mod } }
+    return {
+      key = center.ability.extra.clone and 'j_ina_Shadow_clone' or 'j_ina_Shadow',
+      vars = {}
+    }
   end,
   rarity = 1,
   pools = { ["Raimon"] = true },
-  cost = 5,
+  cost = 2,
   atlas = "Jokers01",
   ptype = "Forest",
   pposition = "FW",
@@ -193,34 +196,20 @@ local Shadow = {
   pteam = "Raimon",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.scoring_hand and context.joker_main then
-      return {
-        message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.current_mult } },
-        colour = G.C.MULT,
-        mult_mod = card.ability.extra.current_mult
+    if context.setting_blind
+        and #G.jokers.cards == 1 then
+      local create_args = {
+        set = 'Joker',
+        key = 'j_ina_Shadow',
+        edition = 'e_negative',
       }
-    end
 
-    if context.after and not card.debuff then
-      local other_triggered = false
-      for _, j in ipairs(G.jokers.cards) do
-        if j ~= card and j.ability and j.ability.extra and j.ability.extra.triggered then
-          other_triggered = true
-          break
-        end
+      local _card = SMODS.create_card(create_args)
+      _card.ability.extra.clone = true
+      _card.calculate_joker = function(self, context)
       end
-      for _, c in ipairs(G.jokers.cards) do
-        if c.ability and c.ability.extra then
-          c.ability.extra.triggered = false
-        end
-      end
-      if not other_triggered then
-        card.ability.extra.current_mult = (card.ability.extra.current_mult or 0) + card.ability.extra.mult_mod
-        return {
-          message = localize('k_upgrade_ex'),
-          colour = G.C.MULT
-        }
-      end
+      _card:add_to_deck()
+      G.jokers:emplace(_card)
     end
   end,
 }

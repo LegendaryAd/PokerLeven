@@ -310,8 +310,15 @@ return {
             },
             j_ina_Shadow = {
                 name = "Shadow",
-                text = { "{C:forest}Tornado Oscuro{}", "{C:mult}+#1#{} Mult",
-                    "Gana {C:mult}+#2#{} Mult por cada mano jugada sin", "activar ningún otro comodín" }
+                text = { "{C:forest}Tornado Oscuro{}",
+                    "Al seleccionar la ciega",
+                    "si es el único jugador",
+                    "crea una copia {C:dark_edition}negativa{}",
+                    "de si mismo sin habilidades" }
+            },
+            j_ina_Shadow_clone = {
+                name = "Shadow",
+                text = { "Solo una {C:dark_edition}Sombra{}" }
             },
             j_ina_Willy = {
                 name = "Willy",
