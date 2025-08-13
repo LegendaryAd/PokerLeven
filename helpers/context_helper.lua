@@ -137,3 +137,11 @@ function Pokerleven.clone_table(tbl)
     for i, v in ipairs(tbl) do copy[i] = v end
     return copy
 end
+
+Card.set_as_harvestable = function(self)
+    self.ability["ina_harvest_sticker"] = true
+    card_eval_status_text(self, 'extra', nil, nil, nil, {
+        message = localize("ina_harvest"),
+        colour = G.C.GREEN
+    })
+end
