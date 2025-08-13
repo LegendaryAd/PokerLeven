@@ -163,7 +163,7 @@ local cleats = J({
 
 local hattori = J({
     name = "Hattori",
-    pos = { x = 5, y = 4 },
+    pos = { x = 5, y = 9 },
     config = { extra = { copies_number = 2 } },
     loc_vars = function(self, info_queue, center)
         return { vars = { center.ability.extra.copies_number } }
