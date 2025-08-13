@@ -310,8 +310,15 @@ return {
             },
             j_ina_Shadow = {
                 name = "Shadow",
-                text = { "{C:forest}Tornado Oscuro{}", "{C:mult}+#1#{} Mult",
-                    "Gana {C:mult}+#2#{} Mult por cada mano jugada sin", "activar ningún otro comodín" }
+                text = { "{C:forest}Tornado Oscuro{}",
+                    "Al seleccionar la ciega",
+                    "si es el único jugador",
+                    "crea una copia {C:dark_edition}negativa{}",
+                    "de si mismo sin habilidades" }
+            },
+            j_ina_Shadow_clone = {
+                name = "Shadow",
+                text = { "Solo una {C:dark_edition}Sombra{}" }
             },
             j_ina_Willy = {
                 name = "Willy",
@@ -497,6 +504,22 @@ return {
                     }
                 }
             },
+            j_ina_Feldt_n3 = {
+                name = "Feldt",
+                text = { {
+                    "{C:forest}Campo de Fuerza Defensivo{}",
+                    "Genera {C:attention}#1#{} {X:mountain,C:white}Barrera{}",
+                    "si juegas al menos {C:attention}3{} {C:spades}Picas{}"
+                },
+                    {
+                        "En la {C:attention}última mano{},",
+                        "consume {C:attention}#4# {X:mountain,C:white}Barreras{}",
+                        "para dar {X:mult,C:white}X#2#{} por",
+                        "cada jugador de {X:forest,C:white}Bosque{}",
+                        "{C:inactive}Actualmente{} {X:mult,C:white}X#3#"
+                    }
+                }
+            },
 
             j_ina_Marvel = {
                 name = "Marvel",
@@ -657,10 +680,11 @@ return {
 
             j_ina_Hillfort = {
                 name = "Hillfort",
-                text = { "{C:wind}Ataque de las Sombras{}", "Gana {C:chips}+X{} fichas donde {C:chips}X{} es",
-                    "{C:attention}la media del valor de venta{}",
-                    "de los comodines de {X:wind,C:white}viento{}",
-                    "{C:inactive}Actualmente{} {C:chips}+#1#{}" }
+                text = { "{C:wind}Ataque de las Sombras{}",
+                    "Al seleccionar la ciega gana {C:chips}+#1#{} fichas",
+                    "por cada {C:money}#2#${} de valor de venta",
+                    "de los jugadores de {X:wind,C:white}Viento{}",
+                    "{C:inactive}Actualmente{} {C:chips}+#3#{}" }
             },
 
             j_ina_Code = {
@@ -942,6 +966,17 @@ return {
                 }
             },
 
+            j_ina_Dulce = {
+                name = "Dulce",
+                text = {
+                    "{C:wind}Viento de cosecha{}",
+                    "Al seleccionar la {C:attention}ciega{} siembra",
+                    "una carta aleatoria del mazo",
+                    "por cada joker que sea",
+                    "de {X:wind,C:white}Viento{} y {X:mf,C:white}MF{}",
+                }
+            },
+
             j_ina_Nelly = {
                 name = "Nelly",
                 text = { { "Por cada ronda se otorga entre {C:money}#1#${} a {C:money}#2#${},",
@@ -949,7 +984,7 @@ return {
                     "se {C:mult}destruyen{} todos los jokers",
                     "fuera del banquillo y esta carta." },
                     { "Si es más de ante {C:attention}#3#{}",
-                        "al morir pone el dinero a {C:money}#4#{}" } }
+                        "al morir pone el dinero a {C:money}#4#${}" } }
             },
 
             j_ina_Celia = {
@@ -1420,7 +1455,8 @@ return {
         v_dictionary = {
             a_powmult = { "^#1# Mult" },
             ina_idea = { "Idea: #1#" },
-            ina_art = { "Arte: #1#" }
+            ina_art = { "Arte: #1#" },
+            ina_code = { "Código: #1#" }
         },
         v_text = {}
     }

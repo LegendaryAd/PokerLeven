@@ -504,6 +504,22 @@ return {
                     }
                 }
             },
+            j_ina_Feldt_n3 = {
+                name = "Feldt",
+                text = { {
+                    "{C:forest}Campo de Fuerza Defensivo{}",
+                    "Genera {C:attention}#1#{} {X:mountain,C:white}Barrera{}",
+                    "si juegas al menos {C:attention}3{} {C:spades}Picas{}"
+                },
+                    {
+                        "En la {C:attention}última mano{},",
+                        "consume {C:attention}#4# {X:mountain,C:white}Barreras{}",
+                        "para dar {X:mult,C:white}X#2#{} por",
+                        "cada jugador de {X:forest,C:white}Bosque{}",
+                        "{C:inactive}Actualmente{} {X:mult,C:white}X#3#"
+                    }
+                }
+            },
 
             j_ina_Marvel = {
                 name = "Marvel",
@@ -1439,7 +1455,8 @@ return {
         v_dictionary = {
             a_powmult = { "^#1# Mult" },
             ina_idea = { "Idea: #1#" },
-            ina_art = { "Arte: #1#" }
+            ina_art = { "Arte: #1#" },
+            ina_code = { "Código: #1#" }
         },
         v_text = {}
     }

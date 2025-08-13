@@ -161,7 +161,6 @@ local Artemis = J({
       return {
         message = localize("ina_harvest"),
         colour = G.C.MULT,
-        card = context.other_card
       }
     end
     if context.individual

@@ -18,12 +18,21 @@ local debuff_type = function(ptype)
         for _, y in pairs(G.jokers.cards) do
             y:set_debuff(false)
         end
-        for _, v in pairs(G.jokers.cards) do
-            if v.ability.extra.ptype == ptype then
+
+        local blazer_index
+        for i, v in pairs(G.jokers.cards) do
+            if v.config.center_key == 'j_ina_Blazer' then
+                blazer_index = i
+            elseif v.ability.extra.ptype == ptype then
                 v:set_debuff(true)
                 v:juice_up()
                 G.GAME.blind:wiggle()
             end
+        end
+        if blazer_index then
+            G.jokers.cards[blazer_index]:set_debuff(true)
+            G.jokers.cards[blazer_index]:juice_up()
+            G.GAME.blind:wiggle()
         end
     end
 end

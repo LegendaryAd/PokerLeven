@@ -84,33 +84,35 @@ local Blazer = J({
     pposition = "FW",
     pteam = "Scout",
     blueprint_compat = true,
-    calculate = function(self, card, context)
-        if G.jokers and G.jokers.cards then
-            local not_fire = find_player_type("Fire", true)
-            if #not_fire > 0 then
-                for _, player in ipairs(not_fire) do
-                    apply_property_sticker(player, "Fire", "type")
-                    card_eval_status_text(player, 'extra', nil, nil, nil, {
-                        message = localize("ina_onfire"),
-                        colour = G.C.RED
-                    })
+    add_to_deck = function(self, card, from_debuff)
+        card.calculate_joker = function(context)
+            if G.jokers and G.jokers.cards then
+                local not_fire = find_player_type("Fire", true)
+                if #not_fire > 0 then
+                    for _, player in ipairs(not_fire) do
+                        apply_property_sticker(player, "Fire", "type")
+                        card_eval_status_text(player, 'extra', nil, nil, nil, {
+                            message = localize("ina_onfire"),
+                            colour = G.C.RED
+                        })
+                    end
+                end
+            end
+        end
+        card.remove_from_deck = function(from_debuff)
+            if G.jokers and G.jokers.cards then
+                for _, player in ipairs(G.jokers.cards) do
+                    apply_property_sticker(player, player.config.center.ptype, "type")
+                end
+            end
+
+            if Pokerleven.ina_bench_area and Pokerleven.ina_bench_area.cards then
+                for _, player in ipairs(Pokerleven.ina_bench_area.cards) do
+                    apply_property_sticker(player, player.config.center.ptype, "type")
                 end
             end
         end
     end,
-    remove_from_deck = function(self, card, from_debuff)
-        if G.jokers and G.jokers.cards then
-            for _, player in ipairs(G.jokers.cards) do
-                apply_property_sticker(player, player.config.center.ptype, "type")
-            end
-        end
-
-        if Pokerleven.ina_bench_area and Pokerleven.ina_bench_area.cards then
-            for _, player in ipairs(Pokerleven.ina_bench_area.cards) do
-                apply_property_sticker(player, player.config.center.ptype, "type")
-            end
-        end
-    end
 })
 
 -- Chester

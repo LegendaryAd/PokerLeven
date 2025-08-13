@@ -2,11 +2,14 @@
 local Feldt = J({
     name = "Feldt",
     pos = { x = 0, y = 5 },
-    config = { extra = { barriers = 1, Xmult_mod = 1 } },
+    config = { extra = { barriers_added = 1, Xmult_mod = 1, barriers = 4 } },
     loc_vars = function(self, info_queue, center)
         local Xmult_mod = center.ability.extra.Xmult_mod
         local current_mult = Xmult_mod * #find_player_type('Forest')
-        return { vars = { center.ability.extra.barriers, Xmult_mod, current_mult } }
+        return {
+            key = (center.ability.extra.tech_level or 0) >= 2 and 'j_ina_Feldt_n3' or 'j_ina_Feldt',
+            vars = { center.ability.extra.barriers_added, Xmult_mod, current_mult, center.ability.extra.barriers }
+        }
     end,
     rarity = 3, -- Rare
     pools = { ["Brain"] = true },
@@ -21,7 +24,11 @@ local Feldt = J({
     calculate = function(self, card, context)
         if Pokerleven.is_joker_last_hand(context) and G.GAME.current_round.barriers > 0 then
             local current_mult = #find_player_type('Forest') * card.ability.extra.Xmult_mod
-            Pokerleven.ease_barriers(-G.GAME.current_round.barriers)
+            local barriers_to_remove =
+                (card.ability.extra.tech_level or 0) >= 2 and -card.ability.extra.barriers or
+                -G.GAME.current_round.barriers
+            Pokerleven.ease_barriers(barriers_to_remove)
+
             return {
                 message = localize { type = 'variable', key = 'a_xmult', vars = { current_mult } },
                 colour = G.C.MULT,
@@ -31,7 +38,7 @@ local Feldt = J({
 
         if Pokerleven.is_joker_turn(context) then
             if Pokerleven.get_cards_of_suite('Spades', context.scoring_hand) >= 3 then
-                local barriers = card.ability.extra.barriers
+                local barriers = card.ability.extra.barriers_added
                 return Pokerleven.ease_barriers(barriers)
             end
         end
