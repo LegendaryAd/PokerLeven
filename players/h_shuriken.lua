@@ -36,9 +36,9 @@ local hood = J({
 local hillfort = J({
     name = "Hillfort",
     pos = { x = 11, y = 8 },
-    config = { extra = { triggered = false } },
+    config = { extra = { triggered = false, chips_mod = 2, current_chips = 0, dollars_needed = 1 } },
     loc_vars = function(self, info_queue, center)
-        return { vars = { calculate_avg_sell_cost("Wind") or 0 } }
+        return { vars = { center.ability.extra.chips_mod, center.ability.extra.dollars_needed, center.ability.extra.current_chips } }
     end,
     rarity = 1, -- Common
     pools = { ["Shuriken"] = true },
@@ -50,10 +50,21 @@ local hillfort = J({
     techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.joker_main and context.scoring_hand then
-            card.ability.extra.triggered = true
+        if context.setting_blind then
+            local wind_players = find_player_type(C.Wind)
+            if #wind_players > 0 then
+                local chips_mod = card.ability.extra.chips_mod * Pokerleven.calculate_total_sell_cost(wind_players)
+                card.ability.extra.current_chips = card.ability.extra.current_chips + chips_mod
+                return {
+                    message = localize('k_upgrade_ex'),
+                    colour = G.C.CHIPS
+                }
+            end
+        end
+        if Pokerleven.is_joker_turn(context) and
+            card.ability.extra.current_chips > 0 then
             return {
-                chips = calculate_avg_sell_cost("Wind") or 0
+                chips = card.ability.extra.current_chips
             }
         end
     end,
@@ -152,8 +163,8 @@ local cleats = J({
 
 local hattori = J({
     name = "Hattori",
-    pos = { x = 5, y = 9 },
-    config = { extra = { copies = {}, copies_number = 2, triggered = false } },
+    pos = { x = 5, y = 4 },
+    config = { extra = { copies_number = 2 } },
     loc_vars = function(self, info_queue, center)
         return { vars = { center.ability.extra.copies_number } }
     end,
@@ -172,7 +183,6 @@ local hattori = J({
                 trigger = 'immediate',
                 func = function()
                     G.GAME.joker_buffer = 0
-                    card.ability.extra.copies = card.ability.extra.copies or {}
 
                     for _ = 1, card.ability.extra.copies_number do
                         local create_args = {
@@ -192,12 +202,12 @@ local hattori = J({
                                 self:remove_from_deck()
                             end
                         end
+                        _card.can_calculate = function()
+                            return true
+                        end
 
                         G.jokers:emplace(_card)
-                        table.insert(card.ability.extra.copies, _card)
                     end
-
-                    card.ability.extra.triggered = true
                     return true
                 end
             }))

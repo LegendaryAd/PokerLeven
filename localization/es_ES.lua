@@ -338,7 +338,7 @@ return {
             },
             j_ina_Bobby = {
                 name = "Bobby",
-                text = { { "{C:wind}El Traidor{}",
+                text = { { "{C:forest}El Traidor{}",
                     "Al seleccionar la ciega cambia",
                     "al equipo del que tengas más jugadores", },
                     { "Los jugadores del equipo",
@@ -657,10 +657,11 @@ return {
 
             j_ina_Hillfort = {
                 name = "Hillfort",
-                text = { "{C:wind}Ataque de las Sombras{}", "Gana {C:chips}+X{} fichas donde {C:chips}X{} es",
-                    "{C:attention}la media del valor de venta{}",
-                    "de los comodines de {X:wind,C:white}viento{}",
-                    "{C:inactive}Actualmente{} {C:chips}+#1#{}" }
+                text = { "{C:wind}Ataque de las Sombras{}",
+                    "Al seleccionar la ciega gana {C:chips}+#1#{} fichas",
+                    "por cada {C:money}#2#${} de valor de venta",
+                    "de los jugadores de {X:wind,C:white}Viento{}",
+                    "{C:inactive}Actualmente{} {C:chips}+#3#{}" }
             },
 
             j_ina_Code = {
@@ -855,7 +856,7 @@ return {
                 name = "Poseidon",
                 text = { { "{C:mountain}Muralla Tsunami{}",
                     "Genera {C:attention}#1#{} {X:mountain,C:white}barrera{} al jugar",
-                    "una mano de {C:attention}figuras{} con mínimo {C:attention}#2#{}" },
+                    "una mano de {C:attention}figuras{} con mínimo {C:attention}#2#{} puntuando" },
                     { "{C:attention}Frontal{}",
                         "{C:chips}+#3# Chips{} por cada {X:mountain,C:white}barrera{}",
                         "{C:mult}Gasta{} todas las {X:mountain,C:white}barreras{}",
@@ -944,10 +945,12 @@ return {
 
             j_ina_Nelly = {
                 name = "Nelly",
-                text = { "Por cada ronda se otorga entre {C:money}#1#${} a {C:money}#2#${},",
+                text = { { "Por cada ronda se otorga entre {C:money}#1#${} a {C:money}#2#${},",
                     "si se {C:attention}pierde la partida{}, en vez de eso,",
                     "se {C:mult}destruyen{} todos los jokers",
-                    "fuera del banquillo y esta carta." }
+                    "fuera del banquillo y esta carta." },
+                    { "Si es más de ante {C:attention}#3#{}",
+                        "al morir pone el dinero a {C:money}#4#${}" } }
             },
 
             j_ina_Celia = {
@@ -1375,6 +1378,7 @@ return {
             ina_tech_plus2_sticker = "Técnica mejorada",
             ina_tech_plus3_sticker = "Técnica mejorada",
             ina_tech_plus4_sticker = "Técnica mejorada",
+            ina_tech_plus5_sticker = "Técnica mejorada",
             ina_tech_number2_sticker = "Técnica mejorada",
             ina_tech_number3_sticker = "Técnica mejorada",
             ina_tech_number4_sticker = "Técnica mejorada",

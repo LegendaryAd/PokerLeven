@@ -2,9 +2,9 @@
 local Nelly = J({
     name = "Nelly",
     pos = { x = 0, y = 0 },
-    config = { extra = { min_money = 1, max_money = 5 } },
+    config = { extra = { min_money = 1, max_money = 5, dead_money = 100, dead_ante = 4 } },
     loc_vars = function(self, info_queue, center)
-        return { vars = { center.ability.extra.min_money, center.ability.extra.max_money } }
+        return { vars = { center.ability.extra.min_money, center.ability.extra.max_money, center.ability.extra.dead_ante, center.ability.extra.dead_money } }
     end,
     rarity = 2,
     special = "Manager",
@@ -19,7 +19,14 @@ local Nelly = J({
         if context.game_over then
             Pokerleven.destroy_all_jokers()
             Pokerleven.destroy_manager_with_key('j_ina_Nelly')
-
+            if G.GAME.round_resets.ante >= card.ability.extra.dead_ante then
+                return {
+                    message = localize('k_saved_ex'),
+                    saved = 'ina_saved',
+                    dollars = lenient_bignum(card.ability.extra.dead_money - G.GAME.dollars),
+                    colour = G.C.RED,
+                }
+            end
             return {
                 message = localize('k_saved_ex'),
                 saved = 'ina_saved',

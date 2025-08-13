@@ -336,7 +336,6 @@ local Jude_Raimon = J({
     return { vars = { center.ability.extra.current_xmult, center.ability.extra.xmult_mod } }
   end,
   rarity = 3,
-  pools = { ["Royal Academy"] = true },
   cost = 8,
   atlas = "Jokers01",
   stage = "one",

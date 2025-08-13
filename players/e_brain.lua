@@ -268,7 +268,9 @@ local Under = {
     pos = { x = 11, y = 5 },
     config = { extra = { chips_mod = 120, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        return { vars = { center.ability.extra.chips_mod, #find_player_position("GK") or 0 } }
+        local gkCount = #find_player_position("GK") or 0
+        local realCount = gkCount > 0 and gkCount or 1
+        return { vars = { center.ability.extra.chips_mod, realCount } }
     end,
     rarity = 1, -- Common
     pools = { ["Brain"] = true },
@@ -281,7 +283,8 @@ local Under = {
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main then
             local gkCount = #find_player_position("GK")
-            local result = card.ability.extra.chips_mod / (math.log(gkCount + 1) / math.log(2))
+            local realCount = gkCount > 0 and gkCount or 1
+            local result = card.ability.extra.chips_mod / (math.log(realCount + 1) / math.log(2))
             card.ability.extra.triggered = true
 
             return {

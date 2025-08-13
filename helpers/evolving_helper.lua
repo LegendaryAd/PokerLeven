@@ -62,6 +62,7 @@ end
 
 ina_backend_evolve = function(card, to_key)
     local new_card = G.P_CENTERS[to_key]
+    local tech_level = card.ability.extra.tech_level or 0
     if card.config.center == new_card then return end
 
     local old_key = card.config.center.key
@@ -70,7 +71,10 @@ ina_backend_evolve = function(card, to_key)
         card.ability.perish_tally = G.GAME.perishable_rounds
     end
 
-    local names_to_keep = { "targets", "rank", "id", "cards_scored", "upgrade", "mult", "mult_mod", "current_xmult" }
+    clear_stickers(card)
+
+    local names_to_keep = { "targets", "rank", "id", "cards_scored", "upgrade", "mult", "mult_mod", "current_xmult",
+        "tech_level", "xmult_mod" }
     local values_to_keep = copy_scaled_values(card)
     if type(card.ability.extra) == "table" then
         for _, k in pairs(names_to_keep) do
@@ -107,6 +111,13 @@ ina_backend_evolve = function(card, to_key)
         card.children.floating_sprite:remove()
         card.children.floating_sprite = nil
     end
+
+    if tech_level ~= 0 then
+        for level = 1, tech_level do
+            increment_technique(card)
+        end
+    end
+
 
     if not card.edition then
         card:juice_up()

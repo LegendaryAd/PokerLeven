@@ -215,7 +215,7 @@ local Jude = {
 }
 
 -- Martin
-local Martin = {
+local Martin = J({
   name = "Martin",
   pos = { x = 10, y = 2 },
   config = { extra = { common_mult = 6, uncommon_mult = 12, rare_xmult = 1.5, legendary_exp = 1.15, triggered = false } },
@@ -236,7 +236,7 @@ local Martin = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if not context.debuff then
-      if context.other_joker and context.other_joker.config.center.rarity == 3 and card ~= context.other_joker then
+      if not context.other_joker.debuff and context.other_joker and context.other_joker.config.center.rarity == 3 and card ~= context.other_joker then
         card.ability.extra.triggered = true;
         G.E_MANAGER:add_event(Event({
           func = function()
@@ -249,7 +249,7 @@ local Martin = {
           colour = G.C.XMULT,
           Xmult_mod = card.ability.extra.rare_xmult
         }
-      elseif context.other_joker and context.other_joker.config.center.rarity == 2 and card ~= context.other_joker then
+      elseif not context.other_joker.debuff and context.other_joker and context.other_joker.config.center.rarity == 2 and card ~= context.other_joker then
         card.ability.extra.triggered = true;
         G.E_MANAGER:add_event(Event({
           func = function()
@@ -262,7 +262,7 @@ local Martin = {
           colour = G.C.MULT,
           mult_mod = card.ability.extra.uncommon_mult
         }
-      elseif context.other_joker and context.other_joker.config.center.rarity == 1 and card ~= context.other_joker then
+      elseif not context.other_joker.debuff and context.other_joker and context.other_joker.config.center.rarity == 1 and card ~= context.other_joker then
         card.ability.extra.triggered = true;
         G.E_MANAGER:add_event(Event({
           func = function()
@@ -275,7 +275,7 @@ local Martin = {
           colour = G.C.MULT,
           mult_mod = card.ability.extra.common_mult
         }
-      elseif context.other_joker and context.other_joker.config.center.rarity == 4 and card ~= context.other_joker then
+      elseif not context.other_joker.debuff and context.other_joker and context.other_joker.config.center.rarity == 4 and card ~= context.other_joker then
         card.ability.extra.triggered = true;
         G.E_MANAGER:add_event(Event({
           func = function()
@@ -295,7 +295,7 @@ local Martin = {
       end
     end
   end,
-}
+})
 
 -- Master
 local Master = {

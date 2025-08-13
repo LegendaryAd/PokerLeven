@@ -294,7 +294,8 @@ function spawn_random_ina_joker(card, context, rarity_table, team_table)
                         G.GAME.joker_buffer = 0
                         print("Rarity:", rarity)
                         print("Team:", team)
-                        local _card = create_random_ina_joker('sweet', rarity, G.jokers, team, true)
+                        local _card = create_random_ina_joker('sweet', rarity, G.jokers, team, true, nil,
+                            { j_ina_Jude_Raimon = true })
                         _card:add_to_deck()
                         G.jokers:emplace(_card)
                         return true
@@ -339,6 +340,14 @@ calculate_avg_sell_cost = function(ptype)
     end
 
     return nil
+end
+
+Pokerleven.calculate_total_sell_cost = function(cards)
+    local sumSellCost = 0
+    for _, card in ipairs(cards) do
+        sumSellCost = sumSellCost + card.sell_cost
+    end
+    return sumSellCost
 end
 
 --- Returns the joker to the right of the given joker in the active jokers row.

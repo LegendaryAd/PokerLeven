@@ -1,3 +1,4 @@
+---@diagnostic disable: cast-local-type
 ina_set_badges = function(self, card, badges)
     local pteam = get_team(card)
     local text_colour = G.C.WHITE
@@ -27,9 +28,21 @@ apply_property_sticker = function(card, sticker_type, property)
         card.ability[string.lower(apply_type) .. "_sticker"] = true
     else
         if property == "type" then
-            apply_type = pseudorandom_element(inateam_list, pseudoseed("type"))
+            options = {}
+            for _, t in ipairs(inateam_list) do
+                if t ~= card.ability.extra.ptype then
+                    table.insert(options, t)
+                end
+            end
+            apply_type = pseudorandom_element(options, pseudoseed("type"))
         elseif property == "position" then
-            apply_type = pseudorandom_element(inaposition_list, pseudoseed("position"))
+            options = {}
+            for _, p in ipairs(inaposition_list) do
+                if p ~= card.ability.extra.pposition then
+                    table.insert(options, p)
+                end
+            end
+            apply_type = pseudorandom_element(options, pseudoseed("position"))
         end
         card.ability[string.lower(apply_type) .. "_sticker"] = true
     end

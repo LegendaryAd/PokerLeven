@@ -137,7 +137,7 @@ function Game:start_run(args)
         },
         config = {
             align = "bm",
-            offset = { x = 4, y = 0.05 },
+            offset = { x = 4, y = -3.33 },
             major = G.jokers,
             bond = 'Weak'
         }
@@ -248,7 +248,8 @@ end
 --- Hook for new buttons on jokers / cards
 local card_highlight_ref = Card.highlight
 function Card:highlight(is_highlighted)
-    if self.area and self.area.config.type == "joker" and self.area ~= G.consumeables then
+    if self.area and self.area.config.type == "joker" and self.area ~= G.consumeables
+        and (self.area == G.jokers or self.area == Pokerleven.ina_bench_area or self.area == Pokerleven.ina_manager_area) then
         self.highlighted = is_highlighted
 
         if self.highlighted then
@@ -302,6 +303,13 @@ G.FUNCS.can_unbench_card = function(e)
     return G.FUNCS.can_toggle_bench_card(e, G.jokers, 'unbench_card', G.C.ORANGE)
 end
 
+local change_bobby_sprites_if_needed = function(card, new_card)
+    if card.config.center_key == 'j_ina_Bobby' then
+        local coords = C.CUSTOM.Bobby_Teams[card.ability.extra.pteam]
+        new_card.children.center:set_sprite_pos({ x = coords.x, y = coords.y })
+    end
+end
+
 G.FUNCS.toggle_bench_card = function(e, add_func, open_bench_flag)
     local card = e.config.ref_table
 
@@ -313,10 +321,12 @@ G.FUNCS.toggle_bench_card = function(e, add_func, open_bench_flag)
             return true
         end
     }))
-
     local sell_cost = card.sell_cost
     local new_card = copy_card(card)
     new_card.sell_cost = sell_cost
+
+    change_bobby_sprites_if_needed(card, new_card)
+
     card:remove()
     G.GAME.used_jokers[card.config.center.key] = true
 
@@ -351,6 +361,8 @@ G.FUNCS.unbench_card = function(e)
     local sell_cost = card.sell_cost
     local unbench_card = copy_card(card)
     unbench_card.sell_cost = sell_cost
+
+    change_bobby_sprites_if_needed(card, unbench_card)
 
     G.E_MANAGER:add_event(Event({
         trigger = 'immediate',

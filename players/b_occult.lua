@@ -100,10 +100,8 @@ local Blood = {
     end
     if context.end_of_round and not context.individual and not context.repetition then
       local adjacent = get_adjacent_jokers(card)
-      for i = 1, #G.jokers.cards do
-        if G.jokers.cards[i] ~= card then
-          drain(card, G.jokers.cards[i], card.ability.extra.drain)
-        end
+      for _, adjacent_card in ipairs(adjacent) do
+        drain(card, adjacent_card, card.ability.extra.drain)
       end
     end
   end,

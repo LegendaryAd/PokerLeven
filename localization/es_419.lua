@@ -92,35 +92,35 @@ return {
             -- Blinds jefes
             bl_ina_goalkeeper = {
                 name = "GK",
-                text = { "Los jugadores {X:gk,C:white}GK{}", "están debilitados" }
+                text = { "Los jugadores {X:gk,C:white}GK{}", "están debilitados", "tras cada mano jugada" }
             },
             bl_ina_forward = {
                 name = "FW",
-                text = { "Los jugadores {X:fw,C:white}FW{}", "están debilitados" }
+                text = { "Los jugadores {X:fw,C:white}FW{}", "están debilitados", "tras cada mano jugada" }
             },
             bl_ina_defense = {
                 name = "DF",
-                text = { "Los jugadores {X:df,C:white}DF{}", "están debilitados" }
+                text = { "Los jugadores {X:df,C:white}DF{}", "están debilitados", "tras cada mano jugada" }
             },
             bl_ina_midfielder = {
                 name = "MF",
-                text = { "Los jugadores {X:mf,C:white}MF{}", "están debilitados" }
+                text = { "Los jugadores {X:mf,C:white}MF{}", "están debilitados", "tras cada mano jugada" }
             },
             bl_ina_fire = {
                 name = "Jefe de Fuego",
-                text = { "Los jugadores de {X:fire,C:white}Fuego{}", "están debilitados" }
+                text = { "Los jugadores de {X:fire,C:white}Fuego{}", "están debilitados", "tras cada mano jugada" }
             },
             bl_ina_forest = {
                 name = "Jefe de Bosque",
-                text = { "Los jugadores de tipo {X:forest,C:white}Bosque{}", "están debilitados" }
+                text = { "Los jugadores de tipo {X:forest,C:white}Bosque{}", "están debilitados", "tras cada mano jugada" }
             },
             bl_ina_mountain = {
                 name = "Jefe de Montaña",
-                text = { "Los jugadores de tipo {X:Mountain,C:white}Montaña{}", "están debilitados" }
+                text = { "Los jugadores de tipo {X:Mountain,C:white}Montaña{}", "están debilitados", "tras cada mano jugada" }
             },
             bl_ina_wind = {
                 name = "Jefe de Viento",
-                text = { "Los jugadores de tipo {X:Wind,C:white}Viento{}", "están debilitados" }
+                text = { "Los jugadores de tipo {X:Wind,C:white}Viento{}", "están debilitados", "tras cada mano jugada" }
             },
             bl_ina_inazuma_og = {
                 name = "Inazuma Eleven",
@@ -338,7 +338,7 @@ return {
             },
             j_ina_Bobby = {
                 name = "Bobby",
-                text = { { "{C:wind}El Traidor{}",
+                text = { { "{C:forest}El Traidor{}",
                     "Al seleccionar la ciega cambia",
                     "al equipo del que tengas más jugadores", },
                     { "Los jugadores del equipo",
@@ -855,7 +855,7 @@ return {
                 name = "Poseidon",
                 text = { { "{C:mountain}Muralla Tsunami{}",
                     "Genera {C:attention}#1#{} {X:mountain,C:white}barrera{} al jugar",
-                    "una mano de {C:attention}figuras{} con mínimo {C:attention}#2#{}" },
+                    "una mano de {C:attention}figuras{} con mínimo {C:attention}#2#{} puntuando" },
                     { "{C:attention}Frontal{}",
                         "{C:chips}+#3# Chips{} por cada {X:mountain,C:white}barrera{}",
                         "{C:mult}Gasta{} todas las {X:mountain,C:white}barreras{}",
@@ -944,10 +944,12 @@ return {
 
             j_ina_Nelly = {
                 name = "Nelly",
-                text = { "Por cada ronda se otorga entre {C:money}#1#${} a {C:money}#2#${},",
+                text = { { "Por cada ronda se otorga entre {C:money}#1#${} a {C:money}#2#${},",
                     "si se {C:attention}pierde la partida{}, en vez de eso,",
                     "se {C:mult}destruyen{} todos los jokers",
-                    "fuera del banquillo y esta carta." }
+                    "fuera del banquillo y esta carta." },
+                    { "Si es más de ante {C:attention}#3#{}",
+                        "al morir pone el dinero a {C:money}#4#{}" } }
             },
 
             j_ina_Celia = {
@@ -1375,6 +1377,7 @@ return {
             ina_tech_plus2_sticker = "Técnica mejorada",
             ina_tech_plus3_sticker = "Técnica mejorada",
             ina_tech_plus4_sticker = "Técnica mejorada",
+            ina_tech_plus5_sticker = "Técnica mejorada",
             ina_tech_number2_sticker = "Técnica mejorada",
             ina_tech_number3_sticker = "Técnica mejorada",
             ina_tech_number4_sticker = "Técnica mejorada",
@@ -1403,12 +1406,11 @@ return {
             ["ina_GodHand"] = {
                 "6 cartas del mismo rango"
             }
-
         },
         poker_hands = {
-            ["ina_TriplePair"] = "Triple Pareja",
-            ["ina_GodHand"] = "Mano Celestial",
+            ["ina_TriplePair"] = "Triple pareja",
             ["ina_FullMansion"] = "Full Mansion",
+            ["ina_GodHand"] = "Mano Celestial",
         },
         quips = {},
         ranks = {},

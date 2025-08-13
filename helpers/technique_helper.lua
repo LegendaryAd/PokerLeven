@@ -43,22 +43,11 @@ grade_stickers = { "ina_tech_grade2_sticker", "ina_tech_grade3_sticker", "ina_te
 new_stickers = { "ina_tech_j_sticker", "ina_tech_q_sticker", "ina_tech_k_sticker", "ina_tech_a_sticker",
     "ina_tech_joker_sticker" }
 
--- Increments technique level of a joker and applies stat changes based on technique values
-increment_technique = function(card)
-    if card.ability.extra and type(card.ability.extra) == "table" then
-        if card.ability.extra.tech_level then
-            card.ability.extra.tech_level = card.ability.extra.tech_level + 1
-        else
-            card.ability.extra.tech_level = 1
-        end
-    end
-    modify_values(card)
-    set_sticker(card)
-end
 
--- Sets the appropriate sticker for the current technique type and level and removes the previous one (if any)
-set_sticker = function(card)
-    local tech_level = card.ability.extra.tech_level
+local function get_sticker_list(card)
+    if not card or not card.ability or type(card.ability) ~= "table" or not card.ability.extra then
+        return new_stickers -- fallback seguro
+    end
 
     local this_card_number_stickers = Pokerleven.clone_table(number_stickers)
     table.insert(this_card_number_stickers, card.ability.extra.numberTechType or C.UPGRADES.NumberType.A)
@@ -70,15 +59,50 @@ set_sticker = function(card)
         grade = grade_stickers
     }
 
-    local sticker_list = sticker_map[card.ability.extra.techtype] or new_stickers
+    return sticker_map[card.ability.extra.techtype] or new_stickers
+end
+
+function set_sticker(card)
+    local tech_level = card.ability.extra and card.ability.extra.tech_level or 0
+    local sticker_list = get_sticker_list(card)
 
     if tech_level > 1 then
         local old_sticker_key = sticker_list[tech_level - 1]
-        card.ability[old_sticker_key] = false
+        if old_sticker_key and card.ability then
+            card.ability[old_sticker_key] = false
+        end
     end
+    if tech_level >= 1 then
+        local new_sticker_key = sticker_list[tech_level]
+        if new_sticker_key and card.ability then
+            card.ability[new_sticker_key] = true
+        end
+    end
+end
 
-    local new_sticker_key = sticker_list[tech_level]
-    card.ability[new_sticker_key] = true
+function clear_stickers(card)
+    local sticker_list = get_sticker_list(card)
+    if not card or not card.ability or type(card.ability) ~= "table" then
+        return
+    end
+    for _, sticker_key in ipairs(sticker_list) do
+        if card.ability[sticker_key] then
+            card.ability[sticker_key] = false
+        end
+    end
+end
+
+-- Increments technique level of a joker and applies stat changes based on technique values
+increment_technique = function(card)
+    if card.ability.extra and type(card.ability.extra) == "table" then
+        if card.ability.extra.tech_level then
+            card.ability.extra.tech_level = card.ability.extra.tech_level + 1
+        else
+            card.ability.extra.tech_level = 1
+        end
+    end
+    modify_values(card)
+    set_sticker(card)
 end
 
 -- Applies value updates to a joker based on its center config and technique multipliers
