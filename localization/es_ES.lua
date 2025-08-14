@@ -335,7 +335,8 @@ return {
             j_ina_Peabody = {
                 name = "Peabody",
                 text = { "{C:mountain}Mano Celestial{}", "{C:mult}+#1#{} Mult en tu última mano",
-                    "Aumenta en {C:mult}+#2#{} por cada última mano jugada" }
+                    "Aumenta en {C:mult}+#2#{} por cada {C:attention}carta activada{}",
+                    "en la última mano jugada" }
             },
             j_ina_Jude_Raimon = {
                 name = "Jude",
