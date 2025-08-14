@@ -203,7 +203,7 @@ local George = {
 local Ace_Server = {
     name = "Ace_Server",
     pos = { x = 0, y = 0 },
-    config = { extra = { odds = 1, levels = 1 } },
+    config = { extra = { odds = 5, levels = 1 } },
     loc_vars = function(self, info_queue, center)
         return {
             vars = { center.ability.extra.odds, center.ability.extra.levels }
