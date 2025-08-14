@@ -408,8 +408,11 @@ return {
             },
             j_ina_Bloom = {
                 name = "Bloom",
-                text = { "{C:fire}Chut de los 100 toques{}", "{C:mult}+#1#{} Mult",
-                    "Gana {C:mult}+#2#{} Mult si la mano jugada", "contiene una {C:attention}escalera{}" }
+                text = { "{C:fire}Chut de los 100 toques{}",
+                    "Si has jugado 100 cartas o más",
+                    "{X:mult,C:white}X#1#{} Mult al jugar una mano",
+                    "si contiene una escalera",
+                    "{C:inactive}Actualmente{} {C:mult}#2#{} jugadas" }
             },
             j_ina_Drent = {
                 name = "Drent",
