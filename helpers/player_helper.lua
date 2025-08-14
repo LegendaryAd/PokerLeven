@@ -205,7 +205,7 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys, e
     local ina_keys = {}
     local inaarea = area or G.jokers
     local ina_key
-    exclude_keys = exclude_keys or {}
+    exclude_keys = exclude_keys or { j_ina_Jude_Raimon = true }
 
     if inararity and type(inararity) == "string" then
         if string.lower(inararity) == "common" then inararity = 1 end
