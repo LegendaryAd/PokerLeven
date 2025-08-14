@@ -113,6 +113,13 @@ function SMODS.create_mod_badges(obj, badges)
             end
         end
 
+        if obj.ina_credits.code then
+            for i = 1, #obj.ina_credits.code do
+                localized = localize({ type = "variable", key = "ina_code", vars = { obj.ina_credits.code[i] } })[1]
+                strings[#strings + 1] = localized
+            end
+        end
+
         local scale_fac = {}
         local min_scale_fac = 1
         for i = 1, #strings do

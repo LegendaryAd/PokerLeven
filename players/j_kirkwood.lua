@@ -129,7 +129,7 @@ local Thomas = J({
 local Tyler = J({
     name = "Tyler",
     pos = { x = 12, y = 11 },
-    config = { extra = { odds = 8 } },
+    config = { extra = { odds = 1 } },
     loc_vars = function(self, info_queue, center)
         table.insert(info_queue, { set = "Other", key = "Trillizos" })
         return { vars = { G.GAME.probabilities.normal or 1, center.ability.extra.odds } }
@@ -145,20 +145,13 @@ local Tyler = J({
     calculate = function(self, card, context)
         local scoring_card = Pokerleven.card_scoring(context)
         if context.individual and scoring_card
-            and Pokerleven.has_enough_consumables_space()
             and scoring_card:is_uneven()
             and card:odds_triggered('Tyler') then
-            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+            if Pokerleven.has_enough_consumables_space() then
+                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
 
-            card:show_text('k_plus_tarot')
-
-            local add_card_func = function()
-                local tarot_card = create_card("Tarot", G.consumeables, nil, nil, nil, nil)
-                Pokerleven.add_card_to_consumables(tarot_card)
+                return card:create_consumable_as_joker('Tarot')
             end
-
-            Pokerleven.execute_function_with_delay(add_card_func, 0.1)
-            return {}
         end
     end
 })

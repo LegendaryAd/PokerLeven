@@ -64,7 +64,7 @@ end
 --- Returns true if consumables limit > current consumables
 ---@return boolean
 Pokerleven.has_enough_consumables_space = function()
-    return G.consumeables.config.card_limit > G.consumeables.config.card_count
+    return #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit
 end
 
 --- Returns true if bench limit > current consumables
@@ -136,4 +136,35 @@ function Pokerleven.clone_table(tbl)
     local copy = {}
     for i, v in ipairs(tbl) do copy[i] = v end
     return copy
+end
+
+Card.set_as_harvestable = function(self)
+    self.ability["ina_harvest_sticker"] = true
+    card_eval_status_text(self, 'extra', nil, nil, nil, {
+        message = localize("ina_harvest"),
+        colour = G.C.GREEN
+    })
+end
+
+Card.create_consumable_as_joker = function(self, consumable_type)
+    return {
+        extra = {
+            focus = self,
+            message = localize('k_plus_tarot'),
+            colour = G.C.PURPLE,
+            func = function()
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = function()
+                        local _card = create_card(consumable_type, G.consumeables, nil, nil, nil, nil, nil)
+                        _card:add_to_deck()
+                        G.consumeables:emplace(_card)
+                        G.GAME.consumeable_buffer = 0
+                        return true
+                    end
+                }))
+            end
+        }
+    }
 end

@@ -31,7 +31,7 @@ local triple_pair = P({
         return {}
     end,
     modify_display_text = function(self, cards, scoring_hand)
-        return "TriplePair"
+        return "Triple Pair"
     end
 })
 
