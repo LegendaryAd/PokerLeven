@@ -209,7 +209,7 @@ local Ace_Server = {
             vars = { center.ability.extra.odds, center.ability.extra.levels }
         }
     end,
-    rarity = 1,
+    rarity = 2,
     pools = { ["Scout"] = true },
     cost = 5,
     atlas = "Jokers10",
