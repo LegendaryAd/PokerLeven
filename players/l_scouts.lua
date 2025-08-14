@@ -203,7 +203,7 @@ local George = {
 local Ace_Server = {
     name = "Ace_Server",
     pos = { x = 0, y = 0 },
-    config = { extra = { odds = 5, levels = 1 } },
+    config = { extra = { odds = 1, levels = 1 } },
     loc_vars = function(self, info_queue, center)
         return {
             vars = { center.ability.extra.odds, center.ability.extra.levels }
@@ -218,11 +218,13 @@ local Ace_Server = {
     pteam = "Scout",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        return Upgrade_hand(context, 14, 2, card, context.hand_name, 'ina_mano')
+        if context.after and context.cardarea == G.jokers then
+            return Upgrade_hand(context.scoring_hand, 14, 2, card, context.hand_name, 'ina_mano')
+        end
     end
 }
 
 return {
     name = "Scout",
-    list = { Blazer, Dulce, Ace_Server },
+    list = { Ace_Server, Blazer, Dulce },
 }
