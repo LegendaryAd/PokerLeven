@@ -1121,9 +1121,13 @@ return {
                 name = "Pack Brain",
                 text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:brain,C:white}Brain{} jugadores" }
             },
+            p_ina_team_pack_otaku = {
+                name = "Pack Otaku",
+                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:otaku,C:white}Otaku{} jugadores" }
+            },
             p_ina_team_pack_inazuma = {
                 name = "Pack Inazuma",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:inazuma,C:white}Inazuma{} jugadores" }
+                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:inazuma,C:white}Otaku{} jugadores" }
             },
             p_ina_team_pack_shuriken = {
                 name = "Pack Shuriken",
