@@ -967,6 +967,51 @@ return {
                 }
             },
 
+            j_ina_Weathervane = {
+                name = "Weathervane",
+                text = { {
+                    "{C:wind}Torbellino{}",
+                    "Todos los {C:attention}Jokers{}",
+                    "son de {X:wind,C:white}Viento{}",
+                },
+                    {
+                        "Si no está en el área de juego",
+                        "devuelve todos los jugadores",
+                        "a su tipo original"
+                    }
+                }
+            },
+
+            j_ina_Noggin = {
+                name = "Noggin",
+                text = { {
+                    "{C:forest}Selva Viva{}",
+                    "Todos los {C:attention}Jokers{}",
+                    "son de {X:forest,C:white}Bosque{}",
+                },
+                    {
+                        "Si no está en el área de juego",
+                        "devuelve todos los jugadores",
+                        "a su tipo original"
+                    }
+                }
+            },
+
+            j_ina_Montayne = {
+                name = "Montayne",
+                text = { {
+                    "{C:mountain}Fortaleza{}",
+                    "Todos los {C:attention}Jokers{}",
+                    "son de {X:mountain,C:white}Montaña{}",
+                },
+                    {
+                        "Si no está en el área de juego",
+                        "devuelve todos los jugadores",
+                        "a su tipo original"
+                    }
+                }
+            },
+
             j_ina_Dulce = {
                 name = "Dulce",
                 text = {
@@ -1386,6 +1431,9 @@ return {
             ina_unbench = "Titular",
             ina_generate_barriers = "Barrera!",
             ina_onfire = "On fire!",
+            ina_onwind = "Riding the wind!",
+            ina_onforest = "In the woods!",
+            ina_onmountain = "Unshakable as stone!",
             ina_gafas = "GAFITAAAS",
             ina_saved = "Fuiste salvado",
             ina_technique_card = "¡Técnica!",

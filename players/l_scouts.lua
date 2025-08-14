@@ -71,7 +71,7 @@ local Ryoma = {
 -- Blazer
 local Blazer = J({
     name = "Blazer",
-    pos = { x = 2, y = 0 },
+    pos = { x = 0, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
@@ -84,35 +84,94 @@ local Blazer = J({
     pposition = "FW",
     pteam = "Scout",
     blueprint_compat = true,
+    allow_element_application = true,
+    add_to_deck = function(self, card, from_debuff)
+         card.calculate_joker = function(context)
+            apply_element("Fire", "ina_onfire", G.C.RED, card)
+         end
+    end,
+    remove_from_deck = function(from_debuff)
+        restore_original_elements()
+    end
+})
+
+-- Weathervane
+local Weathervane = J({
+    name = "Weathervane",
+    pos = { x = 1, y = 0 },
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, center)
+        return {}
+    end,
+    rarity = 1,
+    pools = { ["Scout"] = true },
+    cost = 5,
+    atlas = "Jokers10",
+    ptype = "Wind",
+    pposition = "DF",
+    pteam = "Scout",
+    blueprint_compat = true,
+    allow_element_application = true,
     add_to_deck = function(self, card, from_debuff)
         card.calculate_joker = function(context)
-            if G.jokers and G.jokers.cards then
-                local not_fire = find_player_type("Fire", true)
-                if #not_fire > 0 then
-                    for _, player in ipairs(not_fire) do
-                        apply_property_sticker(player, "Fire", "type")
-                        card_eval_status_text(player, 'extra', nil, nil, nil, {
-                            message = localize("ina_onfire"),
-                            colour = G.C.RED
-                        })
-                    end
-                end
-            end
-        end
-        card.remove_from_deck = function(from_debuff)
-            if G.jokers and G.jokers.cards then
-                for _, player in ipairs(G.jokers.cards) do
-                    apply_property_sticker(player, player.config.center.ptype, "type")
-                end
-            end
-
-            if Pokerleven.ina_bench_area and Pokerleven.ina_bench_area.cards then
-                for _, player in ipairs(Pokerleven.ina_bench_area.cards) do
-                    apply_property_sticker(player, player.config.center.ptype, "type")
-                end
-            end
+            apply_element("Wind", "ina_onwind", G.C.BLUE, card)
         end
     end,
+    remove_from_deck = function(from_debuff)
+        restore_original_elements()
+    end
+})
+
+-- Noggin
+local Noggin = J({
+    name = "Noggin",
+    pos = { x = 2, y = 0 },
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, center)
+        return {}
+    end,
+    rarity = 1,
+    pools = { ["Scout"] = true },
+    cost = 5,
+    atlas = "Jokers10",
+    ptype = "Forest",
+    pposition = "MF",
+    pteam = "Scout",
+    blueprint_compat = true,
+    add_to_deck = function(self, card, from_debuff)
+        card.calculate_joker = function(context)
+            apply_element("Wind", "ina_onforest", G.C.PALE_GREEN, card)
+        end
+    end,
+    remove_from_deck = function(from_debuff)
+        restore_original_elements()
+    end
+})
+
+-- Montayne 
+local Montayne = J({
+    name = "Montayne",
+    pos = { x = 5, y = 0 },
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, center)
+        return {}
+    end,
+    rarity = 1,
+    pools = { ["Scout"] = true },
+    cost = 5,
+    atlas = "Jokers10",
+    ptype = "Mountain",
+    pposition = "FW",
+    pteam = "Scout",
+    blueprint_compat = true,
+    add_to_deck = function(self, card, from_debuff)
+        card.calculate_joker = function(context)
+            apply_element("Mountain", "ina_onmountain", G.C.CHIPS, card)
+        end
+    end,
+    remove_from_deck = function(from_debuff)
+        restore_original_elements()
+    end
 })
 
 -- Chester
@@ -201,5 +260,5 @@ local George = {
 
 return {
     name = "Scout",
-    list = { Blazer, Dulce },
+    list = { Blazer, Weathervane, Noggin, Montayne, Dulce },
 }
