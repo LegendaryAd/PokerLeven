@@ -949,6 +949,15 @@ return {
                     }
                 }
             },
+            j_ina_Ace_Server = {
+                name = "Ace Server",
+                text = { {
+                    "{C:fire}Puño vengativo{}",
+                    "{C:green}1 en #1# {}de aumentar el",
+                    "nivel de la mano jugada",
+                    "{C:attention}#2# nivel{} si {C:attention}2 Ases{} puntúan."
+                } }
+            },
 
             j_ina_Nelly = {
                 name = "Nelly",
@@ -1362,6 +1371,7 @@ return {
             ina_saved = "Fuiste salvado",
             ina_technique_card = "¡Técnica!",
             ina_gol = "¡Gol!",
+            ina_mano = "¡Mano mejorada",
 
 
 
