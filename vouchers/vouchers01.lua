@@ -78,7 +78,7 @@ local training_2 = V({
     set = "Voucher",
     pos = { x = 1, y = 1 },
     discovered = false,
-    unlocked = true,
+    unlocked = false,
     available = true,
     requires = { "v_ina_training" },
     cost = 10,
@@ -91,6 +91,11 @@ local training_2 = V({
     },
     redeem = function(self, card)
         G.GAME.max_tech_level = G.GAME.max_tech_level + 1
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == "n4_upgraded" then
+            unlock_card(self)
+        end
     end
 })
 

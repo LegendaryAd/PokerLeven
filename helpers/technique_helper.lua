@@ -115,6 +115,10 @@ increment_technique = function(card)
     end
     modify_values(card)
     set_sticker(card)
+
+    if card.ability.extra.tech_level == 4 then
+        check_for_unlock({ type = 'n4_upgraded' })
+    end
 end
 
 -- Applies value updates to a joker based on its center config and technique multipliers

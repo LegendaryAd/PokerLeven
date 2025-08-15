@@ -9,7 +9,17 @@ end
 
 return {
     descriptions = {
-        Back = {},
+        Back = {
+            b_ina_hillman = {
+                name = "Hillman",
+                text = {
+                    "{C:pink}#1# Managers{}",
+                    "A partir de {C:attention}ante #2#{} genera",
+                    "{C:pink}#3# Strat{} cada ronda",
+                    "{C:inactive}Ha de haber espacio{}"
+                }
+            },
+        },
         Blind = {
             -- Blinds pequeños
             bl_ina_benchers = {
@@ -1402,6 +1412,10 @@ return {
                 text = {
                     "{C:attention}+1{} al nivel máximo de técnica"
                 },
+                unlock = {
+                    "Sube a {C:training}N4/+3/K/G4{}",
+                    "la técnica de un jugador"
+                }
             },
         }
     },

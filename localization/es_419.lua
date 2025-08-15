@@ -9,7 +9,17 @@ end
 
 return {
     descriptions = {
-        Back = {},
+        Back = {
+            b_ina_hillman = {
+                name = "Hillman",
+                text = {
+                    "{C:pink}#1# Managers{}",
+                    "A partir de {C:attention}ante #2#{} genera",
+                    "{C:pink}#3# Strat{} cada ronda",
+                    "{C:inactive}Ha de haber espacio{}"
+                }
+            },
+        },
         Blind = {
             -- Blinds pequeños
             bl_ina_benchers = {
@@ -1402,6 +1412,10 @@ return {
                 text = {
                     "{C:attention}+1{} al nivel máximo de técnica"
                 },
+                unlock = {
+                    "Sube a {C:training}N4/+3/K/G4{}",
+                    "la técnica de un jugador"
+                }
             },
         }
     },
@@ -1410,7 +1424,9 @@ return {
         achievement_names = {},
         blind_states = {},
         challenge_names = {
-            c_ina_glasses_team = "Equipo Gafas"
+            c_ina_glasses_team = "Equipo Gafas",
+            c_ina_love_pair = "La Pareja del Amor",
+            c_ina_futbol_frontier = "Futbol Frontier",
         },
         collabs = {},
         dictionary = {
@@ -1526,6 +1542,8 @@ return {
             ina_art = { "Arte: #1#" },
             ina_code = { "Código: #1#" }
         },
-        v_text = {}
+        v_text = {
+            ch_c_ina_futbol_frontier = { "Las ciegas saldrán en el orden del {C:attention}Fútbol Frontier{}" }
+        }
     }
 }
