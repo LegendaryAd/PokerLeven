@@ -14,6 +14,7 @@ local glasses_team = {
     },
     restrictions = {
         banned_cards = {
+            { id = "j_ina_Cleats" }
         },
         banned_tags = {
         },
@@ -39,6 +40,7 @@ local love_pair = {
     },
     restrictions = {
         banned_cards = {
+            { id = "j_ina_Cleats" }
         },
         banned_tags = {
         },
