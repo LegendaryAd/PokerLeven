@@ -1409,7 +1409,10 @@ return {
         achievement_descriptions = {},
         achievement_names = {},
         blind_states = {},
-        challenge_names = {},
+        challenge_names = {
+            c_ina_glasses_team = "Equipo Gafas",
+            c_ina_love_pair = "La Pareja del Amor"
+        },
         collabs = {},
         dictionary = {
             ina_evolve_level = "¡Nivel subido!",

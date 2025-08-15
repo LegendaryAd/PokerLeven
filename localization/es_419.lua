@@ -335,7 +335,8 @@ return {
             j_ina_Peabody = {
                 name = "Peabody",
                 text = { "{C:mountain}Mano Celestial{}", "{C:mult}+#1#{} Mult en tu última mano",
-                    "Aumenta en {C:mult}+#2#{} por cada última mano jugada" }
+                    "Aumenta en {C:mult}+#2#{} por cada {C:attention}carta activada{}",
+                    "en la última mano jugada" }
             },
             j_ina_Jude_Raimon = {
                 name = "Jude",
@@ -407,8 +408,11 @@ return {
             },
             j_ina_Bloom = {
                 name = "Bloom",
-                text = { "{C:fire}Chut de los 100 toques{}", "{C:mult}+#1#{} Mult",
-                    "Gana {C:mult}+#2#{} Mult si la mano jugada", "contiene una {C:attention}escalera{}" }
+                text = { "{C:fire}Chut de los 100 toques{}",
+                    "Si has jugado 100 cartas o más",
+                    "{X:mult,C:white}X#1#{} Mult al jugar una mano",
+                    "si contiene una escalera",
+                    "{C:inactive}Actualmente{} {C:mult}#2#{} jugadas" }
             },
             j_ina_Drent = {
                 name = "Drent",
@@ -965,6 +969,15 @@ return {
                     }
                 }
             },
+            j_ina_Ace_Server = {
+                name = "Ace Server",
+                text = { {
+                    "{C:fire}Puño vengativo{}",
+                    "{C:green}1 en #1# {}de aumentar el",
+                    "nivel de la mano jugada",
+                    "{C:attention}#2# nivel{} si {C:attention}#3# Ases{} puntúan."
+                } }
+            },
 
             j_ina_Weathervane = {
                 name = "Weathervane",
@@ -1127,7 +1140,7 @@ return {
             },
             p_ina_team_pack_inazuma = {
                 name = "Pack Inazuma",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:inazuma,C:white}Otaku{} jugadores" }
+                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:inazuma,C:white}Inazuma{} jugadores" }
             },
             p_ina_team_pack_shuriken = {
                 name = "Pack Shuriken",
@@ -1396,7 +1409,9 @@ return {
         achievement_descriptions = {},
         achievement_names = {},
         blind_states = {},
-        challenge_names = {},
+        challenge_names = {
+            c_ina_glasses_team = "Equipo Gafas"
+        },
         collabs = {},
         dictionary = {
             ina_evolve_level = "¡Nivel subido!",
@@ -1441,6 +1456,7 @@ return {
             ina_saved = "Fuiste salvado",
             ina_technique_card = "¡Técnica!",
             ina_gol = "¡Gol!",
+            ina_mano = "¡Mano mejorada",
 
 
 

@@ -19,7 +19,7 @@ function Game:start_run(args)
         self.CARD_W * 4.95,
         self.CARD_H * 0.95,
         {
-            card_limit = 4,
+            card_limit = 3,
             type = 'joker',
             highlight_limit = 1,
         }

@@ -98,7 +98,7 @@ local Blazer = J({
 -- Weathervane
 local Weathervane = J({
     name = "Weathervane",
-    pos = { x = 1, y = 0 },
+    pos = { x = 2, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
@@ -125,7 +125,7 @@ local Weathervane = J({
 -- Noggin
 local Noggin = J({
     name = "Noggin",
-    pos = { x = 2, y = 0 },
+    pos = { x = 3, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
@@ -151,7 +151,7 @@ local Noggin = J({
 -- Montayne
 local Montayne = J({
     name = "Montayne",
-    pos = { x = 5, y = 0 },
+    pos = { x = 6, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
@@ -175,7 +175,7 @@ local Montayne = J({
 })
 
 -- Chester
-local Chester = {
+local Chester = J({
     name = "Chester",
     pos = { x = 4, y = 0 },
     config = { extra = {} },
@@ -193,7 +193,7 @@ local Chester = {
     calculate = function(self, card, context)
         -- TODO Add logic
     end
-}
+})
 
 -- Mach
 local Mach = {
