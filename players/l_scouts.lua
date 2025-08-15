@@ -27,7 +27,7 @@ end
 
 local Dulce = J({
     name = "Dulce",
-    pos = { x = 6, y = 0 },
+    pos = { x = 10, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
@@ -50,7 +50,7 @@ local Dulce = J({
 -- Ryoma
 local Ryoma = {
     name = "Ryoma",
-    pos = { x = 5, y = 0 },
+    pos = { x = 9, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
@@ -71,7 +71,7 @@ local Ryoma = {
 -- Blazer
 local Blazer = J({
     name = "Blazer",
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
@@ -80,8 +80,8 @@ local Blazer = J({
     pools = { ["Scout"] = true },
     cost = 5,
     atlas = "Jokers10",
-    ptype = "Fire",
-    pposition = "GK",
+    ptype = C.Fire,
+    pposition = C.GK,
     pteam = "Scout",
     blueprint_compat = true,
     allow_element_application = true,
@@ -177,7 +177,7 @@ local Montayne = J({
 -- Chester
 local Chester = {
     name = "Chester",
-    pos = { x = 0, y = 0 },
+    pos = { x = 4, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
@@ -198,7 +198,7 @@ local Chester = {
 -- Mach
 local Mach = {
     name = "Mach",
-    pos = { x = 3, y = 0 },
+    pos = { x = 7, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
@@ -219,7 +219,7 @@ local Mach = {
 -- Miles
 local Miles = {
     name = "Miles",
-    pos = { x = 4, y = 0 },
+    pos = { x = 8, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
@@ -240,7 +240,7 @@ local Miles = {
 -- George
 local George = {
     name = "George",
-    pos = { x = 1, y = 0 },
+    pos = { x = 5, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
@@ -258,7 +258,32 @@ local George = {
     end
 }
 
+-- Ace Server
+local Ace_Server = {
+    name = "Ace_Server",
+    pos = { x = 0, y = 0 },
+    config = { extra = { odds = 5, hand_level_up = 1, ammount_needed = 2, rank_played = 14, } },
+    loc_vars = function(self, info_queue, center)
+        return {
+            vars = { center.ability.extra.odds, center.ability.extra.hand_level_up, center.ability.extra.ammount_needed, center.ability.extra.rank_played }
+        }
+    end,
+    rarity = 2,
+    pools = { ["Scout"] = true },
+    cost = 5,
+    atlas = "Jokers10",
+    ptype = C.Wind,
+    pposition = C.GK,
+    pteam = "Scout",
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        if Pokerleven.after_scoring_phase(context) and Pokerleven.has_enough_cards_of_rank(context.scoring_hand, card.ability.extra.rank_played, card.ability.extra.ammount_needed) then
+            return Pokerleven.level_up_hand(card, context.hand_name)
+        end
+    end
+}
+
 return {
     name = "Scout",
-    list = { Blazer, Weathervane, Noggin, Montayne, Dulce },
+    list = { Ace_Server, Blazer, Weathervane, Noggin, Montayne, Dulce },
 }
