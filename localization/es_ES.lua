@@ -975,7 +975,7 @@ return {
                     "{C:fire}Puño vengativo{}",
                     "{C:green}1 en #1# {}de aumentar el",
                     "nivel de la mano jugada",
-                    "{C:attention}#2# nivel{} si {C:attention}2 Ases{} puntúan."
+                    "{C:attention}#2# nivel{} si {C:attention}#3# Ases{} puntúan."
                 } }
             },
 

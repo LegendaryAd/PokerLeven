@@ -29,19 +29,28 @@ function get_flush(hand)
     end
 end
 
--- Función genérica para Upgradear manos por requisitos de cartas.
-Upgrade_hand = function(scoring_hand, card_id, required_count, card, target_hand, message_key)
-    local rankCount = 0
-    for i, c in ipairs(scoring_hand) do
+-- Función para contar cartas con un ID específico en una mano.
+count_cards_by_id = function(scoring_hand, card_id)
+    local count = 0
+    for _, c in ipairs(scoring_hand) do
         if c:get_id() == card_id then
-            rankCount = rankCount + 1
+            count = count + 1
         end
     end
-    if rankCount >= required_count then
-        return {
-            level_up = card.ability.extra.levels,
-            level_up_hand = target_hand,
-            message = localize(message_key)
-        }
-    end
+    return count
+end
+
+-- Función para asegurar que se cumplen los requisitos de mano establecidos según count_cards_by_id
+meets_upgrade_requirements = function(scoring_hand, card_id, required_count)
+    local actual_count = count_cards_by_id(scoring_hand, card_id)
+    return actual_count >= required_count
+end
+
+-- Función para crear una mejora de mano.
+create_hand_upgrade = function(card, target_hand, message_key)
+    return {
+        level_up = card.ability.extra.levels,
+        level_up_hand = target_hand,
+        message = localize(message_key)
+    }
 end

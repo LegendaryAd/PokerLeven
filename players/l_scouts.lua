@@ -203,10 +203,10 @@ local George = {
 local Ace_Server = {
     name = "Ace_Server",
     pos = { x = 0, y = 0 },
-    config = { extra = { odds = 5, levels = 1 } },
+    config = { extra = { odds = 5, levels = 1, played = 2, card = 14, } },
     loc_vars = function(self, info_queue, center)
         return {
-            vars = { center.ability.extra.odds, center.ability.extra.levels }
+            vars = { center.ability.extra.odds, center.ability.extra.levels, center.ability.extra.played, center.ability.extra.card }
         }
     end,
     rarity = 2,
@@ -218,9 +218,12 @@ local Ace_Server = {
     pteam = "Scout",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.after and context.cardarea == G.jokers then
-            return Upgrade_hand(context.scoring_hand, 14, 2, card, context.hand_name, 'ina_mano')
+        if Pokerleven.after_scoring_phase(context) then
+            if meets_upgrade_requirements(context.scoring_hand, card.ability.extra.card, card.ability.extra.played) then
+                return create_hand_upgrade(card, context.hand_name, "ina_mano")
+            end
         end
+        return nil
     end
 }
 
