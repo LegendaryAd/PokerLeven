@@ -81,17 +81,17 @@ local Blazer = J({
     cost = 5,
     atlas = "Jokers10",
     ptype = "Fire",
-    pposition = "FW",
+    pposition = "GK",
     pteam = "Scout",
     blueprint_compat = true,
     allow_element_application = true,
     add_to_deck = function(self, card, from_debuff)
-         card.calculate_joker = function(context)
+        card.calculate_joker = function(context)
             apply_element("Fire", "ina_onfire", G.C.RED, card)
-         end
-    end,
-    remove_from_deck = function(from_debuff)
-        restore_original_elements()
+        end
+        card.remove_from_deck = function(from_debuff)
+            restore_types_for_area()
+        end
     end
 })
 
@@ -116,9 +116,9 @@ local Weathervane = J({
         card.calculate_joker = function(context)
             apply_element("Wind", "ina_onwind", G.C.BLUE, card)
         end
-    end,
-    remove_from_deck = function(from_debuff)
-        restore_original_elements()
+        card.remove_from_deck = function(from_debuff)
+            restore_types_for_area()
+        end
     end
 })
 
@@ -142,13 +142,13 @@ local Noggin = J({
         card.calculate_joker = function(context)
             apply_element("Wind", "ina_onforest", G.C.PALE_GREEN, card)
         end
-    end,
-    remove_from_deck = function(from_debuff)
-        restore_original_elements()
+        card.remove_from_deck = function(from_debuff)
+            restore_types_for_area()
+        end
     end
 })
 
--- Montayne 
+-- Montayne
 local Montayne = J({
     name = "Montayne",
     pos = { x = 5, y = 0 },
@@ -168,9 +168,9 @@ local Montayne = J({
         card.calculate_joker = function(context)
             apply_element("Mountain", "ina_onmountain", G.C.CHIPS, card)
         end
-    end,
-    remove_from_deck = function(from_debuff)
-        restore_original_elements()
+        card.remove_from_deck = function(from_debuff)
+            restore_types_for_area()
+        end
     end
 })
 

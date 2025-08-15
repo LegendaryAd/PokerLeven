@@ -21,7 +21,7 @@ local debuff_type = function(ptype)
 
         local blazer_index
         for i, v in pairs(G.jokers.cards) do
-            if v.config.center_key == 'j_ina_Blazer' then
+            if v.config.center_key == 'j_ina_Blazer' and 'j_ina_Weathervane' and 'j_ina_Noggin' and 'j_ina_Montayne' then
                 blazer_index = i
             elseif v.ability.extra.ptype == ptype then
                 v:set_debuff(true)

@@ -427,7 +427,7 @@ apply_element = function(element, message_key, colour, card)
     end
 end
 
-restore_original_elements = function()
+restore_types_for_area = function()
     local function restore_types(area)
         if area and area.cards then
             for _, player in ipairs(area.cards) do
