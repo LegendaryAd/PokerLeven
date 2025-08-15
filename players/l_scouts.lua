@@ -84,39 +84,98 @@ local Blazer = J({
     pposition = C.GK,
     pteam = "Scout",
     blueprint_compat = true,
+    allow_element_application = true,
     add_to_deck = function(self, card, from_debuff)
         card.calculate_joker = function(context)
-            if G.jokers and G.jokers.cards then
-                local not_fire = find_player_type("Fire", true)
-                if #not_fire > 0 then
-                    for _, player in ipairs(not_fire) do
-                        apply_property_sticker(player, "Fire", "type")
-                        card_eval_status_text(player, 'extra', nil, nil, nil, {
-                            message = localize("ina_onfire"),
-                            colour = G.C.RED
-                        })
-                    end
-                end
-            end
+            apply_element("Fire", "ina_onfire", G.C.RED, card)
         end
         card.remove_from_deck = function(from_debuff)
-            if G.jokers and G.jokers.cards then
-                for _, player in ipairs(G.jokers.cards) do
-                    apply_property_sticker(player, player.config.center.ptype, "type")
-                end
-            end
-
-            if Pokerleven.ina_bench_area and Pokerleven.ina_bench_area.cards then
-                for _, player in ipairs(Pokerleven.ina_bench_area.cards) do
-                    apply_property_sticker(player, player.config.center.ptype, "type")
-                end
-            end
+            restore_types_for_area()
         end
+    end
+})
+
+-- Weathervane
+local Weathervane = J({
+    name = "Weathervane",
+    pos = { x = 2, y = 0 },
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, center)
+        return {}
     end,
+    rarity = 1,
+    pools = { ["Scout"] = true },
+    cost = 5,
+    atlas = "Jokers10",
+    ptype = "Wind",
+    pposition = "DF",
+    pteam = "Scout",
+    blueprint_compat = true,
+    allow_element_application = true,
+    add_to_deck = function(self, card, from_debuff)
+        card.calculate_joker = function(context)
+            apply_element("Wind", "ina_onwind", G.C.BLUE, card)
+        end
+        card.remove_from_deck = function(from_debuff)
+            restore_types_for_area()
+        end
+    end
+})
+
+-- Noggin
+local Noggin = J({
+    name = "Noggin",
+    pos = { x = 3, y = 0 },
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, center)
+        return {}
+    end,
+    rarity = 1,
+    pools = { ["Scout"] = true },
+    cost = 5,
+    atlas = "Jokers10",
+    ptype = "Forest",
+    pposition = "MF",
+    pteam = "Scout",
+    blueprint_compat = true,
+    add_to_deck = function(self, card, from_debuff)
+        card.calculate_joker = function(context)
+            apply_element("Wind", "ina_onforest", G.C.PALE_GREEN, card)
+        end
+        card.remove_from_deck = function(from_debuff)
+            restore_types_for_area()
+        end
+    end
+})
+
+-- Montayne
+local Montayne = J({
+    name = "Montayne",
+    pos = { x = 6, y = 0 },
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, center)
+        return {}
+    end,
+    rarity = 1,
+    pools = { ["Scout"] = true },
+    cost = 5,
+    atlas = "Jokers10",
+    ptype = "Mountain",
+    pposition = "FW",
+    pteam = "Scout",
+    blueprint_compat = true,
+    add_to_deck = function(self, card, from_debuff)
+        card.calculate_joker = function(context)
+            apply_element("Mountain", "ina_onmountain", G.C.CHIPS, card)
+        end
+        card.remove_from_deck = function(from_debuff)
+            restore_types_for_area()
+        end
+    end
 })
 
 -- Chester
-local Chester = {
+local Chester = J({
     name = "Chester",
     pos = { x = 4, y = 0 },
     config = { extra = {} },
@@ -134,7 +193,7 @@ local Chester = {
     calculate = function(self, card, context)
         -- TODO Add logic
     end
-}
+})
 
 -- Mach
 local Mach = {
@@ -200,7 +259,7 @@ local George = {
 }
 
 -- Ace Server
-local Ace_Server = {
+local Ace_Server = J({
     name = "Ace_Server",
     pos = { x = 0, y = 0 },
     config = { extra = { odds = 5, hand_level_up = 1, ammount_needed = 2, rank_played = 14, } },
@@ -218,11 +277,13 @@ local Ace_Server = {
     pteam = "Scout",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if Pokerleven.after_scoring_phase(context) and Pokerleven.has_enough_cards_of_rank(context.scoring_hand, card.ability.extra.rank_played, card.ability.extra.ammount_needed) then
+        if Pokerleven.after_scoring_phase(context) and
+            card:odds_triggered('AceServer') and
+            Pokerleven.has_enough_cards_of_rank(context.scoring_hand, card.ability.extra.rank_played, card.ability.extra.ammount_needed) then
             return Pokerleven.level_up_hand(card.ability.extra.hand_level_up)
         end
     end
-}
+})
 
 -- Holly Cricket
 local Holly_Cricket = {
@@ -259,5 +320,5 @@ local Holly_Cricket = {
 
 return {
     name = "Scout",
-    list = { Ace_Server, Blazer, Holly_Cricket, Dulce },
+    list = { Ace_Server, Blazer, Weathervane, Noggin, Montayne, Holly_Cricket, Dulce },
 }

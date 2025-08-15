@@ -208,7 +208,7 @@ local Arcade = {
     pos = { x = 0, y = 7 },
     config = { extra = { new_lucky = 5, minus_dollars = -5, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        return { vars = { center.ability.extra.new_lucky, center.ability.extra.minus_dollars } }
+        return { vars = { G.GAME.probabilities.new_lucky or center.ability.extra.new_lucky, center.ability.extra.minus_dollars } }
     end,
     rarity = 2, -- Uncommon
     pools = { ["Otaku"] = true },
@@ -230,7 +230,7 @@ local Arcade = {
         end
     end,
     add_to_deck = function(self, card, from_debuff)
-        G.GAME.probabilities.new_lucky = card.ability.extra.new_lucky
+        G.GAME.probabilities.new_lucky = (G.GAME.probabilities.new_lucky or 0) + card.ability.extra.new_lucky
     end,
     remove_from_deck = function(self, card, from_debuff)
         G.GAME.probabilities.new_lucky = nil

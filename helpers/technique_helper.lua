@@ -44,7 +44,7 @@ new_stickers = { "ina_tech_j_sticker", "ina_tech_q_sticker", "ina_tech_k_sticker
     "ina_tech_joker_sticker" }
 
 
-local function get_sticker_list(card)
+local function get_technique_sticker_list(card)
     if not card or not card.ability or type(card.ability) ~= "table" or not card.ability.extra then
         return new_stickers -- fallback seguro
     end
@@ -64,7 +64,7 @@ end
 
 function set_sticker(card)
     local tech_level = card.ability.extra and card.ability.extra.tech_level or 0
-    local sticker_list = get_sticker_list(card)
+    local sticker_list = get_technique_sticker_list(card)
 
     if tech_level > 1 then
         local old_sticker_key = sticker_list[tech_level - 1]
@@ -81,11 +81,23 @@ function set_sticker(card)
 end
 
 function clear_stickers(card)
-    local sticker_list = get_sticker_list(card)
+    local technique_sticker_list = get_technique_sticker_list(card)
     if not card or not card.ability or type(card.ability) ~= "table" then
         return
     end
-    for _, sticker_key in ipairs(sticker_list) do
+    for _, sticker_key in ipairs(technique_sticker_list) do
+        if card.ability[sticker_key] then
+            card.ability[sticker_key] = false
+        end
+    end
+
+    for _, sticker_key in ipairs(C.STICKERS.types) do
+        if card.ability[sticker_key] then
+            card.ability[sticker_key] = false
+        end
+    end
+
+    for _, sticker_key in ipairs(C.STICKERS.positions) do
         if card.ability[sticker_key] then
             card.ability[sticker_key] = false
         end

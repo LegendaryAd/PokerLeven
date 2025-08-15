@@ -6,6 +6,10 @@ C.Fire = C.ALL_TYPES[2]
 C.Forest = C.ALL_TYPES[3]
 C.Mountain = C.ALL_TYPES[4]
 
+C.STICKERS = {}
+C.STICKERS.types = { "wind_sticker", "fire_sticker", "forest_sticker", "mountain_sticker" }
+C.STICKERS.positions = { "fw_sticker", "mf_sticker", "gk_sticker", "df_sticker" }
+
 C.ALL_POSITIONS = { "FW", "MF", "DF", "GK" }
 C.FW = C.ALL_POSITIONS[1]
 C.MF = C.ALL_POSITIONS[2]

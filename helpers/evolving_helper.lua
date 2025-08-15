@@ -118,7 +118,6 @@ ina_backend_evolve = function(card, to_key)
         end
     end
 
-
     if not card.edition then
         card:juice_up()
         play_sound('generic1')

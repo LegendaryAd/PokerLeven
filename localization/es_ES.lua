@@ -980,6 +980,51 @@ return {
                 } }
             },
 
+            j_ina_Weathervane = {
+                name = "Weathervane",
+                text = { {
+                    "{C:wind}Torbellino{}",
+                    "Todos los {C:attention}Jokers{}",
+                    "son de {X:wind,C:white}Viento{}",
+                },
+                    {
+                        "Si no está en el área de juego",
+                        "devuelve todos los jugadores",
+                        "a su tipo original"
+                    }
+                }
+            },
+
+            j_ina_Noggin = {
+                name = "Noggin",
+                text = { {
+                    "{C:forest}Selva Viva{}",
+                    "Todos los {C:attention}Jokers{}",
+                    "son de {X:forest,C:white}Bosque{}",
+                },
+                    {
+                        "Si no está en el área de juego",
+                        "devuelve todos los jugadores",
+                        "a su tipo original"
+                    }
+                }
+            },
+
+            j_ina_Montayne = {
+                name = "Montayne",
+                text = { {
+                    "{C:mountain}Fortaleza{}",
+                    "Todos los {C:attention}Jokers{}",
+                    "son de {X:mountain,C:white}Montaña{}",
+                },
+                    {
+                        "Si no está en el área de juego",
+                        "devuelve todos los jugadores",
+                        "a su tipo original"
+                    }
+                }
+            },
+
             j_ina_Holly_Cricket = {
                 name = "Holly Cricket",
                 text = { {
@@ -1097,6 +1142,10 @@ return {
             p_ina_team_pack_brain = {
                 name = "Pack Brain",
                 text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:brain,C:white}Brain{} jugadores" }
+            },
+            p_ina_team_pack_otaku = {
+                name = "Pack Otaku",
+                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:otaku,C:white}Otaku{} jugadores" }
             },
             p_ina_team_pack_inazuma = {
                 name = "Pack Inazuma",
@@ -1369,7 +1418,10 @@ return {
         achievement_descriptions = {},
         achievement_names = {},
         blind_states = {},
-        challenge_names = {},
+        challenge_names = {
+            c_ina_glasses_team = "Equipo Gafas",
+            c_ina_love_pair = "La Pareja del Amor"
+        },
         collabs = {},
         dictionary = {
             ina_evolve_level = "¡Nivel subido!",
@@ -1407,6 +1459,9 @@ return {
             ina_unbench = "Titular",
             ina_generate_barriers = "Barrera!",
             ina_onfire = "On fire!",
+            ina_onwind = "Riding the wind!",
+            ina_onforest = "In the woods!",
+            ina_onmountain = "Unshakable as stone!",
             ina_gafas = "GAFITAAAS",
             ina_saved = "Fuiste salvado",
             ina_technique_card = "¡Técnica!",

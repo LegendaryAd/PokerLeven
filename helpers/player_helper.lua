@@ -217,7 +217,7 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys, e
         if ((special and v.special == special) or v.pteam)
             and not (inararity and v.rarity ~= inararity)
             and not (inateam and v.pteam and inateam ~= v.pteam)
-            and ((special and v.special == special) or (not special and player_in_pool(v)) or (not special and v.pteam == 'Scout'))
+            and ((not special and player_in_pool(v)) or (not special and inateam == 'Scout' and v.pteam == 'Scout'))
             and not v.aux_ina
             and not exclude_keys[v.key] then
             local no_dup = true
@@ -391,5 +391,58 @@ Pokerleven.destroy_manager_with_key = function(manager_key)
     if manager then
         manager:start_dissolve({ HEX("57ecab") }, nil, 1.6)
         manager:remove_from_deck()
+    end
+end
+
+---Aplica un elemento a un jugador, priorizando el más a la izquierda
+---@param element string Elemento a aplicar (ej: "Fire")
+---@param message_key string Clave de localización del mensaje (ej: "ina_onfire")
+---@param colour table Color para el texto (ej: G.C.RED)
+apply_element = function(element, message_key, colour, card)
+    local jokers_with_apply = {}
+    if G and G.jokers and G.jokers.cards then
+        for _, v in ipairs(G.jokers.cards) do
+            if (v.config.center.allow_element_application) then
+                table.insert(jokers_with_apply, v)
+            end
+        end
+    end
+    if #jokers_with_apply == 0 then
+        return
+    end
+    if jokers_with_apply[1] ~= card then
+        return
+    end
+
+    local without_that_element = find_player_type(element, true)
+
+    if #without_that_element > 0 then
+        for _, player in ipairs(without_that_element) do
+            apply_property_sticker(player, element, "type")
+            card_eval_status_text(player, 'extra', nil, nil, nil, {
+                message = localize(message_key),
+                colour = colour or G.C.WHITE
+            })
+        end
+    end
+end
+
+restore_types_for_area = function()
+    local function restore_types(area)
+        if area and area.cards then
+            for _, player in ipairs(area.cards) do
+                if player and player.config and player.config.center and player.config.center.ptype then
+                    apply_property_sticker(player, player.config.center.ptype, "type")
+                end
+            end
+        end
+    end
+
+    if G and G.jokers then
+        restore_types(G.jokers)
+    end
+
+    if Pokerleven.ina_bench_area and Pokerleven.ina_bench_area.cards then
+        restore_types(Pokerleven.ina_bench_area)
     end
 end
