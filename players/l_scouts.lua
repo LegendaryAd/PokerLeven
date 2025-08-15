@@ -27,7 +27,7 @@ end
 
 local Dulce = J({
     name = "Dulce",
-    pos = { x = 10, y = 0 },
+    pos = { x = 11, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
@@ -219,12 +219,45 @@ local Ace_Server = {
     blueprint_compat = true,
     calculate = function(self, card, context)
         if Pokerleven.after_scoring_phase(context) and Pokerleven.has_enough_cards_of_rank(context.scoring_hand, card.ability.extra.rank_played, card.ability.extra.ammount_needed) then
-            return Pokerleven.level_up_hand(card, context.hand_name)
+            return Pokerleven.level_up_hand(card.ability.extra.hand_level_up)
         end
+    end
+}
+
+-- Holly Cricket
+local Holly_Cricket = {
+    name = "Holly_Cricket",
+    pos = { x = 12, y = 0 },
+    config = { extra = { consumable_slots = 2 } },
+    loc_vars = function(self, info_queue, center)
+        return {
+            vars = { center.ability.extra.consumable_slots }
+        }
+    end,
+    rarity = 1,
+    pools = { ["Scout"] = true },
+    cost = 5,
+    atlas = "Jokers10",
+    ptype = C.Fire,
+    pposition = C.MF,
+    pteam = "Scout",
+    blueprint_compat = true,
+    add_to_deck = function(self, card)
+        G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.consumable_slots
+        card_eval_status_text(card, 'extra', nil, nil, nil, {
+            message = "¡Consumibles ampliados!",
+            colour = G.C.GREEN
+        })
+    end,
+    remove_from_deck = function(self, card)
+        G.consumeables.config.card_limit = G.consumeables.config.card_limit - card.ability.extra.consumable_slots
+    end,
+    calculate = function(self, card, context)
+        return nil
     end
 }
 
 return {
     name = "Scout",
-    list = { Ace_Server, Blazer, Dulce },
+    list = { Ace_Server, Blazer, Holly_Cricket, Dulce },
 }

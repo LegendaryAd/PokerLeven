@@ -969,6 +969,7 @@ return {
                     }
                 }
             },
+
             j_ina_Ace_Server = {
                 name = "Ace Server",
                 text = { {
@@ -976,6 +977,14 @@ return {
                     "{C:green}1 en #1# {}de aumentar el",
                     "nivel de la mano jugada",
                     "{C:attention}#2# nivel{} si {C:attention}#3# Ases{} puntúan."
+                } }
+            },
+
+            j_ina_Holly_Cricket = {
+                name = "Holly Cricket",
+                text = { {
+                    "{C:fire}Intercambio{}",
+                    "{C:attention}+#1#{} ranuras de {C:tarot}consumible{}"
                 } }
             },
 
