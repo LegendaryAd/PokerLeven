@@ -200,7 +200,7 @@ local George = {
 }
 
 -- Ace Server
-local Ace_Server = {
+local Ace_Server = J({
     name = "Ace_Server",
     pos = { x = 0, y = 0 },
     config = { extra = { odds = 5, hand_level_up = 1, ammount_needed = 2, rank_played = 14, } },
@@ -218,11 +218,13 @@ local Ace_Server = {
     pteam = "Scout",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if Pokerleven.after_scoring_phase(context) and Pokerleven.has_enough_cards_of_rank(context.scoring_hand, card.ability.extra.rank_played, card.ability.extra.ammount_needed) then
-            return Pokerleven.level_up_hand(card, context.hand_name)
+        if Pokerleven.after_scoring_phase(context) and
+            card:odds_triggered('AceServer') and
+            Pokerleven.has_enough_cards_of_rank(context.scoring_hand, card.ability.extra.rank_played, card.ability.extra.ammount_needed) then
+            return Pokerleven.level_up_hand(card.ability.extra.hand_level_up)
         end
     end
-}
+})
 
 return {
     name = "Scout",
