@@ -30,7 +30,7 @@ function get_flush(hand)
 end
 
 -- Función para contar cartas con un ID específico en una mano.
-count_cards_by_id = function(scoring_hand, card_id)
+Pokerleven.count_cards_by_id = function(scoring_hand, card_id)
     local count = 0
     for _, c in ipairs(scoring_hand) do
         if c:get_id() == card_id then
@@ -41,16 +41,15 @@ count_cards_by_id = function(scoring_hand, card_id)
 end
 
 -- Función para asegurar que se cumplen los requisitos de mano establecidos según count_cards_by_id
-meets_upgrade_requirements = function(scoring_hand, card_id, required_count)
-    local actual_count = count_cards_by_id(scoring_hand, card_id)
+Pokerleven.has_enough_cards_of_rank = function(scoring_hand, rank_id, required_count)
+    local actual_count = Pokerleven.count_cards_by_id(scoring_hand, rank_id)
     return actual_count >= required_count
 end
 
 -- Función para crear una mejora de mano.
-create_hand_upgrade = function(card, target_hand, message_key)
+Pokerleven.level_up_hand = function(hand_level_up)
     return {
-        level_up = card.ability.extra.levels,
-        level_up_hand = target_hand,
-        message = localize(message_key)
+        level_up = hand_level_up,
+        message = localize("ina_mano")
     }
 end
