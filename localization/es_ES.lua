@@ -1411,7 +1411,8 @@ return {
         blind_states = {},
         challenge_names = {
             c_ina_glasses_team = "Equipo Gafas",
-            c_ina_love_pair = "La Pareja del Amor"
+            c_ina_love_pair = "La Pareja del Amor",
+            c_ina_futbol_frontier = "Futbol Frontier",
         },
         collabs = {},
         dictionary = {
@@ -1527,6 +1528,8 @@ return {
             ina_art = { "Arte: #1#" },
             ina_code = { "Código: #1#" }
         },
-        v_text = {}
+        v_text = {
+            ch_c_ina_futbol_frontier = { "Las ciegas saldrán en el orden del {C:attention}Fútbol Frontier{}" }
+        }
     }
 }
