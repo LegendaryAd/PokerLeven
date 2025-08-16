@@ -978,14 +978,15 @@ return {
                     "{C:fire}Infierno{}",
                     "Todos los {C:attention}Jokers{}",
                     "son de {X:fire,C:white}Fuego{}",
+                    "Si hay varios elementales",
+                    "solo funciona el que esté",
+                    "más a la izquierda"
                 },
                     {
                         "Si no está en el área de juego",
                         "devuelve todos los jugadores",
                         "a su tipo original",
-                        "Si hay varios con su mismo efecto",
-                        "se aplica aquel más a la izquierda",
-                        "al seleccionarlo"
+                        "Funciona aún {C:mult}deshabilitado{}"
                     }
                 }
             },
@@ -1005,14 +1006,15 @@ return {
                     "{C:wind}Torbellino{}",
                     "Todos los {C:attention}Jokers{}",
                     "son de {X:wind,C:white}Viento{}",
+                    "Si hay varios elementales",
+                    "solo funciona el que esté",
+                    "más a la izquierda"
                 },
                     {
                         "Si no está en el área de juego",
                         "devuelve todos los jugadores",
                         "a su tipo original",
-                        "Si hay varios con su mismo efecto",
-                        "se aplica aquel más a la izquierda",
-                        "al seleccionarlo"
+                        "Funciona aún {C:mult}deshabilitado{}"
                     }
                 }
             },
@@ -1023,14 +1025,15 @@ return {
                     "{C:forest}Selva Viva{}",
                     "Todos los {C:attention}Jokers{}",
                     "son de {X:forest,C:white}Bosque{}",
+                    "Si hay varios elementales",
+                    "solo funciona el que esté",
+                    "más a la izquierda"
                 },
                     {
                         "Si no está en el área de juego",
                         "devuelve todos los jugadores",
                         "a su tipo original",
-                        "Si hay varios con su mismo efecto",
-                        "se aplica aquel más a la izquierda",
-                        "al seleccionarlo"
+                        "Funciona aún {C:mult}deshabilitado{}"
                     }
                 }
             },
@@ -1041,14 +1044,15 @@ return {
                     "{C:mountain}Fortaleza{}",
                     "Todos los {C:attention}Jokers{}",
                     "son de {X:mountain,C:white}Montaña{}",
+                    "Si hay varios elementales",
+                    "solo funciona el que esté",
+                    "más a la izquierda"
                 },
                     {
                         "Si no está en el área de juego",
                         "devuelve todos los jugadores",
                         "a su tipo original",
-                        "Si hay varios con su mismo efecto",
-                        "se aplica aquel más a la izquierda",
-                        "al seleccionarlo"
+                        "Funciona aún {C:mult}deshabilitado{}"
                     }
                 }
             },

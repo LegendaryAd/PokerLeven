@@ -402,22 +402,7 @@ end
 ---@param element string Elemento a aplicar (ej: "Fire")
 ---@param message_key string Clave de localización del mensaje (ej: "ina_onfire")
 ---@param colour table Color para el texto (ej: G.C.RED)
-apply_element = function(element, message_key, colour, card)
-    local jokers_with_apply = {}
-    if G and G.jokers and G.jokers.cards then
-        for _, v in ipairs(G.jokers.cards) do
-            if (v.config.center.allow_element_application) then
-                table.insert(jokers_with_apply, v)
-            end
-        end
-    end
-    if #jokers_with_apply == 0 then
-        return
-    end
-    if jokers_with_apply[1] ~= card then
-        return
-    end
-
+apply_element = function(element, message_key, colour)
     local without_that_element = find_player_type(element, true)
 
     if #without_that_element > 0 then

@@ -362,6 +362,13 @@ return {
                     { "Los jugadores del equipo",
                         "de {C:attention}Bobby{} otorgan {C:chips}+#1# Chips{}", } }
             },
+            j_ina_Erik = {
+                name = "Erik",
+                text = { "{C:forest}Tri-Pegaso{}",
+                    "Ahora las cartas {C:tarot}El Mago{}",
+                    "otorgan {C:attention}2 sellos{} al azar",
+                    "y ya no transforman a {C:green}Lucky Card{}" }
+            },
             j_ina_Steve = {
                 name = "Steve",
                 text = { "{C:wind}Disparo Rodante{}", "Cada jugador del {X:raimon,C:white}Raimon{}",
@@ -971,11 +978,15 @@ return {
                     "{C:fire}Infierno{}",
                     "Todos los {C:attention}Jokers{}",
                     "son de {X:fire,C:white}Fuego{}",
+                    "Si hay varios elementales",
+                    "solo funciona el que esté",
+                    "más a la izquierda"
                 },
                     {
-                        "Si no está en el area de juego ",
+                        "Si no está en el área de juego",
                         "devuelve todos los jugadores",
-                        "a su tipo original"
+                        "a su tipo original",
+                        "Funciona aún {C:mult}deshabilitado{}"
                     }
                 }
             },
@@ -995,11 +1006,15 @@ return {
                     "{C:wind}Torbellino{}",
                     "Todos los {C:attention}Jokers{}",
                     "son de {X:wind,C:white}Viento{}",
+                    "Si hay varios elementales",
+                    "solo funciona el que esté",
+                    "más a la izquierda"
                 },
                     {
                         "Si no está en el área de juego",
                         "devuelve todos los jugadores",
-                        "a su tipo original"
+                        "a su tipo original",
+                        "Funciona aún {C:mult}deshabilitado{}"
                     }
                 }
             },
@@ -1010,11 +1025,15 @@ return {
                     "{C:forest}Selva Viva{}",
                     "Todos los {C:attention}Jokers{}",
                     "son de {X:forest,C:white}Bosque{}",
+                    "Si hay varios elementales",
+                    "solo funciona el que esté",
+                    "más a la izquierda"
                 },
                     {
                         "Si no está en el área de juego",
                         "devuelve todos los jugadores",
-                        "a su tipo original"
+                        "a su tipo original",
+                        "Funciona aún {C:mult}deshabilitado{}"
                     }
                 }
             },
@@ -1025,11 +1044,15 @@ return {
                     "{C:mountain}Fortaleza{}",
                     "Todos los {C:attention}Jokers{}",
                     "son de {X:mountain,C:white}Montaña{}",
+                    "Si hay varios elementales",
+                    "solo funciona el que esté",
+                    "más a la izquierda"
                 },
                     {
                         "Si no está en el área de juego",
                         "devuelve todos los jugadores",
-                        "a su tipo original"
+                        "a su tipo original",
+                        "Funciona aún {C:mult}deshabilitado{}"
                     }
                 }
             },
@@ -1400,6 +1423,11 @@ return {
                     "que te enfrentas, reduce",
                     "en un {C:attention}#1#%{} las {C:chips}fichas{} necesarias"
                 },
+                unlock = {
+                    "{C:mult}Derrota{} a un equipo",
+                    "con {C:attention}al menos{} un jugador",
+                    "que pertenezca a dicho equipo"
+                }
             },
             v_ina_training = {
                 name = "Entrenamiento",
@@ -1413,7 +1441,7 @@ return {
                     "{C:attention}+1{} al nivel máximo de técnica"
                 },
                 unlock = {
-                    "Sube a {C:training}N4/+3/K/G4{}",
+                    "Sube a {C:training}ASZ/+4/A/G5{}",
                     "la técnica de un jugador"
                 }
             },
