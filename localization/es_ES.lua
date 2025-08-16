@@ -1077,6 +1077,26 @@ return {
                 }
             },
 
+            j_ina_Ryoma = {
+                name = "Ryoma",
+                text = {
+                    "{C:mountain}Parada Infinita{}",
+                    "Gana {C:mult}+#1# mult{} cada vez",
+                    "que se activa un {X:gk,C:white}GK{}",
+                    "{C:inactive}Actualmente{} {C:mult}+#2#{}"
+                }
+            },
+
+            j_ina_Mach = {
+                name = "Ryoma",
+                text = {
+                    "{C:wind}Chut Granada{}",
+                    "Gana {X:mult,C:white}X#1#{} cada vez",
+                    "que se vende un {C:attention}jugador o manager{}",
+                    "{C:inactive}Actualmente{} {X:mult,C:white}X#2#{}"
+                }
+            },
+
             j_ina_Winters = {
                 name = "Winters",
                 text = { {

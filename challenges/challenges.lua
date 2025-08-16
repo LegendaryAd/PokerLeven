@@ -45,6 +45,7 @@ local love_pair = {
         banned_tags = {
         },
         banned_other = {
+            { id = "bl_ina_fire", type = "blind" },
         },
     },
     deck = {
