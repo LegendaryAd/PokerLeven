@@ -48,12 +48,12 @@ local Dulce = J({
 })
 
 -- Ryoma
-local Ryoma = {
+local Ryoma = J({
     name = "Ryoma",
     pos = { x = 9, y = 0 },
-    config = { extra = {} },
+    config = { extra = { current_mult = 0, mult_mod = 2 } },
     loc_vars = function(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.mult_mod, center.ability.extra.current_mult } }
     end,
     rarity = 1,
     pools = { ["Scout"] = true },
@@ -64,9 +64,28 @@ local Ryoma = {
     pteam = "Scout",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO Add logic
+        if context.post_trigger and
+            context.other_card ~= card and
+            context.other_card.ability.extra.pposition == C.GK then
+            card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult_mod
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    card_eval_status_text(card, 'extra', nil, nil, nil, {
+                        message = localize("ina_evolve_level"),
+                        colour = G.C.XMULT
+                    })
+                    return true
+                end
+            }))
+            return {}
+        end
+        if Pokerleven.is_joker_turn(context) then
+            return {
+                mult = card.ability.extra.current_mult
+            }
+        end
     end
-}
+})
 
 -- Blazer
 local Blazer = J({
@@ -238,12 +257,12 @@ local Chester = J({
 })
 
 -- Mach
-local Mach = {
+local Mach = J({
     name = "Mach",
     pos = { x = 7, y = 0 },
-    config = { extra = {} },
+    config = { extra = { current_xmult = 1, xmult_mod = 0.25 } },
     loc_vars = function(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.xmult_mod, center.ability.extra.current_xmult } }
     end,
     rarity = 1,
     pools = { ["Scout"] = true },
@@ -254,9 +273,28 @@ local Mach = {
     pteam = "Scout",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO Add logic
+        if context.selling_card and
+            context.card.ability.set == "Joker" then
+            card.ability.extra.current_xmult = card.ability.extra.current_xmult + card.ability.extra.xmult_mod
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    card_eval_status_text(card, 'extra', nil, nil, nil, {
+                        message = localize("ina_evolve_level"),
+                        colour = G.C.XMULT
+                    })
+                    return true
+                end
+            }))
+            return {}
+        end
+
+        if Pokerleven.is_joker_turn(context) then
+            return {
+                Xmult = card.ability.extra.current_xmult
+            }
+        end
     end
-}
+})
 
 -- Miles
 local Miles = {
@@ -329,5 +367,5 @@ local Ace_Server = J({
 
 return {
     name = "Scout",
-    list = { Ace_Server, Blazer, Weathervane, Noggin, Montayne, Dulce },
+    list = { Ace_Server, Blazer, Weathervane, Noggin, Montayne, Dulce, Ryoma, Mach },
 }

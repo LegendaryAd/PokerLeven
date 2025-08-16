@@ -296,7 +296,6 @@ G.FUNCS.can_toggle_bench_card = function(e, area, button_name, active_colour)
     end
 end
 
-
 G.FUNCS.can_bench_card = function(e)
     return G.FUNCS.can_toggle_bench_card(e, G.ina_bench_area, 'bench_card', G.ARGS.LOC_COLOURS['bench'])
 end
