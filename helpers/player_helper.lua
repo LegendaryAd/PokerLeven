@@ -217,13 +217,9 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys, e
         if ((special and v.special == special) or v.pteam)
             and not (inararity and v.rarity ~= inararity)
             and not (inateam and v.pteam and inateam ~= v.pteam)
-            and (
-                (special and v.special == special) -- cuando hay special, valida solo esto
-                or (not special and (player_in_pool(v) or (inateam == 'Scout' and v.pteam == 'Scout')))
-            )
+            and ((special and v.special == special) or (not special and player_in_pool(v)) or (v.pteam == 'Scout'))
             and not v.aux_ina
-            and not exclude_keys[v.key]
-        then
+            and not exclude_keys[v.key] then
             local no_dup = true
             if not enable_dupes and inaarea and inaarea.cards and not next(find_joker("Showman")) then
                 for _, m in pairs(inaarea.cards) do
