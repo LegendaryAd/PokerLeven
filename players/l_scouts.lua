@@ -297,7 +297,7 @@ local Mach = J({
 })
 
 -- Miles
-local Miles = {
+local Miles = J({
     name = "Miles",
     pos = { x = 8, y = 0 },
     config = { extra = {} },
@@ -315,10 +315,10 @@ local Miles = {
     calculate = function(self, card, context)
         -- TODO Add logic
     end
-}
+})
 
 -- Winters
-local Winters = {
+local Winters = J({
     name = "Winters",
     pos = { x = 5, y = 0 },
     config = { extra = {} },
@@ -336,7 +336,7 @@ local Winters = {
     calculate = function(self, card, context)
 
     end
-}
+})
 
 -- Ace Server
 local Ace_Server = J({
@@ -368,50 +368,15 @@ local Ace_Server = J({
     }
 })
 
--- Holly Cricket
-local Holly_Cricket = {
-    name = "Holly_Cricket",
-    pos = { x = 12, y = 0 },
-    config = { extra = { consumable_slots = 1 } },
-    loc_vars = function(self, info_queue, center)
-        return {
-            vars = { center.ability.extra.consumable_slots }
-        }
-    end,
-    rarity = 1,
-    pools = { ["Scout"] = true },
-    cost = 5,
-    atlas = "Jokers10",
-    ptype = C.Fire,
-    pposition = C.MF,
-    pteam = "Scout",
-    blueprint_compat = true,
-    add_to_deck = function(self, card)
-        G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.consumable_slots
-        card_eval_status_text(card, 'extra', nil, nil, nil, {
-            message = "¡Consumibles ampliados!",
-            colour = G.C.GREEN
-        })
-    end,
-    remove_from_deck = function(self, card)
-        G.consumeables.config.card_limit = G.consumeables.config.card_limit - card.ability.extra.consumable_slots
-    end,
-    ina_credits = {
-        idea = { "Shadorossa" },
-    }
-}
-
 -- Rex George
 local Rex_George = J({
     name = "Rex_George",
     pos = { x = 0, y = 1 },
-    config = { extra = { needed_rank = 2, converted_rank = 9 } },
+    config = { extra = { needed_rank = { 2, 3, 4 }, converted_rank = 9 } },
     loc_vars = function(self, info_queue, center)
+        local needed_ranks_str = table.concat(center.ability.extra.needed_rank, ", ")
         return {
-            vars = {
-                tostring(center.ability.extra.needed_rank),
-                tostring(center.ability.extra.converted_rank)
-            }
+            vars = { needed_ranks_str, tostring(center.ability.extra.converted_rank) }
         }
     end,
     rarity = 1,
@@ -423,12 +388,19 @@ local Rex_George = J({
     pteam = "Scout",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and context.other_card:get_id() == card.ability.extra.needed_rank then
-            convert_cards_to(context.other_card, { set_rank = tostring(card.ability.extra.converted_rank) })
-            return {
-                message = localize("ina_convert"),
-                colour = G.C.XMULT,
-            }
+        if context.individual and context.cardarea == G.play then
+            local card_value = context.other_card:get_id()
+            for _, target_rank in ipairs(card.ability.extra.needed_rank) do
+                if card_value == target_rank then
+                    convert_cards_to(context.other_card, {
+                        set_rank = tostring(card.ability.extra.converted_rank)
+                    })
+                    return {
+                        message = localize("ina_convert"),
+                        colour = G.C.XMULT,
+                    }
+                end
+            end
         end
     end,
     ina_credits = {
@@ -439,5 +411,5 @@ local Rex_George = J({
 
 return {
     name = "Scout",
-    list = { Blazer, Weathervane, Noggin, Montayne, Ace_Server, Rex_George, Holly_Cricket, Dulce, Ryoma, Mach },
+    list = { Blazer, Weathervane, Noggin, Montayne, Ace_Server, Rex_George, Mach, Dulce, Ryoma },
 }

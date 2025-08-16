@@ -1058,14 +1058,6 @@ return {
                 }
             },
 
-            j_ina_Holly_Cricket = {
-                name = "Cricket",
-                text = { {
-                    "{C:fire}Intercambio{}",
-                    "{C:attention}+#1#{} ranuras de {C:tarot}consumible{}"
-                } }
-            },
-
             j_ina_Dulce = {
                 name = "Dulce",
                 text = {
@@ -1088,9 +1080,9 @@ return {
             },
 
             j_ina_Mach = {
-                name = "Ryoma",
+                name = "Mach",
                 text = {
-                    "{C:wind}Chut Granada{}",
+                    "{C:fire}Chut Granada{}",
                     "Gana {X:mult,C:white}X#1#{} cada vez",
                     "que se vende un {C:attention}jugador o manager{}",
                     "{C:inactive}Actualmente{} {X:mult,C:white}X#2#{}"
@@ -1109,7 +1101,7 @@ return {
                 name = "Rex George",
                 text = { {
                     "{C:wind}Hojarasca{}",
-                    "Convierte los {C:attention}#1#s{} jugados en {C:attention}#2#s{}",
+                    "Convierte los {C:attention}#1#{} jugados en {C:attention}#2#s{}",
                 } }
             },
 
