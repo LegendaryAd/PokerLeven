@@ -284,7 +284,7 @@ local royal_blind = {
     key = "royal_blind",
     pos = { x = 0, y = 9 },
     boss = {
-        min = 1,
+        min = 2,
     },
     discovered = false,
     mult = 1.25,
@@ -310,7 +310,7 @@ local wild = B({
     key = "wild",
     pos = { x = 0, y = 10 },
     boss = {
-        min = 2,
+        min = 1,
     },
     discovered = false,
     mult = 1,
@@ -370,7 +370,7 @@ local otaku = {
     key = "otaku",
     pos = { x = 0, y = 12 },
     boss = {
-        min = 2,
+        min = 1,
     },
     discovered = false,
     debuff = { is_face = 'face' },
