@@ -217,9 +217,13 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys, e
         if ((special and v.special == special) or v.pteam)
             and not (inararity and v.rarity ~= inararity)
             and not (inateam and v.pteam and inateam ~= v.pteam)
-            and ((not special and player_in_pool(v)) or (not special and inateam == 'Scout' and v.pteam == 'Scout'))
+            and (
+                (special and v.special == special) -- cuando hay special, valida solo esto
+                or (not special and (player_in_pool(v) or (inateam == 'Scout' and v.pteam == 'Scout')))
+            )
             and not v.aux_ina
-            and not exclude_keys[v.key] then
+            and not exclude_keys[v.key]
+        then
             local no_dup = true
             if not enable_dupes and inaarea and inaarea.cards and not next(find_joker("Showman")) then
                 for _, m in pairs(inaarea.cards) do
@@ -398,22 +402,7 @@ end
 ---@param element string Elemento a aplicar (ej: "Fire")
 ---@param message_key string Clave de localización del mensaje (ej: "ina_onfire")
 ---@param colour table Color para el texto (ej: G.C.RED)
-apply_element = function(element, message_key, colour, card)
-    local jokers_with_apply = {}
-    if G and G.jokers and G.jokers.cards then
-        for _, v in ipairs(G.jokers.cards) do
-            if (v.config.center.allow_element_application) then
-                table.insert(jokers_with_apply, v)
-            end
-        end
-    end
-    if #jokers_with_apply == 0 then
-        return
-    end
-    if jokers_with_apply[1] ~= card then
-        return
-    end
-
+apply_element = function(element, message_key, colour)
     local without_that_element = find_player_type(element, true)
 
     if #without_that_element > 0 then

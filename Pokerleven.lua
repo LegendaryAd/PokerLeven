@@ -228,6 +228,24 @@ for _, file in ipairs(vouchers) do
   end
 end
 
+--Load backs
+local backs = NFS.getDirectoryItems(mod_dir .. "backs")
+
+for _, file in ipairs(backs) do
+  sendDebugMessage("The file is: " .. file)
+  local back, load_error = SMODS.load_file("backs/" .. file)
+  if load_error then
+    sendDebugMessage("The error is: " .. load_error)
+  else
+    local curr_back = back()
+    if curr_back.init then curr_back:init() end
+
+    for _, item in ipairs(curr_back.list) do
+      SMODS.Back(item)
+    end
+  end
+end
+
 --Load poker_hands
 local poker_hands = NFS.getDirectoryItems(mod_dir .. "poker_hands")
 

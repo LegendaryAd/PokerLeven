@@ -9,7 +9,17 @@ end
 
 return {
     descriptions = {
-        Back = {},
+        Back = {
+            b_ina_hillman = {
+                name = "Hillman",
+                text = {
+                    "{C:pink}#1# Managers{}",
+                    "A partir de {C:attention}ante #2#{} genera",
+                    "{C:pink}#3# Strat{} cada ronda",
+                    "{C:inactive}Ha de haber espacio{}"
+                }
+            },
+        },
         Blind = {
             -- Blinds pequeños
             bl_ina_benchers = {
@@ -352,6 +362,13 @@ return {
                     { "Los jugadores del equipo",
                         "de {C:attention}Bobby{} otorgan {C:chips}+#1# Chips{}", } }
             },
+            j_ina_Erik = {
+                name = "Erik",
+                text = { "{C:forest}Tri-Pegaso{}",
+                    "Ahora las cartas {C:tarot}El Mago{}",
+                    "otorgan {C:attention}2 sellos{} al azar",
+                    "y ya no transforman a {C:green}Lucky Card{}" }
+            },
             j_ina_Steve = {
                 name = "Steve",
                 text = { "{C:wind}Disparo Rodante{}", "Cada jugador del {X:raimon,C:white}Raimon{}",
@@ -657,14 +674,14 @@ return {
 
             j_ina_Barista = {
                 name = "Barista",
-                text = { "{C:wind}Master{}",
+                text = { "{C:wind}Pase Cruzado{}",
                     "La última carta jugada da",
                     "{X:chips,C:white}X2{} {C:attention}sus{} chips a mayores" }
             },
 
             j_ina_Builder = {
                 name = "Builder",
-                text = { "{C:fire}A Construir{}",
+                text = { "{C:fire}Pájaro de Fuego{}",
                     "Si la mano jugada contiene",
                     " {C:attention}Full{} transforma una carta",
                     "al azar en {C:attention}Acero{}",
@@ -675,7 +692,7 @@ return {
             j_ina_Hood = {
                 name = "Hood",
                 text = {
-                    "{C:forest}Jutsu de Protección{}",
+                    "{C:forest}Torbellino{}",
                     "Gana {X:mult,C:white}X#1#{} por",
                     "cada Joker {X:gk,C:white}GK{}{}",
                     "{C:inactive}Actualmente{} {X:mult,C:white}X#2#{}"
@@ -855,7 +872,7 @@ return {
             j_ina_Damian = {
                 name = "Damian",
                 text = {
-                    "{C:wind}Viento Ardiente{}",
+                    "{C:wind}Luna Creciente{}",
                     "Al salir de la tienda, gana",
                     "{C:chips}+#1# Fichas{} por cada",
                     "jugador del tipo {X:fire,C:white}Fuego{} en juego",
@@ -865,7 +882,7 @@ return {
             j_ina_Nashmith = {
                 name = "Nashmith",
                 text = {
-                    "{C:forest}Flecha Huracán{}",
+                    "{C:forest}Potenciación{}",
                     "Cada {C:spades}Pica{} jugada otorga",
                     "{C:chips}+#1# Fichas{} por cada",
                     "jugador de {X:forest,C:white}Bosque{}",
@@ -893,7 +910,7 @@ return {
             j_ina_Hephestus = {
                 name = "Hephestus",
                 text = {
-                    "{C:fire}Forja Llameante{}",
+                    "{C:fire}Entrada Tormenta{}",
                     "Al ganar la ciega convierte",
                     "una {C:attention}carta aleatoria{}",
                     "en una carta de {C:attention}Acero{}",
@@ -905,7 +922,7 @@ return {
             j_ina_Apollo = {
                 name = "Apollo",
                 text = {
-                    "{C:forest}Resplandor Solar{}",
+                    "{C:forest}Hora Celestial{}",
                     "Si juegas una mano con {C:attention}doble pareja{}",
                     "Gana {C:chips}+#1# fichas{} {C:inactive}entre las 14 y las 19 pm{}",
                     "Gana {C:chips}+#2# fichas{} {C:inactive}en caso contrario{}",
@@ -915,7 +932,7 @@ return {
 
             j_ina_Artemis = {
                 name = "Artemis",
-                text = { "{C:wind}Esfera luminosa{}",
+                text = { "{C:wind}Flecha Divina{}",
                     "Tras jugar una figura {C:attention}Siémbrala{}.",
                     "{C:attention}Cosechador:{} Gana {C:chips}+#1# Chips{}",
                     "{C:inactive}Actualmente{} {C:chips}+#2# Chips{}" }
@@ -933,7 +950,7 @@ return {
             j_ina_Demeter = {
                 name = "Demeter",
                 text = {
-                    "{C:fire}Gracia Ardiente{}",
+                    "{C:fire}Disparo con Rebotes{}",
                     "Otorga {C:mult}+#1# Mult{} y {C:chips}+#2# Fichas{}",
                     "por cada descarte restante",
                     "{C:inactive}Actualmente{}: {C:mult}+#3#{} {C:chips}+#4#{}"
@@ -961,11 +978,15 @@ return {
                     "{C:fire}Infierno{}",
                     "Todos los {C:attention}Jokers{}",
                     "son de {X:fire,C:white}Fuego{}",
+                    "Si hay varios elementales",
+                    "solo funciona el que esté",
+                    "más a la izquierda"
                 },
                     {
-                        "Si no está en el area de juego ",
+                        "Si no está en el área de juego",
                         "devuelve todos los jugadores",
-                        "a su tipo original"
+                        "a su tipo original",
+                        "Funciona aún {C:mult}deshabilitado{}"
                     }
                 }
             },
@@ -986,11 +1007,15 @@ return {
                     "{C:wind}Torbellino{}",
                     "Todos los {C:attention}Jokers{}",
                     "son de {X:wind,C:white}Viento{}",
+                    "Si hay varios elementales",
+                    "solo funciona el que esté",
+                    "más a la izquierda"
                 },
                     {
                         "Si no está en el área de juego",
                         "devuelve todos los jugadores",
-                        "a su tipo original"
+                        "a su tipo original",
+                        "Funciona aún {C:mult}deshabilitado{}"
                     }
                 }
             },
@@ -1001,11 +1026,15 @@ return {
                     "{C:forest}Selva Viva{}",
                     "Todos los {C:attention}Jokers{}",
                     "son de {X:forest,C:white}Bosque{}",
+                    "Si hay varios elementales",
+                    "solo funciona el que esté",
+                    "más a la izquierda"
                 },
                     {
                         "Si no está en el área de juego",
                         "devuelve todos los jugadores",
-                        "a su tipo original"
+                        "a su tipo original",
+                        "Funciona aún {C:mult}deshabilitado{}"
                     }
                 }
             },
@@ -1016,11 +1045,15 @@ return {
                     "{C:mountain}Fortaleza{}",
                     "Todos los {C:attention}Jokers{}",
                     "son de {X:mountain,C:white}Montaña{}",
+                    "Si hay varios elementales",
+                    "solo funciona el que esté",
+                    "más a la izquierda"
                 },
                     {
                         "Si no está en el área de juego",
                         "devuelve todos los jugadores",
-                        "a su tipo original"
+                        "a su tipo original",
+                        "Funciona aún {C:mult}deshabilitado{}"
                     }
                 }
             },
@@ -1415,6 +1448,11 @@ return {
                     "que te enfrentas, reduce",
                     "en un {C:attention}#1#%{} las {C:chips}fichas{} necesarias"
                 },
+                unlock = {
+                    "{C:mult}Derrota{} a un equipo",
+                    "con {C:attention}al menos{} un jugador",
+                    "que pertenezca a dicho equipo"
+                }
             },
             v_ina_training = {
                 name = "Entrenamiento",
@@ -1427,6 +1465,10 @@ return {
                 text = {
                     "{C:attention}+1{} al nivel máximo de técnica"
                 },
+                unlock = {
+                    "Sube a {C:training}ASZ/+4/A/G5{}",
+                    "la técnica de un jugador"
+                }
             },
         }
     },
@@ -1436,7 +1478,9 @@ return {
         blind_states = {},
         challenge_names = {
             c_ina_glasses_team = "Equipo Gafas",
-            c_ina_love_pair = "La Pareja del Amor"
+            c_ina_love_pair = "La Pareja del Amor",
+            c_ina_futbol_frontier = "Futbol Frontier",
+            c_ina_elementals = "Los Elementales",
         },
         collabs = {},
         dictionary = {
@@ -1552,6 +1596,9 @@ return {
             ina_art = { "Arte: #1#" },
             ina_code = { "Código: #1#" }
         },
-        v_text = {}
+        v_text = {
+            ch_c_ina_futbol_frontier = { "Las ciegas saldrán en el orden del {C:attention}Fútbol Frontier{}" },
+            ch_c_ina_elementals = { "Las ciegas solo podrán ser {C:dark_edition}Elementales{}" }
+        }
     }
 }

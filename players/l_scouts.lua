@@ -85,13 +85,23 @@ local Blazer = J({
     pteam = "Scout",
     blueprint_compat = true,
     allow_element_application = true,
-    add_to_deck = function(self, card, from_debuff)
-        card.calculate_joker = function(context)
-            apply_element("Fire", "ina_onfire", G.C.RED, card)
+    calculate = function(self, card, context)
+        for _, player in pairs(G.jokers.cards) do
+            if player.config.center_key == 'j_ina_Weathervane' or
+                player.config.center_key == 'j_ina_Blazer' or
+                player.config.center_key == 'j_ina_Montayne' or
+                player.config.center_key == 'j_ina_Noggin' then
+                leftmost = player
+                break
+            end
         end
-        card.remove_from_deck = function(from_debuff)
-            restore_types_for_area()
+
+        if leftmost == card then
+            apply_element("Fire", "ina_onfire", G.ARGS.LOC_COLOURS['fire'])
         end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        restore_types_for_area()
     end
 })
 
@@ -112,13 +122,23 @@ local Weathervane = J({
     pteam = "Scout",
     blueprint_compat = true,
     allow_element_application = true,
-    add_to_deck = function(self, card, from_debuff)
-        card.calculate_joker = function(context)
-            apply_element("Wind", "ina_onwind", G.C.BLUE, card)
+    calculate = function(self, card, context)
+        for _, player in pairs(G.jokers.cards) do
+            if player.config.center_key == 'j_ina_Blazer' or
+                player.config.center_key == 'j_ina_Montayne' or
+                player.config.center_key == 'j_ina_Weathervane' or
+                player.config.center_key == 'j_ina_Noggin' then
+                leftmost = player
+                break
+            end
         end
-        card.remove_from_deck = function(from_debuff)
-            restore_types_for_area()
+
+        if leftmost == card then
+            apply_element("Wind", "ina_onwind", G.ARGS.LOC_COLOURS['wind'])
         end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        restore_types_for_area()
     end
 })
 
@@ -138,13 +158,24 @@ local Noggin = J({
     pposition = "MF",
     pteam = "Scout",
     blueprint_compat = true,
-    add_to_deck = function(self, card, from_debuff)
-        card.calculate_joker = function(context)
-            apply_element("Wind", "ina_onforest", G.C.PALE_GREEN, card)
+    allow_element_application = true,
+    calculate = function(self, card, context)
+        for _, player in pairs(G.jokers.cards) do
+            if player.config.center_key == 'j_ina_Weathervane' or
+                player.config.center_key == 'j_ina_Noggin' or
+                player.config.center_key == 'j_ina_Montayne' or
+                player.config.center_key == 'j_ina_Blazer' then
+                leftmost = player
+                break
+            end
         end
-        card.remove_from_deck = function(from_debuff)
-            restore_types_for_area()
+
+        if leftmost == card then
+            apply_element("Forest", "ina_onforest", G.ARGS.LOC_COLOURS['forest'])
         end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        restore_types_for_area()
     end
 })
 
@@ -164,13 +195,24 @@ local Montayne = J({
     pposition = "FW",
     pteam = "Scout",
     blueprint_compat = true,
-    add_to_deck = function(self, card, from_debuff)
-        card.calculate_joker = function(context)
-            apply_element("Mountain", "ina_onmountain", G.C.CHIPS, card)
+    allow_element_application = true,
+    calculate = function(self, card, context)
+        for _, player in pairs(G.jokers.cards) do
+            if player.config.center_key == 'j_ina_Weathervane' or
+                player.config.center_key == 'j_ina_Montayne' or
+                player.config.center_key == 'j_ina_Noggin' or
+                player.config.center_key == 'j_ina_Blazer' then
+                leftmost = player
+                break
+            end
         end
-        card.remove_from_deck = function(from_debuff)
-            restore_types_for_area()
+
+        if leftmost == card then
+            apply_element("Mountain", "ina_onmountain", G.ARGS.LOC_COLOURS['mountain'])
         end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        restore_types_for_area()
     end
 })
 

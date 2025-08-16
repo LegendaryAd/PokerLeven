@@ -494,7 +494,69 @@ local Steve = J({
   end
 })
 
+local old_use_consumeable = Card.use_consumeable
+
+local reset_use_consumable = function(card)
+  card.remove_from_deck = function(from_debuff)
+    function Card:use_consumeable(area, copier)
+      return old_use_consumeable(self, area, copier)
+    end
+  end
+end
+
+-- Erik
+local Erik = J({
+  name = "Erik",
+  pos = { x = 1, y = 1 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, center)
+    return {}
+  end,
+  rarity = 2,
+  pools = { ["Raimon"] = true },
+  cost = 7,
+  atlas = "Jokers01",
+  ptype = C.Forest,
+  pposition = C.MF,
+  techtype = C.UPGRADES.Plus,
+  pteam = "Raimon",
+  blueprint_compat = true,
+  add_to_deck = function(self, card, from_debuff)
+    reset_use_consumable(card)
+
+    function Card:use_consumeable(area, copier)
+      if self.ability and self.ability.name == "The Magician" then
+        stop_use()
+        if not copier then set_consumeable_usage(self) end
+        if self.debuff then return nil end
+
+        G.E_MANAGER:add_event(Event({
+          trigger = 'after',
+          delay = 0.2,
+          func = function()
+            play_sound("tarot1")
+            self:juice_up(0.5, 0.8)
+
+            Pokerleven.flip_highlighted_hand('card1')
+            Pokerleven.set_random_seals_to_highlighted_hand('Erik')
+            Pokerleven.flip_highlighted_hand()
+            Pokerleven.unhighlight_hand()
+            delay(0.5)
+            return true
+          end
+        }))
+
+        return
+      else
+        return old_use_consumeable(self, area, copier)
+      end
+    end
+  end
+})
+
+
+
 return {
   name = "Raimon",
-  list = { Mark, Nathan, Jack, Steve, Peabody, Max, Axel, Kevin, Willy, Bobby, Jude_Raimon, Shadow, },
+  list = { Mark, Nathan, Jack, Steve, Peabody, Max, Axel, Kevin, Willy, Bobby, Erik, Jude_Raimon, Shadow, },
 }

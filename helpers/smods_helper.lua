@@ -30,3 +30,9 @@ end
 function T(data)
     return data
 end
+
+---@param data SMODS.Back
+---@return SMODS.Back
+function Ba(data)
+    return data
+end
