@@ -27,7 +27,7 @@ end
 
 local Dulce = J({
     name = "Dulce",
-    pos = { x = 11, y = 0 },
+    pos = { x = 10, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
         return {}
