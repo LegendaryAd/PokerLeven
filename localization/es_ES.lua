@@ -1400,6 +1400,11 @@ return {
                     "que te enfrentas, reduce",
                     "en un {C:attention}#1#%{} las {C:chips}fichas{} necesarias"
                 },
+                unlock = {
+                    "{C:mult}Derrota{} a un equipo",
+                    "con {C:attention}al menos{} un jugador",
+                    "que pertenezca a dicho equipo"
+                }
             },
             v_ina_training = {
                 name = "Entrenamiento",

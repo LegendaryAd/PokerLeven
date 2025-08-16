@@ -99,6 +99,19 @@ elseif G.GAME.round_resets.blind.big then
     G.GAME.round_resets.blind_states.Big = 'Defeated'
 '''
 
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = "G.GAME.round_resets.blind_states.Boss = 'Defeated'"
+position = 'after'
+match_indent = true
+payload = '''
+if #find_player_team(G.GAME.blind.name) > 0 then
+        check_for_unlock({type = "ex_law"})
+end
+'''
+
+
 # Handle setting new blinds
 [[patches]]
 [patches.pattern]
