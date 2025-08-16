@@ -1413,7 +1413,7 @@ return {
                     "{C:attention}+1{} al nivel máximo de técnica"
                 },
                 unlock = {
-                    "Sube a {C:training}N4/+3/K/G4{}",
+                    "Sube a {C:training}ASZ/+4/A/G5{}",
                     "la técnica de un jugador"
                 }
             },

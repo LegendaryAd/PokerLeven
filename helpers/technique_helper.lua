@@ -116,7 +116,8 @@ increment_technique = function(card)
     modify_values(card)
     set_sticker(card)
 
-    if card.ability.extra.tech_level == 4 then
+    if card.ability.extra.tech_level == 4
+        and G.STAGE == G.STAGES.RUN then
         check_for_unlock({ type = 'n4_upgraded' })
     end
 end
