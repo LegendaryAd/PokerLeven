@@ -237,9 +237,9 @@ local Miles = {
     end
 }
 
--- George
-local George = {
-    name = "George",
+-- Winters
+local Winters = {
+    name = "Winters",
     pos = { x = 5, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
@@ -249,12 +249,12 @@ local George = {
     pools = { ["Scout"] = true },
     cost = 5,
     atlas = "Jokers10",
-    ptype = "Forest",
-    pposition = "MF",
+    ptype = C.Forest,
+    pposition = C.FW,
     pteam = "Scout",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        -- TODO Add logic
+
     end
 }
 
@@ -282,14 +282,17 @@ local Ace_Server = J({
             Pokerleven.has_enough_cards_of_rank(context.scoring_hand, card.ability.extra.rank_played, card.ability.extra.ammount_needed) then
             return Pokerleven.level_up_hand(card.ability.extra.hand_level_up)
         end
-    end
+    end,
+    ina_credits = {
+        idea = { "Shadorossa" },
+    }
 })
 
 -- Holly Cricket
 local Holly_Cricket = {
     name = "Holly_Cricket",
     pos = { x = 12, y = 0 },
-    config = { extra = { consumable_slots = 2 } },
+    config = { extra = { consumable_slots = 1 } },
     loc_vars = function(self, info_queue, center)
         return {
             vars = { center.ability.extra.consumable_slots }
@@ -313,12 +316,48 @@ local Holly_Cricket = {
     remove_from_deck = function(self, card)
         G.consumeables.config.card_limit = G.consumeables.config.card_limit - card.ability.extra.consumable_slots
     end,
-    calculate = function(self, card, context)
-        return nil
-    end
+    ina_credits = {
+        idea = { "Shadorossa" },
+    }
 }
+
+-- Rex George
+local Rex_George = J({
+    name = "Rex_George",
+    pos = { x = 0, y = 1 },
+    config = { extra = { needed_rank = 2, converted_rank = 9 } },
+    loc_vars = function(self, info_queue, center)
+        return {
+            vars = {
+                tostring(center.ability.extra.needed_rank),
+                tostring(center.ability.extra.converted_rank)
+            }
+        }
+    end,
+    rarity = 1,
+    pools = { ["Scout"] = true },
+    cost = 5,
+    atlas = "Jokers10",
+    ptype = C.Forest,
+    pposition = C.GK,
+    pteam = "Scout",
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:get_id() == card.ability.extra.needed_rank then
+            convert_cards_to(context.other_card, { set_rank = tostring(card.ability.extra.converted_rank) })
+            return {
+                message = localize("ina_convert"),
+                colour = G.C.XMULT,
+            }
+        end
+    end,
+    ina_credits = {
+        idea = { "Shadorossa" },
+    }
+})
+
 
 return {
     name = "Scout",
-    list = { Ace_Server, Blazer, Weathervane, Noggin, Montayne, Holly_Cricket, Dulce },
+    list = { Blazer, Weathervane, Noggin, Montayne, Ace_Server, Rex_George, Holly_Cricket, Dulce },
 }

@@ -976,7 +976,7 @@ return {
                     "{C:fire}Puño vengativo{}",
                     "{C:green}1 en #1# {}de aumentar el",
                     "nivel de la mano jugada",
-                    "{C:attention}#2# nivel{} si {C:attention}#3# Ases{} puntúan."
+                    "{C:attention}#2# nivel{} si {C:attention}#3# Ases{} puntúan"
                 } }
             },
 
@@ -1026,7 +1026,7 @@ return {
             },
 
             j_ina_Holly_Cricket = {
-                name = "Holly Cricket",
+                name = "Cricket",
                 text = { {
                     "{C:fire}Intercambio{}",
                     "{C:attention}+#1#{} ranuras de {C:tarot}consumible{}"
@@ -1042,6 +1042,22 @@ return {
                     "por cada joker que sea",
                     "de {X:wind,C:white}Viento{} y {X:mf,C:white}MF{}",
                 }
+            },
+
+            j_ina_Winters = {
+                name = "Winters",
+                text = { {
+                    "{C:Purple}Disparo Plus{}",
+                    "{C:attention}+#1#{} ranuras de {C:tarot}consumible{}"
+                } }
+            },
+
+            j_ina_Rex_George = {
+                name = "Rex George",
+                text = { {
+                    "{C:wind}Hojarasca{}",
+                    "Convierte los {C:attention}#1#s{} jugados en {C:attention}#2#s{}",
+                } }
             },
 
             j_ina_Nelly = {
