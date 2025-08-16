@@ -667,14 +667,14 @@ return {
 
             j_ina_Barista = {
                 name = "Barista",
-                text = { "{C:wind}Master{}",
+                text = { "{C:wind}Pase Cruzado{}",
                     "La última carta jugada da",
                     "{X:chips,C:white}X2{} {C:attention}sus{} chips a mayores" }
             },
 
             j_ina_Builder = {
                 name = "Builder",
-                text = { "{C:fire}A Construir{}",
+                text = { "{C:fire}Pájaro de Fuego{}",
                     "Si la mano jugada contiene",
                     " {C:attention}Full{} transforma una carta",
                     "al azar en {C:attention}Acero{}",
@@ -685,7 +685,7 @@ return {
             j_ina_Hood = {
                 name = "Hood",
                 text = {
-                    "{C:forest}Jutsu de Protección{}",
+                    "{C:forest}Torbellino{}",
                     "Gana {X:mult,C:white}X#1#{} por",
                     "cada Joker {X:gk,C:white}GK{}{}",
                     "{C:inactive}Actualmente{} {X:mult,C:white}X#2#{}"
@@ -865,7 +865,7 @@ return {
             j_ina_Damian = {
                 name = "Damian",
                 text = {
-                    "{C:wind}Viento Ardiente{}",
+                    "{C:wind}Luna Creciente{}",
                     "Al salir de la tienda, gana",
                     "{C:chips}+#1# Fichas{} por cada",
                     "jugador del tipo {X:fire,C:white}Fuego{} en juego",
@@ -875,7 +875,7 @@ return {
             j_ina_Nashmith = {
                 name = "Nashmith",
                 text = {
-                    "{C:forest}Flecha Huracán{}",
+                    "{C:forest}Potenciación{}",
                     "Cada {C:spades}Pica{} jugada otorga",
                     "{C:chips}+#1# Fichas{} por cada",
                     "jugador de {X:forest,C:white}Bosque{}",
@@ -903,7 +903,7 @@ return {
             j_ina_Hephestus = {
                 name = "Hephestus",
                 text = {
-                    "{C:fire}Forja Llameante{}",
+                    "{C:fire}Entrada Tormenta{}",
                     "Al ganar la ciega convierte",
                     "una {C:attention}carta aleatoria{}",
                     "en una carta de {C:attention}Acero{}",
@@ -915,7 +915,7 @@ return {
             j_ina_Apollo = {
                 name = "Apollo",
                 text = {
-                    "{C:forest}Resplandor Solar{}",
+                    "{C:forest}Hora Celestial{}",
                     "Si juegas una mano con {C:attention}doble pareja{}",
                     "Gana {C:chips}+#1# fichas{} {C:inactive}entre las 14 y las 19 pm{}",
                     "Gana {C:chips}+#2# fichas{} {C:inactive}en caso contrario{}",
@@ -925,7 +925,7 @@ return {
 
             j_ina_Artemis = {
                 name = "Artemis",
-                text = { "{C:wind}Esfera luminosa{}",
+                text = { "{C:wind}Flecha Divina{}",
                     "Tras jugar una figura {C:attention}Siémbrala{}.",
                     "{C:attention}Cosechador:{} Gana {C:chips}+#1# Chips{}",
                     "{C:inactive}Actualmente{} {C:chips}+#2# Chips{}" }
@@ -943,7 +943,7 @@ return {
             j_ina_Demeter = {
                 name = "Demeter",
                 text = {
-                    "{C:fire}Gracia Ardiente{}",
+                    "{C:fire}Disparo con Rebotes{}",
                     "Otorga {C:mult}+#1# Mult{} y {C:chips}+#2# Fichas{}",
                     "por cada descarte restante",
                     "{C:inactive}Actualmente{}: {C:mult}+#3#{} {C:chips}+#4#{}"
