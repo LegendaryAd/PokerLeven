@@ -285,7 +285,7 @@ end
 G.FUNCS.can_toggle_bench_card = function(e, area, button_name, active_colour)
     local card = e.config.ref_table
     if (area.config.card_count >= area.config.card_limit and not (card.edition and card.edition.negative))
-        or (G.hand and G.GAME.blind.in_blind) or (card.debuff) then
+        or (G.hand and G.GAME.blind.in_blind) or (card.debuff) or card.ability.eternal then
         e.config.colour = G.C.UI.BACKGROUND_INACTIVE
         e.config.button = nil
         return false
@@ -295,6 +295,7 @@ G.FUNCS.can_toggle_bench_card = function(e, area, button_name, active_colour)
         return true
     end
 end
+
 
 G.FUNCS.can_bench_card = function(e)
     return G.FUNCS.can_toggle_bench_card(e, G.ina_bench_area, 'bench_card', G.ARGS.LOC_COLOURS['bench'])

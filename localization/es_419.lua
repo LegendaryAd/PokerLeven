@@ -1455,6 +1455,7 @@ return {
             c_ina_glasses_team = "Equipo Gafas",
             c_ina_love_pair = "La Pareja del Amor",
             c_ina_futbol_frontier = "Futbol Frontier",
+            c_ina_elementals = "Los Elementales",
         },
         collabs = {},
         dictionary = {
@@ -1571,7 +1572,8 @@ return {
             ina_code = { "Código: #1#" }
         },
         v_text = {
-            ch_c_ina_futbol_frontier = { "Las ciegas saldrán en el orden del {C:attention}Fútbol Frontier{}" }
+            ch_c_ina_futbol_frontier = { "Las ciegas saldrán en el orden del {C:attention}Fútbol Frontier{}" },
+            ch_c_ina_elementals = { "Las ciegas solo podrán ser {C:dark_edition}Elementales{}" }
         }
     }
 }
