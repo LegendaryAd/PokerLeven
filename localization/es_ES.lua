@@ -362,6 +362,13 @@ return {
                     { "Los jugadores del equipo",
                         "de {C:attention}Bobby{} otorgan {C:chips}+#1# Chips{}", } }
             },
+            j_ina_Erik = {
+                name = "Erik",
+                text = { "{C:forest}Tri-Pegaso{}",
+                    "Ahora las cartas {C:tarot}El Mago{}",
+                    "otorgan {C:attention}2 sellos{} al azar",
+                    "y ya no transforman a {C:green}Lucky Card{}" }
+            },
             j_ina_Steve = {
                 name = "Steve",
                 text = { "{C:wind}Disparo Rodante{}", "Cada jugador del {X:raimon,C:white}Raimon{}",
@@ -973,9 +980,12 @@ return {
                     "son de {X:fire,C:white}Fuego{}",
                 },
                     {
-                        "Si no está en el area de juego ",
+                        "Si no está en el área de juego",
                         "devuelve todos los jugadores",
-                        "a su tipo original"
+                        "a su tipo original",
+                        "Si hay varios con su mismo efecto",
+                        "se aplica aquel más a la izquierda",
+                        "al seleccionarlo"
                     }
                 }
             },
@@ -999,7 +1009,10 @@ return {
                     {
                         "Si no está en el área de juego",
                         "devuelve todos los jugadores",
-                        "a su tipo original"
+                        "a su tipo original",
+                        "Si hay varios con su mismo efecto",
+                        "se aplica aquel más a la izquierda",
+                        "al seleccionarlo"
                     }
                 }
             },
@@ -1014,7 +1027,10 @@ return {
                     {
                         "Si no está en el área de juego",
                         "devuelve todos los jugadores",
-                        "a su tipo original"
+                        "a su tipo original",
+                        "Si hay varios con su mismo efecto",
+                        "se aplica aquel más a la izquierda",
+                        "al seleccionarlo"
                     }
                 }
             },
@@ -1029,7 +1045,10 @@ return {
                     {
                         "Si no está en el área de juego",
                         "devuelve todos los jugadores",
-                        "a su tipo original"
+                        "a su tipo original",
+                        "Si hay varios con su mismo efecto",
+                        "se aplica aquel más a la izquierda",
+                        "al seleccionarlo"
                     }
                 }
             },

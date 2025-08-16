@@ -53,3 +53,33 @@ Pokerleven.level_up_hand = function(hand_level_up)
         message = localize("ina_mano")
     }
 end
+
+---Unhighlight all cards in hand
+Pokerleven.unhighlight_hand = function()
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.2,
+        func = function()
+            G.hand:unhighlight_all(); return true
+        end
+    }))
+end
+
+Pokerleven.flip_highlighted_hand = function(sound)
+    local selected_sound = sound or 'tarot2'
+    for i = 1, #G.hand.highlighted do
+        local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.15,
+            func = function()
+                G.hand.highlighted[i]:flip();
+                play_sound(selected_sound, percent, 0.6);
+                G.hand.highlighted[i]:juice_up(
+                    0.3,
+                    0.3);
+                return true
+            end
+        }))
+    end
+end

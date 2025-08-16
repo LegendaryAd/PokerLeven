@@ -138,9 +138,10 @@ local Noggin = J({
     pposition = "MF",
     pteam = "Scout",
     blueprint_compat = true,
+    allow_element_application = true,
     add_to_deck = function(self, card, from_debuff)
         card.calculate_joker = function(context)
-            apply_element("Wind", "ina_onforest", G.C.PALE_GREEN, card)
+            apply_element("Forest", "ina_onforest", G.C.PALE_GREEN, card)
         end
         card.remove_from_deck = function(from_debuff)
             restore_types_for_area()
@@ -164,6 +165,7 @@ local Montayne = J({
     pposition = "FW",
     pteam = "Scout",
     blueprint_compat = true,
+    allow_element_application = true,
     add_to_deck = function(self, card, from_debuff)
         card.calculate_joker = function(context)
             apply_element("Mountain", "ina_onmountain", G.C.CHIPS, card)

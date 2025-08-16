@@ -232,3 +232,21 @@ function unlock_card(card)
     end
     original_unlock_card(card)
 end
+
+Pokerleven.select_random_seal = function(seed)
+    return pseudorandom_element(C.SEALS, seed)
+end
+
+Pokerleven.set_random_seals_to_highlighted_hand = function(seed)
+    for i = 1, #G.hand.highlighted do
+        local seal = Pokerleven.select_random_seal(seed)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.1,
+            func = function()
+                G.hand.highlighted[i]:set_seal(seal, true);
+                return true
+            end
+        }))
+    end
+end

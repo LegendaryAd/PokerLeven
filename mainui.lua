@@ -72,6 +72,7 @@ Pokerleven.ui.create_card_area = function(card_number, area_table)
     0.95 * G.CARD_H,
     { card_limit = area_card_size, type = 'title', highlight_limit = 0, collection = true })
   table.insert(area_table, card_area)
+  Pokerleven.aux_tab_card_area = card_area
   return card_area
 end
 

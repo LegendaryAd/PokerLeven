@@ -117,7 +117,8 @@ increment_technique = function(card)
     set_sticker(card)
 
     if card.ability.extra.tech_level == 4
-        and G.STAGE == G.STAGES.RUN then
+        and G.STAGE == G.STAGES.RUN and
+        not Pokerleven.aux_tab_card_area.cards then
         check_for_unlock({ type = 'n4_upgraded' })
     end
 end

@@ -1,4 +1,5 @@
 C = {}
+C.SEALS = { 'Blue', 'Red', 'Gold', 'Purple' }
 
 C.ALL_TYPES = { "Wind", "Fire", "Forest", "Mountain" }
 C.Wind = C.ALL_TYPES[1]
