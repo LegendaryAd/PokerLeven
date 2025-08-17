@@ -1080,7 +1080,7 @@ return {
             },
 
             j_ina_Mach = {
-                name = "Mach",
+                name = "Ryoma",
                 text = {
                     "{C:fire}Chut Granada{}",
                     "Gana {X:mult,C:white}X#1#{} cada vez",
@@ -1606,6 +1606,7 @@ return {
         }
     }
 }
+
 
 
 
