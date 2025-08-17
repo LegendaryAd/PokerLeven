@@ -1108,6 +1108,12 @@ return {
                     { "Genera un {C:attention}Scout{} en el {C:bench}Banquillo{}",
                         "al seleccionar una ciega",
                         "{C:inactive}Debe haber espacio{}" } }
+            },
+            j_ina_Koudera = {
+                name = "Koudera",
+                text = {
+                    "{C:tarot}+#1#{} espacio de {C:tarot}consumibles{}"
+                }
             }
 
         },

@@ -119,11 +119,11 @@ local Koudera = J({
     pos = { x = 6, y = 1 },
     config = { extra = { consumables_slots = 2 } },
     loc_vars = function(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.consumables_slots } }
     end,
-    rarity = 1,
+    rarity = 3,
     special = "Manager",
-    cost = 4,
+    cost = 8,
     atlas = "Managers01",
     calculate = function(self, card, context)
         -- TODO Add logic
