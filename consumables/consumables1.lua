@@ -64,6 +64,30 @@ local tactic_pos = {
   end
 }
 
+local black_room = {
+  name = "Black Room",
+  key = "black_room",
+  set = "Spectral",
+  pos = { x = 6, y = 1 },
+  atlas = "upgrade_techniques",
+  cost = 10,
+  unlocked = true,
+  discovered = false,
+  can_use = function(self, card)
+    return (
+      (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+      (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1)
+    ) and can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1])
+  end,
+  use = function(self, card, area, copier)
+    local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]
+
+    increment_technique(choice)
+    card_eval_status_text(choice, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end
+}
+
 local upgrade_technique_Wind_FW = {
   name = "upgrade_technique_Wind_FW",
   key = "upgrade_technique_Wind_FW",
@@ -626,7 +650,7 @@ local upgrade_technique_Mountain_GK = {
 
 return {
   name = "Trainings",
-  list = { tech_book, tactic_pos,
+  list = { tech_book, tactic_pos, black_room,
     upgrade_technique_Forest_GK, upgrade_technique_Forest_DF, upgrade_technique_Forest_MF, upgrade_technique_Forest_FW,
     upgrade_technique_Fire_GK, upgrade_technique_Fire_DF, upgrade_technique_Fire_MF, upgrade_technique_Fire_FW,
     upgrade_technique_Wind_GK, upgrade_technique_Wind_DF, upgrade_technique_Wind_MF, upgrade_technique_Wind_FW,

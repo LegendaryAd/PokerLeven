@@ -270,7 +270,8 @@ local Mach = J({
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.selling_card and
-            context.card.ability.set == "Joker" then
+            context.card.ability.set == "Joker" and
+            context.card ~= card then
             card.ability.extra.current_xmult = card.ability.extra.current_xmult + card.ability.extra.xmult_mod
             G.E_MANAGER:add_event(Event({
                 func = function()

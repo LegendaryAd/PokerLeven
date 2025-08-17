@@ -98,7 +98,7 @@ local bench_tag = T({
     pos = { x = 3, y = 4 },
     config = {},
     key = "bench_tag",
-    min_ante = 2,
+    min_ante = 1,
     discovered = false,
     loc_vars = function(self, info_queue, tag)
         info_queue[#info_queue + 1] = G.P_CENTERS.p_ina_manager_pack
@@ -110,7 +110,7 @@ local bench_tag = T({
         art = { "Shadorossa" }
     },
     in_pool = function(self, args)
-        if #Pokerleven.ina_manager_area.cards > 0 then
+        if #Pokerleven.ina_manager_area.cards >= Pokerleven.ina_manager_area.config.card_limit then
             return false
         end
         return true

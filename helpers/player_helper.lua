@@ -226,6 +226,14 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys, e
         then
             local no_dup = true
             if not enable_dupes and inaarea and inaarea.cards and not next(find_joker("Showman")) then
+                if inaarea == Pokerleven.ina_bench_area then
+                    for _, m in pairs(G.jokers.cards) do
+                        if v.key == m.config.center_key then
+                            no_dup = false
+                            break
+                        end
+                    end
+                end
                 for _, m in pairs(inaarea.cards) do
                     if v.key == m.config.center_key then
                         no_dup = false

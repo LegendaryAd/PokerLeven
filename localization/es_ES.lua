@@ -1417,7 +1417,14 @@ return {
                 text = generate_planet_text()
             }
         },
-        Spectral = {},
+        Spectral = {
+            c_ina_black_room = {
+                name = "Black Room",
+                text = { "Sube el {C:training}nivel de técnica{}",
+                    "de una carta sin importar",
+                    "su tipo o posición" }
+            }
+        },
         Stake = {},
         Tag = {
             tag_ina_wild_tag = {
@@ -1612,7 +1619,3 @@ return {
         }
     }
 }
-
-
-
-

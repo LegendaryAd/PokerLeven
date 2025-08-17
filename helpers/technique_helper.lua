@@ -175,6 +175,10 @@ end
 
 -- Returns true if the card matches the type and position and its technique level is below the max
 can_upgrade_tech_level = function(card, type, position)
-    return is_type(card, type) and is_position(card, position) and
-        (card.ability.extra.tech_level or 0) < G.GAME.max_tech_level
+    if type and position then
+        return is_type(card, type) and is_position(card, position) and
+            (card.ability.extra.tech_level or 0) < G.GAME.max_tech_level
+    else
+        return (card.ability.extra.tech_level or 0) < G.GAME.max_tech_level
+    end
 end
