@@ -297,7 +297,7 @@ local Mach = J({
 })
 
 -- Miles
-local Miles = J({
+local Miles = {
     name = "Miles",
     pos = { x = 8, y = 0 },
     config = { extra = {} },
@@ -315,11 +315,11 @@ local Miles = J({
     calculate = function(self, card, context)
         -- TODO Add logic
     end
-})
+}
 
--- Winters
-local Winters = J({
-    name = "Winters",
+-- George
+local George = {
+    name = "George",
     pos = { x = 5, y = 0 },
     config = { extra = {} },
     loc_vars = function(self, info_queue, center)
@@ -329,14 +329,14 @@ local Winters = J({
     pools = { ["Scout"] = true },
     cost = 5,
     atlas = "Jokers10",
-    ptype = C.Forest,
-    pposition = C.FW,
+    ptype = "Forest",
+    pposition = "MF",
     pteam = "Scout",
     blueprint_compat = true,
     calculate = function(self, card, context)
-
+        -- TODO Add logic
     end
-})
+}
 
 -- Ace Server
 local Ace_Server = J({
