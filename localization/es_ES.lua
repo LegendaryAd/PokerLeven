@@ -1070,7 +1070,7 @@ return {
             },
 
             j_ina_Ryoma = {
-                name = "Ryoma",
+                name = "Mach",
                 text = {
                     "{C:mountain}Parada Infinita{}",
                     "Gana {C:mult}+#1# mult{} cada vez",
@@ -1606,4 +1606,5 @@ return {
         }
     }
 }
+
 
