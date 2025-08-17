@@ -167,7 +167,7 @@ local Eagle = {
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers
-            and next(context.poker_hands['flush']) and not context.blueprint then
+            and next(context.poker_hands['Flush']) and not context.blueprint then
             local count = 0
             for _, c in ipairs(context.scoring_hand) do
                 if SMODS.has_enhancement(c, 'm_wild') then
