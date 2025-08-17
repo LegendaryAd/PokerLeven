@@ -53,6 +53,7 @@ for _ in pairs(C.CUSTOM.Bobby_Teams) do
 end
 C.CUSTOM.Bobby_Teams_Number = team_number
 
+C.ELEMENTALS_KEYS = { j_ina_Weathervane = true, j_ina_Noggin = true, j_ina_Montayne = true, j_ina_Blazer = true }
 
 --- FOR GENERAL CREDITS
 C.CREDITS = {}
