@@ -997,7 +997,7 @@ return {
                     "{C:fire}Puño vengativo{}",
                     "{C:green}1 en #1# {}de aumentar el",
                     "nivel de la mano jugada",
-                    "{C:attention}#2# nivel{} si {C:attention}#3# Ases{} puntúan"
+                    "{C:attention}#2# nivel{} si {C:attention}#3# Ases{} puntúan."
                 } }
             },
 
@@ -1080,21 +1080,13 @@ return {
             },
 
             j_ina_Mach = {
-                name = "Mach",
+                name = "Ryoma",
                 text = {
                     "{C:fire}Chut Granada{}",
                     "Gana {X:mult,C:white}X#1#{} cada vez",
                     "que se vende un {C:attention}jugador o manager{}",
                     "{C:inactive}Actualmente{} {X:mult,C:white}X#2#{}"
                 }
-            },
-
-            j_ina_Winters = {
-                name = "Winters",
-                text = { {
-                    "{C:Purple}Disparo Plus{}",
-                    "{C:attention}+#1#{} ranuras de {C:tarot}consumible{}"
-                } }
             },
 
             j_ina_Rex_George = {
@@ -1614,3 +1606,7 @@ return {
         }
     }
 }
+
+
+
+
