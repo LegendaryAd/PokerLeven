@@ -92,9 +92,9 @@ local Hephestus = J({
 local Apollo = {
   name = "Apollo",
   pos = { x = 6, y = 12 },
-  config = { extra = { chips_mod = 11, alt_chips_mod = 4, current_chips = 0, triggered = false } },
+  config = { extra = { chips_mod = 14, alt_chips_mod = 4, mult_mod_low = 3, current_chips = 0, current_mult = 0, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    return { vars = { center.ability.extra.chips_mod, center.ability.extra.alt_chips_mod, center.ability.extra.current_chips } }
+    return { vars = { center.ability.extra.chips_mod, center.ability.extra.alt_chips_mod, center.ability.extra.current_chips, center.ability.extra.mult_mod_low, center.ability.extra.current_mult } }
   end,
   rarity = 1,
   pools = { ["Zeus"] = true },
@@ -108,9 +108,10 @@ local Apollo = {
   calculate = function(self, card, context)
     if Pokerleven.is_joker_turn(context) and card.ability.extra.current_chips > 0 then
       return {
-        message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.current_chips } },
+        message = 'Divino!',
         chip_mod = card.ability.extra.current_chips,
-        colour = G.C.CHIPS
+        colour = G.C.GOLD,
+        mult_mod = card.ability.extra.current_mult
       }
     end
 
@@ -121,6 +122,7 @@ local Apollo = {
 
       if hour >= 14 and hour < 19 then
         mod = card.ability.extra.chips_mod
+        card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult_mod_low
       end
 
       card.ability.extra.current_chips = card.ability.extra.current_chips + mod
@@ -227,14 +229,14 @@ local Hermes = {
 local Demeter = {
   name = "Demeter",
   pos = { x = 0, y = 13 },
-  config = { extra = { mult_mod = 4, chip_mod = 10 } },
+  config = { extra = { mult_mod_low = 4, chip_mod = 10 } },
   loc_vars = function(self, info_queue, center)
     local remaining_discards = G.GAME and G.GAME.current_round and G.GAME.current_round.discards_left or 0
     return {
       vars = {
-        center.ability.extra.mult_mod,
+        center.ability.extra.mult_mod_low,
         center.ability.extra.chip_mod,
-        remaining_discards * center.ability.extra.mult_mod,
+        remaining_discards * center.ability.extra.mult_mod_low,
         remaining_discards * center.ability.extra.chip_mod
       }
     }
@@ -250,7 +252,7 @@ local Demeter = {
   calculate = function(self, card, context)
     if context.cardarea == G.jokers and context.joker_main then
       local remaining_discards = G.GAME.current_round.discards_left or 0
-      local extra_mult = card.ability.extra.mult_mod * remaining_discards
+      local extra_mult = card.ability.extra.mult_mod_low * remaining_discards
       local extra_chips = card.ability.extra.chip_mod * remaining_discards
 
       if extra_mult > 0 or extra_chips > 0 then

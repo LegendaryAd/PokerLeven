@@ -51,9 +51,9 @@ local Dulce = J({
 local Ryoma = J({
     name = "Ryoma",
     pos = { x = 9, y = 0 },
-    config = { extra = { current_mult = 0, mult_mod = 2 } },
+    config = { extra = { current_mult = 0, mult_mod_low = 2 } },
     loc_vars = function(self, info_queue, center)
-        return { vars = { center.ability.extra.mult_mod, center.ability.extra.current_mult } }
+        return { vars = { center.ability.extra.mult_mod_low, center.ability.extra.current_mult } }
     end,
     rarity = 1,
     pools = { ["Scout"] = true },
@@ -67,7 +67,7 @@ local Ryoma = J({
         if context.post_trigger and
             context.other_card ~= card and
             context.other_card.ability.extra.pposition == C.GK then
-            card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult_mod
+            card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult_mod_low
             G.E_MANAGER:add_event(Event({
                 func = function()
                     card_eval_status_text(card, 'extra', nil, nil, nil, {

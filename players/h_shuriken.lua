@@ -3,14 +3,14 @@ local hood = J({
     pos = { x = 9, y = 8 },
     config = {
         extra = {
-            xmult_per_gk = 0.5,
+            xmult_mod = 0.5,
             triggered = false,
             pposition = "GK"
         }
     },
     loc_vars = function(self, info_queue, center)
         local count = #find_player_position("GK")
-        return { vars = { center.ability.extra.xmult_per_gk, count * (center.ability.extra.xmult_per_gk or 0) + 1 } }
+        return { vars = { center.ability.extra.xmult_mod, count * (center.ability.extra.xmult_mod or 0) + 1 } }
     end,
     rarity = 2,
     pools = { ["Shuriken"] = true },
@@ -22,7 +22,7 @@ local hood = J({
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.scoring_hand and context.joker_main then
             local count = #find_player_position("GK")
-            local total_xmult = count * card.ability.extra.xmult_per_gk + 1
+            local total_xmult = count * card.ability.extra.xmult_mod + 1
             card.ability.extra.triggered = true
             return {
                 message = localize { type = 'variable', key = 'a_xmult', vars = { total_xmult } },
@@ -100,9 +100,9 @@ local code = J({
 local star = J({
     name = "Star",
     pos = { x = 2, y = 9 },
-    config = { extra = { mult_mod = 1, money = 1, suit = "Diamonds", triggered = false } },
+    config = { extra = { mult_mod_low = 1, money = 1, suit = "Diamonds", triggered = false } },
     loc_vars = function(self, info_queue, center)
-        return { vars = { center.ability.extra.money, center.ability.extra.mult_mod } }
+        return { vars = { center.ability.extra.money, center.ability.extra.mult_mod_low } }
     end,
     rarity = 1, -- Common
     pools = { ["Shuriken"] = true },
@@ -120,7 +120,7 @@ local star = J({
                 return {
                     message = localize("ina_dribbling"),
                     colour = G.C.DARK_EDITION,
-                    mult_mod = card.ability.extra.mult_mod,
+                    mult_mod = card.ability.extra.mult_mod_low,
                     dollars = card.ability.extra.money,
                     card = card
                 }

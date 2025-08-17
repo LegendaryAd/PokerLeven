@@ -27,9 +27,7 @@ local Talisman = {
       end
       if context.other_card == G.jokers.cards[index + 1] and is_team(context.other_card, "Occult") then
         return {
-          message = localize("k_again_ex"),
           repetitions = card.ability.extra.retriggers,
-          card = card,
         }
       else
         return nil, true

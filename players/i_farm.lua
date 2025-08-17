@@ -73,11 +73,11 @@ local Hayseed = J({
     config = {
         extra = {
             current_mult = 0,
-            mult_mod = 2
+            mult_mod_low = 4
         }
     },
     loc_vars = function(self, info_queue, center)
-        return { vars = { center.ability.extra.mult_mod, center.ability.extra.current_mult or 0 } }
+        return { vars = { center.ability.extra.mult_mod_low, center.ability.extra.current_mult or 0 } }
     end,
     rarity = 1,
     pools = { ["Farm"] = true },
@@ -98,7 +98,7 @@ local Hayseed = J({
         end
         if context.before and context.cardarea == G.jokers and context.scoring_hand
             and next(context.poker_hands["Three of a Kind"]) and #context.scoring_hand == 3 then
-            card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult_mod
+            card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult_mod_low
             return {
                 message = localize("k_upgrade_ex"),
                 colour = G.C.MULT
@@ -245,10 +245,10 @@ local Dawson = J({
 local Muffs = J({
     name = "Muffs",
     pos = { x = 8, y = 10 },
-    config = { extra = { current_mult = 0, mult_mod = 1, triggered = false } },
+    config = { extra = { current_mult = 0, mult_mod_low = 1, triggered = false } },
     loc_vars = function(self, info_queue, center)
         info_queue[#info_queue + 1] = { set = 'Other', key = 'Harvester' }
-        return { vars = { center.ability.extra.mult_mod, center.ability.extra.current_mult } }
+        return { vars = { center.ability.extra.mult_mod_low, center.ability.extra.current_mult } }
     end,
     rarity = 2, -- Uncommon
     pools = { ["Farm"] = true },
@@ -262,7 +262,7 @@ local Muffs = J({
     calculate = function(self, card, context)
         if context.discard and context.other_card.ability["ina_harvest_sticker"] == true then
             card.ability.extra.current_mult =
-                card.ability.extra.current_mult + card.ability.extra.mult_mod
+                card.ability.extra.current_mult + card.ability.extra.mult_mod_low
             card.ability.extra.triggered = true
             context.other_card.ability["ina_harvest_sticker"] = false
             return {

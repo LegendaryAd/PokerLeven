@@ -20,7 +20,7 @@ local training = {
     collection = 'Training Cards', -- label for the button to access the collection
   },
   collection_row = { 8, 8 },
-  shop_rate = 0.5,
+  shop_rate = 1,
   default = "c_ina_upgrade_technique_Wind_FW"
 }
 

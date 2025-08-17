@@ -300,7 +300,8 @@ return {
                 name = "Mark",
                 text = { "{C:mountain}Mano Mágica{}",
                     "{C:attention}+#1#{} Al tamaño de mano jugada",
-                    "{C:attention}+#1#{} A la cantidad de cartas descartadas" }
+                    "{C:attention}+#1#{} A la cantidad de cartas descartadas",
+                    "{C:chips}+#2#{} Al tamaño de {C:chips}mano{}" }
             },
             j_ina_Nathan = {
                 name = "Nathan",
@@ -487,7 +488,7 @@ return {
             j_ina_Eagle = {
                 name = "Eagle",
                 text = { "{C:wind}Ataque de Cóndor{}", "Gana {C:mult}+#1#{} Mult por cada",
-                    "{C:tarot}Carta Versatil{} que puntúe en una mano", "que contenga una {C:attention}escalera{}",
+                    "{C:tarot}Carta Versatil{} que puntúe en una mano", "que contenga un {C:attention}Color{}",
                     "{C:inactive}Actualmente{} {C:mult}+#2#{}" }
             },
             j_ina_Monkey = {
@@ -676,7 +677,7 @@ return {
                 name = "Barista",
                 text = { "{C:wind}Pase Cruzado{}",
                     "La última carta jugada da",
-                    "{X:chips,C:white}X2{} {C:attention}sus{} chips a mayores" }
+                    "{X:chips,C:white}X#1#{} chips a mayores" }
             },
 
             j_ina_Builder = {
@@ -924,9 +925,9 @@ return {
                 text = {
                     "{C:forest}Hora Celestial{}",
                     "Si juegas una mano con {C:attention}doble pareja{}",
-                    "Gana {C:chips}+#1# fichas{} {C:inactive}entre las 14 y las 19 pm{}",
+                    "Gana {C:chips}+#1# fichas{} y {C:mult}+#4# mult{} {C:inactive}entre las 14 y las 19 pm{}",
                     "Gana {C:chips}+#2# fichas{} {C:inactive}en caso contrario{}",
-                    "{C:inactive}Actualmente{}: {C:chips}+#3#{}"
+                    "{C:inactive}Actualmente{}: {C:chips}+#3#{}, {C:mult}+#5#{} mult"
                 }
             },
 

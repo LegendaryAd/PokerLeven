@@ -38,9 +38,9 @@ local Kevin = J({
 local Mark = J({
   name = "Mark",
   pos = { x = 0, y = 0 },
-  config = { extra = { extra_hands = 1 } },
+  config = { extra = { extra_hands = 1, extra_back_size = 1 } },
   loc_vars = function(self, info_queue, center)
-    return { vars = { center.ability.extra.extra_hands } }
+    return { vars = { center.ability.extra.extra_hands, center.ability.extra.extra_back_size } }
   end,
   rarity = 4,
   cost = 15,
@@ -51,12 +51,14 @@ local Mark = J({
   pteam = "Raimon",
   blueprint_compat = true,
   add_to_deck = function(self, card, from_debuff)
+    G.hand.config.card_limit = G.hand.config.card_limit + card.ability.extra.extra_back_size
     SMODS.change_play_limit(card.ability.extra.extra_hands)
     SMODS.change_discard_limit(card.ability.extra.extra_hands)
   end,
   remove_from_deck = function(self, card, from_debuff)
     SMODS.change_play_limit(-card.ability.extra.extra_hands)
     SMODS.change_discard_limit(-card.ability.extra.extra_hands)
+    G.hand.config.card_limit = G.hand.config.card_limit - card.ability.extra.extra_back_size
   end,
   set_sprites = function(self, card, front)
     if card.children and card.children.center and card.children.center.set_visible then
@@ -278,9 +280,9 @@ local Max = {
 local Peabody = {
   name = "Peabody",
   pos = { x = 8, y = 0 },
-  config = { extra = { current_mult = 0, mult_mod = 2, triggered = false } },
+  config = { extra = { current_mult = 0, mult_mod_low = 2, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    return { vars = { center.ability.extra.current_mult, center.ability.extra.mult_mod } }
+    return { vars = { center.ability.extra.current_mult, center.ability.extra.mult_mod_low } }
   end,
   rarity = 1,
   pools = { ["Raimon"] = true },
@@ -295,7 +297,7 @@ local Peabody = {
     if G.GAME.current_round.hands_left == 0 then
       if context.individual and Pokerleven.card_scoring(context) then
         card.ability.extra.current_mult =
-            card.ability.extra.current_mult + card.ability.extra.mult_mod;
+            card.ability.extra.current_mult + card.ability.extra.mult_mod_low;
         return {
           message = localize('k_upgrade_ex'),
           colour = G.C.MULT,
@@ -464,10 +466,10 @@ local Bobby = J({
 local Steve = J({
   name = "Steve",
   pos = { x = 5, y = 0 },
-  config = { extra = { chip_mod = 6, mult_mod = 3, money = 1 } },
+  config = { extra = { chip_mod = 6, mult_mod_low = 3, money = 1 } },
   loc_vars = function(self, info_queue, center)
     local count = #find_player_team("Raimon")
-    return { vars = { center.ability.extra.chip_mod, center.ability.extra.mult_mod, center.ability.extra.money, count * center.ability.extra.chip_mod, count * center.ability.extra.mult_mod } }
+    return { vars = { center.ability.extra.chip_mod, center.ability.extra.mult_mod_low, center.ability.extra.money, count * center.ability.extra.chip_mod, count * center.ability.extra.mult_mod_low } }
   end,
   rarity = 1,
   pools = { ["Raimon"] = true },
@@ -485,7 +487,7 @@ local Steve = J({
         message = localize("ina_gol"),
         colour = G.C.CHIPS,
         chip_mod = card.ability.extra.chip_mod * count,
-        mult_mod = card.ability.extra.mult_mod * count,
+        mult_mod = card.ability.extra.mult_mod_low * count,
       }
     end
   end,

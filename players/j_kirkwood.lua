@@ -57,9 +57,9 @@ local Night = J({
 local Marvin = J({
     name = "Marvin",
     pos = { x = 10, y = 11 },
-    config = { extra = { mult_mod = 4 } },
+    config = { extra = { mult_mod_low = 4 } },
     loc_vars = function(self, info_queue, center)
-        local mult_mod = center.ability.extra.mult_mod
+        local mult_mod = center.ability.extra.mult_mod_low
         table.insert(info_queue, { set = "Other", key = "Trillizos" })
         return { vars = { mult_mod } }
     end,
@@ -74,7 +74,7 @@ local Marvin = J({
     calculate = function(self, card, context)
         local scoring_card = Pokerleven.card_scoring(context)
         if context.individual and scoring_card and scoring_card:is_uneven() then
-            local mult_mod = card.ability.extra.mult_mod
+            local mult_mod = card.ability.extra.mult_mod_low
             return {
                 mult = mult_mod,
                 card = card

@@ -1,14 +1,16 @@
+---@diagnostic disable: assign-type-mismatch
 -- Multipliers for  technique upgrades
 technique_values = {
-    money = .3,
+    money = .6,
     mult_mod = .2,
+    mult_mod_low = 1,
     chip_mod = .2,
     chips_mod = .2,
     Xmult_mod = .2,
     Xchip_mod = .2,
     Xchips_mod = .2,
-    sell_mod = .2,       -- es de Seller
-    sell_potential = .2, -- es de Seller
+    sell_mod = .6,       -- es de Seller
+    sell_potential = .6, -- es de Seller
     current_Xmult = .2,
     current_xmult = .2,
     current_chips = .2,
@@ -21,14 +23,24 @@ technique_values = {
     sell_value = .2,
     common_mult = .2,    -- es de Martin
     uncommon_mult = .2,  -- es de Martin
-    rare_xmult = .2,     -- es de Martin
-    legendary_exp = .2,  -- es de Martin
+    rare_xmult = .1,     -- es de Martin
+    legendary_exp = .05, -- es de Martin
     copies_number = .25, -- es de Hattori
     alt_chips_mod = .2,
     byron_mult_fw = .2,
     byron_mult_mf = .2,
-    perish_tally = 1 -- Cloak
+    perish_tally = 1,   -- Cloak
+    extra_back_size = 1 -- Mark Evans
 }
+
+local roundable_fields = {
+    money = true,
+    mult_mod = true,
+    mult_mod_low = true,
+    chip_mod = true,
+    copies_number = true,
+}
+
 
 -- List of stickers depending of technique type
 plus_stickers = { "ina_tech_plus1_sticker", "ina_tech_plus2_sticker", "ina_tech_plus3_sticker", "ina_tech_plus4_sticker",
@@ -121,6 +133,10 @@ increment_technique = function(card)
         not Pokerleven.aux_tab_card_area.cards then
         check_for_unlock({ type = 'n4_upgraded' })
     end
+
+    if card.ability.extra.extra_back_size and G.STAGE == G.STAGES.RUN then
+        G.hand.config.card_limit = G.hand.config.card_limit + 1
+    end
 end
 
 -- Applies value updates to a joker based on its center config and technique multipliers
@@ -147,15 +163,18 @@ end
 
 -- Rounds a stat value based adn returns the integer part and fractional part (if applicable)
 round_value = function(value, field)
-    local frac = nil
+    local frac
+    local rounded
 
-    if field == "money" or field == "mult_mod" or field == "chip_mod" or field == "copies_number" then
+    if roundable_fields[field] then
         rounded, frac = math.modf(value)
     else
         rounded = value
     end
+
     return rounded, frac
 end
+
 
 -- Stores and manages fractional values for a joker's stat field
 -- Converts to full stat point when fraction reaches 1.0+

@@ -38,7 +38,7 @@ local hillman = J({
 local island = J({
   name = "Island",
   pos = { x = 7, y = 7 },
-  config = { extra = { current_chips = 0, chips_mod = 10, triggered = false } },
+  config = { extra = { current_chips = 0, chips_mod = 25, triggered = false } },
   loc_vars = function(self, info_queue, center)
     return {
       vars = {
@@ -177,9 +177,9 @@ local butler = J({
 local barista = J({
   name = "Barista",
   pos = { x = 1, y = 8 },
-  config = {},
+  config = { extra = { xchips_mod = 2 } },
   loc_vars = function(self, info_queue, center)
-    return {}
+    return { vars = { center.ability.extra.xchips_mod } }
   end,
   rarity = 2, -- Uncommon
   pools = { ["Inazuma Eleven"] = true },
@@ -193,7 +193,7 @@ local barista = J({
     if context.individual and context.scoring_hand and context.cardarea == G.play
         and context.other_card == context.scoring_hand[#context.scoring_hand] then
       return {
-        chips = context.other_card:get_chip_bonus() * 2,
+        xchips = card.ability.extra.xchips_mod,
         card = context.other_card
       }
     end
