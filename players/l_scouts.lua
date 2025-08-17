@@ -99,17 +99,14 @@ local Blazer = J({
     pools = { ["Scout"] = true },
     cost = 5,
     atlas = "Jokers10",
-    ptype = C.Fire,
-    pposition = C.GK,
+    ptype = "Fire",
+    pposition = "GK",
     pteam = "Scout",
     blueprint_compat = true,
     allow_element_application = true,
     calculate = function(self, card, context)
         for _, player in pairs(G.jokers.cards) do
-            if player.config.center_key == 'j_ina_Weathervane' or
-                player.config.center_key == 'j_ina_Blazer' or
-                player.config.center_key == 'j_ina_Montayne' or
-                player.config.center_key == 'j_ina_Noggin' then
+            if C.ELEMENTALS_KEYS[player.config.center_key] then
                 leftmost = player
                 break
             end
@@ -120,7 +117,9 @@ local Blazer = J({
         end
     end,
     remove_from_deck = function(self, card, from_debuff)
-        restore_types_for_area()
+        if leftmost == card then
+            restore_types_for_area()
+        end
     end
 })
 
@@ -143,10 +142,7 @@ local Weathervane = J({
     allow_element_application = true,
     calculate = function(self, card, context)
         for _, player in pairs(G.jokers.cards) do
-            if player.config.center_key == 'j_ina_Blazer' or
-                player.config.center_key == 'j_ina_Montayne' or
-                player.config.center_key == 'j_ina_Weathervane' or
-                player.config.center_key == 'j_ina_Noggin' then
+            if C.ELEMENTALS_KEYS[player.config.center_key] then
                 leftmost = player
                 break
             end
@@ -157,7 +153,9 @@ local Weathervane = J({
         end
     end,
     remove_from_deck = function(self, card, from_debuff)
-        restore_types_for_area()
+        if leftmost == card then
+            restore_types_for_area()
+        end
     end
 })
 
@@ -180,10 +178,7 @@ local Noggin = J({
     allow_element_application = true,
     calculate = function(self, card, context)
         for _, player in pairs(G.jokers.cards) do
-            if player.config.center_key == 'j_ina_Weathervane' or
-                player.config.center_key == 'j_ina_Noggin' or
-                player.config.center_key == 'j_ina_Montayne' or
-                player.config.center_key == 'j_ina_Blazer' then
+            if C.ELEMENTALS_KEYS[player.config.center_key] then
                 leftmost = player
                 break
             end
@@ -194,7 +189,9 @@ local Noggin = J({
         end
     end,
     remove_from_deck = function(self, card, from_debuff)
-        restore_types_for_area()
+        if leftmost == card then
+            restore_types_for_area()
+        end
     end
 })
 
@@ -217,10 +214,7 @@ local Montayne = J({
     allow_element_application = true,
     calculate = function(self, card, context)
         for _, player in pairs(G.jokers.cards) do
-            if player.config.center_key == 'j_ina_Weathervane' or
-                player.config.center_key == 'j_ina_Montayne' or
-                player.config.center_key == 'j_ina_Noggin' or
-                player.config.center_key == 'j_ina_Blazer' then
+            if C.ELEMENTALS_KEYS[player.config.center_key] then
                 leftmost = player
                 break
             end
@@ -231,7 +225,9 @@ local Montayne = J({
         end
     end,
     remove_from_deck = function(self, card, from_debuff)
-        restore_types_for_area()
+        if leftmost == card then
+            restore_types_for_area()
+        end
     end
 })
 

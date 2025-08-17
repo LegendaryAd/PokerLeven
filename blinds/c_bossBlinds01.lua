@@ -19,19 +19,19 @@ local debuff_type = function(ptype)
             y:set_debuff(false)
         end
 
-        local blazer_index
+        local elementals_index
         for i, v in pairs(G.jokers.cards) do
-            if v.config.center_key == 'j_ina_Blazer' and 'j_ina_Weathervane' and 'j_ina_Noggin' and 'j_ina_Montayne' then
-                blazer_index = i
+            if C.ELEMENTALS_KEYS[v.config.center_key] then
+                elementals_index = i
             elseif v.ability.extra.ptype == ptype then
                 v:set_debuff(true)
                 v:juice_up()
                 G.GAME.blind:wiggle()
             end
         end
-        if blazer_index then
-            G.jokers.cards[blazer_index]:set_debuff(true)
-            G.jokers.cards[blazer_index]:juice_up()
+        if elementals_index then
+            G.jokers.cards[elementals_index]:set_debuff(true)
+            G.jokers.cards[elementals_index]:juice_up()
             G.GAME.blind:wiggle()
         end
     end

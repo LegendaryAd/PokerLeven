@@ -1080,7 +1080,7 @@ return {
             },
 
             j_ina_Mach = {
-                name = "Ryoma",
+                name = "Mach",
                 text = {
                     "{C:fire}Chut Granada{}",
                     "Gana {X:mult,C:white}X#1#{} cada vez",
@@ -1117,6 +1117,12 @@ return {
                     { "Genera un {C:attention}Scout{} en el {C:bench}Banquillo{}",
                         "al seleccionar una ciega",
                         "{C:inactive}Debe haber espacio{}" } }
+            },
+            j_ina_Koudera = {
+                name = "Koudera",
+                text = {
+                    "{C:tarot}+#1#{} espacio de {C:tarot}consumibles{}"
+                }
             }
 
         },

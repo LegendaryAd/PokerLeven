@@ -101,6 +101,16 @@ if v.set == 'Joker' and v.special and v.special == "Manager" then alert_manager 
 
 [[patches]]
 [patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = "if v.set == 'Joker' and not v.no_collection and not v.omit then"
+position = 'at'
+match_indent = true
+payload = '''
+if v.set == 'Joker' and not v.no_collection and not v.omit and v.mod and v.mod.id == 'Pokerleven' then
+'''
+
+[[patches]]
+[patches.pattern]
 target = 'functions/common_events.lua'
 pattern = "{id = 'your_collection_boosters', alert_uibox_name = 'your_collection_boosters_alert'},"
 position = 'after'

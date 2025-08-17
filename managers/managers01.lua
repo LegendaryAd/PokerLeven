@@ -117,24 +117,31 @@ local Aurelia = J({
 local Koudera = J({
     name = "Koudera",
     pos = { x = 6, y = 1 },
-    config = { extra = {} },
+    config = { extra = { consumables_slots = 2 } },
     loc_vars = function(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.consumables_slots } }
     end,
-    rarity = 1,
+    rarity = 3,
     special = "Manager",
-    cost = 4,
+    cost = 8,
     atlas = "Managers01",
     calculate = function(self, card, context)
         -- TODO Add logic
     end,
+    add_to_deck = function(self, card, from_debuff)
+        G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.consumables_slots
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.consumeables.config.card_limit = G.consumeables.config.card_limit - card.ability.extra.consumables_slots
+    end,
     ina_credits = {
-        art = { "KirineMoe" }
+        art = { "KirineMoe" },
+        idea = { "Shadorossa" }
     }
 })
 
 
 return {
     name = "Managers",
-    list = { Nelly, Celia }
+    list = { Nelly, Celia, Koudera }
 }
