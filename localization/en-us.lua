@@ -990,6 +990,7 @@ return {
                     }
                 }
             },
+
             j_ina_Ace_Server = {
                 name = "Ace Server",
                 text = { {
@@ -1086,6 +1087,14 @@ return {
                     "que se vende un {C:attention}jugador o manager{}",
                     "{C:inactive}Actualmente{} {X:mult,C:white}X#2#{}"
                 }
+            },
+
+            j_ina_Rex_George = {
+                name = "Rex George",
+                text = { {
+                    "{C:wind}Hojarasca{}",
+                    "Convierte los {C:attention}#1#{} jugados en {C:attention}#2#s{}",
+                } }
             },
 
             j_ina_Nelly = {
@@ -1408,7 +1417,14 @@ return {
                 text = generate_planet_text()
             }
         },
-        Spectral = {},
+        Spectral = {
+            c_ina_black_room = {
+                name = "Black Room",
+                text = { "Sube el {C:training}nivel de técnica{}",
+                    "de una carta sin importar",
+                    "su tipo o posición" }
+            }
+        },
         Stake = {},
         Tag = {
             tag_ina_wild_tag = {
