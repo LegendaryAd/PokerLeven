@@ -990,6 +990,7 @@ return {
                     }
                 }
             },
+
             j_ina_Ace_Server = {
                 name = "Ace Server",
                 text = { {
@@ -1086,6 +1087,14 @@ return {
                     "que se vende un {C:attention}jugador o manager{}",
                     "{C:inactive}Actualmente{} {X:mult,C:white}X#2#{}"
                 }
+            },
+
+            j_ina_Rex_George = {
+                name = "Rex George",
+                text = { {
+                    "{C:wind}Hojarasca{}",
+                    "Convierte los {C:attention}#1#{} jugados en {C:attention}#2#s{}",
+                } }
             },
 
             j_ina_Nelly = {
@@ -1603,3 +1612,7 @@ return {
         }
     }
 }
+
+
+
+
