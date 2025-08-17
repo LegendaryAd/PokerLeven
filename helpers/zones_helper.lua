@@ -230,6 +230,7 @@ Pokerleven.add_to_managers = function(card)
     end
 
     Pokerleven.ina_manager_area:emplace(card)
+    card:add_to_deck()
 end
 
 ---Adds card to bench area

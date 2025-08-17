@@ -1081,7 +1081,7 @@ return {
             j_ina_Mach = {
                 name = "Mach",
                 text = {
-                    "{C:wind}Chut Granada{}",
+                    "{C:fire}Chut Granada{}",
                     "Gana {X:mult,C:white}X#1#{} cada vez",
                     "que se vende un {C:attention}jugador o manager{}",
                     "{C:inactive}Actualmente{} {X:mult,C:white}X#2#{}"
