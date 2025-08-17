@@ -88,6 +88,31 @@ local black_room = {
   end
 }
 
+local centella = {
+  name = "Centro Centella",
+  key = "centella",
+  set = "Spectral",
+  pos = { x = 1, y = 2 },
+  atlas = "upgrade_techniques",
+  cost = 10,
+  unlocked = true,
+  hidden = true,
+  soul_set = "Training",
+  soul_rate = .01,
+  discovered = false,
+  can_use = function(self, card)
+    return #G.jokers.cards > 0
+  end,
+  use = function(self, card, area, copier)
+    for _, player in ipairs(G.jokers.cards) do
+      increment_technique(player)
+    end
+
+    card_eval_status_text(card, 'extra', nil, nil, nil,
+      { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
+  end
+}
+
 local upgrade_technique_Wind_FW = {
   name = "upgrade_technique_Wind_FW",
   key = "upgrade_technique_Wind_FW",
@@ -650,7 +675,7 @@ local upgrade_technique_Mountain_GK = {
 
 return {
   name = "Trainings",
-  list = { tech_book, tactic_pos, black_room,
+  list = { tech_book, tactic_pos, black_room, centella,
     upgrade_technique_Forest_GK, upgrade_technique_Forest_DF, upgrade_technique_Forest_MF, upgrade_technique_Forest_FW,
     upgrade_technique_Fire_GK, upgrade_technique_Fire_DF, upgrade_technique_Fire_MF, upgrade_technique_Fire_FW,
     upgrade_technique_Wind_GK, upgrade_technique_Wind_DF, upgrade_technique_Wind_MF, upgrade_technique_Wind_FW,

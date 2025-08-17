@@ -1424,6 +1424,11 @@ return {
                 text = { "Sube el {C:training}nivel de técnica{}",
                     "de una carta sin importar",
                     "su tipo o posición" }
+            },
+            c_ina_centella = {
+                name = "Centro centella",
+                text = { "Sube el {C:training}nivel de técnica{}",
+                    "de todos tus {C:attention}titulares{}" }
             }
         },
         Stake = {},
