@@ -253,17 +253,24 @@ Pokerleven.add_to_bench = function(card)
     end
 end
 
-
---- Hook for new buttons on jokers / cards
+-- Hook for new buttons on jokers / cards
 local card_highlight_ref = Card.highlight
 function Card:highlight(is_highlighted)
-    if self.area and self.area.config.type == "joker" and self.area ~= G.consumeables
-        and (self.area == G.jokers or self.area == Pokerleven.ina_bench_area or self.area == Pokerleven.ina_manager_area) then
+    if self.area and self.area.config.type == "joker"
+        and self.area ~= G.consumeables
+        and (self.area == G.jokers
+            or self.area == Pokerleven.ina_bench_area
+            or self.area == Pokerleven.ina_manager_area) then
         self.highlighted = is_highlighted
 
         if self.highlighted then
-            local params = {}
+            if self.children.use_button then
+                self.children.use_button.config.parent = nil
+                self.children.use_button:remove()
+                self.children.use_button = nil
+            end
 
+            local params = {}
             if Pokerleven.is_manager(self) then
                 params.sell = true
             elseif self.area ~= G.ina_bench_area then
@@ -282,9 +289,12 @@ function Card:highlight(is_highlighted)
                     parent = self,
                 }
             }
-        elseif self.children.use_button then
-            self.children.use_button:remove()
-            self.children.use_button = nil
+        else
+            if self.children.use_button then
+                self.children.use_button.config.parent = nil
+                self.children.use_button:remove()
+                self.children.use_button = nil
+            end
         end
     else
         card_highlight_ref(self, is_highlighted)
