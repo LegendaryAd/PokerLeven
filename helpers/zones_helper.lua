@@ -214,6 +214,7 @@ end
 local remove_from_area_ref = CardArea.remove_card
 function CardArea:remove_card(card, ...)
     if card.children and card.children.use_button then
+        card.children.use_button.config.parent = nil
         card.children.use_button:remove()
         card.children.use_button = nil
     end
