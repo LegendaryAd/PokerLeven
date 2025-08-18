@@ -234,6 +234,8 @@ function Controller:queue_R_cursor_press(x, y)
   if clicked and type(clicked) == 'table' and clicked.config and type(clicked.config) == 'table' and clicked.config.center and clicked.facing ~= 'back'
       and clicked.config.center.ptype then
     local menu = initialize_previous_menu()
+    LeakScope.snap("close_bench")
+
     Pokerleven.ui.create_overlay_for_joker_properties(clicked.config.center_key, menu)
   end
 end
