@@ -421,6 +421,7 @@ local Manager_Pack = {
 	create_card = function(self, card, i)
 		if i == 1 then
 			excluded_keys = {}
+			excluded_keys['j_ina_Akihiro'] = true
 		end
 
 		local selected_card = create_random_ina_joker('Manager_Pack', nil, Pokerleven.ina_manager_area, nil, false,

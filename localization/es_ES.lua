@@ -1124,8 +1124,13 @@ return {
                 text = {
                     "{C:tarot}+#1#{} espacio de {C:tarot}consumibles{}"
                 }
+            },
+            j_ina_Akihiro = {
+                name = "Akihiro Hino",
+                text = {
+                    "{C:dark_edition,E:1}Por favor espere un poco más{}"
+                }
             }
-
         },
 
         Other = {
@@ -1564,7 +1569,8 @@ return {
             ina_thanks = "Gracias a",
             ina_lead_developer = "Desarrollador principal: ",
             ina_graphic_designers = "Diseñadores: ",
-            ina_developers = "Desarrolladores: "
+            ina_developers = "Desarrolladores: ",
+            ina_akihiro = "Por favor, espere un poco más"
         },
         high_scores = {},
         labels = {

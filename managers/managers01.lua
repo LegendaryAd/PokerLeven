@@ -140,8 +140,36 @@ local Koudera = J({
     }
 })
 
+-- Akihiro
+local Akihiro = J({
+    name = "Akihiro",
+    pos = { x = 3, y = 5 },
+    soul_pos = { x = 4, y = 5 },
+    config = { extra = { antes_remaining = 14 } },
+    loc_vars = function(self, info_queue, center)
+        return { vars = { center.ability.extra.consumables_slots } }
+    end,
+    rarity = 4,
+    special = "Manager",
+    cost = 8,
+    atlas = "Managers01",
+    calculate = function(self, card, context)
+        if context.end_of_round and context.main_eval and G.GAME.blind.boss and
+            card.ability.extra.antes_remaining > 0 then
+            card_eval_status_text(card, 'extra', nil, nil, nil,
+                { message = localize("ina_akihiro"), colour = G.C.DARK_EDITION })
+            play_sound('gong', 0.76, 1.6)
+            ease_ante(-1)
+            card.ability.extra.antes_remaining = card.ability.extra.antes_remaining - 1
+        end
+    end,
+    ina_credits = {
+        idea = { "Turiño" },
+    },
+})
+
 
 return {
     name = "Managers",
-    list = { Nelly, Celia, Koudera }
+    list = { Nelly, Celia, Koudera, Akihiro }
 }
