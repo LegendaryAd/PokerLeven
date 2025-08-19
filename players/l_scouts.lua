@@ -67,6 +67,7 @@ local Ryoma = J({
         if context.post_trigger and
             context.other_card ~= card and
             context.other_card.ability and context.other_card.ability.extra and
+            type(context.other_card.ability.extra) == "table" and
             context.other_card.ability.extra.pposition == C.GK then
             card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult_mod_low
             G.E_MANAGER:add_event(Event({
@@ -381,7 +382,7 @@ local Rex_George = J({
     pools = { ["Scout"] = true },
     cost = 5,
     atlas = "Jokers10",
-    ptype = C.Forest,
+    ptype = C.Wind,
     pposition = C.GK,
     pteam = "Scout",
     blueprint_compat = true,
