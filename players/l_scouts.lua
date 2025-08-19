@@ -66,7 +66,7 @@ local Ryoma = J({
     calculate = function(self, card, context)
         if context.post_trigger and
             context.other_card ~= card and
-            context.other_card.ability and context.other_card.pposition and
+            context.other_card.ability and context.other_card.ability.extra and
             context.other_card.ability.extra.pposition == C.GK then
             card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult_mod_low
             G.E_MANAGER:add_event(Event({
