@@ -34,7 +34,7 @@ Before installing **Pokerleven**, make sure you have the following:
 ## 🛠 Installation
 
 > [!IMPORTANT] 
-> **Note:** Mod Manager version is currently in development.
+> **Note:** Mod Manager version is available.
 
 1. **Download** the latest `.zip` from this repository.
 2. **Extract** its contents into your Balatro `mods` folder *(create it if it doesn't exist)*.
