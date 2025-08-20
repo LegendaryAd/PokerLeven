@@ -24,7 +24,7 @@
 Before installing **Pokerleven**, make sure you have the following:  
 
 - 💘 [**Lovely**](https://github.com/ethangreen-dev/lovely-injector) | ***Latest Release** recommended*  
-- ♠️ [**Steammodded**](https://github.com/Steamopollys/smods) | ***> 8.0** recommended*  
+- ♠️ [**Steammodded**](https://github.com/Steamopollys/smods) | ***Latest Release** recommended*  
  
 
 > [!WARNING] 
