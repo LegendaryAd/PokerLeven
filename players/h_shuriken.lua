@@ -197,7 +197,7 @@ local hattori = J({
                         end
 
                         _card.calculate_joker = function(self, context)
-                            if context.end_of_round then
+                            if context.end_of_round and context.main_eval then
                                 self:start_dissolve({ HEX("57ecab") }, nil, 1.6)
                                 self:remove_from_deck()
                             end
