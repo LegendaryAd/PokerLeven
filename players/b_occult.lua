@@ -266,7 +266,7 @@ local Franky = {
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.cardarea == G.jokers and context.scoring_hand then
-      if context.joker_main and #context.scoring_hand == 1 then
+      if context.joker_main and context.scoring_name == "High Card" then
         card.ability.extra.triggered = true
         return {
           message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult_mod } },
