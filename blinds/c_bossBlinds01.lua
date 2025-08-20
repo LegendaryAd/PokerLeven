@@ -21,7 +21,7 @@ local debuff_type = function(ptype)
 
         local elementals_index
         for i, v in pairs(G.jokers.cards) do
-            if C.ELEMENTALS_KEYS[v.config.center_key] and not elementals_index then
+            if C.ELEMENTALS_KEYS[v.config.center_key] and v.ability.extra.ptype == ptype and not elementals_index then
                 elementals_index = i
             elseif v.ability.extra.ptype == ptype then
                 v:set_debuff(true)
