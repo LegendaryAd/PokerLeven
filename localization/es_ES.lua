@@ -1134,6 +1134,16 @@ return {
         },
 
         Other = {
+            card_emult = {
+                text = {
+                    "{C:dark_edition}^#1#{} Mult"
+                }
+            },
+            card_extra_emult = {
+                text = {
+                    "{C:dark_edition}^#1#{} Mult"
+                }
+            },
             Mountain = {
                 name = "Tipo",
                 text = { "{X:mountain,C:white}Montaña{}" }

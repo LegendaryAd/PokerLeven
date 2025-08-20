@@ -174,7 +174,7 @@ local Spray = J({
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.setting_blind then
-            if to_big(G.GAME.dollars) < to_big(card.ability.extra.max_money) then
+            if G.GAME.dollars < card.ability.extra.max_money then
                 card.ability.extra.current_Xmult = card.ability.extra.current_Xmult + card.ability.extra.Xmult_mod
                 card.ability.extra.triggered = true
                 return {
@@ -212,7 +212,7 @@ local Dawson = J({
     techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.joker_main and to_big(G.GAME.dollars) < to_big(card.ability.extra.max_money)
+        if context.cardarea == G.jokers and context.joker_main and G.GAME.dollars < card.ability.extra.max_money
             and #context.full_hand == 1 then
             G.E_MANAGER:add_event(Event({
                 delay = 0.5,

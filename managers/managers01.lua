@@ -23,7 +23,7 @@ local Nelly = J({
                 return {
                     message = localize('k_saved_ex'),
                     saved = 'ina_saved',
-                    dollars = lenient_bignum(card.ability.extra.dead_money - G.GAME.dollars),
+                    dollars = card.ability.extra.dead_money - G.GAME.dollars,
                     colour = G.C.RED,
                 }
             end

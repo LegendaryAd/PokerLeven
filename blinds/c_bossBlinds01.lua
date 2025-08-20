@@ -510,12 +510,12 @@ local zeus = B({
         if not blind.disabled then
             if context.debuff_hand then
                 blind.triggered = false
-                if G.GAME.hands[context.scoring_name].level > to_big(1) then
+                if G.GAME.hands[context.scoring_name].level > 1 then
                     blind.triggered = true
                     if not context.check then
                         local level_down = -G.GAME.hands[context.scoring_name].level + 1
                         return {
-                            level_up = lenient_bignum(level_down)
+                            level_up = level_down
                         }
                     end
                 end

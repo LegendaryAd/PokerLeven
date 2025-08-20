@@ -289,7 +289,7 @@ local Martin = J({
             key = "a_powmult",
             vars = { number_format(card.ability.extra.legendary_exp) },
           }),
-          Emult_mod = lenient_bignum(card.ability.extra.legendary_exp),
+          Emult_mod = card.ability.extra.legendary_exp,
           colour = G.C.DARK_EDITION,
         }
       end
