@@ -28,68 +28,6 @@ function Game:start_run(args)
 
     game_start_run_ref(self, args)
 
-    Pokerleven.ina_manager_uibox = UIBox {
-        definition = Pokerleven.create_UIBox_manager_area(),
-        config = {
-            align = 'cmi',
-            offset = { x = 2, y = 3.5 },
-            major = self.consumeables,
-            bond = 'Weak'
-        } }
-
-    self.ina_bench = UIBox {
-        definition = Pokerleven.create_UIBox_bench_area(),
-        config = {
-            align = 'cmi',
-            offset = { x = 0, y = -5 },
-            major = self.jokers,
-            bond = 'Weak',
-            instance_type = "CARD" },
-    }
-
-    self.ina_bench.states.visible = false
-    G.GAME.ina_show_bench = G.GAME.ina_show_bench or false
-
-    Pokerleven.bench_open = false
-    Pokerleven.bench_forced = false
-end
-
-Pokerleven.create_UIBox_bench_area = function()
-    local t = {
-        n = G.UIT.ROOT,
-        config = { align = 'cm', r = 0.1, colour = G.C.CLEAR, padding = 0.02 },
-        nodes = {
-            {
-                n = G.UIT.O,
-                config = {
-                    object = Pokerleven.ina_bench_area,
-                }
-            },
-        }
-    }
-    return t
-end
-
-Pokerleven.create_UIBox_manager_area = function()
-    return {
-        n = G.UIT.ROOT,
-        config = { align = 'cm', r = 0.1, colour = G.C.CLEAR, padding = 0.2 },
-        nodes = {
-            {
-                n = G.UIT.O,
-                config = {
-                    object = Pokerleven.ina_manager_area,
-                    draw_layer = 1
-                }
-            },
-        }
-    }
-end
-
-local game_start_run_ref_buttons = Game.start_run
-function Game:start_run(args)
-    game_start_run_ref_buttons(self, args)
-
     self.ina_extra_buttons = UIBox {
         definition = {
             n = G.UIT.ROOT,
@@ -143,6 +81,65 @@ function Game:start_run(args)
         }
     }
     self.HUD:recalculate()
+
+    Pokerleven.ina_manager_uibox = UIBox {
+        definition = Pokerleven.create_UIBox_manager_area(),
+        config = {
+            align = 'cmi',
+            offset = { x = 2, y = 3.5 },
+            major = self.consumeables,
+            bond = 'Weak'
+        } }
+
+    self.ina_bench = UIBox {
+        definition = Pokerleven.create_UIBox_bench_area(),
+        config = {
+            align = 'cmi',
+            offset = { x = 0, y = -5 },
+            major = self.jokers,
+            bond = 'Weak',
+            instance_type = "CARD" },
+    }
+
+    self.ina_bench.states.visible = false
+    G.GAME.ina_show_bench = G.GAME.ina_show_bench or false
+
+    Pokerleven.bench_open = false
+    Pokerleven.bench_forced = false
+
+    LeakScope.snap("start_run")
+end
+
+Pokerleven.create_UIBox_bench_area = function()
+    local t = {
+        n = G.UIT.ROOT,
+        config = { align = 'cm', r = 0.1, colour = G.C.CLEAR, padding = 0.02 },
+        nodes = {
+            {
+                n = G.UIT.O,
+                config = {
+                    object = Pokerleven.ina_bench_area,
+                }
+            },
+        }
+    }
+    return t
+end
+
+Pokerleven.create_UIBox_manager_area = function()
+    return {
+        n = G.UIT.ROOT,
+        config = { align = 'cm', r = 0.1, colour = G.C.CLEAR, padding = 0.2 },
+        nodes = {
+            {
+                n = G.UIT.O,
+                config = {
+                    object = Pokerleven.ina_manager_area,
+                    draw_layer = 1
+                }
+            },
+        }
+    }
 end
 
 ---Opens Bench area
@@ -179,6 +176,7 @@ Pokerleven.open_bench = function(forced, open, delay_close)
                 return true
             end
         }))
+        LeakScope.snap("open_bench")
     elseif not open and (not Pokerleven.bench_forced or forced) and Pokerleven.bench_open then
         Pokerleven.bench_open = false
         Pokerleven.bench_forced = false
@@ -209,7 +207,18 @@ Pokerleven.open_bench = function(forced, open, delay_close)
                 return true
             end
         }))
+        LeakScope.snap("close_bench")
     end
+end
+
+local remove_from_area_ref = CardArea.remove_card
+function CardArea:remove_card(card, ...)
+    if card and card.children and card.children.use_button then
+        card.children.use_button.config.parent = nil
+        card.children.use_button:remove()
+        card.children.use_button = nil
+    end
+    return remove_from_area_ref(self, card, ...)
 end
 
 ---Returns true if card is a manager
@@ -245,17 +254,24 @@ Pokerleven.add_to_bench = function(card)
     end
 end
 
-
---- Hook for new buttons on jokers / cards
+-- Hook for new buttons on jokers / cards
 local card_highlight_ref = Card.highlight
 function Card:highlight(is_highlighted)
-    if self.area and self.area.config.type == "joker" and self.area ~= G.consumeables
-        and (self.area == G.jokers or self.area == Pokerleven.ina_bench_area or self.area == Pokerleven.ina_manager_area) then
+    if self.area and self.area.config.type == "joker"
+        and self.area ~= G.consumeables
+        and (self.area == G.jokers
+            or self.area == Pokerleven.ina_bench_area
+            or self.area == Pokerleven.ina_manager_area) then
         self.highlighted = is_highlighted
 
         if self.highlighted then
-            local params = {}
+            if self.children.use_button then
+                self.children.use_button.config.parent = nil
+                self.children.use_button:remove()
+                self.children.use_button = nil
+            end
 
+            local params = {}
             if Pokerleven.is_manager(self) then
                 params.sell = true
             elseif self.area ~= G.ina_bench_area then
@@ -274,9 +290,12 @@ function Card:highlight(is_highlighted)
                     parent = self,
                 }
             }
-        elseif self.children.use_button then
-            self.children.use_button:remove()
-            self.children.use_button = nil
+        else
+            if self.children.use_button then
+                self.children.use_button.config.parent = nil
+                self.children.use_button:remove()
+                self.children.use_button = nil
+            end
         end
     else
         card_highlight_ref(self, is_highlighted)
@@ -323,21 +342,17 @@ G.FUNCS.toggle_bench_card = function(e, add_func, open_bench_flag)
             return true
         end
     }))
-    local sell_cost = card.sell_cost
-    local new_card = copy_card(card)
-    new_card.sell_cost = sell_cost
 
-    change_bobby_sprites_if_needed(card, new_card)
+    change_bobby_sprites_if_needed(card, card)
 
-    card:remove()
-    G.GAME.used_jokers[card.config.center.key] = true
+    -- G.GAME.used_jokers[card.config.center.key] = true
 
     G.E_MANAGER:add_event(Event({
         trigger = 'immediate',
         func = function()
-            add_func(new_card)
+            G.jokers:remove_card(card)
+            add_func(card)
 
-            new_card:remove_from_deck()
             Pokerleven.open_bench(true, open_bench_flag)
             return true
         end
@@ -360,17 +375,13 @@ G.FUNCS.unbench_card = function(e)
         end
     }))
 
-    local sell_cost = card.sell_cost
-    local unbench_card = copy_card(card)
-    unbench_card.sell_cost = sell_cost
-
-    change_bobby_sprites_if_needed(card, unbench_card)
+    change_bobby_sprites_if_needed(card, card)
 
     G.E_MANAGER:add_event(Event({
         trigger = 'immediate',
         func = function()
-            G.jokers:emplace(unbench_card)
-            unbench_card:add_to_deck()
+            Pokerleven.ina_bench_area:remove_card(card)
+            G.jokers:emplace(card)
             Pokerleven.open_bench(true, false)
             return true
         end
@@ -383,7 +394,6 @@ G.FUNCS.unbench_card = function(e)
             if card.edition and card.edition.negative then
                 Pokerleven.ina_bench_area.config.card_limit = Pokerleven.ina_bench_area.config.card_limit - 1
             end
-            card:remove()
             return true
         end
     }))

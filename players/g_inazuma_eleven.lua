@@ -150,8 +150,8 @@ local butler = J({
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.individual and context.scoring_hand and context.cardarea == G.play
-        and context.other_card and to_big(G.GAME.dollars) < to_big(0) then
-      local raw_division = -to_number(G.GAME.dollars) / 4
+        and context.other_card and G.GAME.dollars < 0 then
+      local raw_division = -G.GAME.dollars / 4
       local chips_to_add = math.floor(raw_division) * card.ability.extra.chips_mod
       if chips_to_add ~= 0 then
         context.other_card.ability.bonus =

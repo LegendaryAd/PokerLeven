@@ -7,8 +7,8 @@ local get_vars = function(hand_text, hand_key)
             G.GAME.hands[hand_key].l_chips,
             colours = {
                 (
-                    to_big(G.GAME.hands[hand_key].level) == to_big(1) and G.C.UI.TEXT_DARK
-                    or G.C.HAND_LEVELS[to_number(math.min(7, G.GAME.hands[hand_key].level))]
+                    G.GAME.hands[hand_key].level == 1 and G.C.UI.TEXT_DARK
+                    or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[hand_key].level)]
                 ),
             },
         }
