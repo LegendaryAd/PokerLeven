@@ -85,8 +85,8 @@ return {
                 name = "Occult",
                 text = { "Los 6 puntuan dos veces" }
             },
-            bl_ina_raimonOB = {
-                name = "Raimon OB",
+            bl_ina_inazuma_eleven = {
+                name = "Inazuma Eleven",
                 text = { "Cada corazon otorga 20 chips extra!" }
             },
             bl_ina_shun = {
@@ -132,8 +132,8 @@ return {
                 name = "Jefe de Viento",
                 text = { "Los jugadores de tipo {X:Wind,C:white}Viento{}", "están debilitados", "tras cada mano jugada" }
             },
-            bl_ina_inazuma_og = {
-                name = "Inazuma Eleven",
+            bl_ina_raimon = {
+                name = "Raimon",
                 text = { "Tienes que jugar 5 cartas" }
             },
             bl_ina_royal_blind = {
@@ -1123,6 +1123,25 @@ return {
                 name = "Koudera",
                 text = {
                     "{C:tarot}+#1#{} espacio de {C:tarot}consumibles{}"
+                }
+            },
+            j_ina_Aurelia = {
+                name = "Aurelia",
+                text = {
+                    "{C:green}+#1#{} {C:attention}reroll{} gratis por tienda"
+                }
+            },
+            j_ina_Silvia = {
+                name = "Silvia",
+                text = {
+                    "{C:green}+#1#{} {C:attention}booster pack{} slot"
+                }
+            },
+            j_ina_Chester = {
+                name = "Chester",
+                text = {
+                    "Puedes ver las próximas {C:tarot}#1#{}",
+                    "cartas que van a salir"
                 }
             },
             j_ina_Akihiro = {

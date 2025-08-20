@@ -6,7 +6,7 @@ local Nelly = J({
     loc_vars = function(self, info_queue, center)
         return { vars = { center.ability.extra.min_money, center.ability.extra.max_money, center.ability.extra.dead_ante, center.ability.extra.dead_money } }
     end,
-    rarity = 2,
+    rarity = 1,
     special = "Manager",
     pools = { ["Manager"] = true },
     cost = 7,
@@ -83,16 +83,19 @@ local Celia = J({
 local Silvia = J({
     name = "Silvia",
     pos = { x = 2, y = 0 },
-    config = { extra = {} },
+    config = { extra = { boosters = 1 } },
     loc_vars = function(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.boosters } }
     end,
-    rarity = 1,
+    rarity = 2,
     special = "Manager",
     cost = 4,
     atlas = "Managers01",
-    calculate = function(self, card, context)
-        -- TODO Add logic
+    add_to_deck = function(self, card, from_debuff)
+        SMODS.change_booster_limit(card.ability.extra.boosters)
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        SMODS.change_booster_limit(-card.ability.extra.boosters)
     end
 })
 
@@ -100,16 +103,19 @@ local Silvia = J({
 local Aurelia = J({
     name = "Aurelia",
     pos = { x = 3, y = 0 },
-    config = { extra = {} },
+    config = { extra = { shop_rerolls = 1 } },
     loc_vars = function(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.shop_rerolls } }
     end,
     rarity = 1,
     special = "Manager",
     cost = 4,
     atlas = "Managers01",
-    calculate = function(self, card, context)
-        -- TODO Add logic
+    add_to_deck = function(self, card, from_debuff)
+        SMODS.change_free_rerolls(card.ability.extra.shop_rerolls)
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        SMODS.change_free_rerolls(-card.ability.extra.shop_rerolls)
     end
 })
 
@@ -168,8 +174,27 @@ local Akihiro = J({
     },
 })
 
+-- Chester
+local Chester = J({
+    name = "Chester",
+    pos = { x = 0, y = 4 },
+    config = { extra = { scry_ammount = 2 } },
+    loc_vars = function(self, info_queue, center)
+        return { vars = { center.ability.extra.scry_ammount } }
+    end,
+    rarity = 1,
+    special = "Manager",
+    cost = 6,
+    atlas = "Managers01",
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.scry_amount = (G.GAME.scry_amount or 0) + card.ability.extra.scry_ammount
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.scry_amount = (G.GAME.scry_amount or 0) - card.ability.extra.scry_ammount
+    end
+})
 
 return {
     name = "Managers",
-    list = { Nelly, Celia, Koudera, Akihiro }
+    list = { Nelly, Celia, Silvia, Koudera, Aurelia, Chester, Akihiro }
 }

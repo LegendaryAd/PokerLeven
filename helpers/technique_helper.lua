@@ -130,11 +130,12 @@ increment_technique = function(card)
 
     if card.ability.extra.tech_level == 4
         and G.STAGE == G.STAGES.RUN and
-        not Pokerleven.aux_tab_card_area.cards then
+        not (Pokerleven.aux_tab_card_area and Pokerleven.aux_tab_card_area.cards) then
         check_for_unlock({ type = 'n4_upgraded' })
     end
 
-    if card.ability.extra.extra_back_size and G.STAGE == G.STAGES.RUN then
+    if card.ability.extra.extra_back_size and G.STAGE == G.STAGES.RUN
+        and not (Pokerleven.aux_tab_card_area and Pokerleven.aux_tab_card_area.cards) then
         G.hand.config.card_limit = G.hand.config.card_limit + 1
     end
 end

@@ -1125,6 +1125,25 @@ return {
                     "{C:tarot}+#1#{} espacio de {C:tarot}consumibles{}"
                 }
             },
+            j_ina_Aurelia = {
+                name = "Aurelia",
+                text = {
+                    "{C:green}+#1#{} {C:attention}reroll{} gratis por tienda"
+                }
+            },
+            j_ina_Silvia = {
+                name = "Silvia",
+                text = {
+                    "{C:green}+#1#{} {C:attention}booster pack{} slot"
+                }
+            },
+            j_ina_Chester = {
+                name = "Chester",
+                text = {
+                    "Puedes ver las próximas {C:tarot}#1#{}",
+                    "cartas que van a salir"
+                }
+            },
             j_ina_Akihiro = {
                 name = "Akihiro Hino",
                 text = {
