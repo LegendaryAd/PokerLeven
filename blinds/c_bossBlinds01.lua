@@ -262,10 +262,10 @@ local forest = {
     }
 }
 
-local inazuma_og = {
+local raimon = {
     object_type = "Blind",
-    name = "Inazuma Eleven",
-    key = "inazuma_og",
+    name = "Raimon",
+    key = "raimon",
     pos = { x = 0, y = 8 },
     boss = {
         min = 0,
@@ -528,7 +528,7 @@ return {
     name = "Boss Blinds",
     list = { goalkeeper, forward, defense,
         midfielder, fire, mountain, wind,
-        forest, inazuma_og, royal_blind, wild,
+        forest, raimon, royal_blind, wild,
         brain, otaku, shuriken, farm,
         kirkwood, zeus }
 }

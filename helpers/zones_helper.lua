@@ -351,6 +351,7 @@ G.FUNCS.toggle_bench_card = function(e, add_func, open_bench_flag)
         trigger = 'immediate',
         func = function()
             G.jokers:remove_card(card)
+            card:remove_from_deck()
             add_func(card)
 
             Pokerleven.open_bench(true, open_bench_flag)
@@ -381,6 +382,7 @@ G.FUNCS.unbench_card = function(e)
         trigger = 'immediate',
         func = function()
             Pokerleven.ina_bench_area:remove_card(card)
+            card:add_to_deck()
             G.jokers:emplace(card)
             Pokerleven.open_bench(true, false)
             return true

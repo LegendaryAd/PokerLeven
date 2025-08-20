@@ -126,10 +126,10 @@ local occult = B({
     end
 })
 
-local raimonOB = {
+local inazuma_eleven = {
     object_type = "Blind",
-    name = "ina-raimonOB",
-    key = "raimonOB",
+    name = "ina-inazuma_eleven",
+    key = "inazuma_eleven",
     pos = { x = 0, y = 8 },
     config = { extra = { suit = "Hearts", chips_mod = 20 } },
     discovered = false,
@@ -204,5 +204,5 @@ return {
     name = "bigBlinds01",
     list = { ff_regional_a, ff_regional_b, ff_national_a, ff_national_b,
         umbrella, inazuma_kids, sallys,
-        occult, raimonOB, shun, empress }
+        occult, inazuma_eleven, shun, empress }
 }
