@@ -23,9 +23,8 @@
 
 Before installing **Pokerleven**, make sure you have the following:  
 
-- 💘 [**Lovely**](https://github.com/ethangreen-dev/lovely-injector) | ***> 0.8.0** recommended*  
+- 💘 [**Lovely**](https://github.com/ethangreen-dev/lovely-injector) | ***Latest Release** recommended*  
 - ♠️ [**Steammodded**](https://github.com/Steamopollys/smods) | ***> 8.0** recommended*  
-- 🔮 [**Talisman**](https://github.com/SpectralPack/Talisman) | *Required for Gus Martin to work (use the **latest release** just in case)* 
  
 
 > [!WARNING] 
