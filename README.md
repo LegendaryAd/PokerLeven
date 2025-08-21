@@ -6,7 +6,7 @@
 
 **PokerLeven** is a full **overhaul mod** for *Balatro* inspired by the legendary **Inazuma Eleven** series.  
 > [!CAUTION]
-> Currently it is in **Alpha** state, be aware of bugs.
+> Currently it is in **Beta** state, be aware of bugs.
 
 ✨ **What’s inside?**
 - 🃏 **Jokers as Players** — Each with their own position, element, and signature super technique.
