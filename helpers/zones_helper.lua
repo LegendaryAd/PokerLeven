@@ -381,8 +381,8 @@ G.FUNCS.unbench_card = function(e)
     G.E_MANAGER:add_event(Event({
         trigger = 'immediate',
         func = function()
-            Pokerleven.ina_bench_area:remove_card(card)
             card:add_to_deck()
+            Pokerleven.ina_bench_area:remove_card(card)
             G.jokers:emplace(card)
             Pokerleven.open_bench(true, false)
             return true

@@ -498,14 +498,6 @@ local Steve = J({
 
 local old_use_consumeable = Card.use_consumeable
 
-local reset_use_consumable = function(card)
-  card.remove_from_deck = function(from_debuff)
-    function Card:use_consumeable(area, copier)
-      return old_use_consumeable(self, area, copier)
-    end
-  end
-end
-
 -- Erik
 local Erik = J({
   name = "Erik",
@@ -524,8 +516,6 @@ local Erik = J({
   pteam = "Raimon",
   blueprint_compat = true,
   add_to_deck = function(self, card, from_debuff)
-    reset_use_consumable(card)
-
     function Card:use_consumeable(area, copier)
       if self.ability and self.ability.name == "The Magician" then
         stop_use()
@@ -552,6 +542,11 @@ local Erik = J({
       else
         return old_use_consumeable(self, area, copier)
       end
+    end
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    function Card:use_consumeable(area, copier)
+      return old_use_consumeable(self, area, copier)
     end
   end
 })
