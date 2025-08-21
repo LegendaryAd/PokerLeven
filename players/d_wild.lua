@@ -92,7 +92,7 @@ local Chamaleon = J({
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main
-            and next(context.poker_hands['Flush']) then
+            and next(context.poker_hands['Flush']) and #context.scoring_hand > 4 then
             local suit_counts = {
                 Clubs = 0,
                 Hearts = 0,

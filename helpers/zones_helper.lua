@@ -402,6 +402,8 @@ G.FUNCS.unbench_card = function(e)
 end
 
 -- Thanks to Pokermon
+--#region Scry
+
 create_scry_cardarea = function()
     local config = { card_limit = 0, type = 'scry' }
     config.major = G.deck
@@ -481,3 +483,5 @@ update_scry_cardarea = function(scry_view)
         end,
     }))
 end
+
+--#endregion
