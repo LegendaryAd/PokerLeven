@@ -2,7 +2,7 @@
 local Kevin = J({
   name = "Kevin",
   pos = { x = 11, y = 0 },
-  config = { extra = { retriggers = 1, triggered = false } },
+  config = { extra = { retriggers = 1 } },
   rarity = 2,
   pools = { ["Raimon"] = true },
   cost = 7,
@@ -13,15 +13,7 @@ local Kevin = J({
   techtype = C.UPGRADES.Plus,
   calculate = function(self, card, context)
     if context.retrigger_joker_check and not context.retrigger_joker and context.other_card ~= self then
-      card.ability.extra.triggered = true;
-      local index
-      for k, v in ipairs(G.jokers.cards) do
-        if v == card then
-          index = k
-          break
-        end
-      end
-      if context.other_card == G.jokers.cards[index + 1] and is_position(context.other_card, "FW") then
+      if context.other_card == get_right_joker(card) and is_position(context.other_card, "FW") then
         return {
           message = localize("k_again_ex"),
           repetitions = card.ability.extra.retriggers,

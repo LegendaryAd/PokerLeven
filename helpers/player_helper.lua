@@ -369,11 +369,9 @@ function get_right_joker(main_card)
     sendDebugMessage("Looking for main_card in G.jokers.cards")
     for k, v in ipairs(G.jokers.cards) do
         if v == main_card then
-            sendDebugMessage("Index: " .. k .. " Card: " .. tostring(v))
             return G.jokers.cards[k + 1]
         end
     end
-    sendDebugMessage("main_card: " .. tostring(main_card))
     return nil
 end
 
