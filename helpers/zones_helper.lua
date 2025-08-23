@@ -48,7 +48,7 @@ function Game:start_run(args)
                         padding = 0.1,
                         r = 0.1,
                         hover = true,
-                        colour = G.ARGS.LOC_COLOURS["bench"],
+                        colour = G.ARGS.LOC_COLOURS and G.ARGS.LOC_COLOURS["bench"] or HEX("4ca0a5"),
                         shadow = true,
                         button = "ina_open_bench",
                         func = "ina_show_bench",
