@@ -8,7 +8,7 @@
 	"description": "Pokerleven is an overhaul mod for Balatro based on Inazuma Eleven series. Currently it is in alpha state, be aware of bugs.\nIt adds new small, big and boss blinds, as well as jokers and completely new mechanics.\n It is intended to play this mod without balatro content for the best experience.",
 	"prefix": "ina",
 	"main_file": "Pokerleven.lua",
-	"priority": 0,
+	"priority": 9007199254740991,
 	"badge_colour": "F7931E",
 	"badge_text_colour": "FFFFFF",
 	"display_name": "Pokerleven",

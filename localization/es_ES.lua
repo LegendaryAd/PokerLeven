@@ -44,8 +44,8 @@ return {
             bl_ina_inazuma_town = {
                 name = "Ciudad Inazuma",
                 text = { "Si has jugado más",
-                    "de #1# tipos de mano",
-                    "-#2# descarte" }
+                    "de 6 tipos de mano",
+                    "-1 descarte" }
             },
             bl_ina_glasses = {
                 name = "Gafitas",
