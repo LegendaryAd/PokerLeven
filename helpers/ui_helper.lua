@@ -184,8 +184,8 @@ SMODS.collection_pool = function(_base_pool)
     if is_blinds_pool then
         local filtered_result = {}
         for _, v in ipairs(result) do
-            local is_mod = (type(v.mod) == "string" and v.mod == "Pokerleven")
-                or (type(v.mod) == "table" and v.mod.id == "Pokerleven")
+            local is_mod = (type(v.mod) == "string" and (v.mod == "Pokerleven" or v.mod == "Multiplayer"))
+                or (type(v.mod) == "table" and (v.mod.id == "Pokerleven" or v.mod.id == "Multiplayer"))
             if is_mod then
                 filtered_result[#filtered_result + 1] = v
             end

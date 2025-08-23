@@ -34,7 +34,7 @@ pattern = '''G.DISCOVER_TALLIES.total.of = G.DISCOVER_TALLIES.total.of+1
 position = 'at'
 match_indent = true
 payload = '''
-local is_mod = v.mod and v.mod.id == 'Pokerleven'
+local is_mod = v.mod and (v.mod.id == 'Pokerleven' or v.mod.id == 'Multiplayer')
 if is_mod then
     G.DISCOVER_TALLIES.total.of = G.DISCOVER_TALLIES.total.of+1
     G.DISCOVER_TALLIES.blinds.of = G.DISCOVER_TALLIES.blinds.of+1
@@ -94,7 +94,6 @@ match_indent = true
 payload = '''
 elseif G.GAME.round_resets.blind.small then
     G.GAME.round_resets.blind_states.Small = 'Defeated'
-    print(G.GAME.round_resets.blind_states.Small)
 elseif G.GAME.round_resets.blind.big then
     G.GAME.round_resets.blind_states.Big = 'Defeated'
 '''
@@ -185,6 +184,7 @@ payload = '''
 local loc_target = localize{type = 'raw_descriptions', key = loc_key, set = 'Blind', vars = loc_vars or vars or blind_choice.config.vars}
 '''
 match_indent = true
+
 # blind collection UI
 [[patches]]
 [patches.pattern]

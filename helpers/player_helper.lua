@@ -138,7 +138,7 @@ get_team = function(card)
 end
 
 local player_in_bench = function(name)
-    if (not Pokerleven.ina_bench_area) then
+    if (not Pokerleven.ina_bench_area or not Pokerleven.ina_bench_area.cards) then
         return false
     end
 
