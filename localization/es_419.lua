@@ -44,8 +44,8 @@ return {
             bl_ina_inazuma_town = {
                 name = "Ciudad Inazuma",
                 text = { "Si has jugado más",
-                    "de #1# tipos de mano",
-                    "-#2# descarte" }
+                    "de 6 tipos de mano",
+                    "-1 descarte" }
             },
             bl_ina_glasses = {
                 name = "Gafitas",
@@ -294,6 +294,13 @@ return {
             j_ina_Kevin = {
                 name = "Kevin",
                 text = { "{C:forest}Tornado Dragón{}", "Vuelve a activar el comodín {X:fw,C:white}FW{}",
+                    "que está a su derecha{}",
+                    "Se activa cada {C:attention}#1# manos",
+                    "{C:inactive}#2# manos restantes" }
+            },
+            j_ina_Kevin_inf = {
+                name = "Kevin",
+                text = { "{C:forest}Tornado Dragón{}", "Vuelve a activar el comodín {X:fw,C:white}FW{}",
                     "que está a su derecha{}" }
             },
             j_ina_Mark = {
@@ -317,7 +324,7 @@ return {
             j_ina_Axel = {
                 name = "Axel",
                 text = { "{C:fire}Tornado de Fuego", "{X:mult,C:white}X#1#{} si la mano jugada",
-                    "contiene {C:attention}5 cartas{} de {C:red}corazones{}" }
+                    "contiene {C:attention}un color{} de {C:red}corazones{}" }
             },
             j_ina_Shadow = {
                 name = "Shadow",

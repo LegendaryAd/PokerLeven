@@ -294,6 +294,13 @@ return {
             j_ina_Kevin = {
                 name = "Kevin",
                 text = { "{C:forest}Tornado Dragon{}", "Reactivates the {X:fw,C:white}FW{} joker",
+                    "to its right{}",
+                    "Triggers evey {C:attention}#1# hands played",
+                    "{C:inactive}#2# hands remaining" }
+            },
+            j_ina_Kevin_inf = {
+                name = "Kevin",
+                text = { "{C:forest}Tornado Dragon{}", "Reactivates the {X:fw,C:white}FW{} joker",
                     "to its right{}" }
             },
             j_ina_Mark = {
@@ -317,7 +324,7 @@ return {
             j_ina_Axel = {
                 name = "Axel",
                 text = { "{C:fire}Fire Tornado", "{X:mult,C:white}X#1#{} if the played hand",
-                    "contains {C:attention}5 cards{} of {C:red}hearts{}" }
+                    "contains {C:attention}a flush{} of {C:red}hearts{}" }
             },
             j_ina_Shadow = {
                 name = "Shadow",

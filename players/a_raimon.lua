@@ -2,7 +2,14 @@
 local Kevin = J({
   name = "Kevin",
   pos = { x = 11, y = 0 },
-  config = { extra = { retriggers = 1 } },
+  config = { extra = { retriggers = 1, cooldown_base = 6, current_cooldown = 6 } },
+  loc_vars = function(self, info_queue, card)
+    return {
+      key = (card.ability.extra.tech_level or 0) < 5
+          and 'j_ina_Kevin' or 'j_ina_Kevin_inf',
+      vars = { card.ability.extra.cooldown_base, card.ability.extra.current_cooldown }
+    }
+  end,
   rarity = 2,
   pools = { ["Raimon"] = true },
   cost = 7,
@@ -12,8 +19,11 @@ local Kevin = J({
   pteam = "Raimon",
   techtype = C.UPGRADES.Plus,
   calculate = function(self, card, context)
-    if context.retrigger_joker_check and not context.retrigger_joker and context.other_card ~= self then
+    if card.ability.extra.current_cooldown == 0 and
+        context.retrigger_joker_check and not context.retrigger_joker and context.other_card ~= self then
       if context.other_card == get_right_joker(card) and is_position(context.other_card, "FW") then
+        card.ability.extra.current_cooldown = card.ability.extra.cooldown_base
+
         return {
           message = localize("k_again_ex"),
           repetitions = card.ability.extra.retriggers,
@@ -22,6 +32,9 @@ local Kevin = J({
       else
         return nil, true
       end
+    elseif card.ability.extra.current_cooldown > 0 and
+        Pokerleven.is_joker_turn(context) then
+      card.ability.extra.current_cooldown = card.ability.extra.current_cooldown - 1
     end
   end,
 })
@@ -100,7 +113,7 @@ local Nathan = J({
 local Jack = {
   name = "Jack",
   pos = { x = 2, y = 0 },
-  config = { extra = { chips_mod = 8, triggered = false } },
+  config = { extra = { chips_mod = 10, triggered = false } },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.chips_mod } }
   end,
@@ -133,7 +146,7 @@ local Jack = {
 }
 
 -- Axel Blaze
-local Axel = {
+local Axel = J({
   name = "Axel",
   pos = { x = 10, y = 0 },
   config = { extra = { xmult = 3.5, suit = "Hearts", triggered = false } },
@@ -150,24 +163,18 @@ local Axel = {
   pteam = "Raimon",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.joker_main and context.scoring_hand then
-      local count = 0
-      for i = 1, #context.scoring_hand do
-        if context.scoring_hand[i]:is_suit(card.ability.extra.suit) then
-          count = count + 1
-        end
-      end
-      if count == 5 then
-        card.ability.extra.triggered = true
-        return {
-          message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
-          colour = G.C.MULT,
-          Xmult_mod = card.ability.extra.xmult
-        }
-      end
+    if context.joker_main and context.scoring_hand
+        and next(context.poker_hands['Flush']) and
+        context.scoring_hand[1]:is_suit('Hearts') then
+      card.ability.extra.triggered = true
+      return {
+        message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
+        colour = G.C.MULT,
+        Xmult_mod = card.ability.extra.xmult
+      }
     end
   end,
-}
+})
 
 -- Shadow
 local Shadow = {
@@ -272,7 +279,7 @@ local Max = {
 local Peabody = {
   name = "Peabody",
   pos = { x = 8, y = 0 },
-  config = { extra = { current_mult = 0, mult_mod_low = 2, triggered = false } },
+  config = { extra = { current_mult = 0, mult_mod_low = 1, triggered = false } },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.current_mult, center.ability.extra.mult_mod_low } }
   end,
@@ -373,7 +380,7 @@ local Jude_Raimon = J({
 local Bobby = J({
   name = "Bobby",
   pos = { x = 0, y = 0 },
-  config = { extra = { chips_mod = 20 } },
+  config = { extra = { chips_mod = 30 } },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.chips_mod } }
   end,

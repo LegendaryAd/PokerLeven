@@ -29,8 +29,10 @@ technique_values = {
     alt_chips_mod = .2,
     byron_mult_fw = .2,
     byron_mult_mf = .2,
-    perish_tally = 1,   -- Cloak
-    extra_back_size = 1 -- Mark Evans
+    perish_tally = 1,    -- Cloak
+    extra_back_size = 1, -- Mark Evans
+    cooldown_base = -0.2,
+    current_cooldown = -0.2,
 }
 
 local roundable_fields = {
@@ -39,6 +41,8 @@ local roundable_fields = {
     mult_mod_low = true,
     chip_mod = true,
     copies_number = true,
+    cooldown_base = true,
+    current_cooldown = true
 }
 
 
