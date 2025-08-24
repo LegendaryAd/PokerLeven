@@ -155,7 +155,9 @@ local Seller = {
         if context.selling_self then
             for _, joker in ipairs(G.jokers.cards) do
                 if joker ~= card then
-                    joker.sell_cost = (joker.sell_cost or 0) + (card.ability.extra.sell_potential or 0)
+                    joker.ability.extra_value = (joker.ability.extra_value or 0) +
+                        (card.ability.extra.sell_potential or 0)
+                    joker:set_cost()
                 end
             end
             card.ability.extra.triggered = true

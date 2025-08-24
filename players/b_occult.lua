@@ -186,7 +186,8 @@ local Mask = {
           and not G.jokers.cards[my_pos + 1].getting_sliced then
         local sliced_card = G.jokers.cards[my_pos + 1]
         sliced_card.getting_sliced = true
-        card.sell_cost = card.sell_cost + card.ability.extra.sell_value
+        card.ability.extra_value = card.ability.extra_value + card.ability.extra.sell_value
+        card:set_cost()
 
         G.GAME.joker_buffer = G.GAME.joker_buffer - 1
         G.E_MANAGER:add_event(Event({
