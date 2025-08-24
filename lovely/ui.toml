@@ -35,7 +35,7 @@ match_indent = true
 overwrite = true
 payload = '''
 if v.set and (
-    (v.set == 'Joker' and v.ptype and v.mod.id == 'Pokerleven') or
+    (v.set == 'Joker' and v.ptype and v.mod and v.mod.id == 'Pokerleven') or
     v.consumeable or
     (v.special and (v.special == "Technique" or v.special == "Manager")) or
     (v.set == 'Edition') or
@@ -73,7 +73,7 @@ position = 'at'
 overwrite = true
 match_indent = true
 payload = '''
-if v.set and v.set == 'Joker' and v.special == nil and v.ptype and v.mod.id == 'Pokerleven' then
+if v.set and v.set == 'Joker' and v.special == nil and v.ptype and v.mod and v.mod.id == 'Pokerleven' then
 '''
 
 [[patches]]
@@ -94,7 +94,7 @@ pattern = "if v.set == 'Joker' then alert_joker = true end"
 position = 'at'
 match_indent = true
 payload = '''
-if v.set == 'Joker' and not v.special and v.mod.id == 'Pokerleven' then alert_joker = true end
+if v.set == 'Joker' and not v.special and v.mod and v.mod.id == 'Pokerleven' then alert_joker = true end
 if v.set == 'Joker' and v.special and v.special == "Technique" then alert_technique = true end
 if v.set == 'Joker' and v.special and v.special == "Manager" then alert_manager = true end
 '''
