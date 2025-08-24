@@ -33,6 +33,7 @@ technique_values = {
     extra_back_size = 1, -- Mark Evans
     cooldown_base = -0.2,
     current_cooldown = -0.2,
+    evolving_retriggers = 1,
 }
 
 local roundable_fields = {

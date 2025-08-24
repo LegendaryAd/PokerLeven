@@ -241,7 +241,7 @@ local Turner = {
     techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.joker_main and G.GAME.current_round.hands_played == 0
+        if context.cardarea == G.jokers and context.joker_main
             and next(context.poker_hands['Four of a Kind']) then
             card.ability.extra.triggered = true
             for i = 1, #find_player_team("Brain") do

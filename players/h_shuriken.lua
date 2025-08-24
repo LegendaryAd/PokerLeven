@@ -3,7 +3,7 @@ local hood = J({
     pos = { x = 9, y = 8 },
     config = {
         extra = {
-            xmult_mod = 0.5,
+            xmult_mod = 0.6,
             triggered = false,
             pposition = "GK"
         }
@@ -36,7 +36,7 @@ local hood = J({
 local hillfort = J({
     name = "Hillfort",
     pos = { x = 11, y = 8 },
-    config = { extra = { triggered = false, chips_mod = 2, current_chips = 0, dollars_needed = 1 } },
+    config = { extra = { triggered = false, chips_mod = 1, current_chips = 0, dollars_needed = 1 } },
     loc_vars = function(self, info_queue, center)
         return { vars = { center.ability.extra.chips_mod, center.ability.extra.dollars_needed, center.ability.extra.current_chips } }
     end,

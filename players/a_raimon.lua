@@ -322,7 +322,7 @@ local Jude_Raimon = J({
   name = "Jude_Raimon",
   pos = { x = 3, y = 3 },
   config = {
-    extra = { current_xmult = 1, xmult_mod = 0.10, next_xmult = 1, triggered = false
+    extra = { current_xmult = 1, xmult_mod = 0.06, next_xmult = 1, triggered = false
     }
   },
   loc_vars = function(self, info_queue, center)

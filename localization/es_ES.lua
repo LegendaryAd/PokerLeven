@@ -388,7 +388,7 @@ return {
             j_ina_Talisman = {
                 name = "Talisman",
                 text = { "{C:forest}Rapto Divino{}", "Vuelve a activar",
-                    " el comodín {X:occult,C:white}Occult{} que", "está a su derecha{} {C:attention}2 veces{}" }
+                    "el comodín {X:occult,C:white}Occult{} que", "está a su derecha{} {C:attention}#1# veces{}" }
             },
             j_ina_Wolfy = {
                 name = "Wolfy",
@@ -581,8 +581,7 @@ return {
             j_ina_Turner = {
                 name = "Turner",
                 text = { "{C:fire}Tornado de fuego{}", "Crea una copia de la {C:attention}primera carta{}",
-                    "puntuada en la {C:attention}primera mano{} jugada",
-                    "por cada jugador {X:brain,C:white}Brain{} en tu equipo",
+                    "puntuada por cada jugador {X:brain,C:white}Brain{} en tu equipo",
                     "si la mano jugada contiene un {C:attention}póker{}" }
             },
 
@@ -830,7 +829,7 @@ return {
                 text = { "{C:mountain}Muralla infinita{}",
                     "Gana {C:chips}+X{} fichas permanentemente ",
                     "al anotar un {C:attention}8{}, {C:attention}9{} o {C:attention}10{} siendo {C:chips}X{} el",
-                    "{C:attention}valor más alto{} entre esas cartas",
+                    "{C:attention}valor{} de esas cartas",
                     "{C:inactive}Actualmente{}: {C:chips}+#1#{}" }
             },
 
@@ -1272,6 +1271,7 @@ return {
                 name = "Ina Pack",
                 text = { "Elige {C:attention}#1#{} de {C:attention}#2#{} Cartas del {C:tarot}Tarot{}",
                     "#3# {C:strat}Strats{} o #4# {C:training}Entrenamientos{}",
+                    "compatible con uno de tus jugadores",
                     "para usar de inmediato" }
             },
             p_ina_manager_pack = {
@@ -1476,8 +1476,11 @@ return {
         Tag = {
             tag_ina_wild_tag = {
                 name = "Etiqueta Wild",
-                text = { "La tienda tiene un {C:attention}jugador gratuito{}",
-                    "{C:uncommon}Poco Común{} de uno de tus equipos" }
+                text = { { "La tienda tiene un {C:attention}jugador gratuito{}",
+                    "{C:uncommon}Poco Común{} de uno de tus equipos",
+                },
+                    { "Probabilidad aumentada de que",
+                        "el comodín sea {C:dark_edition}negativo{}" } }
             },
             tag_ina_chain_tag = {
                 name = "Etiqueta Cadena",

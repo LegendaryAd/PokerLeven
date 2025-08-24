@@ -355,6 +355,13 @@ local CARD_ORDER = {
 
 local create_card_by_order = function(position_index)
 	local card_type = CARD_ORDER[position_index] or CARD_ORDER.default
+	if card_type == C.TRAINING then
+		combinations = Pokerleven.get_all_type_pos_combinations()
+		local selected_combination = pseudorandom_element(combinations, pseudoseed('training'))
+
+		return create_card(C.TRAINING, G.pack_cards, nil, nil, true, true,
+			selected_combination, nil)
+	end
 	return create_card(card_type, G.pack_cards, nil, nil, true, true, nil, nil)
 end
 

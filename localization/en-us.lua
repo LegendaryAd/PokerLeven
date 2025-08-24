@@ -388,7 +388,7 @@ return {
             j_ina_Talisman = {
                 name = "Talisman",
                 text = { "{C:forest}Divine Abduction{}", "Reactivates",
-                    " the {X:occult,C:white}Occult{} joker to its right{} {C:attention}2 times{}" }
+                    " the {X:occult,C:white}Occult{} joker to its right{} {C:attention}#1# times{}" }
             },
             j_ina_Wolfy = {
                 name = "Wolfy",
@@ -581,8 +581,7 @@ return {
             j_ina_Turner = {
                 name = "Turner",
                 text = { "{C:fire}Fire Tornado{}", "Creates a copy of the {C:attention}first card{}",
-                    "scored in the {C:attention}first hand{} played",
-                    "per {X:brain,C:white}Brain{} player on your team",
+                    "scored per {X:brain,C:white}Brain{} player on your team",
                     "if the played hand contains a {C:attention}Four of a Kind{}" }
             },
 
@@ -830,7 +829,7 @@ return {
                 text = { "{C:mountain}Infinite Wall{}",
                     "Gains {C:chips}+X{} chips permanently ",
                     "when scoring an {C:attention}8{}, {C:attention}9{} or {C:attention}10{} with {C:chips}X{} being the",
-                    "{C:attention}highest value{} among those cards",
+                    "{C:attention}value{} of the scoring card",
                     "{C:inactive}Currently{}: {C:chips}+#1#{}" }
             },
 
@@ -1272,6 +1271,7 @@ return {
                 name = "Ina Pack",
                 text = { "Choose {C:attention}#1#{} of {C:attention}#2#{} {C:tarot}Tarot{} Cards",
                     "#3# {C:strat}Strats{} or #4# {C:training}Trainings{}",
+                    "compatible with one of your players",
                     "to use immediately" }
             },
             p_ina_manager_pack = {
@@ -1476,8 +1476,10 @@ return {
         Tag = {
             tag_ina_wild_tag = {
                 name = "Wild Tag",
-                text = { "The shop has a free {C:attention}player{}",
-                    "{C:uncommon}Uncommon{} from one of your teams" }
+                text = { { "The shop has a free {C:attention}player{}",
+                    "{C:uncommon}Uncommon{} from one of your teams" },
+                    { "It has an incremented chance",
+                        "to generate a {C:dark_edition}negative{} joker" } }
             },
             tag_ina_chain_tag = {
                 name = "Chain Tag",

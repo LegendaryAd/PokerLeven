@@ -206,7 +206,7 @@ local Artist = {
 local Arcade = {
     name = "Arcade",
     pos = { x = 0, y = 7 },
-    config = { extra = { new_lucky = 5, minus_dollars = -5, triggered = false } },
+    config = { extra = { new_lucky = 5, minus_dollars = -2, triggered = false } },
     loc_vars = function(self, info_queue, center)
         return { vars = { G.GAME.probabilities.new_lucky or center.ability.extra.new_lucky, center.ability.extra.minus_dollars } }
     end,

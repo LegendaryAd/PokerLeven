@@ -341,7 +341,7 @@ local George = {
 local Ace_Server = J({
     name = "Ace_Server",
     pos = { x = 0, y = 0 },
-    config = { extra = { odds = 5, hand_level_up = 1, ammount_needed = 2, rank_played = 14, } },
+    config = { extra = { odds = 4, hand_level_up = 1, ammount_needed = 2, rank_played = 14, } },
     loc_vars = function(self, info_queue, center)
         return {
             vars = { center.ability.extra.odds, center.ability.extra.hand_level_up, center.ability.extra.ammount_needed, center.ability.extra.rank_played }

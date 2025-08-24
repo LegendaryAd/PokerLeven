@@ -2,9 +2,9 @@
 local Talisman = {
   name = "Talisman",
   pos = { x = 11, y = 1 },
-  config = { extra = { retriggers = 2, triggered = false } },
+  config = { extra = { evolving_retriggers = 1, triggered = false } },
   loc_vars = function(self, info_queue, center)
-    return { vars = {} }
+    return { vars = { center.ability.extra.evolving_retriggers } }
   end,
   rarity = 3,
   pools = { ["Occult"] = true },
@@ -27,7 +27,7 @@ local Talisman = {
       end
       if context.other_card == G.jokers.cards[index + 1] and is_team(context.other_card, "Occult") then
         return {
-          repetitions = card.ability.extra.retriggers,
+          repetitions = card.ability.extra.evolving_retriggers,
         }
       else
         return nil, true
@@ -40,7 +40,7 @@ local Talisman = {
 local Wolfy = {
   name = "Wolfy",
   pos = { x = 12, y = 1 },
-  config = { extra = { xmult_mod = 0.26, triggered = false } },
+  config = { extra = { xmult_mod = 0.4, triggered = false } },
   loc_vars = function(self, info_queue, center)
     return { vars = { 1 + center.ability.extra.xmult_mod * (G.GAME.used_moon_cards or 0), center.ability.extra.xmult_mod } }
   end,
@@ -214,7 +214,7 @@ local Mask = {
 local Styx = {
   name = "Styx",
   pos = { x = 4, y = 1 },
-  config = { extra = { chips_mod = 6, triggered = false } },
+  config = { extra = { chips_mod = 9, triggered = false } },
   loc_vars = function(self, info_queue, center)
     local current_chips = 0
     if G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.tarot > 0 then
@@ -282,7 +282,7 @@ local Franky = {
 local Mummy = {
   name = "Mummy",
   pos = { x = 9, y = 1 },
-  config = { extra = { mult_mod = 6, chip_mod = 6, suit = "Clubs", triggered = false } },
+  config = { extra = { mult_mod = 4, chip_mod = 4, suit = "Clubs", triggered = false } },
   loc_vars = function(self, info_queue, center)
     return {
       vars = { center.ability.extra.mult_mod,

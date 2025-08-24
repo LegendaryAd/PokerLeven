@@ -1,19 +1,4 @@
 -- Farm Jokers
-local get_all_type_pos_combinations = function()
-    local combinations = {}
-    local c_set = {}
-    for _, t in ipairs(C.ALL_TYPES) do
-        for _, p in ipairs(C.ALL_POSITIONS) do
-            local key = C.INA_UPGRADE_TECHNIQUE_KEY .. t .. "_" .. p
-            if #Pokerleven.find_player_type_and_position(t, p) > 0 and not c_set[key] then
-                table.insert(combinations, key)
-                c_set[key] = true
-            end
-        end
-    end
-
-    return combinations
-end
 
 local Greeny = J({
     name = "Greeny",
@@ -41,7 +26,7 @@ local Greeny = J({
             and card:has_enough_barriers()
             and card:is_rightmost_joker() and
             Pokerleven.has_enough_consumables_space() then
-            combinations = get_all_type_pos_combinations()
+            combinations = Pokerleven.get_all_type_pos_combinations()
             local selected_combination = pseudorandom_element(combinations, pseudoseed('training'))
 
             local new_card = create_card(C.TRAINING, G.consumeables, nil, nil, true, true,
@@ -111,7 +96,7 @@ local Hayseed = J({
 local Sherman = J({
     name = "Sherman",
     pos = { x = 3, y = 10 },
-    config = { extra = { current_chips = 0, chip_mod = 2 } },
+    config = { extra = { current_chips = 0, chip_mod = 5 } },
     loc_vars = function(self, info_queue, center)
         return { vars = { center.ability.extra.chip_mod, center.ability.extra.current_chips } }
     end,
@@ -319,27 +304,18 @@ local Hillvalley = J({
     techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.after and context.cardarea == G.jokers and not context.blueprint then
-            local max_val = nil
-
-            for _, c in ipairs(context.scoring_hand) do
-                local id = c:get_id()
-                if id == 8 or id == 9 or id == 10 then
-                    if not max_val or id > max_val then
-                        max_val = id
-                    end
-                end
-            end
-
-            if max_val then
-                card.ability.extra.current_chips = card.ability.extra.current_chips + max_val
-                card.ability.extra.triggered = true
-                return {
-                    message = localize('k_upgrade_ex'),
-                    colour = G.C.CHIPS,
-                    card = card
-                }
-            end
+        if context.individual and context.scoring_hand and context.other_card and
+            context.cardarea == G.play and
+            (context.other_card:get_id() == 8 or
+                context.other_card:get_id() == 9 or
+                context.other_card:get_id() == 10) then
+            card.ability.extra.current_chips = card.ability.extra.current_chips + context.other_card:get_id()
+            card.ability.extra.triggered = true
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.CHIPS,
+                card = card
+            }
         end
 
         if context.scoring_hand and context.joker_main and card.ability.extra.current_chips > 0 then

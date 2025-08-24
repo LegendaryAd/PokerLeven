@@ -250,3 +250,19 @@ Pokerleven.set_random_seals_to_highlighted_hand = function(seed)
         }))
     end
 end
+
+Pokerleven.get_all_type_pos_combinations = function()
+    local combinations = {}
+    local c_set = {}
+    for _, t in ipairs(C.ALL_TYPES) do
+        for _, p in ipairs(C.ALL_POSITIONS) do
+            local key = C.INA_UPGRADE_TECHNIQUE_KEY .. t .. "_" .. p
+            if #Pokerleven.find_player_type_and_position(t, p) > 0 and not c_set[key] then
+                table.insert(combinations, key)
+                c_set[key] = true
+            end
+        end
+    end
+
+    return combinations
+end

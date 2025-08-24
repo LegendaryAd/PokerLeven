@@ -129,7 +129,7 @@ local Thomas = J({
 local Tyler = J({
     name = "Tyler",
     pos = { x = 12, y = 11 },
-    config = { extra = { odds = 8 } },
+    config = { extra = { odds = 4 } },
     loc_vars = function(self, info_queue, center)
         table.insert(info_queue, { set = "Other", key = "Trillizos" })
         return { vars = { G.GAME.probabilities.normal or 1, center.ability.extra.odds } }
@@ -201,7 +201,7 @@ local Damian = J({
 local Nashmith = J({
     name = "Nashmith",
     pos = { x = 8, y = 11 },
-    config = { extra = { chip_mod = 10 } },
+    config = { extra = { chip_mod = 15 } },
     loc_vars = function(self, info_queue, center)
         return { vars = { center.ability.extra.chip_mod } }
     end,

@@ -41,6 +41,9 @@ local wild_tag = {
             create_shop_card_ui(card, 'Joker', context.area)
             card.states.visible = false
             tag:yep('+', G.C.GREEN, function()
+                if math.random(1, 3) == 1 then
+                    card:set_edition('e_negative')
+                end
                 card:start_materialize()
                 card.ability.couponed = true
                 card:set_cost()

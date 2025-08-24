@@ -152,7 +152,7 @@ local Chamaleon = J({
 local Eagle = {
     name = "Eagle",
     pos = { x = 3, y = 4 },
-    config = { extra = { current_mult = 0, mult_mod_low = 1, triggered = false } },
+    config = { extra = { current_mult = 0, mult_mod_low = 2, triggered = false } },
     loc_vars = function(self, info_queue, center)
         return { vars = { center.ability.extra.mult_mod_low, center.ability.extra.current_mult } }
     end,

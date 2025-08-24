@@ -72,9 +72,13 @@ local King = {
 local Bloom = J({
   name = "Bloom",
   pos = { x = 12, y = 2 },
-  config = { extra = { cards_scored = 0, Xmult_mod = 3 } },
+  config = { extra = { Xmult_mod = 3 } },
   loc_vars = function(self, info_queue, center)
-    return { vars = { center.ability.extra.Xmult_mod, center.ability.extra.cards_scored } }
+    local grand_total = 0
+    for _, card in pairs(G.GAME.cards_played) do
+      grand_total = grand_total + card.total
+    end
+    return { vars = { center.ability.extra.Xmult_mod, grand_total } }
   end,
   rarity = 1,
   pools = { ["Royal Academy"] = true },
@@ -86,11 +90,12 @@ local Bloom = J({
   techtype = C.UPGRADES.Number,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.individual and Pokerleven.card_scoring(context) then
-      card.ability.extra.cards_scored = card.ability.extra.cards_scored + 1
+    local grand_total = 0
+    for _, card in pairs(G.GAME.cards_played) do
+      grand_total = grand_total + card.total
     end
     if context.joker_main and context.scoring_hand and next(context.poker_hands['Straight'])
-        and card.ability.extra.cards_scored > 100 then
+        and grand_total >= 3 then
       return {
         Xmult = card.ability.extra.Xmult_mod
       }
@@ -162,7 +167,7 @@ local Jude = {
   name = "Jude",
   pos = { x = 2, y = 3 },
   config = {
-    extra = { current_xmult = 1, xmult_mod = 0.10, next_xmult = 1, triggered = false
+    extra = { current_xmult = 1, xmult_mod = 0.06, next_xmult = 1, triggered = false
     }
   },
   loc_vars = function(self, info_queue, center)
