@@ -407,6 +407,7 @@ local Rex_George = J({
     }
 })
 
+
 return {
     name = "Scout",
     list = { Blazer, Weathervane, Noggin, Montayne, Ace_Server, Rex_George, Mach, Dulce, Ryoma },
