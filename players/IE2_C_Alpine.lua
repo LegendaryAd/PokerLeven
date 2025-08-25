@@ -318,7 +318,8 @@ local onlign = {
   end
 }
 
-return {
+--[[ return {
   name = "Tormenta de Géminis",
   list = { ropes, downtown, bindings, gleeson, snowfield, bootgaiter, maddox, skipolson, shawn, climbstein, rackner, peggs, ursus, bogg, strata, onlign },
 }
+--]]
