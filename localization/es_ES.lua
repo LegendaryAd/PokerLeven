@@ -52,7 +52,7 @@ return {
                 text = { "Reactiva las primeras dos cartas",
                     "de cristal que puntuen" }
             },
-            -- Blinds grandes
+            -- Blinds grandes: Inazuma Eleven 1
             bl_ina_ff_regional_a = {
                 name = "Selección FF A",
                 text = { "Malardos A" }
@@ -99,6 +99,37 @@ return {
                 text = { "Gana una carta emperador",
                     "al derrotar la ciega" }
             },
+            -- Blinds grandes: Inazuma Eleven 2
+
+            bl_ina_spfixers = {
+                name = "Servicio Secreto",
+                text = { "" }
+            },
+            bl_ina_alpine = {
+                name = "Instituto Alpino",
+                text = { "" }
+            },
+            bl_ina_cloister = {
+                name = "Claustro Sagrado",
+                text = { "" }
+            },
+            bl_ina_osakaccc = {
+                name = "Triple C",
+                text = { "" }
+            },
+            bl_ina_fauxshore = {
+                name = "Instituto Fauxshore",
+                text = { "" }
+            },
+            bl_ina_marytimes = {
+                name = "Mary Times",
+                text = { "" }
+            },
+            bl_ina_robotsg = {
+                name = "Robots Guardias",
+                text = { "" }
+            },
+
             -- Blinds jefes
             bl_ina_goalkeeper = {
                 name = "GK",
@@ -170,6 +201,51 @@ return {
                 name = "Zeus",
                 text = { "Pone el nivel de la",
                     "mano de póker jugada a 1" }
+            },
+
+            -- Inazuma Eleven 2
+            bl_ina_gemini = {
+                name = "Tormenta de Geminis",
+                text = { "" }
+            },
+
+            bl_ina_epsilon = {
+                name = "Épsilon",
+                text = { "" }
+            },
+
+            bl_ina_epsilonplus = {
+                name = "Épsilon Plus",
+                text = { "" }
+            },
+
+            bl_ina_RRedux = {
+                name = "Royal Academy Redux",
+                text = { "" }
+            },
+
+            bl_ina_Genesis = {
+                name = "Génesis",
+                text = { "" }
+            },
+
+            bl_ina_Prominence = {
+                name = "Prominence",
+                text = { "" }
+            },
+
+            bl_ina_Diamond = {
+                name = "Polvo de Diamantes",
+                text = { "" }
+            },
+
+            bl_ina_YoungInazuma = {
+                name = "Inazuma Eleven",
+                text = { "" }
+            },
+            bl_ina_ForestTeam = {
+                name = "Mar de Árboles",
+                text = { "" }
             },
 
             -- Final Boss Blinds
