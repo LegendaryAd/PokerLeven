@@ -37,6 +37,7 @@ local debuff_type = function(ptype)
     end
 end
 
+-- Inazuma Eleven 1
 
 local goalkeeper = {
     object_type = "Blind",
@@ -524,11 +525,189 @@ local zeus = B({
     end
 })
 
+-- Inazuma Eleven 2
+
+local gemini = {
+    object_type = "Blind",
+    name = "ina-gemini",
+    key = "gemini",
+    pos = { x = 0, y = 16 },
+    config = { extra = {} },
+    discovered = false,
+    mult = 0,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 3 },
+    calculate = function(self, blind, context)
+    end
+}
+
+local epsilon = {
+    object_type = "Blind",
+    name = "ina-epsilon",
+    key = "epsilon",
+    pos = { x = 0, y = 17 },
+    config = { extra = {} },
+    discovered = false,
+    mult = 0,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 3 },
+    calculate = function(self, blind, context)
+    end
+}
+
+local epsilonplus = {
+    object_type = "Blind",
+    name = "ina-epsilonplus",
+    key = "epsilonplus",
+    pos = { x = 0, y = 18 },
+    config = { extra = {} },
+    discovered = false,
+    mult = 0,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 3 },
+    calculate = function(self, blind, context)
+    end
+}
+
+local RRedux = {
+    object_type = "Blind",
+    name = "ina-RRedux",
+    key = "RRedux",
+    pos = { x = 0, y = 19 },
+    config = { extra = {} },
+    discovered = false,
+    mult = 0,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 3 },
+    calculate = function(self, blind, context)
+    end
+}
+
+local Genesis = {
+    object_type = "Blind",
+    name = "ina-Genesis",
+    key = "Genesis",
+    pos = { x = 0, y = 20 },
+    config = { extra = {} },
+    discovered = false,
+    mult = 0,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 3 },
+    calculate = function(self, blind, context)
+    end
+}
+
+local Prominence = {
+    object_type = "Blind",
+    name = "ina-Prominence",
+    key = "Prominence",
+    pos = { x = 0, y = 22 },
+    config = { extra = {} },
+    boss = {
+        min = 9,
+    },
+    discovered = false,
+    mult = 0,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 3 },
+    calculate = function(self, blind, context)
+    end
+}
+
+local Diamond = {
+    object_type = "Blind",
+    name = "ina-Diamond",
+    key = "Diamond",
+    pos = { x = 0, y = 21 },
+    config = { extra = {} },
+    boss = {
+        min = 9,
+    },
+    discovered = false,
+    mult = 0,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 3 },
+    calculate = function(self, blind, context)
+    end
+}
+
+local YoungInazuma = {
+    object_type = "Blind",
+    name = "ina-YoungInazuma",
+    key = "YoungInazuma",
+    pos = { x = 0, y = 23 },
+    config = { extra = {} },
+    boss = {
+        min = 9,
+    },
+    discovered = false,
+    mult = 0,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 3 },
+    calculate = function(self, blind, context)
+    end
+}
+
+local ForestTeam = {
+    object_type = "Blind",
+    name = "ina-ForestTeam",
+    key = "ForestTeam",
+    pos = { x = 0, y = 24 },
+    config = { extra = {} },
+    boss = {
+        min = 9,
+    },
+    discovered = false,
+    mult = 0,
+    atlas = "bossBlinds",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 3 },
+    calculate = function(self, blind, context)
+    end
+}
+
 return {
     name = "Boss Blinds",
-    list = { goalkeeper, forward, defense,
-        midfielder, fire, mountain, wind,
-        forest, raimon, royal_blind, wild,
+    list = { goalkeeper, defense, midfielder, forward,
+        fire, mountain, wind, forest,
+        raimon, royal_blind, wild,
         brain, otaku, shuriken, farm,
         kirkwood, zeus }
 }
+
+--[[ return {
+    name = "Boss Blinds",
+    list = { raimon, royal_blind, wild,
+        brain, otaku, shuriken, farm,
+        kirkwood, zeus, gemini, epsilon,
+        epsilonplus, RRedux, Genesis, Prominence,
+        Diamond, YoungInazuma, ForestTeam,
+        goalkeeper, forward, defense,
+        midfielder, fire, mountain, wind, forest }
+} --]]

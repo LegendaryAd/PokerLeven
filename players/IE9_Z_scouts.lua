@@ -1,3 +1,6 @@
+
+-- Versión 0.1
+
 -- Dulce
 ---@param card Card
 local select_random_cards_for_harvest = function(card)
@@ -366,9 +369,27 @@ local Rex_George = J({
     pteam = "Scout",
     blueprint_compat = true,
     calculate = function(self, card, context)
-    end
+        if context.individual and context.cardarea == G.play then
+            local card_value = context.other_card:get_id()
+            for _, target_rank in ipairs(card.ability.extra.needed_rank) do
+                if card_value == target_rank then
+                    convert_cards_to(context.other_card, {
+                        set_rank = tostring(card.ability.extra.converted_rank)
+                    })
+                    return {
+                        message = localize("ina_convert"),
+                        colour = G.C.XMULT,
+                    }
+                end
+            end
+        end
+    end,
+    ina_credits = {
+        idea = { "Shadorossa" },
+    }
 })
 
+ -- Versión 0.2
 -- George
 local George = {
     name = "George",
