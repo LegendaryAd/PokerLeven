@@ -278,6 +278,11 @@ local toppin = {
   end
 }
 
+return {
+  name = "Tormenta de Géminis",
+  list = {},
+}
+
 --[[ return {
   name = "Tormenta de Géminis",
   list = { ironwall, western, stevens, smith, firepool, fielding, firsthand, mirror, tori, kennedy, sights },

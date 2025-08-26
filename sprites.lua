@@ -162,14 +162,29 @@ SMODS.Atlas({
 
 SMODS.Sound({
     key = "music_titlescreen",
-    path = "titlescreen.mp3",
-    volume = 0.7,
+    path = "titlescreen.ogg",
+    volume = 0.2,
     sync = {
         ina_music_mainline = true
     },
     pitch = 1,
     select_music_track = function()
         return G.STAGE == G.STAGES.MAIN_MENU
+    end,
+})
+
+SMODS.Sound({
+    key = "music_zeus",
+    path = "ie1_k_zeusblind.ogg",
+    volume = 0.2,
+    sync = {
+        ina_music_mainline = true
+    },
+    pitch = 1,
+    select_music_track = function()
+        if G.GAME and G.GAME.blind and G.GAME.blind.name == "Zeus" then
+            return true
+        end
     end,
 })
 
