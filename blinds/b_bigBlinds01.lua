@@ -330,9 +330,9 @@ return {
         occult, inazuma_eleven, shun, empress }
 }
 
---[[ return {
-    name = "bigBlinds01",
-    list = { ff_regional_a, ff_regional_b, ff_national_a, ff_national_b,
-        umbrella, inazuma_kids, sallys,
-        occult, inazuma_eleven, shun, empress, SPFixers, Alpine, Cloister, OsakaCCC, Fauxshore, MaryTimes, robotsg }
-} --]]
+-- return {
+--     name = "bigBlinds01",
+--     list = { ff_regional_a, ff_regional_b, ff_national_a, ff_national_b,
+--         umbrella, inazuma_kids, sallys,
+--         occult, inazuma_eleven, shun, empress, SPFixers, Alpine, Cloister, OsakaCCC, Fauxshore, MaryTimes, robotsg }
+-- }

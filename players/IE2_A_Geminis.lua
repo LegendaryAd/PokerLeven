@@ -222,9 +222,3 @@ return {
   name = "Tormenta de Géminis",
   list = {},
 }
-
---[[ return {
-  name = "Tormenta de Géminis",
-  list = { Galileo, Coral, Gigs, Ganymede, Charon, Pandora, Grengo, Io, Rihm, Janus, Diam },
-}
---]]

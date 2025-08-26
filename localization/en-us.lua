@@ -1595,6 +1595,9 @@ return {
             ina_mano = "Hand enhanced",
             ina_akihiro = "Wait a little more, please",
 
+            -- Rarity
+            k_ina_top = "Top",
+
             -- Resources
             ina_resource_barriers = "Barriers",
             ina_training_upgrades = "Training",
@@ -1633,6 +1636,8 @@ return {
             ina_tech_k_sticker = "Upgraded Technique",
             ina_tech_a_sticker = "Upgraded Technique",
             ina_tech_joker_sticker = "Upgraded Technique",
+
+            k_ina_top = "Top",
         },
         poker_hand_descriptions = {
             ["ina_TriplePair"] = {

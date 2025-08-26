@@ -35,6 +35,28 @@ payload = '''
 match_indent = true
 override = true
 
+# Replace start menu card
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+local replace_card = Card(self.title_top.T.x, self.title_top.T.y, 1.2*G.CARD_W*SC_scale, 1.2*G.CARD_H*SC_scale, G.P_CARDS.S_A, G.P_CENTERS.c_base)
+'''
+position = "at"
+payload = '''
+local replace_card = Card(self.title_top.T.x, self.title_top.T.y, 1.2*G.CARD_W*SC_scale, 1.2*G.CARD_H*SC_scale, G.P_CARDS.empty, G.P_CENTERS.j_ina_Mark)
+G.P_CENTERS.j_ina_Mark:set_sprites(replace_card)
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "replace_card.states.visible = false"
+position = "after"
+payload = "replace_card.seal = nil"
+match_indent = true
+
 # Replace discord link
 [[patches]]
 [patches.pattern]

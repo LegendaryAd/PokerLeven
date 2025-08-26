@@ -219,12 +219,6 @@ local Zell = {
 }
 
 return {
-  name = "Tormenta de Géminis",
+  name = "Epsilon",
   list = {},
 }
-
---[[ return {
-  name = "Tormenta de Géminis",
-  list = { Dvalin, Kenville, Mole, Kayson, Tytan, Fedora, Krypto, Sworm, Mercury, Metron, Zell },
-}
---]]

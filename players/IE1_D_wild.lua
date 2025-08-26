@@ -152,7 +152,7 @@ local Chamaleon = J({
 local Eagle = {
     name = "Eagle",
     pos = { x = 3, y = 4 },
-    config = { extra = { current_mult = 0, mult_mod_low = 2, triggered = false } },
+    config = { extra = { current_mult = 0, mult_mod_low = 1, triggered = false } },
     loc_vars = function(self, info_queue, center)
         return { vars = { center.ability.extra.mult_mod_low, center.ability.extra.current_mult } }
     end,
@@ -166,22 +166,18 @@ local Eagle = {
     techtype = C.UPGRADES.Plus,
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.before and context.cardarea == G.jokers
-            and next(context.poker_hands['Flush']) and not context.blueprint then
-            local count = 0
-            for _, c in ipairs(context.scoring_hand) do
-                if SMODS.has_enhancement(c, 'm_wild') then
-                    count = count + 1
-                end
-            end
-            card.ability.extra.current_mult = card.ability.extra.current_mult + (card.ability.extra.mult_mod_low * count)
-            if count > 0 then
-                return {
-                    message = localize('k_upgrade_ex'),
-                    colour = G.C.MULT,
-                    card = card
-                }
-            end
+        if context.individual
+            and context.scoring_hand
+            and next(context.poker_hands['Flush'])
+            and context.other_card
+            and context.cardarea == G.play
+            and SMODS.has_enhancement(context.other_card, 'm_wild') then
+            card.ability.extra.current_mult = card.ability.extra.current_mult + card.ability.extra.mult_mod_low
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.MULT,
+                card = card
+            }
         end
 
         if context.joker_main then

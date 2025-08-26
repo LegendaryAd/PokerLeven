@@ -10,10 +10,10 @@
 	"prefix": "ina",
 	"main_file": "Pokerleven.lua",
 	"priority": 9007199254740991,
-	"badge_colour": "F7931E",
+	"badge_colour": "ED533A",
 	"badge_text_colour": "FFFFFF",
 	"display_name": "Pokerleven",
-	"version": "0.1.1a-BETA",
+	"version": "0.1.2-BETA",
 	"dependencies": [
 		"Steamodded (>=1.0.0~BETA-0711a)",
 		"Lovely (>=0.6)"
