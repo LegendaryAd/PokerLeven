@@ -279,4 +279,7 @@ local toppin = {
 }
 
 return {
+  name = "SPFixers",
+  list = {}
+-- list = { ironwall, western, stevens, smith, firepool, fielding, firsthand, mirror, tori, kennedy, sights },
 }
