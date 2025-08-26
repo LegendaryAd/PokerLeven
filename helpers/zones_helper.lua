@@ -223,6 +223,19 @@ function CardArea:remove_card(card, ...)
     return remove_from_area_ref(self, card, ...)
 end
 
+local card_remove_from_area_ref = Card.remove_from_area
+function Card:remove_from_area()
+    if self.area == Pokerleven.ina_bench_area and
+        self.edition and self.edition.card_limit then
+        Pokerleven.ina_bench_area.config.card_limit =
+            Pokerleven.ina_bench_area.config.card_limit - self.edition.card_limit
+        if Pokerleven.ina_bench_area.config.card_limit < 1 then
+            Pokerleven.ina_bench_area.config.card_limit = 1
+        end
+    end
+    card_remove_from_area_ref(self)
+end
+
 ---Returns true if card is a manager
 ---@param card Card joker to deliberate if it's a manager
 Pokerleven.is_manager = function(card)
