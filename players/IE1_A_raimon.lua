@@ -43,13 +43,14 @@ local Kevin = J({
 local Mark = J({
   name = "Mark",
   pos = { x = 0, y = 0 },
+  soul_pos = { x = 0, y = 1 },
   config = { extra = { extra_hands = 1, extra_back_size = 1 } },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.extra_hands, center.ability.extra.extra_back_size } }
   end,
   rarity = 4,
   cost = 15,
-  atlas = "Jokers01",
+  atlas = "legendary01",
   ptype = "Mountain",
   pposition = "GK",
   discovered = true,
@@ -148,15 +149,16 @@ local Jack = {
 -- Axel Blaze
 local Axel = J({
   name = "Axel",
-  pos = { x = 10, y = 0 },
-  config = { extra = { xmult = 3.5, suit = "Hearts", triggered = false } },
+  pos = { x = 2, y = 0 },
+  soul_pos = { x = 2, y = 1 },
+  config = { extra = { xmult = 4.5, suit = "Hearts", triggered = false } },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.xmult } }
   end,
-  rarity = 3,
+  rarity = "ina_top",
   pools = { ["Raimon"] = true },
   cost = 8,
-  atlas = "Jokers01",
+  atlas = "top",
   ptype = "Fire",
   pposition = "FW",
   techtype = C.UPGRADES.Plus,
@@ -320,17 +322,18 @@ local Peabody = {
 -- Jude
 local Jude_Raimon = J({
   name = "Jude_Raimon",
-  pos = { x = 3, y = 3 },
+  pos = { x = 1, y = 0 },
+  soul_pos = { x = 1, y = 1 },
   config = {
-    extra = { current_xmult = 1, xmult_mod = 0.06, next_xmult = 1, triggered = false
+    extra = { current_xmult = 1, xmult_mod = 0.1, next_xmult = 1, triggered = false
     }
   },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.current_xmult, center.ability.extra.xmult_mod } }
   end,
-  rarity = 3,
+  rarity = "ina_top",
   cost = 8,
-  atlas = "Jokers01",
+  atlas = "top",
   stage = "one",
   ptype = "Wind",
   pposition = "MF",

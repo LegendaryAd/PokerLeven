@@ -165,18 +165,19 @@ local Drent = {
 -- Jude
 local Jude = {
   name = "Jude",
-  pos = { x = 2, y = 3 },
+  pos = { x = 0, y = 0 },
+  soul_pos = { x = 0, y = 1 },
   config = {
-    extra = { current_xmult = 1, xmult_mod = 0.06, next_xmult = 1, triggered = false
+    extra = { current_xmult = 1, xmult_mod = 0.1, next_xmult = 1, triggered = false
     }
   },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.current_xmult, center.ability.extra.xmult_mod } }
   end,
-  rarity = 3,
+  rarity = "ina_top",
   pools = { ["Royal Academy"] = true },
   cost = 8,
-  atlas = "Jokers01",
+  atlas = "top",
   ptype = "Wind",
   stage = "base",
   pposition = "MF",

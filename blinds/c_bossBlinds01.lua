@@ -496,35 +496,6 @@ local kirkwood = {
     end
 }
 
-local zeus = B({
-    object_type = "Blind",
-    name = "Zeus",
-    key = "zeus",
-    pos = { x = 0, y = 0 },
-    boss = { showdown = true },
-    discovered = false,
-    mult = 2,
-    atlas = "finalBossBlinds",
-    order = 1,
-    boss_colour = HEX("ffa726"),
-    calculate = function(self, blind, context)
-        if not blind.disabled then
-            if context.debuff_hand then
-                blind.triggered = false
-                if G.GAME.hands[context.scoring_name].level > 1 then
-                    blind.triggered = true
-                    if not context.check then
-                        local level_down = -G.GAME.hands[context.scoring_name].level + 1
-                        return {
-                            level_up = level_down
-                        }
-                    end
-                end
-            end
-        end
-    end
-})
-
 -- Inazuma Eleven 2
 
 local gemini = {
@@ -698,16 +669,16 @@ return {
         fire, mountain, wind, forest,
         raimon, royal_blind, wild,
         brain, otaku, shuriken, farm,
-        kirkwood, zeus }
+        kirkwood }
 }
 
---[[ return {
-    name = "Boss Blinds",
-    list = { raimon, royal_blind, wild,
-        brain, otaku, shuriken, farm,
-        kirkwood, zeus, gemini, epsilon,
-        epsilonplus, RRedux, Genesis, Prominence,
-        Diamond, YoungInazuma, ForestTeam,
-        goalkeeper, forward, defense,
-        midfielder, fire, mountain, wind, forest }
-} --]]
+-- return {
+--     name = "Boss Blinds",
+--     list = { raimon, royal_blind, wild,
+--         brain, otaku, shuriken, farm,
+--         kirkwood, zeus, gemini, epsilon,
+--         epsilonplus, RRedux, Genesis, Prominence,
+--         Diamond, YoungInazuma, ForestTeam,
+--         goalkeeper, forward, defense,
+--         midfielder, fire, mountain, wind, forest }
+-- }

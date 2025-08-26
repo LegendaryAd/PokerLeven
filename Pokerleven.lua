@@ -38,6 +38,41 @@ elseif UI ~= nil then
   UI()
 end
 
+SMODS.Rarity({
+  key = "top",
+  loc_txt = {},
+  badge_colour = SMODS.Gradient({
+    key = 'topplayer',
+    colours = {
+      HEX('e7b400'),
+      HEX('df7500'),
+    },
+    cycle = 5,
+    interpolation = 'trig'
+  })
+  ,
+  default_weight = 0.01,
+  pools = { ["Joker"] = true },
+})
+
+SMODS.Sticker:take_ownership("eternal", {
+  atlas = "stickers",
+  pos = { x = 9, y = 3 },
+  prefix_config = { key = false },
+})
+
+SMODS.Sticker:take_ownership("perishable", {
+  atlas = "stickers",
+  pos = { x = 10, y = 3 },
+  prefix_config = { key = false },
+})
+
+SMODS.Sticker:take_ownership("rental", {
+  atlas = "stickers",
+  pos = { x = 11, y = 3 },
+  prefix_config = { key = false },
+})
+
 --Load consumable types
 local pconsumable_types = NFS.getDirectoryItems(mod_dir .. "consumable types")
 
