@@ -220,5 +220,6 @@ local Zell = {
 
 return {
   name = "Epsilon",
-  list = {},
+  list = {}
+  -- list = { Dvalin, Kenville, Mole, Kayson, Tytan, Fedora, Krypto, Sworm, Mercury, Metron, Zell },
 }
