@@ -278,8 +278,8 @@ local toppin = {
   end
 }
 
---[[ return {
-  name = "Tormenta de Géminis",
-  list = { ironwall, western, stevens, smith, firepool, fielding, firsthand, mirror, tori, kennedy, sights },
+return {
+  name = "SPFixers",
+  list = {}
+  -- list = { ironwall, western, stevens, smith, firepool, fielding, firsthand, mirror, tori, kennedy, sights },
 }
---]]

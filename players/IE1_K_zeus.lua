@@ -324,7 +324,8 @@ end
 
 local Aphrodite = J({
   name = "Aphrodite",
-  pos = { x = 1, y = 13 },
+  pos = { x = 0, y = 2 },
+  soul_pos = { x = 0, y = 3 },
   config = { extra = { mf_probability = 0.7, byron_mult_fw = 0.3, byron_mult_mf = 0.15 } },
   loc_vars = function(self, info_queue, center)
     local position = center.ability.extra.pposition
@@ -332,7 +333,7 @@ local Aphrodite = J({
   end,
   rarity = 4, -- Legendary
   cost = 15,
-  atlas = "Jokers01",
+  atlas = "legendary01",
   ptype = "Forest",
   pposition = "MF", -- Midfielder
   pteam = "Zeus",

@@ -41,6 +41,13 @@ SMODS.Atlas({
 }):register()
 
 SMODS.Atlas({
+    key = "top",
+    path = "top.png",
+    px = 71,
+    py = 95
+}):register()
+
+SMODS.Atlas({
     key = "legendary01",
     path = "legendary01.png",
     px = 71,
@@ -174,6 +181,15 @@ SMODS.Sound({
 })
 
 local custom_colours = loc_colour
+local gradient = SMODS.Gradient({
+    key = 'topplayer2',
+    colours = {
+        HEX('e7b400'),
+        HEX('df7500'),
+    },
+    cycle = 5,
+    interpolation = 'trig'
+})
 function loc_colour(_c, _default)
     if not G.ARGS.LOC_COLOURS then
         custom_colours()
@@ -202,6 +218,8 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS["bench"] = HEX("4ca0a5")
     G.ARGS.LOC_COLOURS["training"] = HEX("5A00FF")
     G.ARGS.LOC_COLOURS["strat"] = HEX("9AA4B7")
+    G.ARGS.LOC_COLOURS["top"] = gradient
+
 
     return custom_colours(_c, _default)
 end

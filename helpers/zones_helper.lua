@@ -28,6 +28,8 @@ function Game:start_run(args)
 
     game_start_run_ref(self, args)
 
+    Pokerleven.set_base_rarities(0.69, 0.25, 0.05)
+
     self.ina_extra_buttons = UIBox {
         definition = {
             n = G.UIT.ROOT,
