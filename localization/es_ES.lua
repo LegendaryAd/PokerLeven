@@ -427,7 +427,7 @@ return {
                 name = "Max",
                 text = { "{C:wind}Remate Espiral{}",
                     "{C:chips}+#1#{} fichas por cada comodín de {X:wind,C:white}Viento{}",
-                    "{C:inactive}(Actual:{} {C:chips}+#2#{} {C:inactive}fichas){}" }
+                    "{C:inactive}(Actual:{} {C:chips}+#2#{} {C:inactive}){}" }
             },
             j_ina_Peabody = {
                 name = "Peabody",
@@ -504,7 +504,7 @@ return {
                 name = "Styx",
                 text = { "{C:forest}Tiro Fantasma{}",
                     "{C:chips}+#2#{} fichas por cada carta {C:tarot}Tarot{} usada",
-                    "{C:inactive}(Actual:{} {C:chips}+#1#{} {C:inactive}fichas){}",
+                    "{C:inactive}(Actual:{} {C:chips}+#1#{} {C:inactive}){}",
                 }
             },
             j_ina_Franky = {
@@ -587,7 +587,7 @@ return {
                 name = "Eagle",
                 text = { "{C:wind}Ataque de Cóndor{}", "Gana {C:mult}+#1#{} Mult por cada",
                     "{C:tarot}Carta Versatil{} que puntúe en una mano", "que contenga un {C:attention}Color{}",
-                    "{C:inactive}(Actual: {} {C:mult}+#2#{}{C:inactive}){}" }
+                    "{C:inactive}(Actual:{} {C:mult}+#2#{}{C:inactive}){}" }
             },
             j_ina_Monkey = {
                 name = "Monkey",
@@ -742,8 +742,8 @@ return {
             j_ina_Island = {
                 name = "Island",
                 text = { "{C:forest}Zig zag chispeante{}",
-                    "Gana {C:chips}+#1#{} fichas si la mano jugada",
-                    "contiene {C:attention}doble pareja{}",
+                    "Gana {C:chips}+#1#{} fichas si la mano",
+                    "jugada contiene {C:attention}doble pareja{}",
                     "{C:inactive}(Actual:{} {C:chips}+#2#{}{C:inactive}){}" }
             },
 
@@ -794,9 +794,9 @@ return {
             j_ina_Hillfort = {
                 name = "Hillfort",
                 text = { "{C:wind}Ataque de las Sombras{}",
-                    "Al seleccionar la ciega gana {C:chips}+#1#{} fichas",
-                    "por cada {C:money}#2#${} de valor de venta",
-                    "de los jugadores de {X:wind,C:white}Viento{}",
+                    "Al seleccionar la ciega gana",
+                    "{C:chips}+#1#{} fichas por cada {C:money}#2#${} de valor de",
+                    "venta de los {C:attention}Jokers{} de {X:wind,C:white}Viento{}",
                     "{C:inactive}(Actual:{} {C:chips}+#3#{}{C:inactive}){}" }
             },
 
@@ -817,7 +817,7 @@ return {
                 name = "Cleats",
                 text = { "{C:wind}Luna creciente{}",
                     "Al seleccionar la ciega",
-                    "{C:green}transforma el {c:attention}Joker derecho{}",
+                    "{C:green}transforma{} el {C:attention}Joker derecho{}",
                     "en otro de la misma {C:green}rareza"
                 }
             },
@@ -826,7 +826,7 @@ return {
                 name = "Hattori",
                 text = { "{C:forest}Remate Múltiple{}",
                     "Al seleccionar la ciega crea",
-                    "{C:attention}#1#{} copias negativas{} propias.",
+                    "{C:attention}#1#{} copias {C:dark_edition}negativas{} propias.",
                     "Se destruyen al finalizar la ronda" }
             },
 
@@ -868,9 +868,9 @@ return {
                 name = "Hayseed",
                 text = {
                     "{C:mountain}Siembra{}",
-                    "Gana {C:mult}+#1#{} de multiplicador",
-                    "por cada {C:attention}Trío exacto{} jugado",
-                    "{C:inactive}(Actual:{} {C:mult}+#2#{} de multi{C:inactive}){}"
+                    "Gana {C:mult}+#1#{} de multi por",
+                    "cada {C:attention}Trío exacto{} jugado",
+                    "{C:inactive}(Actual:{} {C:mult}+#2#{}{C:inactive}){}"
                 }
             },
 
@@ -879,7 +879,7 @@ return {
                 text = { "{C:fire}Trama Trama{}",
                     "Gana {C:chips}+#1# Fichas{}", "cuando se activa un",
                     "jugador del {X:farm,C:white}Farm{}",
-                    "{C:inactive}Actualmente{} {C:chips}+#2# Chips{}" }
+                    "{C:inactive}(Actual:{} {C:chips}+#2#{}{C:inactive}){}" }
             },
 
             j_ina_Spray = {
@@ -902,7 +902,7 @@ return {
                 text = { "{C:forest}Tiro Cegador{}",
                     "Tras jugar una mano {C:attention}Siembra{}.",
                     "{C:attention}Cosechador:{} Gana {C:mult}+#1# Mult{}",
-                    "{C:inactive}Actualmente{} {C:mult}+#2# Mult{}" }
+                    "{C:inactive}(Actual:{} {C:mult}+#2#{}{C:inactive}){}" }
             },
 
             j_ina_Hillvalley = {
@@ -911,7 +911,7 @@ return {
                     "Gana {C:chips}+X{} fichas permanentemente ",
                     "al anotar un {C:attention}8{}, {C:attention}9{} o {C:attention}10{} siendo {C:chips}X{} el",
                     "{C:attention}valor{} de esas cartas",
-                    "{C:inactive}Actual:{} {C:chips}+#1#{}{C:inactive}){}" }
+                    "{C:inactive}(Actual:{} {C:chips}+#1#{}{C:inactive}){}" }
             },
 
             -- Kirkwood
@@ -926,7 +926,7 @@ return {
                 name = "Night",
                 text = { "{C:fire}Corte Giratorio{}",
                     "Al elegir una ciega, genera un",
-                    "joker del {X:kirkwood,C:white}Kirkwood{}: {C:chips}Común{} o {C:green}Inusual{}",
+                    "{C:attention}Joker{} del {X:kirkwood,C:white}Kirkwood{}: {C:chips}Común{} o {C:green}Inusual{}",
                     "{C:attention}Puede generar repetidos{}",
                     "{C:inactive}Requiere espacio{}" }
             },
@@ -985,11 +985,11 @@ return {
             j_ina_Poseidon = {
                 name = "Poseidon",
                 text = { { "{C:mountain}Muralla Tsunami{}",
-                    "Genera {C:attention}#1#{} {X:mountain,C:white}barrera{} al jugar",
-                    "una mano de {C:attention}figuras{} con mínimo {C:attention}#2#{} puntuando" },
-                    { "{C:attention}Frontal{}",
-                        "{C:chips}+#3# Chips{} por cada {X:mountain,C:white}barrera{}",
-                        "{C:mult}Gasta{} todas las {X:mountain,C:white}barreras{}",
+                    "Genera {C:attention}#1#{} {X:mountain,C:white}barrera{} al jugar una mano",
+                    "de {C:attention}figuras{} con mínimo {C:attention}#2#{} puntuando" },
+                    { "{C:attention}Muralla Gigante{}",
+                        "{{C:mult}Consume{} todas las {X:mountain,C:white}barrera{}",
+                        "y otorga {C:chips}+#3# Chips{} por cada una",
                         "{C:inactive}Actualmente:{} {C:chips}+#4# Chips{}" } }
             },
 
@@ -997,11 +997,9 @@ return {
                 name = "Hephestus",
                 text = {
                     "{C:fire}Entrada Tormenta{}",
-                    "Al ganar la ciega convierte",
-                    "una {C:attention}carta aleatoria{}",
-                    "en una carta de {C:attention}Acero{}",
-                    "por cada jugador de",
-                    "tipo {X:fire,C:white}Fuego{} y posicion {X:df,C:white}DF{}"
+                    "Al ganar la ciega convierte ",
+                    "una {C:attention}Carta{} en {C:enhanced}Acero{} por",
+                    "cada {C:attention}Joker{} {X:fire,C:white}Fuego{} {X:df,C:white}DF{}"
                 }
             },
 
@@ -1009,10 +1007,9 @@ return {
                 name = "Apollo",
                 text = {
                     "{C:forest}Hora Celestial{}",
-                    "Si juegas una mano con {C:attention}doble pareja{}",
-                    "Gana {C:chips}+#1# fichas{} y {C:mult}+#4# mult{} {C:inactive}entre las 14 y las 19 pm{}",
-                    "Gana {C:chips}+#2# fichas{} {C:inactive}en caso contrario{}",
-                    "{C:inactive}(Actual:{} {C:chips}+#3#{}, {C:mult}+#5#{}{C:instead}){}"
+                    "Si juegas {C:attention}doble pareja{} gana {C:chips}+#2# fichas{}",
+                    "{C:inactive}De 14:00 a 19:00h:{} gana {C:chips}+#1# fichas{} y {C:mult}+#4# multi{}",
+                    "{C:inactive}(Actual:{} {C:chips}+#3#{} {C:inactive}y{} {C:mult}+#5#{}{C:instead}{C:inactive}){}"
                 }
             },
 
@@ -1021,7 +1018,7 @@ return {
                 text = { "{C:wind}Flecha Divina{}",
                     "Tras jugar una figura {C:attention}Siémbrala{}.",
                     "{C:attention}Cosechador:{} Gana {C:chips}+#1# Chips{}",
-                    "{C:inactive}Actualmente{} {C:chips}+#2# Chips{}" }
+                    "{C:inactive}(Actual:{} {C:chips}+#2#{}{C:inactive}){}" }
             },
 
             j_ina_Hermes = {
@@ -1265,7 +1262,7 @@ return {
                     "una carta {C:attention}Cosechable{}" }
             },
             Frontal = {
-                name = "Frontal",
+                name = "Muralla Gigante",
                 text = { "Se activa si es el",
                     "joker de más a la {C:attention}Izquierda{}" }
             },
