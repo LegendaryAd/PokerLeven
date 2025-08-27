@@ -442,7 +442,7 @@ return {
                 text = { "{C:wind}Espejismo de Balón{}",
                     "Gana {X:mult,C:white}X#2#{} cada vez que el {C:attention}Joker",
                     "a su {C:attention}izquierda{} se activa",
-                    "{C:inactive}(Actual:{} {X:mult,C:white}X#1#{}{C:Inactive}){}"
+                    "{C:inactive}(Actual:{} {X:mult,C:white}X#1#{}{C:inactive}){}"
                 }
             },
             j_ina_Bobby = {
@@ -518,8 +518,8 @@ return {
             j_ina_King = {
                 name = "King",
                 text = { "{C:fire}Escudo de Fuerza{}",
-                    "Si la mano jugada contiene un {C:attention}Trío{} de {C:attention}Reyes{}",
-                    "Crea una copia del rey más a la {C:attention}derecha{}" }
+                    "Copia el rey {C:attention}derecho{} al",
+                    "jugar un {C:attention}trío{} de {C:attention}reyes{}", }
             },
             j_ina_Bloom = {
                 name = "Bloom",
@@ -540,7 +540,7 @@ return {
                 text = { "{C:wind}Espejismo de Balón{}",
                     "Gana {X:mult,C:white}X#2#{} cada vez que el {C:attention}Joker",
                     "a su {C:attention}izquierda{} se activa",
-                    "{C:inactive}(Actual:{} {X:mult,C:white}X#1#{}{C:Inactive}){}"
+                    "{C:inactive}(Actual:{} {X:mult,C:white}X#1#{}{C:inactive}){}"
                 }
             },
             j_ina_Martin = {
@@ -563,9 +563,9 @@ return {
             },
             j_ina_Swing = {
                 name = "Swing",
-                text = { "{C:wind}Regate Multiple{}", "{C:chips}+#1#{} Fichas por cada",
-                    "comodín de la {X:royal academy,C:white}Acad. Royal{} si la",
-                    "mano contiene un {C:attention}Trío{}" }
+                text = { "{C:wind}Regate Multiple{}",
+                    "Al jugar {C:attention}Trío{} gana {C:chips}+#1#{} fichas",
+                    "por cada {C:attention}Joker{} de la {X:royal academy,C:white}Acad. Royal{}", }
             },
             j_ina_Chicken = {
                 name = "Chicken",
