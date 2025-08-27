@@ -511,7 +511,7 @@ return {
             },
             j_ina_Franky = {
                 name = "Franky",
-                text = { "{C:mountain}Mega Terremoto{}", "{C:attention}Carta alta{} otorga {C:mult}+#1#{} Mult" }
+                text = { "{C:mountain}Mega Terremoto{}", "{C:attention}Carta alta{} otorga", "{C:mult}+#1#{} de multi" }
             },
             j_ina_Mummy = {
                 name = "Mummy",
@@ -556,7 +556,7 @@ return {
                 name = "Master",
                 text = { "{C:wind}Coz{}",
                     "Si es el primer {C:attention}Joker{} a la izquierda,",
-                    "gana {C:mult}+#1#{} Mult por cada {X:royal academy,C:white}Acad. Royal{}", }
+                    "gana {C:mult}+#1#{} de multi por cada {X:royal academy,C:white}Acad. Royal{}", }
             },
             j_ina_Samford = {
                 name = "Samford",
@@ -571,8 +571,8 @@ return {
             },
             j_ina_Chicken = {
                 name = "Chicken",
-                text = { "{C:fire}Huevo Dorado{}", "Las cartas {C:attention}Versatiles{} tienen",
-                    "{C:green}#1# de #2#{} de probabilidad", "de ganar {C:money}#3#${} al puntuar" }
+                text = { "{C:fire}Huevo Dorado{}", "Las cartas {C:enhanced}Versátiles{} tienen",
+                    "{C:green}#1# de #2#{} de ganar {C:money}#3#${} al puntuar" }
             },
             j_ina_Boar = {
                 name = "Boar",
@@ -583,19 +583,19 @@ return {
                 name = "Chamaleon",
                 text = { "{C:wind}Espejismo{}",
                     "Permite jugar {C:attention}Color{} con 4 cartas",
-                    "Al jugarse otra, se transforma en {C:tarot}Versatil", }
+                    "Al jugarse otra, se transforma en {C:enhanced}Versátil", }
             },
             j_ina_Eagle = {
                 name = "Eagle",
                 text = { "{C:wind}Ataque de Cóndor{}",
-                    "Adquiere {C:mult}+#1#{} multi por cada carta",
-                    "{C:tarot}versátil{} puntuada en un {C:attention}Color",
+                    "Adquiere {C:mult}+#1#{} de multi por cada carta",
+                    "{C:enhanced}versátil{} puntuada en un {C:attention}Color",
                     "{C:inactive}(Actual:{} {C:mult}+#2#{}{C:inactive}){}" }
             },
             j_ina_Monkey = {
                 name = "Monkey",
                 text = { "{C:wind}Giro del Mono{}",
-                    "Obtén {X:mult,C:white}XMult{} por {C:tarot}cartas versátiles{}",
+                    "Obtén {X:mult,C:white}XMult{} por {C:enhanced}cartas versátiles{}",
                     "en el mazo, multiplicado por {X:wild,C:white}Wild{} / 10",
                     "{C:inactive}(Actual: {X:mult,C:white}X#1#{}{C:inactive}){}" }
             },
@@ -606,22 +606,22 @@ return {
             },
             j_ina_Cheetah = {
                 name = "Cheetah",
-                text = { "{C:wind}Superaceleración{}", "Si juegas {C:attention}5 cartas versatiles que puntúan{}",
-                    "vuelve a activarlas una vez",
-                    "por cada {C:attention}Joker{} del elemento {X:select_element,C:white}#1#{}",
-                    "El elemento cambia cada ronda" }
+                text = { "{C:wind}Superaceleración{}",
+                    "Al puntuar 5 cartas {C:enhanced}versátiles{} se",
+                    "reactivan por cada {C:attention}Joker{} de {X:select_element,C:white}#1#{}",
+                    "{C:inactive}El elemento cambia cada ronda{}" }
             },
             j_ina_Feldt = {
                 name = "Feldt",
                 text = { {
                     "{C:forest}Campo de Fuerza Defensivo{}",
                     "Genera {C:attention}#1#{} {X:mountain,C:white}Barrera{}",
-                    "si juegas al menos {C:attention}3{} {C:spades}Picas{}"
+                    "si la mano contiene {C:attention}3{} {C:spades}Picas{}"
                 },
                     {
-                        "En la {C:attention}última mano{} consume,",
-                        "todas las {X:mountain,C:white}Barreras{}",
-                        "para dar {X:mult,C:white}X#2#{} por {C:attention}Joker de {X:forest,C:white}Bosque{}",
+                        "En la {C:attention}última mano{} consume",
+                        "todas las {X:mountain,C:white}Barreras{} para",
+                        "dar {X:mult,C:white}X#2#{} por {C:attention}Joker de {X:forest,C:white}Bosque{}",
                         "{C:inactive}(Actual:{} {X:mult,C:white}X#3# {C:inactive}){}"
                     }
                 }
@@ -634,10 +634,9 @@ return {
                     "si juegas al menos {C:attention}3{} {C:spades}Picas{}"
                 },
                     {
-                        "En la {C:attention}última mano{},",
-                        "consume {C:attention}#4# {X:mountain,C:white}Barreras{}",
-                        "para dar {X:mult,C:white}X#2#{} por",
-                        "cada {C:attention}Joker{} de {X:forest,C:white}Bosque{}",
+                        "En la {C:attention}última mano{} consume",
+                        "{C:attention}#4# {X:mountain,C:white}Barreras{} para dar {X:mult,C:white}X#2#{}",
+                        "por cada {C:attention}Joker{} de {X:forest,C:white}Bosque{}",
                         "{C:inactive}Actualmente{} {X:mult,C:white}X#3#"
                     }
                 }
@@ -645,16 +644,16 @@ return {
 
             j_ina_Marvel = {
                 name = "Marvel",
-                text = { "{C:mountain}Escaner Defensa", "Si el valor en {C:chips}chips{}",
+                text = { "{C:mountain}Escaner Defensa", "Si el valor en {C:chips}fichas{}",
                     "de la carta que puntua",
                     "tiene {C:attention}exactamente 3 bits en 1{}",
-                    "{C:mult}+#1#{} mult{}" }
+                    "{C:mult}+#1#{} de multi" }
             },
 
             j_ina_Tell = {
                 name = "Tell",
-                text = { "{C:forest}Adivino{}", "{X:chips,C:white}XPI{} si tienes {C:attention}3 1 4{}",
-                    "en la mano trasera al puntuar" }
+                text = { "{C:forest}Adivino{}", "{X:chips,C:white}XPI{} si tienes {C:attention}3 1 4{} en",
+                    "la mano trasera al puntuar" }
             },
 
             j_ina_Seller = {
@@ -662,7 +661,7 @@ return {
                 text = { "{C:wind}Psicorremate{}", "Tras cada ronda jugada",
                     "gana {C:money}+#2#$ de potencial de venta{}.", "Cuando se venda Seller, aumenta",
                     "el {C:money}valor de venta{} de otros jokers", "por su potencial de venta",
-                    "{C:inactive}Actualmente{} {C:money}#1#${}" }
+                    "{C:inactive}(Actual:{} {C:money}#1#${}{C:inactive}){}" }
             },
 
             j_ina_Kind = {
@@ -813,7 +812,7 @@ return {
             j_ina_Star = {
                 name = "Star",
                 text = { "{C:wind}Regate Múltiple{}", "Por cada carta de {C:red}diamantes{}",
-                    "gana {C:money}+#1#${} y {C:mult}+#2#{} Mult", }
+                    "gana {C:money}+#1#${} y {C:mult}+#2#{} de multi", }
             },
 
             j_ina_Cleats = {
@@ -878,7 +877,7 @@ return {
             j_ina_Sherman = {
                 name = "Sherman",
                 text = { "{C:fire}Trama Trama{}",
-                    "Gana {C:chips}+#1# Fichas{}", "cuando se activa un",
+                    "Gana {C:chips}+#1#{} fichas", "cuando se activa un",
                     "{C:attention}Joker{} del {X:farm,C:white}Farm{}",
                     "{C:inactive}(Actual:{} {C:chips}+#2#{}{C:inactive}){}" }
             },
@@ -902,7 +901,7 @@ return {
                 name = "Muffs",
                 text = { "{C:forest}Tiro Cegador{}",
                     "Tras jugar una mano {C:attention}Siembra{}.",
-                    "{C:attention}Cosechador:{} Gana {C:mult}+#1# Mult{}",
+                    "{C:attention}Cosechador:{} Gana {C:mult}+#1#{} de multi",
                     "{C:inactive}(Actual:{} {C:mult}+#2#{}{C:inactive}){}" }
             },
 
@@ -937,7 +936,7 @@ return {
                 text = { "{C:fire}Tornado Inverso{}",
                     "{X:attention,C:white}Trillizos{}",
                     "Las cartas {C:attention}impares{}",
-                    "otorgan {C:mult}+#1# Mult{}" }
+                    "otorgan {C:mult}+#1#{} de multi" }
             },
 
             j_ina_Thomas = {
@@ -945,7 +944,7 @@ return {
                 text = { "{C:wind}Tornado Inverso{}",
                     "{X:attention,C:white}Trillizos{}",
                     "Las cartas {C:attention}impares{}",
-                    "otorgan {C:chips}+#1# Chips{}" }
+                    "otorgan {C:chips}+#1#{} fichas" }
             },
 
             j_ina_Tyler = {
@@ -953,15 +952,15 @@ return {
                 text = {
                     "{C:mountain}Tornado Inverso{}",
                     "{X:attention,C:white}Trillizos{}",
-                    "Las cartas {C:attention}impares{}",
-                    "generan un {C:tarot}tarot{} {C:green}#1# de #2# veces{}" }
+                    "Las cartas {C:attention}impares{} generan",
+                    "un {C:tarot}tarot{} {C:green}#1# de #2# veces{}" }
             },
 
             j_ina_Damian = {
                 name = "Damian",
                 text = {
                     "{C:wind}Luna Creciente{}",
-                    "Al salir de la tienda, gana {C:chips}+#1# Fichas{}",
+                    "Al salir de la tienda, gana {C:chips}+#1# fichas{}",
                     " por cada {C:attention}Joker{} de {X:fire,C:white}Fuego{} en juego",
                     "{C:inactive}(Actual:{} {C:chips}+#2#{}{C:inactive}){}" }
             },
@@ -971,7 +970,7 @@ return {
                 text = {
                     "{C:forest}Potenciación{}",
                     "Cada {C:spades}Pica{} jugada otorga",
-                    "{C:chips}+#1# Fichas{} por cada",
+                    "{C:chips}+#1#{} fichas por cada",
                     "{C:attention}Joker{} de {X:forest,C:white}Bosque{}",
                 }
             },
@@ -991,7 +990,7 @@ return {
                     { "{C:attention}Muralla Gigante{}",
                         "{{C:mult}Consume{} todas las {X:mountain,C:white}barrera{}",
                         "y otorga {C:chips}+#3# Chips{} por cada una",
-                        "{C:inactive}Actualmente:{} {C:chips}+#4# Chips{}" } }
+                        "{C:inactive}Actualmente:{} {C:chips}+#4#{} fichas" } }
             },
 
             j_ina_Hephestus = {
@@ -1018,7 +1017,7 @@ return {
                 name = "Artemis",
                 text = { "{C:wind}Flecha Divina{}",
                     "Tras jugar una figura {C:attention}Siémbrala{}.",
-                    "{C:attention}Cosechador:{} Gana {C:chips}+#1# Chips{}",
+                    "{C:attention}Cosechador:{} Gana {C:chips}+#1#{} fichas",
                     "{C:inactive}(Actual:{} {C:chips}+#2#{}{C:inactive}){}" }
             },
 
@@ -1033,9 +1032,9 @@ return {
                 name = "Demeter",
                 text = {
                     "{C:fire}Disparo con Rebotes{}",
-                    "Otorga {C:mult}+#1# Mult{} y {C:chips}+#2# Fichas{}",
+                    "Otorga {C:mult}+#1#{} de multi y {C:chips}+#2#{} fichas",
                     "por cada descarte restante",
-                    "{C:inactive}(Actual:{} {C:mult}+#3#{} {C:chips}+#4#{}{C:inactive}){}"
+                    "{C:inactive}(Actual:{} {C:mult}+#3#{} {C:inactive}y{} {C:chips}+#4#{}{C:inactive}){}"
                 }
             },
 
@@ -1133,9 +1132,9 @@ return {
                 name = "Ryoma",
                 text = {
                     "{C:mountain}Parada Infinita{}",
-                    "Gana {C:mult}+#1# mult{} cada vez",
+                    "Gana {C:mult}+#1#{} de multi cada vez",
                     "que se activa un {X:gk,C:white}GK{}",
-                    "{C:inactive}Actualmente{} {C:mult}+#2#{}"
+                    "{C:inactive}(Actual:{} {C:mult}+#2#{}{C:inactive}){}"
                 }
             },
 
@@ -1145,7 +1144,7 @@ return {
                     "{C:fire}Chut Granada{}",
                     "Gana {X:mult,C:white}X#1#{} al vender",
                     "un {C:attention}Joker {}o {C:attention}Mánager{}",
-                    "{C:inactive}Actualmente{} {X:mult,C:white}X#2#{}"
+                    "{C:inactive}(Actual:{} {X:mult,C:white}X#2#{}{C:inactive}){}"
                 }
             },
 
