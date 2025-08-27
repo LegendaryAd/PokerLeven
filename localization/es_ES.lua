@@ -836,17 +836,16 @@ return {
             j_ina_Cloack = {
                 name = "Cloack",
                 text = { "{C:fire}Espejismo{}", "{C:attention}Frontal{}",
-                    "Al seleccionar la ciega",
-                    "gasta {C:mountain}#1# Barreras{} para clonar",
-                    "un joker al azar {C:dark_edition}negativo{}",
-                    "perecedero con {C:attention}#2#{} rondas restantes" }
+                    "Al seleccionar la ciega clona",
+                    "un joker {C:dark_edition}negativo{} perecedero",
+                    "({C:attention}#2#{} rondas) gastando {C:mountain}#1# Barreras{}" },
             },
             j_ina_Cloack_inf = {
                 name = "Cloack",
                 text = { "{C:fire}Espejismo{}", "{C:attention}Frontal{}",
                     "Al seleccionar la ciega",
-                    "gasta {C:mountain}#1# Barreras{} para clonar",
-                    "un joker al azar {C:dark_edition}negativo{}" }
+                    "clona un joker {C:dark_edition}negativo{}",
+                    "gastando {C:mountain}#1# Barreras{}" },
             },
 
             -- Farm
@@ -1009,7 +1008,7 @@ return {
                 name = "Apollo",
                 text = {
                     "{C:forest}Hora Celestial{}",
-                    "Si juegas {C:attention}doble pareja{} gana {C:chips}+#2# fichas{}",
+                    "Al jugar {C:attention}doble pareja{} gana {C:chips}+#2# fichas{}",
                     "{C:inactive}De 14:00 a 19:00h:{} gana {C:chips}+#1# fichas{} y {C:mult}+#4# multi{}",
                     "{C:inactive}(Actual:{} {C:chips}+#3#{} {C:inactive}y{} {C:mult}+#5#{}{C:instead}{C:inactive}){}"
                 }
@@ -1036,7 +1035,7 @@ return {
                     "{C:fire}Disparo con Rebotes{}",
                     "Otorga {C:mult}+#1# Mult{} y {C:chips}+#2# Fichas{}",
                     "por cada descarte restante",
-                    "{C:inactive}(Actual:{}: {C:mult}+#3#{} {C:chips}+#4#{}{C:inactive}){}"
+                    "{C:inactive}(Actual:{} {C:mult}+#3#{} {C:chips}+#4#{}{C:inactive}){}"
                 }
             },
 
@@ -1155,7 +1154,7 @@ return {
                 text = { {
                     "{C:wind}Hojarasca{}",
                     "Convierte los {C:attention}#1#{}",
-                    "jugados en {C:attention}#2#s{}",
+                    "puntuados en {C:attention}#2#s{}",
                 } }
             },
 
