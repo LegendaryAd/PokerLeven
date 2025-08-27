@@ -1,18 +1,20 @@
 -- Dvalin
 local Dvalin = {
   name = "Dvalin",
-  pos = { x = 0, y = 5 },
+  pos = { x = 4, y = 0 },
+  soul_pos = { x = 4, y = 1 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
     return {}
   end,
-  rarity = 1, -- Common
+  rarity = "ina_top", -- Destacado
   pools = { ["Epsilon"] = true },
   cost = 7,
-  atlas = "Jokers02",
-  ptype = C.Forest,
+  atlas = "top",
+  ptype = C.Fire,
   pposition = C.GK,
   pteam = "Epsilon",
+  techtype = C.UPGRADES.Number,
   blueprint_compat = true,
   calculate = function(self, card, context)
   end
@@ -30,7 +32,7 @@ local Kenville = {
   pools = { ["Epsilon"] = true },
   cost = 7,
   atlas = "Jokers02",
-  ptype = C.Wind,
+  ptype = C.Fire,
   pposition = C.DF,
   pteam = "Epsilon",
   blueprint_compat = true,
@@ -210,7 +212,7 @@ local Zell = {
   pools = { ["Epsilon"] = true },
   cost = 7,
   atlas = "Jokers02",
-  ptype = C.Fire,
+  ptype = C.Wind,
   pposition = C.FW,
   pteam = "Epsilon",
   blueprint_compat = true,
