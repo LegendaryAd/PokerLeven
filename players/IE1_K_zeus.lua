@@ -19,6 +19,7 @@ local Poseidon = {
   atlas = "Jokers01",
   ptype = "Mountain",
   pposition = "GK",
+  techtype = C.UPGRADES.Number,
   pteam = "Zeus",
   blueprint_compat = true,
   calculate = function(self, card, context)
@@ -55,6 +56,7 @@ local Hephestus = J({
   atlas = "Jokers01",
   ptype = "Fire",
   pposition = "DF",
+  techtype = C.UPGRADES.Number,
   pteam = "Zeus",
   blueprint_compat = true,
   calculate = function(self, card, context)
@@ -102,9 +104,9 @@ local Apollo = {
   atlas = "Jokers01",
   ptype = "Forest",
   pposition = "DF",
+  techtype = C.UPGRADES.Plus,
   pteam = "Zeus",
   blueprint_compat = true,
-
   calculate = function(self, card, context)
     if Pokerleven.is_joker_turn(context) and card.ability.extra.current_chips > 0 then
       return {
@@ -151,8 +153,9 @@ local Artemis = J({
   pools = { ["Zeus"] = true },
   cost = 7,
   atlas = "Jokers01",
-  ptype = "Wind",
-  pposition = "MF", -- Midfielder
+  ptype = C.Wind,
+  pposition = C.MF, -- Midfielder
+  techtype = C.UPGRADES.Plus,
   pteam = "Zeus",
   blueprint_compat = true,
   calculate = function(self, card, context)
@@ -245,8 +248,9 @@ local Demeter = {
   pools = { ["Zeus"] = true },
   cost = 5,
   atlas = "Jokers01",
-  ptype = "Fire",
-  pposition = "FW",
+  ptype = C.Fire,
+  pposition = C.FW,
+  techtype = C.UPGRADES.Number,
   pteam = "Zeus",
   blueprint_compat = true,
   calculate = function(self, card, context)
@@ -336,8 +340,8 @@ local Aphrodite = J({
   atlas = "legendary01",
   ptype = "Forest",
   pposition = "MF", -- Midfielder
-  pteam = "Zeus",
   techtype = C.UPGRADES.Plus,
+  pteam = "Zeus",
   blueprint_compat = true,
   calculate = function(self, card, context)
     if Pokerleven.is_joker_end_of_round(context) then
