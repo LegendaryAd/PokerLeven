@@ -558,8 +558,8 @@ return {
             },
             j_ina_Samford = {
                 name = "Samford",
-                text = { "{C:forest}Pingüino Emperador N.º 2{}", "{X:mult,C:white}X#1#{} si tienes al menos",
-                    "{C:attention}1{} {X:mf,C:white}MF{} y {C:attention}2{} {X:fw,C:white}FW{} comodines" }
+                text = { "{C:forest}Pingüino Emperador N.º 2{}", "{X:mult,C:white}X#1#{} multi si hay",
+                    "{C:attention}1{} {X:mf,C:white}MF{} y {C:attention}2{} {X:fw,C:white}FW{}" }
             },
             j_ina_Swing = {
                 name = "Swing",
@@ -750,10 +750,9 @@ return {
             j_ina_Sweet = {
                 name = "Sweet",
                 text = { "{C:mountain}Reclutamiento{}",
-                    "Crea un comodín del {X:raimon,C:white}Raimon{} o {X:inazuma_eleven,C:white}I.Eleven",
-                    "cuando se selecciona la ciega{}",
-                    "Puede ser {C:chips}Común{} o {C:green}Poco Común{}",
-                    "{C:inactive}Tienes que tener espacio{}" }
+                    "Al seleccionar la ciega crea un {C:attention}Joker{}",
+                    "{C:chips}Común{} o {C:green}Inusual{} del {X:raimon,C:white}Raimon{} o {X:inazuma_eleven,C:white}I.Eleven{}",
+                    "{C:inactive}Debe haber espacio{}" }
             },
 
             j_ina_Butler = {
