@@ -506,7 +506,7 @@ return {
                 name = "Styx",
                 text = { "{C:forest}Tiro Fantasma{}",
                     "{C:chips}+#2#{} fichas por cada carta {C:tarot}Tarot{} usada",
-                    "{C:inactive}(Actual:{} {C:chips}+#1#{} {C:inactive}){}",
+                    "{C:inactive}(Actual:{} {C:chips}+#1#{}{C:inactive}){}",
                 }
             },
             j_ina_Franky = {
@@ -713,10 +713,11 @@ return {
 
             j_ina_Gamer = {
                 name = "Gamer",
-                text = { "{C:fire}Bateo Total{}", "Ganas {C:chips}fichas{} iguales a tus {C:attention}FPS / 2{}",
-                    "El bono pasa a ser {C:attention}FPS{} si",
-                    "tienes al menos 2 {C:attention}Jokers{} {X:otaku,C:white}Otaku{}",
-                    "El valor máximo es {C:attention}144 FPS{}", "{C:inactive}Actualmente{} {C:chips}+#1#{}" }
+                text = { "{C:fire}Bateo Total{}",
+                    "Ganas {C:chips}fichas{} por tus {C:attention}FPS / 2{}",
+                    "Pasa a ser {C:attention}FPS{} con 2 Jokers del ",
+                    "{X:otaku,C:white}Otaku{} y valor máximo de {C:attention}144 FPS{}",
+                    "{C:inactive}(Actual:{} {C:chips}+#1#{}{C:inactive}){}" }
             },
 
             j_ina_Artist = {
@@ -990,7 +991,7 @@ return {
                     { "{C:attention}Muralla Gigante{}",
                         "{{C:mult}Consume{} todas las {X:mountain,C:white}barrera{}",
                         "y otorga {C:chips}+#3# Chips{} por cada una",
-                        "{C:inactive}Actualmente:{} {C:chips}+#4#{} fichas" } }
+                        "{C:inactive}(Actual:{} {C:chips}+#4#{}{C:inactive}){}" } }
             },
 
             j_ina_Hephestus = {
