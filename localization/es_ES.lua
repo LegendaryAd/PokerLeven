@@ -432,7 +432,7 @@ return {
             j_ina_Peabody = {
                 name = "Peabody",
                 text = { "{C:mountain}Mano Celestial{}",
-                    "Aumenta en {C:mult}+#2#{} por cada {C:attention}carta activada{}",
+                    "Aumenta en {C:mult}+#2#{} por cada {C:attention}carta puntuada{}",
                     "en la última mano jugada",
                     "{C:inactive}(Actual:{} {C:mult}+#1#{} {C:inactive}multi en tu última mano){}"
                 }
@@ -448,8 +448,8 @@ return {
             j_ina_Bobby = {
                 name = "Bobby",
                 text = { { "{C:forest}El Traidor{}",
-                    "Al seleccionar la ciega cambia",
-                    "al equipo del que tengas más jugadores", },
+                    "Al seleccionar la ciega, cambia",
+                    "a tu equipo más numeroso", },
                     { "Los jugadores del equipo",
                         "de {C:attention}Bobby{} otorgan {C:chips}+#1# Chips{}", } }
             },
@@ -492,13 +492,15 @@ return {
             },
             j_ina_Grave = {
                 name = "Grave",
-                text = { "{C:fire}Maldición{}", "{C:green}#1# de #2#{} de probabilidad",
-                    "de crear una carta {C:tarot}Muerte{}", "por cada {C:attention}6{} anotado" }
+                text = { "{C:fire}Maldición{}", "{C:green}#1# en #2#{} de crear una carta",
+                    "{C:tarot}Muerte{} por cada {C:attention}6{} anotado" }
             },
             j_ina_Mask = {
                 name = "Mask",
-                text = { "{C:wind}Cuchilla Asesina{}", "Sacrifica el comodín a la derecha",
-                    "y gana {C:money}#1#${} de valor de venta", "cuando se selecciona una ciega" }
+                text = { "{C:wind}Cuchilla Asesina{}",
+                    "Al seleccionar la ciega se",
+                    "sacrifica el {C:attention}Joker{} de su derecha",
+                    "y gana {C:money}+#1#${} de valor de venta", }
             },
             j_ina_Styx = {
                 name = "Styx",
@@ -513,20 +515,19 @@ return {
             },
             j_ina_Mummy = {
                 name = "Mummy",
-                text = { "{C:forest}Gravedad{}", "Cada {C:clubs}#3#{} otorga {C:mult}+#1#{} Mult y {C:chips}+#2#{} Chips" }
+                text = { "{C:forest}Gravedad{}", "Cada {C:clubs}#3#{} otorga", "{C:mult}+#1#{} Mult y {C:chips}+#2#{} Chips" }
             },
             j_ina_King = {
                 name = "King",
                 text = { "{C:fire}Escudo de Fuerza{}",
                     "Copia el rey {C:attention}derecho{} al",
-                    "jugar un {C:attention}trío{} de {C:attention}reyes{}", }
+                    "jugar {C:attention}Trío{} de {C:attention}Reyes{}", }
             },
             j_ina_Bloom = {
                 name = "Bloom",
                 text = { "{C:fire}Chut de los 100 toques{}",
-                    "Si has jugado 100 cartas o más",
-                    "{X:mult,C:white}X#1#{} Mult al jugar una mano",
-                    "si contiene una escalera",
+                    "{X:mult,C:white}X#1#{} si juegas {C:attention}Escalera{} tras",
+                    "haber jugado {C:attention}100{} cartas",
                     "{C:inactive}(Actual:{} {C:mult}#2#{} {C:inactive}jugadas){}" }
             },
             j_ina_Drent = {
@@ -604,7 +605,8 @@ return {
             j_ina_Cheetah = {
                 name = "Cheetah",
                 text = { "{C:wind}Superaceleración{}", "Si juegas {C:attention}5 cartas versatiles que puntúan{}",
-                    "vuelve a activarlas una vez", "por cada jugador del elemento {X:select_element,C:white}#1#{}",
+                    "vuelve a activarlas una vez",
+                    "por cada {C:attention}Joker{} del elemento {X:select_element,C:white}#1#{}",
                     "El elemento cambia cada ronda" }
             },
             j_ina_Feldt = {
@@ -633,7 +635,7 @@ return {
                         "En la {C:attention}última mano{},",
                         "consume {C:attention}#4# {X:mountain,C:white}Barreras{}",
                         "para dar {X:mult,C:white}X#2#{} por",
-                        "cada jugador de {X:forest,C:white}Bosque{}",
+                        "cada {C:attention}Joker{} de {X:forest,C:white}Bosque{}",
                         "{C:inactive}Actualmente{} {X:mult,C:white}X#3#"
                     }
                 }
@@ -670,7 +672,7 @@ return {
             j_ina_Turner = {
                 name = "Turner",
                 text = { "{C:fire}Tornado de fuego{}", "Crea una copia de la {C:attention}primera carta{}",
-                    "puntuada por cada jugador {X:brain,C:white}Brain{} en tu equipo",
+                    "puntuada por cada {C:attention}Joker{} {X:brain,C:white}Brain{} en tu equipo",
                     "si la mano jugada contiene un {C:attention}póker{}" }
             },
 
@@ -701,17 +703,17 @@ return {
 
             j_ina_Robot = {
                 name = "Robot",
-                text = { "{C:wind}Confusión{}", "Vuelve a activar las {C:attention}Lucky Cards{}",
-                    "puntuadas en una {C:attention}escalera{}",
-                    "que estén en la misma posición",
-                    "que cada uno de tus jokers",
-                    "{X:mf,C:white}MF{} empezando por la izquierda" }
+                text = { "{C:wind}Confusión{}",
+                    "Reactiva las {C:gold}Lucky Cards{} en {C:attention}Escalera",
+                    "que coincidan en posición con cada {X:mf,C:white}MF{}",
+                    "empezando por la izquierda" }
             },
 
             j_ina_Gamer = {
                 name = "Gamer",
                 text = { "{C:fire}Bateo Total{}", "Ganas {C:chips}fichas{} iguales a tus {C:attention}FPS / 2{}",
-                    "El bono pasa a ser {C:attention}FPS{} si", "tienes al menos 2 jugadores {X:otaku,C:white}Otaku{}",
+                    "El bono pasa a ser {C:attention}FPS{} si",
+                    "tienes al menos 2 {C:attention}Jokers{} {X:otaku,C:white}Otaku{}",
                     "El valor máximo es {C:attention}144 FPS{}", "{C:inactive}Actualmente{} {C:chips}+#1#{}" }
             },
 
@@ -773,10 +775,9 @@ return {
             j_ina_Builder = {
                 name = "Builder",
                 text = { "{C:fire}Pájaro de Fuego{}",
-                    "Si la mano jugada contiene",
-                    " {C:attention}Full{} transforma una carta",
-                    "al azar en {C:attention}Acero{}",
-                    "y {C:mult}destruye{} otra carta" }
+                    "Si la mano contiene {C:attention}Full{},",
+                    "transforma una carta al azar",
+                    "en {C:enhanced}Acero{} y {C:red}destruye{} otra", }
             },
 
             -- Shuriken
@@ -856,9 +857,8 @@ return {
                     },
                     {
                         "{C:attention}Diestro{}",
-                        "Consume {C:attention}#3#{} {X:mountain,C:white}barreras{} para crear",
-                        "una carta de {C:training}entrenamiento{} que sea",
-                        "apta para un comodín cualquiera"
+                        "Crea una carta de {C:training}entrenamiento{} apta",
+                        "a un {C:attention}Joker{} consumiendo {C:attention}#3#{} {X:mountain,C:white}barreras{}",
                     }
                 }
             },
@@ -877,7 +877,7 @@ return {
                 name = "Sherman",
                 text = { "{C:fire}Trama Trama{}",
                     "Gana {C:chips}+#1# Fichas{}", "cuando se activa un",
-                    "jugador del {X:farm,C:white}Farm{}",
+                    "{C:attention}Joker{} del {X:farm,C:white}Farm{}",
                     "{C:inactive}(Actual:{} {C:chips}+#2#{}{C:inactive}){}" }
             },
 
@@ -960,7 +960,7 @@ return {
                 text = {
                     "{C:wind}Luna Creciente{}",
                     "Al salir de la tienda, gana {C:chips}+#1# Fichas{}",
-                    " por cada jugador de {X:fire,C:white}Fuego{} en juego",
+                    " por cada {C:attention}Joker{} de {X:fire,C:white}Fuego{} en juego",
                     "{C:inactive}(Actual:{} {C:chips}+#2#{}{C:inactive}){}" }
             },
 
@@ -970,7 +970,7 @@ return {
                     "{C:forest}Potenciación{}",
                     "Cada {C:spades}Pica{} jugada otorga",
                     "{C:chips}+#1# Fichas{} por cada",
-                    "jugador de {X:forest,C:white}Bosque{}",
+                    "{C:attention}Joker{} de {X:forest,C:white}Bosque{}",
                 }
             },
 
@@ -984,8 +984,8 @@ return {
             j_ina_Poseidon = {
                 name = "Poseidon",
                 text = { { "{C:mountain}Muralla Tsunami{}",
-                    "Genera {C:attention}#1#{} {X:mountain,C:white}barrera{} al jugar una mano",
-                    "de {C:attention}figuras{} con mínimo {C:attention}#2#{} puntuando" },
+                    "Genera {C:attention}#1#{} {X:mountain,C:white}barrera{} al puntuar",
+                    "un mínimo de {C:attention}#2#{} de {C:attention}figuras{}" },
                     { "{C:attention}Muralla Gigante{}",
                         "{{C:mult}Consume{} todas las {X:mountain,C:white}barrera{}",
                         "y otorga {C:chips}+#3# Chips{} por cada una",
