@@ -532,9 +532,10 @@ return {
             },
             j_ina_Drent = {
                 name = "Drent",
-                text = { "{C:mountain}Terremoto{}", "{C:green}#1# en #2#{} de probabilidad",
-                    "de crear una carta {C:tarot}La Torre{}", "después de cada {C:attention}mano{} jugada.",
-                    "La probabilidad mejora en 1", "por cada comodín {X:mountain,C:white}Montaña{}" }
+                text = { "{C:mountain}Terremoto{}",
+                    "{C:green}#1# en #2#{} de crear {C:tarot}La Torre{}",
+                    "después de cada {C:attention}mano{} jugada.",
+                    "Cada {C:attention}Joker{} {X:mountain,C:white}Montaña{} lo mejora en {C:green}1{}" }
             },
             j_ina_Jude = {
                 name = "Jude",
@@ -553,9 +554,9 @@ return {
             },
             j_ina_Master = {
                 name = "Master",
-                text = { "{C:wind}Coz{}", "{C:mult}+#1#{} Mult por cada",
-                    "comodín de la {X:royal academy,C:white}Acad. Royal{}",
-                    "si es el {C:attention}primer{} comodín a la izquierda" }
+                text = { "{C:wind}Coz{}",
+                    "Si es el primer {C:attention}Joker{} a la izquierda,",
+                    "gana {C:mult}+#1#{} Mult por cada {X:royal academy,C:white}Acad. Royal{}", }
             },
             j_ina_Samford = {
                 name = "Samford",
@@ -586,21 +587,22 @@ return {
             },
             j_ina_Eagle = {
                 name = "Eagle",
-                text = { "{C:wind}Ataque de Cóndor{}", "Gana {C:mult}+#1#{} Mult por cada",
-                    "{C:tarot}Carta Versatil{} que puntúe en una mano", "que contenga un {C:attention}Color{}",
+                text = { "{C:wind}Ataque de Cóndor{}",
+                    "Adquiere {C:mult}+#1#{} multi por cada carta",
+                    "{C:tarot}versátil{} puntuada en un {C:attention}Color",
                     "{C:inactive}(Actual:{} {C:mult}+#2#{}{C:inactive}){}" }
             },
             j_ina_Monkey = {
                 name = "Monkey",
                 text = { "{C:wind}Giro del Mono{}",
-                    "Obten {X:mult,C:white}XMult{} por {C:tarot}cartas versátiles{}",
+                    "Obtén {X:mult,C:white}XMult{} por {C:tarot}cartas versátiles{}",
                     "en el mazo, multiplicado por {X:wild,C:white}Wild{} / 10",
                     "{C:inactive}(Actual: {X:mult,C:white}X#1#{}{C:inactive}){}" }
             },
             j_ina_Gorilla = {
                 name = "Gorilla",
                 text = { "{C:mountain}Remate Tarzán{}", "Crea una {C:attention}Etiqueta Wild{}",
-                    "al derrotar a la Ciega Jefe" }
+                    "al derrotar a la {C:attention}Ciega Jefe{}" }
             },
             j_ina_Cheetah = {
                 name = "Cheetah",
@@ -671,9 +673,10 @@ return {
 
             j_ina_Turner = {
                 name = "Turner",
-                text = { "{C:fire}Tornado de fuego{}", "Crea una copia de la {C:attention}primera carta{}",
-                    "puntuada por cada {C:attention}Joker{} {X:brain,C:white}Brain{} en tu equipo",
-                    "si la mano jugada contiene un {C:attention}póker{}" }
+                text = { "{C:fire}Tornado de fuego{}",
+                    "Si la mano contiene un {C:attention}póker{}, se crea una copia",
+                    "de la primera carta puntuada por cada {X:brain,C:white}Brain{}" }
+
             },
 
             j_ina_Under = {
@@ -698,7 +701,7 @@ return {
 
             j_ina_Custom = {
                 name = "Custom",
-                text = { "{C:wind}Ciclón{}", "Los jokers de {X:wind,C:white}Viento{} pueden", "aparecer múltiples veces" }
+                text = { "{C:wind}Ciclón{}", "Los {C:attention}Jokers{} de {X:wind,C:white}Viento{} pueden", "aparecer múltiples veces" }
             },
 
             j_ina_Robot = {
@@ -726,10 +729,10 @@ return {
 
             j_ina_Arcade = {
                 name = "Arcade",
-                text = { "{C:forest}Tiro del Cometa{}", "La probabilidad de activar",
-                    "el dinero extra en las {C:attention}Lucky Card{}",
-                    "es ahora {C:green}#1# en 15{}, Ahora cada",
-                    "{C:attention}Lucky Card{}", "cuesta {C:money}#2#${} para jugarse" }
+                text = { "{C:forest}Tiro del Cometa{}",
+                    "{C:green}#1# en 15{} de ganar",
+                    "{C:money}$20{} en una {C:gold}Lucky Card{}",
+                    "Jugarlas cuesta {C:money}#2#${}", }
             },
 
             -- Inazuma Eleven
@@ -1023,10 +1026,8 @@ return {
             j_ina_Hermes = {
                 name = "Hermes",
                 text = { "{C:forest}Oro divino",
-                    "Si la primera mano",
-                    "jugada es {C:attention}pareja{}",
-                    "convierte la pareja",
-                    "en {C:attention}cartas doradas{}" }
+                    "Si la primera mano jugada es {C:attention}pareja{}",
+                    "la convierte en {C:gold}cartas de oro{}" }
             },
 
             j_ina_Demeter = {
