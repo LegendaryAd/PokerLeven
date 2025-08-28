@@ -1543,7 +1543,7 @@ return {
             },
             tag_ina_technique_tag = {
                 name = "Etiqueta Técnica",
-                text = { "Otorga gratis un {C:training}Training Pack{}" }
+                text = { "Otorga gratis un {C:training}Mega Training Pack{}" }
             }
         },
         Tarot = {},

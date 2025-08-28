@@ -1487,7 +1487,7 @@ return {
             },
             tag_ina_technique_tag = {
                 name = "Technique Tag",
-                text = { "Grants a free {C:training}Training Pack{}" }
+                text = { "Grants a free {C:training}Mega Training Pack{}" }
             }
         },
         Tarot = {},

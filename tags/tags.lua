@@ -128,13 +128,13 @@ local technique_tag = {
     pos = { x = 4, y = 3 },
     config = {},
     key = "technique_tag",
-    min_ante = 2,
+    min_ante = 6,
     discovered = false,
     loc_vars = function(self, info_queue, tag)
-        info_queue[#info_queue + 1] = G.P_CENTERS.p_ina_training_pack
+        info_queue[#info_queue + 1] = G.P_CENTERS.p_ina_mega_training_pack
     end,
     apply = function(self, tag, context)
-        return Pokerleven.open_booster_from_tag(tag, 'p_ina_training_pack', context)
+        return Pokerleven.open_booster_from_tag(tag, 'p_ina_mega_training_pack', context)
     end,
     ina_credits = {
         art = { "Shadorossa" }
