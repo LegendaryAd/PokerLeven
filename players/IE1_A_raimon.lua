@@ -581,9 +581,56 @@ local Jim = J({
     end
   end
 })
+local Tod = J({
+  name = "Tod",
+  pos = { x = 4, y = 0 },
+  config = { extra = { chip_mod = 20 } },
+  loc_vars = function(self, info_queue, center)
+    played_metal = 0
+    hand_metal = 0
+    return { vars = { center.ability.extra.chip_mod } }
+  end,
+  rarity = 1,
+  pools = { ["Raimon"] = true },
+  cost = 3,
+  atlas = "Jokers01",
+  ptype = C.Fire,
+  pposition = C.DF,
+  techtype = C.UPGRADES.Plus,
+  pteam = "Raimon",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    if context.cardarea == G.jokers and context.joker_main and context.scoring_hand then
+      -- Count played metal cards
+      for _, c in ipairs(context.scoring_hand) do
+        if SMODS.has_enhancement(c, 'm_steel') then
+          played_metal = played_metal + 1
+        end
+      end
 
+      -- Count metal cards in hand
+      for _, c in ipairs(G.hand.cards) do
+        if SMODS.has_enhancement(c, 'm_steel') then
+          hand_metal = hand_metal + 1
+        end
+      end
+
+      if played_metal > 0 or hand_metal > 0 then
+        local total_chips = (played_metal + hand_metal) * card.ability.extra.chip_mod
+        return {
+          message = localize { type = 'variable', key = 'a_chips', vars = { total_chips } },
+          colour = G.C.CHIPS,
+          chip_mod = total_chips
+        }
+      end
+    end
+  end,
+  ina_credits = {
+    idea = { "Lovahi" }
+  }
+})
 
 return {
   name = "Raimon",
-  list = { Mark, Nathan, Jack, Jim, Steve, Peabody, Max, Axel, Kevin, Willy, Bobby, Erik, Jude_Raimon, Shadow },
+  list = { Mark, Nathan, Jack, Jim, Tod, Steve, Peabody, Max, Axel, Kevin, Willy, Bobby, Erik, Jude_Raimon, Shadow },
 }

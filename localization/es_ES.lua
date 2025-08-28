@@ -473,6 +473,15 @@ return {
                     "Gana {C:chips}+#1#{} fichas",
                 }
             },
+            j_ina_Tod = {
+                name = "Tod",
+                text = {
+                    "{C:wind}Equilibrismo{}",
+                    "Gana {C:chips}+#1#{} fichas por",
+                    "cada {C:enhanced}Acero{}",
+                    "en {C:attention}mano{} o {C:attention}jugada{}"
+                }
+            },
             -- Occult
             j_ina_Talisman = {
                 name = "Talisman",
