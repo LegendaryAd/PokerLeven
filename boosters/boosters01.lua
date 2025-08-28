@@ -370,7 +370,7 @@ local Ina_Pack = {
 	key = "item_pack_ina",
 	kind = "Item",
 	atlas = "Boosters01",
-	pos = { x = 3, y = 2 },
+	pos = { x = 0, y = 3 },
 	config = { extra = Consts.max_quantity, choose = 1 },
 	cost = 4,
 	order = 1,
@@ -393,9 +393,31 @@ local Training_Pack = {
 	key = "training_pack",
 	kind = "Item",
 	atlas = "Boosters01",
-	pos = { x = 1, y = 3 },
+	pos = { x = 0, y = 2 },
 	config = { extra = Consts.max_quantity, choose = 1 },
 	cost = 4,
+	order = 1,
+	weight = 0.15,
+	draw_hand = false,
+	unlocked = true,
+	discovered = false,
+	create_card = function(self, card, i)
+		return create_card(C.TRAINING, G.pack_cards, nil, nil, true, true, nil, nil)
+	end,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.choose, Consts.max_quantity } }
+	end,
+	group_key = "k_item_pack",
+}
+
+local Mega_Training_Pack = {
+	name = "Mega Training Pack",
+	key = "mega_training_pack",
+	kind = "Item",
+	atlas = "Boosters01",
+	pos = { x = 1, y = 2 },
+	config = { extra = Consts.max_quantity, choose = 1 },
+	cost = 6,
 	order = 1,
 	weight = 0.15,
 	draw_hand = false,
@@ -417,7 +439,7 @@ local Manager_Pack = {
 	key = "manager_pack",
 	kind = "Manager",
 	atlas = "Boosters01",
-	pos = { x = 0, y = 3 },
+	pos = { x = 0, y = 1 },
 	config = { extra = 2, choose = 1 },
 	cost = 4,
 	order = 1,
@@ -445,6 +467,5 @@ local Manager_Pack = {
 
 return {
 	name = "Boosters01",
-	list = { Raimon, Occult, RoyalAcademy, Wild, Brain, Otaku, Inazuma, Shuriken, Farm, Kirkwood, Zeus,
-		Ina_Pack, Training_Pack, Manager_Pack }
+	list = { Ina_Pack, Training_Pack, Mega_Training_Pack, Manager_Pack }
 }
