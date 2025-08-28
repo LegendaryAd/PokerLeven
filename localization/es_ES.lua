@@ -706,9 +706,9 @@ return {
             j_ina_Robot = {
                 name = "Robot",
                 text = { "{C:wind}Confusión{}",
-                    "Reactiva las {C:gold}Lucky Cards{} en {C:attention}Escalera",
-                    "que coincidan en posición con cada {X:mf,C:white}MF{}",
-                    "empezando por la izquierda" }
+                    "Reactiva las {C:gold}Cartas de la Suerte{} en",
+                    "{C:attention}Escalera{} que coincidan en posición con ",
+                    "cada {X:mf,C:white}MF{} empezando por la izquierda" }
             },
 
             j_ina_Gamer = {
@@ -724,15 +724,15 @@ return {
                 name = "Artista",
                 text = { "{C:wind}Ludopatía Máxima{}", "Si la mano jugada puntúa un {C:attention}Rey{}",
                     " y {C:attention}Reina{} convierte toda la mano",
-                    " puntuada en {C:attention}Cartas de la Suerte{}" }
+                    " puntuada en {C:gold}Cartas de la Suerte{}" }
             },
 
             j_ina_Arcade = {
                 name = "Arcade",
                 text = { "{C:forest}Tiro del Cometa{}",
-                    "{C:green}#1# en 15{} de ganar",
-                    "{C:money}$20{} en una {C:gold}Lucky Card{}",
-                    "Jugarlas cuesta {C:money}#2#${}", }
+                    "{C:green}#1# en 15{} de ganar {C:money}$20{}",
+                    "en una {C:gold}Carta de la Suerte{}",
+                    "{C:inactive}Jugarlas cuesta{} {C:money}#2#${}", }
             },
 
             -- Inazuma Eleven
@@ -1727,3 +1727,4 @@ return {
         }
     }
 }
+
