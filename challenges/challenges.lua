@@ -113,6 +113,84 @@ local futbol_frontier = {
     },
 }
 
+local mas_o_menos = {
+    object_type = "Challenge",
+    key = "mas_o_menos",
+    rules = {
+        modifiers = {
+            { id = 'joker_slots', value = 5 },
+        }
+    },
+    jokers = {
+        { id = "j_ina_Marvin", eternal = true },
+        { id = "j_ina_Thomas", eternal = true },
+        { id = "j_ina_Tyler",  eternal = true },
+    },
+    restrictions = {
+        banned_cards = {
+            { id = "j_ina_Cleats" }
+        },
+        banned_tags = {
+        },
+        banned_other = {
+        },
+    },
+    deck = {
+        type = 'Challenge Deck',
+    },
+}
+
+local mark_challenge = {
+    object_type = "Challenge",
+    key = "mark_challenge",
+    rules = {
+        custom = {
+            { id = 'ina_mark_goal' },
+        },
+        modifiers = {
+            { id = 'joker_slots', value = 5 },
+        }
+    },
+    jokers = {
+        { id = "j_ina_Mark", eternal = true },
+    },
+    restrictions = {
+        banned_cards = {
+            { id = "j_ina_Cleats" }
+        },
+        banned_tags = {},
+        banned_other = {},
+    },
+    deck = {
+        type = 'Challenge Deck',
+    },
+}
+
+local fichatron = {
+    object_type = "Challenge",
+    key = "fichatron",
+    rules = {
+        modifiers = {
+            { id = 'joker_slots', value = 5 },
+        }
+    },
+    jokers = {
+        { id = "j_ina_Celia", eternal = true },
+        { id = "j_ina_Celia", eternal = true },
+    },
+    restrictions = {
+        banned_cards = {
+            { id = "j_ina_Cleats" }
+        },
+        banned_tags = {},
+        banned_other = {},
+    },
+    deck = {
+        type = 'Challenge Deck',
+    },
+}
+
+
 local ff_bosses = { "bl_ina_wild", "bl_ina_brain", "bl_ina_otaku",
     "bl_ina_royal_blind", "bl_ina_shuriken",
     "bl_ina_farm", "bl_ina_kirkwood", "bl_ina_zeus" }
@@ -159,5 +237,5 @@ end
 
 return {
     name = "Challenge",
-    list = { glasses_team, love_pair, futbol_frontier, elementals }
+    list = { glasses_team, love_pair, futbol_frontier, elementals, mas_o_menos, mark_challenge, fichatron }
 }

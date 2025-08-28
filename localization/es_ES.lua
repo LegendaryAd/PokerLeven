@@ -1548,6 +1548,9 @@ return {
             c_ina_love_pair = "La Pareja del Amor",
             c_ina_futbol_frontier = "Futbol Frontier",
             c_ina_elementals = "Los Elementales",
+            c_ina_mas_o_menos = "Mas o Menos",
+            c_ina_mark_challenge = "El portero lejendario",
+            c_ina_fichatron = "Fichatron",
         },
         collabs = {},
         dictionary = {
