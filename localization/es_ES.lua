@@ -1261,7 +1261,7 @@ return {
                     "una carta {C:attention}Cosechable{}" }
             },
             Frontal = {
-                name = "Muralla Gigante",
+                name = "Frontal",
                 text = { "Se activa si es el",
                     "joker de más a la {C:attention}Izquierda{}" }
             },
@@ -1727,3 +1727,4 @@ return {
         }
     }
 }
+
