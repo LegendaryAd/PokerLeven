@@ -240,7 +240,49 @@ local Arcade = {
     }
 }
 
+-- Vox
+local Vox = J({
+    name = "Vox",
+    pos = { x = 4, y = 7 },
+    config = { extra = { chip_mod = 30, triggered = false } },
+    loc_vars = function(self, info_queue, center)
+        table.insert(info_queue, { set = 'Other', key = 'Right_Footed' })
+        return { vars = { center.ability.extra.chip_mod } }
+    end,
+    rarity = 1, -- Common
+    pools = { ["Otaku"] = true },
+    cost = 4,
+    atlas = "Jokers01",
+    ptype = C.Wind,
+    pposition = C.DF,
+    pteam = "Otaku",
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        if context.joker_main and context.scoring_hand and card:is_rightmost_joker() then
+            local count = 0
+            if G.jokers and G.jokers.cards then
+                for i, j in ipairs(G.jokers.cards) do
+                    if j == card then
+                        count = i - 1
+                    end
+                end
+            end
+
+            if count > 0 then
+                return {
+                    message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chip_mod * count } },
+                    colour = G.C.CHIPS,
+                    chip_mod = card.ability.extra.chip_mod * count,
+                }
+            end
+        end
+    end,
+    ina_credits = {
+        idea = { "Lovahi" }
+    }
+})
+
 return {
     name = "Otaku",
-    list = { Idol, Hero, Custom, Robot, Gamer, Artist, Arcade }
+    list = { Idol, Hero, Custom, Robot, Gamer, Artist, Arcade, Vox }
 }

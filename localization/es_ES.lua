@@ -742,6 +742,16 @@ return {
                     "{C:inactive}Jugarlas cuesta{} {C:money}#2#${}", }
             },
 
+            j_ina_Vox = {
+                name = "Vox",
+                text = {
+                    "{C:wind}Segundón Resonante{}",
+                    "{C:attention}Diestro{}",
+                    "Gana {C:chips}+#1#{} fichas por",
+                    "cada {C:attention}Joker{} a su izquierda"
+                }
+            },
+
             -- Inazuma Eleven
             j_ina_Hillman = {
                 name = "Hillman",
