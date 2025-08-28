@@ -168,7 +168,7 @@ local Jude = {
   pos = { x = 0, y = 0 },
   soul_pos = { x = 0, y = 1 },
   config = {
-    extra = { current_xmult = 1, xmult_mod = 0.1, next_xmult = 1, triggered = false
+    extra = { current_xmult = 1, xmult_mod = 0.08, next_xmult = 1, triggered = false
     }
   },
   loc_vars = function(self, info_queue, center)

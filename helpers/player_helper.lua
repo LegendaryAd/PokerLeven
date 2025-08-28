@@ -446,7 +446,8 @@ Pokerleven.get_random_team_from_actuals = function()
     local possible_teams = {}
     if G.jokers and G.jokers.cards then
         for _, v in pairs(G.jokers.cards) do
-            if v.ability and type(v.ability.extra) == "table" and v.ability.extra.pteam then
+            if v.ability and type(v.ability.extra) == "table" and v.ability.extra.pteam
+                and v.ability.extra.pteam ~= "Scout" then
                 possible_teams[v.ability.extra.pteam] = true
             end
         end
