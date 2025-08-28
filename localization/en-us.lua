@@ -1165,6 +1165,14 @@ return {
         },
 
         Other = {
+            ina_training_seal = {
+                name = "Sello de entrenamiento",
+                text = {
+                    "Creates a {C:training}Training{} card",
+                    "if scores in the{C:attention}last hand{}",
+                    "{C:inactive}(Must have space){}",
+                },
+            },
             card_emult = {
                 text = {
                     "{C:dark_edition}^#1#{} Mult"
@@ -1603,6 +1611,7 @@ return {
         },
         high_scores = {},
         labels = {
+            ina_training_seal = "Training Seal",
             ina_harvest_sticker = "Harvestable",
             ina_tech_plus1_sticker = "Upgraded Technique",
             ina_tech_plus2_sticker = "Upgraded Technique",

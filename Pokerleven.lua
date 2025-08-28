@@ -138,6 +138,24 @@ for _, file in ipairs(consumables) do
   end
 end
 
+--Load seals
+local seals = NFS.getDirectoryItems(mod_dir .. "seals")
+
+for _, file in ipairs(seals) do
+  sendDebugMessage("The file is: " .. file)
+  local seal, load_error = SMODS.load_file("seals/" .. file)
+  if load_error then
+    sendDebugMessage("The error is: " .. load_error)
+  else
+    local curr_seal = seal()
+    if curr_seal.init then curr_seal:init() end
+    for i, item in ipairs(curr_seal.list) do
+      SMODS.Seal(item)
+    end
+  end
+end
+
+
 --Load stickers
 local pseals = NFS.getDirectoryItems(mod_dir .. "stickers")
 
