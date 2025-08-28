@@ -556,9 +556,34 @@ local Erik = J({
   end
 })
 
+-- Jim
+local Jim = J({
+  name = "Jim",
+  pos = { x = 3, y = 0 },
+  config = { extra = { chips_mod = 1 } },
+  loc_vars = function(self, info_queue, center)
+    return { vars = { center.ability.extra.chips_mod } }
+  end,
+  rarity = 1,
+  pools = { ["Raimon"] = true },
+  cost = 7,
+  atlas = "Jokers01",
+  ptype = C.Forest,
+  pposition = C.DF,
+  techtype = C.UPGRADES.Plus,
+  pteam = "Raimon",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+    if Pokerleven.is_joker_turn(context) then
+      return {
+        chips = card.ability.extra.chips
+      }
+    end
+  end
+})
 
 
 return {
   name = "Raimon",
-  list = { Mark, Nathan, Jack, Steve, Peabody, Max, Axel, Kevin, Willy, Bobby, Erik, Jude_Raimon, Shadow, },
+  list = { Mark, Nathan, Jack, Jim, Steve, Peabody, Max, Axel, Kevin, Willy, Bobby, Erik, Jude_Raimon, Shadow },
 }
