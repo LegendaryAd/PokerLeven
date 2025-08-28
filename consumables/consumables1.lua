@@ -75,9 +75,12 @@ local divine_water = {
   discovered = false,
   can_use = function(self, card)
     return (
-      (G.jokers.highlighted and #G.jokers.highlighted == 1) or
-      (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1)
-    ) and can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1])
+          (G.jokers.highlighted and #G.jokers.highlighted == 1) or
+          (Pokerleven.ina_bench_area.highlighted and #Pokerleven.ina_bench_area.highlighted == 1)
+        ) and can_upgrade_tech_level(G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1])
+        and
+        ((G.jokers.highlighted[1] and not G.jokers.highlighted[1].ability.eternal)
+          or (Pokerleven.ina_bench_area.highlighted[1] and not Pokerleven.ina_bench_area.highlighted[1].ability.eternal))
   end,
   use = function(self, card, area, copier)
     local choice = G.jokers.highlighted[1] or Pokerleven.ina_bench_area.highlighted[1]

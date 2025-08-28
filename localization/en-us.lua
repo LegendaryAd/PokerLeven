@@ -1447,6 +1447,12 @@ return {
                     "of a card regardless of",
                     "its type or position" }
             },
+            c_ina_divine_water = {
+                name = "Divine Water",
+                text = { "Upgrades {C:training}technique level{}",
+                    "of one joker {C:dark_edition,E:1}to the max{}",
+                    "but sets a {C:dark_edition}perishable{} sticker" }
+            },
             c_ina_centella = {
                 name = "Centella Center",
                 text = { "Raises the {C:training}technique level{}",
