@@ -25,7 +25,6 @@ find_player_type = function(target_type, is_not)
     return found
 end
 
-
 find_player_position = function(target_type)
     local found = {}
     if G.jokers and G.jokers.cards then

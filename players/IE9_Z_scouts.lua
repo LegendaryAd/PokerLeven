@@ -1,10 +1,9 @@
-
 -- Versión 0.1
 
 -- Dulce
 ---@param card Card
 local select_random_cards_for_harvest = function(card)
-    local count = #Pokerleven.find_player_type_and_position("Wind", "MF")
+    local count = #find_player_type("Wind") + #find_player_position("MF")
 
     if count > 0 and G.deck and G.deck.cards and #G.deck.cards > 0 then
         table.unpack = table.unpack or unpack
@@ -261,7 +260,7 @@ local Chester = J({
 local Mach = J({
     name = "Mach",
     pos = { x = 7, y = 0 },
-    config = { extra = { current_xmult = 1, xmult_mod = 0.25 } },
+    config = { extra = { current_xmult = 1, xmult_mod = 0.15 } },
     loc_vars = function(self, info_queue, center)
         return { vars = { center.ability.extra.xmult_mod, center.ability.extra.current_xmult } }
     end,
@@ -392,7 +391,7 @@ local Rex_George = J({
     }
 })
 
- -- Versión 0.2
+-- Versión 0.2
 -- George
 local George = {
     name = "George",

@@ -162,7 +162,6 @@ local Artemis = J({
     if context.discard and context.other_card.ability["ina_harvest_sticker"] == true then
       card.ability.extra.current_chips =
           card.ability.extra.current_chips + card.ability.extra.chips_mod
-      context.other_card.ability["ina_harvest_sticker"] = false
       return {
         message = localize("ina_harvest"),
         colour = G.C.MULT,
