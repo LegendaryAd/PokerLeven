@@ -384,6 +384,12 @@ return {
                     "Gets {C:money}+#3#${} at the end of the round",
                     "{C:inactive}Currently{} {C:chips}+#4#{}{C:inactive} {C:inactive}and{} {C:mult}+#5#{}" }
             },
+            j_ina_Jim = {
+                name = "Jim",
+                text = { "{C:wind}Coil turn{}",
+                    "Gain {C:chips}+#1#{} chips",
+                }
+            },
             -- Occult
             j_ina_Talisman = {
                 name = "Talisman",

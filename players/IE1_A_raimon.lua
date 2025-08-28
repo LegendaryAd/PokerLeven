@@ -574,7 +574,7 @@ local Jim = J({
   pteam = "Raimon",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.joker_main then
+    if Pokerleven.is_joker_turn(context) then
       return {
         chips = card.ability.extra.chips
       }
