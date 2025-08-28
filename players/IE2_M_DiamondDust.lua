@@ -51,7 +51,7 @@ local Gazelle = {
     end,
     rarity = "ina_top", -- Destacado
     pools = { ["DiamondDust"] = true },
-    cost = 7,
+    cost = 15,
     atlas = "top",
     ptype = C.Wind,
     pposition = C.FW,
@@ -64,6 +64,6 @@ local Gazelle = {
 
 return {
     name = "Diamond Dust",
-    list = { Beluga, Icer, Gazelle }
-    -- list = { Dvalin, Kenville, Mole, Kayson, Tytan, Fedora, Krypto, Sworm, Mercury, Metron, Zell },
+    list = {}
+    -- list = { Beluga, Icer, Gazelle },
 }
