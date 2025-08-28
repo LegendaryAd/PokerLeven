@@ -1,3 +1,5 @@
+-- Inazuma Eleven 1
+
 local ff_regional_a = {
     object_type = "Blind",
     name = "ina-ff_regional_a",
@@ -176,7 +178,6 @@ local shun = B({
     end
 })
 
-
 local empress = {
     object_type = "Blind",
     name = "ina-empress",
@@ -200,9 +201,138 @@ local empress = {
     end,
 }
 
+-- Inazuma Eleven 2
+
+local SPFixers = {
+    object_type = "Blind",
+    name = "ina-SPFixers",
+    key = "spfixers",
+    pos = { x = 0, y = 11 },
+    discovered = false,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 2 },
+    calculate = function(self, blind, context)
+        -- TODO Add logic
+    end
+}
+
+local Alpine = {
+    object_type = "Blind",
+    name = "ina-Alpine",
+    key = "alpine",
+    pos = { x = 0, y = 12 },
+    discovered = false,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 2 },
+    calculate = function(self, blind, context)
+        -- TODO Add logic
+    end
+}
+
+local Cloister = {
+    object_type = "Blind",
+    name = "ina-Cloister",
+    key = "cloister",
+    pos = { x = 0, y = 13 },
+    discovered = false,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 2 },
+    calculate = function(self, blind, context)
+        -- TODO Add logic
+    end
+}
+
+local OsakaCCC = {
+    object_type = "Blind",
+    name = "ina-OsakaCCC",
+    key = "osakaccc",
+    pos = { x = 0, y = 14 },
+    discovered = false,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 2 },
+    calculate = function(self, blind, context)
+        -- TODO Add logic
+    end
+}
+
+local Fauxshore = {
+    object_type = "Blind",
+    name = "ina-Fauxshore",
+    key = "fauxshore",
+    pos = { x = 0, y = 15 },
+    discovered = false,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 2 },
+    calculate = function(self, blind, context)
+        -- TODO Add logic
+    end
+}
+
+
+local MaryTimes = {
+    object_type = "Blind",
+    name = "ina-MaryTimes",
+    key = "marytimes",
+    pos = { x = 0, y = 16 },
+    discovered = false,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 2 },
+    calculate = function(self, blind, context)
+        -- TODO Add logic
+    end
+}
+
+local robotsg = {
+    object_type = "Blind",
+    name = "ina-Robotsg",
+    key = "robotsg",
+    pos = { x = 0, y = 17 },
+    discovered = false,
+    mult = 1.5,
+    atlas = "bigBlinds01",
+    order = 1,
+    boss_colour = HEX("B7865B"),
+    dollars = 4,
+    big = { min = 2 },
+    calculate = function(self, blind, context)
+        -- TODO Add logic
+    end
+}
+
 return {
     name = "bigBlinds01",
     list = { ff_regional_a, ff_regional_b, ff_national_a, ff_national_b,
         umbrella, inazuma_kids, sallys,
         occult, inazuma_eleven, shun, empress }
 }
+
+-- return {
+--     name = "bigBlinds01",
+--     list = { ff_regional_a, ff_regional_b, ff_national_a, ff_national_b,
+--         umbrella, inazuma_kids, sallys,
+--         occult, inazuma_eleven, shun, empress, SPFixers, Alpine, Cloister, OsakaCCC, Fauxshore, MaryTimes, robotsg }
+-- }

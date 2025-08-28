@@ -1595,7 +1595,8 @@ return {
             ina_gol = "¡Gol!",
             ina_mano = "¡Mano mejorada",
 
-
+            -- Rarities
+            k_ina_top = "Destacado",
 
             -- Resources
             ina_resource_barriers = "Barreras",
@@ -1636,6 +1637,8 @@ return {
             ina_tech_k_sticker = "Técnica mejorada",
             ina_tech_a_sticker = "Técnica mejorada",
             ina_tech_joker_sticker = "Técnica mejorada",
+
+            k_ina_top = "Destacado",
         },
         poker_hand_descriptions = {
             ["ina_TriplePair"] = {

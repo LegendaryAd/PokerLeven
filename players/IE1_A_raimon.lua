@@ -43,17 +43,19 @@ local Kevin = J({
 local Mark = J({
   name = "Mark",
   pos = { x = 0, y = 0 },
+  soul_pos = { x = 0, y = 1 },
   config = { extra = { extra_hands = 1, extra_back_size = 1 } },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.extra_hands, center.ability.extra.extra_back_size } }
   end,
   rarity = 4,
   cost = 15,
-  atlas = "Jokers01",
+  atlas = "legendary01",
   ptype = "Mountain",
   pposition = "GK",
-  discovered = true,
+  techtype = C.UPGRADES.Plus,
   pteam = "Raimon",
+  discovered = true,
   blueprint_compat = true,
   add_to_deck = function(self, card, from_debuff)
     G.hand.config.card_limit = G.hand.config.card_limit + card.ability.extra.extra_back_size
@@ -86,8 +88,8 @@ local Nathan = J({
   pools = { ["Raimon"] = true },
   cost = 7,
   atlas = "Jokers01",
-  ptype = "Wind",
-  pposition = "DF",
+  ptype = C.Wind,
+  pposition = C.DF,
   techtype = C.UPGRADES.Plus,
   pteam = "Raimon",
   blueprint_compat = true,
@@ -121,9 +123,9 @@ local Jack = {
   pools = { ["Raimon"] = true },
   cost = 7,
   atlas = "Jokers01",
-  ptype = "Mountain",
+  ptype = C.Mountain,
+  pposition = C.DF,
   techtype = C.UPGRADES.Plus,
-  pposition = "DF",
   pteam = "Raimon",
   blueprint_compat = true,
   calculate = function(self, card, context)
@@ -148,17 +150,18 @@ local Jack = {
 -- Axel Blaze
 local Axel = J({
   name = "Axel",
-  pos = { x = 10, y = 0 },
-  config = { extra = { xmult = 3.5, suit = "Hearts", triggered = false } },
+  pos = { x = 2, y = 0 },
+  soul_pos = { x = 2, y = 1 },
+  config = { extra = { xmult = 4.5, suit = "Hearts", triggered = false } },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.xmult } }
   end,
-  rarity = 3,
+  rarity = "ina_top",
   pools = { ["Raimon"] = true },
   cost = 8,
-  atlas = "Jokers01",
-  ptype = "Fire",
-  pposition = "FW",
+  atlas = "top",
+  ptype = C.Fire,
+  pposition = C.FW,
   techtype = C.UPGRADES.Plus,
   pteam = "Raimon",
   blueprint_compat = true,
@@ -191,8 +194,8 @@ local Shadow = {
   pools = { ["Raimon"] = true },
   cost = 2,
   atlas = "Jokers01",
-  ptype = "Forest",
-  pposition = "FW",
+  ptype = C.Forest,
+  pposition = C.FW,
   techtype = C.UPGRADES.Plus,
   pteam = "Raimon",
   blueprint_compat = true,
@@ -227,8 +230,9 @@ local Willy = {
   pools = { ["Raimon"] = true },
   cost = 7,
   atlas = "Jokers01",
-  ptype = "Forest",
-  pposition = "FW",
+  ptype = C.Forest,
+  pposition = C.FW,
+  techtype = C.UPGRADES.Plus,
   pteam = "Raimon",
   blueprint_compat = true,
   calculate = function(self, card, context)
@@ -255,8 +259,8 @@ local Max = {
   pools = { ["Raimon"] = true },
   cost = 5,
   atlas = "Jokers01",
-  ptype = "Wind",
-  pposition = "FW",
+  ptype = C.Wind,
+  pposition = C.FW,
   techtype = C.UPGRADES.Plus,
   pteam = "Raimon",
   blueprint_compat = true,
@@ -287,8 +291,8 @@ local Peabody = {
   pools = { ["Raimon"] = true },
   cost = 5,
   atlas = "Jokers01",
-  ptype = "Wind",
-  pposition = "GK",
+  ptype = C.Wind,
+  pposition = C.GK,
   techtype = C.UPGRADES.Plus,
   pteam = "Raimon",
   blueprint_compat = true,
@@ -320,20 +324,22 @@ local Peabody = {
 -- Jude
 local Jude_Raimon = J({
   name = "Jude_Raimon",
-  pos = { x = 3, y = 3 },
+  pos = { x = 1, y = 0 },
+  soul_pos = { x = 1, y = 1 },
   config = {
-    extra = { current_xmult = 1, xmult_mod = 0.06, next_xmult = 1, triggered = false
+    extra = { current_xmult = 1, xmult_mod = 0.1, next_xmult = 1, triggered = false
     }
   },
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.current_xmult, center.ability.extra.xmult_mod } }
   end,
-  rarity = 3,
+  rarity = "ina_top",
   cost = 8,
-  atlas = "Jokers01",
+  atlas = "top",
   stage = "one",
-  ptype = "Wind",
-  pposition = "MF",
+  ptype = C.Wind,
+  pposition = C.MF,
+  techtype = C.UPGRADES.Plus,
   pteam = "Raimon",
   blueprint_compat = true,
   calculate = function(self, card, context)
@@ -388,8 +394,8 @@ local Bobby = J({
   pools = { ["Raimon"] = true },
   cost = 7,
   atlas = "JokersBobby",
-  ptype = "Forest",
-  pposition = "DF",
+  ptype = C.Forest,
+  pposition = C.DF,
   pteam = "Raimon",
   blueprint_compat = true,
   calculate = function(self, card, context)

@@ -28,6 +28,8 @@ function Game:start_run(args)
 
     game_start_run_ref(self, args)
 
+    Pokerleven.set_base_rarities(0.69, 0.25, 0.05)
+
     self.ina_extra_buttons = UIBox {
         definition = {
             n = G.UIT.ROOT,
@@ -219,6 +221,19 @@ function CardArea:remove_card(card, ...)
         card.children.use_button = nil
     end
     return remove_from_area_ref(self, card, ...)
+end
+
+local card_remove_from_area_ref = Card.remove_from_area
+function Card:remove_from_area()
+    if self.area == Pokerleven.ina_bench_area and
+        self.edition and self.edition.card_limit then
+        Pokerleven.ina_bench_area.config.card_limit =
+            Pokerleven.ina_bench_area.config.card_limit - self.edition.card_limit
+        if Pokerleven.ina_bench_area.config.card_limit < 1 then
+            Pokerleven.ina_bench_area.config.card_limit = 1
+        end
+    end
+    card_remove_from_area_ref(self)
 end
 
 ---Returns true if card is a manager
