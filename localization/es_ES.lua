@@ -515,7 +515,7 @@ return {
             },
             j_ina_Mummy = {
                 name = "Mummy",
-                text = { "{C:forest}Gravedad{}", "Cada {C:clubs}#3#{} otorga", "{C:mult}+#1#{} Mult y {C:chips}+#2#{} Chips" }
+                text = { "{C:forest}Gravedad{}", "Cada {C:clubs}#3#{} otorga", "{C:chips}+#2#{} fichas y {C:mult}+#1#{} de multi" }
             },
             j_ina_King = {
                 name = "King",
@@ -547,10 +547,11 @@ return {
             },
             j_ina_Martin = {
                 name = "Martin",
-                text = { "{C:forest}Barrido Defensivo{}", "Los comodines {C:blue}Comunes{} otorgan {C:mult}+#1#{} Mult",
-                    "Los comodines {C:green}Inusuales{} otorgan {C:mult}+#2#{} Mult",
-                    "Los comodines {C:red}Raros{} o {C:top}Destacados{} otorgan {X:mult,C:white}X#3#{} Mult",
-                    "Los comodines {C:purple}Legendarios{} otorgan {X:dark_edition,C:white}^#4#{} Mult" }
+                text = { "{C:forest}Barrido Defensivo{}",
+                    "Los comodines {C:blue}Comunes{} otorgan {C:mult}+#1#{} de multi",
+                    "Los comodines {C:green}Inusuales{} otorgan {C:mult}+#2#{} de multi",
+                    "Los comodines {C:red}Raros{} o {C:top}Destacados{} otorgan {X:mult,C:white}X#3#{}",
+                    "Los comodines {C:purple}Legendarios{} otorgan {X:dark_edition,C:white}^#4#{}" }
             },
             j_ina_Master = {
                 name = "Master",
@@ -666,7 +667,7 @@ return {
 
             j_ina_Kind = {
                 name = "Kind",
-                text = { "{C:forest}Escaner ataque{}", "Si la mano jugada es un {C:attention}palíndromo{},",
+                text = { "{C:forest}Escaner ataque{}", "Si la mano puntuada es un {C:attention}palíndromo{},",
                     "reactiva la primera y la última carta." }
             },
 
@@ -680,8 +681,8 @@ return {
 
             j_ina_Under = {
                 name = "Under",
-                text = { "{C:forest}Calculo Dificil", "Obtiene {C:chips}#1# / log2(#2# + 1){} chips",
-                    "por cada {X:gk,C:white}GK{}{}" }
+                text = { "{C:forest}Calculo Dificil", "Obtiene {C:chips}#1# / log2(#2# + 1){}",
+                    "fichas por cada {X:gk,C:white}GK{}{}" }
             },
 
             -- Otaku
@@ -772,7 +773,7 @@ return {
                 name = "Barista",
                 text = { "{C:wind}Pase Cruzado{}",
                     "La última carta jugada da",
-                    "{X:chips,C:white}X#1#{} chips a mayores" }
+                    "{X:chips,C:white}X#1#{} fichas a mayores" }
             },
 
             j_ina_Builder = {
@@ -829,8 +830,8 @@ return {
                 name = "Hattori",
                 text = { "{C:forest}Remate Múltiple{}",
                     "Al seleccionar la ciega crea",
-                    "{C:attention}#1#{} copias {C:dark_edition}negativas{} propias.",
-                    "Se destruyen al finalizar la ronda" }
+                    "{C:attention}#1#{} copias {C:dark_edition}negativas{} propias",
+                    "{C:inactive}Se{} {C:mult}destruyen{} {C:inactive}al finalizar la ronda{}" }
             },
 
             j_ina_Cloack = {
@@ -870,7 +871,7 @@ return {
                 text = {
                     "{C:mountain}Siembra{}",
                     "Gana {C:mult}+#1#{} de multi por",
-                    "cada {C:attention}Trío exacto{} jugado",
+                    "cada {C:attention}Trío{} exacto jugado",
                     "{C:inactive}(Actual:{} {C:mult}+#2#{}{C:inactive}){}"
                 }
             },
