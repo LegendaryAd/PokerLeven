@@ -25,6 +25,12 @@ function P(data)
     return data
 end
 
+---@param data SMODS.Challenge
+---@return SMODS.Challenge
+function Ch(data)
+    return data
+end
+
 ---@param data SMODS.Tag
 ---@return SMODS.Tag
 function T(data)

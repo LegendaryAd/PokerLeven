@@ -1602,6 +1602,9 @@ return {
             c_ina_love_pair = "La Pareja del Amor",
             c_ina_futbol_frontier = "Futbol Frontier",
             c_ina_elementals = "Los Elementales",
+            c_ina_more_or_less = "Mas o Menos",
+            c_ina_mark_challenge = "El portero legendario",
+            c_ina_recruiter = "Fichatron",
         },
         collabs = {},
         dictionary = {
@@ -1723,6 +1726,7 @@ return {
         },
         v_text = {
             ch_c_ina_futbol_frontier = { "Las ciegas saldrán en el orden del {C:attention}Fútbol Frontier{}" },
+            ch_c_ina_win_ante16 = { "Supera un enemigo {C:dark_edition}Legendario{}" },
             ch_c_ina_elementals = { "Las ciegas solo podrán ser {C:dark_edition}Elementales{}" }
         }
     }

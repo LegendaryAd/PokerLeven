@@ -1547,6 +1547,9 @@ return {
             c_ina_love_pair = "The Love Pair",
             c_ina_futbol_frontier = "Football Frontier",
             c_ina_elementals = "The Elementals",
+            c_ina_more_or_less = "More or Less",
+            c_ina_mark_challenge = "The Legendary goalkeeper",
+            c_ina_recruiter = "Recruiter",
         },
         collabs = {},
         dictionary = {
@@ -1668,6 +1671,7 @@ return {
         },
         v_text = {
             ch_c_ina_futbol_frontier = { "Blinds will be in {C:attention}Fútbol Frontier{} order" },
+            ch_c_ina_win_ante16 = { "Defeat a {C:dark_edition}Legendary{} enemy" },
             ch_c_ina_elementals = { "Blinds can only be {C:dark_edition}Elemental{}" }
         }
     }
