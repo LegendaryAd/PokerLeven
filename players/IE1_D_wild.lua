@@ -288,8 +288,9 @@ local Cheetah = {
     pools = { ["Wild"] = true },
     cost = 7,
     atlas = "Jokers01",
-    ptype = "Wind",
-    pposition = "FW", -- Forward
+    ptype = C.Wind,
+    pposition = C.FW,
+    techtype = C.UPGRADES.Plus, -- Forward
     pteam = "Wild",
     blueprint_compat = true,
     calculate = function(self, card, context)
