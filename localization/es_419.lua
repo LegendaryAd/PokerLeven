@@ -521,7 +521,8 @@ return {
                 name = "King",
                 text = { "{C:fire}Escudo de Fuerza{}",
                     "Copia el rey {C:attention}derecho{} al",
-                    "jugar {C:attention}Trío{} de {C:attention}Reyes{}", }
+                    "jugar una mano que contenga",
+                    "un {C:attention}Trío{} de {C:attention}Reyes{}", }
             },
             j_ina_Bloom = {
                 name = "Bloom",
@@ -1276,50 +1277,13 @@ return {
                 text = { "Se activa si es el",
                     "joker de más a la {C:attention}Derecha{}" }
             },
-            p_ina_team_pack_raimon = {
-                name = "Pack Raimon",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} jugadores {X:raimon,C:white}Raimon{}" }
+            p_ina_growing_pack = {
+                name = "Pack Creciente",
+                text = { "Elige {C:attention}#1#{} entre {C:attention}#2#{}", "{C:attention}Jokers{} de tus equipos" }
             },
-            p_ina_team_pack_occult = {
-                name = "Pack Occult",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} jugadores {X:occult,C:white}Occult{}" }
-            },
-            p_ina_team_pack_royal = {
-                name = "Pack Royal",
-                text = { "Elige {C:attention}#1#{} entre",
-                    "{C:attention}#2#{} jugadores {X:royal academy,C:white}R. Academy{}" }
-            },
-            p_ina_team_pack_wild = {
-                name = "Pack Wild",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} jugadores {X:wild,C:white}Wild{}" }
-            },
-            p_ina_team_pack_brain = {
-                name = "Pack Brain",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:brain,C:white}Brain{} jugadores" }
-            },
-            p_ina_team_pack_otaku = {
-                name = "Pack Otaku",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:otaku,C:white}Otaku{} jugadores" }
-            },
-            p_ina_team_pack_inazuma = {
-                name = "Pack Inazuma",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:inazuma,C:white}Inazuma{} jugadores" }
-            },
-            p_ina_team_pack_shuriken = {
-                name = "Pack Shuriken",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:shuriken,C:white}Shuriken{} jugadores" }
-            },
-            p_ina_team_pack_farm = {
-                name = "Pack Farm",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:farm,C:white}Farm{} jugadores" }
-            },
-            p_ina_team_pack_kirkwood = {
-                name = "Pack Kirkwood",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:kirkwood,C:white}Kirwood{} jugadores" }
-            },
-            p_ina_team_pack_zeus = {
-                name = "Pack Zeus",
-                text = { "Elige {C:attention}#1#{} entre", "{C:attention}#2#{} {X:zeus,C:white}Zeus{} jugadores" }
+            p_ina_advanced_pack = {
+                name = "Pack Avanzado",
+                text = { "Elige {C:attention}#1#{} entre {C:attention}#2#{}", "{C:attention}Jokers{} de tus equipos" }
             },
             p_ina_item_pack_ina = {
                 name = "Ina Pack",
@@ -1336,6 +1300,18 @@ return {
                 name = "Training Pack",
                 text = { "Elige {C:attention}#1#{} de {C:attention}#2#{} {C:training}Entrenamientos{}",
                     "para usar de inmediato" }
+            },
+            p_ina_jumbo_training_pack = {
+                name = "Jumbo Training Pack",
+                text = { "Elige {C:attention}#1#{} de {C:attention}#2#{} {C:training}Entrenamientos{}",
+                    "para usar de inmediato", "Al menos uno será compatible",
+                    "con tus {C:attention}Jokers{}" }
+            },
+            p_ina_mega_training_pack = {
+                name = "Mega Training Pack",
+                text = { "Elige {C:attention}#1#{} de {C:attention}#2#{} {C:training}Entrenamientos{}",
+                    "para usar de inmediato", "Al menos dos serán compatibles",
+                    "con tus {C:attention}Jokers{}" }
             },
             ina_harvest_sticker = {
                 name = "Cosechable",

@@ -441,3 +441,29 @@ restore_types_for_area = function()
         restore_types(Pokerleven.ina_bench_area)
     end
 end
+
+Pokerleven.get_random_team_from_actuals = function()
+    local possible_teams = {}
+    if G.jokers and G.jokers.cards then
+        for _, v in pairs(G.jokers.cards) do
+            if v.ability and type(v.ability.extra) == "table" and v.ability.extra.pteam then
+                possible_teams[v.ability.extra.pteam] = true
+            end
+        end
+    end
+
+    local team_list = {}
+    for team, _ in pairs(possible_teams) do
+        table.insert(team_list, team)
+    end
+
+    local selected_team = nil
+    if #team_list > 0 then
+        selected_team = pseudorandom_element(team_list, pseudoseed("teamselect"))
+    end
+    if not selected_team then
+        selected_team = "Raimon"
+    end
+
+    return selected_team
+end

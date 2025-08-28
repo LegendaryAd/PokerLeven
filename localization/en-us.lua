@@ -1222,50 +1222,13 @@ return {
                 text = { "Activates if it is the",
                     "rightmost {C:attention}Joker{}" }
             },
-            p_ina_team_pack_raimon = {
-                name = "Raimon Pack",
-                text = { "Choose {C:attention}#1#{} from", "{C:attention}#2#{} {X:raimon,C:white}Raimon{} players" }
+            p_ina_growing_pack = {
+                name = "Growing Pack",
+                text = { "Choose {C:attention}#1#{} between {C:attention}#2#{}", "{C:attention}Jokers{} from your teams" }
             },
-            p_ina_team_pack_occult = {
-                name = "Occult Pack",
-                text = { "Choose {C:attention}#1#{} from", "{C:attention}#2#{} {X:occult,C:white}Occult{} players" }
-            },
-            p_ina_team_pack_royal = {
-                name = "Royal Pack",
-                text = { "Choose {C:attention}#1#{} from",
-                    "{C:attention}#2#{} {X:royal academy,C:white}R. Academy{} players" }
-            },
-            p_ina_team_pack_wild = {
-                name = "Wild Pack",
-                text = { "Choose {C:attention}#1#{} from", "{C:attention}#2#{} {X:wild,C:white}Wild{} players" }
-            },
-            p_ina_team_pack_brain = {
-                name = "Brain Pack",
-                text = { "Choose {C:attention}#1#{} from", "{C:attention}#2#{} {X:brain,C:white}Brain{} players" }
-            },
-            p_ina_team_pack_otaku = {
-                name = "Otaku Pack",
-                text = { "Choose {C:attention}#1#{} from", "{C:attention}#2#{} {X:otaku,C:white}Otaku{} players" }
-            },
-            p_ina_team_pack_inazuma = {
-                name = "Inazuma Pack",
-                text = { "Choose {C:attention}#1#{} from", "{C:attention}#2#{} {X:inazuma,C:white}Inazuma{} players" }
-            },
-            p_ina_team_pack_shuriken = {
-                name = "Shuriken Pack",
-                text = { "Choose {C:attention}#1#{} from", "{C:attention}#2#{} {X:shuriken,C:white}Shuriken{} players" }
-            },
-            p_ina_team_pack_farm = {
-                name = "Farm Pack",
-                text = { "Choose {C:attention}#1#{} from", "{C:attention}#2#{} {X:farm,C:white}Farm{} players" }
-            },
-            p_ina_team_pack_kirkwood = {
-                name = "Kirkwood Pack",
-                text = { "Choose {C:attention}#1#{} from", "{C:attention}#2#{} {X:kirkwood,C:white}Kirwood{} players" }
-            },
-            p_ina_team_pack_zeus = {
-                name = "Zeus Pack",
-                text = { "Choose {C:attention}#1#{} from", "{C:attention}#2#{} {X:zeus,C:white}Zeus{} players" }
+            p_ina_advanced_pack = {
+                name = "Advanced Pack",
+                text = { "Choose {C:attention}#1#{} between {C:attention}#2#{}", "{C:attention}Jokers{} from your teams" }
             },
             p_ina_item_pack_ina = {
                 name = "Ina Pack",
@@ -1282,6 +1245,18 @@ return {
                 name = "Training Pack",
                 text = { "Choose {C:attention}#1#{} of {C:attention}#2#{} {C:training}Trainings{}",
                     "to use immediately" }
+            },
+            p_ina_jumbo_training_pack = {
+                name = "Jumbo Training Pack",
+                text = { "Choose {C:attention}#1#{} of {C:attention}#2#{} {C:training}Trainings{}",
+                    "to use immediately", "At least one will be",
+                    "compatible with your {C:attention}Jokers{}" }
+            },
+            p_ina_mega_training_pack = {
+                name = "Mega Training Pack",
+                text = { "Choose {C:attention}#1#{} of {C:attention}#2#{} {C:training}Trainings{}",
+                    "to use immediately", "At least two will be",
+                    "compatible with your {C:attention}Jokers{}" }
             },
             ina_harvest_sticker = {
                 name = "Harvestable",

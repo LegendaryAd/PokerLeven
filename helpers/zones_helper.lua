@@ -370,6 +370,7 @@ G.FUNCS.toggle_bench_card = function(e, add_func, open_bench_flag)
             add_func(card)
 
             Pokerleven.open_bench(true, open_bench_flag)
+
             return true
         end
     }))

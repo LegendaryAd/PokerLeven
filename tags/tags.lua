@@ -41,7 +41,7 @@ local wild_tag = {
             create_shop_card_ui(card, 'Joker', context.area)
             card.states.visible = false
             tag:yep('+', G.C.GREEN, function()
-                if pseudorandom('wild_tag', 1, 4) == 1 then
+                if pseudorandom('wild_tag', 1, 8) == 1 then
                     card:set_edition('e_negative')
                 end
                 card:start_materialize()
