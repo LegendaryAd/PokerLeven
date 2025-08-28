@@ -113,9 +113,9 @@ local futbol_frontier = {
     },
 }
 
-local mas_o_menos = {
+local more_or_less = {
     object_type = "Challenge",
-    key = "mas_o_menos",
+    key = "more_or_less",
     rules = {
         modifiers = {
             { id = 'joker_slots', value = 5 },
@@ -140,12 +140,12 @@ local mas_o_menos = {
     },
 }
 
-local mark_challenge = {
+local mark_challenge = Ch({
     object_type = "Challenge",
     key = "mark_challenge",
     rules = {
         custom = {
-            { id = 'ina_mark_goal' },
+            { id = 'ina_win_ante16' },
         },
         modifiers = {
             { id = 'joker_slots', value = 5 },
@@ -164,18 +164,23 @@ local mark_challenge = {
     deck = {
         type = 'Challenge Deck',
     },
-}
+    apply = function(self)
+        G.GAME.win_ante = 16
+    end
+})
 
-local fichatron = {
+local recruiter = {
     object_type = "Challenge",
-    key = "fichatron",
+    key = "recruiter",
     rules = {
+        custom = {
+            { id = 'no_shop_jokers' },
+        },
         modifiers = {
             { id = 'joker_slots', value = 5 },
         }
     },
     jokers = {
-        { id = "j_ina_Celia", eternal = true },
         { id = "j_ina_Celia", eternal = true },
     },
     restrictions = {
@@ -237,5 +242,5 @@ end
 
 return {
     name = "Challenge",
-    list = { glasses_team, love_pair, futbol_frontier, elementals, mas_o_menos, mark_challenge, fichatron }
+    list = { glasses_team, love_pair, futbol_frontier, elementals, more_or_less, mark_challenge, recruiter }
 }
