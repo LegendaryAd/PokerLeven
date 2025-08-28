@@ -376,7 +376,7 @@ return {
             },
             j_ina_Kevin_inf = {
                 name = "Kevin",
-                text = { "{C:forest}Tornado Dragón{}", "Vuelve a activar el comodín {X:fw,C:white}FW{}",
+                text = { "{C:forest}Tornado Dragón{}", "Vuelve a activar el {C:attention}Joker{} {X:fw,C:white}FW{}",
                     "que está a su derecha{}" }
             },
             j_ina_Mark = {
@@ -426,7 +426,8 @@ return {
             j_ina_Max = {
                 name = "Max",
                 text = { "{C:wind}Remate Espiral{}",
-                    "{C:chips}+#1#{} fichas por cada comodín de {X:wind,C:white}Viento{}",
+                    "{C:chips}+#1#{} fichas por cada",
+                    "{C:attention}Joker{} de {X:wind,C:white}Viento{}",
                     "{C:inactive}(Actual:{} {C:chips}+#2#{} {C:inactive}){}" }
             },
             j_ina_Peabody = {
@@ -451,7 +452,7 @@ return {
                     "Al seleccionar la ciega, cambia",
                     "a tu equipo más numeroso", },
                     { "Los jugadores del equipo",
-                        "de {C:attention}Bobby{} otorgan {C:chips}+#1# Chips{}", } }
+                        "de {C:attention}Bobby{} otorgan {C:chips}+#1#{} fichas", } }
             },
             j_ina_Erik = {
                 name = "Erik",
@@ -505,7 +506,7 @@ return {
             j_ina_Styx = {
                 name = "Styx",
                 text = { "{C:forest}Tiro Fantasma{}",
-                    "{C:chips}+#2#{} fichas por cada carta {C:tarot}Tarot{} usada",
+                    "{C:chips}+#2#{} fichas por cada", "carta {C:tarot}Tarot{} usada",
                     "{C:inactive}(Actual:{} {C:chips}+#1#{}{C:inactive}){}",
                 }
             },
@@ -548,10 +549,10 @@ return {
             j_ina_Martin = {
                 name = "Martin",
                 text = { "{C:forest}Barrido Defensivo{}",
-                    "Los comodines {C:blue}Comunes{} otorgan {C:mult}+#1#{} de multi",
-                    "Los comodines {C:green}Inusuales{} otorgan {C:mult}+#2#{} de multi",
-                    "Los comodines {C:red}Raros{} o {C:top}Destacados{} otorgan {X:mult,C:white}X#3#{}",
-                    "Los comodines {C:purple}Legendarios{} otorgan {X:dark_edition,C:white}^#4#{}" }
+                    "Los {C:attention}Jokers{} {C:blue}Comunes{} otorgan {C:mult}+#1#{} de multi",
+                    "Los {C:attention}Jokers{} {C:green}Inusuales{} otorgan {C:mult}+#2#{} de multi",
+                    "Los {C:attention}Jokers{} {C:red}Raros{} o {C:top}Destacados{} otorgan {X:mult,C:white}X#3#{}",
+                    "Los {C:attention}Jokers{} {C:purple}Legendarios{} otorgan {X:dark_edition,C:white}^#4#{}" }
             },
             j_ina_Master = {
                 name = "Master",
@@ -590,13 +591,13 @@ return {
                 name = "Eagle",
                 text = { "{C:wind}Ataque de Cóndor{}",
                     "Adquiere {C:mult}+#1#{} de multi por cada carta",
-                    "{C:enhanced}versátil{} puntuada en un {C:attention}Color",
+                    "{C:enhanced}Versátil{} puntuada en un {C:attention}Color",
                     "{C:inactive}(Actual:{} {C:mult}+#2#{}{C:inactive}){}" }
             },
             j_ina_Monkey = {
                 name = "Monkey",
                 text = { "{C:wind}Giro del Mono{}",
-                    "Obtén {X:mult,C:white}XMult{} por {C:enhanced}cartas versátiles{}",
+                    "Obtén {X:mult,C:white}XMult{} por cartas {C:enhanced}Versátiles{}",
                     "en el mazo, multiplicado por {X:wild,C:white}Wild{} / 10",
                     "{C:inactive}(Actual: {X:mult,C:white}X#1#{}{C:inactive}){}" }
             },
@@ -659,10 +660,10 @@ return {
 
             j_ina_Seller = {
                 name = "Seller",
-                text = { "{C:wind}Psicorremate{}", "Tras cada ronda jugada",
-                    "gana {C:money}+#2#$ de potencial de venta{}.", "Cuando se venda Seller, aumenta",
-                    "el {C:money}valor de venta{} de otros jokers", "por su potencial de venta",
-                    "{C:inactive}(Actual:{} {C:money}#1#${}{C:inactive}){}" }
+                text = { "{C:wind}Psicorremate{}", "Tras la ronda gana {C:money}+#2# de potencial de venta{}",
+                    "Cuando es vendido, aumenta el {C:money}valor de venta{}",
+                    "de otros jokers por su potencial de venta",
+                    "{C:inactive}(Actual:{} {C:money}#1#$ de potencial de venta{}{C:inactive}){}" }
             },
 
             j_ina_Kind = {
@@ -990,8 +991,8 @@ return {
                     "Genera {C:attention}#1#{} {X:mountain,C:white}barrera{} al puntuar",
                     "un mínimo de {C:attention}#2#{} de {C:attention}figuras{}" },
                     { "{C:attention}Muralla Gigante{}",
-                        "{{C:mult}Consume{} todas las {X:mountain,C:white}barrera{}",
-                        "y otorga {C:chips}+#3# Chips{} por cada una",
+                        "{{C:mult}Consume{} todas las {X:mountain,C:white}barrera{} y",
+                        "otorga {C:chips}+#3#{} fichas por cada una",
                         "{C:inactive}(Actual:{} {C:chips}+#4#{}{C:inactive}){}" } }
             },
 
@@ -1001,7 +1002,7 @@ return {
                     "{C:fire}Entrada Tormenta{}",
                     "Al ganar la ciega convierte ",
                     "una {C:attention}Carta{} en {C:enhanced}Acero{} por",
-                    "cada {C:attention}Joker{} {X:fire,C:white}Fuego{} {X:df,C:white}DF{}"
+                    "cada {C:attention}Joker{} {X:fire,C:white}Fuego{}{X:df,C:white}DF{}"
                 }
             },
 
@@ -1009,8 +1010,8 @@ return {
                 name = "Apollo",
                 text = {
                     "{C:forest}Hora Celestial{}",
-                    "Al jugar {C:attention}doble pareja{} gana {C:chips}+#2# fichas{}",
-                    "{C:inactive}De 14:00 a 19:00h:{} gana {C:chips}+#1# fichas{} y {C:mult}+#4# multi{}",
+                    "Al jugar {C:attention}doble pareja{} gana {C:chips}+#2#{} fichas",
+                    "{C:inactive}De 14:00 a 19:00h:{} gana {C:chips}+#1#{} fichas y {C:mult}+#4#{} de multi",
                     "{C:inactive}(Actual:{} {C:chips}+#3#{} {C:inactive}y{} {C:mult}+#5#{}{C:instead}{C:inactive}){}"
                 }
             },
