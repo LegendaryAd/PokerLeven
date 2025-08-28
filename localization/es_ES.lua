@@ -467,6 +467,12 @@ return {
                     "{C:inactive}(Actual: {C:chips}+#4#{} {C:inactive}y{} {C:mult}+#5#{}{C:inactive}){}",
                 }
             },
+            j_ina_Jim = {
+                name = "Jim",
+                text = { "{C:wind}Giro bobina{}",
+                    "Gana {C:chips}+#1#{} fichas",
+                }
+            },
             -- Occult
             j_ina_Talisman = {
                 name = "Talisman",
@@ -1727,4 +1733,3 @@ return {
         }
     }
 }
-
