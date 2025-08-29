@@ -258,15 +258,8 @@ local Vox = J({
     pteam = "Otaku",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main and context.scoring_hand and card:is_rightmost_joker() then
-            local count = 0
-            if G.jokers and G.jokers.cards then
-                for i, j in ipairs(G.jokers.cards) do
-                    if j == card then
-                        count = i - 1
-                    end
-                end
-            end
+        if Pokerleven.is_joker_turn and context.joker_main and context.scoring_hand and card:is_rightmost_joker() then
+            local count = Pokerleven.get_jokers_to_the_left(card)
 
             if count > 0 then
                 return {
