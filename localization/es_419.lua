@@ -19,6 +19,17 @@ return {
                     "{C:inactive}Ha de haber espacio{}"
                 }
             },
+            b_ina_ray_dark = {
+                name = "Ray Dark",
+                text = {
+                    "{C:pink}#1# Managers{}",
+                    "Las cartas {C:spectral}espectrales{}",
+                    "pueden salir en la tienda"
+                },
+                unlock = {
+                    "Usa un {C:dark_edition}Néctar de los Dioses{}"
+                }
+            },
         },
         Blind = {
             -- Blinds pequeños

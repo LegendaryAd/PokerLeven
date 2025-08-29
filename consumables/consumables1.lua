@@ -90,7 +90,7 @@ local divine_water = {
     end
 
     choice.ability.perishable = true
-
+    check_for_unlock({ type = "ray_dark" })
     card_eval_status_text(choice, 'extra', nil, nil, nil,
       { message = localize("ina_technique_upgrade"), colour = G.C.SECONDARY_SET.Spectral })
   end

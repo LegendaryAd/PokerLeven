@@ -1,7 +1,7 @@
 local hillman = Ba({
     name = "hillman",
     key = "hillman",
-    order = 17,
+    order = 1,
     unlocked = true,
     discovered = true,
     config = { managers = 2, ante = 4, strats_created = 1 },
@@ -36,15 +36,14 @@ end
 local ray_dark = Ba({
     name = "Ray Dark",
     key = "ray_dark",
-    order = 17,
+    order = 2,
     unlocked = false,
     discovered = true,
-    config = { managers = 0, ante = 4 },
+    config = { managers = 0 },
     loc_vars = function(self, info_queue, center)
         return {
             vars = {
-                self.config.managers,
-                self.config.ante
+                self.config.managers
             }
         }
     end,
@@ -52,6 +51,12 @@ local ray_dark = Ba({
     atlas = "decks",
     apply = function(self, back)
         Pokerleven.ina_manager_area.config.card_limit = self.config.managers
+        G.GAME.spectral_rate = 2.25
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == "ray_dark" then
+            unlock_card(self)
+        end
     end
 })
 
