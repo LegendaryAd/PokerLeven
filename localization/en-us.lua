@@ -780,6 +780,15 @@ return {
                     "spends {C:mountain}#1# Barriers{} to clone",
                     "a random joker {C:dark_edition}negative{}" }
             },
+            b_ina_wintersea = {
+                name = "Wintersea",
+                text = {
+                    "{C:pink}#1# Managers{}",
+                    "The first joker",
+                    "will be {C:dark_edition}eternal{}, {C:attention}pinned{}",
+                    "and {C:mult}polychrome{}"
+                },
+            },
 
             -- Farm
             j_ina_Greeny = {
