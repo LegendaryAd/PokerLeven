@@ -329,7 +329,7 @@ local Aphrodite = J({
   name = "Aphrodite",
   pos = { x = 0, y = 2 },
   soul_pos = { x = 0, y = 3 },
-  config = { extra = { byron_mult_fw = 0.3, byron_mult_mf = 0.15 } },
+  config = { extra = { byron_mult_fw = 0.6, byron_mult_mf = 0.3 } },
   loc_vars = function(self, info_queue, center)
     local position = center.ability.extra.pposition
     return { vars = { center.ability.extra.byron_mult_fw, center.ability.extra.byron_mult_mf, get_byron_xmult(center, position) } }

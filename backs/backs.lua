@@ -90,7 +90,7 @@ local wintersea = Ba({
     order = 2,
     unlocked = true,
     discovered = true,
-    config = { managers = 1, activated = false },
+    config = { managers = 1 },
     loc_vars = function(self, info_queue, center)
         return {
             vars = {
@@ -104,14 +104,13 @@ local wintersea = Ba({
         Pokerleven.ina_manager_area.config.card_limit = self.config.managers
     end,
     calculate = function(self, back, context)
-        if not self.config.activated and context.card_added then
+        if context.card_added and #G.jokers.cards == 0 then
             if context.card and context.card.ability
                 and context.card.ability.extra
                 and context.card.ability.extra.ptype then
                 context.card.ability.eternal = true
                 context.card.pinned = true
                 context.card:set_edition('e_polychrome')
-                self.config.activated = true
             end
         end
     end

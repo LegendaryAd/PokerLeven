@@ -228,7 +228,7 @@ function Card:remove_from_area()
     if self.area == Pokerleven.ina_bench_area and
         self.edition and self.edition.card_limit then
         Pokerleven.ina_bench_area.config.card_limit =
-            Pokerleven.ina_bench_area.config.card_limit - self.edition.card_limit
+            Pokerleven.ina_bench_area.config.card_limit - (self.edition.card_limit - 1)
         if Pokerleven.ina_bench_area.config.card_limit < 1 then
             Pokerleven.ina_bench_area.config.card_limit = 1
         end
@@ -262,7 +262,7 @@ end
 Pokerleven.add_to_bench = function(card)
     if card.edition and card.edition.card_limit then
         Pokerleven.ina_bench_area.config.card_limit = Pokerleven.ina_bench_area.config.card_limit +
-            card.edition.card_limit
+            card.edition.card_limit - 1
     end
     if (#Pokerleven.ina_bench_area.cards < Pokerleven.ina_bench_area.config.card_limit or card.edition and card.edition.negative) then
         Pokerleven.ina_bench_area:emplace(card)
@@ -370,7 +370,6 @@ G.FUNCS.toggle_bench_card = function(e, add_func, open_bench_flag)
             add_func(card)
 
             Pokerleven.open_bench(true, open_bench_flag)
-
             return true
         end
     }))
@@ -409,9 +408,6 @@ G.FUNCS.unbench_card = function(e)
         trigger = 'after',
         delay = 0.25,
         func = function()
-            if card.edition and card.edition.negative then
-                Pokerleven.ina_bench_area.config.card_limit = Pokerleven.ina_bench_area.config.card_limit - 1
-            end
             return true
         end
     }))

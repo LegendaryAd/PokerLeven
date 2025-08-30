@@ -242,7 +242,9 @@ local Martin = J({
   blueprint_compat = true,
   calculate = function(self, card, context)
     if not context.debuff then
-      if context.other_joker and not context.other_joker.debuff and context.other_joker.config.center.rarity == 3 and card ~= context.other_joker then
+      if context.other_joker and not context.other_joker.debuff
+          and (context.other_joker.config.center.rarity == 3 or context.other_joker.config.center.rarity == "ina_top")
+          and card ~= context.other_joker then
         card.ability.extra.triggered = true;
         G.E_MANAGER:add_event(Event({
           func = function()
