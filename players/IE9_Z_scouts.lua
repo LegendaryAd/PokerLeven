@@ -3,7 +3,7 @@
 -- Dulce
 ---@param card Card
 local select_random_cards_for_harvest = function(card)
-    local count = #find_player_type("Wind") + #find_player_position("MF")
+    local count = (#find_player_type("Wind") + #find_player_position("MF")) * card.ability.extra.card_count1
 
     if count > 0 and G.deck and G.deck.cards and #G.deck.cards > 0 then
         table.unpack = table.unpack or unpack
@@ -30,9 +30,9 @@ end
 local Dulce = J({
     name = "Dulce",
     pos = { x = 10, y = 0 },
-    config = { extra = {} },
+    config = { extra = { card_count1 = 1 } },
     loc_vars = function(self, info_queue, center)
-        return {}
+        return { vars = { center.ability.extra.card_count1 } }
     end,
     rarity = 3,
     pools = { ["Scout"] = true },
@@ -323,10 +323,10 @@ local Miles = {
 local Ace_Server = J({
     name = "Ace_Server",
     pos = { x = 0, y = 0 },
-    config = { extra = { odds = 4, hand_level_up = 1, ammount_needed = 2, rank_played = 14, } },
+    config = { extra = { odds4 = 4, hand_level_up = 1, ammount_needed = 2, rank_played = 14, } },
     loc_vars = function(self, info_queue, center)
         return {
-            vars = { center.ability.extra.odds, center.ability.extra.hand_level_up, center.ability.extra.ammount_needed, center.ability.extra.rank_played }
+            vars = { center.ability.extra.odds4, center.ability.extra.hand_level_up, center.ability.extra.ammount_needed, center.ability.extra.rank_played }
         }
     end,
     rarity = 2,

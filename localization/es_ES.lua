@@ -1079,7 +1079,8 @@ return {
                 name = "Aphrodite",
                 text = { { "{C:forest}Sabiduría Divina{}",
                     "Al acabar una ronda",
-                    "cambia al azar entre {X:fw,C:white}FW{} y {X:mf,C:white}MF{}" },
+                    "cambia entre {X:fw,C:white}FW{} y {X:mf,C:white}MF{}",
+                    "según venga mejor" },
                     { "Si es {X:fw,C:white}FW{} {X:mult,C:white}X#1#{} por cada",
                         "{X:fw,C:white}FW{}, {X:zeus,C:white}Zeus{} y multiplicado por {C:mult}descartes",
                         "Si es {X:mf,C:white}MF{} {X:mult,C:white}X#2#{} por cada",
@@ -1160,8 +1161,8 @@ return {
                 name = "Dulce",
                 text = {
                     "{C:wind}Viento de cosecha{}",
-                    "Siembra una carta al azar por cada",
-                    "{C:attention}Joker {X:mf,C:white}MF{} y {X:wind,C:white}Viento{} al elegir la ciega",
+                    "Siembra {C:attention}#1#{} carta/s al azar por cada",
+                    "{C:attention}Joker {X:mf,C:white}MF{} ó {X:wind,C:white}Viento{} al elegir la ciega",
                 }
             },
 

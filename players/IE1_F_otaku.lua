@@ -2,9 +2,9 @@
 local Idol = {
     name = "Idol",
     pos = { x = 3, y = 6 },
-    config = { extra = { odds = 2, retrigger_count = 1, triggered = false } },
+    config = { extra = { odds2 = 2, retrigger_count = 1, triggered = false } },
     loc_vars = function(self, info_queue, center)
-        return { vars = { G.GAME.probabilities.normal, center.ability.extra.odds } }
+        return { vars = { G.GAME.probabilities.normal, center.ability.extra.odds2 } }
     end,
     rarity = 1, -- Common
     pools = { ["Otaku"] = true },
@@ -18,7 +18,7 @@ local Idol = {
     calculate = function(self, card, context)
         if context.repetition and context.scoring_hand and context.other_card then
             if context.other_card:get_id() == 4
-                and pseudorandom('Idol') < G.GAME.probabilities.normal / card.ability.extra.odds then
+                and pseudorandom('Idol') < G.GAME.probabilities.normal / card.ability.extra.odds2 then
                 card.ability.extra.triggered = true
                 return {
                     message = localize('k_again_ex'),

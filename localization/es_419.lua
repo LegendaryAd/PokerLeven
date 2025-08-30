@@ -1160,8 +1160,8 @@ return {
                 name = "Dulce",
                 text = {
                     "{C:wind}Viento de cosecha{}",
-                    "Siembra una carta al azar por cada",
-                    "{C:attention}Joker {X:mf,C:white}MF{} y {X:wind,C:white}Viento{} al elegir la ciega",
+                    "Siembra {C:attention}#1#{} carta/s al azar por cada",
+                    "{C:attention}Joker {X:mf,C:white}MF{} ó {X:wind,C:white}Viento{} al elegir la ciega",
                 }
             },
 

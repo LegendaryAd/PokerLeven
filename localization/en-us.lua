@@ -1096,9 +1096,9 @@ return {
                 text = {
                     "{C:wind}Harvest Wind{}",
                     "When selecting the {C:attention}blind{} sows",
-                    "a random card from the deck",
+                    "{C:attention}#1#{} random card/s from the deck",
                     "per joker that is",
-                    "{X:wind,C:white}Wind{} and {X:mf,C:white}MF{}",
+                    "{X:wind,C:white}Wind{} or {X:mf,C:white}MF{}",
                 }
             },
 
