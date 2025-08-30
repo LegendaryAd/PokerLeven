@@ -588,7 +588,6 @@ local Tod = J({
   pos = { x = 4, y = 0 },
   config = { extra = { chip_mod = 20 } },
   loc_vars = function(self, info_queue, center)
-    count = 0
     return { vars = { center.ability.extra.chip_mod } }
   end,
   rarity = 1,
@@ -601,7 +600,8 @@ local Tod = J({
   pteam = "Raimon",
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if Pokerleven.is_joker_turn and context.cardarea == G.jokers and context.joker_main and context.scoring_hand then
+    if Pokerleven.is_joker_turn(context) and context.cardarea == G.jokers and context.joker_main and context.scoring_hand then
+      local count = 0
       -- Count played metal cards
       for _, c in ipairs(context.scoring_hand) do
         count = count + Pokerleven.get_enhancement_count(c, 'm_steel')
@@ -613,11 +613,13 @@ local Tod = J({
       end
 
       local total_chips = count * card.ability.extra.chip_mod
-      return {
-        message = localize { type = 'variable', key = 'a_chips', vars = { total_chips } },
-        colour = G.C.CHIPS,
-        chip_mod = total_chips
-      }
+      if total_chips > 0 then
+        return {
+          message = localize { type = 'variable', key = 'a_chips', vars = { total_chips } },
+          colour = G.C.CHIPS,
+          chip_mod = total_chips
+        }
+      end
     end
   end,
   ina_credits = {
