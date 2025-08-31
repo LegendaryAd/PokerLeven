@@ -106,7 +106,7 @@ local managers_1 = V({
     set = "Voucher",
     pos = { x = 2, y = 0 },
     discovered = false,
-    unlocked = false,
+    unlocked = true,
     available = true,
     cost = 10,
     loc_vars = function(self, info_queue)
@@ -124,7 +124,7 @@ local managers_2 = V({
     set = "Voucher",
     pos = { x = 2, y = 1 },
     discovered = false,
-    unlocked = false,
+    unlocked = true,
     available = true,
     requires = { "v_ina_managers_1" },
     cost = 10,
