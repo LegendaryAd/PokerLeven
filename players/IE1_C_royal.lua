@@ -292,13 +292,15 @@ local Martin = J({
           end
         }))
         return {
-          message = localize({
-            type = "variable",
-            key = "a_powmult",
-            vars = { number_format(card.ability.extra.legendary_exp) },
-          }),
-          Emult_mod = card.ability.extra.legendary_exp,
-          colour = G.C.DARK_EDITION,
+          mult_message = {
+            message = localize({
+              type = "variable",
+              key = "a_powmult",
+              vars = { number_format(card.ability.extra.legendary_exp) },
+            }),
+            colour = G.C.DARK_EDITION,
+          },
+          mult = (mult ^ card.ability.extra.legendary_exp) - mult,
         }
       end
     end
