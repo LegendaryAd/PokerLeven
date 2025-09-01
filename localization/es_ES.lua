@@ -1565,6 +1565,10 @@ return {
                     "de una carta {C:dark_edition,E:1}al máximo{}",
                     "pero lo vuelve {C:dark_edition}perecedero{}" }
             },
+            c_ina_wait = {
+                name = "Espere un poco más",
+                text = { "Crea un {C:pink}manager{} {C:dark_edition}Legendario{}" }
+            },
             c_ina_centella = {
                 name = "Centro centella",
                 text = { "Sube el {C:training}nivel de técnica{}",

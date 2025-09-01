@@ -1481,6 +1481,10 @@ return {
                     "of one joker {C:dark_edition,E:1}to the max{}",
                     "but sets a {C:dark_edition}perishable{} sticker" }
             },
+            c_ina_divine_wait = {
+                name = "Wait a little more",
+                text = { "Creates a {C:dark_edition}Legendary{} Manager" }
+            },
             c_ina_centella = {
                 name = "Centella Center",
                 text = { "Raises the {C:training}technique level{}",
