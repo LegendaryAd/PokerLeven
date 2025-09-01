@@ -22,8 +22,6 @@ local Kevin = J({
     if card.ability.extra.current_cooldown == 0 and
         context.retrigger_joker_check and not context.retrigger_joker and context.other_card ~= self then
       if context.other_card == get_right_joker(card) and is_position(context.other_card, "FW") then
-        card.ability.extra.current_cooldown = card.ability.extra.cooldown_base
-
         return {
           message = localize("k_again_ex"),
           repetitions = card.ability.extra.retriggers,
@@ -35,6 +33,11 @@ local Kevin = J({
     elseif card.ability.extra.current_cooldown > 0 and
         Pokerleven.is_joker_turn(context) then
       card.ability.extra.current_cooldown = card.ability.extra.current_cooldown - 1
+    end
+
+    if card.ability.extra.current_cooldown == 0 and
+        context.end_of_round then
+      card.ability.extra.current_cooldown = card.ability.extra.cooldown_base
     end
   end,
 })
