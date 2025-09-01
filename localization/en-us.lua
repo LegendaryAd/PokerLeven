@@ -1562,6 +1562,9 @@ return {
                 text = {
                     "{C:attention}+1{} {C:enhanced}Mánager{} slot"
                 },
+                unlock = {
+                    "Have space for {C:attention}3{} {C:pink}Managers{}"
+                }
             },
         }
     },

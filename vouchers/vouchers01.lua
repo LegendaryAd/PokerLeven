@@ -114,6 +114,9 @@ local managers_1 = V({
     end,
     redeem = function(self, card)
         Pokerleven.ina_manager_area.config.card_limit = Pokerleven.ina_manager_area.config.card_limit + 1
+        if Pokerleven.ina_manager_area.config.card_limit > 2 then
+            check_for_unlock({ type = "managers_2" })
+        end
     end
 })
 
@@ -124,7 +127,7 @@ local managers_2 = V({
     set = "Voucher",
     pos = { x = 2, y = 1 },
     discovered = false,
-    unlocked = true,
+    unlocked = false,
     available = true,
     requires = { "v_ina_managers_1" },
     cost = 10,
@@ -133,6 +136,11 @@ local managers_2 = V({
     end,
     redeem = function(self, card)
         Pokerleven.ina_manager_area.config.card_limit = Pokerleven.ina_manager_area.config.card_limit + 1
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == "managers_2" then
+            unlock_card(self)
+        end
     end
 })
 

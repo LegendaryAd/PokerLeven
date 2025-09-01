@@ -1647,6 +1647,9 @@ return {
                 text = {
                     "{C:attention}+1{} espacio de {C:enhanced}Mánager{}"
                 },
+                unlock = {
+                    "Consigue espacio para {C:attention}3{} {C:pink}Managers{}"
+                }
             },
         }
     },
