@@ -147,6 +147,33 @@ local centella = {
   end
 }
 
+local wait = {
+  name = "Wait",
+  key = "wait",
+  set = "Spectral",
+  pos = { x = 2, y = 2 },
+  soul_pos = { x = 3, y = 2 },
+  atlas = "upgrade_techniques",
+  cost = 10,
+  unlocked = true,
+  hidden = true,
+  soul_set = "Joker",
+  soul_rate = .001,
+  discovered = false,
+  can_use = function(self, card)
+    return #Pokerleven.ina_manager_area.cards < Pokerleven.ina_manager_area.config.card_limit
+  end,
+  use = function(self, card, area, copier)
+    local added_card = SMODS.create_card({
+      key = 'j_ina_Akihiro',
+      no_edition = true,
+      area = Pokerleven.ina_manager_area
+    })
+    Pokerleven.add_to_managers(added_card)
+  end
+}
+
+
 local upgrade_technique_Wind_FW = {
   name = "upgrade_technique_Wind_FW",
   key = "upgrade_technique_Wind_FW",
@@ -709,7 +736,7 @@ local upgrade_technique_Mountain_GK = {
 
 return {
   name = "Trainings",
-  list = { tech_book, tactic_pos, divine_water, black_room, centella,
+  list = { tech_book, tactic_pos, divine_water, black_room, centella, wait,
     upgrade_technique_Forest_GK, upgrade_technique_Forest_DF, upgrade_technique_Forest_MF, upgrade_technique_Forest_FW,
     upgrade_technique_Fire_GK, upgrade_technique_Fire_DF, upgrade_technique_Fire_MF, upgrade_technique_Fire_FW,
     upgrade_technique_Wind_GK, upgrade_technique_Wind_DF, upgrade_technique_Wind_MF, upgrade_technique_Wind_FW,
