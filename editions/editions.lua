@@ -104,10 +104,10 @@ SMODS.Edition({
         "{C:inactive}no se pueden aplicar tarots o espectrales",
         "{C:inactive}no pueden ser destrozadas o duplicadas{} ." }
     },
-    disable_shadow = true,
+    disable_shadow = false,
     disable_base_shader = true,
     shader = "lethal",
-    discovered = true,
+    discovered = false,
     unlocked = false,
     in_shop = false,
     weight = 8,
