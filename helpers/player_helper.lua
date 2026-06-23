@@ -166,7 +166,7 @@ player_in_pool = function(self)
     end
     if next(find_joker(name)) or player_in_bench(name) or self.pteam == 'Scout' then
         return false
-    elseif self.rarity == "winner" then
+    elseif self.rarity == "ina_winner" then
         return false
     else
         return true

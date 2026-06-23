@@ -17,6 +17,7 @@ technique_values = {
     current_mult = .2,
     new_glass_denom = .2,
     xmult_mod = .2,
+    xmult_mod_high = .5,
     xmult = .2,
     drain = .2,
     odds = -.05,
@@ -34,6 +35,7 @@ technique_values = {
     cooldown_base = -0.2,
     current_cooldown = -0.2,
     evolving_retriggers = 1,
+    evolving_retriggers_low = 0.6,
     card_count1 = 1,
     odds4 = -0.1499,
     odds2 = -0.1
@@ -47,6 +49,7 @@ local roundable_fields = {
     copies_number = true,
     cooldown_base = true,
     current_cooldown = true,
+    evolving_retriggers_low = true,
 }
 
 

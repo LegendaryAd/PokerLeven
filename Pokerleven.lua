@@ -342,45 +342,52 @@ end
 
 --Load jokers files
 local function load_joker_folder(folder_name, item_constructor)
-  local files = NFS.getDirectoryItems(mod_dir .. folder_name)
-  for _, file in ipairs(files) do
-    sendDebugMessage("The file is: " .. file)
-    local mod_func, load_error = SMODS.load_file(folder_name .. "/" .. file)
-    if load_error then
-      sendDebugMessage("The error is: " .. load_error)
-    else
-      local source = mod_func()
-      if source.init then source:init() end
+  local function recursive_load(path)
+    local items = NFS.getDirectoryItems(mod_dir .. path)
+    if not items then return end
+    for _, item in ipairs(items) do
+      local full_item_path = path .. "/" .. item
+      if string.sub(item, -4) ~= ".lua" then
+        recursive_load(full_item_path)
+      else
+        local mod_func = SMODS.load_file(full_item_path)
+        if mod_func then
+          local source = mod_func()
+          if source then
+            if source.init then source:init() end
 
-      for _, item in ipairs(source.list) do
-        if not item.discovered then
-          item.discovered = false
-        end
-        item.key = item.key or item.name
+            if source.list then
+              for _, sub_item in ipairs(source.list) do
+                sub_item.discovered = sub_item.discovered or false
+                sub_item.key = sub_item.key or sub_item.name
+                sub_item.config = sub_item.config or {}
+                sub_item.config.extra = sub_item.config.extra or {}
 
-        item.config = item.config or {}
-        item.config.extra = item.config.extra or {}
+                if sub_item.ptype then sub_item.config.extra.ptype = sub_item.ptype end
+                if sub_item.pposition then sub_item.config.extra.pposition = sub_item.pposition end
+                if sub_item.pteam then sub_item.config.extra.pteam = sub_item.pteam end
+                if sub_item.special then sub_item.config.extra.special = sub_item.special end
+                if sub_item.techtype then sub_item.config.extra.techtype = sub_item.techtype end
+                if sub_item.numberTechType then sub_item.config.extra.numberTechType = sub_item.numberTechType end
 
-        if item.ptype then item.config.extra.ptype = item.ptype end
-        if item.pposition then item.config.extra.pposition = item.pposition end
-        if item.pteam then item.config.extra.pteam = item.pteam end
-        if item.special then item.config.extra.special = item.special end
-        if item.techtype then item.config.extra.techtype = item.techtype end
-        if item.numberTechType then item.config.extra.numberTechType = item.numberTechType end
+                if not sub_item.custom_pool_func then
+                  sub_item.in_pool = function(self)
+                    return player_in_pool(self)
+                  end
+                end
 
-        if not item.custom_pool_func then
-          item.in_pool = function(self)
-            return player_in_pool(self)
+                sub_item.generate_ui = Pokerleven.generate_info_ui
+                sub_item.set_badges = ina_set_badges
+
+                item_constructor(sub_item)
+              end
+            end
           end
         end
-
-        item.generate_ui = Pokerleven.generate_info_ui
-        item.set_badges = ina_set_badges
-
-        item_constructor(item)
       end
     end
   end
+  recursive_load(folder_name)
 end
 
 LeakScope = {
@@ -417,3 +424,45 @@ end
 
 load_joker_folder("players", SMODS.Joker)
 load_joker_folder("managers", SMODS.Joker)
+
+--Pre-load locale sub-files (SMODS.load_file only works from entrypoint context)
+local function load_locale_part(path)
+  local f, err = SMODS.load_file(path)
+  if not f then return {} end
+  local ok, result = pcall(f)
+  if ok and type(result) == "table" then return result end
+  return {}
+end
+
+local function merge(target, source)
+  for k, v in pairs(source) do
+    if type(v) == "table" and type(target[k]) == "table" then
+      merge(target[k], v)
+    else
+      target[k] = v
+    end
+  end
+  return target
+end
+
+local function assemble_locale(lang)
+  local joker = load_locale_part("localization/" .. lang .. "/Joker.lua")
+  local blind = load_locale_part("localization/" .. lang .. "/Blind.lua")
+  local descriptions = load_locale_part("localization/" .. lang .. "/Descriptions.lua")
+  local misc = load_locale_part("localization/" .. lang .. "/Misc.lua")
+
+  local function desc(t) return t.descriptions or t end
+
+  local result = { descriptions = {}, misc = {} }
+  merge(result.descriptions, desc(joker))
+  merge(result.descriptions, desc(blind))
+  merge(result.descriptions, desc(descriptions))
+  merge(result.misc, misc.misc or {})
+  return result
+end
+
+Pokerleven.locales = {
+  ["en-us"] = assemble_locale("en-us"),
+  ["es_419"] = assemble_locale("es_419"),
+  ["es_ES"] = assemble_locale("es_ES"),
+}

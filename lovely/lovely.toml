@@ -423,3 +423,52 @@ b_plasma=           {name = "Plasma Deck",      stake = 1, unlocked = false,orde
 b_erratic=          {name = "Erratic Deck",     stake = 1, unlocked = false,order = 15, pos = {x=2,y=3}, set = "Back", config = {randomize_rank_suit = true}, unlock_condition = {type = 'win_stake', stake=7}},
 '''
 match_indent = true
+
+# Initialize c_cards_destroyed
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "c_single_hand_round_streak = 0,"
+position = "after"
+payload = "c_cards_destroyed = 0,"
+match_indent = true
+
+# Track card destruction (shatter)
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.shattered = true"
+position = "after"
+payload = "inc_career_stat('c_cards_destroyed', 1)"
+match_indent = true
+
+# Track card destruction (start_dissolve)
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)"
+position = "after"
+payload = "inc_career_stat('c_cards_destroyed', 1)"
+match_indent = true
+
+# Inject UI variables for progress tracking
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "elseif _c.name == 'Observatory' then loc_vars = {_c.unlock_condition.extra, G.PROFILES[G.SETTINGS.profile].career_stats.c_planetarium_used}"
+position = "after"
+payload = '''
+            elseif _c.name == 'Galileo' then loc_vars = {G.PROFILES[G.SETTINGS.profile].career_stats.c_cards_destroyed or 0, 100}
+            elseif _c.name == 'Janus' then loc_vars = {G.PROFILES[G.SETTINGS.profile].career_stats.c_planetarium_used or 0, 25}
+            elseif _c.name == 'Gigs' then loc_vars = {G.PROFILES[G.SETTINGS.profile].career_stats.c_cards_played or 0, 1000}
+'''
+match_indent = true
+
+# Track all planet card usage
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "elseif card.config.center.set == 'Planet' then"
+position = "after"
+payload = "inc_career_stat('c_planetarium_used', 1)"
+match_indent = true
