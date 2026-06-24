@@ -38,7 +38,8 @@ technique_values = {
     evolving_retriggers_low = 0.6,
     card_count1 = 1,
     odds4 = -0.1499,
-    odds2 = -0.1
+    odds2 = -0.1,
+    mult_per_level = 1,
 }
 
 local roundable_fields = {

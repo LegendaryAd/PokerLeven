@@ -2,9 +2,11 @@
 local Galileo = {
   name = "Galileo",
   pos = { x = 1, y = 0 },
-  config = { extra = { mult_mod_low = 3, current_mult = 0 } },
+  config = { extra = { mult_per_level = 1, current_mult = 0 } },
   loc_vars = function(self, info_queue, center)
-    return { vars = { center.ability.extra.mult_mod_low, center.ability.extra.current_mult } }
+    local per_level = center.ability.extra.mult_per_level or 1
+    local mult_per_card = 2 + per_level
+    return { vars = { mult_per_card, center.ability.extra.current_mult } }
   end,
   rarity = 2, -- Uncommon
   pools = { ["Geminis"] = true },
@@ -20,8 +22,9 @@ local Galileo = {
   calculate = function(self, card, context)
     if context.remove_playing_cards and not context.blueprint then
       if #context.removed > 0 then
+        local mult_per_card = 2 + (card.ability.extra.mult_per_level or 1)
         card.ability.extra.current_mult = card.ability.extra.current_mult +
-            (card.ability.extra.mult_mod_low * #context.removed)
+            (mult_per_card * #context.removed)
         G.E_MANAGER:add_event(Event({
           func = function()
             card_eval_status_text(card, 'extra', nil, nil, nil, {
