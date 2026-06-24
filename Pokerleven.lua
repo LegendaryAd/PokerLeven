@@ -372,16 +372,16 @@ local function load_joker_folder(folder_name, item_constructor)
                 if sub_item.numberTechType then sub_item.config.extra.numberTechType = sub_item.numberTechType end
 
                 if sub_item.weight == nil then
-                  if sub_item.rarity == "ina_winner" then
-                    sub_item.weight = 1
+                  if sub_item.rarity == 1 then
+                    sub_item.weight = 6.32
+                  elseif sub_item.rarity == 2 then
+                    sub_item.weight = 3.83
+                  elseif sub_item.rarity == 3 then
+                    sub_item.weight = 2.5
                   elseif sub_item.rarity == "ina_top" then
-                    sub_item.weight = 3
-                  elseif sub_item.rarity == "Rare" then
-                    sub_item.weight = 6
-                  elseif sub_item.rarity == "Uncommon" then
-                    sub_item.weight = 8
-                  else
-                    sub_item.weight = 10
+                    sub_item.weight = 1
+                  elseif sub_item.rarity == "ina_winner" then
+                    sub_item.weight = 0
                   end
                 end
 

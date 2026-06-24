@@ -64,6 +64,19 @@ return {
             k_ina_top = "Destacado",
             k_ina_winner = "Ganador",
 
+            -- Rates
+            ina_rates = "Probabilidades",
+            ina_jokers = "Jokers",
+            ina_booster = "Paquetes de Refuerzo",
+            ina_rates_pool = "Pool",
+            ina_rates_available = "Disponibles",
+            ina_rates_rarity = "Rareza",
+            ina_rates_count = "Cantidad",
+            ina_rates_weight = "Peso",
+            ina_rates_chance = "Prob.",
+            ina_rates_base_packs = "Paquetes Base",
+            ina_rates_total = "Peso total",
+
             -- Resources
             ina_resource_barriers = "Barreras",
             ina_training_upgrades = "Entrenamiento",

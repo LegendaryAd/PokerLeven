@@ -66,6 +66,19 @@ return {
 			k_ina_top = "Top",
 			k_ina_winner = "Winner",
 
+			-- Rates
+			ina_rates = "Rates",
+			ina_jokers = "Jokers",
+			ina_booster = "Booster Packs",
+			ina_rates_pool = "Pool",
+			ina_rates_available = "Available",
+			ina_rates_rarity = "Rarity",
+			ina_rates_count = "Count",
+			ina_rates_weight = "Weight",
+			ina_rates_chance = "Chance",
+			ina_rates_base_packs = "Base Packs",
+			ina_rates_total = "Total weight",
+
 			-- Resources
 			ina_resource_barriers = "Barriers",
 			ina_training_upgrades = "Training",
