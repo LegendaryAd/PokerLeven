@@ -3,7 +3,7 @@
 ## Mod info
 
 - Balatro overhaul mod (Inazuma Eleven theme).
-- **Dependencies**: Steamodded (>=1.0.0~BETA-0711a) + Lovely (>=0.6).
+- **Dependencies**: Steamodded (>=1.0.0~BETA-1814a) + Lovely (>=0.9.0).
 - **Mod ID / prefix**: `Pokerleven` / `ina`.
 - **Entrypoint**: `Pokerleven.lua` — loads helpers, sprites, UI, then all content dirs.
 - **Lua runtime**: LuaJIT. Linted via `.luacheckrc` (ignore codes: 111, 113, 212, 121, 421, 432).
