@@ -149,7 +149,7 @@ local player_in_bench = function(name)
     return false
 end
 
-player_in_pool = function(self)
+player_in_pool = function(self, args)
     if self.special then
         return false
     end
@@ -168,9 +168,17 @@ player_in_pool = function(self)
         return false
     elseif self.rarity == "ina_winner" then
         return false
-    else
-        return true
     end
+
+    if args and args.source == 'sho' and G.shop_jokers and G.shop_jokers.cards then
+        for _, c in ipairs(G.shop_jokers.cards) do
+            if c.config.center_key == self.key then
+                return false
+            end
+        end
+    end
+
+    return true
 end
 
 get_adjacent_jokers = function(card)
@@ -244,7 +252,7 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys, e
             end
 
             if no_dup then
-                table.insert(ina_keys, v.key)
+                table.insert(ina_keys, { key = v.key, weight = v.weight or 10 })
             end
         end
     end
@@ -256,14 +264,24 @@ get_random_joker_key = function(pseed, inararity, area, inateam, exclude_keys, e
                 and not (inateam and inateam ~= v.pteam)
                 and not v.aux_ina
                 and not exclude_keys[v.key] then
-                -- Para enable_dupes ignoramos player_in_pool y repetición
-                table.insert(ina_keys, v.key)
+                table.insert(ina_keys, { key = v.key, weight = v.weight or 10 })
             end
         end
     end
 
     if #ina_keys > 0 then
-        ina_key = pseudorandom_element(ina_keys, pseudoseed(pseed))
+        local total = 0
+        for _, e in ipairs(ina_keys) do total = total + math.max(1, e.weight) end
+        local poll = pseudorandom(pseudoseed(pseed)) * total
+        local cumulative = 0
+        for _, e in ipairs(ina_keys) do
+            cumulative = cumulative + math.max(1, e.weight)
+            if poll < cumulative then
+                ina_key = e.key
+                break
+            end
+        end
+        if not ina_key then ina_key = ina_keys[#ina_keys].key end
     else
         ina_key = "j_ina_Willy"
     end
@@ -496,4 +514,30 @@ Pokerleven.get_jokers_to_the_right = function(card)
         end
     end
     return 0
+end
+
+-- Inject our own joker pool into shop polls so only Pokerleven jokers appear.
+-- Uses args.pool so SMODS handles seeding, weighted selection, and repolls.
+if SMODS.poll_object then
+    local old_poll_object = SMODS.poll_object
+    function SMODS.poll_object(args)
+        if args and args.type == 'Joker' and args.append == 'sho' and not args.pool then
+            local shop_keys = {}
+            if G.shop_jokers and G.shop_jokers.cards then
+                for _, c in ipairs(G.shop_jokers.cards) do
+                    shop_keys[c.config.center_key] = true
+                end
+            end
+            local pool = {}
+            for _, v in pairs(G.P_CENTERS) do
+                if v.pteam and v.rarity ~= 4 and player_in_pool(v) and not v.aux_ina and not shop_keys[v.key] then
+                    table.insert(pool, { key = v.key })
+                end
+            end
+            if #pool > 0 then
+                args.pool = pool
+            end
+        end
+        return old_poll_object(args)
+    end
 end

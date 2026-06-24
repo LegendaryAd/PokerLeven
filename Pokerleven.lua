@@ -3,7 +3,8 @@ mod_dir = '' .. SMODS.current_mod.path
 
 SMODS.current_mod.optional_features = {
   retrigger_joker = true,
-  post_trigger = true
+  post_trigger = true,
+  object_weights = true
 }
 
 Pokerleven = {}
@@ -370,9 +371,23 @@ local function load_joker_folder(folder_name, item_constructor)
                 if sub_item.techtype then sub_item.config.extra.techtype = sub_item.techtype end
                 if sub_item.numberTechType then sub_item.config.extra.numberTechType = sub_item.numberTechType end
 
+                if sub_item.weight == nil then
+                  if sub_item.rarity == "ina_winner" then
+                    sub_item.weight = 1
+                  elseif sub_item.rarity == "ina_top" then
+                    sub_item.weight = 3
+                  elseif sub_item.rarity == "Rare" then
+                    sub_item.weight = 6
+                  elseif sub_item.rarity == "Uncommon" then
+                    sub_item.weight = 8
+                  else
+                    sub_item.weight = 10
+                  end
+                end
+
                 if not sub_item.custom_pool_func then
-                  sub_item.in_pool = function(self)
-                    return player_in_pool(self)
+                  sub_item.in_pool = function(self, args)
+                    return player_in_pool(self, args)
                   end
                 end
 
