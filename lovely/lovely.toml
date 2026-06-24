@@ -408,20 +408,34 @@ b_erratic=          {name = "Erratic Deck",     stake = 1, unlocked = false,orde
 '''
 position = "at"
 payload = '''
-b_blue=             {name = "Blue Deck",        stake = 1, unlocked = false,order = 2, pos =  {x=0,y=2}, set = "Back", config = {hands = 1}, unlock_condition = {type = 'discover_amount', amount = 20}},
-b_yellow=           {name = "Yellow Deck",      stake = 1, unlocked = false,order = 3, pos =  {x=1,y=2}, set = "Back", config = {dollars = 10}, unlock_condition = {type = 'discover_amount', amount = 50}},
-b_green=            {name = "Green Deck",       stake = 1, unlocked = false,order = 4, pos =  {x=2,y=2}, set = "Back", config = {extra_hand_bonus = 2, extra_discard_bonus = 1, no_interest = true}, unlock_condition = {type = 'discover_amount', amount = 75}},
-b_black=            {name = "Black Deck",       stake = 1, unlocked = false,order = 5, pos =  {x=3,y=2}, set = "Back", config = {hands = -1, joker_slot = 1}, unlock_condition = {type = 'discover_amount', amount = 100}},
-b_magic=            {name = "Magic Deck",       stake = 1, unlocked = false,order = 6, pos =  {x=0,y=3}, set = "Back", config = {voucher = 'v_crystal_ball', consumables = {'c_fool', 'c_fool'}}, unlock_condition = {type = 'win_deck', deck = 'b_red'}},
-b_nebula=           {name = "Nebula Deck",      stake = 1, unlocked = false,order = 7, pos =  {x=3,y=0}, set = "Back", config = {voucher = 'v_telescope', consumable_slot = -1}, unlock_condition = {type = 'win_deck', deck = 'b_blue'}},
-b_abandoned=        {name = "Abandoned Deck",   stake = 1, unlocked = false,order = 9, pos =  {x=3,y=3}, set = "Back", config = {remove_faces = true}, unlock_condition = {type = 'win_deck', deck = 'b_green'}},
-b_checkered=        {name = "Checkered Deck",   stake = 1, unlocked = false,order = 10,pos =  {x=1,y=3}, set = "Back", config = {}, unlock_condition = {type = 'win_deck', deck = 'b_black'}},
-b_zodiac=           {name = "Zodiac Deck",      stake = 1, unlocked = false,order = 11, pos = {x=3,y=4}, set = "Back", config = {vouchers = {'v_tarot_merchant','v_planet_merchant', 'v_overstock_norm'}}, unlock_condition = {type = 'win_stake', stake = 2}},
-b_painted=          {name = "Painted Deck",     stake = 1, unlocked = false,order = 12, pos = {x=4,y=3}, set = "Back", config = {hand_size = 2, joker_slot = -1}, unlock_condition = {type = 'win_stake', stake=3}},
-b_anaglyph=         {name = "Anaglyph Deck",    stake = 1, unlocked = false,order = 13, pos = {x=2,y=4}, set = "Back", config = {}, unlock_condition = {type = 'win_stake', stake = 4}},
-b_plasma=           {name = "Plasma Deck",      stake = 1, unlocked = false,order = 14, pos = {x=4,y=2}, set = "Back", config = {ante_scaling = 2}, unlock_condition = {type = 'win_stake', stake=5}},
-b_erratic=          {name = "Erratic Deck",     stake = 1, unlocked = false,order = 15, pos = {x=2,y=3}, set = "Back", config = {randomize_rank_suit = true}, unlock_condition = {type = 'win_stake', stake=7}},
 '''
+match_indent = true
+
+# Disable Red Deck (base deck) - keep definition but hide it
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "b_red=              {name = \"Red Deck\",         stake = 1, unlocked = true,order = 1, pos =   {x=0,y=0}, set = \"Back\", config = {discards = 1}, discovered = true},"
+position = "at"
+payload = "b_red=              {name = \"Red Deck\",         stake = 1, unlocked = true,order = 1, pos =   {x=0,y=0}, set = \"Back\", config = {discards = 1}, discovered = true, omit = true},"
+match_indent = true
+
+# Change default profile MEMORY deck from 'Red Deck' to 'Hillman'
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "        MEMORY = {\n            deck = 'Red Deck',"
+position = "at"
+payload = "        MEMORY = {\n            deck = 'Hillman',"
+match_indent = true
+
+# Fix get_deck_from_name to only find Back centers (avoid Joker name collision)
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "function get_deck_from_name(_name)\n    for k, v in pairs(G.P_CENTERS) do\n        if v.name == _name then return v end\n    end\nend"
+position = "at"
+payload = "function get_deck_from_name(_name)\n    for k, v in pairs(G.P_CENTERS) do\n        if v.name == _name and v.set == 'Back' then return v end\n    end\nend"
 match_indent = true
 
 # Initialize c_cards_destroyed
