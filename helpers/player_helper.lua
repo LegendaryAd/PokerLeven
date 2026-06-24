@@ -530,7 +530,8 @@ if SMODS.poll_object then
             end
             local pool = {}
             for _, v in pairs(G.P_CENTERS) do
-                if v.pteam and v.rarity ~= 4 and player_in_pool(v) and not v.aux_ina and not shop_keys[v.key] then
+                local in_pool_ok = v.in_pool and v.in_pool(v, {source = 'sho'})
+                if v.pteam and v.rarity ~= 4 and in_pool_ok ~= false and not v.aux_ina and not shop_keys[v.key] then
                     table.insert(pool, { key = v.key })
                 end
             end

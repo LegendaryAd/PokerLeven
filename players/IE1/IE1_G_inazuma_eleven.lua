@@ -249,6 +249,7 @@ local builder = J({
     if context.destroy_card and context.destroy_card.to_be_removed_by == card and not context.blueprint then
       context.destroy_card.to_be_removed_by = nil
       card.ability.extra.triggered = true
+      SMODS.calculate_context({remove_playing_cards = true, removed = {context.destroy_card}})
       card_eval_status_text(context.destroy_card, 'extra', nil, nil, nil,
         { message = localize("ina_destroy"), colour = G.C.DARK_EDITION })
       return {

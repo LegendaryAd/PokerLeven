@@ -905,8 +905,8 @@ return {
 			j_ina_Galileo = {
 				name = "Galileo",
 				text = { "{C:forest}Black Hole{}",
-					"Gains {C:mult}+#1#{} Mult for every",
-					"scoring card {C:attention}destroyed{}",
+					"Gains {C:mult}+#1#{} Mult for each",
+					"card {C:attention}destroyed{}",
 					"{C:inactive}(Currently{} {C:mult}+#2#{}{C:inactive}){}"
 				},
 				unlock = { "Destroy {C:attention}100 cards{} in total", "{C:inactive}(#1#/#2#){}" }

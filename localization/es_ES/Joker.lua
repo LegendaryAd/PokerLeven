@@ -417,7 +417,7 @@ return {
             name = "Galileo",
             text = { "{C:forest}Agujero Negro{}", 
                 "Gana {C:mult}+#1#{} Multi por cada",
-                "carta jugada {C:attention}destruida{}",
+                "carta {C:attention}destruida{}",
                 "{C:inactive}(Actual:{} {C:mult}+#2#{}{C:inactive}){}" 
             },
             unlock = { "Destruye {C:attention}100 cartas{} en total", "{C:inactive}(#1#/#2#){}" }
