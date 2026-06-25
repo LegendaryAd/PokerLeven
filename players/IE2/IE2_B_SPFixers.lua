@@ -278,8 +278,48 @@ local toppin = J({
   end
 })
 
+-- Shadey
+local shadey = J({
+  name = "Shadey",
+  pos = { x = 1, y = 2 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, center)
+    return {}
+  end,
+  rarity = 1, -- Common
+  pools = { ["SpFixers"] = true },
+  cost = 7,
+  atlas = "Jokers02",
+  ptype = C.Wind,
+  pposition = C.FW,
+  pteam = "Servicio Secreto",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end
+})
+
+-- Safehouse
+local safehouse = J({
+  name = "Safehouse",
+  pos = { x = 2, y = 2 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, center)
+    return {}
+  end,
+  rarity = 1, -- Common
+  pools = { ["SpFixers"] = true },
+  cost = 7,
+  atlas = "Jokers02",
+  ptype = C.Fire,
+  pposition = C.DF,
+  pteam = "Servicio Secreto",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end
+})
+
 return {
   name = "SPFixers",
   list = {}
-  -- list = { ironwall, western, stevens, smith, firepool, fielding, firsthand, mirror, tori, kennedy, sights },
+  -- list = { ironwall, western, hammond, stevens, smith, firepool, fielding, firsthand, mirror, tori, kennedy, sights, beray, toppin, shadey, safehouse },
 }
