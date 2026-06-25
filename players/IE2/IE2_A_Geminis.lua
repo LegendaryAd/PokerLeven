@@ -1,5 +1,5 @@
 -- Galileo
-local Galileo = {
+local Galileo = J({
   name = "Galileo",
   pos = { x = 1, y = 0 },
   config = { extra = { mult_per_level = 1, current_mult = 0 } },
@@ -46,10 +46,10 @@ local Galileo = {
       }
     end
   end
-}
+})
 
 -- Coral
-local Coral = {
+local Coral = J({
   name = "Coral",
   pos = { x = 2, y = 0 },
   config = { extra = { half_scaling = 10 } },
@@ -90,10 +90,10 @@ local Coral = {
       end
     end
   end
-}
+})
 
 -- Gigs
-local Gigs = {
+local Gigs = J({
   name = "Gigs",
   pos = { x = 3, y = 0 },
   config = { extra = { evolving_retriggers = 1 } },
@@ -125,10 +125,10 @@ local Gigs = {
       end
     end
   end
-}
+})
 
 -- Ganymede
-local Ganymede = {
+local Ganymede = J({
   name = "Ganymede",
   pos = { x = 4, y = 0 },
   config = { extra = { mult_mod_low = 20 } },
@@ -183,10 +183,10 @@ local Ganymede = {
       end
     end
   end
-}
+})
 
 -- Charon
-local Charon = {
+local Charon = J({
   name = "Charon",
   pos = { x = 5, y = 0 },
   config = { extra = { mult_mod = 15 } },
@@ -229,10 +229,10 @@ local Charon = {
       end
     end
   end
-}
+})
 
 -- Pandora
-local Pandora = {
+local Pandora = J({
   name = "Pandora",
   pos = { x = 6, y = 0 },
   config = { extra = { odds = 5 } },
@@ -298,10 +298,10 @@ local Pandora = {
       end
     end
   end
-}
+})
 
 -- Grengo
-local Grengo = {
+local Grengo = J({
   name = "Grengo",
   pos = { x = 7, y = 0 },
   config = { extra = { chips_mod = 10 } },
@@ -340,10 +340,10 @@ local Grengo = {
       end
     end
   end
-}
+})
 
 -- Io
-local Io = {
+local Io = J({
   name = "Io",
   pos = { x = 8, y = 0 },
   config = { extra = { chips_mod = 35 } },
@@ -383,10 +383,10 @@ local Io = {
       end
     end
   end
-}
+})
 
 -- Rihm
-local Rihm = {
+local Rihm = J({
   name = "Rihm",
   pos = { x = 9, y = 0 },
   config = { extra = { odds = 3 } },
@@ -426,10 +426,10 @@ local Rihm = {
       end
     end
   end
-}
+})
 
 -- Janus
-local Janus = {
+local Janus = J({
   name = "Janus",
   pos = { x = 10, y = 0 },
   config = { extra = { xmult_mod_high = 0.1 } },
@@ -461,10 +461,10 @@ local Janus = {
       }
     end
   end
-}
+})
 
 -- Diam
-local Diam = {
+local Diam = J({
   name = "Diam",
   pos = { x = 11, y = 0 },
   config = { extra = { chips_mod = 40 } },
@@ -523,7 +523,7 @@ local Diam = {
       end
     end
   end
-}
+})
 
 return {
   name = "Tormenta de Géminis",
