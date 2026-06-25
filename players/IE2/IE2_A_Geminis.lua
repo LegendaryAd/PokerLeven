@@ -52,10 +52,10 @@ local Galileo = {
 local Coral = {
   name = "Coral",
   pos = { x = 2, y = 0 },
-  config = { extra = { mult_mod = 10 } },
+  config = { extra = { half_scaling = 10 } },
   loc_vars = function(self, info_queue, center)
     local df_count = G.jokers and #find_player_position("DF") or 0
-    local mult = center.ability.extra.mult_mod
+    local mult = center.ability.extra.half_scaling or 10
     if df_count >= 2 then mult = mult * 2 end
     return { vars = { mult } }
   end,
@@ -77,7 +77,7 @@ local Coral = {
   calculate = function(self, card, context)
     if context.joker_main and context.scoring_hand then
       if #context.full_hand <= 3 then
-        local mult_gain = card.ability.extra.mult_mod
+        local mult_gain = card.ability.extra.half_scaling or 10
         local df_count = #find_player_position("DF")
         if df_count >= 2 then
           mult_gain = mult_gain * 2

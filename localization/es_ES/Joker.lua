@@ -812,7 +812,7 @@ return {
             },
         },
 
-        j_ina_1er = {
+        j_ina_Ace_Server = {
             name = "Ace Server",
             text = { {
                 "{C:fire}Puño vengativo{}",
