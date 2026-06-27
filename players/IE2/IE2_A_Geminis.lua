@@ -439,7 +439,7 @@ local Diam = J({
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.chips_mod } }
   end,
-  rarity = 1, -- Common
+  rarity = 2, -- Uncommon
   pools = { ["Geminis"] = true },
   cost = 6,
   atlas = "Jokers02",
