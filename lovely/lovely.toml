@@ -476,3 +476,21 @@ pattern = "elseif card.config.center.set == 'Planet' then"
 position = "after"
 payload = "inc_career_stat('c_planetarium_used', 1)"
 match_indent = true
+
+# Trigger check_for_unlock on planet usage (for Pandora)
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "G.GAME.consumeable_usage_total.planet = G.GAME.consumeable_usage_total.planet + 1"
+position = "after"
+payload = "check_for_unlock({ type = 'consumeable_usage', consumeable = card })"
+match_indent = true
+
+# Reset per-round planet counter at the start of each round (for Pandora)
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.GAME.current_round.used_packs = {}"
+position = "after"
+payload = "G.GAME.round_planets_used = 0"
+match_indent = true

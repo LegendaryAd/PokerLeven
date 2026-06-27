@@ -200,7 +200,7 @@ local Charon = {
       end
 
       if rightmost and not rightmost.getting_sliced then
-        SMODS.destroy_cards({rightmost}, {bypass_eternal = true, colours = {G.C.FIRE}})
+        SMODS.destroy_cards({ rightmost }, { bypass_eternal = true, colours = { G.C.FIRE } })
         return {
           message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult_mod } },
           mult_mod = card.ability.extra.mult_mod,
@@ -359,7 +359,7 @@ local Rihm = {
   loc_vars = function(self, info_queue, center)
     return { vars = { G.GAME.probabilities.normal, center.ability.extra.odds } }
   end,
-  rarity = 1, -- Common
+  rarity = 2, -- Uncommon
   pools = { ["Geminis"] = true },
   cost = 4,
   atlas = "Jokers02",
