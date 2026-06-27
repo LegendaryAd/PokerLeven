@@ -67,7 +67,7 @@ return {
             -- Rates
             ina_rates = "Probabilidades",
             ina_jokers = "Jokers",
-            ina_booster = "Paquetes de Refuerzo",
+            ina_booster = "Boosters",
             ina_rates_pool = "Pool",
             ina_rates_available = "Disponibles",
             ina_rates_rarity = "Rareza",

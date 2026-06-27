@@ -69,7 +69,7 @@ return {
 			-- Rates
 			ina_rates = "Rates",
 			ina_jokers = "Jokers",
-			ina_booster = "Booster Packs",
+			ina_booster = "Boosters",
 			ina_rates_pool = "Pool",
 			ina_rates_available = "Available",
 			ina_rates_rarity = "Rarity",

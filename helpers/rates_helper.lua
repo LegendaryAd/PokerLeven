@@ -143,35 +143,39 @@ local function sel_btn(btn, label, col)
     }
 end
 
-G.FUNCS.ina_show_rates = function(e)
-    G.SETTINGS.paused = true
-    G.FUNCS.overlay_menu {
-        definition = create_UIBox_generic_options({
-            back_colour = G.C.BLUE,
-            back_func = 'exit_overlay_menu',
-            contents = {
-                text_row(localize('ina_rates'), 0.55),
-                spacer(0.35),
-                sel_btn('ina_show_joker_rates', localize('ina_jokers'), G.C.BLUE),
-                spacer(0.18),
-                sel_btn('ina_show_booster_rates', localize('ina_booster'), G.C.GREEN),
+local function wrap_tab_content(content)
+    return {
+        n = G.UIT.ROOT,
+        config = { align = "cm", padding = 0.05, colour = G.C.CLEAR },
+        nodes = {
+            {
+                n = G.UIT.R,
+                config = { align = "cm", r = 0.2, padding = 0.5, colour = G.C.BLACK },
+                nodes = { content }
             }
-        }),
+        }
     }
 end
 
-G.FUNCS.ina_show_joker_rates = function(e)
-    G.SETTINGS.paused = true
-    local rates = Pokerleven.calculate_shop_rates()
-    local rows = {}
+local function rates_tab(label, chosen, content_fn)
+    return {
+        label = label,
+        chosen = chosen,
+        tab_definition_function = function(t)
+            local rates = Pokerleven.calculate_shop_rates()
+            return content_fn(rates)
+        end,
+    }
+end
 
+local function build_joker_rates_content(rates)
+    local rows = {}
     table.insert(rows, row({
         cell(localize('ina_rates_rarity'), 4.7, G.C.GOLD, 0.32),
         cell(localize('ina_rates_count'), 1.8, G.C.GOLD, 0.32),
         cell(localize('ina_rates_weight'), 2.2, G.C.GOLD, 0.32),
         cell(localize('ina_rates_chance'), 2.3, G.C.GOLD, 0.32),
     }, true))
-
     for _, r in ipairs(rates.rarities) do
         table.insert(rows, row({
             cell(r.label, 4.7, rarity_colour(r.rarity)),
@@ -180,28 +184,17 @@ G.FUNCS.ina_show_joker_rates = function(e)
             cell(string.format("%.1f%%", r.percent), 2.3, G.C.WHITE),
         }))
     end
-
-    G.FUNCS.overlay_menu {
-        definition = create_UIBox_generic_options({
-            back_colour = G.C.BLUE,
-            back_func = 'ina_show_rates',
-            contents = { text_row(localize('ina_jokers'), 0.55), spacer(0.18), box(rows) }
-        }),
-    }
+    return wrap_tab_content(box(rows))
 end
 
-G.FUNCS.ina_show_booster_rates = function(e)
-    G.SETTINGS.paused = true
-    local rates = Pokerleven.calculate_shop_rates()
+local function build_booster_rates_content(rates)
     local rows = {}
-
     table.insert(rows, row({
         cell('', 2.2),
         cell(localize('ina_booster'), 4.6, G.C.GOLD, 0.32),
         cell(localize('ina_rates_weight'), 2.2, G.C.GOLD, 0.32),
         cell(localize('ina_rates_chance'), 2.3, G.C.GOLD, 0.32),
     }, true))
-
     for _, b in ipairs(rates.boosters) do
         local pct = string.format("%.1f%%", b.percent)
         local img
@@ -217,14 +210,15 @@ G.FUNCS.ina_show_booster_rates = function(e)
         end
         table.insert(rows, row({ img, cell(b.name, 4.6), cell(tostring(b.weight), 2.2), cell(pct, 2.3, G.C.WHITE) }))
     end
+    return wrap_tab_content(box(rows))
+end
 
-    G.FUNCS.overlay_menu {
-        definition = create_UIBox_generic_options({
-            back_colour = G.C.GREEN,
-            back_func = 'ina_show_rates',
-            contents = { text_row(localize('ina_booster'), 0.55), spacer(0.18), box(rows) }
-        }),
-    }
+G.FUNCS.ina_show_rates = function(e)
+    G.SETTINGS.paused = true
+    Pokerleven.ui.create_tabs_menu({
+        rates_tab(localize('ina_jokers'), true, build_joker_rates_content),
+        rates_tab(localize('ina_booster'), false, build_booster_rates_content),
+    }, 'exit_overlay_menu')
 end
 
 local createOptionsRef = create_UIBox_options
