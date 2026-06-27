@@ -41,6 +41,7 @@ technique_values = {
     odds4 = -0.1499,
     odds2 = -0.1,
     x1_scaling = 1,
+    x075_scaling = 0.75,
     half_scaling = .5,
 }
 

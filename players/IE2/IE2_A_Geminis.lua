@@ -284,11 +284,11 @@ local Pandora = {
 local Grengo = {
   name = "Grengo",
   pos = { x = 7, y = 0 },
-  config = { extra = { x1_scaling = 10 } },
+  config = { extra = { x075_scaling = 10 } },
   loc_vars = function(self, info_queue, center)
     local remaining = G.deck and G.deck.cards and #G.deck.cards or 52
     local diff = 52 - remaining
-    local chips_mod = center.ability.extra.x1_scaling
+    local chips_mod = center.ability.extra.x075_scaling
     return { vars = { chips_mod, math.max(0, diff * chips_mod) } }
   end,
   rarity = 1, -- Common
@@ -306,7 +306,7 @@ local Grengo = {
       local remaining = G.deck.cards and #G.deck.cards or 0
       local diff = 52 - remaining
       if diff > 0 then
-        local chips_gain = diff * card.ability.extra.x1_scaling
+        local chips_gain = diff * card.ability.extra.x075_scaling
         return {
           message = localize { type = 'variable', key = 'a_chips', vars = { chips_gain } },
           chip_mod = chips_gain,
