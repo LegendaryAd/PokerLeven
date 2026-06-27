@@ -1,285 +1,325 @@
--- ironwall
-local ironwall = {
-  name = "ironwall",
-  pos = { x = 12, y = 0 },
+-- ropes
+local ropes = J({
+  name = "ropes",
+  pos = { x = 3, y = 2 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
     return {}
   end,
   rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
+  pools = { ["Alpine"] = true },
   cost = 7,
   atlas = "Jokers02",
-  ptype = C.Mountain,
+  ptype = C.Wind,
   pposition = C.GK,
-  pteam = "Servicio Secreto",
+  pteam = "Alpino",
   blueprint_compat = true,
   calculate = function(self, card, context)
   end
-}
+})
 
--- Western
-local western = {
-  name = "Western",
-  pos = { x = 0, y = 1 },
+-- downtown
+local downtown = J({
+  name = "Downtown",
+  pos = { x = 4, y = 2 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
     return {}
   end,
   rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
-  cost = 7,
-  atlas = "Jokers02",
-  ptype = C.Wind,
-  pposition = C.DF,
-  pteam = "Servicio Secreto",
-  blueprint_compat = true,
-  calculate = function(self, card, context)
-  end
-}
-
--- Hammond
-local hammond = {
-  name = "Hammond",
-  pos = { x = 1, y = 1 },
-  config = { extra = {} },
-  loc_vars = function(self, info_queue, center)
-    return {}
-  end,
-  rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
-  cost = 7,
-  atlas = "Jokers02",
-  ptype = C.Wind,
-  pposition = C.DF,
-  pteam = "Servicio Secreto",
-  blueprint_compat = true,
-  calculate = function(self, card, context)
-  end
-}
-
--- Stevens
-local stevens = {
-  name = "Stevens",
-  pos = { x = 2, y = 1 },
-  config = { extra = {} },
-  loc_vars = function(self, info_queue, center)
-    return {}
-  end,
-  rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
-  cost = 7,
-  atlas = "Jokers02",
-  ptype = C.Forest,
-  pposition = C.DF,
-  pteam = "Servicio Secreto",
-  blueprint_compat = true,
-  calculate = function(self, card, context)
-  end
-}
-
--- Smith
-local smith = {
-  name = "Smith",
-  pos = { x = 3, y = 1 },
-  config = { extra = {} },
-  loc_vars = function(self, info_queue, center)
-    return {}
-  end,
-  rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
-  cost = 7,
-  atlas = "Jokers02",
-  ptype = C.Forest,
-  pposition = C.DF,
-  pteam = "Servicio Secreto",
-  blueprint_compat = true,
-  calculate = function(self, card, context)
-  end
-}
-
--- Firepool
-local firepool = {
-  name = "Firepool",
-  pos = { x = 4, y = 1 },
-  config = { extra = {} },
-  loc_vars = function(self, info_queue, center)
-    return {}
-  end,
-  rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
-  cost = 7,
-  atlas = "Jokers02",
-  ptype = C.Wind,
-  pposition = C.MF,
-  pteam = "Servicio Secreto",
-  blueprint_compat = true,
-  calculate = function(self, card, context)
-  end
-}
-
--- Fielding
-local fielding = {
-  name = "Fielding",
-  pos = { x = 5, y = 1 },
-  config = { extra = {} },
-  loc_vars = function(self, info_queue, center)
-    return {}
-  end,
-  rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
-  cost = 7,
-  atlas = "Jokers02",
-  ptype = C.Wind,
-  pposition = C.MF,
-  pteam = "Servicio Secreto",
-  blueprint_compat = true,
-  calculate = function(self, card, context)
-  end
-}
-
--- Firsthand
-local firsthand = {
-  name = "Firsthand",
-  pos = { x = 6, y = 1 },
-  config = { extra = {} },
-  loc_vars = function(self, info_queue, center)
-    return {}
-  end,
-  rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
-  cost = 7,
-  atlas = "Jokers02",
-  ptype = C.Mountain,
-  pposition = C.MF,
-  pteam = "Servicio Secreto",
-  blueprint_compat = true,
-  calculate = function(self, card, context)
-  end
-}
-
--- Mirror
-local mirror = {
-  name = "Mirror",
-  pos = { x = 7, y = 1 },
-  config = { extra = {} },
-  loc_vars = function(self, info_queue, center)
-    return {}
-  end,
-  rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
+  pools = { ["Alpine"] = true },
   cost = 7,
   atlas = "Jokers02",
   ptype = C.Fire,
-  pposition = C.FW,
-  pteam = "Servicio Secreto",
+  pposition = C.DF,
+  pteam = "Alpino",
   blueprint_compat = true,
   calculate = function(self, card, context)
   end
-}
+})
 
--- Tori
-local tori = {
-  name = "Tori",
-  pos = { x = 8, y = 1 },
+-- bindings
+local bindings = J({
+  name = "Bindings",
+  pos = { x = 5, y = 2 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
     return {}
   end,
   rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
+  pools = { ["Alpine"] = true },
+  cost = 7,
+  atlas = "Jokers02",
+  ptype = C.Wind,
+  pposition = C.DF,
+  pteam = "Alpino",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end
+})
+
+-- gleeson
+local gleeson = J({
+  name = "Gleeson",
+  pos = { x = 6, y = 2 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, center)
+    return {}
+  end,
+  rarity = 1, -- Common
+  pools = { ["Alpine"] = true },
+  cost = 7,
+  atlas = "Jokers02",
+  ptype = C.Forest,
+  pposition = C.DF,
+  pteam = "Alpino",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end
+})
+
+-- snowfield
+local snowfield = J({
+  name = "Snowfield",
+  pos = { x = 7, y = 2 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, center)
+    return {}
+  end,
+  rarity = 1, -- Common
+  pools = { ["Alpine"] = true },
+  cost = 7,
+  atlas = "Jokers02",
+  ptype = C.Mountain,
+  pposition = C.DF,
+  pteam = "Alpino",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end
+})
+
+-- bootgaiter
+local bootgaiter = J({
+  name = "Bootgaiter",
+  pos = { x = 8, y = 2 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, center)
+    return {}
+  end,
+  rarity = 1, -- Common
+  pools = { ["Alpine"] = true },
   cost = 7,
   atlas = "Jokers02",
   ptype = C.Wind,
   pposition = C.MF,
-  pteam = "Servicio Secreto",
+  pteam = "Alpino",
   blueprint_compat = true,
   calculate = function(self, card, context)
   end
-}
+})
 
--- Kennedy
-local kennedy = {
-  name = "Kennedy",
-  pos = { x = 10, y = 1 },
+-- maddox
+local maddox = J({
+  name = "Maddox",
+  pos = { x = 9, y = 2 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
     return {}
   end,
   rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
+  pools = { ["Alpine"] = true },
+  cost = 7,
+  atlas = "Jokers02",
+  ptype = C.Forest,
+  pposition = C.MF,
+  pteam = "Alpino",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end
+})
+
+-- skipolson
+local skipolson = J({
+  name = "Skipolson",
+  pos = { x = 10, y = 2 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, center)
+    return {}
+  end,
+  rarity = 1, -- Common
+  pools = { ["Alpine"] = true },
+  cost = 7,
+  atlas = "Jokers02",
+  ptype = C.Forest,
+  pposition = C.MF,
+  pteam = "Alpino",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end
+})
+
+-- shawn
+local shawn = J({
+  name = "Shawn Froste",
+  pos = { x = 11, y = 2 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, center)
+    return {}
+  end,
+  rarity = 1, -- Common
+  pools = { ["Alpine"] = true },
+  cost = 7,
+  atlas = "Jokers02",
+  ptype = C.Wind,
+  pposition = C.FW,
+  pteam = "Alpino",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end
+})
+
+-- climbstein
+local climbstein = J({
+  name = "Climbstein",
+  pos = { x = 1, y = 3 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, center)
+    return {}
+  end,
+  rarity = 1, -- Common
+  pools = { ["Alpine"] = true },
+  cost = 7,
+  atlas = "Jokers02",
+  ptype = C.Wind,
+  pposition = C.FW,
+  pteam = "Alpino",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end
+})
+
+-- Rackner
+local rackner = J({
+  name = "Rackner",
+  pos = { x = 2, y = 3 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, center)
+    return {}
+  end,
+  rarity = 1, -- Common
+  pools = { ["Alpine"] = true },
   cost = 7,
   atlas = "Jokers02",
   ptype = C.Forest,
   pposition = C.FW,
-  pteam = "Servicio Secreto",
+  pteam = "Alpino",
   blueprint_compat = true,
   calculate = function(self, card, context)
   end
-}
+})
 
--- Sights
-local sights = {
-  name = "Sights",
-  pos = { x = 11, y = 1 },
+-- peggs
+local peggs = J({
+  name = "Peggs",
+  pos = { x = 3, y = 3 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
     return {}
   end,
   rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
+  pools = { ["Alpine"] = true },
   cost = 7,
   atlas = "Jokers02",
   ptype = C.Mountain,
   pposition = C.GK,
-  pteam = "Servicio Secreto",
+  pteam = "Alpino",
   blueprint_compat = true,
   calculate = function(self, card, context)
   end
-}
+})
 
--- beray
-local beray = {
-  name = "Beray",
-  pos = { x = 12, y = 1 },
+-- Ursus
+local ursus = J({
+  name = "Ursus",
+  pos = { x = 4, y = 3 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
     return {}
   end,
   rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
+  pools = { ["Alpine"] = true },
   cost = 7,
   atlas = "Jokers02",
-  ptype = C.Wind,
+  ptype = C.Forest,
   pposition = C.DF,
-  pteam = "Servicio Secreto",
+  pteam = "Alpino",
   blueprint_compat = true,
   calculate = function(self, card, context)
   end
-}
+})
 
--- toppin
-local toppin = {
-  name = "Toppin",
-  pos = { x = 0, y = 2 },
+-- Bogg
+local bogg = J({
+  name = "Bogg",
+  pos = { x = 5, y = 3 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, center)
     return {}
   end,
   rarity = 1, -- Common
-  pools = { ["SpFixers"] = true },
+  pools = { ["Alpine"] = true },
   cost = 7,
   atlas = "Jokers02",
-  ptype = C.Wind,
+  ptype = C.Fire,
   pposition = C.DF,
-  pteam = "Servicio Secreto",
+  pteam = "Alpino",
   blueprint_compat = true,
   calculate = function(self, card, context)
   end
-}
+})
+
+-- strata
+local strata = J({
+  name = "Strata",
+  pos = { x = 6, y = 3 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, center)
+    return {}
+  end,
+  rarity = 1, -- Common
+  pools = { ["Alpine"] = true },
+  cost = 7,
+  atlas = "Jokers02",
+  ptype = C.Fire,
+  pposition = C.DF,
+  pteam = "Alpino",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end
+})
+
+-- onlign
+local onlign = J({
+  name = "Onlign",
+  pos = { x = 7, y = 3 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, center)
+    return {}
+  end,
+  rarity = 1, -- Common
+  pools = { ["Alpine"] = true },
+  cost = 7,
+  atlas = "Jokers02",
+  ptype = C.Fire,
+  pposition = C.DF,
+  pteam = "Alpino",
+  blueprint_compat = true,
+  calculate = function(self, card, context)
+  end
+})
 
 return {
-  name = "SPFixers",
+  name = "Alpine",
   list = {}
-  -- list = { ironwall, western, stevens, smith, firepool, fielding, firsthand, mirror, tori, kennedy, sights },
+  -- list = { ropes, downtown, bindings, gleeson, snowfield, bootgaiter, maddox, skipolson, shawn, climbstein, rackner, peggs, ursus, bogg, strata, onlign },
 }

@@ -18,14 +18,14 @@ local Growing_Pack = {
 	config = { extra = Consts.max_quantity_small - 2, choose = Consts.choose_small, c_keys = {} },
 	cost = 4,
 	order = 1,
-	weight = 0.35,
+	weight = 1,
 	draw_hand = false,
 	unlocked = true,
 	discovered = false,
 	create_card = function(self, card, i)
-		local selected_team = tostring(Pokerleven.get_random_team_from_actuals())
+		local selected_team = Pokerleven.get_random_team_from_actuals()
 
-		return create_card(selected_team, G.pack_cards, nil, nil, true, true, nil, nil)
+		return create_random_ina_joker("growing_pack", nil, G.pack_cards, selected_team)
 	end,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.choose, card.ability.extra } }
@@ -42,14 +42,14 @@ local Advanced_Pack = {
 	config = { extra = Consts.max_quantity_jumbo - 1, choose = Consts.choose_jumbo, c_keys = {} },
 	cost = 6,
 	order = 1,
-	weight = 0.15,
+	weight = 0.425,
 	draw_hand = false,
 	unlocked = true,
 	discovered = false,
 	create_card = function(self, card, i)
 		local selected_team = Pokerleven.get_random_team_from_actuals()
 
-		return create_card(selected_team, G.pack_cards, nil, nil, true, true, nil, nil)
+		return create_random_ina_joker("advanced_pack", nil, G.pack_cards, selected_team)
 	end,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.choose, card.ability.extra } }
@@ -89,7 +89,7 @@ local Ina_Pack = {
 	config = { extra = Consts.max_quantity_small, choose = Consts.choose_small },
 	cost = 4,
 	order = 1,
-	weight = 1,
+	weight = 0.5,
 	draw_hand = true,
 	unlocked = true,
 	discovered = false,
@@ -112,7 +112,7 @@ local Training_Pack = {
 	config = { extra = Consts.max_quantity_small, choose = Consts.choose_small },
 	cost = 4,
 	order = 1,
-	weight = 0.15,
+	weight = 1,
 	draw_hand = false,
 	unlocked = true,
 	discovered = false,
@@ -134,7 +134,7 @@ local Jumbo_Training_Pack = {
 	config = { extra = Consts.max_quantity_jumbo, choose = Consts.choose_jumbo },
 	cost = 6,
 	order = 1,
-	weight = 0.07,
+	weight = 0.3,
 	draw_hand = false,
 	unlocked = true,
 	discovered = false,
@@ -161,7 +161,7 @@ local Mega_Training_Pack = {
 	config = { extra = Consts.max_quantity_mega, choose = Consts.choose_mega },
 	cost = 10,
 	order = 1,
-	weight = 0.01,
+	weight = 0.2,
 	draw_hand = false,
 	unlocked = true,
 	discovered = false,
@@ -190,7 +190,7 @@ local Manager_Pack = {
 	config = { extra = 2, choose = 1 },
 	cost = 4,
 	order = 1,
-	weight = 0,
+	weight = 0.1,
 	draw_hand = false,
 	unlocked = true,
 	discovered = false,

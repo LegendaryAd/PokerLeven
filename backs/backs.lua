@@ -1,5 +1,5 @@
 local hillman = Ba({
-    name = "hillman",
+    name = "Hillman",
     key = "hillman",
     order = 1,
     unlocked = true,

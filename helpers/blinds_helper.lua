@@ -188,3 +188,26 @@ function Blind:load(blindTable)
     self.small = blindTable.small
     self.big = blindTable.big
 end
+
+-- When object_weights is enabled, SMODS bypasses get_new_boss() and uses
+-- SMODS.create_blind_pool() instead. That pool doesn't respect the mod's
+-- custom_middle_blinds filter, so we wrap it here.
+if SMODS.create_blind_pool then
+    local old_create_blind_pool = SMODS.create_blind_pool
+    function SMODS.create_blind_pool(blind_type, skip_cull)
+        local pool = old_create_blind_pool(blind_type, skip_cull)
+        if Pokerleven and Pokerleven.config and Pokerleven.config.custom_middle_blinds == true then
+            local filtered = {}
+            for _, k in ipairs(pool) do
+                local blind = G.P_BLINDS[k]
+                if blind and blind.mod and blind.mod.id == 'Pokerleven' then
+                    filtered[#filtered + 1] = k
+                end
+            end
+            return filtered
+        end
+        return pool
+    end
+end
+
+
