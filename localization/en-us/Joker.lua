@@ -919,7 +919,7 @@ return {
 					"for each {C:wind}Wind{} Joker.",
 					"If chance is {C:attention}100% or more{}, creates a {C:dark_edition}Negative Planet{}"
 				},
-				unlock = { "Use {C:attention}5 Planet cards{} in a single round" }
+				unlock = { "Use {C:attention}4 Planet cards{} in a single round" }
 			},
 			j_ina_Diam = {
 				name = "Diam",
@@ -963,6 +963,13 @@ return {
 					"rightmost card in hand and give {C:mult}+#1#{} Mult"
 				},
 				unlock = { "Play a {C:attention}Flush{} with", "3 or more {C:hearts}Hearts{}" }
+			},
+			j_ina_Gigs = {
+				name = "Gigs",
+				text = { "{C:fire}Ignite Steal{}",
+					"If you have another {C:fire}Fire{} Joker,",
+					"retrigger the first played card {C:attention}#1#{} times"
+				},
 			},
 			j_ina_Ganymede = {
 				name = "Ganymede",

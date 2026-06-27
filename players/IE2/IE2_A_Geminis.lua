@@ -2,9 +2,9 @@
 local Galileo = {
   name = "Galileo",
   pos = { x = 1, y = 0 },
-  config = { extra = { mult_per_level = 1, current_mult = 0 } },
+  config = { extra = { x1_scaling = 1, current_mult = 0 } },
   loc_vars = function(self, info_queue, center)
-    local per_level = center.ability.extra.mult_per_level or 1
+    local per_level = center.ability.extra.x1_scaling or 1
     local mult_per_card = 2 + per_level
     return { vars = { mult_per_card, center.ability.extra.current_mult } }
   end,
@@ -22,7 +22,7 @@ local Galileo = {
   calculate = function(self, card, context)
     if context.remove_playing_cards and not context.blueprint then
       if #context.removed > 0 then
-        local mult_per_card = 2 + (card.ability.extra.mult_per_level or 1)
+        local mult_per_card = 2 + (card.ability.extra.x1_scaling or 1)
         card.ability.extra.current_mult = card.ability.extra.current_mult +
             (mult_per_card * #context.removed)
         G.E_MANAGER:add_event(Event({
@@ -215,10 +215,10 @@ local Charon = {
 local Pandora = {
   name = "Pandora",
   pos = { x = 6, y = 0 },
-  config = { extra = { odds = 5 } },
+  config = { extra = { odds_8percent = 5 } },
   loc_vars = function(self, info_queue, center)
     local wind_count = G.jokers and #find_player_type("Wind") or 0
-    return { vars = { G.GAME.probabilities.normal, center.ability.extra.odds, 1 + wind_count } }
+    return { vars = { G.GAME.probabilities.normal, center.ability.extra.odds_8percent, 1 + wind_count } }
   end,
   rarity = 2, -- Uncommon
   pools = { ["Geminis"] = true },
@@ -232,7 +232,7 @@ local Pandora = {
   check_for_unlock = function(self, args)
     if args.type == 'consumeable_usage' and args.consumeable.ability.set == 'Planet' then
       G.GAME.round_planets_used = (G.GAME.round_planets_used or 0) + 1
-      if G.GAME.round_planets_used >= 5 then
+      if G.GAME.round_planets_used >= 4 then
         unlock_card(self)
       end
     end
@@ -245,7 +245,7 @@ local Pandora = {
         -- Base chance 1 in odds, increases by 1 for each Wind Joker.
         local probability = 1 + wind_count
 
-        if probability * G.GAME.probabilities.normal >= card.ability.extra.odds then
+        if probability * G.GAME.probabilities.normal >= card.ability.extra.odds_8percent then
           G.E_MANAGER:add_event(Event({
             func = function()
               local card_type = 'Planet'
@@ -260,7 +260,7 @@ local Pandora = {
             message = localize('k_plus_planet'),
             colour = G.C.SECONDARY_SET.Planet
           })
-        elseif pseudorandom('Pandora') < (probability * G.GAME.probabilities.normal / card.ability.extra.odds) then
+        elseif pseudorandom('Pandora') < (probability * G.GAME.probabilities.normal / card.ability.extra.odds_8percent) then
           G.E_MANAGER:add_event(Event({
             func = function()
               local card_type = 'Planet'
@@ -284,11 +284,11 @@ local Pandora = {
 local Grengo = {
   name = "Grengo",
   pos = { x = 7, y = 0 },
-  config = { extra = { chips_mod = 10 } },
+  config = { extra = { x1_scaling = 10 } },
   loc_vars = function(self, info_queue, center)
     local remaining = G.deck and G.deck.cards and #G.deck.cards or 52
     local diff = 52 - remaining
-    local chips_mod = center.ability.extra.chips_mod
+    local chips_mod = center.ability.extra.x1_scaling
     return { vars = { chips_mod, math.max(0, diff * chips_mod) } }
   end,
   rarity = 1, -- Common
@@ -306,7 +306,7 @@ local Grengo = {
       local remaining = G.deck.cards and #G.deck.cards or 0
       local diff = 52 - remaining
       if diff > 0 then
-        local chips_gain = diff * card.ability.extra.chips_mod
+        local chips_gain = diff * card.ability.extra.x1_scaling
         return {
           message = localize { type = 'variable', key = 'a_chips', vars = { chips_gain } },
           chip_mod = chips_gain,

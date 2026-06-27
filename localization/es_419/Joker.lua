@@ -431,7 +431,7 @@ return {
                 "aumenta por cada Joker de {C:wind}Viento{}.",
                 "Si es {C:attention}100% o más{}, crea un {C:dark_edition}Planeta Negativo{}"
             },
-            unlock = { "Usa {C:attention}5 cartas de Planeta{} en una sola ronda" }
+            unlock = { "Usa {C:attention}4 cartas de Planeta{} en una sola ronda" }
         },
         j_ina_Diam = {
             name = "Diam",
@@ -475,6 +475,13 @@ return {
                 "más a la derecha de la mano y otorga {C:mult}+#1#{} Multi"
             },
             unlock = { "Juega un {C:attention}Color{} con", "3 o más {C:hearts}Corazones{}" }
+        },
+        j_ina_Gigs = {
+            name = "Gigs",
+            text = { "{C:fire}Robo Ígneo{}", 
+                "Si tienes otro Joker de {C:fire}Fuego{},",
+                "reactiva la primera carta jugada {C:attention}#1#{} vez/veces"
+            },
         },
         j_ina_Ganymede = {
             name = "Ganymede",

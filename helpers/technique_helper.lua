@@ -21,6 +21,7 @@ technique_values = {
     xmult = .2,
     drain = .2,
     odds = -.05,
+    odds_8percent = -.08,
     sell_value = .2,
     common_mult = .2,    -- es de Martin
     uncommon_mult = .2,  -- es de Martin
@@ -39,7 +40,7 @@ technique_values = {
     card_count1 = 1,
     odds4 = -0.1499,
     odds2 = -0.1,
-    mult_per_level = 1,
+    x1_scaling = 1,
     half_scaling = .5,
 }
 
