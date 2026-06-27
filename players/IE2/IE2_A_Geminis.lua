@@ -217,8 +217,8 @@ local Pandora = J({
   pos = { x = 6, y = 0 },
   config = { extra = { odds_8percent = 5 } },
   loc_vars = function(self, info_queue, center)
-    local wind_count = G.jokers and #find_player_type("Wind") or 0
-    return { vars = { G.GAME.probabilities.normal, center.ability.extra.odds_8percent, 1 + wind_count } }
+    local wind_count = G.jokers and (#find_player_type("Wind")) or 0
+    return { vars = { G.GAME.probabilities.normal, center.ability.extra.odds_8percent, math.max(0, wind_count) } }
   end,
   rarity = 2, -- Uncommon
   pools = { ["Geminis"] = true },
@@ -241,15 +241,12 @@ local Pandora = J({
   calculate = function(self, card, context)
     if context.remove_playing_cards and not context.blueprint then
       if #context.removed > 0 then
-        local wind_count = #find_player_type("Wind")
-        -- Base chance 1 in odds, increases by 1 for each Wind Joker.
-        local probability = 1 + wind_count
+        local probability = math.max(0, (#find_player_type("Wind")))
 
         if probability * G.GAME.probabilities.normal >= card.ability.extra.odds_8percent then
           G.E_MANAGER:add_event(Event({
             func = function()
-              local card_type = 'Planet'
-              local _card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, 'Pandora')
+              local _card = create_card('Planet', G.consumeables, nil, nil, nil, nil, nil, 'Pandora')
               _card:set_edition({ negative = true }, true)
               _card:add_to_deck()
               G.consumeables:emplace(_card)
@@ -263,8 +260,7 @@ local Pandora = J({
         elseif pseudorandom('Pandora') < (probability * G.GAME.probabilities.normal / card.ability.extra.odds_8percent) then
           G.E_MANAGER:add_event(Event({
             func = function()
-              local card_type = 'Planet'
-              local _card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, 'Pandora')
+              local _card = create_card('Planet', G.consumeables, nil, nil, nil, nil, nil, 'Pandora')
               _card:add_to_deck()
               G.consumeables:emplace(_card)
               return true
@@ -286,10 +282,13 @@ local Grengo = J({
   pos = { x = 7, y = 0 },
   config = { extra = { x075_scaling = 10 } },
   loc_vars = function(self, info_queue, center)
-    local remaining = G.deck and G.deck.cards and #G.deck.cards or 52
-    local diff = 52 - remaining
+    local total = 0
+    for _, area in ipairs({ G.deck, G.hand, G.discard, G.play }) do
+      if area and area.cards then total = total + #area.cards end
+    end
+    local diff = math.max(0, 52 - total)
     local chips_mod = center.ability.extra.x075_scaling
-    return { vars = { chips_mod, math.max(0, diff * chips_mod) } }
+    return { vars = { chips_mod, diff * chips_mod } }
   end,
   rarity = 1, -- Common
   pools = { ["Geminis"] = true },
@@ -303,8 +302,11 @@ local Grengo = J({
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main and context.cardarea == G.jokers then
-      local remaining = G.deck.cards and #G.deck.cards or 0
-      local diff = 52 - remaining
+      local total = 0
+      for _, area in ipairs({ G.deck, G.hand, G.discard, G.play }) do
+        if area and area.cards then total = total + #area.cards end
+      end
+      local diff = math.max(0, 52 - total)
       if diff > 0 then
         local chips_gain = diff * card.ability.extra.x075_scaling
         return {
