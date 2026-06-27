@@ -925,10 +925,9 @@ return {
 				name = "Diam",
 				text = { "{C:forest}Photon Shot{}",
 					"On scoring hand, destroy {C:attention}1 card{} in hand",
-					"for each {C:attention}Gemini Storm{} Joker.",
+					"for each {C:tormenta de géminis}Gemini Storm{} Joker.",
 					"Gain {C:chips}+#1#{} Chips for each card destroyed {C:attention}this hand{}."
-				},
-				unlock = { "Destroy {C:attention}5 or more cards{}", "in a single hand" }
+				}
 			},
 			j_ina_Rihm = {
 				name = "Rihm",
@@ -936,7 +935,7 @@ return {
 					"{C:green}#1# in #2#{} chance to destroy",
 					"scored {C:attention}Winning Hand{} cards"
 				},
-				unlock = { "Win a run" }
+				unlock = { "Destroy {C:attention}5 or more cards{}", "in a single hand" }
 			},
 			j_ina_Grengo = {
 				name = "Grengo",

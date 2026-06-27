@@ -437,10 +437,9 @@ return {
             name = "Diam",
             text = { "{C:forest}Remate de Fotones{}", 
                 "Al puntuar, destruye {C:attention}1 carta{} de tu mano",
-                "por cada Joker del {C:attention}Tormenta de Géminis{}.",
+                "por cada Joker del {C:tormenta de géminis}Tormenta de Géminis{}.",
                 "Gana {C:chips}+#1#{} Fichas por carta destruida {C:attention}esta mano{}."
-            },
-            unlock = { "Destruye {C:attention}5 o más cartas{}", "en una sola mano" }
+            }
         },
         j_ina_Rihm = {
             name = "Rihm",
@@ -448,7 +447,7 @@ return {
                 "{C:green}#1# en #2#{} de destruir las cartas",
                 "puntuadas de la {C:attention}Mano Ganadora{}"
             },
-            unlock = { "Gana una ronda con sólo {C:attention}1 mano{} jugada" }
+            unlock = { "Destruye {C:attention}5 o más cartas{}", "en una sola mano" }
         },
         j_ina_Grengo = {
             name = "Grengo",

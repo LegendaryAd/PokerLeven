@@ -367,7 +367,12 @@ local Rihm = {
   pposition = C.FW,
   pteam = "Tormenta de Géminis",
   techtype = C.UPGRADES.Plus,
-  unlocked = true,
+  unlocked = false,
+  check_for_unlock = function(self, args)
+    if args.type == 'cards_destroyed' and args.count >= 5 then
+      unlock_card(self)
+    end
+  end,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main and context.scoring_hand then
@@ -432,7 +437,7 @@ local Diam = {
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.chips_mod } }
   end,
-  rarity = 2, -- Uncommon
+  rarity = 1, -- Common
   pools = { ["Geminis"] = true },
   cost = 6,
   atlas = "Jokers02",
@@ -440,12 +445,7 @@ local Diam = {
   pposition = C.FW,
   pteam = "Tormenta de Géminis",
   techtype = C.UPGRADES.Plus,
-  unlocked = false,
-  check_for_unlock = function(self, args)
-    if args.type == 'cards_destroyed' and args.count >= 5 then
-      unlock_card(self)
-    end
-  end,
+  unlocked = true,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main and context.scoring_hand then
