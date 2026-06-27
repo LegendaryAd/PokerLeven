@@ -150,6 +150,9 @@ local player_in_bench = function(name)
 end
 
 player_in_pool = function(self, args)
+    if not self.unlocked then
+        return false
+    end
     if self.special then
         return false
     end
