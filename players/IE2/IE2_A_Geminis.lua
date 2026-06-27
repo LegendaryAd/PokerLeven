@@ -17,7 +17,7 @@ local Galileo = J({
   pteam = "Tormenta de Géminis",
   techtype = C.UPGRADES.Grade,
   unlocked = false,
-  unlock_condition = { type = 'career_stat', statname = 'c_cards_destroyed', extra = 100 },
+  unlock_condition = { type = 'c_cards_destroyed', extra = 100 },
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.remove_playing_cards and not context.blueprint then
@@ -415,7 +415,7 @@ local Janus = J({
   pteam = "Tormenta de Géminis",
   techtype = C.UPGRADES.Grade,
   unlocked = false,
-  unlock_condition = { type = 'career_stat', statname = 'c_planetarium_used', extra = 25 },
+  unlock_condition = { type = 'c_planetarium_used', extra = 70 },
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main and context.scoring_hand then
