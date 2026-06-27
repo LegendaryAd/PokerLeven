@@ -964,14 +964,6 @@ return {
 				},
 				unlock = { "Play a {C:attention}Flush{} with", "3 or more {C:hearts}Hearts{}" }
 			},
-			j_ina_Gigs = {
-				name = "Gigs",
-				text = { "{C:fire}Ignite Steal{}",
-					"If you have another {C:fire}Fire{} Joker,",
-					"retrigger the first played card {C:attention}#1#{} times"
-				},
-				unlock = { "Play {C:attention}1000 cards{} total", "{C:inactive}(#1#/#2#){}" }
-			},
 			j_ina_Ganymede = {
 				name = "Ganymede",
 				text = { "{C:mountain}Gravitation{}",

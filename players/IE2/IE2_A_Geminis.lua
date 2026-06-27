@@ -67,17 +67,12 @@ local Coral = {
   pposition = C.DF,
   pteam = "Tormenta de Géminis",
   techtype = C.UPGRADES.Plus,
-  unlocked = false,
-  check_for_unlock = function(self, args)
-    if args.type == 'round_win' and G.GAME.current_round.hands_played == 1 then
-      unlock_card(self)
-    end
-  end,
+  unlocked = true,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.joker_main and context.scoring_hand then
+    if context.scoring_name then
       if #context.full_hand <= 3 then
-        local mult_gain = card.ability.extra.half_scaling or 10
+        local mult_gain = card.ability.extra.mult_mod_low or 10
         local df_count = #find_player_position("DF")
         if df_count >= 2 then
           mult_gain = mult_gain * 2
@@ -108,8 +103,7 @@ local Gigs = {
   pposition = C.DF,
   pteam = "Tormenta de Géminis",
   techtype = C.UPGRADES.Plus,
-  unlocked = false,
-  unlock_condition = { type = 'career_stat', statname = 'c_cards_played', extra = 1000 },
+  unlocked = true,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.cardarea == G.play and context.repetition and not context.repetition_only then
@@ -146,12 +140,7 @@ local Ganymede = {
   pposition = C.DF,
   pteam = "Tormenta de Géminis",
   techtype = C.UPGRADES.Plus,
-  unlocked = false,
-  check_for_unlock = function(self, args)
-    if args.type == 'round_win' and #G.hand.cards == 0 then
-      unlock_card(self)
-    end
-  end,
+  unlocked = true,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.game_over and not G.GAME.perish_prevented and not G.GAME.game_over_check then
@@ -201,16 +190,7 @@ local Charon = {
   pposition = C.DF,
   pteam = "Tormenta de Géminis",
   techtype = C.UPGRADES.Plus,
-  unlocked = false,
-  check_for_unlock = function(self, args)
-    if args.type == 'hand' and args.handname == 'Flush' then
-      local hearts = 0
-      for k, v in ipairs(args.scoring_hand) do
-        if v:is_suit('Hearts') then hearts = hearts + 1 end
-      end
-      if hearts >= 3 then unlock_card(self) end
-    end
-  end,
+  unlocked = true,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main and context.scoring_hand and next(context.poker_hands['Flush']) then
@@ -319,12 +299,7 @@ local Grengo = {
   pposition = C.MF,
   pteam = "Tormenta de Géminis",
   techtype = C.UPGRADES.Grade,
-  unlocked = false,
-  check_for_unlock = function(self, args)
-    if args.type == 'win' and #G.deck.cards <= 20 then
-      unlock_card(self)
-    end
-  end,
+  unlocked = true,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main and context.cardarea == G.jokers then
@@ -359,16 +334,7 @@ local Io = {
   pposition = C.MF,
   pteam = "Tormenta de Géminis",
   techtype = C.UPGRADES.Plus,
-  unlocked = false,
-  check_for_unlock = function(self, args)
-    local fire_count = 0
-    if G.jokers then
-      for k, v in ipairs(G.jokers.cards) do
-        if v.config.center.ptype == C.Fire then fire_count = fire_count + 1 end
-      end
-    end
-    if fire_count >= 3 then unlock_card(self) end
-  end,
+  unlocked = true,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main and context.cardarea == G.jokers then
@@ -401,12 +367,7 @@ local Rihm = {
   pposition = C.FW,
   pteam = "Tormenta de Géminis",
   techtype = C.UPGRADES.Plus,
-  unlocked = false,
-  check_for_unlock = function(self, args)
-    if args.type == 'round_win' and G.GAME.current_round.hands_played == 1 then
-      unlock_card(self)
-    end
-  end,
+  unlocked = true,
   blueprint_compat = true,
   calculate = function(self, card, context)
     if context.joker_main and context.scoring_hand then

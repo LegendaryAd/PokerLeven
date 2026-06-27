@@ -475,14 +475,6 @@ return {
             },
             unlock = { "Juega un {C:attention}Color{} con", "3 o más {C:hearts}Corazones{}" }
         },
-        j_ina_Gigs = {
-            name = "Gigs",
-            text = { "{C:fire}Robo Ígneo{}", 
-                "Si tienes otro Joker de {C:fire}Fuego{},",
-                "reactiva la primera carta jugada {C:attention}#1#{} vez/veces"
-            },
-            unlock = { "Juega {C:attention}1000 cartas{} en total", "{C:inactive}(#1#/#2#){}" }
-        },
         j_ina_Ganymede = {
             name = "Ganymede",
             text = { "{C:mountain}Gravitación{}",
