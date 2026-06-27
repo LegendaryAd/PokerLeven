@@ -70,9 +70,9 @@ local Coral = J({
   unlocked = true,
   blueprint_compat = true,
   calculate = function(self, card, context)
-    if context.scoring_name then
-      if #context.full_hand <= 3 then
-        local mult_gain = card.ability.extra.mult_mod_low or 10
+    if context.joker_main and context.scoring_hand then
+      if #context.scoring_hand <= 3 then
+        local mult_gain = card.ability.extra.half_scaling or 10
         local df_count = #find_player_position("DF")
         if df_count >= 2 then
           mult_gain = mult_gain * 2
