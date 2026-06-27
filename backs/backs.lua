@@ -106,7 +106,7 @@ local wintersea = Ba({
     calculate = function(self, back, context)
         if context.card_added and #G.jokers.cards == 0 then
             if context.card and context.card.ability
-                and context.card.ability.extra
+                and type(context.card.ability.extra) == "table"
                 and context.card.ability.extra.ptype then
                 context.card.ability.eternal = true
                 context.card.pinned = true
