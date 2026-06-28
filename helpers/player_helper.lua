@@ -519,6 +519,19 @@ Pokerleven.get_jokers_to_the_right = function(card)
     return 0
 end
 
+-- Track all card destructions (remove_playing_cards context) for c_cards_destroyed
+if SMODS.calculate_context then
+    local old_calculate_context = SMODS.calculate_context
+    function SMODS.calculate_context(context)
+        if context.remove_playing_cards and context.removed then
+            for _ in ipairs(context.removed) do
+                inc_career_stat('c_cards_destroyed', 1)
+            end
+        end
+        return old_calculate_context(context)
+    end
+end
+
 -- Inject our own joker pool into shop polls so only Pokerleven jokers appear.
 -- Uses args.pool so SMODS handles seeding, weighted selection, and repolls.
 if SMODS.poll_object then
@@ -534,7 +547,7 @@ if SMODS.poll_object then
             local pool = {}
             for _, v in pairs(G.P_CENTERS) do
                 local in_pool_ok = v.in_pool and v.in_pool(v, {source = 'sho'})
-                if v.pteam and v.rarity ~= 4 and in_pool_ok ~= false and not v.aux_ina and not shop_keys[v.key] then
+                if v.pteam and v.rarity ~= 4 and in_pool_ok ~= false and not v.aux_ina and not shop_keys[v.key] and not G.GAME.banned_keys[v.key] then
                     table.insert(pool, { key = v.key })
                 end
             end
