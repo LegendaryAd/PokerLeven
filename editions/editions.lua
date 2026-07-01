@@ -102,7 +102,7 @@ SMODS.Edition({
         label = "Letal",
         text = { "{X:dark_edition,C:white}^1.1{} Multi",
         "{C:inactive}no se pueden aplicar tarots o espectrales",
-        "{C:inactive}no pueden ser destrozadas o duplicadas{} ." }
+        "{C:inactive}no pueden ser destrozadas o duplicadas{}" }
     },
     disable_shadow = false,
     disable_base_shader = true,
