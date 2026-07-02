@@ -34,6 +34,9 @@ extern PRECISION float screen_scale;
 // strenght of the effect (opacity)
 #define EFFECT_OPACITY 0.92
 
+// Transparent black layer between the card art and the lethal effect
+#define BLACK_UNDERLAY_OPACITY 0.45
+
 // Godot: if alpha >= 0.99 -> black
 #define BLACK_CUTOFF 0.98
 
@@ -299,7 +302,8 @@ vec4 effect(vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords)
 
     overlayStrength = max(overlayStrength, blackMask);
 
-    vec3 finalRGB = mix(base.rgb, shaderCol, overlayStrength);
+    vec3 underlayRGB = mix(base.rgb, vec3(0.0), saturate(BLACK_UNDERLAY_OPACITY));
+    vec3 finalRGB = mix(underlayRGB, shaderCol, overlayStrength);
 
     vec4 tex = vec4(finalRGB, base.a);
 
@@ -353,7 +357,7 @@ vec4 dissolve_mask(vec4 tex, vec2 texture_coords, vec2 uv)
         - (floored_uv.x > borders.y ? (floored_uv.x - borders.y) * (5. + 5. * dissolve) : 0.) * dissolve
         - (floored_uv.y > borders.y ? (floored_uv.y - borders.y) * (5. + 5. * dissolve) : 0.) * dissolve
         - (floored_uv.x < borders.x ? (borders.x - floored_uv.x) * (5. + 5. * dissolve) : 0.) * dissolve
-        - (floored_uv.y < borders.x ? (borders.x - borders.y) * (5. + 5. * dissolve) : 0.) * dissolve;
+        - (floored_uv.y < borders.x ? (borders.x - floored_uv.y) * (5. + 5. * dissolve) : 0.) * dissolve;
 
     if (
         tex.a > 0.01 &&

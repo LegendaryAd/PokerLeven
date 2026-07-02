@@ -100,7 +100,7 @@ SMODS.Edition({
     loc_txt = {
         name = "Letal",
         label = "Letal",
-        text = { "{X:dark_edition,C:white}^1.1{} Multi",
+        text = {"Multi {X:dark_edition,C:white}^1.1{}",
         "{C:inactive}no se pueden aplicar tarots o espectrales",
         "{C:inactive}no pueden ser destrozadas o duplicadas{}" }
     },
@@ -112,7 +112,36 @@ SMODS.Edition({
     in_shop = false,
     weight = 8,
     extra_cost = 6,
-    apply_to_float = true,
+    apply_to_float = false,
+    config = {},
+    loc_vars = function(self)
+        return { vars = {} }
+    end
+})
+
+
+
+SMODS.Shader({
+    key = 'astral', path = 'astral.fs'
+})
+
+
+SMODS.Edition({
+    key = "astral",
+    loc_txt = {
+        name = "Astral",
+        label = "Astral",
+        text = { "Chips {X:chips,C:white}X1.5{} "}
+    },
+    disable_shadow = false,
+    disable_base_shader = true,
+    shader = "astral",
+    discovered = false,
+    unlocked = false,
+    in_shop = true,
+    weight = 7,
+    extra_cost = 4,
+    apply_to_float = false,
     config = {},
     loc_vars = function(self)
         return { vars = {} }
@@ -122,5 +151,5 @@ SMODS.Edition({
 return{
 	name = "Editions",
 --	init = apply_shader(),
-	list = {lethal}
+	list = {lethal, astral}
 }
